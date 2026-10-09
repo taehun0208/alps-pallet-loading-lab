@@ -4,6 +4,7 @@ import {clusteringMetrics} from '../metrics/clustering';
 import {footprintMetrics} from '../metrics/footprint';
 import {loadingDuration,loadingFrame} from './loading';
 import './presentation.css';
+import BenchmarkRadar from './BenchmarkRadar';
 const Scene=lazy(()=>import('../Scene'));
 const colors=['#da795b','#e8b64c','#269f92','#65bbcc','#718bcb','#b18acc','#bf8c43','#57916b'];
 const fmt=(n:number|null|undefined,d=1)=>n==null||!Number.isFinite(n)?'—':n.toLocaleString('ko-KR',{minimumFractionDigits:d,maximumFractionDigits:d});
@@ -57,7 +58,7 @@ export default function Presentation(){
  useEffect(()=>{setPlaying(false);setElapsed(0);setError('');let active=true;if(!signature)return;Promise.all(briefs.map(async b=>{const response=await fetch(b.url);if(!response.ok)throw Error('실제 배치 원본을 불러오지 못했습니다.');const t:TrialResult=await response.json();if(t.seed!==b.seed||t.algorithm!==b.algorithm||t.inputFingerprint!==b.inputFingerprint||t.status!=='finished'||t.violations.length||t.arrivals.length!==study?.boxes||t.config.maxHeightMm!==study.height)throw Error('선택한 시험과 배치 원본이 일치하지 않습니다.');return [b.url,t] as const;})).then(rows=>{if(rows.some(([,t])=>JSON.stringify(t.arrivals)!==JSON.stringify(rows[0][1].arrivals)))throw Error('같은 입고 순서 비교가 아닙니다.');if(active)setTraces(Object.fromEntries(rows));}).catch(e=>{if(active)setError(e.message);});return()=>{active=false;};},[signature]);
  const ready=!!study&&briefs.length===ids.length&&briefs.every(b=>traces[b.url]);
  const duration=Math.max(1,...briefs.map(b=>traces[b.url]?loadingDuration(traces[b.url]):0));
- useEffect(()=>{setElapsed(0);setPlaying(ready&&!matchMedia('(prefers-reduced-motion: reduce)').matches);},[signature,ready]);
+ useEffect(()=>{setElapsed(0);setPlaying(ready&&new URLSearchParams(location.search).get('benchmark')!=='six'&&!matchMedia('(prefers-reduced-motion: reduce)').matches);},[signature,ready]);
  useEffect(()=>{if(!playing||!ready)return;let raf=0,last=performance.now();const tick=(now:number)=>{const dt=Math.min(.2,(now-last)/1000);last=now;setElapsed(t=>{const next=Math.min(duration,t+dt*speed);if(next>=duration)setPlaying(false);return next;});raf=requestAnimationFrame(tick);};raf=requestAnimationFrame(tick);return()=>cancelAnimationFrame(raf);},[playing,ready,duration,speed]);
  const nav=(p:Page)=>{location.hash=p;setPage(p);setFocus(null);};
  const changeStudy=(id:string)=>{const next=index?.studies.find(s=>s.id===id);setStudyId(id);setSeed(next?.seeds[0]??0);setPlaying(false);setFocus(null);};
@@ -71,9 +72,10 @@ export default function Presentation(){
  {error&&<div className="cp-empty" role="alert">{error}</div>}
  {!index&&!error&&<div className="cp-loading">검사 자료를 불러오는 중…</div>}
  {study&&!ready&&!error&&<div className="cp-loading">선택한 시드의 실제 배치를 불러오는 중…</div>}
- {ready&&<><div className="cp-playback"><button className="cp-play" onClick={()=>{if(elapsed>=duration)setElapsed(0);setPlaying(v=>!v);}}>{playing?'일시정지':elapsed>=duration?'다시 재생':'적재 재생'}</button><button onClick={()=>{setElapsed(0);setPlaying(false);}}>처음</button><input type="range" aria-label="적재 시뮬레이션 시간" min="0" max={duration} step=".1" value={elapsed} onChange={e=>{setElapsed(+e.target.value);setPlaying(false);}}/><span>{clock(elapsed)} / {clock(duration)}</span><select aria-label="적재 시뮬레이션 배속" value={speed} onChange={e=>setSpeed(+e.target.value)}>{[8,16,32].map(n=><option value={n} key={n}>{n}배속</option>)}</select><button onClick={()=>{setElapsed(duration);setPlaying(false);}}>완료 배치</button></div>
+ {ready&&<><div className="cp-playback"><button className="cp-play" onClick={()=>{if(elapsed>=duration)setElapsed(0);setPlaying(v=>!v);}}>{playing?'일시정지':elapsed>=duration?'다시 재생':'적재 재생'}</button><button onClick={()=>{setElapsed(0);setPlaying(false);}}>처음</button><input type="range" aria-label="적재 시뮬레이션 시간" min="0" max={duration} step=".1" value={elapsed} onChange={e=>{setElapsed(+e.target.value);setPlaying(false);}}/><span>{clock(elapsed)} / {clock(duration)}</span><select aria-label="적재 시뮬레이션 배속" value={speed} onChange={e=>setSpeed(+e.target.value)}>{[8,16,32,48].map(n=><option value={n} key={n}>{n}배속</option>)}</select><button onClick={()=>{setElapsed(duration);setPlaying(false);}}>완료 배치</button></div>
  <div className={`cp-workspace ${page==='compare'?'cp-comparison':''}`}><div className="cp-scenes">{briefs.map((b,i)=><Pallet key={b.url} trial={traces[b.url]} elapsed={elapsed} focus={focus} label={page==='before'?'동일 조건의 기준 정책':page==='after'?'동일 조건의 ALPS 정책':i===0?'기준 정책':'ALPS 정책'} compact={page==='compare'}/>)}</div>{page!=='compare'&&trial&&frame&&<aside className="cp-inspector"><h3>색이 같으면 같은 SKU</h3><p>현재 적재 / 아직 인식하지 않은 수량</p><div className="cp-skus">{trial.scenario.types.map(type=><button key={type.id} aria-pressed={focus===type.id} onClick={()=>setFocus(focus===type.id?null:type.id)}><i style={{background:skuColor(type.id)}}/><span>{type.name}<small>{type.id}</small></span><b>{frame.placed.filter(p=>p.typeId===type.id).length}<small> / {frame.remaining[type.id]??0}개</small></b></button>)}</div><div className="cp-floor"><div><h3>바닥 접촉 지도</h3><b>{pct(metrics?.floor)}</b></div><FloorMap trial={trial} placed={frame.placed} focus={focus}/><p>같은 SKU 접촉 · 전체 {pct(metrics?.contact)}<br/>옆면 {pct(metrics?.side)} · 위아래 {pct(metrics?.vertical)}</p></div></aside>}</div>
  <div className="cp-replay-note">위 배치는 시드 {seed}의 개별 실행입니다. 아래 통계는 선택한 시드와 관계없이 조건별 100회 전체 평균입니다.</div></>}
+ {page==='compare'&&<BenchmarkRadar replayReady={ready} replayBoxes={study?.boxes??30}/>}
  {study&&index&&<Evidence study={study} index={index} after={after} all={page==='compare'}/>}
  </main><footer className="cp-footer"><span>ALPS <b>적재량·밀도·SKU 인접성</b></span><span>우리 검사 1,400회 검산 · 실제 배치 기록 재생 · 팔의 이동은 설명용</span></footer></div>;
 }
