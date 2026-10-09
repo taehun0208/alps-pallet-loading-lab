@@ -1,0 +1,219 @@
+{
+  "schema": "alps-observed-showcase/1",
+  "label": "관측 우수 사례 · 전체 평균과 구분",
+  "nPerCondition": 100,
+  "conditionCount": 2,
+  "auditedTrials": 1400,
+  "eligiblePairs": 200,
+  "full30Candidates": 39,
+  "sourceGitCommit": "589775bf01a940d0c369e468f484416ff45b1e34",
+  "freezeSignature": "8bab669522ba33fdce1f082fe36fc5b8ff2f7f4b4e4dc100bba05912e2928feb",
+  "auditSha256": "d1afbe10bf250cc664dc0661145c47aa39a45a7d146c8c53d6de5de98fc674d8",
+  "summaryUrl": "/benchmark-best/summary.md",
+  "cases": [
+    {
+      "id": "density",
+      "title": "전량 적재 · 관측 밀도 우수 사례",
+      "condition": "h1200-n30-s8",
+      "seed": 460100063,
+      "inputFingerprint": "51a869b9",
+      "selection": "전량 30개 적재한 floor-dense 실행 중 사용 높이 기준 밀도 내림차순, 내부 빈틈·사용 높이·시드 오름차순.",
+      "trials": [
+        {
+          "role": "baseline",
+          "algorithm": "capacity-compact",
+          "traceUrl": "/benchmark-best/density-baseline.json",
+          "traceSha256": "be78247fbce93fc3bfc5a710d4b4264d14860785309530bdd9afe50d37bae10f",
+          "sourceTrace": "shards/h1200-n30-s8-0050-0075/trials/h1200-n30-s8-460100063-capacity-compact.json.gz",
+          "metrics": {
+            "floorContactAreaMm2": 1088600,
+            "floorCoverage": 0.9071666666666667,
+            "projectedFootprintAreaMm2": 1089100,
+            "projectedFootprintCoverage": 0.9075833333333333,
+            "count": 27,
+            "total": 30,
+            "fill": 0.4696361111111111,
+            "volumeMm3": 676276000,
+            "usedHeightMm": 990,
+            "envelopeFill": 0.5692558922558922,
+            "allowedEmptyMm3": 763724000,
+            "envelopeEmptyMm3": 511724000,
+            "columnVoidMm3": 4460000,
+            "massKg": 172,
+            "center": {
+              "x": 566.1627906976744,
+              "y": 413.8953488372093,
+              "z": 389.4767441860465
+            },
+            "cogHorizontalOffsetMm": 92.51468902415043,
+            "cogHeightMm": 389.4767441860465,
+            "minSupportRatio": 0.8888888888888888,
+            "maxLoadRatio": 1,
+            "computeMs": 491.8940410000505,
+            "meanDecisionMs": 16.396468033335015,
+            "p95DecisionMs": 35.85510830000567,
+            "maxDecisionMs": 36.88020799998776,
+            "deadlineMisses": 0,
+            "fallbackCount": 0,
+            "robotSeconds": 270,
+            "planningWaitSeconds": 0.0010730000000569657,
+            "totalSeconds": 270.0010730000001,
+            "storeProxy": {
+              "crossZoneBlockers": 11,
+              "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+              "measuredSeconds": null
+            }
+          }
+        },
+        {
+          "role": "alps",
+          "algorithm": "floor-dense",
+          "traceUrl": "/benchmark-best/density-alps.json",
+          "traceSha256": "b8f66526a0da5cfdf649fcfd25584d8f4e524b5058f754f736a915cae19a3283",
+          "sourceTrace": "shards/h1200-n30-s8-0050-0075/trials/h1200-n30-s8-460100063-floor-dense.json.gz",
+          "metrics": {
+            "floorContactAreaMm2": 1113600,
+            "floorCoverage": 0.928,
+            "projectedFootprintAreaMm2": 1118400,
+            "projectedFootprintCoverage": 0.932,
+            "count": 30,
+            "total": 30,
+            "fill": 0.5371708333333334,
+            "volumeMm3": 773526000,
+            "usedHeightMm": 930,
+            "envelopeFill": 0.6931236559139785,
+            "allowedEmptyMm3": 666474000,
+            "envelopeEmptyMm3": 342474000,
+            "columnVoidMm3": 5952000,
+            "massKg": 184,
+            "center": {
+              "x": 540.3532608695652,
+              "y": 509.89130434782606,
+              "z": 369.8369565217391
+            },
+            "cogHorizontalOffsetMm": 60.46132144268316,
+            "cogHeightMm": 369.8369565217391,
+            "minSupportRatio": 0.8823529411764706,
+            "maxLoadRatio": 0.75,
+            "computeMs": 4201.546917000087,
+            "meanDecisionMs": 140.0515639000029,
+            "p95DecisionMs": 280.59768355001285,
+            "maxDecisionMs": 478.77833300002385,
+            "deadlineMisses": 0,
+            "fallbackCount": 0,
+            "robotSeconds": 300,
+            "planningWaitSeconds": 0.08298129200014574,
+            "totalSeconds": 300.08298129200017,
+            "storeProxy": {
+              "crossZoneBlockers": 14,
+              "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+              "measuredSeconds": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "improvement",
+      "title": "Compact 대비 관측 개선 사례",
+      "condition": "h1200-n30-s6",
+      "seed": 460000000,
+      "inputFingerprint": "7686731f",
+      "selection": "Compact보다 적재 수와 밀도가 낮지 않은 실행 중 공급 부피 수용률 증가 최대, 밀도 증가 최대, 내부 빈틈·시드 오름차순. 개선이 큰 개별 사례를 의도적으로 선택했습니다.",
+      "trials": [
+        {
+          "role": "baseline",
+          "algorithm": "capacity-compact",
+          "traceUrl": "/benchmark-best/improvement-baseline.json",
+          "traceSha256": "148b5d9001e8665c1959cb4a586c4aed1d2efa5e5188f4c6a00f43d05f46219f",
+          "sourceTrace": "shards/h1200-n30-s6-0000-0025/trials/h1200-n30-s6-460000000-capacity-compact.json.gz",
+          "metrics": {
+            "floorContactAreaMm2": 1062200,
+            "floorCoverage": 0.8851666666666667,
+            "projectedFootprintAreaMm2": 1065200,
+            "projectedFootprintCoverage": 0.8876666666666667,
+            "count": 22,
+            "total": 30,
+            "fill": 0.3258888888888889,
+            "volumeMm3": 469280000,
+            "usedHeightMm": 1060,
+            "envelopeFill": 0.3689308176100629,
+            "allowedEmptyMm3": 970720000,
+            "envelopeEmptyMm3": 802720000,
+            "columnVoidMm3": 960000,
+            "massKg": 142,
+            "center": {
+              "x": 505.98591549295776,
+              "y": 457.32394366197184,
+              "z": 308.7323943661972
+            },
+            "cogHorizontalOffsetMm": 103.24676203283002,
+            "cogHeightMm": 308.7323943661972,
+            "minSupportRatio": 0.96,
+            "maxLoadRatio": 0.72,
+            "computeMs": 351.47666600000014,
+            "meanDecisionMs": 11.71588886666667,
+            "p95DecisionMs": 29.262383849999967,
+            "maxDecisionMs": 40.74170800000002,
+            "deadlineMisses": 0,
+            "fallbackCount": 0,
+            "robotSeconds": 220,
+            "planningWaitSeconds": 0.0011704590000676984,
+            "totalSeconds": 220.00117045900006,
+            "storeProxy": {
+              "crossZoneBlockers": 6,
+              "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+              "measuredSeconds": null
+            }
+          }
+        },
+        {
+          "role": "alps",
+          "algorithm": "floor-dense",
+          "traceUrl": "/benchmark-best/improvement-alps.json",
+          "traceSha256": "5afd33913f3e47ea436c001fb28aaed2ed6ba2bfcbfb9263749620b36caee66b",
+          "sourceTrace": "shards/h1200-n30-s6-0000-0025/trials/h1200-n30-s6-460000000-floor-dense.json.gz",
+          "metrics": {
+            "floorContactAreaMm2": 1055400,
+            "floorCoverage": 0.8795,
+            "projectedFootprintAreaMm2": 1055400,
+            "projectedFootprintCoverage": 0.8795,
+            "count": 29,
+            "total": 30,
+            "fill": 0.5089444444444444,
+            "volumeMm3": 732880000,
+            "usedHeightMm": 1100,
+            "envelopeFill": 0.5552121212121212,
+            "allowedEmptyMm3": 707120000,
+            "envelopeEmptyMm3": 587120000,
+            "columnVoidMm3": 0,
+            "massKg": 182,
+            "center": {
+              "x": 620.4945054945055,
+              "y": 482.6373626373626,
+              "z": 415.16483516483515
+            },
+            "cogHorizontalOffsetMm": 26.86049016028497,
+            "cogHeightMm": 415.16483516483515,
+            "minSupportRatio": 1,
+            "maxLoadRatio": 0.72,
+            "computeMs": 2382.8251239999954,
+            "meanDecisionMs": 79.42750413333319,
+            "p95DecisionMs": 204.2859642499996,
+            "maxDecisionMs": 306.7323749999996,
+            "deadlineMisses": 0,
+            "fallbackCount": 0,
+            "robotSeconds": 290,
+            "planningWaitSeconds": 0.04727650000008039,
+            "totalSeconds": 290.04727650000007,
+            "storeProxy": {
+              "crossZoneBlockers": 9,
+              "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+              "measuredSeconds": null
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

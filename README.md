@@ -2,6 +2,7 @@
 
 최신 작업(2026-10-10): [`alps-simulator/`](alps-simulator/)에 ALPS Tetris·군집 정책과 공통 엔진을 보존했다. 기존 프로젝트 이력과 중간 시뮬레이터·개발 문서·과거 실험 원자료도 함께 있다.
 
+- [완료 결과·밀도 비교·채택 판단](alps-simulator/docs/benchmark-1000/RESULTS.md): **1,400회 완료, 13분 24초, 독립 검산 오류 0건**. 관측 우수 사례 재생도 추가.
 - [최종 벤치마크 조건](alps-simulator/docs/benchmark-1000/PROTOCOL.md):1,200mm·30개·6/8SKU·7정책·각100개 입고 순서,총1,400회. MCTS 제외.
 - [알고리즘 내용 비교](alps-simulator/docs/benchmark-1000/ALGORITHMS.md) · [통계 기준](alps-simulator/docs/benchmark-1000/STATISTICS.md) · [Claude Opus5.5 실제 API 검토](alps-simulator/docs/benchmark-1000/CLAUDE-REVIEW.md)
 - [현재 앱 설명](alps-simulator/README.md) · [이전 대화·결정·자료 목록](docs/checkpoint/README.md)

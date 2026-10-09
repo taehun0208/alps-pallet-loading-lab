@@ -1,0 +1,59 @@
+{
+  "signature": "8bab669522ba33fdce1f082fe36fc5b8ff2f7f4b4e4dc100bba05912e2928feb",
+  "execution": {
+    "mode": "parallel-shared-machine",
+    "concurrency": 4,
+    "batchSize": 25
+  },
+  "n": 100,
+  "jobs": [
+    {
+      "id": "h1200-n30-s6-0000-0025",
+      "condition": "h1200-n30-s6",
+      "start": 0,
+      "end": 25
+    },
+    {
+      "id": "h1200-n30-s8-0000-0025",
+      "condition": "h1200-n30-s8",
+      "start": 0,
+      "end": 25
+    },
+    {
+      "id": "h1200-n30-s6-0025-0050",
+      "condition": "h1200-n30-s6",
+      "start": 25,
+      "end": 50
+    },
+    {
+      "id": "h1200-n30-s8-0025-0050",
+      "condition": "h1200-n30-s8",
+      "start": 25,
+      "end": 50
+    },
+    {
+      "id": "h1200-n30-s6-0050-0075",
+      "condition": "h1200-n30-s6",
+      "start": 50,
+      "end": 75
+    },
+    {
+      "id": "h1200-n30-s8-0050-0075",
+      "condition": "h1200-n30-s8",
+      "start": 50,
+      "end": 75
+    },
+    {
+      "id": "h1200-n30-s6-0075-0100",
+      "condition": "h1200-n30-s6",
+      "start": 75,
+      "end": 100
+    },
+    {
+      "id": "h1200-n30-s8-0075-0100",
+      "condition": "h1200-n30-s8",
+      "start": 75,
+      "end": 100
+    }
+  ]
+}
