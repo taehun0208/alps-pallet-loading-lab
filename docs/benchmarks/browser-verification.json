@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-09",
+  "url": "http://127.0.0.1:5173/?palletDemo=compact&palletView=relay#pallet",
+  "checks": {
+    "fresh_browser_errors": 0,
+    "bed_stress_smoke": {
+      "count": 8,
+      "completed": 8,
+      "simulated_seconds": 84.8,
+      "deck_height_mm": 144,
+      "cargo_limit_kg": 500
+    },
+    "json_export": {
+      "schema_version": 9,
+      "records": 8,
+      "events": 44,
+      "pallet_settings_preserved": true
+    },
+    "mobile": {
+      "viewport_width": 390,
+      "viewport_height": 844,
+      "document_width": 390,
+      "settings_visible": true
+    },
+    "three_d_box_selection": true,
+    "replay": true,
+    "baseline_comparison": true
+  },
+  "automated": {
+    "main_tests_passed": 95,
+    "profile_objective_tests_passed": 5,
+    "build": "passed",
+    "warning": "Existing large Three/Rapier bundles"
+  },
+  "limitations": [
+    "Browser speed/frame timing changes assignment opportunities; deterministic benchmarks use fixed timestep.",
+    "Public source data is not measurement of this factory.",
+    "Compression, real robot joints and transport stability are unverified."
+  ]
+}

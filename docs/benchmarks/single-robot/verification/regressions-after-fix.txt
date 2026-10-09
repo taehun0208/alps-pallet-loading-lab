@@ -1,0 +1,11 @@
+
+ RUN  v4.1.11 /Users/taehun/.codex/.chatgpt-projects/g-p-6ab3a6e330c48191ae7b59b2a3e286aa/PAC2026_이어가기_2026-10-09/pallet-loading-lab
+
+ ✓ tests/pallet-single-robot-regressions.test.ts (11 tests) 1215ms
+     ✓ counts boxes waiting in the buffer as known future demand, without double counting the current box  634ms
+
+ Test Files  1 passed (1)
+      Tests  11 passed (11)
+   Start at  17:05:26
+   Duration  1.47s (transform 152ms, setup 0ms, import 194ms, tests 1.22s, environment 0ms)
+

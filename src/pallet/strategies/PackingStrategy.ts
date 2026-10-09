@@ -7,6 +7,7 @@ export interface StrategyWeights {
   compactness:number; support:number; stability:number; centerOfMass:number; flatness:number;
   height:number; fragmentation:number; macs:number; fpl:number; deadEnd:number;
   reservation:number; lowerSpace:number; lookahead:number;
+  com?:number;
 }
 export interface StrategyConfig {
   criticalK:number; futureCandidates:number; lossMode:'absolute'|'normalized';

@@ -1,0 +1,120 @@
+{
+  "verifiedAt": "2026-10-04T16:15:54.484566+00:00",
+  "unitTests": {
+    "passed": 162,
+    "files": 15,
+    "newRequirementsTests": 11,
+    "causalOnlineTests": 13,
+    "command": "npm.cmd test -- --exclude '**/*benchmark*' --maxWorkers 2",
+    "lastScoringChangeTargetedRetestPassed": 11
+  },
+  "engineExperiment": {
+    "testsPassed": 1,
+    "inventorySets": 3,
+    "newPolicyRuns": 9,
+    "previousGreedyRunsUnderSameTaskConstraints": 3,
+    "command": "npm.cmd test -- tests/pallet-online-benchmark.test.ts --maxWorkers 1",
+    "report": "pallet-online-measurements.json",
+    "previousReport": "pallet-online-before-requirements.json",
+    "measuredAt": "2026-10-04T15:53:15.218Z",
+    "countsUnchanged": true,
+    "timingScope": "One local Node measurement; build concurrently running; not a hard real-time guarantee."
+  },
+  "browser": {
+    "uniquePassed": 26,
+    "research": 18,
+    "online": 4,
+    "requirements": 4,
+    "fullPalletRun": "26 passed (4.4m)",
+    "command": "npm.cmd run test:browser -- tests/pallet-browser.spec.ts tests/pallet-stock-browser.spec.ts tests/pallet-lower-balance-browser.spec.ts tests/pallet-online-browser.spec.ts tests/pallet-requirements-browser.spec.ts",
+    "afterLastArchiveDisplayChange": {
+      "passed": 8,
+      "result": "8 passed (55.4s)",
+      "command": "npm.cmd run test:browser -- tests/pallet-online-browser.spec.ts tests/pallet-requirements-browser.spec.ts"
+    },
+    "retries": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "initialExpectationCorrection": "The browser test originally addressed CSV 저장, corrected to the existing button name 비교 CSV 저장. Product behavior was not weakened.",
+    "viewportWidths": [
+      320,
+      1366
+    ]
+  },
+  "build": {
+    "status": "passed",
+    "modules": 98,
+    "viteSeconds": 4.46,
+    "command": "npm.cmd run build"
+  },
+  "defaultTaskResult": {
+    "algorithm": "greedy",
+    "placed": 8,
+    "total": 30,
+    "inventorySeed": 20261004,
+    "arrivalSeed": 42,
+    "score": 16.12908110806973,
+    "complete": false,
+    "online": true,
+    "heavyRule": "each",
+    "robotMode": "gripper"
+  },
+  "partialReplanning": {
+    "preservesCommittedCoordinatesAndIds": true,
+    "supported": [
+      "pallet and constraints",
+      "current observed dimensions",
+      "current damaged observation",
+      "current missing observation"
+    ],
+    "rejected": [
+      "changed processed observations",
+      "changed catalog or quantities",
+      "changed arrival seed or pattern",
+      "conditions invalidating committed stack"
+    ],
+    "cancelsUncommittedMotionAndOldWorker": true,
+    "storesPerStepConditions": true,
+    "archiveUsesFinalSnapshotConditions": true,
+    "example": "200mm pallet blocked after first committed box; 600mm pallet replanning preserves first box and packs 2/2."
+  },
+  "robotScope": {
+    "checked": [
+      "tool-inclusive payload",
+      "TCP workspace",
+      "whole straight TCP segment annular reach",
+      "gripper and observed held-box yaw sweep including intermediate extrema",
+      "top approach and exit",
+      "yaw and translation task time"
+    ],
+    "unverified": [
+      "joint limits",
+      "IK",
+      "full arm link collision",
+      "joint torque",
+      "suction and packaging deformation"
+    ],
+    "numericLimitsAreExamples": true
+  },
+  "patternEvaluation": {
+    "hardViolationGated": true,
+    "unknownStrengthGated": true,
+    "weights": {
+      "packing": 0.25,
+      "balance": 0.2,
+      "stability": 0.35,
+      "robotTime": 0.15,
+      "generationTime": 0.05
+    },
+    "incompleteScoreMultipliedByPlacedFraction": true,
+    "conditionComparisonSnapshots": true,
+    "realSafetyProbability": false
+  },
+  "screenshots": [
+    "pallet-requirements-1366.png",
+    "pallet-requirements-320.png",
+    "pallet-online-1366.png",
+    "pallet-online-320.png"
+  ],
+  "performanceClaim": "Requirement coverage and fixed-input behavior verified; no general packing-count improvement, global optimum, real-time upper bound, or real-robot certification is claimed."
+}

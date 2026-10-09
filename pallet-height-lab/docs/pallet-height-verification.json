@@ -1,0 +1,177 @@
+{
+  "verifiedAt": "2026-10-04T17:01:42.528568+00:00",
+  "unitTests": {
+    "passed": 166,
+    "files": 16,
+    "durationSeconds": 15.16,
+    "command": "npm.cmd test -- --exclude '**/*benchmark*' --maxWorkers 2"
+  },
+  "experiments": {
+    "testsPassed": 2,
+    "planningCases": 5,
+    "physicsPlanningCases": 2,
+    "highStackRefinementProfiles": 2,
+    "command": "npm.cmd test -- tests/pallet-height-benchmark.test.ts tests/pallet-height-physics-benchmark.test.ts --maxWorkers 1",
+    "durationSeconds": 87.37,
+    "reports": [
+      "pallet-height-measurements.json",
+      "pallet-height-physics.json"
+    ]
+  },
+  "browser": {
+    "uniquePassed": 15,
+    "height": 3,
+    "online": 4,
+    "requirements": 4,
+    "stock": 3,
+    "lowerBalance": 1,
+    "run": "14 passed, 1 outdated stock-count expectation failed (3.0m); the affected test passed after updating the measured expected count, 1 passed (26.8s).",
+    "command": "npm.cmd run test:browser -- tests/pallet-height-browser.spec.ts tests/pallet-online-browser.spec.ts tests/pallet-requirements-browser.spec.ts tests/pallet-stock-browser.spec.ts tests/pallet-lower-balance-browser.spec.ts",
+    "finalRetestCommand": "npm.cmd run test:browser -- tests/pallet-stock-browser.spec.ts --grep 'default mixed stock'",
+    "retries": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "viewports": [
+      320,
+      1366
+    ],
+    "physicsMatchesNode": true,
+    "initialFinding": "An initial high-stack browser run exposed 50.09mm motion; it was not accepted as stable. Placement prioritisation and explicit rigid-contact numerics were improved before final high-stack success."
+  },
+  "build": {
+    "status": "passed",
+    "modules": 101,
+    "viteSeconds": 5.08,
+    "command": "npm.cmd run build"
+  },
+  "results": [
+    {
+      "name": "과제 조건 · 무작위 혼합 박스 30개",
+      "supply": "arrival",
+      "count": 8,
+      "total": 30,
+      "heightMm": 630,
+      "layers": 2,
+      "heightLimitMm": 1600
+    },
+    {
+      "name": "과제 조건 · 무작위 혼합 박스 30개",
+      "supply": "stock-select",
+      "count": 14,
+      "total": 30,
+      "heightMm": 1375,
+      "layers": 5,
+      "heightLimitMm": 1600
+    },
+    {
+      "name": "고층 검증 · 혼합 재고 24개 · 6단",
+      "supply": "stock-select",
+      "count": 24,
+      "total": 24,
+      "heightMm": 1472,
+      "layers": 6,
+      "heightLimitMm": 1600
+    },
+    {
+      "name": "고층 검증 · 혼합 재고 24개 · 6단",
+      "supply": "arrival",
+      "count": 10,
+      "total": 24,
+      "heightMm": 739,
+      "layers": 3,
+      "heightLimitMm": 1600
+    },
+    {
+      "name": "고층 검증 · 혼합 재고 24개 · 6단",
+      "supply": "stock-select",
+      "count": 12,
+      "total": 24,
+      "heightMm": 739,
+      "layers": 3,
+      "heightLimitMm": 950
+    }
+  ],
+  "physics": [
+    {
+      "name": "고층 검증 · 혼합 재고 24개 · 6단",
+      "status": "stable",
+      "maxDisplacementMm": 0.7560912614901821,
+      "maxAngleDeg": 0,
+      "settings": {
+        "seconds": 3,
+        "dt": 0.008333333333333333,
+        "friction": 0.6,
+        "moveToleranceMm": 5,
+        "angleToleranceDeg": 3,
+        "materialFriction": true,
+        "solverIterations": 12,
+        "contactNaturalFrequencyHz": 120
+      },
+      "convergence": [
+        {
+          "settings": {
+            "seconds": 3,
+            "dt": 0.008333333333333333,
+            "friction": 0.6,
+            "moveToleranceMm": 5,
+            "angleToleranceDeg": 3,
+            "materialFriction": true,
+            "solverIterations": 24,
+            "contactNaturalFrequencyHz": 120
+          },
+          "maxDifferenceMm": 0.010402515464405203,
+          "maxDisplacementMm": 0.7497580605216653
+        },
+        {
+          "settings": {
+            "seconds": 3,
+            "dt": 0.004166666666666667,
+            "friction": 0.6,
+            "moveToleranceMm": 5,
+            "angleToleranceDeg": 3,
+            "materialFriction": true,
+            "solverIterations": 12,
+            "contactNaturalFrequencyHz": 120
+          },
+          "maxDifferenceMm": 0.011500810427303255,
+          "maxDisplacementMm": 0.7497476245483163
+        }
+      ]
+    },
+    {
+      "name": "과제 조건 · 무작위 혼합 박스 30개",
+      "status": "stable",
+      "maxDisplacementMm": 0.5732492727077314,
+      "maxAngleDeg": 0,
+      "settings": {
+        "seconds": 3,
+        "dt": 0.008333333333333333,
+        "friction": 0.6,
+        "moveToleranceMm": 5,
+        "angleToleranceDeg": 3,
+        "materialFriction": true,
+        "solverIterations": 12,
+        "contactNaturalFrequencyHz": 120
+      },
+      "convergence": []
+    }
+  ],
+  "assumptions": [
+    "Unknown sequential arrivals remain the default and cannot skip the current normal box.",
+    "Stock demonstration requires access to the entire stock and starts a new run; previous confirmed execution is archived.",
+    "The 24-box high-stack example is a disclosed synthetic stackable assortment, not a claim about arbitrary random loads.",
+    "Hard support, capacity, heavy-box order, no-overhang, height and configured robot constraints were retained.",
+    "Solver/contact settings model numerical rigid contacts, not packaging material compliance."
+  ],
+  "limits": [
+    "Only specified static and rigid-body model conditions were checked.",
+    "3 seconds of rigid-body simulation does not certify transport, packaging deformation or actual robot execution.",
+    "Same-stock height increased; the revised stock policy placed one fewer box than the first stock experiment."
+  ],
+  "screenshots": [
+    "pallet-height-scene.png",
+    "pallet-height-1366.png",
+    "pallet-height-320.png"
+  ],
+  "demoUrl": "http://127.0.0.1:5173/?palletDemo=high-stack#pallet"
+}

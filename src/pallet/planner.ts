@@ -1,4 +1,3 @@
-import { planRandom } from './randomPlanner';
 import { isStrategy } from './strategies/PackingStrategy';
 import { planStrategy } from './strategies';
 import { candidateSet } from './candidates';
@@ -29,7 +28,7 @@ function diverseShortlist(valid:Candidate[],limit:number){
  for(let i=0;chosen.length<limit;i++){let any=false;for(const list of groups.values()){const c=list[i];if(c&&!chosen.includes(c)&&chosen.length<limit){chosen.push(c);any=true;}}if(!any&&i>=ranked.length)break;}
  return chosen;
 }
-export function plan(input:PlanningInput):Analysis{return input.algorithm==='random'?planRandom(input):isStrategy(input.algorithm)?planStrategy(input):input.available?planStock(input):input.settings.policy==='online'?planOnline(input):planArrival(input);}
+export function plan(input:PlanningInput):Analysis{return isStrategy(input.algorithm)?planStrategy(input):input.available?planStock(input):input.settings.policy==='online'?planOnline(input):planArrival(input);}
 export function planArrival(input:PlanningInput):Analysis{
  const start=performance.now(),root=candidateSet(input),valid=root.candidates.filter(c=>c.valid);let nodes=root.candidates.length,rolloutCalls=0;const sequences=input.algorithm==='rollout'?virtualSequences(input):[];
  let selected:Candidate|undefined;

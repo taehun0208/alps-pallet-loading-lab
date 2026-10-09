@@ -1,0 +1,11 @@
+/* Scene controls are a single tool strip; the dashboard owns playback and robot focus. */
+.relay-scene .scene-camera-tools{position:absolute;z-index:3;right:20px;top:20px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;max-width:calc(100% - 40px)}
+.relay-scene .scene-camera-tools>div{display:flex;background:#fffdf8;border:1px solid #d6d2c9;border-radius:24px;padding:3px}
+.relay-scene .scene-camera-tools button{min-height:36px;padding:7px 13px;border:1px solid #d6d2c9;border-radius:24px;background:#fffdf8;color:#322d2a;font-family:inherit;font-size:12px;font-weight:400;line-height:1.3;cursor:pointer}
+.relay-scene .scene-camera-tools>div button{border-color:transparent;background:transparent}
+.relay-scene .scene-camera-tools button[aria-pressed=true]{background:#322d2a;color:#fffdf8;border-color:#322d2a}
+.relay-scene .scene-camera-tools button:focus-visible{outline:2px solid #322d2a;outline-offset:3px}
+.relay-scene .scene-interaction-hint{position:absolute;left:20px;bottom:18px;padding:8px 12px;border-radius:20px;background:#f0efe9e8;color:#625b55;font-size:11px;pointer-events:none}
+.scene-inspector canvas{cursor:grab}
+.scene-inspector canvas:active{cursor:grabbing}
+@media(max-width:600px){.relay-scene .scene-camera-tools{right:12px;top:12px;max-width:calc(100% - 24px);gap:4px}.relay-scene .scene-camera-tools button{min-height:36px;padding:7px 10px;font-size:11px}.relay-scene .scene-interaction-hint{left:12px;bottom:12px;font-size:10px}}

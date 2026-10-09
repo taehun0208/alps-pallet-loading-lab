@@ -1,0 +1,70 @@
+{
+  "source": {
+    "path": "docs/presentation/claude/executed-capacity.json",
+    "sha256": "8c91beec4d75aafad422a89c3b4f6e785c20ca9310513c6424c1a5c409b3e659",
+    "schema": "alps-claude-capacity-8s/1",
+    "startedAt": "2026-10-09T17:46:14.102Z",
+    "finishedAt": "2026-10-09T17:47:58.250Z",
+    "environment": {
+      "os": "darwin",
+      "arch": "arm64",
+      "release": "25.6.0",
+      "cpu": "Apple M5",
+      "logicalCpus": 10,
+      "node": "v24.14.1",
+      "execution": "serial synchronous calls in one Node process; measured elapsed time, not isolated CPU time"
+    },
+    "modelProvenance": {
+      "inputPath": "public/presentation-example.json",
+      "inputSha256": "d41000f55d800b200450895bc3a41e8f352ba75f542894394e5f10a023d4a323",
+      "modelSchema": "single-arm-capacity/1",
+      "sourceHashes": {
+        "src/pallet/presentation/model.ts": "9318ac9c5a933bb34233ca0f8344f292da43795b95e5d667b95803a9e549e7bf",
+        "src/pallet/capacity/experiment.ts": "f5f9c0e150771d3295064bcf68fb8065556340918a923ae894c7d4dd26b857db"
+      },
+      "sourceCommit": "b582caa52e2245f40f2c9fba0f770887c3a9e8c2",
+      "scriptSha256": "0fe51bd99a2233e988ababeee2bcedc35dd20d91b79ed2cacc815695b8383253",
+      "bundleSha256": "31e1a079668efe67bcea75e1fb14a99c9cc5f3484e6452a725fb0e501fbde244",
+      "inputCreatedAt": "2026-10-09T17:29:12.183Z",
+      "inputExtendedAt": "2026-10-09T17:35:50.198Z"
+    },
+    "rows": 40,
+    "selectionSeeds": [
+      410,
+      411,
+      412
+    ],
+    "holdoutSeeds": [
+      2410,
+      2411,
+      2412,
+      2413,
+      2414
+    ],
+    "heavyRule": "off",
+    "callDeadlineMs": 8000,
+    "currentOperatingTargetSeconds": [
+      10,
+      12
+    ],
+    "currentTargetAnalysis": "post-hoc comparison of recorded per-call maxima only; no rerun or end-to-end guarantee",
+    "selectedAlgorithm": "capacity-compact",
+    "newSimulationExecuted": false
+  },
+  "generator": "scripts/presentation-quality-charts.py",
+  "generatorSha256": "7b237229aa0427ca9e3369eecd86b324f33d679579878f11e9afba3c202ee2f1",
+  "matplotlib": "3.11.2",
+  "checks": [
+    "40 rows and heavyRule=off source",
+    "72 = placed + unplaced + unprocessed; unique box IDs",
+    "volume and fill independently from saved dimensions",
+    "used height independently from saved top coordinates",
+    "mean planner call time times call count equals stored total",
+    "five holdout seeds per algorithm; no discovery rows in chart means",
+    "all missing measurements represented as null"
+  ],
+  "immutableInputs": [
+    "docs/presentation/claude/executed-capacity.json"
+  ],
+  "noNewExperiment": true
+}

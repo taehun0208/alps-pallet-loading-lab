@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-import {uprightToolQuaternion} from './poseRendering';
 import { engineToRender } from './coordinates';
 import { solveRobotArm,armInterference,type RobotArmModel } from './robotArm';
 import type { Pallet,Placement,Vec3 } from './types';
@@ -36,7 +35,7 @@ export function createRobotArmView(palette=DEFAULT_ROBOT_PALETTE,design:'generic
  const axis=new THREE.Vector3(0,1,0),v=(p:Vec3,pallet:Pallet)=>new THREE.Vector3(...engineToRender(p,pallet));
  function link(mesh:THREE.Mesh,a:Vec3,b:Vec3,pallet:Pallet){const from=v(a,pallet),to=v(b,pallet),delta=to.clone().sub(from);mesh.position.copy(from).add(to).multiplyScalar(.5);mesh.scale.y=delta.length();mesh.quaternion.setFromUnitVectors(axis,delta.normalize());}
  function update(target:Vec3,rotation:THREE.Quaternion,toolHeight:number,model:RobotArmModel,pallet:Pallet,boxes:Placement[]){
-  const toolRotation=hyundai?uprightToolQuaternion(rotation):rotation,n=new THREE.Vector3(0,1,0).applyQuaternion(toolRotation),normal={x:n.x,y:n.z,z:n.y},pose=solveRobotArm(target,normal,toolHeight,model),hits=armInterference(pose,boxes);
+  const n=new THREE.Vector3(0,1,0).applyQuaternion(rotation),normal={x:n.x,y:n.z,z:n.y},pose=solveRobotArm(target,normal,toolHeight,model),hits=armInterference(pose,boxes);
   foot.position.copy(v(pose.base,pallet)).y=.06;turret.position.copy(v(pose.base,pallet)).y=.235;turret.rotation.y=-pose.yaw;
   link(column,{...pose.base,z:280},pose.shoulder,pallet);link(upper,pose.shoulder,pose.elbow,pallet);link(forearm,pose.elbow,pose.wrist,pallet);link(wristLink,pose.wrist,pose.flange,pallet);
   [upper,forearm,wristLink].forEach((mesh,i)=>mesh.material=hits[i]?warning:i===2?steel:body);
@@ -44,7 +43,7 @@ export function createRobotArmView(palette=DEFAULT_ROBOT_PALETTE,design:'generic
   [pose.shoulder,pose.elbow,pose.wrist].forEach((point,i)=>{joints[i].position.copy(v(point,pallet));joints[i].quaternion.setFromUnitVectors(axis,hinge);});
   caps.forEach((cap,i)=>{cap.position.copy(joints[i].position).addScaledVector(hinge,hyundai?radii[i]*.825+.02:i===0?.113:.096);cap.quaternion.setFromUnitVectors(hyundai?axis:new THREE.Vector3(0,0,1),hinge);});
   motors.forEach((motor,i)=>{motor.position.copy(joints[i].position).addScaledVector(hinge,-radii[i]*1.2);motor.rotation.y=-pose.yaw;});
-  wrist.position.copy(v(pose.wrist,pallet));wrist.quaternion.copy(toolRotation);flange.position.copy(v(pose.flange,pallet));flange.quaternion.copy(toolRotation);
+  wrist.position.copy(v(pose.wrist,pallet));wrist.quaternion.copy(rotation);flange.position.copy(v(pose.flange,pallet));flange.quaternion.copy(rotation);
   gap.visible=!pose.reachable;const attr=gapGeometry.getAttribute('position') as THREE.BufferAttribute;[pose.tcp,target].forEach((point,i)=>{const p=v(point,pallet);attr.setXYZ(i,p.x,p.y,p.z);});attr.needsUpdate=true;gap.computeLineDistances();
   return {pose,hits};
  }

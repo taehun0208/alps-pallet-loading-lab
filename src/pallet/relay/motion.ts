@@ -1,12 +1,9 @@
-import {allPallets,palletToWorld,worldToPallet,palletToRobot} from './palletStations';
-import {usesRoller} from './rollerQueue';
-import {streamPosition} from './streamGeometry';
-import {robotReach} from './fleet';
 import { beltPickup,beltStation,sourcePickup,CONVEYOR } from './conveyor';
 import { Vector3 } from 'three';
 import { gripperPath,incomingPosition } from '../constraints';
 import { intersects,top } from '../geometry';
 import { poseQuaternion } from '../poseRendering';
+import { solveRobotArm } from '../robotArm';
 import { cellPose,toWorld,toLocal,park,nextRobot } from './layout';
 import type { GripPath,Observation,Placement,Scenario,Vec3 } from '../types';
 import type { RelayAction,RelaySegment,RelayWorld } from './types';
@@ -49,7 +46,7 @@ export function actionSweeps(s:Scenario,w:RelayWorld,a:RelayAction){
  if(a.segments)for(const p of a.segments){const rotating=Math.abs(p.yawTo-p.yawFrom)>1e-6,diag=Math.hypot(box.size.w,box.size.d);
   add(p.from,p.to,p.carrying,p.carrying?(rotating?diag:Math.abs(Math.cos(p.yawFrom))*box.size.w+Math.abs(Math.sin(p.yawFrom))*box.size.d):g.width,p.carrying?(rotating?diag:Math.abs(Math.sin(p.yawFrom))*box.size.w+Math.abs(Math.cos(p.yawFrom))*box.size.d):g.depth,box.size.h);
  }else if(a.path){for(let i=1;i<a.path.points.length;i++){const u=a.path.points[i-1],v=a.path.points[i],tilted=a.path.fixedGrasp,diag=tilted?Math.hypot(box.size.w,box.size.d,box.size.h):Math.hypot(box.size.w,box.size.d);
-  add(palletToWorld(u.tcp,a.robot,s.pallet,a.pallet),palletToWorld(v.tcp,a.robot,s.pallet,a.pallet),v.carrying,v.carrying?diag:Math.hypot(g.width,g.depth),v.carrying?diag:Math.hypot(g.width,g.depth),tilted?diag:box.size.h);
+  add(toWorld(u.tcp,a.robot,s.pallet),toWorld(v.tcp,a.robot,s.pallet),v.carrying,v.carrying?diag:Math.hypot(g.width,g.depth),v.carrying?diag:Math.hypot(g.width,g.depth),tilted?diag:box.size.h);
  }}return result;
 }
 export function motionsConflict(s:Scenario,w:RelayWorld,a:RelayAction,b:RelayAction){
@@ -71,48 +68,21 @@ export function inspectMotion(s:Scenario,w:RelayWorld,a:RelayAction):string[]{
  if(box.weight+g.mass>g.payload)reasons.push('전달/적재 가반하중 초과');
  if(a.pad!==undefined&&(box.size.w>800||box.size.d>CONVEYOR.width-100))reasons.push('벨트 픽업 구역 / 대기대 치수 초과');
  if(a.segments){for(const seg of a.segments){if(Math.max(seg.from.z,seg.to.z)+g.height>s.constraints.workspace.zMax)reasons.push('작업 높이 초과');
-  for(let k=0;k<=12;k++){const t=k/12,p={x:seg.from.x+(seg.to.x-seg.from.x)*t,y:seg.from.y+(seg.to.y-seg.from.y)*t,z:seg.from.z+(seg.to.z-seg.from.z)*t};if(!robotReach(s.pallet,a.robot,toLocal(p,a.robot,s.pallet),{x:0,y:0,z:1},g.height)){reasons.push('가상 로봇 작업범위 / 자세 도달 불가');break;}}
+  for(let k=0;k<=12;k++){const t=k/12,p={x:seg.from.x+(seg.to.x-seg.from.x)*t,y:seg.from.y+(seg.to.y-seg.from.y)*t,z:seg.from.z+(seg.to.z-seg.from.z)*t};if(!solveRobotArm(toLocal(p,a.robot,s.pallet),{x:0,y:0,z:1},g.height).reachable){reasons.push('가상 팔 도달 불가');break;}}
  }}else if(a.path){for(let i=1;i<a.path.points.length;i++){const u=a.path.points[i-1],v=a.path.points[i];for(let k=0;k<=12;k++){const t=k/12,p={x:u.tcp.x+(v.tcp.x-u.tcp.x)*t,y:u.tcp.y+(v.tcp.y-u.tcp.y)*t,z:u.tcp.z+(v.tcp.z-u.tcp.z)*t},q=poseQuaternion(u.pose??(u.yaw===90?90:0)).slerp(poseQuaternion(v.pose??(v.yaw===90?90:0)),t),normal=new Vector3(0,1,0).applyQuaternion(q);
-   if(!robotReach(s.pallet,a.robot,palletToRobot(p,s.pallet,a.pallet),{x:normal.x,y:normal.z,z:normal.y},g.height)){reasons.push('가상 로봇 작업범위 / 자세 도달 불가');break;}
+   if(!solveRobotArm(p,{x:normal.x,y:normal.z,z:normal.y},g.height).reachable){reasons.push('가상 팔 도달 불가');break;}
   }} }
  // Own-pallet paths are checked by inspectConstraints; additional cells/pads are obstacles here.
- const objects=allPallets(w).flatMap(({cell,robot,pallet})=>a.segments||robot!==a.robot||pallet!==(a.pallet??0)?cell.placements.map(p=>({box:p,cell:robot,pallet})):[]);
- w.pads.forEach((pad,i)=>{if(!pad.boxId||!pad.arrived||i===a.pad)return;const b=w.boxes.find(b=>b.observation.id===pad.boxId)!.observation,source=padPickup(s,b,i);objects.push({box:{position:source,size:b.size} as Placement,cell:nextRobot(i),pallet:0});});
- const segments=a.segments?.map(p=>({from:p.from,to:p.to,carrying:p.carrying,tilted:false}))||a.path!.points.slice(1).map((v,i)=>({from:palletToWorld(a.path!.points[i].tcp,a.robot,s.pallet,a.pallet),to:palletToWorld(v.tcp,a.robot,s.pallet,a.pallet),carrying:v.carrying,tilted:!!a.path!.fixedGrasp}));
- if(segments.some(v=>{const radius=(v.carrying?(v.tilted?Math.hypot(box.size.w,box.size.d,box.size.h):Math.hypot(box.size.w,box.size.d)):Math.hypot(g.width,g.depth))/2+g.margin;return objects.some(o=>segmentBox(worldToPallet(v.from,o.cell,s.pallet,o.pallet),worldToPallet(v.to,o.cell,s.pallet,o.pallet),o.box,radius,v.carrying?(v.tilted?2*radius:box.size.h):0,g.height));}))reasons.push('다른 작업셀 / 벨트 픽업 구역과 운반 경로 간섭');
+ const objects=w.cells.flatMap((c,i)=>a.segments||i!==a.robot?c.placements.map(p=>({box:p,cell:i})):[]);
+ w.pads.forEach((pad,i)=>{if(!pad.boxId||!pad.arrived||i===a.pad)return;const b=w.boxes.find(b=>b.observation.id===pad.boxId)!.observation,source=padPickup(s,b,i);objects.push({box:{position:source,size:b.size} as Placement,cell:nextRobot(i)});});
+ const segments=a.segments?.map(p=>({from:p.from,to:p.to,carrying:p.carrying,tilted:false}))||a.path!.points.slice(1).map((v,i)=>({from:toWorld(a.path!.points[i].tcp,a.robot,s.pallet),to:toWorld(v.tcp,a.robot,s.pallet),carrying:v.carrying,tilted:!!a.path!.fixedGrasp}));
+ if(segments.some(v=>{const radius=(v.carrying?(v.tilted?Math.hypot(box.size.w,box.size.d,box.size.h):Math.hypot(box.size.w,box.size.d)):Math.hypot(g.width,g.depth))/2+g.margin;return objects.some(o=>segmentBox(toLocal(v.from,o.cell,s.pallet),toLocal(v.to,o.cell,s.pallet),o.box,radius,v.carrying?(v.tilted?2*radius:box.size.h):0,g.height));}))reasons.push('다른 작업셀 / 벨트 픽업 구역과 운반 경로 간섭');
  return [...new Set(reasons)];
-}
-// Vertical follower pickup must clear the other accumulated parcels as well.
-// Compare continuous segments, not sparse animation samples or just endpoints.
-export function inspectRollerMotion(s:Scenario,w:RelayWorld,a:RelayAction):string[]{
- if(!usesRoller(s.pallet)||!a.path)return [];
- const box=w.boxes.find(b=>b.observation.id===a.boxId)!.observation,g=s.constraints.gripper;
- const obstacles=w.boxes.filter(b=>b.status==='belt'&&b.observation.id!==a.boxId).map(b=>{
-  const p=streamPosition(b,w.time,w.stream!.speed,s.pallet);
-  return {position:{x:p.x-b.observation.size.w/2,y:p.y-b.observation.size.d/2,z:p.z},size:b.observation.size} as Placement;
- });
- for(let i=1;i<a.path.points.length;i++){
-  const u=a.path.points[i-1],v=a.path.points[i],carrying=v.carrying;
-  const from=palletToWorld(u.tcp,a.robot,s.pallet,a.pallet),to=palletToWorld(v.tcp,a.robot,s.pallet,a.pallet);
-  const radius=(carrying?Math.hypot(box.size.w,box.size.d):Math.hypot(g.width,g.depth))/2+g.margin;
-  if(obstacles.some(o=>segmentBox(from,to,o,radius,carrying?box.size.h:0,g.height)))return ['롤러 대기 박스와 운반 경로 간섭'];
- }
- return [];
 }
 export function receiveConstraints(s:Scenario){
  // The shared pickup lies outside the old single-cell rectangle. Pallet boundaries,
  // height, material and load constraints stay unchanged; virtual arm reach is checked.
  return {...s.constraints,workspace:{...s.constraints.workspace,xMin:-5000,xMax:5000,yMin:-5000,yMax:5000},reach:undefined,robotMode:'gripper' as const};
-}
-export function pickupConstraints(s:Scenario,w:RelayWorld,robot:number,box:Observation,pallet=0){
- const c=receiveConstraints(s);if(!usesRoller(s.pallet))return c;
- const parcel=w.boxes.find(b=>b.observation.id===box.id);if(!parcel?.flow)return c;
- const pickupTop=streamPosition(parcel,w.time,w.stream!.speed,s.pallet).z+box.size.h;
- const stackTop=Math.max(0,...allPallets(w).filter(v=>v.robot===robot&&v.pallet===pallet).flatMap(v=>v.cell.placements.map(top)));
- const queueTop=Math.max(0,...w.boxes.filter(b=>b.status==='belt'&&b.observation.id!==box.id&&b.flow!.measuredAt<=w.time).map(b=>streamPosition(b,w.time,w.stream!.speed,s.pallet).z+b.observation.size.h));
- // Raise the carried box above measured queue obstacles, subject to the
- // unchanged workspace and arm reach constraints; never ignore a collision.
- return {...c,gripper:{...c.gripper,lift:Math.max(c.gripper.lift,queueTop+c.gripper.lift-Math.max(pickupTop,stackTop))}};
 }
 export function receivePath(s:Scenario,w:RelayWorld,box:Observation,pad:number,candidate:Placement){
  const robot=nextRobot(pad),pickup=padPickup(s,box,pad),path=parkedPath(s,gripperPath(candidate,{...box,pickupPosition:pickup},w.cells[robot].placements,receiveConstraints(s)),robot);

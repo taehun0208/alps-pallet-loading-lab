@@ -1,0 +1,3040 @@
+{
+  "schema": "alps-baseline-floor-factors/1",
+  "newSimulationExecuted": false,
+  "sourceIndexSha256": "a96e52641c658678ebc2d628f2e51078f0c76f3d94cd699e695aede271a99417",
+  "benchmarkSourceSha256": "7b5a5907787f926701d5260da573b0506f5bfb3942c64a2a3fc82a6739bfd498",
+  "definitions": {
+    "floorContactCoverage": "Exact union of footprints of boxes directly touching pallet floor (z=0), divided by pallet footprint.",
+    "projectedCoverage": "Exact union of all box footprints projected to XY, divided by pallet footprint. Includes overhanging upper boxes.",
+    "columnVoidLiters": "Recorded exact empty volume below local highest box tops; not a trapped/accessibility proof.",
+    "caution": "These are observations of the preserved finite-search baseline. More filled floor area alone does not guarantee highest final 3D fill."
+  },
+  "rows": [
+    {
+      "id": "cycle-10:11040:blb",
+      "algorithm": "blb",
+      "seed": 11040,
+      "split": "discovery",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.828,
+      "projectedCoverage": 0.85225,
+      "fill": 0.5284944444444445,
+      "count": 37,
+      "columnVoidLiters": 21.276,
+      "envelopeVoidLiters": 654.968,
+      "columnVoidFraction": 0.027196449480255857,
+      "envelopeFill": 0.5374519774011299,
+      "usedHeightMm": 1180
+    },
+    {
+      "id": "cycle-10:11040:capacity-compact",
+      "algorithm": "capacity-compact",
+      "seed": 11040,
+      "split": "discovery",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.8863333333333333,
+      "projectedCoverage": 0.8956666666666667,
+      "fill": 0.6171944444444445,
+      "count": 43,
+      "columnVoidLiters": 9.096,
+      "envelopeVoidLiters": 551.24,
+      "columnVoidFraction": 0.010130800484710243,
+      "envelopeFill": 0.6171944444444445,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11040:strategy-greedy",
+      "algorithm": "strategy-greedy",
+      "seed": 11040,
+      "split": "discovery",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.7696666666666667,
+      "projectedCoverage": 0.796,
+      "fill": 0.5089472222222222,
+      "count": 37,
+      "columnVoidLiters": 17.024,
+      "envelopeVoidLiters": 707.116,
+      "columnVoidFraction": 0.022701451378035704,
+      "envelopeFill": 0.5089472222222222,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11040:lookahead",
+      "algorithm": "lookahead",
+      "seed": 11040,
+      "split": "discovery",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.731,
+      "projectedCoverage": 0.744,
+      "fill": 0.5260138888888889,
+      "count": 38,
+      "columnVoidLiters": 8.304,
+      "envelopeVoidLiters": 682.54,
+      "columnVoidFraction": 0.010844072063977936,
+      "envelopeFill": 0.5260138888888889,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11040:future-hybrid",
+      "algorithm": "future-hybrid",
+      "seed": 11040,
+      "split": "discovery",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.7045,
+      "projectedCoverage": 0.7261666666666666,
+      "fill": 0.5159611111111111,
+      "count": 37,
+      "columnVoidLiters": 15.04,
+      "envelopeVoidLiters": 697.016,
+      "columnVoidFraction": 0.01984106044135806,
+      "envelopeFill": 0.5159611111111111,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11040:mcts",
+      "algorithm": "mcts",
+      "seed": 11040,
+      "split": "discovery",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.8503333333333334,
+      "projectedCoverage": 0.86325,
+      "fill": 0.5551277777777778,
+      "count": 38,
+      "columnVoidLiters": 18.548,
+      "envelopeVoidLiters": 640.616,
+      "columnVoidFraction": 0.02267670173070622,
+      "envelopeFill": 0.5551277777777778,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11040:lookahead",
+      "algorithm": "lookahead",
+      "seed": 11040,
+      "split": "discovery",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.731,
+      "projectedCoverage": 0.744,
+      "fill": 0.5260138888888889,
+      "count": 38,
+      "columnVoidLiters": 8.304,
+      "envelopeVoidLiters": 682.54,
+      "columnVoidFraction": 0.010844072063977936,
+      "envelopeFill": 0.5260138888888889,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11040:future-hybrid",
+      "algorithm": "future-hybrid",
+      "seed": 11040,
+      "split": "discovery",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.7045,
+      "projectedCoverage": 0.7261666666666666,
+      "fill": 0.5159611111111111,
+      "count": 37,
+      "columnVoidLiters": 15.04,
+      "envelopeVoidLiters": 697.016,
+      "columnVoidFraction": 0.01984106044135806,
+      "envelopeFill": 0.5159611111111111,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11040:mcts",
+      "algorithm": "mcts",
+      "seed": 11040,
+      "split": "discovery",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.8503333333333334,
+      "projectedCoverage": 0.86325,
+      "fill": 0.5551277777777778,
+      "count": 38,
+      "columnVoidLiters": 18.548,
+      "envelopeVoidLiters": 640.616,
+      "columnVoidFraction": 0.02267670173070622,
+      "envelopeFill": 0.5551277777777778,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11040:blb",
+      "algorithm": "blb",
+      "seed": 11040,
+      "split": "discovery",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.828,
+      "projectedCoverage": 0.85225,
+      "fill": 0.5284944444444445,
+      "count": 37,
+      "columnVoidLiters": 21.276,
+      "envelopeVoidLiters": 654.968,
+      "columnVoidFraction": 0.027196449480255857,
+      "envelopeFill": 0.5374519774011299,
+      "usedHeightMm": 1180
+    },
+    {
+      "id": "cycle-12:11040:capacity-compact",
+      "algorithm": "capacity-compact",
+      "seed": 11040,
+      "split": "discovery",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.8863333333333333,
+      "projectedCoverage": 0.8956666666666667,
+      "fill": 0.6171944444444445,
+      "count": 43,
+      "columnVoidLiters": 9.096,
+      "envelopeVoidLiters": 551.24,
+      "columnVoidFraction": 0.010130800484710243,
+      "envelopeFill": 0.6171944444444445,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11040:strategy-greedy",
+      "algorithm": "strategy-greedy",
+      "seed": 11040,
+      "split": "discovery",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.7696666666666667,
+      "projectedCoverage": 0.796,
+      "fill": 0.5089472222222222,
+      "count": 37,
+      "columnVoidLiters": 17.024,
+      "envelopeVoidLiters": 707.116,
+      "columnVoidFraction": 0.022701451378035704,
+      "envelopeFill": 0.5089472222222222,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11041:future-hybrid",
+      "algorithm": "future-hybrid",
+      "seed": 11041,
+      "split": "discovery",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.7556666666666667,
+      "projectedCoverage": 0.7661666666666667,
+      "fill": 0.5171555555555556,
+      "count": 34,
+      "columnVoidLiters": 7.44,
+      "envelopeVoidLiters": 599.296,
+      "columnVoidFraction": 0.009891722861579697,
+      "envelopeFill": 0.5540952380952381,
+      "usedHeightMm": 1120
+    },
+    {
+      "id": "cycle-12:11041:mcts",
+      "algorithm": "mcts",
+      "seed": 11041,
+      "split": "discovery",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.8821666666666667,
+      "projectedCoverage": 0.9014166666666666,
+      "fill": 0.5836833333333333,
+      "count": 37,
+      "columnVoidLiters": 32.946,
+      "envelopeVoidLiters": 599.496,
+      "columnVoidFraction": 0.037719388631289714,
+      "envelopeFill": 0.5836833333333333,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11041:blb",
+      "algorithm": "blb",
+      "seed": 11041,
+      "split": "discovery",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.8821666666666667,
+      "projectedCoverage": 0.8841666666666667,
+      "fill": 0.5138555555555555,
+      "count": 34,
+      "columnVoidLiters": 30.109,
+      "envelopeVoidLiters": 700.048,
+      "columnVoidFraction": 0.03909949990974741,
+      "envelopeFill": 0.5138555555555555,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11041:capacity-compact",
+      "algorithm": "capacity-compact",
+      "seed": 11041,
+      "split": "discovery",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.8598333333333333,
+      "projectedCoverage": 0.8601666666666666,
+      "fill": 0.5292222222222223,
+      "count": 35,
+      "columnVoidLiters": 2.356,
+      "envelopeVoidLiters": 653.92,
+      "columnVoidFraction": 0.0030820107896540718,
+      "envelopeFill": 0.5381920903954802,
+      "usedHeightMm": 1180
+    },
+    {
+      "id": "cycle-12:11041:strategy-greedy",
+      "algorithm": "strategy-greedy",
+      "seed": 11041,
+      "split": "discovery",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.778,
+      "projectedCoverage": 0.7885,
+      "fill": 0.5575222222222223,
+      "count": 37,
+      "columnVoidLiters": 8.64,
+      "envelopeVoidLiters": 637.168,
+      "columnVoidFraction": 0.010647317467515823,
+      "envelopeFill": 0.5575222222222223,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11041:lookahead",
+      "algorithm": "lookahead",
+      "seed": 11041,
+      "split": "discovery",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.778,
+      "projectedCoverage": 0.7885,
+      "fill": 0.5575222222222223,
+      "count": 37,
+      "columnVoidLiters": 8.64,
+      "envelopeVoidLiters": 637.168,
+      "columnVoidFraction": 0.010647317467515823,
+      "envelopeFill": 0.5575222222222223,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11041:capacity-compact",
+      "algorithm": "capacity-compact",
+      "seed": 11041,
+      "split": "discovery",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.8598333333333333,
+      "projectedCoverage": 0.8601666666666666,
+      "fill": 0.5292222222222223,
+      "count": 35,
+      "columnVoidLiters": 2.356,
+      "envelopeVoidLiters": 653.92,
+      "columnVoidFraction": 0.0030820107896540718,
+      "envelopeFill": 0.5381920903954802,
+      "usedHeightMm": 1180
+    },
+    {
+      "id": "cycle-10:11041:strategy-greedy",
+      "algorithm": "strategy-greedy",
+      "seed": 11041,
+      "split": "discovery",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.778,
+      "projectedCoverage": 0.7885,
+      "fill": 0.5575222222222223,
+      "count": 37,
+      "columnVoidLiters": 8.64,
+      "envelopeVoidLiters": 637.168,
+      "columnVoidFraction": 0.010647317467515823,
+      "envelopeFill": 0.5575222222222223,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11041:lookahead",
+      "algorithm": "lookahead",
+      "seed": 11041,
+      "split": "discovery",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.778,
+      "projectedCoverage": 0.7885,
+      "fill": 0.5575222222222223,
+      "count": 37,
+      "columnVoidLiters": 8.64,
+      "envelopeVoidLiters": 637.168,
+      "columnVoidFraction": 0.010647317467515823,
+      "envelopeFill": 0.5575222222222223,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11041:future-hybrid",
+      "algorithm": "future-hybrid",
+      "seed": 11041,
+      "split": "discovery",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.7556666666666667,
+      "projectedCoverage": 0.7661666666666667,
+      "fill": 0.5171555555555556,
+      "count": 34,
+      "columnVoidLiters": 7.44,
+      "envelopeVoidLiters": 599.296,
+      "columnVoidFraction": 0.009891722861579697,
+      "envelopeFill": 0.5540952380952381,
+      "usedHeightMm": 1120
+    },
+    {
+      "id": "cycle-10:11041:mcts",
+      "algorithm": "mcts",
+      "seed": 11041,
+      "split": "discovery",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.8821666666666667,
+      "projectedCoverage": 0.9014166666666666,
+      "fill": 0.5836833333333333,
+      "count": 37,
+      "columnVoidLiters": 32.946,
+      "envelopeVoidLiters": 599.496,
+      "columnVoidFraction": 0.037719388631289714,
+      "envelopeFill": 0.5836833333333333,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11041:blb",
+      "algorithm": "blb",
+      "seed": 11041,
+      "split": "discovery",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.8821666666666667,
+      "projectedCoverage": 0.8841666666666667,
+      "fill": 0.5138555555555555,
+      "count": 34,
+      "columnVoidLiters": 30.109,
+      "envelopeVoidLiters": 700.048,
+      "columnVoidFraction": 0.03909949990974741,
+      "envelopeFill": 0.5138555555555555,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11042:strategy-greedy",
+      "algorithm": "strategy-greedy",
+      "seed": 11042,
+      "split": "holdout",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.7931666666666667,
+      "projectedCoverage": 0.8186666666666667,
+      "fill": 0.5487888888888889,
+      "count": 35,
+      "columnVoidLiters": 13.032,
+      "envelopeVoidLiters": 649.744,
+      "columnVoidFraction": 0.01622332214598002,
+      "envelopeFill": 0.5487888888888889,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11042:lookahead",
+      "algorithm": "lookahead",
+      "seed": 11042,
+      "split": "holdout",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.7931666666666667,
+      "projectedCoverage": 0.8255,
+      "fill": 0.5416361111111111,
+      "count": 34,
+      "columnVoidLiters": 14.132,
+      "envelopeVoidLiters": 636.044,
+      "columnVoidFraction": 0.017796516255125377,
+      "envelopeFill": 0.5508163841807909,
+      "usedHeightMm": 1180
+    },
+    {
+      "id": "cycle-10:11042:future-hybrid",
+      "algorithm": "future-hybrid",
+      "seed": 11042,
+      "split": "holdout",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.7931666666666667,
+      "projectedCoverage": 0.8036666666666666,
+      "fill": 0.5699694444444444,
+      "count": 34,
+      "columnVoidLiters": 9.216,
+      "envelopeVoidLiters": 619.244,
+      "columnVoidFraction": 0.01110398905023302,
+      "envelopeFill": 0.5699694444444444,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11042:mcts",
+      "algorithm": "mcts",
+      "seed": 11042,
+      "split": "holdout",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.7795,
+      "projectedCoverage": 0.8053333333333333,
+      "fill": 0.6617583333333333,
+      "count": 41,
+      "columnVoidLiters": 36.41,
+      "envelopeVoidLiters": 487.068,
+      "columnVoidFraction": 0.036802238255325255,
+      "envelopeFill": 0.6617583333333333,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11042:blb",
+      "algorithm": "blb",
+      "seed": 11042,
+      "split": "holdout",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.8571666666666666,
+      "projectedCoverage": 0.8756666666666667,
+      "fill": 0.5666888888888889,
+      "count": 33,
+      "columnVoidLiters": 28.69,
+      "envelopeVoidLiters": 623.968,
+      "columnVoidFraction": 0.033963836623173066,
+      "envelopeFill": 0.5666888888888889,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11042:capacity-compact",
+      "algorithm": "capacity-compact",
+      "seed": 11042,
+      "split": "holdout",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.8988333333333334,
+      "projectedCoverage": 0.9078333333333334,
+      "fill": 0.6404555555555556,
+      "count": 41,
+      "columnVoidLiters": 10.448,
+      "envelopeVoidLiters": 517.744,
+      "columnVoidFraction": 0.011201838954266305,
+      "envelopeFill": 0.6404555555555556,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11042:mcts",
+      "algorithm": "mcts",
+      "seed": 11042,
+      "split": "holdout",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.7795,
+      "projectedCoverage": 0.8053333333333333,
+      "fill": 0.6617583333333333,
+      "count": 41,
+      "columnVoidLiters": 36.41,
+      "envelopeVoidLiters": 487.068,
+      "columnVoidFraction": 0.036802238255325255,
+      "envelopeFill": 0.6617583333333333,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11042:blb",
+      "algorithm": "blb",
+      "seed": 11042,
+      "split": "holdout",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.8571666666666666,
+      "projectedCoverage": 0.8756666666666667,
+      "fill": 0.5666888888888889,
+      "count": 33,
+      "columnVoidLiters": 28.69,
+      "envelopeVoidLiters": 623.968,
+      "columnVoidFraction": 0.033963836623173066,
+      "envelopeFill": 0.5666888888888889,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11042:capacity-compact",
+      "algorithm": "capacity-compact",
+      "seed": 11042,
+      "split": "holdout",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.8988333333333334,
+      "projectedCoverage": 0.9078333333333334,
+      "fill": 0.6404555555555556,
+      "count": 41,
+      "columnVoidLiters": 10.448,
+      "envelopeVoidLiters": 517.744,
+      "columnVoidFraction": 0.011201838954266305,
+      "envelopeFill": 0.6404555555555556,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11042:strategy-greedy",
+      "algorithm": "strategy-greedy",
+      "seed": 11042,
+      "split": "holdout",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.7931666666666667,
+      "projectedCoverage": 0.8186666666666667,
+      "fill": 0.5487888888888889,
+      "count": 35,
+      "columnVoidLiters": 13.032,
+      "envelopeVoidLiters": 649.744,
+      "columnVoidFraction": 0.01622332214598002,
+      "envelopeFill": 0.5487888888888889,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11042:lookahead",
+      "algorithm": "lookahead",
+      "seed": 11042,
+      "split": "holdout",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.7931666666666667,
+      "projectedCoverage": 0.8255,
+      "fill": 0.5416361111111111,
+      "count": 34,
+      "columnVoidLiters": 14.132,
+      "envelopeVoidLiters": 636.044,
+      "columnVoidFraction": 0.017796516255125377,
+      "envelopeFill": 0.5508163841807909,
+      "usedHeightMm": 1180
+    },
+    {
+      "id": "cycle-12:11042:future-hybrid",
+      "algorithm": "future-hybrid",
+      "seed": 11042,
+      "split": "holdout",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.7931666666666667,
+      "projectedCoverage": 0.8036666666666666,
+      "fill": 0.5699694444444444,
+      "count": 34,
+      "columnVoidLiters": 9.216,
+      "envelopeVoidLiters": 619.244,
+      "columnVoidFraction": 0.01110398905023302,
+      "envelopeFill": 0.5699694444444444,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11043:blb",
+      "algorithm": "blb",
+      "seed": 11043,
+      "split": "holdout",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.778,
+      "projectedCoverage": 0.7853333333333333,
+      "fill": 0.6187027777777778,
+      "count": 41,
+      "columnVoidLiters": 9.44,
+      "envelopeVoidLiters": 549.068,
+      "columnVoidFraction": 0.010484555272709502,
+      "envelopeFill": 0.6187027777777778,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11043:capacity-compact",
+      "algorithm": "capacity-compact",
+      "seed": 11043,
+      "split": "holdout",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.778,
+      "projectedCoverage": 0.7821666666666667,
+      "fill": 0.6187027777777778,
+      "count": 41,
+      "columnVoidLiters": 4.272,
+      "envelopeVoidLiters": 537.068,
+      "columnVoidFraction": 0.004772096639425204,
+      "envelopeFill": 0.6239019607843137,
+      "usedHeightMm": 1190
+    },
+    {
+      "id": "cycle-12:11043:strategy-greedy",
+      "algorithm": "strategy-greedy",
+      "seed": 11043,
+      "split": "holdout",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.8003333333333333,
+      "projectedCoverage": 0.8053333333333333,
+      "fill": 0.6187027777777778,
+      "count": 41,
+      "columnVoidLiters": 5.952,
+      "envelopeVoidLiters": 549.068,
+      "columnVoidFraction": 0.006636309712292783,
+      "envelopeFill": 0.6187027777777778,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11043:lookahead",
+      "algorithm": "lookahead",
+      "seed": 11043,
+      "split": "holdout",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.8003333333333333,
+      "projectedCoverage": 0.8053333333333333,
+      "fill": 0.6187027777777778,
+      "count": 41,
+      "columnVoidLiters": 5.952,
+      "envelopeVoidLiters": 549.068,
+      "columnVoidFraction": 0.006636309712292783,
+      "envelopeFill": 0.6187027777777778,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11043:future-hybrid",
+      "algorithm": "future-hybrid",
+      "seed": 11043,
+      "split": "holdout",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.8155,
+      "projectedCoverage": 0.8273333333333334,
+      "fill": 0.6411666666666667,
+      "count": 35,
+      "columnVoidLiters": 10.368,
+      "envelopeVoidLiters": 516.72,
+      "columnVoidFraction": 0.011104827515294843,
+      "envelopeFill": 0.6411666666666667,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11043:mcts",
+      "algorithm": "mcts",
+      "seed": 11043,
+      "split": "holdout",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.8363333333333334,
+      "projectedCoverage": 0.8771666666666667,
+      "fill": 0.7024861111111111,
+      "count": 43,
+      "columnVoidLiters": 26.108,
+      "envelopeVoidLiters": 428.42,
+      "columnVoidFraction": 0.025159778276321976,
+      "envelopeFill": 0.7024861111111111,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11043:lookahead",
+      "algorithm": "lookahead",
+      "seed": 11043,
+      "split": "holdout",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.8003333333333333,
+      "projectedCoverage": 0.8053333333333333,
+      "fill": 0.6187027777777778,
+      "count": 41,
+      "columnVoidLiters": 5.952,
+      "envelopeVoidLiters": 549.068,
+      "columnVoidFraction": 0.006636309712292783,
+      "envelopeFill": 0.6187027777777778,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11043:future-hybrid",
+      "algorithm": "future-hybrid",
+      "seed": 11043,
+      "split": "holdout",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.8155,
+      "projectedCoverage": 0.8273333333333334,
+      "fill": 0.6411666666666667,
+      "count": 35,
+      "columnVoidLiters": 10.368,
+      "envelopeVoidLiters": 516.72,
+      "columnVoidFraction": 0.011104827515294843,
+      "envelopeFill": 0.6411666666666667,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11043:mcts",
+      "algorithm": "mcts",
+      "seed": 11043,
+      "split": "holdout",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.8363333333333334,
+      "projectedCoverage": 0.8771666666666667,
+      "fill": 0.7024861111111111,
+      "count": 43,
+      "columnVoidLiters": 26.108,
+      "envelopeVoidLiters": 428.42,
+      "columnVoidFraction": 0.025159778276321976,
+      "envelopeFill": 0.7024861111111111,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11043:blb",
+      "algorithm": "blb",
+      "seed": 11043,
+      "split": "holdout",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.778,
+      "projectedCoverage": 0.7853333333333333,
+      "fill": 0.6187027777777778,
+      "count": 41,
+      "columnVoidLiters": 9.44,
+      "envelopeVoidLiters": 549.068,
+      "columnVoidFraction": 0.010484555272709502,
+      "envelopeFill": 0.6187027777777778,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11043:capacity-compact",
+      "algorithm": "capacity-compact",
+      "seed": 11043,
+      "split": "holdout",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.778,
+      "projectedCoverage": 0.7821666666666667,
+      "fill": 0.6187027777777778,
+      "count": 41,
+      "columnVoidLiters": 4.272,
+      "envelopeVoidLiters": 537.068,
+      "columnVoidFraction": 0.004772096639425204,
+      "envelopeFill": 0.6239019607843137,
+      "usedHeightMm": 1190
+    },
+    {
+      "id": "cycle-10:11043:strategy-greedy",
+      "algorithm": "strategy-greedy",
+      "seed": 11043,
+      "split": "holdout",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.8003333333333333,
+      "projectedCoverage": 0.8053333333333333,
+      "fill": 0.6187027777777778,
+      "count": 41,
+      "columnVoidLiters": 5.952,
+      "envelopeVoidLiters": 549.068,
+      "columnVoidFraction": 0.006636309712292783,
+      "envelopeFill": 0.6187027777777778,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11044:future-hybrid",
+      "algorithm": "future-hybrid",
+      "seed": 11044,
+      "split": "holdout",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.8541666666666666,
+      "projectedCoverage": 0.8618333333333333,
+      "fill": 0.6587888888888889,
+      "count": 42,
+      "columnVoidLiters": 4.41,
+      "envelopeVoidLiters": 491.344,
+      "columnVoidFraction": 0.004627171675413874,
+      "envelopeFill": 0.6587888888888889,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11044:mcts",
+      "algorithm": "mcts",
+      "seed": 11044,
+      "split": "holdout",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.8708333333333333,
+      "projectedCoverage": 0.9053333333333333,
+      "fill": 0.6246555555555555,
+      "count": 40,
+      "columnVoidLiters": 44.011,
+      "envelopeVoidLiters": 396.496,
+      "columnVoidFraction": 0.046645787295379514,
+      "envelopeFill": 0.6940617283950617,
+      "usedHeightMm": 1080
+    },
+    {
+      "id": "cycle-10:11044:blb",
+      "algorithm": "blb",
+      "seed": 11044,
+      "split": "holdout",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.8666666666666667,
+      "projectedCoverage": 0.902,
+      "fill": 0.6026416666666666,
+      "count": 40,
+      "columnVoidLiters": 29.974,
+      "envelopeVoidLiters": 572.196,
+      "columnVoidFraction": 0.033386872924041355,
+      "envelopeFill": 0.6026416666666666,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11044:capacity-compact",
+      "algorithm": "capacity-compact",
+      "seed": 11044,
+      "split": "holdout",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.9083333333333333,
+      "projectedCoverage": 0.9083333333333333,
+      "fill": 0.6076083333333333,
+      "count": 41,
+      "columnVoidLiters": 6.72,
+      "envelopeVoidLiters": 517.044,
+      "columnVoidFraction": 0.007621847481387721,
+      "envelopeFill": 0.6285603448275862,
+      "usedHeightMm": 1160
+    },
+    {
+      "id": "cycle-10:11044:strategy-greedy",
+      "algorithm": "strategy-greedy",
+      "seed": 11044,
+      "split": "holdout",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.8348333333333333,
+      "projectedCoverage": 0.8413333333333334,
+      "fill": 0.6247083333333333,
+      "count": 41,
+      "columnVoidLiters": 4.032,
+      "envelopeVoidLiters": 540.42,
+      "columnVoidFraction": 0.0044620921368906125,
+      "envelopeFill": 0.6247083333333333,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11044:lookahead",
+      "algorithm": "lookahead",
+      "seed": 11044,
+      "split": "holdout",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.8348333333333333,
+      "projectedCoverage": 0.8413333333333334,
+      "fill": 0.6247083333333333,
+      "count": 41,
+      "columnVoidLiters": 4.032,
+      "envelopeVoidLiters": 540.42,
+      "columnVoidFraction": 0.0044620921368906125,
+      "envelopeFill": 0.6247083333333333,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11044:capacity-compact",
+      "algorithm": "capacity-compact",
+      "seed": 11044,
+      "split": "holdout",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.9083333333333333,
+      "projectedCoverage": 0.9083333333333333,
+      "fill": 0.6076083333333333,
+      "count": 41,
+      "columnVoidLiters": 6.72,
+      "envelopeVoidLiters": 517.044,
+      "columnVoidFraction": 0.007621847481387721,
+      "envelopeFill": 0.6285603448275862,
+      "usedHeightMm": 1160
+    },
+    {
+      "id": "cycle-12:11044:strategy-greedy",
+      "algorithm": "strategy-greedy",
+      "seed": 11044,
+      "split": "holdout",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.8348333333333333,
+      "projectedCoverage": 0.8413333333333334,
+      "fill": 0.6247083333333333,
+      "count": 41,
+      "columnVoidLiters": 4.032,
+      "envelopeVoidLiters": 540.42,
+      "columnVoidFraction": 0.0044620921368906125,
+      "envelopeFill": 0.6247083333333333,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11044:lookahead",
+      "algorithm": "lookahead",
+      "seed": 11044,
+      "split": "holdout",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.8348333333333333,
+      "projectedCoverage": 0.8413333333333334,
+      "fill": 0.6247083333333333,
+      "count": 41,
+      "columnVoidLiters": 4.032,
+      "envelopeVoidLiters": 540.42,
+      "columnVoidFraction": 0.0044620921368906125,
+      "envelopeFill": 0.6247083333333333,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11044:future-hybrid",
+      "algorithm": "future-hybrid",
+      "seed": 11044,
+      "split": "holdout",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.8541666666666666,
+      "projectedCoverage": 0.8618333333333333,
+      "fill": 0.6587888888888889,
+      "count": 42,
+      "columnVoidLiters": 4.41,
+      "envelopeVoidLiters": 491.344,
+      "columnVoidFraction": 0.004627171675413874,
+      "envelopeFill": 0.6587888888888889,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11044:mcts",
+      "algorithm": "mcts",
+      "seed": 11044,
+      "split": "holdout",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.8708333333333333,
+      "projectedCoverage": 0.9053333333333333,
+      "fill": 0.6246555555555555,
+      "count": 40,
+      "columnVoidLiters": 44.011,
+      "envelopeVoidLiters": 396.496,
+      "columnVoidFraction": 0.046645787295379514,
+      "envelopeFill": 0.6940617283950617,
+      "usedHeightMm": 1080
+    },
+    {
+      "id": "cycle-12:11044:blb",
+      "algorithm": "blb",
+      "seed": 11044,
+      "split": "holdout",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.8666666666666667,
+      "projectedCoverage": 0.902,
+      "fill": 0.6026416666666666,
+      "count": 40,
+      "columnVoidLiters": 29.974,
+      "envelopeVoidLiters": 572.196,
+      "columnVoidFraction": 0.033386872924041355,
+      "envelopeFill": 0.6026416666666666,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11045:strategy-greedy",
+      "algorithm": "strategy-greedy",
+      "seed": 11045,
+      "split": "holdout",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.8083333333333333,
+      "projectedCoverage": 0.8283333333333334,
+      "fill": 0.6349694444444445,
+      "count": 40,
+      "columnVoidLiters": 5.856,
+      "envelopeVoidLiters": 525.644,
+      "columnVoidFraction": 0.006363750961734905,
+      "envelopeFill": 0.6349694444444445,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11045:lookahead",
+      "algorithm": "lookahead",
+      "seed": 11045,
+      "split": "holdout",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.8083333333333333,
+      "projectedCoverage": 0.8283333333333334,
+      "fill": 0.6349694444444445,
+      "count": 40,
+      "columnVoidLiters": 5.856,
+      "envelopeVoidLiters": 525.644,
+      "columnVoidFraction": 0.006363750961734905,
+      "envelopeFill": 0.6349694444444445,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11045:future-hybrid",
+      "algorithm": "future-hybrid",
+      "seed": 11045,
+      "split": "holdout",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.7875,
+      "projectedCoverage": 0.7996666666666666,
+      "fill": 0.605925,
+      "count": 36,
+      "columnVoidLiters": 9.648,
+      "envelopeVoidLiters": 567.468,
+      "columnVoidFraction": 0.010936543562538257,
+      "envelopeFill": 0.605925,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11045:mcts",
+      "algorithm": "mcts",
+      "seed": 11045,
+      "split": "holdout",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.8458333333333333,
+      "projectedCoverage": 0.8515,
+      "fill": 0.6374166666666666,
+      "count": 37,
+      "columnVoidLiters": 19.946,
+      "envelopeVoidLiters": 522.12,
+      "columnVoidFraction": 0.02126833762339709,
+      "envelopeFill": 0.6374166666666666,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11045:blb",
+      "algorithm": "blb",
+      "seed": 11045,
+      "split": "holdout",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.925,
+      "projectedCoverage": 0.93875,
+      "fill": 0.6417583333333333,
+      "count": 38,
+      "columnVoidLiters": 31.71,
+      "envelopeVoidLiters": 515.868,
+      "columnVoidFraction": 0.03317493895434601,
+      "envelopeFill": 0.6417583333333333,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11045:capacity-compact",
+      "algorithm": "capacity-compact",
+      "seed": 11045,
+      "split": "holdout",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.8875,
+      "projectedCoverage": 0.8915,
+      "fill": 0.7247972222222222,
+      "count": 42,
+      "columnVoidLiters": 6.616,
+      "envelopeVoidLiters": 396.292,
+      "columnVoidFraction": 0.0062990086868432976,
+      "envelopeFill": 0.7247972222222222,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11045:mcts",
+      "algorithm": "mcts",
+      "seed": 11045,
+      "split": "holdout",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.8458333333333333,
+      "projectedCoverage": 0.8515,
+      "fill": 0.6374166666666666,
+      "count": 37,
+      "columnVoidLiters": 19.946,
+      "envelopeVoidLiters": 522.12,
+      "columnVoidFraction": 0.02126833762339709,
+      "envelopeFill": 0.6374166666666666,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11045:blb",
+      "algorithm": "blb",
+      "seed": 11045,
+      "split": "holdout",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.925,
+      "projectedCoverage": 0.93875,
+      "fill": 0.6417583333333333,
+      "count": 38,
+      "columnVoidLiters": 31.71,
+      "envelopeVoidLiters": 515.868,
+      "columnVoidFraction": 0.03317493895434601,
+      "envelopeFill": 0.6417583333333333,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11045:capacity-compact",
+      "algorithm": "capacity-compact",
+      "seed": 11045,
+      "split": "holdout",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.8875,
+      "projectedCoverage": 0.8915,
+      "fill": 0.7247972222222222,
+      "count": 42,
+      "columnVoidLiters": 6.616,
+      "envelopeVoidLiters": 396.292,
+      "columnVoidFraction": 0.0062990086868432976,
+      "envelopeFill": 0.7247972222222222,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11045:strategy-greedy",
+      "algorithm": "strategy-greedy",
+      "seed": 11045,
+      "split": "holdout",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.8083333333333333,
+      "projectedCoverage": 0.8283333333333334,
+      "fill": 0.6349694444444445,
+      "count": 40,
+      "columnVoidLiters": 5.856,
+      "envelopeVoidLiters": 525.644,
+      "columnVoidFraction": 0.006363750961734905,
+      "envelopeFill": 0.6349694444444445,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11045:lookahead",
+      "algorithm": "lookahead",
+      "seed": 11045,
+      "split": "holdout",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.8083333333333333,
+      "projectedCoverage": 0.8283333333333334,
+      "fill": 0.6349694444444445,
+      "count": 40,
+      "columnVoidLiters": 5.856,
+      "envelopeVoidLiters": 525.644,
+      "columnVoidFraction": 0.006363750961734905,
+      "envelopeFill": 0.6349694444444445,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11045:future-hybrid",
+      "algorithm": "future-hybrid",
+      "seed": 11045,
+      "split": "holdout",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.7875,
+      "projectedCoverage": 0.7996666666666666,
+      "fill": 0.605925,
+      "count": 36,
+      "columnVoidLiters": 9.648,
+      "envelopeVoidLiters": 567.468,
+      "columnVoidFraction": 0.010936543562538257,
+      "envelopeFill": 0.605925,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11046:blb",
+      "algorithm": "blb",
+      "seed": 11046,
+      "split": "holdout",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.8196666666666667,
+      "projectedCoverage": 0.8345,
+      "fill": 0.6391888888888889,
+      "count": 43,
+      "columnVoidLiters": 37.3,
+      "envelopeVoidLiters": 519.568,
+      "columnVoidFraction": 0.038946177009852444,
+      "envelopeFill": 0.6391888888888889,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11046:capacity-compact",
+      "algorithm": "capacity-compact",
+      "seed": 11046,
+      "split": "holdout",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.9196666666666666,
+      "projectedCoverage": 0.9255,
+      "fill": 0.7179222222222222,
+      "count": 48,
+      "columnVoidLiters": 5.66,
+      "envelopeVoidLiters": 406.192,
+      "columnVoidFraction": 0.005445093066838037,
+      "envelopeFill": 0.7179222222222222,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11046:strategy-greedy",
+      "algorithm": "strategy-greedy",
+      "seed": 11046,
+      "split": "holdout",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.7363333333333333,
+      "projectedCoverage": 0.7428333333333333,
+      "fill": 0.5258888888888889,
+      "count": 36,
+      "columnVoidLiters": 6.336,
+      "envelopeVoidLiters": 634.72,
+      "columnVoidFraction": 0.008297364120186062,
+      "envelopeFill": 0.5440229885057472,
+      "usedHeightMm": 1160
+    },
+    {
+      "id": "cycle-10:11046:lookahead",
+      "algorithm": "lookahead",
+      "seed": 11046,
+      "split": "holdout",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.7363333333333333,
+      "projectedCoverage": 0.7513333333333333,
+      "fill": 0.5318611111111111,
+      "count": 37,
+      "columnVoidLiters": 9.0,
+      "envelopeVoidLiters": 674.12,
+      "columnVoidFraction": 0.011614701631220317,
+      "envelopeFill": 0.5318611111111111,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11046:future-hybrid",
+      "algorithm": "future-hybrid",
+      "seed": 11046,
+      "split": "holdout",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.814,
+      "projectedCoverage": 0.8294166666666667,
+      "fill": 0.5833888888888888,
+      "count": 38,
+      "columnVoidLiters": 16.352,
+      "envelopeVoidLiters": 599.92,
+      "columnVoidFraction": 0.01909316793393988,
+      "envelopeFill": 0.5833888888888888,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-10:11046:mcts",
+      "algorithm": "mcts",
+      "seed": 11046,
+      "split": "holdout",
+      "cycleSeconds": 10,
+      "floorContactCoverage": 0.8155,
+      "projectedCoverage": 0.8471666666666666,
+      "fill": 0.6042222222222222,
+      "count": 40,
+      "columnVoidLiters": 29.552,
+      "envelopeVoidLiters": 557.92,
+      "columnVoidFraction": 0.03284898714140893,
+      "envelopeFill": 0.6092997198879552,
+      "usedHeightMm": 1190
+    },
+    {
+      "id": "cycle-12:11046:lookahead",
+      "algorithm": "lookahead",
+      "seed": 11046,
+      "split": "holdout",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.7363333333333333,
+      "projectedCoverage": 0.7513333333333333,
+      "fill": 0.5318611111111111,
+      "count": 37,
+      "columnVoidLiters": 9.0,
+      "envelopeVoidLiters": 674.12,
+      "columnVoidFraction": 0.011614701631220317,
+      "envelopeFill": 0.5318611111111111,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11046:future-hybrid",
+      "algorithm": "future-hybrid",
+      "seed": 11046,
+      "split": "holdout",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.814,
+      "projectedCoverage": 0.8294166666666667,
+      "fill": 0.5833888888888888,
+      "count": 38,
+      "columnVoidLiters": 16.352,
+      "envelopeVoidLiters": 599.92,
+      "columnVoidFraction": 0.01909316793393988,
+      "envelopeFill": 0.5833888888888888,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11046:mcts",
+      "algorithm": "mcts",
+      "seed": 11046,
+      "split": "holdout",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.8155,
+      "projectedCoverage": 0.8471666666666666,
+      "fill": 0.6042222222222222,
+      "count": 40,
+      "columnVoidLiters": 29.552,
+      "envelopeVoidLiters": 557.92,
+      "columnVoidFraction": 0.03284898714140893,
+      "envelopeFill": 0.6092997198879552,
+      "usedHeightMm": 1190
+    },
+    {
+      "id": "cycle-12:11046:blb",
+      "algorithm": "blb",
+      "seed": 11046,
+      "split": "holdout",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.8196666666666667,
+      "projectedCoverage": 0.8345,
+      "fill": 0.6391888888888889,
+      "count": 43,
+      "columnVoidLiters": 37.3,
+      "envelopeVoidLiters": 519.568,
+      "columnVoidFraction": 0.038946177009852444,
+      "envelopeFill": 0.6391888888888889,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11046:capacity-compact",
+      "algorithm": "capacity-compact",
+      "seed": 11046,
+      "split": "holdout",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.9196666666666666,
+      "projectedCoverage": 0.9255,
+      "fill": 0.7179222222222222,
+      "count": 48,
+      "columnVoidLiters": 5.66,
+      "envelopeVoidLiters": 406.192,
+      "columnVoidFraction": 0.005445093066838037,
+      "envelopeFill": 0.7179222222222222,
+      "usedHeightMm": 1200
+    },
+    {
+      "id": "cycle-12:11046:strategy-greedy",
+      "algorithm": "strategy-greedy",
+      "seed": 11046,
+      "split": "holdout",
+      "cycleSeconds": 12,
+      "floorContactCoverage": 0.7363333333333333,
+      "projectedCoverage": 0.7428333333333333,
+      "fill": 0.5258888888888889,
+      "count": 36,
+      "columnVoidLiters": 6.336,
+      "envelopeVoidLiters": 634.72,
+      "columnVoidFraction": 0.008297364120186062,
+      "envelopeFill": 0.5440229885057472,
+      "usedHeightMm": 1160
+    }
+  ],
+  "summaries": [
+    {
+      "algorithm": "blb",
+      "cycleSeconds": 10,
+      "n": 5,
+      "floorContactCoverage": {
+        "n": 5,
+        "mean": 0.8493,
+        "ci95": [
+          0.7811333250068531,
+          0.917466674993147
+        ],
+        "observations": [
+          0.8571666666666666,
+          0.778,
+          0.8666666666666667,
+          0.925,
+          0.8196666666666667
+        ]
+      },
+      "projectedCoverage": {
+        "n": 5,
+        "mean": 0.86725,
+        "ci95": [
+          0.7933382477218316,
+          0.9411617522781683
+        ],
+        "observations": [
+          0.8756666666666667,
+          0.7853333333333333,
+          0.902,
+          0.93875,
+          0.8345
+        ]
+      },
+      "fill": {
+        "n": 5,
+        "mean": 0.6137961111111111,
+        "ci95": [
+          0.5755543393640382,
+          0.652037882858184
+        ],
+        "observations": [
+          0.5666888888888889,
+          0.6187027777777778,
+          0.6026416666666666,
+          0.6417583333333333,
+          0.6391888888888889
+        ]
+      },
+      "count": {
+        "n": 5,
+        "mean": 39,
+        "ci95": [
+          34.271884357976404,
+          43.728115642023596
+        ],
+        "observations": [
+          33,
+          41,
+          40,
+          38,
+          43
+        ]
+      },
+      "columnVoidLiters": {
+        "n": 5,
+        "mean": 27.4228,
+        "ci95": [
+          14.290556916824327,
+          40.55504308317567
+        ],
+        "observations": [
+          28.69,
+          9.44,
+          29.974,
+          31.71,
+          37.3
+        ]
+      },
+      "envelopeVoidLiters": {
+        "n": 5,
+        "mean": 556.1336,
+        "ci95": [
+          501.0654486842151,
+          611.2017513157849
+        ],
+        "observations": [
+          623.968,
+          549.068,
+          572.196,
+          515.868,
+          519.568
+        ]
+      },
+      "columnVoidFraction": {
+        "n": 5,
+        "mean": 0.029991276156824474,
+        "ci95": [
+          0.016134764450419704,
+          0.043847787863229244
+        ],
+        "observations": [
+          0.033963836623173066,
+          0.010484555272709502,
+          0.033386872924041355,
+          0.03317493895434601,
+          0.038946177009852444
+        ]
+      },
+      "envelopeFill": {
+        "n": 5,
+        "mean": 0.6137961111111111,
+        "ci95": [
+          0.5755543393640382,
+          0.652037882858184
+        ],
+        "observations": [
+          0.5666888888888889,
+          0.6187027777777778,
+          0.6026416666666666,
+          0.6417583333333333,
+          0.6391888888888889
+        ]
+      },
+      "usedHeightMm": {
+        "n": 5,
+        "mean": 1200,
+        "ci95": [
+          1200.0,
+          1200.0
+        ],
+        "observations": [
+          1200,
+          1200,
+          1200,
+          1200,
+          1200
+        ]
+      }
+    },
+    {
+      "algorithm": "capacity-compact",
+      "cycleSeconds": 10,
+      "n": 5,
+      "floorContactCoverage": {
+        "n": 5,
+        "mean": 0.8784666666666666,
+        "ci95": [
+          0.8071941497026797,
+          0.9497391836306536
+        ],
+        "observations": [
+          0.8988333333333334,
+          0.778,
+          0.9083333333333333,
+          0.8875,
+          0.9196666666666666
+        ]
+      },
+      "projectedCoverage": {
+        "n": 5,
+        "mean": 0.8830666666666667,
+        "ci95": [
+          0.8114572247086861,
+          0.9546761086246472
+        ],
+        "observations": [
+          0.9078333333333334,
+          0.7821666666666667,
+          0.9083333333333333,
+          0.8915,
+          0.9255
+        ]
+      },
+      "fill": {
+        "n": 5,
+        "mean": 0.6618972222222222,
+        "ci95": [
+          0.5928535603071986,
+          0.7309408841372459
+        ],
+        "observations": [
+          0.6404555555555556,
+          0.6187027777777778,
+          0.6076083333333333,
+          0.7247972222222222,
+          0.7179222222222222
+        ]
+      },
+      "count": {
+        "n": 5,
+        "mean": 42.6,
+        "ci95": [
+          38.813433718357544,
+          46.38656628164246
+        ],
+        "observations": [
+          41,
+          41,
+          41,
+          42,
+          48
+        ]
+      },
+      "columnVoidLiters": {
+        "n": 5,
+        "mean": 6.7432,
+        "ci95": [
+          3.8966725696129867,
+          9.589727430387013
+        ],
+        "observations": [
+          10.448,
+          4.272,
+          6.72,
+          6.616,
+          5.66
+        ]
+      },
+      "envelopeVoidLiters": {
+        "n": 5,
+        "mean": 474.868,
+        "ci95": [
+          390.707845886583,
+          559.028154113417
+        ],
+        "observations": [
+          517.744,
+          537.068,
+          517.044,
+          396.292,
+          406.192
+        ]
+      },
+      "columnVoidFraction": {
+        "n": 5,
+        "mean": 0.007067976965752113,
+        "ci95": [
+          0.003908941292348435,
+          0.010227012639155791
+        ],
+        "observations": [
+          0.011201838954266305,
+          0.004772096639425204,
+          0.007621847481387721,
+          0.0062990086868432976,
+          0.005445093066838037
+        ]
+      },
+      "envelopeFill": {
+        "n": 5,
+        "mean": 0.66712746112238,
+        "ci95": [
+          0.6051276142403854,
+          0.7291273080043745
+        ],
+        "observations": [
+          0.6404555555555556,
+          0.6239019607843137,
+          0.6285603448275862,
+          0.7247972222222222,
+          0.7179222222222222
+        ]
+      },
+      "usedHeightMm": {
+        "n": 5,
+        "mean": 1190,
+        "ci95": [
+          1168.4937486918027,
+          1211.5062513081973
+        ],
+        "observations": [
+          1200,
+          1190,
+          1160,
+          1200,
+          1200
+        ]
+      }
+    },
+    {
+      "algorithm": "strategy-greedy",
+      "cycleSeconds": 10,
+      "n": 5,
+      "floorContactCoverage": {
+        "n": 5,
+        "mean": 0.7946,
+        "ci95": [
+          0.7496710802835864,
+          0.8395289197164135
+        ],
+        "observations": [
+          0.7931666666666667,
+          0.8003333333333333,
+          0.8348333333333333,
+          0.8083333333333333,
+          0.7363333333333333
+        ]
+      },
+      "projectedCoverage": {
+        "n": 5,
+        "mean": 0.8073,
+        "ci95": [
+          0.7596546775271545,
+          0.8549453224728455
+        ],
+        "observations": [
+          0.8186666666666667,
+          0.8053333333333333,
+          0.8413333333333334,
+          0.8283333333333334,
+          0.7428333333333333
+        ]
+      },
+      "fill": {
+        "n": 5,
+        "mean": 0.5906116666666666,
+        "ci95": [
+          0.5289724331394101,
+          0.6522509001939232
+        ],
+        "observations": [
+          0.5487888888888889,
+          0.6187027777777778,
+          0.6247083333333333,
+          0.6349694444444445,
+          0.5258888888888889
+        ]
+      },
+      "count": {
+        "n": 5,
+        "mean": 38.6,
+        "ci95": [
+          35.02280071552705,
+          42.177199284472955
+        ],
+        "observations": [
+          35,
+          41,
+          41,
+          40,
+          36
+        ]
+      },
+      "columnVoidLiters": {
+        "n": 5,
+        "mean": 7.0416,
+        "ci95": [
+          2.738856603432919,
+          11.34434339656708
+        ],
+        "observations": [
+          13.032,
+          5.952,
+          4.032,
+          5.856,
+          6.336
+        ]
+      },
+      "envelopeVoidLiters": {
+        "n": 5,
+        "mean": 579.9192,
+        "ci95": [
+          508.2234223407054,
+          651.6149776592947
+        ],
+        "observations": [
+          649.744,
+          549.068,
+          540.42,
+          525.644,
+          634.72
+        ]
+      },
+      "columnVoidFraction": {
+        "n": 5,
+        "mean": 0.008396567815416877,
+        "ci95": [
+          0.00270726403484389,
+          0.014085871595989865
+        ],
+        "observations": [
+          0.01622332214598002,
+          0.006636309712292783,
+          0.0044620921368906125,
+          0.006363750961734905,
+          0.008297364120186062
+        ]
+      },
+      "envelopeFill": {
+        "n": 5,
+        "mean": 0.5942384865900383,
+        "ci95": [
+          0.5395024144597499,
+          0.6489745587203267
+        ],
+        "observations": [
+          0.5487888888888889,
+          0.6187027777777778,
+          0.6247083333333333,
+          0.6349694444444445,
+          0.5440229885057472
+        ]
+      },
+      "usedHeightMm": {
+        "n": 5,
+        "mean": 1192,
+        "ci95": [
+          1169.7884391584,
+          1214.2115608416
+        ],
+        "observations": [
+          1200,
+          1200,
+          1200,
+          1200,
+          1160
+        ]
+      }
+    },
+    {
+      "algorithm": "lookahead",
+      "cycleSeconds": 10,
+      "n": 5,
+      "floorContactCoverage": {
+        "n": 5,
+        "mean": 0.7946,
+        "ci95": [
+          0.7496710802835864,
+          0.8395289197164135
+        ],
+        "observations": [
+          0.7931666666666667,
+          0.8003333333333333,
+          0.8348333333333333,
+          0.8083333333333333,
+          0.7363333333333333
+        ]
+      },
+      "projectedCoverage": {
+        "n": 5,
+        "mean": 0.8103666666666667,
+        "ci95": [
+          0.7663750254094419,
+          0.8543583079238914
+        ],
+        "observations": [
+          0.8255,
+          0.8053333333333333,
+          0.8413333333333334,
+          0.8283333333333334,
+          0.7513333333333333
+        ]
+      },
+      "fill": {
+        "n": 5,
+        "mean": 0.5903755555555555,
+        "ci95": [
+          0.5290127904524461,
+          0.651738320658665
+        ],
+        "observations": [
+          0.5416361111111111,
+          0.6187027777777778,
+          0.6247083333333333,
+          0.6349694444444445,
+          0.5318611111111111
+        ]
+      },
+      "count": {
+        "n": 5,
+        "mean": 38.6,
+        "ci95": [
+          34.813433718357544,
+          42.38656628164246
+        ],
+        "observations": [
+          34,
+          41,
+          41,
+          40,
+          37
+        ]
+      },
+      "columnVoidLiters": {
+        "n": 5,
+        "mean": 7.7943999999999996,
+        "ci95": [
+          2.869588536282788,
+          12.719211463717212
+        ],
+        "observations": [
+          14.132,
+          5.952,
+          4.032,
+          5.856,
+          9.0
+        ]
+      },
+      "envelopeVoidLiters": {
+        "n": 5,
+        "mean": 585.0592,
+        "ci95": [
+          503.28483947887776,
+          666.8335605211223
+        ],
+        "observations": [
+          636.044,
+          549.068,
+          540.42,
+          525.644,
+          674.12
+        ]
+      },
+      "columnVoidFraction": {
+        "n": 5,
+        "mean": 0.0093746741394528,
+        "ci95": [
+          0.0026696049720242978,
+          0.016079743306881302
+        ],
+        "observations": [
+          0.017796516255125377,
+          0.006636309712292783,
+          0.0044620921368906125,
+          0.006363750961734905,
+          0.011614701631220317
+        ]
+      },
+      "envelopeFill": {
+        "n": 5,
+        "mean": 0.5922116101694915,
+        "ci95": [
+          0.533505062585913,
+          0.65091815775307
+        ],
+        "observations": [
+          0.5508163841807909,
+          0.6187027777777778,
+          0.6247083333333333,
+          0.6349694444444445,
+          0.5318611111111111
+        ]
+      },
+      "usedHeightMm": {
+        "n": 5,
+        "mean": 1196,
+        "ci95": [
+          1184.8942195792,
+          1207.1057804208
+        ],
+        "observations": [
+          1180,
+          1200,
+          1200,
+          1200,
+          1200
+        ]
+      }
+    },
+    {
+      "algorithm": "future-hybrid",
+      "cycleSeconds": 10,
+      "n": 5,
+      "floorContactCoverage": {
+        "n": 5,
+        "mean": 0.8128666666666666,
+        "ci95": [
+          0.7803368076578222,
+          0.845396525675511
+        ],
+        "observations": [
+          0.7931666666666667,
+          0.8155,
+          0.8541666666666666,
+          0.7875,
+          0.814
+        ]
+      },
+      "projectedCoverage": {
+        "n": 5,
+        "mean": 0.8243833333333334,
+        "ci95": [
+          0.7934871416904241,
+          0.8552795249762426
+        ],
+        "observations": [
+          0.8036666666666666,
+          0.8273333333333334,
+          0.8618333333333333,
+          0.7996666666666666,
+          0.8294166666666667
+        ]
+      },
+      "fill": {
+        "n": 5,
+        "mean": 0.6118477777777778,
+        "ci95": [
+          0.5651331189349632,
+          0.6585624366205923
+        ],
+        "observations": [
+          0.5699694444444444,
+          0.6411666666666667,
+          0.6587888888888889,
+          0.605925,
+          0.5833888888888888
+        ]
+      },
+      "count": {
+        "n": 5,
+        "mean": 37,
+        "ci95": [
+          33.07351367704177,
+          40.92648632295823
+        ],
+        "observations": [
+          34,
+          35,
+          42,
+          36,
+          38
+        ]
+      },
+      "columnVoidLiters": {
+        "n": 5,
+        "mean": 9.9988,
+        "ci95": [
+          4.713700518060188,
+          15.28389948193981
+        ],
+        "observations": [
+          9.216,
+          10.368,
+          4.41,
+          9.648,
+          16.352
+        ]
+      },
+      "envelopeVoidLiters": {
+        "n": 5,
+        "mean": 558.9392,
+        "ci95": [
+          491.67009126634713,
+          626.2083087336529
+        ],
+        "observations": [
+          619.244,
+          516.72,
+          491.344,
+          567.468,
+          599.92
+        ]
+      },
+      "columnVoidFraction": {
+        "n": 5,
+        "mean": 0.011373139947483976,
+        "ci95": [
+          0.0049981302539762835,
+          0.017748149640991667
+        ],
+        "observations": [
+          0.01110398905023302,
+          0.011104827515294843,
+          0.004627171675413874,
+          0.010936543562538257,
+          0.01909316793393988
+        ]
+      },
+      "envelopeFill": {
+        "n": 5,
+        "mean": 0.6118477777777778,
+        "ci95": [
+          0.5651331189349632,
+          0.6585624366205923
+        ],
+        "observations": [
+          0.5699694444444444,
+          0.6411666666666667,
+          0.6587888888888889,
+          0.605925,
+          0.5833888888888888
+        ]
+      },
+      "usedHeightMm": {
+        "n": 5,
+        "mean": 1200,
+        "ci95": [
+          1200.0,
+          1200.0
+        ],
+        "observations": [
+          1200,
+          1200,
+          1200,
+          1200,
+          1200
+        ]
+      }
+    },
+    {
+      "algorithm": "mcts",
+      "cycleSeconds": 10,
+      "n": 5,
+      "floorContactCoverage": {
+        "n": 5,
+        "mean": 0.8296,
+        "ci95": [
+          0.7869570810577936,
+          0.8722429189422064
+        ],
+        "observations": [
+          0.7795,
+          0.8363333333333334,
+          0.8708333333333333,
+          0.8458333333333333,
+          0.8155
+        ]
+      },
+      "projectedCoverage": {
+        "n": 5,
+        "mean": 0.8573,
+        "ci95": [
+          0.8110959806489573,
+          0.9035040193510426
+        ],
+        "observations": [
+          0.8053333333333333,
+          0.8771666666666667,
+          0.9053333333333333,
+          0.8515,
+          0.8471666666666666
+        ]
+      },
+      "fill": {
+        "n": 5,
+        "mean": 0.6461077777777777,
+        "ci95": [
+          0.5991801494575949,
+          0.6930354060979605
+        ],
+        "observations": [
+          0.6617583333333333,
+          0.7024861111111111,
+          0.6246555555555555,
+          0.6374166666666666,
+          0.6042222222222222
+        ]
+      },
+      "count": {
+        "n": 5,
+        "mean": 40.2,
+        "ci95": [
+          37.50813659765996,
+          42.89186340234004
+        ],
+        "observations": [
+          41,
+          43,
+          40,
+          37,
+          40
+        ]
+      },
+      "columnVoidLiters": {
+        "n": 5,
+        "mean": 31.2054,
+        "ci95": [
+          19.64787306167034,
+          42.76292693832966
+        ],
+        "observations": [
+          36.41,
+          26.108,
+          44.011,
+          19.946,
+          29.552
+        ]
+      },
+      "envelopeVoidLiters": {
+        "n": 5,
+        "mean": 478.40479999999997,
+        "ci95": [
+          396.23828059882584,
+          560.5713194011742
+        ],
+        "observations": [
+          487.068,
+          428.42,
+          396.496,
+          522.12,
+          557.92
+        ]
+      },
+      "columnVoidFraction": {
+        "n": 5,
+        "mean": 0.03254502571836655,
+        "ci95": [
+          0.020147750581695722,
+          0.04494230085503738
+        ],
+        "observations": [
+          0.036802238255325255,
+          0.025159778276321976,
+          0.046645787295379514,
+          0.02126833762339709,
+          0.03284898714140893
+        ]
+      },
+      "envelopeFill": {
+        "n": 5,
+        "mean": 0.6610045118788256,
+        "ci95": [
+          0.6127396936649842,
+          0.709269330092667
+        ],
+        "observations": [
+          0.6617583333333333,
+          0.7024861111111111,
+          0.6940617283950617,
+          0.6374166666666666,
+          0.6092997198879552
+        ]
+      },
+      "usedHeightMm": {
+        "n": 5,
+        "mean": 1174,
+        "ci95": [
+          1108.5323899417651,
+          1239.4676100582349
+        ],
+        "observations": [
+          1200,
+          1200,
+          1080,
+          1200,
+          1190
+        ]
+      }
+    },
+    {
+      "algorithm": "blb",
+      "cycleSeconds": 12,
+      "n": 5,
+      "floorContactCoverage": {
+        "n": 5,
+        "mean": 0.8493,
+        "ci95": [
+          0.7811333250068531,
+          0.917466674993147
+        ],
+        "observations": [
+          0.8571666666666666,
+          0.778,
+          0.8666666666666667,
+          0.925,
+          0.8196666666666667
+        ]
+      },
+      "projectedCoverage": {
+        "n": 5,
+        "mean": 0.86725,
+        "ci95": [
+          0.7933382477218316,
+          0.9411617522781683
+        ],
+        "observations": [
+          0.8756666666666667,
+          0.7853333333333333,
+          0.902,
+          0.93875,
+          0.8345
+        ]
+      },
+      "fill": {
+        "n": 5,
+        "mean": 0.6137961111111111,
+        "ci95": [
+          0.5755543393640382,
+          0.652037882858184
+        ],
+        "observations": [
+          0.5666888888888889,
+          0.6187027777777778,
+          0.6026416666666666,
+          0.6417583333333333,
+          0.6391888888888889
+        ]
+      },
+      "count": {
+        "n": 5,
+        "mean": 39,
+        "ci95": [
+          34.271884357976404,
+          43.728115642023596
+        ],
+        "observations": [
+          33,
+          41,
+          40,
+          38,
+          43
+        ]
+      },
+      "columnVoidLiters": {
+        "n": 5,
+        "mean": 27.4228,
+        "ci95": [
+          14.290556916824327,
+          40.55504308317567
+        ],
+        "observations": [
+          28.69,
+          9.44,
+          29.974,
+          31.71,
+          37.3
+        ]
+      },
+      "envelopeVoidLiters": {
+        "n": 5,
+        "mean": 556.1336,
+        "ci95": [
+          501.0654486842151,
+          611.2017513157849
+        ],
+        "observations": [
+          623.968,
+          549.068,
+          572.196,
+          515.868,
+          519.568
+        ]
+      },
+      "columnVoidFraction": {
+        "n": 5,
+        "mean": 0.029991276156824474,
+        "ci95": [
+          0.016134764450419704,
+          0.043847787863229244
+        ],
+        "observations": [
+          0.033963836623173066,
+          0.010484555272709502,
+          0.033386872924041355,
+          0.03317493895434601,
+          0.038946177009852444
+        ]
+      },
+      "envelopeFill": {
+        "n": 5,
+        "mean": 0.6137961111111111,
+        "ci95": [
+          0.5755543393640382,
+          0.652037882858184
+        ],
+        "observations": [
+          0.5666888888888889,
+          0.6187027777777778,
+          0.6026416666666666,
+          0.6417583333333333,
+          0.6391888888888889
+        ]
+      },
+      "usedHeightMm": {
+        "n": 5,
+        "mean": 1200,
+        "ci95": [
+          1200.0,
+          1200.0
+        ],
+        "observations": [
+          1200,
+          1200,
+          1200,
+          1200,
+          1200
+        ]
+      }
+    },
+    {
+      "algorithm": "capacity-compact",
+      "cycleSeconds": 12,
+      "n": 5,
+      "floorContactCoverage": {
+        "n": 5,
+        "mean": 0.8784666666666666,
+        "ci95": [
+          0.8071941497026797,
+          0.9497391836306536
+        ],
+        "observations": [
+          0.8988333333333334,
+          0.778,
+          0.9083333333333333,
+          0.8875,
+          0.9196666666666666
+        ]
+      },
+      "projectedCoverage": {
+        "n": 5,
+        "mean": 0.8830666666666667,
+        "ci95": [
+          0.8114572247086861,
+          0.9546761086246472
+        ],
+        "observations": [
+          0.9078333333333334,
+          0.7821666666666667,
+          0.9083333333333333,
+          0.8915,
+          0.9255
+        ]
+      },
+      "fill": {
+        "n": 5,
+        "mean": 0.6618972222222222,
+        "ci95": [
+          0.5928535603071986,
+          0.7309408841372459
+        ],
+        "observations": [
+          0.6404555555555556,
+          0.6187027777777778,
+          0.6076083333333333,
+          0.7247972222222222,
+          0.7179222222222222
+        ]
+      },
+      "count": {
+        "n": 5,
+        "mean": 42.6,
+        "ci95": [
+          38.813433718357544,
+          46.38656628164246
+        ],
+        "observations": [
+          41,
+          41,
+          41,
+          42,
+          48
+        ]
+      },
+      "columnVoidLiters": {
+        "n": 5,
+        "mean": 6.7432,
+        "ci95": [
+          3.8966725696129867,
+          9.589727430387013
+        ],
+        "observations": [
+          10.448,
+          4.272,
+          6.72,
+          6.616,
+          5.66
+        ]
+      },
+      "envelopeVoidLiters": {
+        "n": 5,
+        "mean": 474.868,
+        "ci95": [
+          390.707845886583,
+          559.028154113417
+        ],
+        "observations": [
+          517.744,
+          537.068,
+          517.044,
+          396.292,
+          406.192
+        ]
+      },
+      "columnVoidFraction": {
+        "n": 5,
+        "mean": 0.007067976965752113,
+        "ci95": [
+          0.003908941292348435,
+          0.010227012639155791
+        ],
+        "observations": [
+          0.011201838954266305,
+          0.004772096639425204,
+          0.007621847481387721,
+          0.0062990086868432976,
+          0.005445093066838037
+        ]
+      },
+      "envelopeFill": {
+        "n": 5,
+        "mean": 0.66712746112238,
+        "ci95": [
+          0.6051276142403854,
+          0.7291273080043745
+        ],
+        "observations": [
+          0.6404555555555556,
+          0.6239019607843137,
+          0.6285603448275862,
+          0.7247972222222222,
+          0.7179222222222222
+        ]
+      },
+      "usedHeightMm": {
+        "n": 5,
+        "mean": 1190,
+        "ci95": [
+          1168.4937486918027,
+          1211.5062513081973
+        ],
+        "observations": [
+          1200,
+          1190,
+          1160,
+          1200,
+          1200
+        ]
+      }
+    },
+    {
+      "algorithm": "strategy-greedy",
+      "cycleSeconds": 12,
+      "n": 5,
+      "floorContactCoverage": {
+        "n": 5,
+        "mean": 0.7946,
+        "ci95": [
+          0.7496710802835864,
+          0.8395289197164135
+        ],
+        "observations": [
+          0.7931666666666667,
+          0.8003333333333333,
+          0.8348333333333333,
+          0.8083333333333333,
+          0.7363333333333333
+        ]
+      },
+      "projectedCoverage": {
+        "n": 5,
+        "mean": 0.8073,
+        "ci95": [
+          0.7596546775271545,
+          0.8549453224728455
+        ],
+        "observations": [
+          0.8186666666666667,
+          0.8053333333333333,
+          0.8413333333333334,
+          0.8283333333333334,
+          0.7428333333333333
+        ]
+      },
+      "fill": {
+        "n": 5,
+        "mean": 0.5906116666666666,
+        "ci95": [
+          0.5289724331394101,
+          0.6522509001939232
+        ],
+        "observations": [
+          0.5487888888888889,
+          0.6187027777777778,
+          0.6247083333333333,
+          0.6349694444444445,
+          0.5258888888888889
+        ]
+      },
+      "count": {
+        "n": 5,
+        "mean": 38.6,
+        "ci95": [
+          35.02280071552705,
+          42.177199284472955
+        ],
+        "observations": [
+          35,
+          41,
+          41,
+          40,
+          36
+        ]
+      },
+      "columnVoidLiters": {
+        "n": 5,
+        "mean": 7.0416,
+        "ci95": [
+          2.738856603432919,
+          11.34434339656708
+        ],
+        "observations": [
+          13.032,
+          5.952,
+          4.032,
+          5.856,
+          6.336
+        ]
+      },
+      "envelopeVoidLiters": {
+        "n": 5,
+        "mean": 579.9192,
+        "ci95": [
+          508.2234223407054,
+          651.6149776592947
+        ],
+        "observations": [
+          649.744,
+          549.068,
+          540.42,
+          525.644,
+          634.72
+        ]
+      },
+      "columnVoidFraction": {
+        "n": 5,
+        "mean": 0.008396567815416877,
+        "ci95": [
+          0.00270726403484389,
+          0.014085871595989865
+        ],
+        "observations": [
+          0.01622332214598002,
+          0.006636309712292783,
+          0.0044620921368906125,
+          0.006363750961734905,
+          0.008297364120186062
+        ]
+      },
+      "envelopeFill": {
+        "n": 5,
+        "mean": 0.5942384865900383,
+        "ci95": [
+          0.5395024144597499,
+          0.6489745587203267
+        ],
+        "observations": [
+          0.5487888888888889,
+          0.6187027777777778,
+          0.6247083333333333,
+          0.6349694444444445,
+          0.5440229885057472
+        ]
+      },
+      "usedHeightMm": {
+        "n": 5,
+        "mean": 1192,
+        "ci95": [
+          1169.7884391584,
+          1214.2115608416
+        ],
+        "observations": [
+          1200,
+          1200,
+          1200,
+          1200,
+          1160
+        ]
+      }
+    },
+    {
+      "algorithm": "lookahead",
+      "cycleSeconds": 12,
+      "n": 5,
+      "floorContactCoverage": {
+        "n": 5,
+        "mean": 0.7946,
+        "ci95": [
+          0.7496710802835864,
+          0.8395289197164135
+        ],
+        "observations": [
+          0.7931666666666667,
+          0.8003333333333333,
+          0.8348333333333333,
+          0.8083333333333333,
+          0.7363333333333333
+        ]
+      },
+      "projectedCoverage": {
+        "n": 5,
+        "mean": 0.8103666666666667,
+        "ci95": [
+          0.7663750254094419,
+          0.8543583079238914
+        ],
+        "observations": [
+          0.8255,
+          0.8053333333333333,
+          0.8413333333333334,
+          0.8283333333333334,
+          0.7513333333333333
+        ]
+      },
+      "fill": {
+        "n": 5,
+        "mean": 0.5903755555555555,
+        "ci95": [
+          0.5290127904524461,
+          0.651738320658665
+        ],
+        "observations": [
+          0.5416361111111111,
+          0.6187027777777778,
+          0.6247083333333333,
+          0.6349694444444445,
+          0.5318611111111111
+        ]
+      },
+      "count": {
+        "n": 5,
+        "mean": 38.6,
+        "ci95": [
+          34.813433718357544,
+          42.38656628164246
+        ],
+        "observations": [
+          34,
+          41,
+          41,
+          40,
+          37
+        ]
+      },
+      "columnVoidLiters": {
+        "n": 5,
+        "mean": 7.7943999999999996,
+        "ci95": [
+          2.869588536282788,
+          12.719211463717212
+        ],
+        "observations": [
+          14.132,
+          5.952,
+          4.032,
+          5.856,
+          9.0
+        ]
+      },
+      "envelopeVoidLiters": {
+        "n": 5,
+        "mean": 585.0592,
+        "ci95": [
+          503.28483947887776,
+          666.8335605211223
+        ],
+        "observations": [
+          636.044,
+          549.068,
+          540.42,
+          525.644,
+          674.12
+        ]
+      },
+      "columnVoidFraction": {
+        "n": 5,
+        "mean": 0.0093746741394528,
+        "ci95": [
+          0.0026696049720242978,
+          0.016079743306881302
+        ],
+        "observations": [
+          0.017796516255125377,
+          0.006636309712292783,
+          0.0044620921368906125,
+          0.006363750961734905,
+          0.011614701631220317
+        ]
+      },
+      "envelopeFill": {
+        "n": 5,
+        "mean": 0.5922116101694915,
+        "ci95": [
+          0.533505062585913,
+          0.65091815775307
+        ],
+        "observations": [
+          0.5508163841807909,
+          0.6187027777777778,
+          0.6247083333333333,
+          0.6349694444444445,
+          0.5318611111111111
+        ]
+      },
+      "usedHeightMm": {
+        "n": 5,
+        "mean": 1196,
+        "ci95": [
+          1184.8942195792,
+          1207.1057804208
+        ],
+        "observations": [
+          1180,
+          1200,
+          1200,
+          1200,
+          1200
+        ]
+      }
+    },
+    {
+      "algorithm": "future-hybrid",
+      "cycleSeconds": 12,
+      "n": 5,
+      "floorContactCoverage": {
+        "n": 5,
+        "mean": 0.8128666666666666,
+        "ci95": [
+          0.7803368076578222,
+          0.845396525675511
+        ],
+        "observations": [
+          0.7931666666666667,
+          0.8155,
+          0.8541666666666666,
+          0.7875,
+          0.814
+        ]
+      },
+      "projectedCoverage": {
+        "n": 5,
+        "mean": 0.8243833333333334,
+        "ci95": [
+          0.7934871416904241,
+          0.8552795249762426
+        ],
+        "observations": [
+          0.8036666666666666,
+          0.8273333333333334,
+          0.8618333333333333,
+          0.7996666666666666,
+          0.8294166666666667
+        ]
+      },
+      "fill": {
+        "n": 5,
+        "mean": 0.6118477777777778,
+        "ci95": [
+          0.5651331189349632,
+          0.6585624366205923
+        ],
+        "observations": [
+          0.5699694444444444,
+          0.6411666666666667,
+          0.6587888888888889,
+          0.605925,
+          0.5833888888888888
+        ]
+      },
+      "count": {
+        "n": 5,
+        "mean": 37,
+        "ci95": [
+          33.07351367704177,
+          40.92648632295823
+        ],
+        "observations": [
+          34,
+          35,
+          42,
+          36,
+          38
+        ]
+      },
+      "columnVoidLiters": {
+        "n": 5,
+        "mean": 9.9988,
+        "ci95": [
+          4.713700518060188,
+          15.28389948193981
+        ],
+        "observations": [
+          9.216,
+          10.368,
+          4.41,
+          9.648,
+          16.352
+        ]
+      },
+      "envelopeVoidLiters": {
+        "n": 5,
+        "mean": 558.9392,
+        "ci95": [
+          491.67009126634713,
+          626.2083087336529
+        ],
+        "observations": [
+          619.244,
+          516.72,
+          491.344,
+          567.468,
+          599.92
+        ]
+      },
+      "columnVoidFraction": {
+        "n": 5,
+        "mean": 0.011373139947483976,
+        "ci95": [
+          0.0049981302539762835,
+          0.017748149640991667
+        ],
+        "observations": [
+          0.01110398905023302,
+          0.011104827515294843,
+          0.004627171675413874,
+          0.010936543562538257,
+          0.01909316793393988
+        ]
+      },
+      "envelopeFill": {
+        "n": 5,
+        "mean": 0.6118477777777778,
+        "ci95": [
+          0.5651331189349632,
+          0.6585624366205923
+        ],
+        "observations": [
+          0.5699694444444444,
+          0.6411666666666667,
+          0.6587888888888889,
+          0.605925,
+          0.5833888888888888
+        ]
+      },
+      "usedHeightMm": {
+        "n": 5,
+        "mean": 1200,
+        "ci95": [
+          1200.0,
+          1200.0
+        ],
+        "observations": [
+          1200,
+          1200,
+          1200,
+          1200,
+          1200
+        ]
+      }
+    },
+    {
+      "algorithm": "mcts",
+      "cycleSeconds": 12,
+      "n": 5,
+      "floorContactCoverage": {
+        "n": 5,
+        "mean": 0.8296,
+        "ci95": [
+          0.7869570810577936,
+          0.8722429189422064
+        ],
+        "observations": [
+          0.7795,
+          0.8363333333333334,
+          0.8708333333333333,
+          0.8458333333333333,
+          0.8155
+        ]
+      },
+      "projectedCoverage": {
+        "n": 5,
+        "mean": 0.8573,
+        "ci95": [
+          0.8110959806489573,
+          0.9035040193510426
+        ],
+        "observations": [
+          0.8053333333333333,
+          0.8771666666666667,
+          0.9053333333333333,
+          0.8515,
+          0.8471666666666666
+        ]
+      },
+      "fill": {
+        "n": 5,
+        "mean": 0.6461077777777777,
+        "ci95": [
+          0.5991801494575949,
+          0.6930354060979605
+        ],
+        "observations": [
+          0.6617583333333333,
+          0.7024861111111111,
+          0.6246555555555555,
+          0.6374166666666666,
+          0.6042222222222222
+        ]
+      },
+      "count": {
+        "n": 5,
+        "mean": 40.2,
+        "ci95": [
+          37.50813659765996,
+          42.89186340234004
+        ],
+        "observations": [
+          41,
+          43,
+          40,
+          37,
+          40
+        ]
+      },
+      "columnVoidLiters": {
+        "n": 5,
+        "mean": 31.2054,
+        "ci95": [
+          19.64787306167034,
+          42.76292693832966
+        ],
+        "observations": [
+          36.41,
+          26.108,
+          44.011,
+          19.946,
+          29.552
+        ]
+      },
+      "envelopeVoidLiters": {
+        "n": 5,
+        "mean": 478.40479999999997,
+        "ci95": [
+          396.23828059882584,
+          560.5713194011742
+        ],
+        "observations": [
+          487.068,
+          428.42,
+          396.496,
+          522.12,
+          557.92
+        ]
+      },
+      "columnVoidFraction": {
+        "n": 5,
+        "mean": 0.03254502571836655,
+        "ci95": [
+          0.020147750581695722,
+          0.04494230085503738
+        ],
+        "observations": [
+          0.036802238255325255,
+          0.025159778276321976,
+          0.046645787295379514,
+          0.02126833762339709,
+          0.03284898714140893
+        ]
+      },
+      "envelopeFill": {
+        "n": 5,
+        "mean": 0.6610045118788256,
+        "ci95": [
+          0.6127396936649842,
+          0.709269330092667
+        ],
+        "observations": [
+          0.6617583333333333,
+          0.7024861111111111,
+          0.6940617283950617,
+          0.6374166666666666,
+          0.6092997198879552
+        ]
+      },
+      "usedHeightMm": {
+        "n": 5,
+        "mean": 1174,
+        "ci95": [
+          1108.5323899417651,
+          1239.4676100582349
+        ],
+        "observations": [
+          1200,
+          1200,
+          1080,
+          1200,
+          1190
+        ]
+      }
+    }
+  ]
+}

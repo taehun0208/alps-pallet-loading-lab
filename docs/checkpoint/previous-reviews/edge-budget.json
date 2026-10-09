@@ -1,0 +1,100 @@
+{
+  "kind": "analytical_scenarios_not_hardware_measurements",
+  "cpu_hz": 16000000,
+  "assumptions": [
+    "R3 at 16 MHz; 100 resident boxes PER pallet, not system-wide.",
+    "Three eligible boxes per robot is a budget scenario, not measured availability.",
+    "20 positions per orientation; this differs from the demo's 64-candidate cap.",
+    "50/100/200 cycles per pair are hypothetical sensitivity inputs.",
+    "Excludes indexing build/update, support, loads, paths, scheduling, I/O and interrupts.",
+    "Full-scan timings are hypothetical where state does not fit SRAM."
+  ],
+  "geometry": [
+    {
+      "scenario": "one_cell_64_candidates",
+      "candidates": 64,
+      "neighbors_per_candidate": 100,
+      "pair_checks": 6400,
+      "max_16bit_comparisons": 38400,
+      "hypothetical_geometry_ms_by_cycles_per_pair": {
+        "50": 20.0,
+        "100": 40.0,
+        "200": 80.0
+      }
+    },
+    {
+      "scenario": "three_cells_full_scan",
+      "candidates": 360,
+      "neighbors_per_candidate": 100,
+      "pair_checks": 36000,
+      "max_16bit_comparisons": 216000,
+      "hypothetical_geometry_ms_by_cycles_per_pair": {
+        "50": 112.5,
+        "100": 225.0,
+        "200": 450.0
+      }
+    },
+    {
+      "scenario": "four_cells_full_scan",
+      "candidates": 480,
+      "neighbors_per_candidate": 100,
+      "pair_checks": 48000,
+      "max_16bit_comparisons": 288000,
+      "hypothetical_geometry_ms_by_cycles_per_pair": {
+        "50": 150.0,
+        "100": 300.0,
+        "200": 600.0
+      }
+    },
+    {
+      "scenario": "four_cells_indexed_12_neighbors",
+      "candidates": 480,
+      "neighbors_per_candidate": 12,
+      "pair_checks": 5760,
+      "max_16bit_comparisons": 34560,
+      "hypothetical_geometry_ms_by_cycles_per_pair": {
+        "50": 18.0,
+        "100": 36.0,
+        "200": 72.0
+      }
+    }
+  ],
+  "memory": {
+    "r3_sram_bytes": 2048,
+    "r4_sram_bytes": 32768,
+    "geometry_bytes_per_box": 12,
+    "illustrative_state_bytes_per_box": 18,
+    "geometry_100_boxes_one_pallet_bytes": 1200,
+    "state_100_boxes_one_pallet_bytes": 1800,
+    "geometry_100_boxes_each_four_pallets_bytes": 4800,
+    "state_100_boxes_each_four_pallets_bytes": 7200,
+    "heightmap_1800x1500mm_uint16_10mm_bytes": 54000,
+    "heightmap_1800x1500mm_uint16_50mm_bytes": 2160,
+    "heightmap_1800x1500mm_uint16_100mm_bytes": 540
+  },
+  "future_probe_extra_pair_checks": {
+    "all_480_candidates_two_probes_40_positions_101_boxes": 3878400,
+    "top5_per_robot_two_probes_40_positions_101_boxes": 161600,
+    "same_top5_probes_12_neighbors": 19200
+  },
+  "future_probe_definition": "Three observed eligible boxes: place one, independently probe two remaining. 40 poses includes both orientations. Not a rollout.",
+  "future_probe_extra_ms_at_100_cycles": {
+    "all_480_candidates_two_probes_40_positions_101_boxes": 24240.0,
+    "top5_per_robot_two_probes_40_positions_101_boxes": 1010.0,
+    "same_top5_probes_12_neighbors": 120.0
+  },
+  "uart_8n1_one_direction_ms": {
+    "32_bytes_at_9600_baud": 33.333,
+    "32_bytes_at_115200_baud": 2.778,
+    "512_bytes_at_9600_baud": 533.333,
+    "512_bytes_at_115200_baud": 44.444
+  },
+  "illustrative_deadline": {
+    "remaining_distance_mm": 150,
+    "belt_speed_mm_s": 210,
+    "time_to_end_of_pick_window_ms": 714.286,
+    "assumed_sensing_comm_actuation_margin_ms": 200,
+    "remaining_decision_budget_ms": 514.286,
+    "note": "Distance and 200ms reserve are assumptions; speed is shown in demo."
+  }
+}

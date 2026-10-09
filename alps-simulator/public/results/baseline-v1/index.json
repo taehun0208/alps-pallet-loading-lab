@@ -1,0 +1,5475 @@
+{
+  "schema": "alps-sim-index/1",
+  "createdAt": "2026-10-09T18:27:28.493Z",
+  "completedAt": "2026-10-09T18:41:10.962Z",
+  "complete": true,
+  "provenance": {
+    "newSimulationExecuted": true,
+    "sourceSha256": "7b5a5907787f926701d5260da573b0506f5bfb3942c64a2a3fc82a6739bfd498",
+    "sourceFiles": [
+      {
+        "path": "src/engine/README.md",
+        "sha256": "0fbd7570a5051cc6b9b8ac6f9fcae7027db51857f0f8664638b72d31de964ffc"
+      },
+      {
+        "path": "src/engine/client.ts",
+        "sha256": "b9b5b3615c7708e8499bcb97b0fd28d34a9d5e4758b81ce981b9fd86bed6ac95"
+      },
+      {
+        "path": "src/engine/config.ts",
+        "sha256": "f144dcefadc62277326c803b570e00cfc813816ca66c7088e36745b7d0edd804"
+      },
+      {
+        "path": "src/engine/coordinator.worker.ts",
+        "sha256": "bbd0e085e2fd83888bde436c1ba2eac5959ed8ce688de7f8181a36bc477e2c59"
+      },
+      {
+        "path": "src/engine/core.ts",
+        "sha256": "34eae0e969da31992b98bb07758b5e830e4bdcf1d3e732e0e6d40dae8c8761d0"
+      },
+      {
+        "path": "src/engine/mcts.ts",
+        "sha256": "82afc4dd9a6073b8a55a59be4fa3409cf14874b02c515828d57abf8bb1e9c160"
+      },
+      {
+        "path": "src/engine/planner.ts",
+        "sha256": "94c493e3759b8bb7555168527d1fb4955347549e5d2c6dc9c2800c603a746839"
+      },
+      {
+        "path": "src/engine/planner.worker.ts",
+        "sha256": "8cf1ba240cbc4fd14d6ab5e7eca9e75f72922ef362b2ad5c2bc90c42de296b3d"
+      },
+      {
+        "path": "src/engine/supervisor.ts",
+        "sha256": "a66f30a00b03eea72888c02a177affe185bd26c5cce7d77a563639548da4b6ca"
+      },
+      {
+        "path": "src/engine/types.ts",
+        "sha256": "4f37c59b7dde484dbd8cd747026cda6509fb902ab82d9d2907affb3554889160"
+      },
+      {
+        "path": "src/engine/validation.ts",
+        "sha256": "025cf0c615d889839c4243bcf7bfa4224bd242698eb7ef9236e8d3b222c410b7"
+      },
+      {
+        "path": "src/engine/vendor/pallet/benchmark/hardConstraints.ts",
+        "sha256": "813aed969b85bcd8007be9e8110a2f9f98a52d1dea989c342ddadd1322e96402"
+      },
+      {
+        "path": "src/engine/vendor/pallet/benchmark/model.ts",
+        "sha256": "17a757fe7e5fcf1470f27a0ffd80f03b6630193dc81479ce509ba00ba87f45af"
+      },
+      {
+        "path": "src/engine/vendor/pallet/benchmark/motionMetrics.ts",
+        "sha256": "55912f67f6c10c1aceb59b815cd30767ce1a3f5447191f15b1e15f4f250e686c"
+      },
+      {
+        "path": "src/engine/vendor/pallet/benchmark/registry.ts",
+        "sha256": "0bdd50be740949d01788f6fada5164827b4f92af3c9bb233ef717311ab09d000"
+      },
+      {
+        "path": "src/engine/vendor/pallet/benchmark/runner.ts",
+        "sha256": "13229d2e9a6f76b8e5df4dae7d4c384bb2cdd3770f610e1ea901c2654b111842"
+      },
+      {
+        "path": "src/engine/vendor/pallet/benchmark/scenarios.ts",
+        "sha256": "4b6b4cddd5a344342cabae7f2c5f596939a01c9c9ff457bec2c98a292ad0a29c"
+      },
+      {
+        "path": "src/engine/vendor/pallet/benchmark/statistics.ts",
+        "sha256": "80a98f83a2ab1666478bd607cc4d0b4443c73bfd4f1bd30c029e36074a636e2d"
+      },
+      {
+        "path": "src/engine/vendor/pallet/benchmark/version.ts",
+        "sha256": "adcc0b4b5cfc1e917765f76c201d5b5ef030e414969694ce7c1ee47a1a546216"
+      },
+      {
+        "path": "src/engine/vendor/pallet/candidates.ts",
+        "sha256": "dbb869df7ef478cfbd504b4dbdd5a2ac91e6b93d310651a32849063e52ee9732"
+      },
+      {
+        "path": "src/engine/vendor/pallet/capacity/experiment.ts",
+        "sha256": "f5f9c0e150771d3295064bcf68fb8065556340918a923ae894c7d4dd26b857db"
+      },
+      {
+        "path": "src/engine/vendor/pallet/compactPacking.ts",
+        "sha256": "527dea85f7713724eb4a8ac6f0816cf56b0dc76df7ee992fe3edb61e0e775dcb"
+      },
+      {
+        "path": "src/engine/vendor/pallet/compactPlanner.ts",
+        "sha256": "77f5b5002f02718df66511d0ed4ac87da85aea8abb5414a02a3e06589d6040fc"
+      },
+      {
+        "path": "src/engine/vendor/pallet/constraints.ts",
+        "sha256": "a25e55b51303af489b8d53f82bfda5b434351c71052eaccfd953319a01c26b48"
+      },
+      {
+        "path": "src/engine/vendor/pallet/environment.ts",
+        "sha256": "0a4d2e01337248b8fb93cb2955febfc4c6c334cf1d37555eb6e29dddd76cf0e7"
+      },
+      {
+        "path": "src/engine/vendor/pallet/equilibrium.ts",
+        "sha256": "730d13528ddd3ae5631bcd0462edd75180b2d518400d4cd0f11c4519eca00b57"
+      },
+      {
+        "path": "src/engine/vendor/pallet/features.ts",
+        "sha256": "3adfe9b5d4a1f2433a0ad3b27d057658deadded5a59491c02375124f7d563a47"
+      },
+      {
+        "path": "src/engine/vendor/pallet/frontier.ts",
+        "sha256": "25e0086cc7d1a4cba6fe9215d9d7c709e60746699e37a8c24769890b7258fee8"
+      },
+      {
+        "path": "src/engine/vendor/pallet/geometry.ts",
+        "sha256": "dca25f1e1f6c9fc22ca9bf52fa227a285d0ccdab6caa69f51a966082b7c80226"
+      },
+      {
+        "path": "src/engine/vendor/pallet/highStack.ts",
+        "sha256": "9b3abae2b1a4e7de5f1562a272b9706819b9b92e78112fbaccef0df1d14a8baa"
+      },
+      {
+        "path": "src/engine/vendor/pallet/interior.ts",
+        "sha256": "eb992239da1cf9b066f1fbc3983bd26b2e9be32a7422d9c8141b0c75f3876fb9"
+      },
+      {
+        "path": "src/engine/vendor/pallet/inventory.ts",
+        "sha256": "08d603440448f7da5982e96cac50e82b1c635da3347b84c55188906413860913"
+      },
+      {
+        "path": "src/engine/vendor/pallet/inventoryGeneration.ts",
+        "sha256": "970c882d5335d067aae4b63d4173b02c396f618c7b2dc8b8a19c4d587fbc0e41"
+      },
+      {
+        "path": "src/engine/vendor/pallet/materials.ts",
+        "sha256": "419e8b279994c07bb00bba1c1cfb1fa9513c124f9fd2bc2ecfd119528592f1a0"
+      },
+      {
+        "path": "src/engine/vendor/pallet/onlinePlanner.ts",
+        "sha256": "0956e231343b9c5b1f34a49049be0208dc83b078168a089e82f862dc621e43ff"
+      },
+      {
+        "path": "src/engine/vendor/pallet/orientations.ts",
+        "sha256": "96b2407ff48c7b84347b5c744ed612156767cb9f06eaa19e4b583d1854f07378"
+      },
+      {
+        "path": "src/engine/vendor/pallet/packaging/planner.ts",
+        "sha256": "c47edac43463fdfa5bc8129016aef4cd815367a56434aaa4ad7d8e4041d9c07b"
+      },
+      {
+        "path": "src/engine/vendor/pallet/packaging/robot.ts",
+        "sha256": "6fd97359a7ae20045c31df87a8b46b799317a0ce35736b941aac29b9282a4b0a"
+      },
+      {
+        "path": "src/engine/vendor/pallet/packaging/spec.ts",
+        "sha256": "69fec58109c9123ef6bf10c3708a3c73c6f5f1e37c3b2fdd27d935987f700049"
+      },
+      {
+        "path": "src/engine/vendor/pallet/packing.ts",
+        "sha256": "d5e7df98d87b91bce909efd39d222551fc9136842617b853df926996bab318da"
+      },
+      {
+        "path": "src/engine/vendor/pallet/patternEvaluation.ts",
+        "sha256": "4f0d983e58b257fcb66dbc96b1518afdde1122bf26493bc198f4f6ff04a24053"
+      },
+      {
+        "path": "src/engine/vendor/pallet/planner.ts",
+        "sha256": "b2ab9e5e8c6a3f29475dac2245bd16f5918e83ed08f07dfe2bba40074a25e773"
+      },
+      {
+        "path": "src/engine/vendor/pallet/randomPlanner.ts",
+        "sha256": "d22d29df33654f45a4ab8e572468a38221d753e0debde3f1aa45f0157e1a1003"
+      },
+      {
+        "path": "src/engine/vendor/pallet/relay/practical.ts",
+        "sha256": "b68b25e4844ba727e88b0a867c01af90c7bfae30cd72a8abb030e24a7ef60b78"
+      },
+      {
+        "path": "src/engine/vendor/pallet/remainingSites.ts",
+        "sha256": "afd1b1ba420cf8f0b77fab0b0327c65eb8a4c942490506573cdb172f65a3fac0"
+      },
+      {
+        "path": "src/engine/vendor/pallet/rng.ts",
+        "sha256": "d9aece855fa8d41e454e8caaffb36114a9fd6abf4aced327832a2efc7ce551cc"
+      },
+      {
+        "path": "src/engine/vendor/pallet/robotReach.ts",
+        "sha256": "a25c8f7c6a370536887deba817517b9bbdf6efcd10df8ce82a025e97e3d270dd"
+      },
+      {
+        "path": "src/engine/vendor/pallet/scenarios.ts",
+        "sha256": "f0ceffd078219c6dcb39474514c118b402dd1e6d7c191a4d5559ae1ae8a2e588"
+      },
+      {
+        "path": "src/engine/vendor/pallet/stability.ts",
+        "sha256": "4302e1a0d02ff747008607cf22528d99706ae31461016572a67fec300be86752"
+      },
+      {
+        "path": "src/engine/vendor/pallet/standingHeight.ts",
+        "sha256": "c7027709a5fea97d534c0040b2f9e16dddffb28ae5640a98ceb72d70b9fb7d73"
+      },
+      {
+        "path": "src/engine/vendor/pallet/stockPlanner.ts",
+        "sha256": "9aff69789ec3dd3b6108a2d150580a47b1c4c2ea1c400c7acf8e16c460e62060"
+      },
+      {
+        "path": "src/engine/vendor/pallet/strategies/DynamicReservationStrategy.ts",
+        "sha256": "9434c83e4293b397489904d9f2fd8e3ce0fcd3fdee152cfe425f871f259b5864"
+      },
+      {
+        "path": "src/engine/vendor/pallet/strategies/GreedyStrategy.ts",
+        "sha256": "6e4186a16d6516385fe30419bda165c273094ecf893c5c6d7baca93e0c6c45f5"
+      },
+      {
+        "path": "src/engine/vendor/pallet/strategies/HybridStrategy.ts",
+        "sha256": "d31696f1b9f72eb6b0be69184f92e10223a32eb8d2d00106c024d35092cb9649"
+      },
+      {
+        "path": "src/engine/vendor/pallet/strategies/LookaheadStrategy.ts",
+        "sha256": "1bfb774f9ee0c67f60da427a40007722f9bcca156f12829b52eb874aad738340"
+      },
+      {
+        "path": "src/engine/vendor/pallet/strategies/MacsStrategy.ts",
+        "sha256": "4518e6ead05dc3a402d89dcf00e77f8d0713c30abe8294400079c342a749b41d"
+      },
+      {
+        "path": "src/engine/vendor/pallet/strategies/PackingStrategy.ts",
+        "sha256": "f7c6125ef8335b3a84d6c015ddc285ed517c7ff0d60b1ee6dc9e0e1f4ef211e0"
+      },
+      {
+        "path": "src/engine/vendor/pallet/strategies/TetrisReservationStrategy.ts",
+        "sha256": "d1f6f5bcf44dc21ac5e9d14691a0c3f46f4f2e9292b9d161f38f6d4ff93d63c7"
+      },
+      {
+        "path": "src/engine/vendor/pallet/strategies/currentScore.ts",
+        "sha256": "c328a3a5b61b9c5e314447a244be52f0a63f3767bd52c9674c5cb12f17b605a4"
+      },
+      {
+        "path": "src/engine/vendor/pallet/strategies/demo.ts",
+        "sha256": "3e6a4add342b94e40cf20724b046730e24ad26a29642f0a42ab7b24d89cf3b78"
+      },
+      {
+        "path": "src/engine/vendor/pallet/strategies/evaluator.ts",
+        "sha256": "4012b5053dde03a8d7960517f7200d6a72ee1d7c168ff9fbdb1aea0c847b91fd"
+      },
+      {
+        "path": "src/engine/vendor/pallet/strategies/feasibility.ts",
+        "sha256": "f7721d81f37b6c44aa135fabb030ae264d6e8071e0c4f3e917188bc398c4ea1f"
+      },
+      {
+        "path": "src/engine/vendor/pallet/strategies/freeSpace.ts",
+        "sha256": "8b281778a868d6568e3902898e20854000059d6797557bf99b233d96177c9969"
+      },
+      {
+        "path": "src/engine/vendor/pallet/strategies/index.ts",
+        "sha256": "596f223fe8bf5e4e6561b76e5ae164fbb6ff7fb539bd8e43848249f3a0d1ff30"
+      },
+      {
+        "path": "src/engine/vendor/pallet/strategies/lookaheadSimulation.ts",
+        "sha256": "af79c22852f3e6c803a5076bc1e124bb18d49e0eb008a2f3973b1f91f18eef8b"
+      },
+      {
+        "path": "src/engine/vendor/pallet/strategies/metrics.ts",
+        "sha256": "81dbba69a426e05dc6543add4bd0ca25acc8109402496a1f5c9a88b3938466cd"
+      },
+      {
+        "path": "src/engine/vendor/pallet/surface.ts",
+        "sha256": "e1cdadb7d4faec51537b6a71c9209c62fe98db114437b67f29383cb83211ac41"
+      },
+      {
+        "path": "src/engine/vendor/pallet/temporaryBuffer.ts",
+        "sha256": "d726f343a6d0149e3441e494905a5612b770948ee2591cbcf8c27cea4f04d1c0"
+      },
+      {
+        "path": "src/engine/vendor/pallet/tiltRobot.ts",
+        "sha256": "4e410a3f906d6924db6566ceef6754da2b045d5ba3b11577234e90b12ea5c17f"
+      },
+      {
+        "path": "src/engine/vendor/pallet/types.ts",
+        "sha256": "7608a5f37423408f41f78f8e0a46ba4ca1afb07f61ad99cdabdab9046f7bb242"
+      },
+      {
+        "path": "src/engine/vendor/provenance.json",
+        "sha256": "5207c0af2cc45247eaba496aac38caac41ea6990ddda8de560bee7db85f57b0f"
+      },
+      {
+        "path": "src/metrics/benchmark.ts",
+        "sha256": "2f2388b8d16ac72e8e8206375713ab4938d02dda7f1409cbac5976eb9b309fa5"
+      },
+      {
+        "path": "src/metrics/from-trial.ts",
+        "sha256": "ef0c391a817bdc0f605205a01e8423db04acc1be684504a76d26e8cc4a06dcdf"
+      },
+      {
+        "path": "src/metrics/quality.ts",
+        "sha256": "79046a1f09c3e60034b9f4fd9b48a5063987a4536811cf69b4bdeaf48ad3a87c"
+      },
+      {
+        "path": "src/metrics/statistics.ts",
+        "sha256": "e35f498159139288f39e825eca9e1f5e9f59db4e9663fcc3897e80f6b05c5a30"
+      },
+      {
+        "path": "scripts/benchmark.ts",
+        "sha256": "1ab2e7b02d4fb6f00de755df5c65540b6fc02e5b9971e248720a6c774c1bffb0"
+      },
+      {
+        "path": "scripts/benchmark-worker.ts",
+        "sha256": "f35172b9df07f7b49ca1d75b8aa570b410c8f75be54d431893cdae000aedf41b"
+      }
+    ],
+    "environment": {
+      "platform": "darwin",
+      "arch": "arm64",
+      "cpu": "Apple M5",
+      "node": "v24.14.1"
+    },
+    "engineTransport": "Node worker_threads with shared createPlannerSupervisor and canonical executePlanning",
+    "warmup": "separate 6-box seed 99100 per algorithm; excluded",
+    "timingUnit": "wall-clock milliseconds"
+  },
+  "trials": [
+    {
+      "id": "cycle-10:11040:blb",
+      "algorithm": "blb",
+      "seed": 11040,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 37,
+        "total": 72,
+        "fill": 0.5284944444444445,
+        "volumeMm3": 761032000,
+        "usedHeightMm": 1180,
+        "envelopeFill": 0.5374519774011299,
+        "allowedEmptyMm3": 678968000,
+        "envelopeEmptyMm3": 654968000,
+        "columnVoidMm3": 21276000,
+        "massKg": 222,
+        "center": {
+          "x": 611.081081081081,
+          "y": 480.1801801801802,
+          "z": 474.5045045045045
+        },
+        "cogHorizontalOffsetMm": 22.70717101744766,
+        "cogHeightMm": 474.5045045045045,
+        "minSupportRatio": 0.85,
+        "maxLoadRatio": 0.95,
+        "computeMs": 320.00945699999943,
+        "meanDecisionMs": 4.444575791666659,
+        "p95DecisionMs": 8.395833549999988,
+        "maxDecisionMs": 9.412833999999975,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 370,
+        "planningWaitSeconds": 0.00037183400030022407,
+        "totalSeconds": 370.0003718340003,
+        "storeProxy": {
+          "crossZoneBlockers": 18,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "b4ad7c9f",
+      "split": "discovery",
+      "traceUrl": "/results/trials/10s-11040-blb.json"
+    },
+    {
+      "id": "cycle-10:11040:capacity-compact",
+      "algorithm": "capacity-compact",
+      "seed": 11040,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 43,
+        "total": 72,
+        "fill": 0.6171944444444445,
+        "volumeMm3": 888760000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6171944444444445,
+        "allowedEmptyMm3": 551240000,
+        "envelopeEmptyMm3": 551240000,
+        "columnVoidMm3": 9096000,
+        "massKg": 264,
+        "center": {
+          "x": 626.7424242424242,
+          "y": 414.1287878787879,
+          "z": 499.0530303030303
+        },
+        "cogHorizontalOffsetMm": 89.93899224211937,
+        "cogHeightMm": 499.0530303030303,
+        "minSupportRatio": 0.9166666666666666,
+        "maxLoadRatio": 1,
+        "computeMs": 674.693921,
+        "meanDecisionMs": 9.370748902777779,
+        "p95DecisionMs": 20.808545649999797,
+        "maxDecisionMs": 24.22645799999964,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 430,
+        "planningWaitSeconds": 0.0006917910003138953,
+        "totalSeconds": 430.0006917910003,
+        "storeProxy": {
+          "crossZoneBlockers": 18,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "b4ad7c9f",
+      "split": "discovery",
+      "traceUrl": "/results/trials/10s-11040-capacity-compact.json"
+    },
+    {
+      "id": "cycle-10:11040:strategy-greedy",
+      "algorithm": "strategy-greedy",
+      "seed": 11040,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 37,
+        "total": 72,
+        "fill": 0.5089472222222222,
+        "volumeMm3": 732884000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.5089472222222222,
+        "allowedEmptyMm3": 707116000,
+        "envelopeEmptyMm3": 707116000,
+        "columnVoidMm3": 17024000,
+        "massKg": 233,
+        "center": {
+          "x": 550.7725321888412,
+          "y": 511.587982832618,
+          "z": 493.11158798283265
+        },
+        "cogHorizontalOffsetMm": 50.57296642701244,
+        "cogHeightMm": 493.11158798283265,
+        "minSupportRatio": 0.875,
+        "maxLoadRatio": 1,
+        "computeMs": 619.0963349999975,
+        "meanDecisionMs": 8.598560208333298,
+        "p95DecisionMs": 17.869806249999783,
+        "maxDecisionMs": 19.818958999999722,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 370,
+        "planningWaitSeconds": 0.0006122910003560364,
+        "totalSeconds": 370.0006122910004,
+        "storeProxy": {
+          "crossZoneBlockers": 12,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "b4ad7c9f",
+      "split": "discovery",
+      "traceUrl": "/results/trials/10s-11040-strategy-greedy.json"
+    },
+    {
+      "id": "cycle-10:11040:lookahead",
+      "algorithm": "lookahead",
+      "seed": 11040,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 38,
+        "total": 72,
+        "fill": 0.5260138888888889,
+        "volumeMm3": 757460000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.5260138888888889,
+        "allowedEmptyMm3": 682540000,
+        "envelopeEmptyMm3": 682540000,
+        "columnVoidMm3": 8304000,
+        "massKg": 241,
+        "center": {
+          "x": 535.2282157676349,
+          "y": 528.2157676348547,
+          "z": 517.5726141078839
+        },
+        "cogHorizontalOffsetMm": 70.65064455380558,
+        "cogHeightMm": 517.5726141078839,
+        "minSupportRatio": 0.9333333333333333,
+        "maxLoadRatio": 1,
+        "computeMs": 2568.134547999999,
+        "meanDecisionMs": 35.66853538888888,
+        "p95DecisionMs": 79.06079809999989,
+        "maxDecisionMs": 91.58550000000014,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 380,
+        "planningWaitSeconds": 0.0038480000002873256,
+        "totalSeconds": 380.0038480000003,
+        "storeProxy": {
+          "crossZoneBlockers": 15,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "b4ad7c9f",
+      "split": "discovery",
+      "traceUrl": "/results/trials/10s-11040-lookahead.json"
+    },
+    {
+      "id": "cycle-10:11040:future-hybrid",
+      "algorithm": "future-hybrid",
+      "seed": 11040,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 37,
+        "total": 72,
+        "fill": 0.5159611111111111,
+        "volumeMm3": 742984000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.5159611111111111,
+        "allowedEmptyMm3": 697016000,
+        "envelopeEmptyMm3": 697016000,
+        "columnVoidMm3": 15040000,
+        "massKg": 214,
+        "center": {
+          "x": 555.981308411215,
+          "y": 491.77570093457945,
+          "z": 521.6355140186915
+        },
+        "cogHorizontalOffsetMm": 44.78040089487868,
+        "cogHeightMm": 521.6355140186915,
+        "minSupportRatio": 0.875,
+        "maxLoadRatio": 1,
+        "computeMs": 6167.057415000001,
+        "meanDecisionMs": 85.65357520833335,
+        "p95DecisionMs": 297.95641030000036,
+        "maxDecisionMs": 343.09712500000023,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 370,
+        "planningWaitSeconds": 0.004126459000368798,
+        "totalSeconds": 370.00412645900036,
+        "storeProxy": {
+          "crossZoneBlockers": 18,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "b4ad7c9f",
+      "split": "discovery",
+      "traceUrl": "/results/trials/10s-11040-future-hybrid.json"
+    },
+    {
+      "id": "cycle-10:11040:mcts",
+      "algorithm": "mcts",
+      "seed": 11040,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 38,
+        "total": 72,
+        "fill": 0.5551277777777778,
+        "volumeMm3": 799384000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.5551277777777778,
+        "allowedEmptyMm3": 640616000,
+        "envelopeEmptyMm3": 640616000,
+        "columnVoidMm3": 18548000,
+        "massKg": 240,
+        "center": {
+          "x": 682.25,
+          "y": 440.7083333333333,
+          "z": 492.0833333333333
+        },
+        "cogHorizontalOffsetMm": 101.3931173014772,
+        "cogHeightMm": 492.0833333333333,
+        "minSupportRatio": 0.896,
+        "maxLoadRatio": 0.95,
+        "computeMs": 31464.740665000027,
+        "meanDecisionMs": 437.01028701388924,
+        "p95DecisionMs": 1236.935568750001,
+        "maxDecisionMs": 1605.163292000001,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 380,
+        "planningWaitSeconds": 0.25946666700035076,
+        "totalSeconds": 380.25946666700037,
+        "storeProxy": {
+          "crossZoneBlockers": 15,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "b4ad7c9f",
+      "split": "discovery",
+      "traceUrl": "/results/trials/10s-11040-mcts.json"
+    },
+    {
+      "id": "cycle-12:11040:lookahead",
+      "algorithm": "lookahead",
+      "seed": 11040,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 38,
+        "total": 72,
+        "fill": 0.5260138888888889,
+        "volumeMm3": 757460000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.5260138888888889,
+        "allowedEmptyMm3": 682540000,
+        "envelopeEmptyMm3": 682540000,
+        "columnVoidMm3": 8304000,
+        "massKg": 241,
+        "center": {
+          "x": 535.2282157676349,
+          "y": 528.2157676348547,
+          "z": 517.5726141078839
+        },
+        "cogHorizontalOffsetMm": 70.65064455380558,
+        "cogHeightMm": 517.5726141078839,
+        "minSupportRatio": 0.9333333333333333,
+        "maxLoadRatio": 1,
+        "computeMs": 2918.4934529999373,
+        "meanDecisionMs": 40.5346312916658,
+        "p95DecisionMs": 86.5781998500006,
+        "maxDecisionMs": 96.67324999999983,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 456,
+        "planningWaitSeconds": 0.0038097920003799194,
+        "totalSeconds": 456.00380979200037,
+        "storeProxy": {
+          "crossZoneBlockers": 15,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "e86446fd",
+      "split": "discovery",
+      "traceUrl": "/results/trials/12s-11040-lookahead.json"
+    },
+    {
+      "id": "cycle-12:11040:future-hybrid",
+      "algorithm": "future-hybrid",
+      "seed": 11040,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 37,
+        "total": 72,
+        "fill": 0.5159611111111111,
+        "volumeMm3": 742984000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.5159611111111111,
+        "allowedEmptyMm3": 697016000,
+        "envelopeEmptyMm3": 697016000,
+        "columnVoidMm3": 15040000,
+        "massKg": 214,
+        "center": {
+          "x": 555.981308411215,
+          "y": 491.77570093457945,
+          "z": 521.6355140186915
+        },
+        "cogHorizontalOffsetMm": 44.78040089487868,
+        "cogHeightMm": 521.6355140186915,
+        "minSupportRatio": 0.875,
+        "maxLoadRatio": 1,
+        "computeMs": 7224.153494999991,
+        "meanDecisionMs": 100.33546520833322,
+        "p95DecisionMs": 327.94280624999965,
+        "maxDecisionMs": 380.3012910000034,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 444,
+        "planningWaitSeconds": 0.004642334000400265,
+        "totalSeconds": 444.0046423340004,
+        "storeProxy": {
+          "crossZoneBlockers": 18,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "e86446fd",
+      "split": "discovery",
+      "traceUrl": "/results/trials/12s-11040-future-hybrid.json"
+    },
+    {
+      "id": "cycle-12:11040:mcts",
+      "algorithm": "mcts",
+      "seed": 11040,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 38,
+        "total": 72,
+        "fill": 0.5551277777777778,
+        "volumeMm3": 799384000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.5551277777777778,
+        "allowedEmptyMm3": 640616000,
+        "envelopeEmptyMm3": 640616000,
+        "columnVoidMm3": 18548000,
+        "massKg": 240,
+        "center": {
+          "x": 682.25,
+          "y": 440.7083333333333,
+          "z": 492.0833333333333
+        },
+        "cogHorizontalOffsetMm": 101.3931173014772,
+        "cogHeightMm": 492.0833333333333,
+        "minSupportRatio": 0.896,
+        "maxLoadRatio": 0.95,
+        "computeMs": 32740.81279099994,
+        "meanDecisionMs": 454.7335109861103,
+        "p95DecisionMs": 1396.32751219999,
+        "maxDecisionMs": 1666.5697079999954,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 456,
+        "planningWaitSeconds": 0.29193795800041594,
+        "totalSeconds": 456.2919379580004,
+        "storeProxy": {
+          "crossZoneBlockers": 15,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "e86446fd",
+      "split": "discovery",
+      "traceUrl": "/results/trials/12s-11040-mcts.json"
+    },
+    {
+      "id": "cycle-12:11040:blb",
+      "algorithm": "blb",
+      "seed": 11040,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 37,
+        "total": 72,
+        "fill": 0.5284944444444445,
+        "volumeMm3": 761032000,
+        "usedHeightMm": 1180,
+        "envelopeFill": 0.5374519774011299,
+        "allowedEmptyMm3": 678968000,
+        "envelopeEmptyMm3": 654968000,
+        "columnVoidMm3": 21276000,
+        "massKg": 222,
+        "center": {
+          "x": 611.081081081081,
+          "y": 480.1801801801802,
+          "z": 474.5045045045045
+        },
+        "cogHorizontalOffsetMm": 22.70717101744766,
+        "cogHeightMm": 474.5045045045045,
+        "minSupportRatio": 0.85,
+        "maxLoadRatio": 0.95,
+        "computeMs": 316.4910479999671,
+        "meanDecisionMs": 4.395708999999544,
+        "p95DecisionMs": 8.482481099996221,
+        "maxDecisionMs": 10.09275000001071,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 444,
+        "planningWaitSeconds": 0.0002920000004736216,
+        "totalSeconds": 444.00029200000046,
+        "storeProxy": {
+          "crossZoneBlockers": 18,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "e86446fd",
+      "split": "discovery",
+      "traceUrl": "/results/trials/12s-11040-blb.json"
+    },
+    {
+      "id": "cycle-12:11040:capacity-compact",
+      "algorithm": "capacity-compact",
+      "seed": 11040,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 43,
+        "total": 72,
+        "fill": 0.6171944444444445,
+        "volumeMm3": 888760000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6171944444444445,
+        "allowedEmptyMm3": 551240000,
+        "envelopeEmptyMm3": 551240000,
+        "columnVoidMm3": 9096000,
+        "massKg": 264,
+        "center": {
+          "x": 626.7424242424242,
+          "y": 414.1287878787879,
+          "z": 499.0530303030303
+        },
+        "cogHorizontalOffsetMm": 89.93899224211937,
+        "cogHeightMm": 499.0530303030303,
+        "minSupportRatio": 0.9166666666666666,
+        "maxLoadRatio": 1,
+        "computeMs": 690.0777949999901,
+        "meanDecisionMs": 9.584413819444308,
+        "p95DecisionMs": 20.225171350005258,
+        "maxDecisionMs": 23.481708999999682,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 516,
+        "planningWaitSeconds": 0.000391500000413072,
+        "totalSeconds": 516.0003915000004,
+        "storeProxy": {
+          "crossZoneBlockers": 18,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "e86446fd",
+      "split": "discovery",
+      "traceUrl": "/results/trials/12s-11040-capacity-compact.json"
+    },
+    {
+      "id": "cycle-12:11040:strategy-greedy",
+      "algorithm": "strategy-greedy",
+      "seed": 11040,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 37,
+        "total": 72,
+        "fill": 0.5089472222222222,
+        "volumeMm3": 732884000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.5089472222222222,
+        "allowedEmptyMm3": 707116000,
+        "envelopeEmptyMm3": 707116000,
+        "columnVoidMm3": 17024000,
+        "massKg": 233,
+        "center": {
+          "x": 550.7725321888412,
+          "y": 511.587982832618,
+          "z": 493.11158798283265
+        },
+        "cogHorizontalOffsetMm": 50.57296642701244,
+        "cogHeightMm": 493.11158798283265,
+        "minSupportRatio": 0.875,
+        "maxLoadRatio": 1,
+        "computeMs": 667.4501659998932,
+        "meanDecisionMs": 9.270141194442962,
+        "p95DecisionMs": 19.568424999996207,
+        "maxDecisionMs": 26.017250000004424,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 444,
+        "planningWaitSeconds": 0.0006169170004504419,
+        "totalSeconds": 444.00061691700046,
+        "storeProxy": {
+          "crossZoneBlockers": 12,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "e86446fd",
+      "split": "discovery",
+      "traceUrl": "/results/trials/12s-11040-strategy-greedy.json"
+    },
+    {
+      "id": "cycle-12:11041:future-hybrid",
+      "algorithm": "future-hybrid",
+      "seed": 11041,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 34,
+        "total": 72,
+        "fill": 0.5171555555555556,
+        "volumeMm3": 744704000,
+        "usedHeightMm": 1120,
+        "envelopeFill": 0.5540952380952381,
+        "allowedEmptyMm3": 695296000,
+        "envelopeEmptyMm3": 599296000,
+        "columnVoidMm3": 7440000,
+        "massKg": 190,
+        "center": {
+          "x": 657,
+          "y": 464.94736842105266,
+          "z": 499.7894736842105
+        },
+        "cogHorizontalOffsetMm": 66.91552122347562,
+        "cogHeightMm": 499.7894736842105,
+        "minSupportRatio": 0.9375,
+        "maxLoadRatio": 0.95,
+        "computeMs": 5967.077458999993,
+        "meanDecisionMs": 82.87607581944434,
+        "p95DecisionMs": 262.69235450000195,
+        "maxDecisionMs": 328.86320800000976,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 408,
+        "planningWaitSeconds": 0.0033592910004217416,
+        "totalSeconds": 408.00335929100044,
+        "storeProxy": {
+          "crossZoneBlockers": 16,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "5530d6f8",
+      "split": "discovery",
+      "traceUrl": "/results/trials/12s-11041-future-hybrid.json"
+    },
+    {
+      "id": "cycle-12:11041:mcts",
+      "algorithm": "mcts",
+      "seed": 11041,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 37,
+        "total": 72,
+        "fill": 0.5836833333333333,
+        "volumeMm3": 840504000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.5836833333333333,
+        "allowedEmptyMm3": 599496000,
+        "envelopeEmptyMm3": 599496000,
+        "columnVoidMm3": 32946000,
+        "massKg": 194,
+        "center": {
+          "x": 561.2371134020618,
+          "y": 479.58762886597935,
+          "z": 487.9896907216495
+        },
+        "cogHorizontalOffsetMm": 43.808974796468526,
+        "cogHeightMm": 487.9896907216495,
+        "minSupportRatio": 0.85,
+        "maxLoadRatio": 0.8780000000000003,
+        "computeMs": 37615.29754100001,
+        "meanDecisionMs": 522.4346880694445,
+        "p95DecisionMs": 1819.2875026000047,
+        "maxDecisionMs": 2091.5495410000003,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 444,
+        "planningWaitSeconds": 0.3259576250005084,
+        "totalSeconds": 444.3259576250005,
+        "storeProxy": {
+          "crossZoneBlockers": 15,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "5530d6f8",
+      "split": "discovery",
+      "traceUrl": "/results/trials/12s-11041-mcts.json"
+    },
+    {
+      "id": "cycle-12:11041:blb",
+      "algorithm": "blb",
+      "seed": 11041,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 34,
+        "total": 72,
+        "fill": 0.5138555555555555,
+        "volumeMm3": 739952000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.5138555555555555,
+        "allowedEmptyMm3": 700048000,
+        "envelopeEmptyMm3": 700048000,
+        "columnVoidMm3": 30109000,
+        "massKg": 184,
+        "center": {
+          "x": 553.3695652173913,
+          "y": 478.2608695652174,
+          "z": 487.44565217391306
+        },
+        "cogHorizontalOffsetMm": 51.448879871923545,
+        "cogHeightMm": 487.44565217391306,
+        "minSupportRatio": 0.85,
+        "maxLoadRatio": 1,
+        "computeMs": 305.63891699997475,
+        "meanDecisionMs": 4.244984958332982,
+        "p95DecisionMs": 6.689873099992111,
+        "maxDecisionMs": 7.399625000020023,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 408,
+        "planningWaitSeconds": 0.00032529200043488425,
+        "totalSeconds": 408.0003252920004,
+        "storeProxy": {
+          "crossZoneBlockers": 17,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "5530d6f8",
+      "split": "discovery",
+      "traceUrl": "/results/trials/12s-11041-blb.json"
+    },
+    {
+      "id": "cycle-12:11041:capacity-compact",
+      "algorithm": "capacity-compact",
+      "seed": 11041,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 35,
+        "total": 72,
+        "fill": 0.5292222222222223,
+        "volumeMm3": 762080000,
+        "usedHeightMm": 1180,
+        "envelopeFill": 0.5381920903954802,
+        "allowedEmptyMm3": 677920000,
+        "envelopeEmptyMm3": 653920000,
+        "columnVoidMm3": 2356000,
+        "massKg": 190,
+        "center": {
+          "x": 603.5263157894736,
+          "y": 480.5263157894737,
+          "z": 464.4736842105263
+        },
+        "cogHorizontalOffsetMm": 19.79038351771871,
+        "cogHeightMm": 464.4736842105263,
+        "minSupportRatio": 0.9375,
+        "maxLoadRatio": 1,
+        "computeMs": 574.473835000128,
+        "meanDecisionMs": 7.978803263890667,
+        "p95DecisionMs": 12.143685450001797,
+        "maxDecisionMs": 16.94108300001244,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 420,
+        "planningWaitSeconds": 0.0003956250004483122,
+        "totalSeconds": 420.00039562500046,
+        "storeProxy": {
+          "crossZoneBlockers": 9,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "5530d6f8",
+      "split": "discovery",
+      "traceUrl": "/results/trials/12s-11041-capacity-compact.json"
+    },
+    {
+      "id": "cycle-12:11041:strategy-greedy",
+      "algorithm": "strategy-greedy",
+      "seed": 11041,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 37,
+        "total": 72,
+        "fill": 0.5575222222222223,
+        "volumeMm3": 802832000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.5575222222222223,
+        "allowedEmptyMm3": 637168000,
+        "envelopeEmptyMm3": 637168000,
+        "columnVoidMm3": 8640000,
+        "massKg": 208,
+        "center": {
+          "x": 725.3846153846154,
+          "y": 530.3846153846154,
+          "z": 520.3846153846154
+        },
+        "cogHorizontalOffsetMm": 129.01366837362204,
+        "cogHeightMm": 520.3846153846154,
+        "minSupportRatio": 0.9375,
+        "maxLoadRatio": 0.6,
+        "computeMs": 630.7390410000808,
+        "meanDecisionMs": 8.760264458334454,
+        "p95DecisionMs": 15.789922950007895,
+        "maxDecisionMs": 17.955832999985432,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 444,
+        "planningWaitSeconds": 0.0012909590005010566,
+        "totalSeconds": 444.0012909590005,
+        "storeProxy": {
+          "crossZoneBlockers": 17,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "5530d6f8",
+      "split": "discovery",
+      "traceUrl": "/results/trials/12s-11041-strategy-greedy.json"
+    },
+    {
+      "id": "cycle-12:11041:lookahead",
+      "algorithm": "lookahead",
+      "seed": 11041,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 37,
+        "total": 72,
+        "fill": 0.5575222222222223,
+        "volumeMm3": 802832000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.5575222222222223,
+        "allowedEmptyMm3": 637168000,
+        "envelopeEmptyMm3": 637168000,
+        "columnVoidMm3": 8640000,
+        "massKg": 208,
+        "center": {
+          "x": 727.5,
+          "y": 526.7307692307693,
+          "z": 520.3846153846154
+        },
+        "cogHorizontalOffsetMm": 130.27196177101442,
+        "cogHeightMm": 520.3846153846154,
+        "minSupportRatio": 0.9375,
+        "maxLoadRatio": 0.6,
+        "computeMs": 2644.408965000068,
+        "meanDecisionMs": 36.72790229166761,
+        "p95DecisionMs": 77.23653544998962,
+        "maxDecisionMs": 98.12054200001876,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 444,
+        "planningWaitSeconds": 0.003771667000386906,
+        "totalSeconds": 444.00377166700036,
+        "storeProxy": {
+          "crossZoneBlockers": 17,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "5530d6f8",
+      "split": "discovery",
+      "traceUrl": "/results/trials/12s-11041-lookahead.json"
+    },
+    {
+      "id": "cycle-10:11041:capacity-compact",
+      "algorithm": "capacity-compact",
+      "seed": 11041,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 35,
+        "total": 72,
+        "fill": 0.5292222222222223,
+        "volumeMm3": 762080000,
+        "usedHeightMm": 1180,
+        "envelopeFill": 0.5381920903954802,
+        "allowedEmptyMm3": 677920000,
+        "envelopeEmptyMm3": 653920000,
+        "columnVoidMm3": 2356000,
+        "massKg": 190,
+        "center": {
+          "x": 603.5263157894736,
+          "y": 480.5263157894737,
+          "z": 464.4736842105263
+        },
+        "cogHorizontalOffsetMm": 19.79038351771871,
+        "cogHeightMm": 464.4736842105263,
+        "minSupportRatio": 0.9375,
+        "maxLoadRatio": 1,
+        "computeMs": 585.0881220001029,
+        "meanDecisionMs": 8.126223916668096,
+        "p95DecisionMs": 12.17474145002052,
+        "maxDecisionMs": 24.577541000006022,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 350,
+        "planningWaitSeconds": 0.0005674170003588297,
+        "totalSeconds": 350.00056741700035,
+        "storeProxy": {
+          "crossZoneBlockers": 9,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "cf05d78a",
+      "split": "discovery",
+      "traceUrl": "/results/trials/10s-11041-capacity-compact.json"
+    },
+    {
+      "id": "cycle-10:11041:strategy-greedy",
+      "algorithm": "strategy-greedy",
+      "seed": 11041,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 37,
+        "total": 72,
+        "fill": 0.5575222222222223,
+        "volumeMm3": 802832000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.5575222222222223,
+        "allowedEmptyMm3": 637168000,
+        "envelopeEmptyMm3": 637168000,
+        "columnVoidMm3": 8640000,
+        "massKg": 208,
+        "center": {
+          "x": 725.3846153846154,
+          "y": 530.3846153846154,
+          "z": 520.3846153846154
+        },
+        "cogHorizontalOffsetMm": 129.01366837362204,
+        "cogHeightMm": 520.3846153846154,
+        "minSupportRatio": 0.9375,
+        "maxLoadRatio": 0.6,
+        "computeMs": 654.7156250000116,
+        "meanDecisionMs": 9.093272569444606,
+        "p95DecisionMs": 15.818991450004981,
+        "maxDecisionMs": 20.345708000008017,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 370,
+        "planningWaitSeconds": 0.0005391250003243037,
+        "totalSeconds": 370.00053912500033,
+        "storeProxy": {
+          "crossZoneBlockers": 17,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "cf05d78a",
+      "split": "discovery",
+      "traceUrl": "/results/trials/10s-11041-strategy-greedy.json"
+    },
+    {
+      "id": "cycle-10:11041:lookahead",
+      "algorithm": "lookahead",
+      "seed": 11041,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 37,
+        "total": 72,
+        "fill": 0.5575222222222223,
+        "volumeMm3": 802832000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.5575222222222223,
+        "allowedEmptyMm3": 637168000,
+        "envelopeEmptyMm3": 637168000,
+        "columnVoidMm3": 8640000,
+        "massKg": 208,
+        "center": {
+          "x": 727.5,
+          "y": 526.7307692307693,
+          "z": 520.3846153846154
+        },
+        "cogHorizontalOffsetMm": 130.27196177101442,
+        "cogHeightMm": 520.3846153846154,
+        "minSupportRatio": 0.9375,
+        "maxLoadRatio": 0.6,
+        "computeMs": 2454.124960999936,
+        "meanDecisionMs": 34.08506890277689,
+        "p95DecisionMs": 69.18369404999103,
+        "maxDecisionMs": 82.25920900001074,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 370,
+        "planningWaitSeconds": 0.003907459000328232,
+        "totalSeconds": 370.00390745900035,
+        "storeProxy": {
+          "crossZoneBlockers": 17,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "cf05d78a",
+      "split": "discovery",
+      "traceUrl": "/results/trials/10s-11041-lookahead.json"
+    },
+    {
+      "id": "cycle-10:11041:future-hybrid",
+      "algorithm": "future-hybrid",
+      "seed": 11041,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 34,
+        "total": 72,
+        "fill": 0.5171555555555556,
+        "volumeMm3": 744704000,
+        "usedHeightMm": 1120,
+        "envelopeFill": 0.5540952380952381,
+        "allowedEmptyMm3": 695296000,
+        "envelopeEmptyMm3": 599296000,
+        "columnVoidMm3": 7440000,
+        "massKg": 190,
+        "center": {
+          "x": 657,
+          "y": 464.94736842105266,
+          "z": 499.7894736842105
+        },
+        "cogHorizontalOffsetMm": 66.91552122347562,
+        "cogHeightMm": 499.7894736842105,
+        "minSupportRatio": 0.9375,
+        "maxLoadRatio": 0.95,
+        "computeMs": 5841.790290000034,
+        "meanDecisionMs": 81.13597625000047,
+        "p95DecisionMs": 262.43351234999426,
+        "maxDecisionMs": 381.8633329999866,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 340,
+        "planningWaitSeconds": 0.0037074170004362935,
+        "totalSeconds": 340.00370741700044,
+        "storeProxy": {
+          "crossZoneBlockers": 16,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "cf05d78a",
+      "split": "discovery",
+      "traceUrl": "/results/trials/10s-11041-future-hybrid.json"
+    },
+    {
+      "id": "cycle-10:11041:mcts",
+      "algorithm": "mcts",
+      "seed": 11041,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 37,
+        "total": 72,
+        "fill": 0.5836833333333333,
+        "volumeMm3": 840504000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.5836833333333333,
+        "allowedEmptyMm3": 599496000,
+        "envelopeEmptyMm3": 599496000,
+        "columnVoidMm3": 32946000,
+        "massKg": 194,
+        "center": {
+          "x": 561.2371134020618,
+          "y": 479.58762886597935,
+          "z": 487.9896907216495
+        },
+        "cogHorizontalOffsetMm": 43.808974796468526,
+        "cogHeightMm": 487.9896907216495,
+        "minSupportRatio": 0.85,
+        "maxLoadRatio": 0.8780000000000003,
+        "computeMs": 36747.42408699985,
+        "meanDecisionMs": 510.3808900972201,
+        "p95DecisionMs": 1778.1535128000094,
+        "maxDecisionMs": 2132.0837499999907,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 370,
+        "planningWaitSeconds": 0.2766015830003499,
+        "totalSeconds": 370.27660158300034,
+        "storeProxy": {
+          "crossZoneBlockers": 15,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "cf05d78a",
+      "split": "discovery",
+      "traceUrl": "/results/trials/10s-11041-mcts.json"
+    },
+    {
+      "id": "cycle-10:11041:blb",
+      "algorithm": "blb",
+      "seed": 11041,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 34,
+        "total": 72,
+        "fill": 0.5138555555555555,
+        "volumeMm3": 739952000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.5138555555555555,
+        "allowedEmptyMm3": 700048000,
+        "envelopeEmptyMm3": 700048000,
+        "columnVoidMm3": 30109000,
+        "massKg": 184,
+        "center": {
+          "x": 553.3695652173913,
+          "y": 478.2608695652174,
+          "z": 487.44565217391306
+        },
+        "cogHorizontalOffsetMm": 51.448879871923545,
+        "cogHeightMm": 487.44565217391306,
+        "minSupportRatio": 0.85,
+        "maxLoadRatio": 1,
+        "computeMs": 294.50354699994205,
+        "meanDecisionMs": 4.090327041665862,
+        "p95DecisionMs": 6.38408125001006,
+        "maxDecisionMs": 7.27262500001234,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 340,
+        "planningWaitSeconds": 0.0004664160003858334,
+        "totalSeconds": 340.0004664160004,
+        "storeProxy": {
+          "crossZoneBlockers": 17,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "cf05d78a",
+      "split": "discovery",
+      "traceUrl": "/results/trials/10s-11041-blb.json"
+    },
+    {
+      "id": "cycle-10:11042:strategy-greedy",
+      "algorithm": "strategy-greedy",
+      "seed": 11042,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 35,
+        "total": 72,
+        "fill": 0.5487888888888889,
+        "volumeMm3": 790256000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.5487888888888889,
+        "allowedEmptyMm3": 649744000,
+        "envelopeEmptyMm3": 649744000,
+        "columnVoidMm3": 13032000,
+        "massKg": 216,
+        "center": {
+          "x": 500.97222222222223,
+          "y": 432.77777777777777,
+          "z": 537.2685185185185
+        },
+        "cogHorizontalOffsetMm": 119.688461984014,
+        "cogHeightMm": 537.2685185185185,
+        "minSupportRatio": 0.85,
+        "maxLoadRatio": 1,
+        "computeMs": 576.4275770001113,
+        "meanDecisionMs": 8.005938569445991,
+        "p95DecisionMs": 11.55397095001099,
+        "maxDecisionMs": 12.201666999986628,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 350,
+        "planningWaitSeconds": 0.0005422920003164247,
+        "totalSeconds": 350.0005422920003,
+        "storeProxy": {
+          "crossZoneBlockers": 14,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "db9c4269",
+      "split": "holdout",
+      "traceUrl": "/results/trials/10s-11042-strategy-greedy.json"
+    },
+    {
+      "id": "cycle-10:11042:lookahead",
+      "algorithm": "lookahead",
+      "seed": 11042,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 34,
+        "total": 72,
+        "fill": 0.5416361111111111,
+        "volumeMm3": 779956000,
+        "usedHeightMm": 1180,
+        "envelopeFill": 0.5508163841807909,
+        "allowedEmptyMm3": 660044000,
+        "envelopeEmptyMm3": 636044000,
+        "columnVoidMm3": 14132000,
+        "massKg": 211,
+        "center": {
+          "x": 507.1563981042654,
+          "y": 430.4739336492891,
+          "z": 519.5023696682465
+        },
+        "cogHorizontalOffsetMm": 115.99055269795512,
+        "cogHeightMm": 519.5023696682465,
+        "minSupportRatio": 0.85,
+        "maxLoadRatio": 0.9897055363641043,
+        "computeMs": 2277.798413999786,
+        "meanDecisionMs": 31.63608908333036,
+        "p95DecisionMs": 69.38402760001773,
+        "maxDecisionMs": 82.62074999997276,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 340,
+        "planningWaitSeconds": 0.003563958000286951,
+        "totalSeconds": 340.0035639580003,
+        "storeProxy": {
+          "crossZoneBlockers": 12,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "db9c4269",
+      "split": "holdout",
+      "traceUrl": "/results/trials/10s-11042-lookahead.json"
+    },
+    {
+      "id": "cycle-10:11042:future-hybrid",
+      "algorithm": "future-hybrid",
+      "seed": 11042,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 34,
+        "total": 72,
+        "fill": 0.5699694444444444,
+        "volumeMm3": 820756000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.5699694444444444,
+        "allowedEmptyMm3": 619244000,
+        "envelopeEmptyMm3": 619244000,
+        "columnVoidMm3": 9216000,
+        "massKg": 213,
+        "center": {
+          "x": 656.8544600938967,
+          "y": 444.17840375586854,
+          "z": 546.6431924882629
+        },
+        "cogHorizontalOffsetMm": 79.67735085839216,
+        "cogHeightMm": 546.6431924882629,
+        "minSupportRatio": 0.9375,
+        "maxLoadRatio": 0.95,
+        "computeMs": 5242.361208999791,
+        "meanDecisionMs": 72.81057234721932,
+        "p95DecisionMs": 228.43448544999265,
+        "maxDecisionMs": 334.97783299998264,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 340,
+        "planningWaitSeconds": 0.0042221660003394865,
+        "totalSeconds": 340.0042221660003,
+        "storeProxy": {
+          "crossZoneBlockers": 15,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "db9c4269",
+      "split": "holdout",
+      "traceUrl": "/results/trials/10s-11042-future-hybrid.json"
+    },
+    {
+      "id": "cycle-10:11042:mcts",
+      "algorithm": "mcts",
+      "seed": 11042,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 41,
+        "total": 72,
+        "fill": 0.6617583333333333,
+        "volumeMm3": 952932000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6617583333333333,
+        "allowedEmptyMm3": 487068000,
+        "envelopeEmptyMm3": 487068000,
+        "columnVoidMm3": 36410000,
+        "massKg": 259,
+        "center": {
+          "x": 625.7915057915058,
+          "y": 479.11196911196913,
+          "z": 568.2432432432432
+        },
+        "cogHorizontalOffsetMm": 33.18902838849921,
+        "cogHeightMm": 568.2432432432432,
+        "minSupportRatio": 0.85,
+        "maxLoadRatio": 0.9920360920331392,
+        "computeMs": 46580.890957999974,
+        "meanDecisionMs": 646.9568188611107,
+        "p95DecisionMs": 1820.458260599991,
+        "maxDecisionMs": 1914.4943330000096,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 410,
+        "planningWaitSeconds": 0.2762908330003581,
+        "totalSeconds": 410.27629083300036,
+        "storeProxy": {
+          "crossZoneBlockers": 15,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "db9c4269",
+      "split": "holdout",
+      "traceUrl": "/results/trials/10s-11042-mcts.json"
+    },
+    {
+      "id": "cycle-10:11042:blb",
+      "algorithm": "blb",
+      "seed": 11042,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 33,
+        "total": 72,
+        "fill": 0.5666888888888889,
+        "volumeMm3": 816032000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.5666888888888889,
+        "allowedEmptyMm3": 623968000,
+        "envelopeEmptyMm3": 623968000,
+        "columnVoidMm3": 28690000,
+        "massKg": 226,
+        "center": {
+          "x": 471.23893805309734,
+          "y": 507.65486725663715,
+          "z": 522.9646017699115
+        },
+        "cogHorizontalOffsetMm": 128.98840283688622,
+        "cogHeightMm": 522.9646017699115,
+        "minSupportRatio": 0.85,
+        "maxLoadRatio": 1,
+        "computeMs": 274.572039000137,
+        "meanDecisionMs": 3.8135005416685694,
+        "p95DecisionMs": 5.501731099994505,
+        "maxDecisionMs": 6.077416999993147,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 330,
+        "planningWaitSeconds": 0.00027433300034630407,
+        "totalSeconds": 330.00027433300033,
+        "storeProxy": {
+          "crossZoneBlockers": 12,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "db9c4269",
+      "split": "holdout",
+      "traceUrl": "/results/trials/10s-11042-blb.json"
+    },
+    {
+      "id": "cycle-10:11042:capacity-compact",
+      "algorithm": "capacity-compact",
+      "seed": 11042,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 41,
+        "total": 72,
+        "fill": 0.6404555555555556,
+        "volumeMm3": 922256000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6404555555555556,
+        "allowedEmptyMm3": 517744000,
+        "envelopeEmptyMm3": 517744000,
+        "columnVoidMm3": 10448000,
+        "massKg": 256,
+        "center": {
+          "x": 598.4375,
+          "y": 503.671875,
+          "z": 546.7578125
+        },
+        "cogHorizontalOffsetMm": 3.990497746600667,
+        "cogHeightMm": 546.7578125,
+        "minSupportRatio": 0.9333333333333333,
+        "maxLoadRatio": 1,
+        "computeMs": 652.4211269998341,
+        "meanDecisionMs": 9.061404541664363,
+        "p95DecisionMs": 15.522108449999369,
+        "maxDecisionMs": 29.380667000019457,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 410,
+        "planningWaitSeconds": 0.00039612500039737565,
+        "totalSeconds": 410.0003961250004,
+        "storeProxy": {
+          "crossZoneBlockers": 7,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "db9c4269",
+      "split": "holdout",
+      "traceUrl": "/results/trials/10s-11042-capacity-compact.json"
+    },
+    {
+      "id": "cycle-12:11042:mcts",
+      "algorithm": "mcts",
+      "seed": 11042,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 41,
+        "total": 72,
+        "fill": 0.6617583333333333,
+        "volumeMm3": 952932000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6617583333333333,
+        "allowedEmptyMm3": 487068000,
+        "envelopeEmptyMm3": 487068000,
+        "columnVoidMm3": 36410000,
+        "massKg": 259,
+        "center": {
+          "x": 625.7915057915058,
+          "y": 479.11196911196913,
+          "z": 568.2432432432432
+        },
+        "cogHorizontalOffsetMm": 33.18902838849921,
+        "cogHeightMm": 568.2432432432432,
+        "minSupportRatio": 0.85,
+        "maxLoadRatio": 0.9920360920331392,
+        "computeMs": 48822.02225299989,
+        "meanDecisionMs": 678.0836424027761,
+        "p95DecisionMs": 1888.068187650008,
+        "maxDecisionMs": 2054.8847499999974,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 492,
+        "planningWaitSeconds": 0.277264625000359,
+        "totalSeconds": 492.2772646250004,
+        "storeProxy": {
+          "crossZoneBlockers": 15,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "5b201363",
+      "split": "holdout",
+      "traceUrl": "/results/trials/12s-11042-mcts.json"
+    },
+    {
+      "id": "cycle-12:11042:blb",
+      "algorithm": "blb",
+      "seed": 11042,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 33,
+        "total": 72,
+        "fill": 0.5666888888888889,
+        "volumeMm3": 816032000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.5666888888888889,
+        "allowedEmptyMm3": 623968000,
+        "envelopeEmptyMm3": 623968000,
+        "columnVoidMm3": 28690000,
+        "massKg": 226,
+        "center": {
+          "x": 471.23893805309734,
+          "y": 507.65486725663715,
+          "z": 522.9646017699115
+        },
+        "cogHorizontalOffsetMm": 128.98840283688622,
+        "cogHeightMm": 522.9646017699115,
+        "minSupportRatio": 0.85,
+        "maxLoadRatio": 1,
+        "computeMs": 284.48391999979503,
+        "meanDecisionMs": 3.9511655555527088,
+        "p95DecisionMs": 5.743433699989692,
+        "maxDecisionMs": 7.426582999993116,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 396,
+        "planningWaitSeconds": 0.0007584160004338267,
+        "totalSeconds": 396.00075841600045,
+        "storeProxy": {
+          "crossZoneBlockers": 12,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "5b201363",
+      "split": "holdout",
+      "traceUrl": "/results/trials/12s-11042-blb.json"
+    },
+    {
+      "id": "cycle-12:11042:capacity-compact",
+      "algorithm": "capacity-compact",
+      "seed": 11042,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 41,
+        "total": 72,
+        "fill": 0.6404555555555556,
+        "volumeMm3": 922256000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6404555555555556,
+        "allowedEmptyMm3": 517744000,
+        "envelopeEmptyMm3": 517744000,
+        "columnVoidMm3": 10448000,
+        "massKg": 256,
+        "center": {
+          "x": 598.4375,
+          "y": 503.671875,
+          "z": 546.7578125
+        },
+        "cogHorizontalOffsetMm": 3.990497746600667,
+        "cogHeightMm": 546.7578125,
+        "minSupportRatio": 0.9333333333333333,
+        "maxLoadRatio": 1,
+        "computeMs": 632.6155399999698,
+        "meanDecisionMs": 8.786326944444024,
+        "p95DecisionMs": 15.40179200001294,
+        "maxDecisionMs": 18.788207999954466,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 492,
+        "planningWaitSeconds": 0.0004641660003154906,
+        "totalSeconds": 492.0004641660003,
+        "storeProxy": {
+          "crossZoneBlockers": 7,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "5b201363",
+      "split": "holdout",
+      "traceUrl": "/results/trials/12s-11042-capacity-compact.json"
+    },
+    {
+      "id": "cycle-12:11042:strategy-greedy",
+      "algorithm": "strategy-greedy",
+      "seed": 11042,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 35,
+        "total": 72,
+        "fill": 0.5487888888888889,
+        "volumeMm3": 790256000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.5487888888888889,
+        "allowedEmptyMm3": 649744000,
+        "envelopeEmptyMm3": 649744000,
+        "columnVoidMm3": 13032000,
+        "massKg": 216,
+        "center": {
+          "x": 500.97222222222223,
+          "y": 432.77777777777777,
+          "z": 537.2685185185185
+        },
+        "cogHorizontalOffsetMm": 119.688461984014,
+        "cogHeightMm": 537.2685185185185,
+        "minSupportRatio": 0.85,
+        "maxLoadRatio": 1,
+        "computeMs": 594.423003999982,
+        "meanDecisionMs": 8.255875055555306,
+        "p95DecisionMs": 12.27921454999596,
+        "maxDecisionMs": 12.923459000012372,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 420,
+        "planningWaitSeconds": 0.0005488330002763459,
+        "totalSeconds": 420.00054883300027,
+        "storeProxy": {
+          "crossZoneBlockers": 14,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "5b201363",
+      "split": "holdout",
+      "traceUrl": "/results/trials/12s-11042-strategy-greedy.json"
+    },
+    {
+      "id": "cycle-12:11042:lookahead",
+      "algorithm": "lookahead",
+      "seed": 11042,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 34,
+        "total": 72,
+        "fill": 0.5416361111111111,
+        "volumeMm3": 779956000,
+        "usedHeightMm": 1180,
+        "envelopeFill": 0.5508163841807909,
+        "allowedEmptyMm3": 660044000,
+        "envelopeEmptyMm3": 636044000,
+        "columnVoidMm3": 14132000,
+        "massKg": 211,
+        "center": {
+          "x": 507.1563981042654,
+          "y": 430.4739336492891,
+          "z": 519.5023696682465
+        },
+        "cogHorizontalOffsetMm": 115.99055269795512,
+        "cogHeightMm": 519.5023696682465,
+        "minSupportRatio": 0.85,
+        "maxLoadRatio": 0.9897055363641043,
+        "computeMs": 2238.2808329999098,
+        "meanDecisionMs": 31.087233791665412,
+        "p95DecisionMs": 65.00352704999678,
+        "maxDecisionMs": 88.15237500000512,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 408,
+        "planningWaitSeconds": 0.003464167000466808,
+        "totalSeconds": 408.00346416700046,
+        "storeProxy": {
+          "crossZoneBlockers": 12,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "5b201363",
+      "split": "holdout",
+      "traceUrl": "/results/trials/12s-11042-lookahead.json"
+    },
+    {
+      "id": "cycle-12:11042:future-hybrid",
+      "algorithm": "future-hybrid",
+      "seed": 11042,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 34,
+        "total": 72,
+        "fill": 0.5699694444444444,
+        "volumeMm3": 820756000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.5699694444444444,
+        "allowedEmptyMm3": 619244000,
+        "envelopeEmptyMm3": 619244000,
+        "columnVoidMm3": 9216000,
+        "massKg": 213,
+        "center": {
+          "x": 656.8544600938967,
+          "y": 444.17840375586854,
+          "z": 546.6431924882629
+        },
+        "cogHorizontalOffsetMm": 79.67735085839216,
+        "cogHeightMm": 546.6431924882629,
+        "minSupportRatio": 0.9375,
+        "maxLoadRatio": 0.95,
+        "computeMs": 6424.821913000022,
+        "meanDecisionMs": 89.23363768055586,
+        "p95DecisionMs": 286.7153854500357,
+        "maxDecisionMs": 403.78329199994914,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 408,
+        "planningWaitSeconds": 0.003643292000388432,
+        "totalSeconds": 408.0036432920004,
+        "storeProxy": {
+          "crossZoneBlockers": 15,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "5b201363",
+      "split": "holdout",
+      "traceUrl": "/results/trials/12s-11042-future-hybrid.json"
+    },
+    {
+      "id": "cycle-12:11043:blb",
+      "algorithm": "blb",
+      "seed": 11043,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 41,
+        "total": 72,
+        "fill": 0.6187027777777778,
+        "volumeMm3": 890932000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6187027777777778,
+        "allowedEmptyMm3": 549068000,
+        "envelopeEmptyMm3": 549068000,
+        "columnVoidMm3": 9440000,
+        "massKg": 231,
+        "center": {
+          "x": 616.060606060606,
+          "y": 437.7922077922078,
+          "z": 539.7186147186147
+        },
+        "cogHorizontalOffsetMm": 64.24758733525971,
+        "cogHeightMm": 539.7186147186147,
+        "minSupportRatio": 0.88,
+        "maxLoadRatio": 0.96,
+        "computeMs": 383.46249799989164,
+        "meanDecisionMs": 5.325868027776273,
+        "p95DecisionMs": 9.731381250006962,
+        "maxDecisionMs": 14.948625000019092,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 492,
+        "planningWaitSeconds": 0.0003449170002899089,
+        "totalSeconds": 492.0003449170003,
+        "storeProxy": {
+          "crossZoneBlockers": 19,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "f9ed60a0",
+      "split": "holdout",
+      "traceUrl": "/results/trials/12s-11043-blb.json"
+    },
+    {
+      "id": "cycle-12:11043:capacity-compact",
+      "algorithm": "capacity-compact",
+      "seed": 11043,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 41,
+        "total": 72,
+        "fill": 0.6187027777777778,
+        "volumeMm3": 890932000,
+        "usedHeightMm": 1190,
+        "envelopeFill": 0.6239019607843137,
+        "allowedEmptyMm3": 549068000,
+        "envelopeEmptyMm3": 537068000,
+        "columnVoidMm3": 4272000,
+        "massKg": 231,
+        "center": {
+          "x": 560.3896103896104,
+          "y": 485.1515151515151,
+          "z": 541.969696969697
+        },
+        "cogHorizontalOffsetMm": 42.30201493289111,
+        "cogHeightMm": 541.969696969697,
+        "minSupportRatio": 0.9333333333333333,
+        "maxLoadRatio": 0.95,
+        "computeMs": 703.8357570000808,
+        "meanDecisionMs": 9.775496625001121,
+        "p95DecisionMs": 19.269060299982083,
+        "maxDecisionMs": 21.243292000028305,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 492,
+        "planningWaitSeconds": 0.00046191600048930406,
+        "totalSeconds": 492.0004619160005,
+        "storeProxy": {
+          "crossZoneBlockers": 19,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "f9ed60a0",
+      "split": "holdout",
+      "traceUrl": "/results/trials/12s-11043-capacity-compact.json"
+    },
+    {
+      "id": "cycle-12:11043:strategy-greedy",
+      "algorithm": "strategy-greedy",
+      "seed": 11043,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 41,
+        "total": 72,
+        "fill": 0.6187027777777778,
+        "volumeMm3": 890932000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6187027777777778,
+        "allowedEmptyMm3": 549068000,
+        "envelopeEmptyMm3": 549068000,
+        "columnVoidMm3": 5952000,
+        "massKg": 231,
+        "center": {
+          "x": 518.1385281385282,
+          "y": 498.7878787878788,
+          "z": 539.3722943722944
+        },
+        "cogHorizontalOffsetMm": 81.87044529718536,
+        "cogHeightMm": 539.3722943722944,
+        "minSupportRatio": 0.9375,
+        "maxLoadRatio": 0.85,
+        "computeMs": 836.1932509998442,
+        "meanDecisionMs": 11.613795152775614,
+        "p95DecisionMs": 23.618005949995133,
+        "maxDecisionMs": 26.711417000042275,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 492,
+        "planningWaitSeconds": 0.0016361250004485455,
+        "totalSeconds": 492.00163612500046,
+        "storeProxy": {
+          "crossZoneBlockers": 20,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "f9ed60a0",
+      "split": "holdout",
+      "traceUrl": "/results/trials/12s-11043-strategy-greedy.json"
+    },
+    {
+      "id": "cycle-12:11043:lookahead",
+      "algorithm": "lookahead",
+      "seed": 11043,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 41,
+        "total": 72,
+        "fill": 0.6187027777777778,
+        "volumeMm3": 890932000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6187027777777778,
+        "allowedEmptyMm3": 549068000,
+        "envelopeEmptyMm3": 549068000,
+        "columnVoidMm3": 5952000,
+        "massKg": 231,
+        "center": {
+          "x": 518.1385281385282,
+          "y": 498.7878787878788,
+          "z": 539.3722943722944
+        },
+        "cogHorizontalOffsetMm": 81.87044529718536,
+        "cogHeightMm": 539.3722943722944,
+        "minSupportRatio": 0.9375,
+        "maxLoadRatio": 0.85,
+        "computeMs": 2889.647083999589,
+        "meanDecisionMs": 40.13398727777207,
+        "p95DecisionMs": 90.57363125000848,
+        "maxDecisionMs": 101.35362499998882,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 492,
+        "planningWaitSeconds": 0.00414508300046892,
+        "totalSeconds": 492.0041450830005,
+        "storeProxy": {
+          "crossZoneBlockers": 20,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "f9ed60a0",
+      "split": "holdout",
+      "traceUrl": "/results/trials/12s-11043-lookahead.json"
+    },
+    {
+      "id": "cycle-12:11043:future-hybrid",
+      "algorithm": "future-hybrid",
+      "seed": 11043,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 35,
+        "total": 72,
+        "fill": 0.6411666666666667,
+        "volumeMm3": 923280000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6411666666666667,
+        "allowedEmptyMm3": 516720000,
+        "envelopeEmptyMm3": 516720000,
+        "columnVoidMm3": 10368000,
+        "massKg": 200,
+        "center": {
+          "x": 497.15,
+          "y": 481.2,
+          "z": 539.15
+        },
+        "cogHorizontalOffsetMm": 104.55411278376383,
+        "cogHeightMm": 539.15,
+        "minSupportRatio": 0.859375,
+        "maxLoadRatio": 1,
+        "computeMs": 5995.152750999958,
+        "meanDecisionMs": 83.26601043055497,
+        "p95DecisionMs": 270.5983040999826,
+        "maxDecisionMs": 397.5527920000022,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 420,
+        "planningWaitSeconds": 0.0045180830003931395,
+        "totalSeconds": 420.0045180830004,
+        "storeProxy": {
+          "crossZoneBlockers": 20,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "f9ed60a0",
+      "split": "holdout",
+      "traceUrl": "/results/trials/12s-11043-future-hybrid.json"
+    },
+    {
+      "id": "cycle-12:11043:mcts",
+      "algorithm": "mcts",
+      "seed": 11043,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 43,
+        "total": 72,
+        "fill": 0.7024861111111111,
+        "volumeMm3": 1011580000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.7024861111111111,
+        "allowedEmptyMm3": 428420000,
+        "envelopeEmptyMm3": 428420000,
+        "columnVoidMm3": 26108000,
+        "massKg": 235,
+        "center": {
+          "x": 668.3404255319149,
+          "y": 502.6808510638298,
+          "z": 548.063829787234
+        },
+        "cogHorizontalOffsetMm": 68.39298739132282,
+        "cogHeightMm": 548.063829787234,
+        "minSupportRatio": 0.8666666666666667,
+        "maxLoadRatio": 0.9929479786819185,
+        "computeMs": 49902.66208500025,
+        "meanDecisionMs": 693.0925289583369,
+        "p95DecisionMs": 1980.687154200013,
+        "maxDecisionMs": 2660.903583999956,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 516,
+        "planningWaitSeconds": 0.3560801670004117,
+        "totalSeconds": 516.3560801670004,
+        "storeProxy": {
+          "crossZoneBlockers": 31,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "f9ed60a0",
+      "split": "holdout",
+      "traceUrl": "/results/trials/12s-11043-mcts.json"
+    },
+    {
+      "id": "cycle-10:11043:lookahead",
+      "algorithm": "lookahead",
+      "seed": 11043,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 41,
+        "total": 72,
+        "fill": 0.6187027777777778,
+        "volumeMm3": 890932000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6187027777777778,
+        "allowedEmptyMm3": 549068000,
+        "envelopeEmptyMm3": 549068000,
+        "columnVoidMm3": 5952000,
+        "massKg": 231,
+        "center": {
+          "x": 518.1385281385282,
+          "y": 498.7878787878788,
+          "z": 539.3722943722944
+        },
+        "cogHorizontalOffsetMm": 81.87044529718536,
+        "cogHeightMm": 539.3722943722944,
+        "minSupportRatio": 0.9375,
+        "maxLoadRatio": 0.85,
+        "computeMs": 3093.7554189998773,
+        "meanDecisionMs": 42.96882526388718,
+        "p95DecisionMs": 99.44739579998424,
+        "maxDecisionMs": 112.33325000002515,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 410,
+        "planningWaitSeconds": 0.00439262600030852,
+        "totalSeconds": 410.0043926260003,
+        "storeProxy": {
+          "crossZoneBlockers": 20,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "dcbdbc4a",
+      "split": "holdout",
+      "traceUrl": "/results/trials/10s-11043-lookahead.json"
+    },
+    {
+      "id": "cycle-10:11043:future-hybrid",
+      "algorithm": "future-hybrid",
+      "seed": 11043,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 35,
+        "total": 72,
+        "fill": 0.6411666666666667,
+        "volumeMm3": 923280000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6411666666666667,
+        "allowedEmptyMm3": 516720000,
+        "envelopeEmptyMm3": 516720000,
+        "columnVoidMm3": 10368000,
+        "massKg": 200,
+        "center": {
+          "x": 497.15,
+          "y": 481.2,
+          "z": 539.15
+        },
+        "cogHorizontalOffsetMm": 104.55411278376383,
+        "cogHeightMm": 539.15,
+        "minSupportRatio": 0.859375,
+        "maxLoadRatio": 1,
+        "computeMs": 5956.232916000066,
+        "meanDecisionMs": 82.72545716666758,
+        "p95DecisionMs": 288.57081600002715,
+        "maxDecisionMs": 370.117957999988,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 350,
+        "planningWaitSeconds": 0.004714166000452907,
+        "totalSeconds": 350.00471416600044,
+        "storeProxy": {
+          "crossZoneBlockers": 20,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "dcbdbc4a",
+      "split": "holdout",
+      "traceUrl": "/results/trials/10s-11043-future-hybrid.json"
+    },
+    {
+      "id": "cycle-10:11043:mcts",
+      "algorithm": "mcts",
+      "seed": 11043,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 43,
+        "total": 72,
+        "fill": 0.7024861111111111,
+        "volumeMm3": 1011580000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.7024861111111111,
+        "allowedEmptyMm3": 428420000,
+        "envelopeEmptyMm3": 428420000,
+        "columnVoidMm3": 26108000,
+        "massKg": 235,
+        "center": {
+          "x": 668.3404255319149,
+          "y": 502.6808510638298,
+          "z": 548.063829787234
+        },
+        "cogHorizontalOffsetMm": 68.39298739132282,
+        "cogHeightMm": 548.063829787234,
+        "minSupportRatio": 0.8666666666666667,
+        "maxLoadRatio": 0.9929479786819185,
+        "computeMs": 48419.46870800026,
+        "meanDecisionMs": 672.492620944448,
+        "p95DecisionMs": 2066.7110518999693,
+        "maxDecisionMs": 2579.7811249999795,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 430,
+        "planningWaitSeconds": 0.29742358300040234,
+        "totalSeconds": 430.2974235830004,
+        "storeProxy": {
+          "crossZoneBlockers": 31,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "dcbdbc4a",
+      "split": "holdout",
+      "traceUrl": "/results/trials/10s-11043-mcts.json"
+    },
+    {
+      "id": "cycle-10:11043:blb",
+      "algorithm": "blb",
+      "seed": 11043,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 41,
+        "total": 72,
+        "fill": 0.6187027777777778,
+        "volumeMm3": 890932000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6187027777777778,
+        "allowedEmptyMm3": 549068000,
+        "envelopeEmptyMm3": 549068000,
+        "columnVoidMm3": 9440000,
+        "massKg": 231,
+        "center": {
+          "x": 616.060606060606,
+          "y": 437.7922077922078,
+          "z": 539.7186147186147
+        },
+        "cogHorizontalOffsetMm": 64.24758733525971,
+        "cogHeightMm": 539.7186147186147,
+        "minSupportRatio": 0.88,
+        "maxLoadRatio": 0.96,
+        "computeMs": 340.1045799999265,
+        "meanDecisionMs": 4.723674722221201,
+        "p95DecisionMs": 9.386637650016928,
+        "maxDecisionMs": 10.009165999945253,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 410,
+        "planningWaitSeconds": 0.0008185830003647289,
+        "totalSeconds": 410.00081858300035,
+        "storeProxy": {
+          "crossZoneBlockers": 19,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "dcbdbc4a",
+      "split": "holdout",
+      "traceUrl": "/results/trials/10s-11043-blb.json"
+    },
+    {
+      "id": "cycle-10:11043:capacity-compact",
+      "algorithm": "capacity-compact",
+      "seed": 11043,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 41,
+        "total": 72,
+        "fill": 0.6187027777777778,
+        "volumeMm3": 890932000,
+        "usedHeightMm": 1190,
+        "envelopeFill": 0.6239019607843137,
+        "allowedEmptyMm3": 549068000,
+        "envelopeEmptyMm3": 537068000,
+        "columnVoidMm3": 4272000,
+        "massKg": 231,
+        "center": {
+          "x": 560.3896103896104,
+          "y": 485.1515151515151,
+          "z": 541.969696969697
+        },
+        "cogHorizontalOffsetMm": 42.30201493289111,
+        "cogHeightMm": 541.969696969697,
+        "minSupportRatio": 0.9333333333333333,
+        "maxLoadRatio": 0.95,
+        "computeMs": 638.3082089998061,
+        "meanDecisionMs": 8.865391791663974,
+        "p95DecisionMs": 18.085523250015104,
+        "maxDecisionMs": 19.434624999994412,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 410,
+        "planningWaitSeconds": 0.0004228750003048039,
+        "totalSeconds": 410.0004228750003,
+        "storeProxy": {
+          "crossZoneBlockers": 19,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "dcbdbc4a",
+      "split": "holdout",
+      "traceUrl": "/results/trials/10s-11043-capacity-compact.json"
+    },
+    {
+      "id": "cycle-10:11043:strategy-greedy",
+      "algorithm": "strategy-greedy",
+      "seed": 11043,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 41,
+        "total": 72,
+        "fill": 0.6187027777777778,
+        "volumeMm3": 890932000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6187027777777778,
+        "allowedEmptyMm3": 549068000,
+        "envelopeEmptyMm3": 549068000,
+        "columnVoidMm3": 5952000,
+        "massKg": 231,
+        "center": {
+          "x": 518.1385281385282,
+          "y": 498.7878787878788,
+          "z": 539.3722943722944
+        },
+        "cogHorizontalOffsetMm": 81.87044529718536,
+        "cogHeightMm": 539.3722943722944,
+        "minSupportRatio": 0.9375,
+        "maxLoadRatio": 0.85,
+        "computeMs": 762.3728320000228,
+        "meanDecisionMs": 10.588511555555872,
+        "p95DecisionMs": 22.85408124998794,
+        "maxDecisionMs": 26.25454200000968,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 410,
+        "planningWaitSeconds": 0.001754542000401835,
+        "totalSeconds": 410.0017545420004,
+        "storeProxy": {
+          "crossZoneBlockers": 20,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "dcbdbc4a",
+      "split": "holdout",
+      "traceUrl": "/results/trials/10s-11043-strategy-greedy.json"
+    },
+    {
+      "id": "cycle-10:11044:future-hybrid",
+      "algorithm": "future-hybrid",
+      "seed": 11044,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 42,
+        "total": 72,
+        "fill": 0.6587888888888889,
+        "volumeMm3": 948656000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6587888888888889,
+        "allowedEmptyMm3": 491344000,
+        "envelopeEmptyMm3": 491344000,
+        "columnVoidMm3": 4410000,
+        "massKg": 260,
+        "center": {
+          "x": 554.1153846153846,
+          "y": 458.2692307692308,
+          "z": 533.1923076923077
+        },
+        "cogHorizontalOffsetMm": 62.02302015853304,
+        "cogHeightMm": 533.1923076923077,
+        "minSupportRatio": 0.9375,
+        "maxLoadRatio": 1,
+        "computeMs": 8108.3471669998835,
+        "meanDecisionMs": 112.61593287499838,
+        "p95DecisionMs": 323.07667254998245,
+        "maxDecisionMs": 423.04812500003027,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 420,
+        "planningWaitSeconds": 0.0036426240004017495,
+        "totalSeconds": 420.0036426240004,
+        "storeProxy": {
+          "crossZoneBlockers": 16,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "a6f8501f",
+      "split": "holdout",
+      "traceUrl": "/results/trials/10s-11044-future-hybrid.json"
+    },
+    {
+      "id": "cycle-10:11044:mcts",
+      "algorithm": "mcts",
+      "seed": 11044,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 40,
+        "total": 72,
+        "fill": 0.6246555555555555,
+        "volumeMm3": 899504000,
+        "usedHeightMm": 1080,
+        "envelopeFill": 0.6940617283950617,
+        "allowedEmptyMm3": 540496000,
+        "envelopeEmptyMm3": 396496000,
+        "columnVoidMm3": 44011000,
+        "massKg": 244,
+        "center": {
+          "x": 682.0081967213115,
+          "y": 418.23770491803276,
+          "z": 504.05737704918033
+        },
+        "cogHorizontalOffsetMm": 115.8033558518578,
+        "cogHeightMm": 504.05737704918033,
+        "minSupportRatio": 0.85,
+        "maxLoadRatio": 1,
+        "computeMs": 46658.73442000011,
+        "meanDecisionMs": 648.0379780555571,
+        "p95DecisionMs": 1840.072439800008,
+        "maxDecisionMs": 2227.364500000025,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 400,
+        "planningWaitSeconds": 0.3391635830005836,
+        "totalSeconds": 400.3391635830006,
+        "storeProxy": {
+          "crossZoneBlockers": 18,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "a6f8501f",
+      "split": "holdout",
+      "traceUrl": "/results/trials/10s-11044-mcts.json"
+    },
+    {
+      "id": "cycle-10:11044:blb",
+      "algorithm": "blb",
+      "seed": 11044,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 40,
+        "total": 72,
+        "fill": 0.6026416666666666,
+        "volumeMm3": 867804000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6026416666666666,
+        "allowedEmptyMm3": 572196000,
+        "envelopeEmptyMm3": 572196000,
+        "columnVoidMm3": 29974000,
+        "massKg": 239,
+        "center": {
+          "x": 573.5146443514644,
+          "y": 439.3723849372385,
+          "z": 530.5648535564853
+        },
+        "cogHorizontalOffsetMm": 66.16027336723904,
+        "cogHeightMm": 530.5648535564853,
+        "minSupportRatio": 0.859375,
+        "maxLoadRatio": 1,
+        "computeMs": 359.9385010000551,
+        "meanDecisionMs": 4.999145847222987,
+        "p95DecisionMs": 8.469593749992782,
+        "maxDecisionMs": 9.158916000043973,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 400,
+        "planningWaitSeconds": 0.0005192080005020476,
+        "totalSeconds": 400.0005192080005,
+        "storeProxy": {
+          "crossZoneBlockers": 24,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "a6f8501f",
+      "split": "holdout",
+      "traceUrl": "/results/trials/10s-11044-blb.json"
+    },
+    {
+      "id": "cycle-10:11044:capacity-compact",
+      "algorithm": "capacity-compact",
+      "seed": 11044,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 41,
+        "total": 72,
+        "fill": 0.6076083333333333,
+        "volumeMm3": 874956000,
+        "usedHeightMm": 1160,
+        "envelopeFill": 0.6285603448275862,
+        "allowedEmptyMm3": 565044000,
+        "envelopeEmptyMm3": 517044000,
+        "columnVoidMm3": 6720000,
+        "massKg": 245,
+        "center": {
+          "x": 612.0816326530612,
+          "y": 488.3265306122449,
+          "z": 505.0408163265306
+        },
+        "cogHorizontalOffsetMm": 16.799873068281517,
+        "cogHeightMm": 505.0408163265306,
+        "minSupportRatio": 0.9375,
+        "maxLoadRatio": 0.95,
+        "computeMs": 721.7868719997932,
+        "meanDecisionMs": 10.024817666663795,
+        "p95DecisionMs": 18.492150000031693,
+        "maxDecisionMs": 21.5747080000001,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 410,
+        "planningWaitSeconds": 0.0004260830003413463,
+        "totalSeconds": 410.0004260830003,
+        "storeProxy": {
+          "crossZoneBlockers": 22,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "a6f8501f",
+      "split": "holdout",
+      "traceUrl": "/results/trials/10s-11044-capacity-compact.json"
+    },
+    {
+      "id": "cycle-10:11044:strategy-greedy",
+      "algorithm": "strategy-greedy",
+      "seed": 11044,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 41,
+        "total": 72,
+        "fill": 0.6247083333333333,
+        "volumeMm3": 899580000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6247083333333333,
+        "allowedEmptyMm3": 540420000,
+        "envelopeEmptyMm3": 540420000,
+        "columnVoidMm3": 4032000,
+        "massKg": 255,
+        "center": {
+          "x": 588.9803921568628,
+          "y": 445.11764705882354,
+          "z": 525.4705882352941
+        },
+        "cogHorizontalOffsetMm": 55.977713613333584,
+        "cogHeightMm": 525.4705882352941,
+        "minSupportRatio": 0.9375,
+        "maxLoadRatio": 1,
+        "computeMs": 908.719458000036,
+        "meanDecisionMs": 12.621103583333833,
+        "p95DecisionMs": 25.486831399958465,
+        "maxDecisionMs": 27.626041000010446,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 410,
+        "planningWaitSeconds": 0.0006469160004597218,
+        "totalSeconds": 410.00064691600045,
+        "storeProxy": {
+          "crossZoneBlockers": 18,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "a6f8501f",
+      "split": "holdout",
+      "traceUrl": "/results/trials/10s-11044-strategy-greedy.json"
+    },
+    {
+      "id": "cycle-10:11044:lookahead",
+      "algorithm": "lookahead",
+      "seed": 11044,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 41,
+        "total": 72,
+        "fill": 0.6247083333333333,
+        "volumeMm3": 899580000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6247083333333333,
+        "allowedEmptyMm3": 540420000,
+        "envelopeEmptyMm3": 540420000,
+        "columnVoidMm3": 4032000,
+        "massKg": 255,
+        "center": {
+          "x": 585.0588235294117,
+          "y": 467.54901960784315,
+          "z": 542.4117647058823
+        },
+        "cogHorizontalOffsetMm": 35.72540948313132,
+        "cogHeightMm": 542.4117647058823,
+        "minSupportRatio": 0.9375,
+        "maxLoadRatio": 1,
+        "computeMs": 3406.7861239999183,
+        "meanDecisionMs": 47.31647394444331,
+        "p95DecisionMs": 100.74259635001363,
+        "maxDecisionMs": 113.01091699994868,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 410,
+        "planningWaitSeconds": 0.003605334000405037,
+        "totalSeconds": 410.0036053340004,
+        "storeProxy": {
+          "crossZoneBlockers": 20,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "a6f8501f",
+      "split": "holdout",
+      "traceUrl": "/results/trials/10s-11044-lookahead.json"
+    },
+    {
+      "id": "cycle-12:11044:capacity-compact",
+      "algorithm": "capacity-compact",
+      "seed": 11044,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 41,
+        "total": 72,
+        "fill": 0.6076083333333333,
+        "volumeMm3": 874956000,
+        "usedHeightMm": 1160,
+        "envelopeFill": 0.6285603448275862,
+        "allowedEmptyMm3": 565044000,
+        "envelopeEmptyMm3": 517044000,
+        "columnVoidMm3": 6720000,
+        "massKg": 245,
+        "center": {
+          "x": 612.0816326530612,
+          "y": 488.3265306122449,
+          "z": 505.0408163265306
+        },
+        "cogHorizontalOffsetMm": 16.799873068281517,
+        "cogHeightMm": 505.0408163265306,
+        "minSupportRatio": 0.9375,
+        "maxLoadRatio": 0.95,
+        "computeMs": 745.720454999886,
+        "meanDecisionMs": 10.357228541665084,
+        "p95DecisionMs": 20.587685200016132,
+        "maxDecisionMs": 25.635416999983136,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 492,
+        "planningWaitSeconds": 0.0004247920004608525,
+        "totalSeconds": 492.00042479200044,
+        "storeProxy": {
+          "crossZoneBlockers": 22,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "ae51e025",
+      "split": "holdout",
+      "traceUrl": "/results/trials/12s-11044-capacity-compact.json"
+    },
+    {
+      "id": "cycle-12:11044:strategy-greedy",
+      "algorithm": "strategy-greedy",
+      "seed": 11044,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 41,
+        "total": 72,
+        "fill": 0.6247083333333333,
+        "volumeMm3": 899580000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6247083333333333,
+        "allowedEmptyMm3": 540420000,
+        "envelopeEmptyMm3": 540420000,
+        "columnVoidMm3": 4032000,
+        "massKg": 255,
+        "center": {
+          "x": 588.9803921568628,
+          "y": 445.11764705882354,
+          "z": 525.4705882352941
+        },
+        "cogHorizontalOffsetMm": 55.977713613333584,
+        "cogHeightMm": 525.4705882352941,
+        "minSupportRatio": 0.9375,
+        "maxLoadRatio": 1,
+        "computeMs": 878.6631199998665,
+        "meanDecisionMs": 12.20365444444259,
+        "p95DecisionMs": 25.08408094999905,
+        "maxDecisionMs": 27.26412499998696,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 492,
+        "planningWaitSeconds": 0.0010784990004710287,
+        "totalSeconds": 492.00107849900047,
+        "storeProxy": {
+          "crossZoneBlockers": 18,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "ae51e025",
+      "split": "holdout",
+      "traceUrl": "/results/trials/12s-11044-strategy-greedy.json"
+    },
+    {
+      "id": "cycle-12:11044:lookahead",
+      "algorithm": "lookahead",
+      "seed": 11044,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 41,
+        "total": 72,
+        "fill": 0.6247083333333333,
+        "volumeMm3": 899580000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6247083333333333,
+        "allowedEmptyMm3": 540420000,
+        "envelopeEmptyMm3": 540420000,
+        "columnVoidMm3": 4032000,
+        "massKg": 255,
+        "center": {
+          "x": 585.0588235294117,
+          "y": 467.54901960784315,
+          "z": 542.4117647058823
+        },
+        "cogHorizontalOffsetMm": 35.72540948313132,
+        "cogHeightMm": 542.4117647058823,
+        "minSupportRatio": 0.9375,
+        "maxLoadRatio": 1,
+        "computeMs": 3400.831626999774,
+        "meanDecisionMs": 47.23377259721909,
+        "p95DecisionMs": 101.62521279999346,
+        "maxDecisionMs": 105.75720799999544,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 492,
+        "planningWaitSeconds": 0.004489291000281731,
+        "totalSeconds": 492.00448929100025,
+        "storeProxy": {
+          "crossZoneBlockers": 20,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "ae51e025",
+      "split": "holdout",
+      "traceUrl": "/results/trials/12s-11044-lookahead.json"
+    },
+    {
+      "id": "cycle-12:11044:future-hybrid",
+      "algorithm": "future-hybrid",
+      "seed": 11044,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 42,
+        "total": 72,
+        "fill": 0.6587888888888889,
+        "volumeMm3": 948656000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6587888888888889,
+        "allowedEmptyMm3": 491344000,
+        "envelopeEmptyMm3": 491344000,
+        "columnVoidMm3": 4410000,
+        "massKg": 260,
+        "center": {
+          "x": 554.1153846153846,
+          "y": 458.2692307692308,
+          "z": 533.1923076923077
+        },
+        "cogHorizontalOffsetMm": 62.02302015853304,
+        "cogHeightMm": 533.1923076923077,
+        "minSupportRatio": 0.9375,
+        "maxLoadRatio": 1,
+        "computeMs": 8152.369792000041,
+        "meanDecisionMs": 113.22735822222279,
+        "p95DecisionMs": 318.8848751500046,
+        "maxDecisionMs": 410.3819169999915,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 504,
+        "planningWaitSeconds": 0.004084583000516362,
+        "totalSeconds": 504.0040845830005,
+        "storeProxy": {
+          "crossZoneBlockers": 16,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "ae51e025",
+      "split": "holdout",
+      "traceUrl": "/results/trials/12s-11044-future-hybrid.json"
+    },
+    {
+      "id": "cycle-12:11044:mcts",
+      "algorithm": "mcts",
+      "seed": 11044,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 40,
+        "total": 72,
+        "fill": 0.6246555555555555,
+        "volumeMm3": 899504000,
+        "usedHeightMm": 1080,
+        "envelopeFill": 0.6940617283950617,
+        "allowedEmptyMm3": 540496000,
+        "envelopeEmptyMm3": 396496000,
+        "columnVoidMm3": 44011000,
+        "massKg": 244,
+        "center": {
+          "x": 682.0081967213115,
+          "y": 418.23770491803276,
+          "z": 504.05737704918033
+        },
+        "cogHorizontalOffsetMm": 115.8033558518578,
+        "cogHeightMm": 504.05737704918033,
+        "minSupportRatio": 0.85,
+        "maxLoadRatio": 1,
+        "computeMs": 56902.831957999966,
+        "meanDecisionMs": 790.3171105277773,
+        "p95DecisionMs": 2379.564112199983,
+        "maxDecisionMs": 2689.5754169999855,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 480,
+        "planningWaitSeconds": 0.3387190000003743,
+        "totalSeconds": 480.33871900000037,
+        "storeProxy": {
+          "crossZoneBlockers": 18,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "ae51e025",
+      "split": "holdout",
+      "traceUrl": "/results/trials/12s-11044-mcts.json"
+    },
+    {
+      "id": "cycle-12:11044:blb",
+      "algorithm": "blb",
+      "seed": 11044,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 40,
+        "total": 72,
+        "fill": 0.6026416666666666,
+        "volumeMm3": 867804000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6026416666666666,
+        "allowedEmptyMm3": 572196000,
+        "envelopeEmptyMm3": 572196000,
+        "columnVoidMm3": 29974000,
+        "massKg": 239,
+        "center": {
+          "x": 573.5146443514644,
+          "y": 439.3723849372385,
+          "z": 530.5648535564853
+        },
+        "cogHorizontalOffsetMm": 66.16027336723904,
+        "cogHeightMm": 530.5648535564853,
+        "minSupportRatio": 0.859375,
+        "maxLoadRatio": 1,
+        "computeMs": 515.8893780004,
+        "meanDecisionMs": 7.165130250005556,
+        "p95DecisionMs": 11.642524699977367,
+        "maxDecisionMs": 30.879375000018626,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 480,
+        "planningWaitSeconds": 0.00039208400046711887,
+        "totalSeconds": 480.00039208400045,
+        "storeProxy": {
+          "crossZoneBlockers": 24,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "ae51e025",
+      "split": "holdout",
+      "traceUrl": "/results/trials/12s-11044-blb.json"
+    },
+    {
+      "id": "cycle-12:11045:strategy-greedy",
+      "algorithm": "strategy-greedy",
+      "seed": 11045,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 40,
+        "total": 72,
+        "fill": 0.6349694444444445,
+        "volumeMm3": 914356000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6349694444444445,
+        "allowedEmptyMm3": 525644000,
+        "envelopeEmptyMm3": 525644000,
+        "columnVoidMm3": 5856000,
+        "massKg": 231,
+        "center": {
+          "x": 627.4891774891775,
+          "y": 533.3766233766233,
+          "z": 522.6623376623377
+        },
+        "cogHorizontalOffsetMm": 43.23949429695565,
+        "cogHeightMm": 522.6623376623377,
+        "minSupportRatio": 0.8666666666666667,
+        "maxLoadRatio": 0.7499999999999998,
+        "computeMs": 818.5910440001171,
+        "meanDecisionMs": 11.369320055557182,
+        "p95DecisionMs": 16.32034635002492,
+        "maxDecisionMs": 35.61595899995882,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 480,
+        "planningWaitSeconds": 0.0007239580004961989,
+        "totalSeconds": 480.0007239580005,
+        "storeProxy": {
+          "crossZoneBlockers": 18,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "aa24ae78",
+      "split": "holdout",
+      "traceUrl": "/results/trials/12s-11045-strategy-greedy.json"
+    },
+    {
+      "id": "cycle-12:11045:lookahead",
+      "algorithm": "lookahead",
+      "seed": 11045,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 40,
+        "total": 72,
+        "fill": 0.6349694444444445,
+        "volumeMm3": 914356000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6349694444444445,
+        "allowedEmptyMm3": 525644000,
+        "envelopeEmptyMm3": 525644000,
+        "columnVoidMm3": 5856000,
+        "massKg": 231,
+        "center": {
+          "x": 627.4891774891775,
+          "y": 533.3766233766233,
+          "z": 522.6623376623377
+        },
+        "cogHorizontalOffsetMm": 43.23949429695565,
+        "cogHeightMm": 522.6623376623377,
+        "minSupportRatio": 0.8666666666666667,
+        "maxLoadRatio": 0.7499999999999998,
+        "computeMs": 3281.229201000184,
+        "meanDecisionMs": 45.57262779166922,
+        "p95DecisionMs": 95.51636844998575,
+        "maxDecisionMs": 113.56370900000911,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 480,
+        "planningWaitSeconds": 0.0054078330003523856,
+        "totalSeconds": 480.00540783300033,
+        "storeProxy": {
+          "crossZoneBlockers": 18,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "aa24ae78",
+      "split": "holdout",
+      "traceUrl": "/results/trials/12s-11045-lookahead.json"
+    },
+    {
+      "id": "cycle-12:11045:future-hybrid",
+      "algorithm": "future-hybrid",
+      "seed": 11045,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 36,
+        "total": 72,
+        "fill": 0.605925,
+        "volumeMm3": 872532000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.605925,
+        "allowedEmptyMm3": 567468000,
+        "envelopeEmptyMm3": 567468000,
+        "columnVoidMm3": 9648000,
+        "massKg": 219,
+        "center": {
+          "x": 509.5890410958904,
+          "y": 474.2009132420091,
+          "z": 563.082191780822
+        },
+        "cogHorizontalOffsetMm": 94.01986155864584,
+        "cogHeightMm": 563.082191780822,
+        "minSupportRatio": 0.9375,
+        "maxLoadRatio": 0.9,
+        "computeMs": 11524.02154000022,
+        "meanDecisionMs": 160.05585472222526,
+        "p95DecisionMs": 563.5748356000172,
+        "maxDecisionMs": 701.5470000000205,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 432,
+        "planningWaitSeconds": 0.004441083000359675,
+        "totalSeconds": 432.00444108300036,
+        "storeProxy": {
+          "crossZoneBlockers": 17,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "aa24ae78",
+      "split": "holdout",
+      "traceUrl": "/results/trials/12s-11045-future-hybrid.json"
+    },
+    {
+      "id": "cycle-12:11045:mcts",
+      "algorithm": "mcts",
+      "seed": 11045,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 37,
+        "total": 72,
+        "fill": 0.6374166666666666,
+        "volumeMm3": 917880000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6374166666666666,
+        "allowedEmptyMm3": 522120000,
+        "envelopeEmptyMm3": 522120000,
+        "columnVoidMm3": 19946000,
+        "massKg": 220,
+        "center": {
+          "x": 657.4090909090909,
+          "y": 409.95454545454544,
+          "z": 537.1363636363636
+        },
+        "cogHorizontalOffsetMm": 106.78945455102664,
+        "cogHeightMm": 537.1363636363636,
+        "minSupportRatio": 0.874,
+        "maxLoadRatio": 0.9,
+        "computeMs": 59973.086043000454,
+        "meanDecisionMs": 832.9595283750064,
+        "p95DecisionMs": 2617.8056896499766,
+        "maxDecisionMs": 3394.0431660000468,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 444,
+        "planningWaitSeconds": 0.516759875000385,
+        "totalSeconds": 444.5167598750004,
+        "storeProxy": {
+          "crossZoneBlockers": 18,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "aa24ae78",
+      "split": "holdout",
+      "traceUrl": "/results/trials/12s-11045-mcts.json"
+    },
+    {
+      "id": "cycle-12:11045:blb",
+      "algorithm": "blb",
+      "seed": 11045,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 38,
+        "total": 72,
+        "fill": 0.6417583333333333,
+        "volumeMm3": 924132000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6417583333333333,
+        "allowedEmptyMm3": 515868000,
+        "envelopeEmptyMm3": 515868000,
+        "columnVoidMm3": 31710000,
+        "massKg": 237,
+        "center": {
+          "x": 634.6413502109705,
+          "y": 426.8776371308017,
+          "z": 548.5864978902954
+        },
+        "cogHorizontalOffsetMm": 80.91293528239977,
+        "cogHeightMm": 548.5864978902954,
+        "minSupportRatio": 0.85,
+        "maxLoadRatio": 1,
+        "computeMs": 358.5477460002294,
+        "meanDecisionMs": 4.979829805558741,
+        "p95DecisionMs": 8.877849850035274,
+        "maxDecisionMs": 9.50691699993331,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 456,
+        "planningWaitSeconds": 0.00032212500038781156,
+        "totalSeconds": 456.00032212500037,
+        "storeProxy": {
+          "crossZoneBlockers": 24,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "aa24ae78",
+      "split": "holdout",
+      "traceUrl": "/results/trials/12s-11045-blb.json"
+    },
+    {
+      "id": "cycle-12:11045:capacity-compact",
+      "algorithm": "capacity-compact",
+      "seed": 11045,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 42,
+        "total": 72,
+        "fill": 0.7247972222222222,
+        "volumeMm3": 1043708000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.7247972222222222,
+        "allowedEmptyMm3": 396292000,
+        "envelopeEmptyMm3": 396292000,
+        "columnVoidMm3": 6616000,
+        "massKg": 255,
+        "center": {
+          "x": 585.0588235294117,
+          "y": 491.45098039215685,
+          "z": 548.9215686274509
+        },
+        "cogHorizontalOffsetMm": 17.21407826694615,
+        "cogHeightMm": 548.9215686274509,
+        "minSupportRatio": 0.9058823529411765,
+        "maxLoadRatio": 0.85,
+        "computeMs": 724.994084000471,
+        "meanDecisionMs": 10.06936227778432,
+        "p95DecisionMs": 21.387510900036435,
+        "maxDecisionMs": 23.553874999983236,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 504,
+        "planningWaitSeconds": 0.00041900100029657267,
+        "totalSeconds": 504.0004190010003,
+        "storeProxy": {
+          "crossZoneBlockers": 24,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "aa24ae78",
+      "split": "holdout",
+      "traceUrl": "/results/trials/12s-11045-capacity-compact.json"
+    },
+    {
+      "id": "cycle-10:11045:mcts",
+      "algorithm": "mcts",
+      "seed": 11045,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 37,
+        "total": 72,
+        "fill": 0.6374166666666666,
+        "volumeMm3": 917880000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6374166666666666,
+        "allowedEmptyMm3": 522120000,
+        "envelopeEmptyMm3": 522120000,
+        "columnVoidMm3": 19946000,
+        "massKg": 220,
+        "center": {
+          "x": 657.4090909090909,
+          "y": 409.95454545454544,
+          "z": 537.1363636363636
+        },
+        "cogHorizontalOffsetMm": 106.78945455102664,
+        "cogHeightMm": 537.1363636363636,
+        "minSupportRatio": 0.874,
+        "maxLoadRatio": 0.9,
+        "computeMs": 54369.24221100041,
+        "meanDecisionMs": 755.1283640416724,
+        "p95DecisionMs": 2800.1816000000226,
+        "maxDecisionMs": 3028.6846249999944,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 370,
+        "planningWaitSeconds": 0.2922158330004029,
+        "totalSeconds": 370.2922158330004,
+        "storeProxy": {
+          "crossZoneBlockers": 18,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "eec31292",
+      "split": "holdout",
+      "traceUrl": "/results/trials/10s-11045-mcts.json"
+    },
+    {
+      "id": "cycle-10:11045:blb",
+      "algorithm": "blb",
+      "seed": 11045,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 38,
+        "total": 72,
+        "fill": 0.6417583333333333,
+        "volumeMm3": 924132000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6417583333333333,
+        "allowedEmptyMm3": 515868000,
+        "envelopeEmptyMm3": 515868000,
+        "columnVoidMm3": 31710000,
+        "massKg": 237,
+        "center": {
+          "x": 634.6413502109705,
+          "y": 426.8776371308017,
+          "z": 548.5864978902954
+        },
+        "cogHorizontalOffsetMm": 80.91293528239977,
+        "cogHeightMm": 548.5864978902954,
+        "minSupportRatio": 0.85,
+        "maxLoadRatio": 1,
+        "computeMs": 389.5960359997116,
+        "meanDecisionMs": 5.41105605555155,
+        "p95DecisionMs": 9.67157500003814,
+        "maxDecisionMs": 10.963666000054218,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 380,
+        "planningWaitSeconds": 0.0003172920003445934,
+        "totalSeconds": 380.0003172920003,
+        "storeProxy": {
+          "crossZoneBlockers": 24,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "eec31292",
+      "split": "holdout",
+      "traceUrl": "/results/trials/10s-11045-blb.json"
+    },
+    {
+      "id": "cycle-10:11045:capacity-compact",
+      "algorithm": "capacity-compact",
+      "seed": 11045,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 42,
+        "total": 72,
+        "fill": 0.7247972222222222,
+        "volumeMm3": 1043708000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.7247972222222222,
+        "allowedEmptyMm3": 396292000,
+        "envelopeEmptyMm3": 396292000,
+        "columnVoidMm3": 6616000,
+        "massKg": 255,
+        "center": {
+          "x": 585.0588235294117,
+          "y": 491.45098039215685,
+          "z": 548.9215686274509
+        },
+        "cogHorizontalOffsetMm": 17.21407826694615,
+        "cogHeightMm": 548.9215686274509,
+        "minSupportRatio": 0.9058823529411765,
+        "maxLoadRatio": 0.85,
+        "computeMs": 704.0805019998224,
+        "meanDecisionMs": 9.778895861108644,
+        "p95DecisionMs": 19.38942880001269,
+        "maxDecisionMs": 22.268083999981172,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 420,
+        "planningWaitSeconds": 0.00044983300029745554,
+        "totalSeconds": 420.0004498330003,
+        "storeProxy": {
+          "crossZoneBlockers": 24,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "eec31292",
+      "split": "holdout",
+      "traceUrl": "/results/trials/10s-11045-capacity-compact.json"
+    },
+    {
+      "id": "cycle-10:11045:strategy-greedy",
+      "algorithm": "strategy-greedy",
+      "seed": 11045,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 40,
+        "total": 72,
+        "fill": 0.6349694444444445,
+        "volumeMm3": 914356000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6349694444444445,
+        "allowedEmptyMm3": 525644000,
+        "envelopeEmptyMm3": 525644000,
+        "columnVoidMm3": 5856000,
+        "massKg": 231,
+        "center": {
+          "x": 627.4891774891775,
+          "y": 533.3766233766233,
+          "z": 522.6623376623377
+        },
+        "cogHorizontalOffsetMm": 43.23949429695565,
+        "cogHeightMm": 522.6623376623377,
+        "minSupportRatio": 0.8666666666666667,
+        "maxLoadRatio": 0.7499999999999998,
+        "computeMs": 651.6573330005631,
+        "meanDecisionMs": 9.050796291674487,
+        "p95DecisionMs": 13.518758300028276,
+        "maxDecisionMs": 14.209166000015102,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 400,
+        "planningWaitSeconds": 0.001431626000409638,
+        "totalSeconds": 400.0014316260004,
+        "storeProxy": {
+          "crossZoneBlockers": 18,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "eec31292",
+      "split": "holdout",
+      "traceUrl": "/results/trials/10s-11045-strategy-greedy.json"
+    },
+    {
+      "id": "cycle-10:11045:lookahead",
+      "algorithm": "lookahead",
+      "seed": 11045,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 40,
+        "total": 72,
+        "fill": 0.6349694444444445,
+        "volumeMm3": 914356000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6349694444444445,
+        "allowedEmptyMm3": 525644000,
+        "envelopeEmptyMm3": 525644000,
+        "columnVoidMm3": 5856000,
+        "massKg": 231,
+        "center": {
+          "x": 627.4891774891775,
+          "y": 533.3766233766233,
+          "z": 522.6623376623377
+        },
+        "cogHorizontalOffsetMm": 43.23949429695565,
+        "cogHeightMm": 522.6623376623377,
+        "minSupportRatio": 0.8666666666666667,
+        "maxLoadRatio": 0.7499999999999998,
+        "computeMs": 2724.1258349992568,
+        "meanDecisionMs": 37.835081041656345,
+        "p95DecisionMs": 81.02193734998,
+        "maxDecisionMs": 97.61787499999627,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 400,
+        "planningWaitSeconds": 0.004281625000428216,
+        "totalSeconds": 400.00428162500043,
+        "storeProxy": {
+          "crossZoneBlockers": 18,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "eec31292",
+      "split": "holdout",
+      "traceUrl": "/results/trials/10s-11045-lookahead.json"
+    },
+    {
+      "id": "cycle-10:11045:future-hybrid",
+      "algorithm": "future-hybrid",
+      "seed": 11045,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 36,
+        "total": 72,
+        "fill": 0.605925,
+        "volumeMm3": 872532000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.605925,
+        "allowedEmptyMm3": 567468000,
+        "envelopeEmptyMm3": 567468000,
+        "columnVoidMm3": 9648000,
+        "massKg": 219,
+        "center": {
+          "x": 509.5890410958904,
+          "y": 474.2009132420091,
+          "z": 563.082191780822
+        },
+        "cogHorizontalOffsetMm": 94.01986155864584,
+        "cogHeightMm": 563.082191780822,
+        "minSupportRatio": 0.9375,
+        "maxLoadRatio": 0.9,
+        "computeMs": 7182.628174999612,
+        "meanDecisionMs": 99.7587246527724,
+        "p95DecisionMs": 326.4943874999707,
+        "maxDecisionMs": 348.99095900007524,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 360,
+        "planningWaitSeconds": 0.00459050000041662,
+        "totalSeconds": 360.0045905000004,
+        "storeProxy": {
+          "crossZoneBlockers": 17,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "eec31292",
+      "split": "holdout",
+      "traceUrl": "/results/trials/10s-11045-future-hybrid.json"
+    },
+    {
+      "id": "cycle-10:11046:blb",
+      "algorithm": "blb",
+      "seed": 11046,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 43,
+        "total": 72,
+        "fill": 0.6391888888888889,
+        "volumeMm3": 920432000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6391888888888889,
+        "allowedEmptyMm3": 519568000,
+        "envelopeEmptyMm3": 519568000,
+        "columnVoidMm3": 37300000,
+        "massKg": 232,
+        "center": {
+          "x": 584.4396551724138,
+          "y": 510.6034482758621,
+          "z": 523.7931034482758
+        },
+        "cogHorizontalOffsetMm": 18.829695868289274,
+        "cogHeightMm": 523.7931034482758,
+        "minSupportRatio": 0.859375,
+        "maxLoadRatio": 0.84,
+        "computeMs": 401.9211679997388,
+        "meanDecisionMs": 5.582238444440817,
+        "p95DecisionMs": 11.118035600008445,
+        "maxDecisionMs": 13.871416999958456,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 430,
+        "planningWaitSeconds": 0.00034233300033818635,
+        "totalSeconds": 430.00034233300033,
+        "storeProxy": {
+          "crossZoneBlockers": 13,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "8a3e3929",
+      "split": "holdout",
+      "traceUrl": "/results/trials/10s-11046-blb.json"
+    },
+    {
+      "id": "cycle-10:11046:capacity-compact",
+      "algorithm": "capacity-compact",
+      "seed": 11046,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 48,
+        "total": 72,
+        "fill": 0.7179222222222222,
+        "volumeMm3": 1033808000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.7179222222222222,
+        "allowedEmptyMm3": 406192000,
+        "envelopeEmptyMm3": 406192000,
+        "columnVoidMm3": 5660000,
+        "massKg": 260,
+        "center": {
+          "x": 552.1538461538462,
+          "y": 487.03846153846155,
+          "z": 525.4230769230769
+        },
+        "cogHorizontalOffsetMm": 49.570716326877495,
+        "cogHeightMm": 525.4230769230769,
+        "minSupportRatio": 0.9375,
+        "maxLoadRatio": 1,
+        "computeMs": 817.9455840000883,
+        "meanDecisionMs": 11.36035533333456,
+        "p95DecisionMs": 20.96359984999872,
+        "maxDecisionMs": 33.29649999993853,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 480,
+        "planningWaitSeconds": 0.0004925420003753486,
+        "totalSeconds": 480.00049254200036,
+        "storeProxy": {
+          "crossZoneBlockers": 15,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "8a3e3929",
+      "split": "holdout",
+      "traceUrl": "/results/trials/10s-11046-capacity-compact.json"
+    },
+    {
+      "id": "cycle-10:11046:strategy-greedy",
+      "algorithm": "strategy-greedy",
+      "seed": 11046,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 36,
+        "total": 72,
+        "fill": 0.5258888888888889,
+        "volumeMm3": 757280000,
+        "usedHeightMm": 1160,
+        "envelopeFill": 0.5440229885057472,
+        "allowedEmptyMm3": 682720000,
+        "envelopeEmptyMm3": 634720000,
+        "columnVoidMm3": 6336000,
+        "massKg": 182,
+        "center": {
+          "x": 668.6263736263736,
+          "y": 530.5494505494505,
+          "z": 485.7142857142857
+        },
+        "cogHorizontalOffsetMm": 75.11889300289208,
+        "cogHeightMm": 485.7142857142857,
+        "minSupportRatio": 0.9375,
+        "maxLoadRatio": 0.6599999999999999,
+        "computeMs": 785.9718329991447,
+        "meanDecisionMs": 10.916275458321454,
+        "p95DecisionMs": 20.934693599975436,
+        "maxDecisionMs": 26.580083000008017,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 360,
+        "planningWaitSeconds": 0.0006346240003501835,
+        "totalSeconds": 360.0006346240003,
+        "storeProxy": {
+          "crossZoneBlockers": 12,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "8a3e3929",
+      "split": "holdout",
+      "traceUrl": "/results/trials/10s-11046-strategy-greedy.json"
+    },
+    {
+      "id": "cycle-10:11046:lookahead",
+      "algorithm": "lookahead",
+      "seed": 11046,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 37,
+        "total": 72,
+        "fill": 0.5318611111111111,
+        "volumeMm3": 765880000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.5318611111111111,
+        "allowedEmptyMm3": 674120000,
+        "envelopeEmptyMm3": 674120000,
+        "columnVoidMm3": 9000000,
+        "massKg": 204,
+        "center": {
+          "x": 671.1764705882352,
+          "y": 528.4313725490196,
+          "z": 550.0980392156863
+        },
+        "cogHorizontalOffsetMm": 76.64484920997013,
+        "cogHeightMm": 550.0980392156863,
+        "minSupportRatio": 0.85,
+        "maxLoadRatio": 0.85,
+        "computeMs": 3442.373087999993,
+        "meanDecisionMs": 47.810737333333236,
+        "p95DecisionMs": 107.92571455001598,
+        "maxDecisionMs": 125.19366600003559,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 370,
+        "planningWaitSeconds": 0.003872917000378604,
+        "totalSeconds": 370.00387291700036,
+        "storeProxy": {
+          "crossZoneBlockers": 13,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "8a3e3929",
+      "split": "holdout",
+      "traceUrl": "/results/trials/10s-11046-lookahead.json"
+    },
+    {
+      "id": "cycle-10:11046:future-hybrid",
+      "algorithm": "future-hybrid",
+      "seed": 11046,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 38,
+        "total": 72,
+        "fill": 0.5833888888888888,
+        "volumeMm3": 840080000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.5833888888888888,
+        "allowedEmptyMm3": 599920000,
+        "envelopeEmptyMm3": 599920000,
+        "columnVoidMm3": 16352000,
+        "massKg": 212,
+        "center": {
+          "x": 648.7264150943396,
+          "y": 539.1037735849056,
+          "z": 546.8396226415094
+        },
+        "cogHorizontalOffsetMm": 62.476944839880325,
+        "cogHeightMm": 546.8396226415094,
+        "minSupportRatio": 0.86,
+        "maxLoadRatio": 0.9,
+        "computeMs": 10761.084251999506,
+        "meanDecisionMs": 149.45950349999313,
+        "p95DecisionMs": 477.81501494999407,
+        "maxDecisionMs": 722.1834579999559,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 380,
+        "planningWaitSeconds": 0.004059584000530441,
+        "totalSeconds": 380.0040595840005,
+        "storeProxy": {
+          "crossZoneBlockers": 12,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "8a3e3929",
+      "split": "holdout",
+      "traceUrl": "/results/trials/10s-11046-future-hybrid.json"
+    },
+    {
+      "id": "cycle-10:11046:mcts",
+      "algorithm": "mcts",
+      "seed": 11046,
+      "config": {
+        "cycleSeconds": 10,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 40,
+        "total": 72,
+        "fill": 0.6042222222222222,
+        "volumeMm3": 870080000,
+        "usedHeightMm": 1190,
+        "envelopeFill": 0.6092997198879552,
+        "allowedEmptyMm3": 569920000,
+        "envelopeEmptyMm3": 557920000,
+        "columnVoidMm3": 29552000,
+        "massKg": 206,
+        "center": {
+          "x": 590.2912621359224,
+          "y": 548.7864077669902,
+          "z": 523.3495145631068
+        },
+        "cogHorizontalOffsetMm": 49.74307161525533,
+        "cogHeightMm": 523.3495145631068,
+        "minSupportRatio": 0.8823529411764706,
+        "maxLoadRatio": 1,
+        "computeMs": 50757.36162399931,
+        "meanDecisionMs": 704.9633558888794,
+        "p95DecisionMs": 2168.2529140999663,
+        "maxDecisionMs": 2362.481708999956,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 400,
+        "planningWaitSeconds": 0.40152383300038275,
+        "totalSeconds": 400.4015238330004,
+        "storeProxy": {
+          "crossZoneBlockers": 18,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "8a3e3929",
+      "split": "holdout",
+      "traceUrl": "/results/trials/10s-11046-mcts.json"
+    },
+    {
+      "id": "cycle-12:11046:lookahead",
+      "algorithm": "lookahead",
+      "seed": 11046,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 37,
+        "total": 72,
+        "fill": 0.5318611111111111,
+        "volumeMm3": 765880000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.5318611111111111,
+        "allowedEmptyMm3": 674120000,
+        "envelopeEmptyMm3": 674120000,
+        "columnVoidMm3": 9000000,
+        "massKg": 204,
+        "center": {
+          "x": 671.1764705882352,
+          "y": 528.4313725490196,
+          "z": 550.0980392156863
+        },
+        "cogHorizontalOffsetMm": 76.64484920997013,
+        "cogHeightMm": 550.0980392156863,
+        "minSupportRatio": 0.85,
+        "maxLoadRatio": 0.85,
+        "computeMs": 3091.0930030001327,
+        "meanDecisionMs": 42.93184726389073,
+        "p95DecisionMs": 90.70144810000203,
+        "maxDecisionMs": 107.31445899989922,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 444,
+        "planningWaitSeconds": 0.004567584000349155,
+        "totalSeconds": 444.00456758400037,
+        "storeProxy": {
+          "crossZoneBlockers": 13,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "b4f9ebab",
+      "split": "holdout",
+      "traceUrl": "/results/trials/12s-11046-lookahead.json"
+    },
+    {
+      "id": "cycle-12:11046:future-hybrid",
+      "algorithm": "future-hybrid",
+      "seed": 11046,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 38,
+        "total": 72,
+        "fill": 0.5833888888888888,
+        "volumeMm3": 840080000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.5833888888888888,
+        "allowedEmptyMm3": 599920000,
+        "envelopeEmptyMm3": 599920000,
+        "columnVoidMm3": 16352000,
+        "massKg": 212,
+        "center": {
+          "x": 648.7264150943396,
+          "y": 539.1037735849056,
+          "z": 546.8396226415094
+        },
+        "cogHorizontalOffsetMm": 62.476944839880325,
+        "cogHeightMm": 546.8396226415094,
+        "minSupportRatio": 0.86,
+        "maxLoadRatio": 0.9,
+        "computeMs": 9451.978165999288,
+        "meanDecisionMs": 131.27747452776788,
+        "p95DecisionMs": 439.5088978500282,
+        "maxDecisionMs": 546.2496249999385,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 456,
+        "planningWaitSeconds": 0.003873875000429218,
+        "totalSeconds": 456.0038738750004,
+        "storeProxy": {
+          "crossZoneBlockers": 12,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "b4f9ebab",
+      "split": "holdout",
+      "traceUrl": "/results/trials/12s-11046-future-hybrid.json"
+    },
+    {
+      "id": "cycle-12:11046:mcts",
+      "algorithm": "mcts",
+      "seed": 11046,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 40,
+        "total": 72,
+        "fill": 0.6042222222222222,
+        "volumeMm3": 870080000,
+        "usedHeightMm": 1190,
+        "envelopeFill": 0.6092997198879552,
+        "allowedEmptyMm3": 569920000,
+        "envelopeEmptyMm3": 557920000,
+        "columnVoidMm3": 29552000,
+        "massKg": 206,
+        "center": {
+          "x": 590.2912621359224,
+          "y": 548.7864077669902,
+          "z": 523.3495145631068
+        },
+        "cogHorizontalOffsetMm": 49.74307161525533,
+        "cogHeightMm": 523.3495145631068,
+        "minSupportRatio": 0.8823529411764706,
+        "maxLoadRatio": 1,
+        "computeMs": 48011.09679200046,
+        "meanDecisionMs": 666.8207887777842,
+        "p95DecisionMs": 1867.1800062500295,
+        "maxDecisionMs": 2491.4408750000875,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 480,
+        "planningWaitSeconds": 0.4747130010003738,
+        "totalSeconds": 480.4747130010004,
+        "storeProxy": {
+          "crossZoneBlockers": 18,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "b4f9ebab",
+      "split": "holdout",
+      "traceUrl": "/results/trials/12s-11046-mcts.json"
+    },
+    {
+      "id": "cycle-12:11046:blb",
+      "algorithm": "blb",
+      "seed": 11046,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 43,
+        "total": 72,
+        "fill": 0.6391888888888889,
+        "volumeMm3": 920432000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.6391888888888889,
+        "allowedEmptyMm3": 519568000,
+        "envelopeEmptyMm3": 519568000,
+        "columnVoidMm3": 37300000,
+        "massKg": 232,
+        "center": {
+          "x": 584.4396551724138,
+          "y": 510.6034482758621,
+          "z": 523.7931034482758
+        },
+        "cogHorizontalOffsetMm": 18.829695868289274,
+        "cogHeightMm": 523.7931034482758,
+        "minSupportRatio": 0.859375,
+        "maxLoadRatio": 0.84,
+        "computeMs": 431.75558200036176,
+        "meanDecisionMs": 5.99660530556058,
+        "p95DecisionMs": 11.410003649967258,
+        "maxDecisionMs": 20.019500000053085,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 516,
+        "planningWaitSeconds": 0.0012729170003995909,
+        "totalSeconds": 516.0012729170004,
+        "storeProxy": {
+          "crossZoneBlockers": 13,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "b4f9ebab",
+      "split": "holdout",
+      "traceUrl": "/results/trials/12s-11046-blb.json"
+    },
+    {
+      "id": "cycle-12:11046:capacity-compact",
+      "algorithm": "capacity-compact",
+      "seed": 11046,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 48,
+        "total": 72,
+        "fill": 0.7179222222222222,
+        "volumeMm3": 1033808000,
+        "usedHeightMm": 1200,
+        "envelopeFill": 0.7179222222222222,
+        "allowedEmptyMm3": 406192000,
+        "envelopeEmptyMm3": 406192000,
+        "columnVoidMm3": 5660000,
+        "massKg": 260,
+        "center": {
+          "x": 552.1538461538462,
+          "y": 487.03846153846155,
+          "z": 525.4230769230769
+        },
+        "cogHorizontalOffsetMm": 49.570716326877495,
+        "cogHeightMm": 525.4230769230769,
+        "minSupportRatio": 0.9375,
+        "maxLoadRatio": 1,
+        "computeMs": 884.0560840000398,
+        "meanDecisionMs": 12.278556722222776,
+        "p95DecisionMs": 22.118050300021423,
+        "maxDecisionMs": 26.7640830000164,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 576,
+        "planningWaitSeconds": 0.0010197920005410304,
+        "totalSeconds": 576.0010197920005,
+        "storeProxy": {
+          "crossZoneBlockers": 15,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "b4f9ebab",
+      "split": "holdout",
+      "traceUrl": "/results/trials/12s-11046-capacity-compact.json"
+    },
+    {
+      "id": "cycle-12:11046:strategy-greedy",
+      "algorithm": "strategy-greedy",
+      "seed": 11046,
+      "config": {
+        "cycleSeconds": 12,
+        "recognitionDelaySeconds": 0,
+        "reserveSeconds": 1,
+        "maxHeightMm": 1200,
+        "quantityPerSku": 12,
+        "searchBudgetMs": null,
+        "maxCandidates": 48,
+        "mcts": {
+          "depth": 3,
+          "scenarios": 3,
+          "maxIterations": 384
+        }
+      },
+      "status": "finished",
+      "reason": "",
+      "violations": [],
+      "metrics": {
+        "count": 36,
+        "total": 72,
+        "fill": 0.5258888888888889,
+        "volumeMm3": 757280000,
+        "usedHeightMm": 1160,
+        "envelopeFill": 0.5440229885057472,
+        "allowedEmptyMm3": 682720000,
+        "envelopeEmptyMm3": 634720000,
+        "columnVoidMm3": 6336000,
+        "massKg": 182,
+        "center": {
+          "x": 668.6263736263736,
+          "y": 530.5494505494505,
+          "z": 485.7142857142857
+        },
+        "cogHorizontalOffsetMm": 75.11889300289208,
+        "cogHeightMm": 485.7142857142857,
+        "minSupportRatio": 0.9375,
+        "maxLoadRatio": 0.6599999999999999,
+        "computeMs": 908.9564540000865,
+        "meanDecisionMs": 12.624395194445647,
+        "p95DecisionMs": 22.630764649936463,
+        "maxDecisionMs": 29.508832999970764,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 432,
+        "planningWaitSeconds": 0.0012228740003487756,
+        "totalSeconds": 432.00122287400035,
+        "storeProxy": {
+          "crossZoneBlockers": 12,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      },
+      "sourceVersion": "common-engine-cycle/1-uct-port",
+      "inputFingerprint": "b4f9ebab",
+      "split": "holdout",
+      "traceUrl": "/results/trials/12s-11046-strategy-greedy.json"
+    }
+  ],
+  "assumptions": [
+    "New sequential executions in the same shared engine; no previous experiment rows reused.",
+    "Synthetic 72-box input: 12 per SKU × 6 SKUs; maximum cargo height 1200 mm; one pallet; temporary buffer 0.",
+    "Robot cycle targets 10 and 12 seconds are assumed operating targets, not measured robot cycle times.",
+    "Recognition delay 0 seconds and validation/communication reserve 1 second are assumptions: available planner windows 9000 and 11000 ms.",
+    "Heavy-over-light ordering prohibition excluded by mentor agreement; support, allowable top load and robot proxy checks remain active.",
+    "Same shared candidate-search configuration and physical validation; algorithms may search/rank candidates differently. MCTS models future sequences from remaining counts, not actual future arrival order.",
+    "Warm-up is a separate 6-box trial per algorithm and is excluded from benchmark rows.",
+    "Single shared machine; wall-clock timings include scheduler effects. These are not CPU-time or real-robot sensing/IK measurements.",
+    "Planner elapsed and worker dispatch elapsed are preserved separately; worker startup is excluded by the shared supervisor.",
+    "A watchdog can stop search at 9/11 seconds and still deliver an earlier validated incumbent within the 10/12-second full cycle. Search termination is recorded separately from cycle deadline failure.",
+    "Confidence intervals use independent arrival seeds (n=5 evaluation), Student t; pairwise intervals are exploratory and not multiplicity-adjusted.",
+    "Static CoG and envelope void are descriptive proxies, not experimentally validated transport stability or trapped void."
+  ],
+  "downloads": {
+    "png": "/results/benchmark-10s-quality.png",
+    "svg": "/results/benchmark-10s-quality.svg",
+    "csv": "/results/trials.csv",
+    "json": "/results/summary.json"
+  }
+}

@@ -1,0 +1,7526 @@
+{
+  "measuredAt": "2026-10-04T16:53:30.449Z",
+  "settings": {
+    "plannerSeed": 2026,
+    "topK": 6,
+    "samples": 4,
+    "depth": 3,
+    "maxCandidates": 96,
+    "virtualCandidates": 16,
+    "candidateMode": "frontier",
+    "inventoryMode": "geometry",
+    "portfolio": false,
+    "weights": {
+      "maximum": 30,
+      "mean": 16,
+      "roughness": 20,
+      "void": 25,
+      "flat": 8,
+      "balance": 12,
+      "time": 4,
+      "future": 45,
+      "stability": 24,
+      "inventory": 32,
+      "foundation": 24,
+      "load": 12,
+      "contact": 12,
+      "futureSurface": 24
+    },
+    "policy": "online",
+    "reserveProbes": 8
+  },
+  "results": [
+    {
+      "scenario": {
+        "version": 1,
+        "units": {
+          "length": "mm",
+          "weight": "kg",
+          "time": "s"
+        },
+        "id": "online-task",
+        "name": "과제 조건 · 무작위 혼합 박스 30개",
+        "pallet": {
+          "width": 1200,
+          "depth": 1000,
+          "maxHeight": 1600
+        },
+        "types": [
+          {
+            "id": "B1",
+            "name": "플라스틱 토트 · 개별 1",
+            "size": {
+              "w": 670,
+              "d": 538,
+              "h": 166
+            },
+            "weight": 8.34,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#6bcab7",
+            "material": "plastic",
+            "maxLoadKg": 65.78,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.72,
+            "friction": 0.33
+          },
+          {
+            "id": "B2",
+            "name": "얇은 플라스틱 · 개별 2",
+            "size": {
+              "w": 179,
+              "d": 192,
+              "h": 309
+            },
+            "weight": 3.29,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e8b86a",
+            "material": "plastic",
+            "maxLoadKg": 44.66,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.82,
+            "friction": 0.28
+          },
+          {
+            "id": "B3",
+            "name": "강화 골판지 · 개별 3",
+            "size": {
+              "w": 330,
+              "d": 446,
+              "h": 248
+            },
+            "weight": 10.05,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#80a9e8",
+            "material": "paper",
+            "maxLoadKg": 41.04,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.6,
+            "friction": 0.46
+          },
+          {
+            "id": "B4",
+            "name": "얇은 골판지 · 개별 4",
+            "size": {
+              "w": 512,
+              "d": 293,
+              "h": 90
+            },
+            "weight": 0.96,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#cc97df",
+            "material": "paper",
+            "maxLoadKg": 21.92,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.91,
+            "friction": 0.53
+          },
+          {
+            "id": "B5",
+            "name": "강화 골판지 · 개별 5",
+            "size": {
+              "w": 349,
+              "d": 381,
+              "h": 280
+            },
+            "weight": 6.63,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e69ca3",
+            "material": "paper",
+            "maxLoadKg": 0,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.76,
+            "friction": 0.58,
+            "handling": "no-top-load"
+          },
+          {
+            "id": "B6",
+            "name": "강화 골판지 · 개별 6",
+            "size": {
+              "w": 172,
+              "d": 310,
+              "h": 201
+            },
+            "weight": 3.41,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#93c788",
+            "material": "paper",
+            "maxLoadKg": 37.06,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.67,
+            "friction": 0.5
+          },
+          {
+            "id": "B7",
+            "name": "강화 골판지 · 개별 7",
+            "size": {
+              "w": 421,
+              "d": 141,
+              "h": 281
+            },
+            "weight": 2.48,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#6bcab7",
+            "material": "paper",
+            "maxLoadKg": 34.21,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.72,
+            "friction": 0.31
+          },
+          {
+            "id": "B8",
+            "name": "얇은 플라스틱 · 개별 8",
+            "size": {
+              "w": 341,
+              "d": 203,
+              "h": 303
+            },
+            "weight": 4.55,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e8b86a",
+            "material": "plastic",
+            "maxLoadKg": 13.05,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.98,
+            "friction": 0.27
+          },
+          {
+            "id": "B9",
+            "name": "얇은 플라스틱 · 개별 9",
+            "size": {
+              "w": 686,
+              "d": 396,
+              "h": 235
+            },
+            "weight": 21.28,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#80a9e8",
+            "material": "plastic",
+            "maxLoadKg": 23.24,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.58,
+            "friction": 0.27
+          },
+          {
+            "id": "B10",
+            "name": "플라스틱 토트 · 개별 10",
+            "size": {
+              "w": 276,
+              "d": 139,
+              "h": 366
+            },
+            "weight": 4.99,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#cc97df",
+            "material": "plastic",
+            "maxLoadKg": 42.08,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.78,
+            "friction": 0.63
+          },
+          {
+            "id": "B11",
+            "name": "플라스틱 토트 · 개별 11",
+            "size": {
+              "w": 570,
+              "d": 284,
+              "h": 146
+            },
+            "weight": 8.55,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e69ca3",
+            "material": "plastic",
+            "maxLoadKg": 50.36,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.56,
+            "friction": 0.38
+          },
+          {
+            "id": "B12",
+            "name": "강화 골판지 · 개별 12",
+            "size": {
+              "w": 492,
+              "d": 319,
+              "h": 115
+            },
+            "weight": 6.12,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#93c788",
+            "material": "paper",
+            "maxLoadKg": 51.46,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.8,
+            "friction": 0.42
+          },
+          {
+            "id": "B13",
+            "name": "얇은 골판지 · 개별 13",
+            "size": {
+              "w": 656,
+              "d": 286,
+              "h": 386
+            },
+            "weight": 4.73,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#6bcab7",
+            "material": "paper",
+            "maxLoadKg": 17.12,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.59,
+            "friction": 0.32
+          },
+          {
+            "id": "B14",
+            "name": "얇은 골판지 · 개별 14",
+            "size": {
+              "w": 568,
+              "d": 320,
+              "h": 408
+            },
+            "weight": 5.16,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e8b86a",
+            "material": "paper",
+            "maxLoadKg": 17.48,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.81,
+            "friction": 0.3
+          },
+          {
+            "id": "B15",
+            "name": "얇은 플라스틱 · 개별 15",
+            "size": {
+              "w": 694,
+              "d": 547,
+              "h": 280
+            },
+            "weight": 28.3,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#80a9e8",
+            "material": "plastic",
+            "maxLoadKg": 18.62,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.68,
+            "friction": 0.3
+          },
+          {
+            "id": "B16",
+            "name": "얇은 플라스틱 · 개별 16",
+            "size": {
+              "w": 446,
+              "d": 281,
+              "h": 222
+            },
+            "weight": 2.42,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#cc97df",
+            "material": "plastic",
+            "maxLoadKg": 14.58,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.6,
+            "friction": 0.21
+          },
+          {
+            "id": "B17",
+            "name": "얇은 골판지 · 개별 17",
+            "size": {
+              "w": 293,
+              "d": 524,
+              "h": 270
+            },
+            "weight": 5.1,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e69ca3",
+            "material": "paper",
+            "maxLoadKg": 10.45,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.72,
+            "friction": 0.29
+          },
+          {
+            "id": "B18",
+            "name": "플라스틱 토트 · 개별 18",
+            "size": {
+              "w": 585,
+              "d": 548,
+              "h": 178
+            },
+            "weight": 10.57,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#93c788",
+            "material": "plastic",
+            "maxLoadKg": 58.31,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.59,
+            "friction": 0.57
+          },
+          {
+            "id": "B19",
+            "name": "얇은 골판지 · 개별 19",
+            "size": {
+              "w": 544,
+              "d": 222,
+              "h": 294
+            },
+            "weight": 11.42,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#6bcab7",
+            "material": "paper",
+            "maxLoadKg": 27.52,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.76,
+            "friction": 0.4
+          },
+          {
+            "id": "B20",
+            "name": "목재 포장 · 개별 20",
+            "size": {
+              "w": 311,
+              "d": 451,
+              "h": 291
+            },
+            "weight": 8.7,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e8b86a",
+            "material": "wood",
+            "maxLoadKg": 95.72,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.78,
+            "friction": 0.35
+          },
+          {
+            "id": "B21",
+            "name": "플라스틱 토트 · 개별 21",
+            "size": {
+              "w": 385,
+              "d": 287,
+              "h": 430
+            },
+            "weight": 14.46,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#80a9e8",
+            "material": "plastic",
+            "maxLoadKg": 105.9,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.96,
+            "friction": 0.55
+          },
+          {
+            "id": "B22",
+            "name": "플라스틱 토트 · 개별 22",
+            "size": {
+              "w": 495,
+              "d": 244,
+              "h": 159
+            },
+            "weight": 4.11,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#cc97df",
+            "material": "plastic",
+            "maxLoadKg": 39.91,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.77,
+            "friction": 0.55
+          },
+          {
+            "id": "B23",
+            "name": "얇은 플라스틱 · 개별 23",
+            "size": {
+              "w": 625,
+              "d": 553,
+              "h": 225
+            },
+            "weight": 6.18,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e69ca3",
+            "material": "plastic",
+            "maxLoadKg": 27.97,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.99,
+            "friction": 0.34
+          },
+          {
+            "id": "B24",
+            "name": "얇은 플라스틱 · 개별 24",
+            "size": {
+              "w": 581,
+              "d": 302,
+              "h": 440
+            },
+            "weight": 12.81,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#93c788",
+            "material": "plastic",
+            "maxLoadKg": 36.08,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.72,
+            "friction": 0.47
+          },
+          {
+            "id": "B25",
+            "name": "플라스틱 토트 · 개별 25",
+            "size": {
+              "w": 660,
+              "d": 231,
+              "h": 252
+            },
+            "weight": 11.95,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#6bcab7",
+            "material": "plastic",
+            "maxLoadKg": 49.13,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.93,
+            "friction": 0.61
+          },
+          {
+            "id": "B26",
+            "name": "얇은 플라스틱 · 개별 26",
+            "size": {
+              "w": 513,
+              "d": 264,
+              "h": 244
+            },
+            "weight": 7.39,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e8b86a",
+            "material": "plastic",
+            "maxLoadKg": 30.77,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.63,
+            "friction": 0.28
+          },
+          {
+            "id": "B27",
+            "name": "플라스틱 토트 · 개별 27",
+            "size": {
+              "w": 663,
+              "d": 414,
+              "h": 441
+            },
+            "weight": 5.37,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#80a9e8",
+            "material": "plastic",
+            "maxLoadKg": 40.5,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.66,
+            "friction": 0.57
+          },
+          {
+            "id": "B28",
+            "name": "강화 골판지 · 개별 28",
+            "size": {
+              "w": 716,
+              "d": 177,
+              "h": 146
+            },
+            "weight": 5.23,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#cc97df",
+            "material": "paper",
+            "maxLoadKg": 45.19,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.55,
+            "friction": 0.49
+          },
+          {
+            "id": "B29",
+            "name": "플라스틱 토트 · 개별 29",
+            "size": {
+              "w": 657,
+              "d": 292,
+              "h": 285
+            },
+            "weight": 16.91,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e69ca3",
+            "material": "plastic",
+            "maxLoadKg": 60.18,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.93,
+            "friction": 0.32
+          },
+          {
+            "id": "B30",
+            "name": "얇은 골판지 · 개별 30",
+            "size": {
+              "w": 452,
+              "d": 270,
+              "h": 459
+            },
+            "weight": 4.53,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#93c788",
+            "material": "paper",
+            "maxLoadKg": 17.46,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.93,
+            "friction": 0.34
+          }
+        ],
+        "constraints": {
+          "robotMode": "gripper",
+          "supportRatio": 0.95,
+          "contactTolerance": 0.5,
+          "horizontalGap": 0,
+          "heavyRule": "each",
+          "stability": {
+            "maxSlenderness": 2,
+            "minMarginRatio": 0.1,
+            "lateralAccelerationG": 0.15,
+            "loadSafetyFactor": 1.25,
+            "slendernessMode": "score"
+          },
+          "gripper": {
+            "width": 180,
+            "depth": 160,
+            "height": 160,
+            "mass": 3,
+            "payload": 35,
+            "margin": 5,
+            "lift": 200,
+            "speed": 650,
+            "pickSeconds": 1,
+            "placeSeconds": 1,
+            "rotationSpeed": 180
+          },
+          "workspace": {
+            "xMin": -1400,
+            "xMax": 1600,
+            "yMin": -500,
+            "yMax": 1500,
+            "zMax": 2600
+          },
+          "reach": {
+            "baseX": -700,
+            "baseY": 500,
+            "minRadius": 0,
+            "maxRadius": 2400
+          }
+        },
+        "arrival": {
+          "seed": 42,
+          "pattern": "random-draw"
+        },
+        "events": [],
+        "supplyMode": "arrival",
+        "generation": {
+          "seed": 20261004,
+          "typeCount": 30,
+          "totalCount": 30,
+          "model": "heterogeneous",
+          "assortment": "individual",
+          "dimensions": {
+            "w": {
+              "min": 150,
+              "max": 760
+            },
+            "d": {
+              "min": 120,
+              "max": 560
+            },
+            "h": {
+              "min": 90,
+              "max": 460
+            }
+          }
+        }
+      },
+      "metrics": {
+        "loadUtilization": 0.21364804926971212,
+        "unknownCapacity": 0,
+        "slenderness": 1.96875,
+        "supportBalances": [
+          {
+            "id": "B19-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 11.42,
+            "loadAbove": 0,
+            "center": {
+              "x": 110.99999999999999,
+              "y": 728,
+              "z": 147
+            },
+            "supportCenter": {
+              "x": 111,
+              "y": 728,
+              "z": 0
+            },
+            "offsetMm": 1.4210854715202004e-14,
+            "offsetRatio": 1.28025718154973e-16,
+            "margin": 110.99999999999999,
+            "required": 22.200000000000003,
+            "reserve": 88.79999999999998
+          },
+          {
+            "id": "B14-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 7.58,
+            "loadAbove": 2.42,
+            "center": {
+              "x": 284.00000000000006,
+              "y": 160,
+              "z": 304.5672823218997
+            },
+            "supportCenter": {
+              "x": 284,
+              "y": 160,
+              "z": 0
+            },
+            "offsetMm": 5.684341886080802e-14,
+            "offsetRatio": 2.0015288331270428e-16,
+            "margin": 160,
+            "required": 45.685092348284954,
+            "reserve": 114.31490765171505
+          },
+          {
+            "id": "B26-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 7.39,
+            "loadAbove": 0,
+            "center": {
+              "x": 354,
+              "y": 576.5,
+              "z": 122
+            },
+            "supportCenter": {
+              "x": 354,
+              "y": 576.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 132,
+            "required": 26.400000000000002,
+            "reserve": 105.6
+          },
+          {
+            "id": "B21-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 14.46,
+            "loadAbove": 0,
+            "center": {
+              "x": 760.5,
+              "y": 143.5,
+              "z": 215
+            },
+            "supportCenter": {
+              "x": 760.5,
+              "y": 143.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 143.5,
+            "required": 32.25,
+            "reserve": 111.25
+          },
+          {
+            "id": "B5-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 6.63,
+            "loadAbove": 0,
+            "center": {
+              "x": 676.5,
+              "y": 494.5,
+              "z": 140
+            },
+            "supportCenter": {
+              "x": 676.5,
+              "y": 494.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 174.5,
+            "required": 34.9,
+            "reserve": 139.6
+          },
+          {
+            "id": "B16-01",
+            "isBase": false,
+            "planeZ": 408,
+            "mass": 2.42,
+            "loadAbove": 0,
+            "center": {
+              "x": 284,
+              "y": 160,
+              "z": 519
+            },
+            "supportCenter": {
+              "x": 284,
+              "y": 160,
+              "z": 408
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 140.5,
+            "required": 28.1,
+            "reserve": 112.4
+          },
+          {
+            "id": "B8-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 4.55,
+            "loadAbove": 0,
+            "center": {
+              "x": 656.5,
+              "y": 770.5,
+              "z": 151.5
+            },
+            "supportCenter": {
+              "x": 656.5,
+              "y": 770.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 101.5,
+            "required": 22.724999999999998,
+            "reserve": 78.775
+          },
+          {
+            "id": "B20-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 8.7,
+            "loadAbove": 0,
+            "center": {
+              "x": 1022.5000000000001,
+              "y": 512.5,
+              "z": 145.5
+            },
+            "supportCenter": {
+              "x": 1022.5,
+              "y": 512.5,
+              "z": 0
+            },
+            "offsetMm": 1.1368683772161603e-13,
+            "offsetRatio": 7.311050657338651e-16,
+            "margin": 155.49999999999986,
+            "required": 31.1,
+            "reserve": 124.39999999999986
+          }
+        ],
+        "count": 8,
+        "volume": 317066342,
+        "weight": 60.730000000000004,
+        "height": 630,
+        "utilization": 0.16513871979166667,
+        "efficiency": 0.4193999232804233,
+        "center": {
+          "x": 549.9958834184093,
+          "y": 446.3191997365387,
+          "z": 179.17363741149353
+        },
+        "quadrants": [
+          13.321681821528887,
+          19.763330525488264,
+          17.775082205401763,
+          9.869905447581083
+        ],
+        "imbalance": 0.16290836617663726,
+        "distanceM": 40.81415115145112,
+        "workSeconds": 81.79100177146327,
+        "medianMs": 241.8514,
+        "p95Ms": 540.5774999999999,
+        "totalMs": 2414.4725000000003,
+        "complete": false,
+        "failedStep": 9,
+        "reason": "누적 무게중심 정적 평형 불가 / 지지 조건 미달 / 무게 규칙 위반",
+        "excluded": 0,
+        "missing": 0
+      },
+      "placements": [
+        {
+          "id": "B19-01",
+          "typeId": "B19",
+          "position": {
+            "x": 0,
+            "y": 456,
+            "z": 0
+          },
+          "size": {
+            "w": 222,
+            "d": 544,
+            "h": 294
+          },
+          "orientation": 90,
+          "weight": 11.42,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "maxLoadKg": 27.52,
+          "maxLoadSource": "synthetic",
+          "material": "paper",
+          "strengthFactor": 0.76,
+          "friction": 0.4
+        },
+        {
+          "id": "B14-01",
+          "typeId": "B14",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "w": 568,
+            "d": 320,
+            "h": 408
+          },
+          "orientation": 0,
+          "weight": 5.16,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 2.42,
+          "maxLoadKg": 17.48,
+          "maxLoadSource": "synthetic",
+          "material": "paper",
+          "strengthFactor": 0.81,
+          "friction": 0.3
+        },
+        {
+          "id": "B26-01",
+          "typeId": "B26",
+          "position": {
+            "x": 222,
+            "y": 320,
+            "z": 0
+          },
+          "size": {
+            "w": 264,
+            "d": 513,
+            "h": 244
+          },
+          "orientation": 90,
+          "weight": 7.39,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "maxLoadKg": 30.77,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.63,
+          "friction": 0.28
+        },
+        {
+          "id": "B21-01",
+          "typeId": "B21",
+          "position": {
+            "x": 568,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "w": 385,
+            "d": 287,
+            "h": 430
+          },
+          "orientation": 0,
+          "weight": 14.46,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "maxLoadKg": 105.9,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.96,
+          "friction": 0.55
+        },
+        {
+          "id": "B5-01",
+          "typeId": "B5",
+          "position": {
+            "x": 486,
+            "y": 320,
+            "z": 0
+          },
+          "size": {
+            "w": 381,
+            "d": 349,
+            "h": 280
+          },
+          "orientation": 90,
+          "weight": 6.63,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "maxLoadKg": 0,
+          "maxLoadSource": "synthetic",
+          "handling": "no-top-load",
+          "material": "paper",
+          "strengthFactor": 0.76,
+          "friction": 0.58
+        },
+        {
+          "id": "B16-01",
+          "typeId": "B16",
+          "position": {
+            "x": 61,
+            "y": 19.5,
+            "z": 408
+          },
+          "size": {
+            "w": 446,
+            "d": 281,
+            "h": 222
+          },
+          "orientation": 0,
+          "weight": 2.42,
+          "supports": [
+            {
+              "id": "B14-01",
+              "rect": {
+                "x": 61,
+                "y": 19.5,
+                "w": 446,
+                "d": 281
+              },
+              "area": 125326,
+              "share": 1,
+              "forcePoint": {
+                "x": 284,
+                "y": 160
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "maxLoadKg": 14.58,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.6,
+          "friction": 0.21
+        },
+        {
+          "id": "B8-01",
+          "typeId": "B8",
+          "position": {
+            "x": 486,
+            "y": 669,
+            "z": 0
+          },
+          "size": {
+            "w": 341,
+            "d": 203,
+            "h": 303
+          },
+          "orientation": 0,
+          "weight": 4.55,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "maxLoadKg": 13.05,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.98,
+          "friction": 0.27
+        },
+        {
+          "id": "B20-01",
+          "typeId": "B20",
+          "position": {
+            "x": 867,
+            "y": 287,
+            "z": 0
+          },
+          "size": {
+            "w": 311,
+            "d": 451,
+            "h": 291
+          },
+          "orientation": 0,
+          "weight": 8.7,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "maxLoadKg": 95.72,
+          "maxLoadSource": "synthetic",
+          "material": "wood",
+          "strengthFactor": 0.78,
+          "friction": 0.35
+        }
+      ],
+      "heightAnalysis": {
+        "height": 630,
+        "layers": 2,
+        "headroom": 970,
+        "limit": 1600,
+        "blockedBox": {
+          "id": "B28-01",
+          "typeId": "B28",
+          "size": {
+            "w": 716,
+            "d": 177,
+            "h": 146
+          },
+          "weight": 5.23,
+          "status": "normal",
+          "orientationAllowed": [
+            0,
+            90
+          ],
+          "maxLoadKg": 45.19,
+          "maxLoadSource": "synthetic",
+          "material": "paper",
+          "strengthFactor": 0.55,
+          "friction": 0.49
+        },
+        "inspected": 96,
+        "generated": 481,
+        "upperInspected": 96,
+        "bestUpperSupport": 0.6298882681564246,
+        "rejectionCounts": {
+          "누적 무게중심 정적 평형 불가": 62,
+          "지지 조건 미달": 96,
+          "무게 규칙 위반": 53
+        }
+      },
+      "last": {
+        "observation": {
+          "id": "B28-01",
+          "typeId": "B28",
+          "size": {
+            "w": 716,
+            "d": 177,
+            "h": 146
+          },
+          "weight": 5.23,
+          "status": "normal",
+          "orientationAllowed": [
+            0,
+            90
+          ],
+          "maxLoadKg": 45.19,
+          "maxLoadSource": "synthetic",
+          "material": "paper",
+          "strengthFactor": 0.55,
+          "friction": 0.49
+        },
+        "rejections": {
+          "누적 무게중심 정적 평형 불가": 62,
+          "지지 조건 미달": 96,
+          "무게 규칙 위반": 53
+        },
+        "generated": 481,
+        "checked": 96
+      },
+      "validation": {
+        "allCommittedPlacementsRechecked": true,
+        "allFinalSupportMarginsPassed": true,
+        "inventoryConserved": true
+      }
+    },
+    {
+      "scenario": {
+        "version": 1,
+        "units": {
+          "length": "mm",
+          "weight": "kg",
+          "time": "s"
+        },
+        "id": "online-task",
+        "name": "과제 조건 · 무작위 혼합 박스 30개",
+        "pallet": {
+          "width": 1200,
+          "depth": 1000,
+          "maxHeight": 1600
+        },
+        "types": [
+          {
+            "id": "B1",
+            "name": "플라스틱 토트 · 개별 1",
+            "size": {
+              "w": 670,
+              "d": 538,
+              "h": 166
+            },
+            "weight": 8.34,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#6bcab7",
+            "material": "plastic",
+            "maxLoadKg": 65.78,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.72,
+            "friction": 0.33
+          },
+          {
+            "id": "B2",
+            "name": "얇은 플라스틱 · 개별 2",
+            "size": {
+              "w": 179,
+              "d": 192,
+              "h": 309
+            },
+            "weight": 3.29,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e8b86a",
+            "material": "plastic",
+            "maxLoadKg": 44.66,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.82,
+            "friction": 0.28
+          },
+          {
+            "id": "B3",
+            "name": "강화 골판지 · 개별 3",
+            "size": {
+              "w": 330,
+              "d": 446,
+              "h": 248
+            },
+            "weight": 10.05,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#80a9e8",
+            "material": "paper",
+            "maxLoadKg": 41.04,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.6,
+            "friction": 0.46
+          },
+          {
+            "id": "B4",
+            "name": "얇은 골판지 · 개별 4",
+            "size": {
+              "w": 512,
+              "d": 293,
+              "h": 90
+            },
+            "weight": 0.96,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#cc97df",
+            "material": "paper",
+            "maxLoadKg": 21.92,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.91,
+            "friction": 0.53
+          },
+          {
+            "id": "B5",
+            "name": "강화 골판지 · 개별 5",
+            "size": {
+              "w": 349,
+              "d": 381,
+              "h": 280
+            },
+            "weight": 6.63,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e69ca3",
+            "material": "paper",
+            "maxLoadKg": 0,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.76,
+            "friction": 0.58,
+            "handling": "no-top-load"
+          },
+          {
+            "id": "B6",
+            "name": "강화 골판지 · 개별 6",
+            "size": {
+              "w": 172,
+              "d": 310,
+              "h": 201
+            },
+            "weight": 3.41,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#93c788",
+            "material": "paper",
+            "maxLoadKg": 37.06,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.67,
+            "friction": 0.5
+          },
+          {
+            "id": "B7",
+            "name": "강화 골판지 · 개별 7",
+            "size": {
+              "w": 421,
+              "d": 141,
+              "h": 281
+            },
+            "weight": 2.48,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#6bcab7",
+            "material": "paper",
+            "maxLoadKg": 34.21,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.72,
+            "friction": 0.31
+          },
+          {
+            "id": "B8",
+            "name": "얇은 플라스틱 · 개별 8",
+            "size": {
+              "w": 341,
+              "d": 203,
+              "h": 303
+            },
+            "weight": 4.55,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e8b86a",
+            "material": "plastic",
+            "maxLoadKg": 13.05,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.98,
+            "friction": 0.27
+          },
+          {
+            "id": "B9",
+            "name": "얇은 플라스틱 · 개별 9",
+            "size": {
+              "w": 686,
+              "d": 396,
+              "h": 235
+            },
+            "weight": 21.28,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#80a9e8",
+            "material": "plastic",
+            "maxLoadKg": 23.24,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.58,
+            "friction": 0.27
+          },
+          {
+            "id": "B10",
+            "name": "플라스틱 토트 · 개별 10",
+            "size": {
+              "w": 276,
+              "d": 139,
+              "h": 366
+            },
+            "weight": 4.99,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#cc97df",
+            "material": "plastic",
+            "maxLoadKg": 42.08,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.78,
+            "friction": 0.63
+          },
+          {
+            "id": "B11",
+            "name": "플라스틱 토트 · 개별 11",
+            "size": {
+              "w": 570,
+              "d": 284,
+              "h": 146
+            },
+            "weight": 8.55,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e69ca3",
+            "material": "plastic",
+            "maxLoadKg": 50.36,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.56,
+            "friction": 0.38
+          },
+          {
+            "id": "B12",
+            "name": "강화 골판지 · 개별 12",
+            "size": {
+              "w": 492,
+              "d": 319,
+              "h": 115
+            },
+            "weight": 6.12,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#93c788",
+            "material": "paper",
+            "maxLoadKg": 51.46,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.8,
+            "friction": 0.42
+          },
+          {
+            "id": "B13",
+            "name": "얇은 골판지 · 개별 13",
+            "size": {
+              "w": 656,
+              "d": 286,
+              "h": 386
+            },
+            "weight": 4.73,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#6bcab7",
+            "material": "paper",
+            "maxLoadKg": 17.12,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.59,
+            "friction": 0.32
+          },
+          {
+            "id": "B14",
+            "name": "얇은 골판지 · 개별 14",
+            "size": {
+              "w": 568,
+              "d": 320,
+              "h": 408
+            },
+            "weight": 5.16,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e8b86a",
+            "material": "paper",
+            "maxLoadKg": 17.48,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.81,
+            "friction": 0.3
+          },
+          {
+            "id": "B15",
+            "name": "얇은 플라스틱 · 개별 15",
+            "size": {
+              "w": 694,
+              "d": 547,
+              "h": 280
+            },
+            "weight": 28.3,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#80a9e8",
+            "material": "plastic",
+            "maxLoadKg": 18.62,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.68,
+            "friction": 0.3
+          },
+          {
+            "id": "B16",
+            "name": "얇은 플라스틱 · 개별 16",
+            "size": {
+              "w": 446,
+              "d": 281,
+              "h": 222
+            },
+            "weight": 2.42,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#cc97df",
+            "material": "plastic",
+            "maxLoadKg": 14.58,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.6,
+            "friction": 0.21
+          },
+          {
+            "id": "B17",
+            "name": "얇은 골판지 · 개별 17",
+            "size": {
+              "w": 293,
+              "d": 524,
+              "h": 270
+            },
+            "weight": 5.1,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e69ca3",
+            "material": "paper",
+            "maxLoadKg": 10.45,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.72,
+            "friction": 0.29
+          },
+          {
+            "id": "B18",
+            "name": "플라스틱 토트 · 개별 18",
+            "size": {
+              "w": 585,
+              "d": 548,
+              "h": 178
+            },
+            "weight": 10.57,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#93c788",
+            "material": "plastic",
+            "maxLoadKg": 58.31,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.59,
+            "friction": 0.57
+          },
+          {
+            "id": "B19",
+            "name": "얇은 골판지 · 개별 19",
+            "size": {
+              "w": 544,
+              "d": 222,
+              "h": 294
+            },
+            "weight": 11.42,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#6bcab7",
+            "material": "paper",
+            "maxLoadKg": 27.52,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.76,
+            "friction": 0.4
+          },
+          {
+            "id": "B20",
+            "name": "목재 포장 · 개별 20",
+            "size": {
+              "w": 311,
+              "d": 451,
+              "h": 291
+            },
+            "weight": 8.7,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e8b86a",
+            "material": "wood",
+            "maxLoadKg": 95.72,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.78,
+            "friction": 0.35
+          },
+          {
+            "id": "B21",
+            "name": "플라스틱 토트 · 개별 21",
+            "size": {
+              "w": 385,
+              "d": 287,
+              "h": 430
+            },
+            "weight": 14.46,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#80a9e8",
+            "material": "plastic",
+            "maxLoadKg": 105.9,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.96,
+            "friction": 0.55
+          },
+          {
+            "id": "B22",
+            "name": "플라스틱 토트 · 개별 22",
+            "size": {
+              "w": 495,
+              "d": 244,
+              "h": 159
+            },
+            "weight": 4.11,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#cc97df",
+            "material": "plastic",
+            "maxLoadKg": 39.91,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.77,
+            "friction": 0.55
+          },
+          {
+            "id": "B23",
+            "name": "얇은 플라스틱 · 개별 23",
+            "size": {
+              "w": 625,
+              "d": 553,
+              "h": 225
+            },
+            "weight": 6.18,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e69ca3",
+            "material": "plastic",
+            "maxLoadKg": 27.97,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.99,
+            "friction": 0.34
+          },
+          {
+            "id": "B24",
+            "name": "얇은 플라스틱 · 개별 24",
+            "size": {
+              "w": 581,
+              "d": 302,
+              "h": 440
+            },
+            "weight": 12.81,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#93c788",
+            "material": "plastic",
+            "maxLoadKg": 36.08,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.72,
+            "friction": 0.47
+          },
+          {
+            "id": "B25",
+            "name": "플라스틱 토트 · 개별 25",
+            "size": {
+              "w": 660,
+              "d": 231,
+              "h": 252
+            },
+            "weight": 11.95,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#6bcab7",
+            "material": "plastic",
+            "maxLoadKg": 49.13,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.93,
+            "friction": 0.61
+          },
+          {
+            "id": "B26",
+            "name": "얇은 플라스틱 · 개별 26",
+            "size": {
+              "w": 513,
+              "d": 264,
+              "h": 244
+            },
+            "weight": 7.39,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e8b86a",
+            "material": "plastic",
+            "maxLoadKg": 30.77,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.63,
+            "friction": 0.28
+          },
+          {
+            "id": "B27",
+            "name": "플라스틱 토트 · 개별 27",
+            "size": {
+              "w": 663,
+              "d": 414,
+              "h": 441
+            },
+            "weight": 5.37,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#80a9e8",
+            "material": "plastic",
+            "maxLoadKg": 40.5,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.66,
+            "friction": 0.57
+          },
+          {
+            "id": "B28",
+            "name": "강화 골판지 · 개별 28",
+            "size": {
+              "w": 716,
+              "d": 177,
+              "h": 146
+            },
+            "weight": 5.23,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#cc97df",
+            "material": "paper",
+            "maxLoadKg": 45.19,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.55,
+            "friction": 0.49
+          },
+          {
+            "id": "B29",
+            "name": "플라스틱 토트 · 개별 29",
+            "size": {
+              "w": 657,
+              "d": 292,
+              "h": 285
+            },
+            "weight": 16.91,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e69ca3",
+            "material": "plastic",
+            "maxLoadKg": 60.18,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.93,
+            "friction": 0.32
+          },
+          {
+            "id": "B30",
+            "name": "얇은 골판지 · 개별 30",
+            "size": {
+              "w": 452,
+              "d": 270,
+              "h": 459
+            },
+            "weight": 4.53,
+            "quantity": 1,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#93c788",
+            "material": "paper",
+            "maxLoadKg": 17.46,
+            "maxLoadSource": "synthetic",
+            "strengthFactor": 0.93,
+            "friction": 0.34
+          }
+        ],
+        "constraints": {
+          "robotMode": "gripper",
+          "supportRatio": 0.95,
+          "contactTolerance": 0.5,
+          "horizontalGap": 0,
+          "heavyRule": "each",
+          "stability": {
+            "maxSlenderness": 2,
+            "minMarginRatio": 0.1,
+            "lateralAccelerationG": 0.15,
+            "loadSafetyFactor": 1.25,
+            "slendernessMode": "score"
+          },
+          "gripper": {
+            "width": 180,
+            "depth": 160,
+            "height": 160,
+            "mass": 3,
+            "payload": 35,
+            "margin": 5,
+            "lift": 200,
+            "speed": 650,
+            "pickSeconds": 1,
+            "placeSeconds": 1,
+            "rotationSpeed": 180
+          },
+          "workspace": {
+            "xMin": -1400,
+            "xMax": 1600,
+            "yMin": -500,
+            "yMax": 1500,
+            "zMax": 2600
+          },
+          "reach": {
+            "baseX": -700,
+            "baseY": 500,
+            "minRadius": 0,
+            "maxRadius": 2400
+          }
+        },
+        "arrival": {
+          "seed": 42,
+          "pattern": "random-draw"
+        },
+        "events": [],
+        "supplyMode": "stock-select",
+        "generation": {
+          "seed": 20261004,
+          "typeCount": 30,
+          "totalCount": 30,
+          "model": "heterogeneous",
+          "assortment": "individual",
+          "dimensions": {
+            "w": {
+              "min": 150,
+              "max": 760
+            },
+            "d": {
+              "min": 120,
+              "max": 560
+            },
+            "h": {
+              "min": 90,
+              "max": 460
+            }
+          }
+        }
+      },
+      "metrics": {
+        "loadUtilization": 0.9467602830605926,
+        "unknownCapacity": 0,
+        "slenderness": 3.058219178082192,
+        "supportBalances": [
+          {
+            "id": "B15-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 37.89,
+            "loadAbove": 9.59,
+            "center": {
+              "x": 273.5,
+              "y": 349.6575613618369,
+              "z": 223.07746107152283
+            },
+            "supportCenter": {
+              "x": 273.5,
+              "y": 347,
+              "z": 0
+            },
+            "offsetMm": 2.6575613618368834,
+            "offsetRatio": 0.007658678276186984,
+            "margin": 273.5,
+            "required": 54.7,
+            "reserve": 218.8
+          },
+          {
+            "id": "B1-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 24.93,
+            "loadAbove": 16.59,
+            "center": {
+              "x": 816,
+              "y": 335,
+              "z": 565.3543922984356
+            },
+            "supportCenter": {
+              "x": 816,
+              "y": 335,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 269,
+            "required": 84.80315884476535,
+            "reserve": 184.19684115523467
+          },
+          {
+            "id": "B23-01",
+            "isBase": false,
+            "planeZ": 280,
+            "mass": 9.59,
+            "loadAbove": 3.41,
+            "center": {
+              "x": 273.5,
+              "y": 357.5,
+              "z": 468.2382690302399
+            },
+            "supportCenter": {
+              "x": 273.5,
+              "y": 357.5,
+              "z": 280
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 273.5,
+            "required": 54.7,
+            "reserve": 218.8
+          },
+          {
+            "id": "B27-01",
+            "isBase": false,
+            "planeZ": 166,
+            "mass": 16.59,
+            "loadAbove": 11.219999999999999,
+            "center": {
+              "x": 816,
+              "y": 335,
+              "z": 807.8399638336349
+            },
+            "supportCenter": {
+              "x": 816,
+              "y": 335,
+              "z": 166
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 207,
+            "required": 96.27599457504523,
+            "reserve": 110.72400542495477
+          },
+          {
+            "id": "B29-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 24.060000000000002,
+            "loadAbove": 7.150000000000002,
+            "center": {
+              "x": 328.5,
+              "y": 840,
+              "z": 272.7786783042394
+            },
+            "supportCenter": {
+              "x": 328.5,
+              "y": 840,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 146,
+            "required": 40.91680174563591,
+            "reserve": 105.08319825436409
+          },
+          {
+            "id": "B13-01",
+            "isBase": false,
+            "planeZ": 285,
+            "mass": 7.15,
+            "loadAbove": 2.42,
+            "center": {
+              "x": 328.5,
+              "y": 840,
+              "z": 580.8923076923077
+            },
+            "supportCenter": {
+              "x": 328.5,
+              "y": 840,
+              "z": 285
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 143,
+            "required": 44.38384615384615,
+            "reserve": 98.61615384615385
+          },
+          {
+            "id": "B14-01",
+            "isBase": false,
+            "planeZ": 607,
+            "mass": 11.219999999999999,
+            "loadAbove": 6.059999999999999,
+            "center": {
+              "x": 816.0000000000001,
+              "y": 335,
+              "z": 1009.4973262032088
+            },
+            "supportCenter": {
+              "x": 816,
+              "y": 335,
+              "z": 607
+            },
+            "offsetMm": 1.1368683772161603e-13,
+            "offsetRatio": 7.105427357601002e-16,
+            "margin": 159.9999999999999,
+            "required": 60.37459893048131,
+            "reserve": 99.62540106951857
+          },
+          {
+            "id": "B12-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 13.129999999999999,
+            "loadAbove": 7.009999999999999,
+            "center": {
+              "x": 903,
+              "y": 829.5,
+              "z": 280.61271896420413
+            },
+            "supportCenter": {
+              "x": 903,
+              "y": 829.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 159.5,
+            "required": 42.09190784463062,
+            "reserve": 117.40809215536939
+          },
+          {
+            "id": "B17-01",
+            "isBase": false,
+            "planeZ": 1015,
+            "mass": 6.06,
+            "loadAbove": 0.96,
+            "center": {
+              "x": 815.9999999999999,
+              "y": 334.99999999999994,
+              "z": 1178.5148514851487
+            },
+            "supportCenter": {
+              "x": 816,
+              "y": 335,
+              "z": 1015
+            },
+            "offsetMm": 1.2710574864626038e-13,
+            "offsetRatio": 7.7601937011342e-16,
+            "margin": 146.4999999999999,
+            "required": 29.3,
+            "reserve": 117.19999999999989
+          },
+          {
+            "id": "B4-01",
+            "isBase": false,
+            "planeZ": 1285,
+            "mass": 0.96,
+            "loadAbove": 0,
+            "center": {
+              "x": 816,
+              "y": 335,
+              "z": 1330
+            },
+            "supportCenter": {
+              "x": 816,
+              "y": 335,
+              "z": 1285
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 146.5,
+            "required": 29.3,
+            "reserve": 117.2
+          },
+          {
+            "id": "B16-01",
+            "isBase": false,
+            "planeZ": 671,
+            "mass": 2.42,
+            "loadAbove": 0,
+            "center": {
+              "x": 328.5,
+              "y": 840,
+              "z": 782
+            },
+            "supportCenter": {
+              "x": 328.5,
+              "y": 840,
+              "z": 671
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 140.5,
+            "required": 28.1,
+            "reserve": 112.4
+          },
+          {
+            "id": "B30-01",
+            "isBase": false,
+            "planeZ": 115,
+            "mass": 7.01,
+            "loadAbove": 2.4799999999999995,
+            "center": {
+              "x": 903.0000000000001,
+              "y": 829.5,
+              "z": 475.39871611982886
+            },
+            "supportCenter": {
+              "x": 903,
+              "y": 829.5,
+              "z": 115
+            },
+            "offsetMm": 1.1368683772161603e-13,
+            "offsetRatio": 5.030391049629028e-16,
+            "margin": 135,
+            "required": 54.059807417974326,
+            "reserve": 80.94019258202567
+          },
+          {
+            "id": "B7-01",
+            "isBase": false,
+            "planeZ": 574,
+            "mass": 2.48,
+            "loadAbove": 0,
+            "center": {
+              "x": 903,
+              "y": 829.5,
+              "z": 714.5
+            },
+            "supportCenter": {
+              "x": 903,
+              "y": 829.5,
+              "z": 574
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 70.5,
+            "required": 21.075,
+            "reserve": 49.425
+          },
+          {
+            "id": "B6-01",
+            "isBase": false,
+            "planeZ": 505,
+            "mass": 3.41,
+            "loadAbove": 0,
+            "center": {
+              "x": 268.0630498533724,
+              "y": 357.49999999999994,
+              "z": 605.5
+            },
+            "supportCenter": {
+              "x": 268.0630498533724,
+              "y": 357.5,
+              "z": 505
+            },
+            "offsetMm": 5.684341886080802e-14,
+            "offsetRatio": 6.609699867535816e-16,
+            "margin": 86,
+            "required": 17.2,
+            "reserve": 68.8
+          }
+        ],
+        "count": 14,
+        "volume": 750435576,
+        "weight": 100.00999999999999,
+        "height": 1375,
+        "utilization": 0.3908518625,
+        "efficiency": 0.45480944,
+        "center": {
+          "x": 504.608489151085,
+          "y": 526.9654034596541,
+          "z": 327.9091090890911
+        },
+        "quadrants": [
+          29.13105400384171,
+          16.771694501470343,
+          33.18747810391406,
+          20.91977339077389
+        ],
+        "imbalance": 0.16414142188224895,
+        "distanceM": 89.10581119250925,
+        "workSeconds": 172.08586337309112,
+        "medianMs": 691.2228999999998,
+        "p95Ms": 2039.9269000000004,
+        "totalMs": 13670.6213,
+        "complete": false,
+        "failedStep": 15,
+        "reason": "재질 허용 지지하중 초과 / 무게 규칙 위반 / 지지 조건 미달 / 누적 무게중심 정적 평형 불가",
+        "excluded": 0,
+        "missing": 0
+      },
+      "placements": [
+        {
+          "id": "B15-01",
+          "typeId": "B15",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "w": 547,
+            "d": 694,
+            "h": 280
+          },
+          "orientation": 90,
+          "weight": 28.3,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 9.59,
+          "maxLoadKg": 18.62,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.68,
+          "friction": 0.3
+        },
+        {
+          "id": "B1-01",
+          "typeId": "B1",
+          "position": {
+            "x": 547,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "w": 538,
+            "d": 670,
+            "h": 166
+          },
+          "orientation": 90,
+          "weight": 8.34,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 16.59,
+          "maxLoadKg": 65.78,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.72,
+          "friction": 0.33
+        },
+        {
+          "id": "B23-01",
+          "typeId": "B23",
+          "position": {
+            "x": 0,
+            "y": 45,
+            "z": 280
+          },
+          "size": {
+            "w": 553,
+            "d": 625,
+            "h": 225
+          },
+          "orientation": 90,
+          "weight": 6.18,
+          "supports": [
+            {
+              "id": "B15-01",
+              "rect": {
+                "x": 0,
+                "y": 45,
+                "w": 547,
+                "d": 625
+              },
+              "area": 341875,
+              "share": 1,
+              "forcePoint": {
+                "x": 273.5,
+                "y": 357.5
+              }
+            }
+          ],
+          "supportRatio": 0.9891500904159132,
+          "loadAbove": 3.41,
+          "maxLoadKg": 27.97,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.99,
+          "friction": 0.34
+        },
+        {
+          "id": "B27-01",
+          "typeId": "B27",
+          "position": {
+            "x": 609,
+            "y": 3.5,
+            "z": 166
+          },
+          "size": {
+            "w": 414,
+            "d": 663,
+            "h": 441
+          },
+          "orientation": 90,
+          "weight": 5.37,
+          "supports": [
+            {
+              "id": "B1-01",
+              "rect": {
+                "x": 609,
+                "y": 3.5,
+                "w": 414,
+                "d": 663
+              },
+              "area": 274482,
+              "share": 1,
+              "forcePoint": {
+                "x": 816,
+                "y": 335
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 11.219999999999999,
+          "maxLoadKg": 40.5,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.66,
+          "friction": 0.57
+        },
+        {
+          "id": "B29-01",
+          "typeId": "B29",
+          "position": {
+            "x": 0,
+            "y": 694,
+            "z": 0
+          },
+          "size": {
+            "w": 657,
+            "d": 292,
+            "h": 285
+          },
+          "orientation": 0,
+          "weight": 16.91,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 7.150000000000002,
+          "maxLoadKg": 60.18,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.93,
+          "friction": 0.32
+        },
+        {
+          "id": "B13-01",
+          "typeId": "B13",
+          "position": {
+            "x": 0.5,
+            "y": 697,
+            "z": 285
+          },
+          "size": {
+            "w": 656,
+            "d": 286,
+            "h": 386
+          },
+          "orientation": 0,
+          "weight": 4.73,
+          "supports": [
+            {
+              "id": "B29-01",
+              "rect": {
+                "x": 0.5,
+                "y": 697,
+                "w": 656,
+                "d": 286
+              },
+              "area": 187616,
+              "share": 1,
+              "forcePoint": {
+                "x": 328.5,
+                "y": 840
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 2.42,
+          "maxLoadKg": 17.12,
+          "maxLoadSource": "synthetic",
+          "material": "paper",
+          "strengthFactor": 0.59,
+          "friction": 0.32
+        },
+        {
+          "id": "B14-01",
+          "typeId": "B14",
+          "position": {
+            "x": 656,
+            "y": 51,
+            "z": 607
+          },
+          "size": {
+            "w": 320,
+            "d": 568,
+            "h": 408
+          },
+          "orientation": 90,
+          "weight": 5.16,
+          "supports": [
+            {
+              "id": "B27-01",
+              "rect": {
+                "x": 656,
+                "y": 51,
+                "w": 320,
+                "d": 568
+              },
+              "area": 181760,
+              "share": 1,
+              "forcePoint": {
+                "x": 816.0000000000001,
+                "y": 335
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 6.059999999999999,
+          "maxLoadKg": 17.48,
+          "maxLoadSource": "synthetic",
+          "material": "paper",
+          "strengthFactor": 0.81,
+          "friction": 0.3
+        },
+        {
+          "id": "B12-01",
+          "typeId": "B12",
+          "position": {
+            "x": 657,
+            "y": 670,
+            "z": 0
+          },
+          "size": {
+            "w": 492,
+            "d": 319,
+            "h": 115
+          },
+          "orientation": 0,
+          "weight": 6.12,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 7.009999999999999,
+          "maxLoadKg": 51.46,
+          "maxLoadSource": "synthetic",
+          "material": "paper",
+          "strengthFactor": 0.8,
+          "friction": 0.42
+        },
+        {
+          "id": "B17-01",
+          "typeId": "B17",
+          "position": {
+            "x": 669.5,
+            "y": 73,
+            "z": 1015
+          },
+          "size": {
+            "w": 293,
+            "d": 524,
+            "h": 270
+          },
+          "orientation": 0,
+          "weight": 5.1,
+          "supports": [
+            {
+              "id": "B14-01",
+              "rect": {
+                "x": 669.5,
+                "y": 73,
+                "w": 293,
+                "d": 524
+              },
+              "area": 153532,
+              "share": 1,
+              "forcePoint": {
+                "x": 815.9999999999999,
+                "y": 335
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0.96,
+          "maxLoadKg": 10.45,
+          "maxLoadSource": "synthetic",
+          "material": "paper",
+          "strengthFactor": 0.72,
+          "friction": 0.29
+        },
+        {
+          "id": "B4-01",
+          "typeId": "B4",
+          "position": {
+            "x": 669.5,
+            "y": 79,
+            "z": 1285
+          },
+          "size": {
+            "w": 293,
+            "d": 512,
+            "h": 90
+          },
+          "orientation": 90,
+          "weight": 0.96,
+          "supports": [
+            {
+              "id": "B17-01",
+              "rect": {
+                "x": 669.5,
+                "y": 79,
+                "w": 293,
+                "d": 512
+              },
+              "area": 150016,
+              "share": 1,
+              "forcePoint": {
+                "x": 816,
+                "y": 335
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "maxLoadKg": 21.92,
+          "maxLoadSource": "synthetic",
+          "material": "paper",
+          "strengthFactor": 0.91,
+          "friction": 0.53
+        },
+        {
+          "id": "B16-01",
+          "typeId": "B16",
+          "position": {
+            "x": 105.5,
+            "y": 699.5,
+            "z": 671
+          },
+          "size": {
+            "w": 446,
+            "d": 281,
+            "h": 222
+          },
+          "orientation": 0,
+          "weight": 2.42,
+          "supports": [
+            {
+              "id": "B13-01",
+              "rect": {
+                "x": 105.5,
+                "y": 699.5,
+                "w": 446,
+                "d": 281
+              },
+              "area": 125326,
+              "share": 1,
+              "forcePoint": {
+                "x": 328.5,
+                "y": 840
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "maxLoadKg": 14.58,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.6,
+          "friction": 0.21
+        },
+        {
+          "id": "B30-01",
+          "typeId": "B30",
+          "position": {
+            "x": 677,
+            "y": 694.5,
+            "z": 115
+          },
+          "size": {
+            "w": 452,
+            "d": 270,
+            "h": 459
+          },
+          "orientation": 0,
+          "weight": 4.53,
+          "supports": [
+            {
+              "id": "B12-01",
+              "rect": {
+                "x": 677,
+                "y": 694.5,
+                "w": 452,
+                "d": 270
+              },
+              "area": 122040,
+              "share": 1,
+              "forcePoint": {
+                "x": 903,
+                "y": 829.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 2.4799999999999995,
+          "maxLoadKg": 17.46,
+          "maxLoadSource": "synthetic",
+          "material": "paper",
+          "strengthFactor": 0.93,
+          "friction": 0.34
+        },
+        {
+          "id": "B7-01",
+          "typeId": "B7",
+          "position": {
+            "x": 692.5,
+            "y": 759,
+            "z": 574
+          },
+          "size": {
+            "w": 421,
+            "d": 141,
+            "h": 281
+          },
+          "orientation": 0,
+          "weight": 2.48,
+          "supports": [
+            {
+              "id": "B30-01",
+              "rect": {
+                "x": 692.5,
+                "y": 759,
+                "w": 421,
+                "d": 141
+              },
+              "area": 59361,
+              "share": 1,
+              "forcePoint": {
+                "x": 903,
+                "y": 829.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "maxLoadKg": 34.21,
+          "maxLoadSource": "synthetic",
+          "material": "paper",
+          "strengthFactor": 0.72,
+          "friction": 0.31
+        },
+        {
+          "id": "B6-01",
+          "typeId": "B6",
+          "position": {
+            "x": 113.06304985337238,
+            "y": 271.49999999999994,
+            "z": 505
+          },
+          "size": {
+            "w": 310,
+            "d": 172,
+            "h": 201
+          },
+          "orientation": 90,
+          "weight": 3.41,
+          "supports": [
+            {
+              "id": "B23-01",
+              "rect": {
+                "x": 113.06304985337238,
+                "y": 271.49999999999994,
+                "w": 310,
+                "d": 172
+              },
+              "area": 53320,
+              "share": 1,
+              "forcePoint": {
+                "x": 268.0630498533724,
+                "y": 357.49999999999994
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "maxLoadKg": 37.06,
+          "maxLoadSource": "synthetic",
+          "material": "paper",
+          "strengthFactor": 0.67,
+          "friction": 0.5
+        }
+      ],
+      "heightAnalysis": {
+        "height": 1375,
+        "layers": 5,
+        "headroom": 225,
+        "limit": 1600,
+        "blockedBox": {
+          "id": "B2-01",
+          "typeId": "B2",
+          "size": {
+            "w": 179,
+            "d": 192,
+            "h": 309
+          },
+          "weight": 3.29,
+          "status": "normal",
+          "orientationAllowed": [
+            0,
+            90
+          ],
+          "maxLoadKg": 44.66,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.82,
+          "friction": 0.28
+        },
+        "inspected": 32,
+        "generated": 35161,
+        "upperInspected": 32,
+        "bestUpperSupport": 1.0000000000000004,
+        "rejectionCounts": {
+          "재질 허용 지지하중 초과": 208,
+          "무게 규칙 위반": 224,
+          "지지 조건 미달": 160,
+          "누적 무게중심 정적 평형 불가": 65
+        }
+      },
+      "last": {
+        "observation": {
+          "id": "B2-01",
+          "typeId": "B2",
+          "size": {
+            "w": 179,
+            "d": 192,
+            "h": 309
+          },
+          "weight": 3.29,
+          "status": "normal",
+          "orientationAllowed": [
+            0,
+            90
+          ],
+          "maxLoadKg": 44.66,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.82,
+          "friction": 0.28
+        },
+        "rejections": {
+          "재질 허용 지지하중 초과": 208,
+          "무게 규칙 위반": 224,
+          "지지 조건 미달": 160,
+          "누적 무게중심 정적 평형 불가": 65
+        },
+        "generated": 35161,
+        "checked": 32
+      },
+      "validation": {
+        "allCommittedPlacementsRechecked": true,
+        "allFinalSupportMarginsPassed": true,
+        "inventoryConserved": true
+      }
+    },
+    {
+      "scenario": {
+        "version": 1,
+        "units": {
+          "length": "mm",
+          "weight": "kg",
+          "time": "s"
+        },
+        "id": "high-stack",
+        "name": "고층 검증 · 혼합 재고 24개 · 6단",
+        "pallet": {
+          "width": 1200,
+          "depth": 1000,
+          "maxHeight": 1600
+        },
+        "types": [
+          {
+            "id": "H1",
+            "name": "혼합 1",
+            "size": {
+              "w": 537,
+              "d": 441,
+              "h": 247
+            },
+            "quantity": 1,
+            "weight": 12,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#6bcab7",
+            "material": "plastic",
+            "maxLoadKg": 120,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H2",
+            "name": "혼합 2",
+            "size": {
+              "w": 523,
+              "d": 457,
+              "h": 247
+            },
+            "quantity": 1,
+            "weight": 12,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#6bcab7",
+            "material": "plastic",
+            "maxLoadKg": 120,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H3",
+            "name": "혼합 3",
+            "size": {
+              "w": 549,
+              "d": 433,
+              "h": 247
+            },
+            "quantity": 1,
+            "weight": 12,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#6bcab7",
+            "material": "plastic",
+            "maxLoadKg": 120,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H4",
+            "name": "혼합 4",
+            "size": {
+              "w": 531,
+              "d": 449,
+              "h": 247
+            },
+            "quantity": 1,
+            "weight": 12,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#6bcab7",
+            "material": "plastic",
+            "maxLoadKg": 120,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H5",
+            "name": "혼합 5",
+            "size": {
+              "w": 513,
+              "d": 423,
+              "h": 239
+            },
+            "quantity": 1,
+            "weight": 10,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e8b86a",
+            "material": "plastic",
+            "maxLoadKg": 102,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H6",
+            "name": "혼합 6",
+            "size": {
+              "w": 499,
+              "d": 439,
+              "h": 239
+            },
+            "quantity": 1,
+            "weight": 10,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e8b86a",
+            "material": "plastic",
+            "maxLoadKg": 102,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H7",
+            "name": "혼합 7",
+            "size": {
+              "w": 525,
+              "d": 415,
+              "h": 239
+            },
+            "quantity": 1,
+            "weight": 10,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e8b86a",
+            "material": "plastic",
+            "maxLoadKg": 102,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H8",
+            "name": "혼합 8",
+            "size": {
+              "w": 507,
+              "d": 431,
+              "h": 239
+            },
+            "quantity": 1,
+            "weight": 10,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e8b86a",
+            "material": "plastic",
+            "maxLoadKg": 102,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H9",
+            "name": "혼합 9",
+            "size": {
+              "w": 489,
+              "d": 405,
+              "h": 253
+            },
+            "quantity": 1,
+            "weight": 8,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#80a9e8",
+            "material": "wood",
+            "maxLoadKg": 84,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H10",
+            "name": "혼합 10",
+            "size": {
+              "w": 475,
+              "d": 421,
+              "h": 253
+            },
+            "quantity": 1,
+            "weight": 8,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#80a9e8",
+            "material": "wood",
+            "maxLoadKg": 84,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H11",
+            "name": "혼합 11",
+            "size": {
+              "w": 501,
+              "d": 397,
+              "h": 253
+            },
+            "quantity": 1,
+            "weight": 8,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#80a9e8",
+            "material": "wood",
+            "maxLoadKg": 84,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H12",
+            "name": "혼합 12",
+            "size": {
+              "w": 483,
+              "d": 413,
+              "h": 253
+            },
+            "quantity": 1,
+            "weight": 8,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#80a9e8",
+            "material": "wood",
+            "maxLoadKg": 84,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H13",
+            "name": "혼합 13",
+            "size": {
+              "w": 465,
+              "d": 387,
+              "h": 231
+            },
+            "quantity": 1,
+            "weight": 6,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#cc97df",
+            "material": "wood",
+            "maxLoadKg": 66,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H14",
+            "name": "혼합 14",
+            "size": {
+              "w": 451,
+              "d": 403,
+              "h": 231
+            },
+            "quantity": 1,
+            "weight": 6,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#cc97df",
+            "material": "wood",
+            "maxLoadKg": 66,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H15",
+            "name": "혼합 15",
+            "size": {
+              "w": 477,
+              "d": 379,
+              "h": 231
+            },
+            "quantity": 1,
+            "weight": 6,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#cc97df",
+            "material": "wood",
+            "maxLoadKg": 66,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H16",
+            "name": "혼합 16",
+            "size": {
+              "w": 459,
+              "d": 395,
+              "h": 231
+            },
+            "quantity": 1,
+            "weight": 6,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#cc97df",
+            "material": "wood",
+            "maxLoadKg": 66,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H17",
+            "name": "혼합 17",
+            "size": {
+              "w": 441,
+              "d": 369,
+              "h": 257
+            },
+            "quantity": 1,
+            "weight": 4,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e69ca3",
+            "material": "paper",
+            "maxLoadKg": 48,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H18",
+            "name": "혼합 18",
+            "size": {
+              "w": 427,
+              "d": 385,
+              "h": 257
+            },
+            "quantity": 1,
+            "weight": 4,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e69ca3",
+            "material": "paper",
+            "maxLoadKg": 48,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H19",
+            "name": "혼합 19",
+            "size": {
+              "w": 453,
+              "d": 361,
+              "h": 257
+            },
+            "quantity": 1,
+            "weight": 4,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e69ca3",
+            "material": "paper",
+            "maxLoadKg": 48,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H20",
+            "name": "혼합 20",
+            "size": {
+              "w": 435,
+              "d": 377,
+              "h": 257
+            },
+            "quantity": 1,
+            "weight": 4,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e69ca3",
+            "material": "paper",
+            "maxLoadKg": 48,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H21",
+            "name": "혼합 21",
+            "size": {
+              "w": 417,
+              "d": 351,
+              "h": 245
+            },
+            "quantity": 1,
+            "weight": 2,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#93c788",
+            "material": "paper",
+            "maxLoadKg": 30,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H22",
+            "name": "혼합 22",
+            "size": {
+              "w": 403,
+              "d": 367,
+              "h": 245
+            },
+            "quantity": 1,
+            "weight": 2,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#93c788",
+            "material": "paper",
+            "maxLoadKg": 30,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H23",
+            "name": "혼합 23",
+            "size": {
+              "w": 429,
+              "d": 343,
+              "h": 245
+            },
+            "quantity": 1,
+            "weight": 2,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#93c788",
+            "material": "paper",
+            "maxLoadKg": 30,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H24",
+            "name": "혼합 24",
+            "size": {
+              "w": 411,
+              "d": 359,
+              "h": 245
+            },
+            "quantity": 1,
+            "weight": 2,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#93c788",
+            "material": "paper",
+            "maxLoadKg": 30,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          }
+        ],
+        "constraints": {
+          "robotMode": "gripper",
+          "supportRatio": 0.95,
+          "contactTolerance": 0.5,
+          "horizontalGap": 0,
+          "heavyRule": "each",
+          "stability": {
+            "maxSlenderness": 2,
+            "minMarginRatio": 0.1,
+            "lateralAccelerationG": 0.15,
+            "loadSafetyFactor": 1.25,
+            "slendernessMode": "score"
+          },
+          "gripper": {
+            "width": 180,
+            "depth": 160,
+            "height": 160,
+            "mass": 3,
+            "payload": 35,
+            "margin": 5,
+            "lift": 200,
+            "speed": 650,
+            "pickSeconds": 1,
+            "placeSeconds": 1,
+            "rotationSpeed": 180
+          },
+          "workspace": {
+            "xMin": -1400,
+            "xMax": 1600,
+            "yMin": -500,
+            "yMax": 1500,
+            "zMax": 2600
+          },
+          "reach": {
+            "baseX": -700,
+            "baseY": 500,
+            "minRadius": 0,
+            "maxRadius": 2400
+          }
+        },
+        "arrival": {
+          "seed": 42,
+          "pattern": "random-draw"
+        },
+        "events": [],
+        "supplyMode": "stock-select"
+      },
+      "metrics": {
+        "loadUtilization": 0.36764705882352944,
+        "unknownCapacity": 0,
+        "slenderness": 3.399538106235566,
+        "supportBalances": [
+          {
+            "id": "H2-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 42,
+            "loadAbove": 30,
+            "center": {
+              "x": 261.5,
+              "y": 228.5,
+              "z": 530.1666666666666
+            },
+            "supportCenter": {
+              "x": 261.5,
+              "y": 228.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 228.5,
+            "required": 79.52499999999999,
+            "reserve": 148.97500000000002
+          },
+          {
+            "id": "H4-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 42,
+            "loadAbove": 30,
+            "center": {
+              "x": 224.5,
+              "y": 722.5,
+              "z": 530.1666666666666
+            },
+            "supportCenter": {
+              "x": 224.5,
+              "y": 722.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 224.5,
+            "required": 79.52499999999999,
+            "reserve": 144.97500000000002
+          },
+          {
+            "id": "H3-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 42,
+            "loadAbove": 30,
+            "center": {
+              "x": 797.5,
+              "y": 216.5,
+              "z": 530.1666666666666
+            },
+            "supportCenter": {
+              "x": 797.5,
+              "y": 216.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 216.5,
+            "required": 79.52499999999999,
+            "reserve": 136.97500000000002
+          },
+          {
+            "id": "H1-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 42,
+            "loadAbove": 30,
+            "center": {
+              "x": 803.5,
+              "y": 653.5,
+              "z": 530.1666666666666
+            },
+            "supportCenter": {
+              "x": 803.5,
+              "y": 653.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 220.5,
+            "required": 79.52499999999999,
+            "reserve": 140.97500000000002
+          },
+          {
+            "id": "H6-01",
+            "isBase": false,
+            "planeZ": 247,
+            "mass": 30,
+            "loadAbove": 20,
+            "center": {
+              "x": 803.5,
+              "y": 653.5,
+              "z": 692.8333333333334
+            },
+            "supportCenter": {
+              "x": 803.5,
+              "y": 653.5,
+              "z": 247
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 219.5,
+            "required": 66.875,
+            "reserve": 152.625
+          },
+          {
+            "id": "H8-01",
+            "isBase": false,
+            "planeZ": 247,
+            "mass": 30,
+            "loadAbove": 20,
+            "center": {
+              "x": 797.5,
+              "y": 216.5,
+              "z": 692.8333333333334
+            },
+            "supportCenter": {
+              "x": 797.5,
+              "y": 216.5,
+              "z": 247
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 215.5,
+            "required": 66.875,
+            "reserve": 148.625
+          },
+          {
+            "id": "H7-01",
+            "isBase": false,
+            "planeZ": 247,
+            "mass": 30,
+            "loadAbove": 20,
+            "center": {
+              "x": 224.5,
+              "y": 722.5,
+              "z": 692.8333333333334
+            },
+            "supportCenter": {
+              "x": 224.5,
+              "y": 722.5,
+              "z": 247
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 207.5,
+            "required": 66.875,
+            "reserve": 140.625
+          },
+          {
+            "id": "H5-01",
+            "isBase": false,
+            "planeZ": 247,
+            "mass": 30,
+            "loadAbove": 20,
+            "center": {
+              "x": 261.5,
+              "y": 228.5,
+              "z": 692.8333333333334
+            },
+            "supportCenter": {
+              "x": 261.5,
+              "y": 228.5,
+              "z": 247
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 211.5,
+            "required": 66.875,
+            "reserve": 144.625
+          },
+          {
+            "id": "H10-01",
+            "isBase": false,
+            "planeZ": 486,
+            "mass": 20,
+            "loadAbove": 12,
+            "center": {
+              "x": 261.5,
+              "y": 228.5,
+              "z": 856
+            },
+            "supportCenter": {
+              "x": 261.5,
+              "y": 228.5,
+              "z": 486
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 210.5,
+            "required": 55.5,
+            "reserve": 155
+          },
+          {
+            "id": "H12-01",
+            "isBase": false,
+            "planeZ": 486,
+            "mass": 20,
+            "loadAbove": 12,
+            "center": {
+              "x": 803.5,
+              "y": 653.5,
+              "z": 856
+            },
+            "supportCenter": {
+              "x": 803.5,
+              "y": 653.5,
+              "z": 486
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 206.5,
+            "required": 55.5,
+            "reserve": 151
+          },
+          {
+            "id": "H11-01",
+            "isBase": false,
+            "planeZ": 486,
+            "mass": 20,
+            "loadAbove": 12,
+            "center": {
+              "x": 224.5,
+              "y": 722.5,
+              "z": 856
+            },
+            "supportCenter": {
+              "x": 224.5,
+              "y": 722.5,
+              "z": 486
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 198.5,
+            "required": 55.5,
+            "reserve": 143
+          },
+          {
+            "id": "H9-01",
+            "isBase": false,
+            "planeZ": 486,
+            "mass": 20,
+            "loadAbove": 12,
+            "center": {
+              "x": 797.5,
+              "y": 216.5,
+              "z": 856
+            },
+            "supportCenter": {
+              "x": 797.5,
+              "y": 216.5,
+              "z": 486
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 202.5,
+            "required": 55.5,
+            "reserve": 147
+          },
+          {
+            "id": "H14-01",
+            "isBase": false,
+            "planeZ": 739,
+            "mass": 12,
+            "loadAbove": 6,
+            "center": {
+              "x": 261.5,
+              "y": 228.5,
+              "z": 1018.3333333333334
+            },
+            "supportCenter": {
+              "x": 261.5,
+              "y": 228.5,
+              "z": 739
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 201.5,
+            "required": 41.900000000000006,
+            "reserve": 159.6
+          },
+          {
+            "id": "H16-01",
+            "isBase": false,
+            "planeZ": 739,
+            "mass": 12,
+            "loadAbove": 6,
+            "center": {
+              "x": 803.5,
+              "y": 653.5,
+              "z": 1018.3333333333334
+            },
+            "supportCenter": {
+              "x": 803.5,
+              "y": 653.5,
+              "z": 739
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 197.5,
+            "required": 41.900000000000006,
+            "reserve": 155.6
+          },
+          {
+            "id": "H15-01",
+            "isBase": false,
+            "planeZ": 739,
+            "mass": 12,
+            "loadAbove": 6,
+            "center": {
+              "x": 224.5,
+              "y": 722.5,
+              "z": 1018.3333333333334
+            },
+            "supportCenter": {
+              "x": 224.5,
+              "y": 722.5,
+              "z": 739
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 189.5,
+            "required": 41.900000000000006,
+            "reserve": 147.6
+          },
+          {
+            "id": "H13-01",
+            "isBase": false,
+            "planeZ": 739,
+            "mass": 12,
+            "loadAbove": 6,
+            "center": {
+              "x": 797.5,
+              "y": 216.5,
+              "z": 1018.3333333333334
+            },
+            "supportCenter": {
+              "x": 797.5,
+              "y": 216.5,
+              "z": 739
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 193.5,
+            "required": 41.900000000000006,
+            "reserve": 151.6
+          },
+          {
+            "id": "H18-01",
+            "isBase": false,
+            "planeZ": 970,
+            "mass": 6,
+            "loadAbove": 2,
+            "center": {
+              "x": 261.5,
+              "y": 228.5,
+              "z": 1182.1666666666667
+            },
+            "supportCenter": {
+              "x": 261.5,
+              "y": 228.5,
+              "z": 970
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 192.5,
+            "required": 38.5,
+            "reserve": 154
+          },
+          {
+            "id": "H20-01",
+            "isBase": false,
+            "planeZ": 970,
+            "mass": 6,
+            "loadAbove": 2,
+            "center": {
+              "x": 224.5,
+              "y": 722.5,
+              "z": 1182.1666666666667
+            },
+            "supportCenter": {
+              "x": 224.5,
+              "y": 722.5,
+              "z": 970
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 188.5,
+            "required": 37.7,
+            "reserve": 150.8
+          },
+          {
+            "id": "H19-01",
+            "isBase": false,
+            "planeZ": 970,
+            "mass": 6,
+            "loadAbove": 2,
+            "center": {
+              "x": 803.5,
+              "y": 653.5,
+              "z": 1182.1666666666667
+            },
+            "supportCenter": {
+              "x": 803.5,
+              "y": 653.5,
+              "z": 970
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 180.5,
+            "required": 36.1,
+            "reserve": 144.4
+          },
+          {
+            "id": "H17-01",
+            "isBase": false,
+            "planeZ": 970,
+            "mass": 6,
+            "loadAbove": 2,
+            "center": {
+              "x": 797.5,
+              "y": 216.5,
+              "z": 1182.1666666666667
+            },
+            "supportCenter": {
+              "x": 797.5,
+              "y": 216.5,
+              "z": 970
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 184.5,
+            "required": 36.9,
+            "reserve": 147.6
+          },
+          {
+            "id": "H22-01",
+            "isBase": false,
+            "planeZ": 1227,
+            "mass": 2,
+            "loadAbove": 0,
+            "center": {
+              "x": 261.5,
+              "y": 228.5,
+              "z": 1349.5
+            },
+            "supportCenter": {
+              "x": 261.5,
+              "y": 228.5,
+              "z": 1227
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 183.5,
+            "required": 36.7,
+            "reserve": 146.8
+          },
+          {
+            "id": "H24-01",
+            "isBase": false,
+            "planeZ": 1227,
+            "mass": 2,
+            "loadAbove": 0,
+            "center": {
+              "x": 224.5,
+              "y": 722.5,
+              "z": 1349.5
+            },
+            "supportCenter": {
+              "x": 224.5,
+              "y": 722.5,
+              "z": 1227
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 179.5,
+            "required": 35.9,
+            "reserve": 143.6
+          },
+          {
+            "id": "H23-01",
+            "isBase": false,
+            "planeZ": 1227,
+            "mass": 2,
+            "loadAbove": 0,
+            "center": {
+              "x": 803.5,
+              "y": 653.5,
+              "z": 1349.5
+            },
+            "supportCenter": {
+              "x": 803.5,
+              "y": 653.5,
+              "z": 1227
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 171.5,
+            "required": 34.300000000000004,
+            "reserve": 137.2
+          },
+          {
+            "id": "H21-01",
+            "isBase": false,
+            "planeZ": 1227,
+            "mass": 2,
+            "loadAbove": 0,
+            "center": {
+              "x": 797.5,
+              "y": 216.5,
+              "z": 1349.5
+            },
+            "supportCenter": {
+              "x": 797.5,
+              "y": 216.5,
+              "z": 1227
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 175.5,
+            "required": 35.1,
+            "reserve": 140.4
+          }
+        ],
+        "count": 24,
+        "volume": 1124877944,
+        "weight": 168,
+        "height": 1472,
+        "utilization": 0.5858739291666667,
+        "efficiency": 0.6368194882246376,
+        "center": {
+          "x": 521.75,
+          "y": 455.25,
+          "z": 530.1666666666666
+        },
+        "quadrants": [
+          52.06420886374815,
+          41.717873460707054,
+          42.910300401447074,
+          31.307617274097723
+        ],
+        "imbalance": 0.12355114041458587,
+        "distanceM": 130.2407439583068,
+        "workSeconds": 254.37037532047202,
+        "medianMs": 1198.6722499999996,
+        "p95Ms": 1528.3222000000023,
+        "totalMs": 24772.079499999996,
+        "complete": true,
+        "failedStep": null,
+        "reason": "",
+        "excluded": 0,
+        "missing": 0
+      },
+      "placements": [
+        {
+          "id": "H2-01",
+          "typeId": "H2",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "w": 523,
+            "d": 457,
+            "h": 247
+          },
+          "orientation": 0,
+          "weight": 12,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 30,
+          "maxLoadKg": 120,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H4-01",
+          "typeId": "H4",
+          "position": {
+            "x": 0,
+            "y": 457,
+            "z": 0
+          },
+          "size": {
+            "w": 449,
+            "d": 531,
+            "h": 247
+          },
+          "orientation": 90,
+          "weight": 12,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 30,
+          "maxLoadKg": 120,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H3-01",
+          "typeId": "H3",
+          "position": {
+            "x": 523,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "w": 549,
+            "d": 433,
+            "h": 247
+          },
+          "orientation": 0,
+          "weight": 12,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 30,
+          "maxLoadKg": 120,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H1-01",
+          "typeId": "H1",
+          "position": {
+            "x": 535,
+            "y": 433,
+            "z": 0
+          },
+          "size": {
+            "w": 537,
+            "d": 441,
+            "h": 247
+          },
+          "orientation": 0,
+          "weight": 12,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 30,
+          "maxLoadKg": 120,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H6-01",
+          "typeId": "H6",
+          "position": {
+            "x": 554,
+            "y": 434,
+            "z": 247
+          },
+          "size": {
+            "w": 499,
+            "d": 439,
+            "h": 239
+          },
+          "orientation": 0,
+          "weight": 10,
+          "supports": [
+            {
+              "id": "H1-01",
+              "rect": {
+                "x": 554,
+                "y": 434,
+                "w": 499,
+                "d": 439
+              },
+              "area": 219061,
+              "share": 1,
+              "forcePoint": {
+                "x": 803.5,
+                "y": 653.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 20,
+          "maxLoadKg": 102,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H8-01",
+          "typeId": "H8",
+          "position": {
+            "x": 544,
+            "y": 1,
+            "z": 247
+          },
+          "size": {
+            "w": 507,
+            "d": 431,
+            "h": 239
+          },
+          "orientation": 0,
+          "weight": 10,
+          "supports": [
+            {
+              "id": "H3-01",
+              "rect": {
+                "x": 544,
+                "y": 1,
+                "w": 507,
+                "d": 431
+              },
+              "area": 218517,
+              "share": 1,
+              "forcePoint": {
+                "x": 797.5,
+                "y": 216.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 20,
+          "maxLoadKg": 102,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H7-01",
+          "typeId": "H7",
+          "position": {
+            "x": 17,
+            "y": 460,
+            "z": 247
+          },
+          "size": {
+            "w": 415,
+            "d": 525,
+            "h": 239
+          },
+          "orientation": 90,
+          "weight": 10,
+          "supports": [
+            {
+              "id": "H4-01",
+              "rect": {
+                "x": 17,
+                "y": 460,
+                "w": 415,
+                "d": 525
+              },
+              "area": 217875,
+              "share": 1,
+              "forcePoint": {
+                "x": 224.5,
+                "y": 722.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 20,
+          "maxLoadKg": 102,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H5-01",
+          "typeId": "H5",
+          "position": {
+            "x": 5,
+            "y": 17,
+            "z": 247
+          },
+          "size": {
+            "w": 513,
+            "d": 423,
+            "h": 239
+          },
+          "orientation": 0,
+          "weight": 10,
+          "supports": [
+            {
+              "id": "H2-01",
+              "rect": {
+                "x": 5,
+                "y": 17,
+                "w": 513,
+                "d": 423
+              },
+              "area": 216999,
+              "share": 1,
+              "forcePoint": {
+                "x": 261.5,
+                "y": 228.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 20,
+          "maxLoadKg": 102,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H10-01",
+          "typeId": "H10",
+          "position": {
+            "x": 24,
+            "y": 18,
+            "z": 486
+          },
+          "size": {
+            "w": 475,
+            "d": 421,
+            "h": 253
+          },
+          "orientation": 0,
+          "weight": 8,
+          "supports": [
+            {
+              "id": "H5-01",
+              "rect": {
+                "x": 24,
+                "y": 18,
+                "w": 475,
+                "d": 421
+              },
+              "area": 199975,
+              "share": 1,
+              "forcePoint": {
+                "x": 261.5,
+                "y": 228.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 12,
+          "maxLoadKg": 84,
+          "maxLoadSource": "synthetic",
+          "material": "wood",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H12-01",
+          "typeId": "H12",
+          "position": {
+            "x": 562,
+            "y": 447,
+            "z": 486
+          },
+          "size": {
+            "w": 483,
+            "d": 413,
+            "h": 253
+          },
+          "orientation": 0,
+          "weight": 8,
+          "supports": [
+            {
+              "id": "H6-01",
+              "rect": {
+                "x": 562,
+                "y": 447,
+                "w": 483,
+                "d": 413
+              },
+              "area": 199479,
+              "share": 1,
+              "forcePoint": {
+                "x": 803.5,
+                "y": 653.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 12,
+          "maxLoadKg": 84,
+          "maxLoadSource": "synthetic",
+          "material": "wood",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H11-01",
+          "typeId": "H11",
+          "position": {
+            "x": 26,
+            "y": 472,
+            "z": 486
+          },
+          "size": {
+            "w": 397,
+            "d": 501,
+            "h": 253
+          },
+          "orientation": 90,
+          "weight": 8,
+          "supports": [
+            {
+              "id": "H7-01",
+              "rect": {
+                "x": 26,
+                "y": 472,
+                "w": 397,
+                "d": 501
+              },
+              "area": 198897,
+              "share": 1,
+              "forcePoint": {
+                "x": 224.5,
+                "y": 722.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 12,
+          "maxLoadKg": 84,
+          "maxLoadSource": "synthetic",
+          "material": "wood",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H9-01",
+          "typeId": "H9",
+          "position": {
+            "x": 553,
+            "y": 14,
+            "z": 486
+          },
+          "size": {
+            "w": 489,
+            "d": 405,
+            "h": 253
+          },
+          "orientation": 0,
+          "weight": 8,
+          "supports": [
+            {
+              "id": "H8-01",
+              "rect": {
+                "x": 553,
+                "y": 14,
+                "w": 489,
+                "d": 405
+              },
+              "area": 198045,
+              "share": 1,
+              "forcePoint": {
+                "x": 797.5,
+                "y": 216.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 12,
+          "maxLoadKg": 84,
+          "maxLoadSource": "synthetic",
+          "material": "wood",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H14-01",
+          "typeId": "H14",
+          "position": {
+            "x": 36,
+            "y": 27,
+            "z": 739
+          },
+          "size": {
+            "w": 451,
+            "d": 403,
+            "h": 231
+          },
+          "orientation": 0,
+          "weight": 6,
+          "supports": [
+            {
+              "id": "H10-01",
+              "rect": {
+                "x": 36,
+                "y": 27,
+                "w": 451,
+                "d": 403
+              },
+              "area": 181753,
+              "share": 1,
+              "forcePoint": {
+                "x": 261.5,
+                "y": 228.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 6,
+          "maxLoadKg": 66,
+          "maxLoadSource": "synthetic",
+          "material": "wood",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H16-01",
+          "typeId": "H16",
+          "position": {
+            "x": 574,
+            "y": 456,
+            "z": 739
+          },
+          "size": {
+            "w": 459,
+            "d": 395,
+            "h": 231
+          },
+          "orientation": 0,
+          "weight": 6,
+          "supports": [
+            {
+              "id": "H12-01",
+              "rect": {
+                "x": 574,
+                "y": 456,
+                "w": 459,
+                "d": 395
+              },
+              "area": 181305,
+              "share": 1,
+              "forcePoint": {
+                "x": 803.5,
+                "y": 653.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 6,
+          "maxLoadKg": 66,
+          "maxLoadSource": "synthetic",
+          "material": "wood",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H15-01",
+          "typeId": "H15",
+          "position": {
+            "x": 35,
+            "y": 484,
+            "z": 739
+          },
+          "size": {
+            "w": 379,
+            "d": 477,
+            "h": 231
+          },
+          "orientation": 90,
+          "weight": 6,
+          "supports": [
+            {
+              "id": "H11-01",
+              "rect": {
+                "x": 35,
+                "y": 484,
+                "w": 379,
+                "d": 477
+              },
+              "area": 180783,
+              "share": 1,
+              "forcePoint": {
+                "x": 224.5,
+                "y": 722.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 6,
+          "maxLoadKg": 66,
+          "maxLoadSource": "synthetic",
+          "material": "wood",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H13-01",
+          "typeId": "H13",
+          "position": {
+            "x": 565,
+            "y": 23,
+            "z": 739
+          },
+          "size": {
+            "w": 465,
+            "d": 387,
+            "h": 231
+          },
+          "orientation": 0,
+          "weight": 6,
+          "supports": [
+            {
+              "id": "H9-01",
+              "rect": {
+                "x": 565,
+                "y": 23,
+                "w": 465,
+                "d": 387
+              },
+              "area": 179955,
+              "share": 1,
+              "forcePoint": {
+                "x": 797.5,
+                "y": 216.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 6,
+          "maxLoadKg": 66,
+          "maxLoadSource": "synthetic",
+          "material": "wood",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H18-01",
+          "typeId": "H18",
+          "position": {
+            "x": 48,
+            "y": 36,
+            "z": 970
+          },
+          "size": {
+            "w": 427,
+            "d": 385,
+            "h": 257
+          },
+          "orientation": 0,
+          "weight": 4,
+          "supports": [
+            {
+              "id": "H14-01",
+              "rect": {
+                "x": 48,
+                "y": 36,
+                "w": 427,
+                "d": 385
+              },
+              "area": 164395,
+              "share": 1,
+              "forcePoint": {
+                "x": 261.5,
+                "y": 228.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 2,
+          "maxLoadKg": 48,
+          "maxLoadSource": "synthetic",
+          "material": "paper",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H20-01",
+          "typeId": "H20",
+          "position": {
+            "x": 36,
+            "y": 505,
+            "z": 970
+          },
+          "size": {
+            "w": 377,
+            "d": 435,
+            "h": 257
+          },
+          "orientation": 90,
+          "weight": 4,
+          "supports": [
+            {
+              "id": "H15-01",
+              "rect": {
+                "x": 36,
+                "y": 505,
+                "w": 377,
+                "d": 435
+              },
+              "area": 163995,
+              "share": 1,
+              "forcePoint": {
+                "x": 224.5,
+                "y": 722.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 2,
+          "maxLoadKg": 48,
+          "maxLoadSource": "synthetic",
+          "material": "paper",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H19-01",
+          "typeId": "H19",
+          "position": {
+            "x": 577,
+            "y": 473,
+            "z": 970
+          },
+          "size": {
+            "w": 453,
+            "d": 361,
+            "h": 257
+          },
+          "orientation": 0,
+          "weight": 4,
+          "supports": [
+            {
+              "id": "H16-01",
+              "rect": {
+                "x": 577,
+                "y": 473,
+                "w": 453,
+                "d": 361
+              },
+              "area": 163533,
+              "share": 1,
+              "forcePoint": {
+                "x": 803.5,
+                "y": 653.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 2,
+          "maxLoadKg": 48,
+          "maxLoadSource": "synthetic",
+          "material": "paper",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H17-01",
+          "typeId": "H17",
+          "position": {
+            "x": 577,
+            "y": 32,
+            "z": 970
+          },
+          "size": {
+            "w": 441,
+            "d": 369,
+            "h": 257
+          },
+          "orientation": 0,
+          "weight": 4,
+          "supports": [
+            {
+              "id": "H13-01",
+              "rect": {
+                "x": 577,
+                "y": 32,
+                "w": 441,
+                "d": 369
+              },
+              "area": 162729,
+              "share": 1,
+              "forcePoint": {
+                "x": 797.5,
+                "y": 216.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 2,
+          "maxLoadKg": 48,
+          "maxLoadSource": "synthetic",
+          "material": "paper",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H22-01",
+          "typeId": "H22",
+          "position": {
+            "x": 60,
+            "y": 45,
+            "z": 1227
+          },
+          "size": {
+            "w": 403,
+            "d": 367,
+            "h": 245
+          },
+          "orientation": 0,
+          "weight": 2,
+          "supports": [
+            {
+              "id": "H18-01",
+              "rect": {
+                "x": 60,
+                "y": 45,
+                "w": 403,
+                "d": 367
+              },
+              "area": 147901,
+              "share": 1,
+              "forcePoint": {
+                "x": 261.5,
+                "y": 228.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "maxLoadKg": 30,
+          "maxLoadSource": "synthetic",
+          "material": "paper",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H24-01",
+          "typeId": "H24",
+          "position": {
+            "x": 45,
+            "y": 517,
+            "z": 1227
+          },
+          "size": {
+            "w": 359,
+            "d": 411,
+            "h": 245
+          },
+          "orientation": 90,
+          "weight": 2,
+          "supports": [
+            {
+              "id": "H20-01",
+              "rect": {
+                "x": 45,
+                "y": 517,
+                "w": 359,
+                "d": 411
+              },
+              "area": 147549,
+              "share": 1,
+              "forcePoint": {
+                "x": 224.5,
+                "y": 722.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "maxLoadKg": 30,
+          "maxLoadSource": "synthetic",
+          "material": "paper",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H23-01",
+          "typeId": "H23",
+          "position": {
+            "x": 589,
+            "y": 482,
+            "z": 1227
+          },
+          "size": {
+            "w": 429,
+            "d": 343,
+            "h": 245
+          },
+          "orientation": 0,
+          "weight": 2,
+          "supports": [
+            {
+              "id": "H19-01",
+              "rect": {
+                "x": 589,
+                "y": 482,
+                "w": 429,
+                "d": 343
+              },
+              "area": 147147,
+              "share": 1,
+              "forcePoint": {
+                "x": 803.5,
+                "y": 653.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "maxLoadKg": 30,
+          "maxLoadSource": "synthetic",
+          "material": "paper",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H21-01",
+          "typeId": "H21",
+          "position": {
+            "x": 589,
+            "y": 41,
+            "z": 1227
+          },
+          "size": {
+            "w": 417,
+            "d": 351,
+            "h": 245
+          },
+          "orientation": 0,
+          "weight": 2,
+          "supports": [
+            {
+              "id": "H17-01",
+              "rect": {
+                "x": 589,
+                "y": 41,
+                "w": 417,
+                "d": 351
+              },
+              "area": 146367,
+              "share": 1,
+              "forcePoint": {
+                "x": 797.5,
+                "y": 216.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "maxLoadKg": 30,
+          "maxLoadSource": "synthetic",
+          "material": "paper",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        }
+      ],
+      "heightAnalysis": {
+        "height": 1472,
+        "layers": 6,
+        "headroom": 128,
+        "limit": 1600,
+        "inspected": 0,
+        "generated": 0,
+        "upperInspected": 0,
+        "bestUpperSupport": null,
+        "rejectionCounts": {}
+      },
+      "last": {
+        "observation": {
+          "id": "H21-01",
+          "typeId": "H21",
+          "size": {
+            "w": 417,
+            "d": 351,
+            "h": 245
+          },
+          "weight": 2,
+          "status": "normal",
+          "orientationAllowed": [
+            0,
+            90
+          ],
+          "maxLoadKg": 30,
+          "maxLoadSource": "synthetic",
+          "material": "paper",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        "rejections": {},
+        "generated": 15494,
+        "checked": 24
+      },
+      "validation": {
+        "allCommittedPlacementsRechecked": true,
+        "allFinalSupportMarginsPassed": true,
+        "inventoryConserved": true
+      }
+    },
+    {
+      "scenario": {
+        "version": 1,
+        "units": {
+          "length": "mm",
+          "weight": "kg",
+          "time": "s"
+        },
+        "id": "high-stack",
+        "name": "고층 검증 · 혼합 재고 24개 · 6단",
+        "pallet": {
+          "width": 1200,
+          "depth": 1000,
+          "maxHeight": 1600
+        },
+        "types": [
+          {
+            "id": "H1",
+            "name": "혼합 1",
+            "size": {
+              "w": 537,
+              "d": 441,
+              "h": 247
+            },
+            "quantity": 1,
+            "weight": 12,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#6bcab7",
+            "material": "plastic",
+            "maxLoadKg": 120,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H2",
+            "name": "혼합 2",
+            "size": {
+              "w": 523,
+              "d": 457,
+              "h": 247
+            },
+            "quantity": 1,
+            "weight": 12,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#6bcab7",
+            "material": "plastic",
+            "maxLoadKg": 120,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H3",
+            "name": "혼합 3",
+            "size": {
+              "w": 549,
+              "d": 433,
+              "h": 247
+            },
+            "quantity": 1,
+            "weight": 12,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#6bcab7",
+            "material": "plastic",
+            "maxLoadKg": 120,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H4",
+            "name": "혼합 4",
+            "size": {
+              "w": 531,
+              "d": 449,
+              "h": 247
+            },
+            "quantity": 1,
+            "weight": 12,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#6bcab7",
+            "material": "plastic",
+            "maxLoadKg": 120,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H5",
+            "name": "혼합 5",
+            "size": {
+              "w": 513,
+              "d": 423,
+              "h": 239
+            },
+            "quantity": 1,
+            "weight": 10,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e8b86a",
+            "material": "plastic",
+            "maxLoadKg": 102,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H6",
+            "name": "혼합 6",
+            "size": {
+              "w": 499,
+              "d": 439,
+              "h": 239
+            },
+            "quantity": 1,
+            "weight": 10,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e8b86a",
+            "material": "plastic",
+            "maxLoadKg": 102,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H7",
+            "name": "혼합 7",
+            "size": {
+              "w": 525,
+              "d": 415,
+              "h": 239
+            },
+            "quantity": 1,
+            "weight": 10,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e8b86a",
+            "material": "plastic",
+            "maxLoadKg": 102,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H8",
+            "name": "혼합 8",
+            "size": {
+              "w": 507,
+              "d": 431,
+              "h": 239
+            },
+            "quantity": 1,
+            "weight": 10,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e8b86a",
+            "material": "plastic",
+            "maxLoadKg": 102,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H9",
+            "name": "혼합 9",
+            "size": {
+              "w": 489,
+              "d": 405,
+              "h": 253
+            },
+            "quantity": 1,
+            "weight": 8,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#80a9e8",
+            "material": "wood",
+            "maxLoadKg": 84,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H10",
+            "name": "혼합 10",
+            "size": {
+              "w": 475,
+              "d": 421,
+              "h": 253
+            },
+            "quantity": 1,
+            "weight": 8,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#80a9e8",
+            "material": "wood",
+            "maxLoadKg": 84,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H11",
+            "name": "혼합 11",
+            "size": {
+              "w": 501,
+              "d": 397,
+              "h": 253
+            },
+            "quantity": 1,
+            "weight": 8,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#80a9e8",
+            "material": "wood",
+            "maxLoadKg": 84,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H12",
+            "name": "혼합 12",
+            "size": {
+              "w": 483,
+              "d": 413,
+              "h": 253
+            },
+            "quantity": 1,
+            "weight": 8,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#80a9e8",
+            "material": "wood",
+            "maxLoadKg": 84,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H13",
+            "name": "혼합 13",
+            "size": {
+              "w": 465,
+              "d": 387,
+              "h": 231
+            },
+            "quantity": 1,
+            "weight": 6,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#cc97df",
+            "material": "wood",
+            "maxLoadKg": 66,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H14",
+            "name": "혼합 14",
+            "size": {
+              "w": 451,
+              "d": 403,
+              "h": 231
+            },
+            "quantity": 1,
+            "weight": 6,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#cc97df",
+            "material": "wood",
+            "maxLoadKg": 66,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H15",
+            "name": "혼합 15",
+            "size": {
+              "w": 477,
+              "d": 379,
+              "h": 231
+            },
+            "quantity": 1,
+            "weight": 6,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#cc97df",
+            "material": "wood",
+            "maxLoadKg": 66,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H16",
+            "name": "혼합 16",
+            "size": {
+              "w": 459,
+              "d": 395,
+              "h": 231
+            },
+            "quantity": 1,
+            "weight": 6,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#cc97df",
+            "material": "wood",
+            "maxLoadKg": 66,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H17",
+            "name": "혼합 17",
+            "size": {
+              "w": 441,
+              "d": 369,
+              "h": 257
+            },
+            "quantity": 1,
+            "weight": 4,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e69ca3",
+            "material": "paper",
+            "maxLoadKg": 48,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H18",
+            "name": "혼합 18",
+            "size": {
+              "w": 427,
+              "d": 385,
+              "h": 257
+            },
+            "quantity": 1,
+            "weight": 4,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e69ca3",
+            "material": "paper",
+            "maxLoadKg": 48,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H19",
+            "name": "혼합 19",
+            "size": {
+              "w": 453,
+              "d": 361,
+              "h": 257
+            },
+            "quantity": 1,
+            "weight": 4,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e69ca3",
+            "material": "paper",
+            "maxLoadKg": 48,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H20",
+            "name": "혼합 20",
+            "size": {
+              "w": 435,
+              "d": 377,
+              "h": 257
+            },
+            "quantity": 1,
+            "weight": 4,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e69ca3",
+            "material": "paper",
+            "maxLoadKg": 48,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H21",
+            "name": "혼합 21",
+            "size": {
+              "w": 417,
+              "d": 351,
+              "h": 245
+            },
+            "quantity": 1,
+            "weight": 2,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#93c788",
+            "material": "paper",
+            "maxLoadKg": 30,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H22",
+            "name": "혼합 22",
+            "size": {
+              "w": 403,
+              "d": 367,
+              "h": 245
+            },
+            "quantity": 1,
+            "weight": 2,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#93c788",
+            "material": "paper",
+            "maxLoadKg": 30,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H23",
+            "name": "혼합 23",
+            "size": {
+              "w": 429,
+              "d": 343,
+              "h": 245
+            },
+            "quantity": 1,
+            "weight": 2,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#93c788",
+            "material": "paper",
+            "maxLoadKg": 30,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H24",
+            "name": "혼합 24",
+            "size": {
+              "w": 411,
+              "d": 359,
+              "h": 245
+            },
+            "quantity": 1,
+            "weight": 2,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#93c788",
+            "material": "paper",
+            "maxLoadKg": 30,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          }
+        ],
+        "constraints": {
+          "robotMode": "gripper",
+          "supportRatio": 0.95,
+          "contactTolerance": 0.5,
+          "horizontalGap": 0,
+          "heavyRule": "each",
+          "stability": {
+            "maxSlenderness": 2,
+            "minMarginRatio": 0.1,
+            "lateralAccelerationG": 0.15,
+            "loadSafetyFactor": 1.25,
+            "slendernessMode": "score"
+          },
+          "gripper": {
+            "width": 180,
+            "depth": 160,
+            "height": 160,
+            "mass": 3,
+            "payload": 35,
+            "margin": 5,
+            "lift": 200,
+            "speed": 650,
+            "pickSeconds": 1,
+            "placeSeconds": 1,
+            "rotationSpeed": 180
+          },
+          "workspace": {
+            "xMin": -1400,
+            "xMax": 1600,
+            "yMin": -500,
+            "yMax": 1500,
+            "zMax": 2600
+          },
+          "reach": {
+            "baseX": -700,
+            "baseY": 500,
+            "minRadius": 0,
+            "maxRadius": 2400
+          }
+        },
+        "arrival": {
+          "seed": 42,
+          "pattern": "random-draw"
+        },
+        "events": [],
+        "supplyMode": "arrival"
+      },
+      "metrics": {
+        "loadUtilization": 0.22058823529411767,
+        "unknownCapacity": 0,
+        "slenderness": 1.801007556675063,
+        "supportBalances": [
+          {
+            "id": "H15-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 10,
+            "loadAbove": 4,
+            "center": {
+              "x": 238.5,
+              "y": 189.5,
+              "z": 213.1
+            },
+            "supportCenter": {
+              "x": 238.5,
+              "y": 189.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 189.5,
+            "required": 37.9,
+            "reserve": 151.6
+          },
+          {
+            "id": "H11-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 20,
+            "loadAbove": 12,
+            "center": {
+              "x": 248.7,
+              "y": 574.5,
+              "z": 341
+            },
+            "supportCenter": {
+              "x": 250.5,
+              "y": 577.5,
+              "z": 0
+            },
+            "offsetMm": 3.498571136907186,
+            "offsetRatio": 0.015113350125944584,
+            "margin": 195.5,
+            "required": 51.15,
+            "reserve": 144.35
+          },
+          {
+            "id": "H21-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 4,
+            "loadAbove": 2,
+            "center": {
+              "x": 682,
+              "y": 199.5,
+              "z": 245
+            },
+            "supportCenter": {
+              "x": 685.5,
+              "y": 203.5,
+              "z": 0
+            },
+            "offsetMm": 5.315072906367325,
+            "offsetRatio": 0.022792022792022793,
+            "margin": 171.5,
+            "required": 36.75,
+            "reserve": 134.75
+          },
+          {
+            "id": "H17-01",
+            "isBase": false,
+            "planeZ": 231,
+            "mass": 4,
+            "loadAbove": 0,
+            "center": {
+              "x": 238.5,
+              "y": 189.5,
+              "z": 359.5
+            },
+            "supportCenter": {
+              "x": 238.5,
+              "y": 189.5,
+              "z": 231
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 184.5,
+            "required": 36.9,
+            "reserve": 147.6
+          },
+          {
+            "id": "H4-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 30,
+            "loadAbove": 18,
+            "center": {
+              "x": 725.5,
+              "y": 644.5,
+              "z": 334.9
+            },
+            "supportCenter": {
+              "x": 725.5,
+              "y": 644.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 224.5,
+            "required": 50.23499999999999,
+            "reserve": 174.26500000000001
+          },
+          {
+            "id": "H13-01",
+            "isBase": false,
+            "planeZ": 253,
+            "mass": 12,
+            "loadAbove": 6,
+            "center": {
+              "x": 247.5,
+              "y": 572.5,
+              "z": 484
+            },
+            "supportCenter": {
+              "x": 244.5,
+              "y": 570,
+              "z": 253
+            },
+            "offsetMm": 3.905124837953328,
+            "offsetRatio": 0.013089005235602094,
+            "margin": 188.5,
+            "required": 38.2,
+            "reserve": 150.3
+          },
+          {
+            "id": "H6-01",
+            "isBase": false,
+            "planeZ": 247,
+            "mass": 18,
+            "loadAbove": 8,
+            "center": {
+              "x": 725.5,
+              "y": 644.5,
+              "z": 475.8333333333333
+            },
+            "supportCenter": {
+              "x": 725.5,
+              "y": 644.5,
+              "z": 247
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 219.5,
+            "required": 43.900000000000006,
+            "reserve": 175.6
+          },
+          {
+            "id": "H16-01",
+            "isBase": false,
+            "planeZ": 484,
+            "mass": 6,
+            "loadAbove": 0,
+            "center": {
+              "x": 250.5,
+              "y": 577.5,
+              "z": 599.5
+            },
+            "supportCenter": {
+              "x": 249,
+              "y": 570.5,
+              "z": 484
+            },
+            "offsetMm": 7.158910531638176,
+            "offsetRatio": 0.03674540682414698,
+            "margin": 183.5,
+            "required": 38.1,
+            "reserve": 145.4
+          },
+          {
+            "id": "H22-01",
+            "isBase": false,
+            "planeZ": 245,
+            "mass": 2,
+            "loadAbove": 0,
+            "center": {
+              "x": 678.5,
+              "y": 195.5,
+              "z": 367.5
+            },
+            "supportCenter": {
+              "x": 678.5,
+              "y": 203.5,
+              "z": 245
+            },
+            "offsetMm": 8,
+            "offsetRatio": 0.045584045584045586,
+            "margin": 167.5,
+            "required": 35.1,
+            "reserve": 132.4
+          },
+          {
+            "id": "H10-01",
+            "isBase": false,
+            "planeZ": 486,
+            "mass": 8,
+            "loadAbove": 0,
+            "center": {
+              "x": 725.5,
+              "y": 644.5,
+              "z": 612.5
+            },
+            "supportCenter": {
+              "x": 725.5,
+              "y": 644.5,
+              "z": 486
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 210.5,
+            "required": 42.1,
+            "reserve": 168.4
+          }
+        ],
+        "count": 10,
+        "volume": 451288634,
+        "weight": 64,
+        "height": 739,
+        "utilization": 0.23504616354166666,
+        "efficiency": 0.5088956179521876,
+        "center": {
+          "x": 497.6875,
+          "y": 523.71875,
+          "z": 312.15625
+        },
+        "quadrants": [
+          18.78287836675994,
+          8.148997709461437,
+          19.011677080196527,
+          18.056446843582098
+        ],
+        "imbalance": 0.1697293651677358,
+        "distanceM": 46.74390986706924,
+        "workSeconds": 94.91370748779885,
+        "medianMs": 257.64429999999993,
+        "p95Ms": 621.3832000000039,
+        "totalMs": 3234.395800000013,
+        "complete": false,
+        "failedStep": 11,
+        "reason": "누적 무게중심 정적 평형 불가 / 지지 조건 미달 / 무게 규칙 위반",
+        "excluded": 0,
+        "missing": 0
+      },
+      "placements": [
+        {
+          "id": "H15-01",
+          "typeId": "H15",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "w": 477,
+            "d": 379,
+            "h": 231
+          },
+          "orientation": 0,
+          "weight": 6,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 4,
+          "maxLoadKg": 66,
+          "maxLoadSource": "synthetic",
+          "material": "wood",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H11-01",
+          "typeId": "H11",
+          "position": {
+            "x": 0,
+            "y": 379,
+            "z": 0
+          },
+          "size": {
+            "w": 501,
+            "d": 397,
+            "h": 253
+          },
+          "orientation": 0,
+          "weight": 8,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 12,
+          "maxLoadKg": 84,
+          "maxLoadSource": "synthetic",
+          "material": "wood",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H21-01",
+          "typeId": "H21",
+          "position": {
+            "x": 477,
+            "y": 28,
+            "z": 0
+          },
+          "size": {
+            "w": 417,
+            "d": 351,
+            "h": 245
+          },
+          "orientation": 0,
+          "weight": 2,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 2,
+          "maxLoadKg": 30,
+          "maxLoadSource": "synthetic",
+          "material": "paper",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H17-01",
+          "typeId": "H17",
+          "position": {
+            "x": 18,
+            "y": 5,
+            "z": 231
+          },
+          "size": {
+            "w": 441,
+            "d": 369,
+            "h": 257
+          },
+          "orientation": 0,
+          "weight": 4,
+          "supports": [
+            {
+              "id": "H15-01",
+              "rect": {
+                "x": 18,
+                "y": 5,
+                "w": 441,
+                "d": 369
+              },
+              "area": 162729,
+              "share": 1,
+              "forcePoint": {
+                "x": 238.5,
+                "y": 189.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "maxLoadKg": 48,
+          "maxLoadSource": "synthetic",
+          "material": "paper",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H4-01",
+          "typeId": "H4",
+          "position": {
+            "x": 501,
+            "y": 379,
+            "z": 0
+          },
+          "size": {
+            "w": 449,
+            "d": 531,
+            "h": 247
+          },
+          "orientation": 90,
+          "weight": 12,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 18,
+          "maxLoadKg": 120,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H13-01",
+          "typeId": "H13",
+          "position": {
+            "x": 12,
+            "y": 374,
+            "z": 253
+          },
+          "size": {
+            "w": 465,
+            "d": 387,
+            "h": 231
+          },
+          "orientation": 0,
+          "weight": 6,
+          "supports": [
+            {
+              "id": "H11-01",
+              "rect": {
+                "x": 12,
+                "y": 379,
+                "w": 465,
+                "d": 382
+              },
+              "area": 177630,
+              "share": 1,
+              "forcePoint": {
+                "x": 247.5,
+                "y": 572.5
+              }
+            }
+          ],
+          "supportRatio": 0.9870801033591732,
+          "loadAbove": 6,
+          "maxLoadKg": 66,
+          "maxLoadSource": "synthetic",
+          "material": "wood",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H6-01",
+          "typeId": "H6",
+          "position": {
+            "x": 506,
+            "y": 395,
+            "z": 247
+          },
+          "size": {
+            "w": 439,
+            "d": 499,
+            "h": 239
+          },
+          "orientation": 90,
+          "weight": 10,
+          "supports": [
+            {
+              "id": "H4-01",
+              "rect": {
+                "x": 506,
+                "y": 395,
+                "w": 439,
+                "d": 499
+              },
+              "area": 219061,
+              "share": 1,
+              "forcePoint": {
+                "x": 725.5,
+                "y": 644.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 8,
+          "maxLoadKg": 102,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H16-01",
+          "typeId": "H16",
+          "position": {
+            "x": 21,
+            "y": 380,
+            "z": 484
+          },
+          "size": {
+            "w": 459,
+            "d": 395,
+            "h": 231
+          },
+          "orientation": 0,
+          "weight": 6,
+          "supports": [
+            {
+              "id": "H13-01",
+              "rect": {
+                "x": 21,
+                "y": 380,
+                "w": 456,
+                "d": 381
+              },
+              "area": 173736,
+              "share": 1,
+              "forcePoint": {
+                "x": 250.5,
+                "y": 577.5
+              }
+            }
+          ],
+          "supportRatio": 0.95825266815587,
+          "loadAbove": 0,
+          "maxLoadKg": 66,
+          "maxLoadSource": "synthetic",
+          "material": "wood",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H22-01",
+          "typeId": "H22",
+          "position": {
+            "x": 477,
+            "y": 12,
+            "z": 245
+          },
+          "size": {
+            "w": 403,
+            "d": 367,
+            "h": 245
+          },
+          "orientation": 0,
+          "weight": 2,
+          "supports": [
+            {
+              "id": "H21-01",
+              "rect": {
+                "x": 477,
+                "y": 28,
+                "w": 403,
+                "d": 351
+              },
+              "area": 141453,
+              "share": 1,
+              "forcePoint": {
+                "x": 678.5,
+                "y": 195.5
+              }
+            }
+          ],
+          "supportRatio": 0.9564032697547684,
+          "loadAbove": 0,
+          "maxLoadKg": 30,
+          "maxLoadSource": "synthetic",
+          "material": "paper",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H10-01",
+          "typeId": "H10",
+          "position": {
+            "x": 515,
+            "y": 407,
+            "z": 486
+          },
+          "size": {
+            "w": 421,
+            "d": 475,
+            "h": 253
+          },
+          "orientation": 90,
+          "weight": 8,
+          "supports": [
+            {
+              "id": "H6-01",
+              "rect": {
+                "x": 515,
+                "y": 407,
+                "w": 421,
+                "d": 475
+              },
+              "area": 199975,
+              "share": 1,
+              "forcePoint": {
+                "x": 725.5,
+                "y": 644.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "maxLoadKg": 84,
+          "maxLoadSource": "synthetic",
+          "material": "wood",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        }
+      ],
+      "heightAnalysis": {
+        "height": 739,
+        "layers": 3,
+        "headroom": 861,
+        "limit": 1600,
+        "blockedBox": {
+          "id": "H5-01",
+          "typeId": "H5",
+          "size": {
+            "w": 513,
+            "d": 423,
+            "h": 239
+          },
+          "weight": 10,
+          "status": "normal",
+          "orientationAllowed": [
+            0,
+            90
+          ],
+          "maxLoadKg": 102,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        "inspected": 96,
+        "generated": 921,
+        "upperInspected": 96,
+        "bestUpperSupport": 0.8355107627224089,
+        "rejectionCounts": {
+          "누적 무게중심 정적 평형 불가": 48,
+          "지지 조건 미달": 96,
+          "무게 규칙 위반": 96
+        }
+      },
+      "last": {
+        "observation": {
+          "id": "H5-01",
+          "typeId": "H5",
+          "size": {
+            "w": 513,
+            "d": 423,
+            "h": 239
+          },
+          "weight": 10,
+          "status": "normal",
+          "orientationAllowed": [
+            0,
+            90
+          ],
+          "maxLoadKg": 102,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        "rejections": {
+          "누적 무게중심 정적 평형 불가": 48,
+          "지지 조건 미달": 96,
+          "무게 규칙 위반": 96
+        },
+        "generated": 921,
+        "checked": 96
+      },
+      "validation": {
+        "allCommittedPlacementsRechecked": true,
+        "allFinalSupportMarginsPassed": true,
+        "inventoryConserved": true
+      }
+    },
+    {
+      "scenario": {
+        "version": 1,
+        "units": {
+          "length": "mm",
+          "weight": "kg",
+          "time": "s"
+        },
+        "id": "high-stack",
+        "name": "고층 검증 · 혼합 재고 24개 · 6단",
+        "pallet": {
+          "width": 1200,
+          "depth": 1000,
+          "maxHeight": 950
+        },
+        "types": [
+          {
+            "id": "H1",
+            "name": "혼합 1",
+            "size": {
+              "w": 537,
+              "d": 441,
+              "h": 247
+            },
+            "quantity": 1,
+            "weight": 12,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#6bcab7",
+            "material": "plastic",
+            "maxLoadKg": 120,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H2",
+            "name": "혼합 2",
+            "size": {
+              "w": 523,
+              "d": 457,
+              "h": 247
+            },
+            "quantity": 1,
+            "weight": 12,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#6bcab7",
+            "material": "plastic",
+            "maxLoadKg": 120,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H3",
+            "name": "혼합 3",
+            "size": {
+              "w": 549,
+              "d": 433,
+              "h": 247
+            },
+            "quantity": 1,
+            "weight": 12,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#6bcab7",
+            "material": "plastic",
+            "maxLoadKg": 120,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H4",
+            "name": "혼합 4",
+            "size": {
+              "w": 531,
+              "d": 449,
+              "h": 247
+            },
+            "quantity": 1,
+            "weight": 12,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#6bcab7",
+            "material": "plastic",
+            "maxLoadKg": 120,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H5",
+            "name": "혼합 5",
+            "size": {
+              "w": 513,
+              "d": 423,
+              "h": 239
+            },
+            "quantity": 1,
+            "weight": 10,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e8b86a",
+            "material": "plastic",
+            "maxLoadKg": 102,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H6",
+            "name": "혼합 6",
+            "size": {
+              "w": 499,
+              "d": 439,
+              "h": 239
+            },
+            "quantity": 1,
+            "weight": 10,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e8b86a",
+            "material": "plastic",
+            "maxLoadKg": 102,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H7",
+            "name": "혼합 7",
+            "size": {
+              "w": 525,
+              "d": 415,
+              "h": 239
+            },
+            "quantity": 1,
+            "weight": 10,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e8b86a",
+            "material": "plastic",
+            "maxLoadKg": 102,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H8",
+            "name": "혼합 8",
+            "size": {
+              "w": 507,
+              "d": 431,
+              "h": 239
+            },
+            "quantity": 1,
+            "weight": 10,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e8b86a",
+            "material": "plastic",
+            "maxLoadKg": 102,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H9",
+            "name": "혼합 9",
+            "size": {
+              "w": 489,
+              "d": 405,
+              "h": 253
+            },
+            "quantity": 1,
+            "weight": 8,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#80a9e8",
+            "material": "wood",
+            "maxLoadKg": 84,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H10",
+            "name": "혼합 10",
+            "size": {
+              "w": 475,
+              "d": 421,
+              "h": 253
+            },
+            "quantity": 1,
+            "weight": 8,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#80a9e8",
+            "material": "wood",
+            "maxLoadKg": 84,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H11",
+            "name": "혼합 11",
+            "size": {
+              "w": 501,
+              "d": 397,
+              "h": 253
+            },
+            "quantity": 1,
+            "weight": 8,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#80a9e8",
+            "material": "wood",
+            "maxLoadKg": 84,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H12",
+            "name": "혼합 12",
+            "size": {
+              "w": 483,
+              "d": 413,
+              "h": 253
+            },
+            "quantity": 1,
+            "weight": 8,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#80a9e8",
+            "material": "wood",
+            "maxLoadKg": 84,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H13",
+            "name": "혼합 13",
+            "size": {
+              "w": 465,
+              "d": 387,
+              "h": 231
+            },
+            "quantity": 1,
+            "weight": 6,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#cc97df",
+            "material": "wood",
+            "maxLoadKg": 66,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H14",
+            "name": "혼합 14",
+            "size": {
+              "w": 451,
+              "d": 403,
+              "h": 231
+            },
+            "quantity": 1,
+            "weight": 6,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#cc97df",
+            "material": "wood",
+            "maxLoadKg": 66,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H15",
+            "name": "혼합 15",
+            "size": {
+              "w": 477,
+              "d": 379,
+              "h": 231
+            },
+            "quantity": 1,
+            "weight": 6,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#cc97df",
+            "material": "wood",
+            "maxLoadKg": 66,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H16",
+            "name": "혼합 16",
+            "size": {
+              "w": 459,
+              "d": 395,
+              "h": 231
+            },
+            "quantity": 1,
+            "weight": 6,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#cc97df",
+            "material": "wood",
+            "maxLoadKg": 66,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H17",
+            "name": "혼합 17",
+            "size": {
+              "w": 441,
+              "d": 369,
+              "h": 257
+            },
+            "quantity": 1,
+            "weight": 4,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e69ca3",
+            "material": "paper",
+            "maxLoadKg": 48,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H18",
+            "name": "혼합 18",
+            "size": {
+              "w": 427,
+              "d": 385,
+              "h": 257
+            },
+            "quantity": 1,
+            "weight": 4,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e69ca3",
+            "material": "paper",
+            "maxLoadKg": 48,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H19",
+            "name": "혼합 19",
+            "size": {
+              "w": 453,
+              "d": 361,
+              "h": 257
+            },
+            "quantity": 1,
+            "weight": 4,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e69ca3",
+            "material": "paper",
+            "maxLoadKg": 48,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H20",
+            "name": "혼합 20",
+            "size": {
+              "w": 435,
+              "d": 377,
+              "h": 257
+            },
+            "quantity": 1,
+            "weight": 4,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#e69ca3",
+            "material": "paper",
+            "maxLoadKg": 48,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H21",
+            "name": "혼합 21",
+            "size": {
+              "w": 417,
+              "d": 351,
+              "h": 245
+            },
+            "quantity": 1,
+            "weight": 2,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#93c788",
+            "material": "paper",
+            "maxLoadKg": 30,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H22",
+            "name": "혼합 22",
+            "size": {
+              "w": 403,
+              "d": 367,
+              "h": 245
+            },
+            "quantity": 1,
+            "weight": 2,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#93c788",
+            "material": "paper",
+            "maxLoadKg": 30,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H23",
+            "name": "혼합 23",
+            "size": {
+              "w": 429,
+              "d": 343,
+              "h": 245
+            },
+            "quantity": 1,
+            "weight": 2,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#93c788",
+            "material": "paper",
+            "maxLoadKg": 30,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          },
+          {
+            "id": "H24",
+            "name": "혼합 24",
+            "size": {
+              "w": 411,
+              "d": 359,
+              "h": 245
+            },
+            "quantity": 1,
+            "weight": 2,
+            "orientations": [
+              0,
+              90
+            ],
+            "color": "#93c788",
+            "material": "paper",
+            "maxLoadKg": 30,
+            "maxLoadSource": "synthetic",
+            "friction": 0.5,
+            "strengthFactor": 0.85
+          }
+        ],
+        "constraints": {
+          "robotMode": "gripper",
+          "supportRatio": 0.95,
+          "contactTolerance": 0.5,
+          "horizontalGap": 0,
+          "heavyRule": "each",
+          "stability": {
+            "maxSlenderness": 2,
+            "minMarginRatio": 0.1,
+            "lateralAccelerationG": 0.15,
+            "loadSafetyFactor": 1.25,
+            "slendernessMode": "score"
+          },
+          "gripper": {
+            "width": 180,
+            "depth": 160,
+            "height": 160,
+            "mass": 3,
+            "payload": 35,
+            "margin": 5,
+            "lift": 200,
+            "speed": 650,
+            "pickSeconds": 1,
+            "placeSeconds": 1,
+            "rotationSpeed": 180
+          },
+          "workspace": {
+            "xMin": -1400,
+            "xMax": 1600,
+            "yMin": -500,
+            "yMax": 1500,
+            "zMax": 2600
+          },
+          "reach": {
+            "baseX": -700,
+            "baseY": 500,
+            "minRadius": 0,
+            "maxRadius": 2400
+          }
+        },
+        "arrival": {
+          "seed": 42,
+          "pattern": "random-draw"
+        },
+        "events": [],
+        "supplyMode": "stock-select"
+      },
+      "metrics": {
+        "loadUtilization": 0.22058823529411767,
+        "unknownCapacity": 0,
+        "slenderness": 1.7066974595842956,
+        "supportBalances": [
+          {
+            "id": "H2-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 30,
+            "loadAbove": 18,
+            "center": {
+              "x": 261.5,
+              "y": 228.5,
+              "z": 334.9
+            },
+            "supportCenter": {
+              "x": 261.5,
+              "y": 228.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 228.5,
+            "required": 50.23499999999999,
+            "reserve": 178.26500000000001
+          },
+          {
+            "id": "H4-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 30,
+            "loadAbove": 18,
+            "center": {
+              "x": 224.5,
+              "y": 722.5,
+              "z": 334.9
+            },
+            "supportCenter": {
+              "x": 224.5,
+              "y": 722.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 224.5,
+            "required": 50.23499999999999,
+            "reserve": 174.26500000000001
+          },
+          {
+            "id": "H3-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 30,
+            "loadAbove": 18,
+            "center": {
+              "x": 797.5,
+              "y": 216.5,
+              "z": 334.9
+            },
+            "supportCenter": {
+              "x": 797.5,
+              "y": 216.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 216.5,
+            "required": 50.23499999999999,
+            "reserve": 166.26500000000001
+          },
+          {
+            "id": "H1-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 30,
+            "loadAbove": 18,
+            "center": {
+              "x": 803.5,
+              "y": 653.5,
+              "z": 334.9
+            },
+            "supportCenter": {
+              "x": 803.5,
+              "y": 653.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 220.5,
+            "required": 50.23499999999999,
+            "reserve": 170.26500000000001
+          },
+          {
+            "id": "H6-01",
+            "isBase": false,
+            "planeZ": 247,
+            "mass": 18,
+            "loadAbove": 8,
+            "center": {
+              "x": 261.5,
+              "y": 228.5,
+              "z": 475.8333333333333
+            },
+            "supportCenter": {
+              "x": 261.5,
+              "y": 228.5,
+              "z": 247
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 219.5,
+            "required": 43.900000000000006,
+            "reserve": 175.6
+          },
+          {
+            "id": "H8-01",
+            "isBase": false,
+            "planeZ": 247,
+            "mass": 18,
+            "loadAbove": 8,
+            "center": {
+              "x": 224.5,
+              "y": 722.5,
+              "z": 475.8333333333333
+            },
+            "supportCenter": {
+              "x": 224.5,
+              "y": 722.5,
+              "z": 247
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 215.5,
+            "required": 43.1,
+            "reserve": 172.4
+          },
+          {
+            "id": "H7-01",
+            "isBase": false,
+            "planeZ": 247,
+            "mass": 18,
+            "loadAbove": 8,
+            "center": {
+              "x": 803.5,
+              "y": 653.5,
+              "z": 475.8333333333333
+            },
+            "supportCenter": {
+              "x": 803.5,
+              "y": 653.5,
+              "z": 247
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 207.5,
+            "required": 41.5,
+            "reserve": 166
+          },
+          {
+            "id": "H5-01",
+            "isBase": false,
+            "planeZ": 247,
+            "mass": 18,
+            "loadAbove": 8,
+            "center": {
+              "x": 797.5,
+              "y": 216.5,
+              "z": 475.8333333333333
+            },
+            "supportCenter": {
+              "x": 797.5,
+              "y": 216.5,
+              "z": 247
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 211.5,
+            "required": 42.300000000000004,
+            "reserve": 169.2
+          },
+          {
+            "id": "H10-01",
+            "isBase": false,
+            "planeZ": 486,
+            "mass": 8,
+            "loadAbove": 0,
+            "center": {
+              "x": 797.5,
+              "y": 216.5,
+              "z": 612.5
+            },
+            "supportCenter": {
+              "x": 797.5,
+              "y": 216.5,
+              "z": 486
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 210.5,
+            "required": 42.1,
+            "reserve": 168.4
+          },
+          {
+            "id": "H12-01",
+            "isBase": false,
+            "planeZ": 486,
+            "mass": 8,
+            "loadAbove": 0,
+            "center": {
+              "x": 803.5,
+              "y": 653.5,
+              "z": 612.5
+            },
+            "supportCenter": {
+              "x": 803.5,
+              "y": 653.5,
+              "z": 486
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 206.5,
+            "required": 41.300000000000004,
+            "reserve": 165.2
+          },
+          {
+            "id": "H11-01",
+            "isBase": false,
+            "planeZ": 486,
+            "mass": 8,
+            "loadAbove": 0,
+            "center": {
+              "x": 224.5,
+              "y": 722.5,
+              "z": 612.5
+            },
+            "supportCenter": {
+              "x": 224.5,
+              "y": 722.5,
+              "z": 486
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 198.5,
+            "required": 39.7,
+            "reserve": 158.8
+          },
+          {
+            "id": "H9-01",
+            "isBase": false,
+            "planeZ": 486,
+            "mass": 8,
+            "loadAbove": 0,
+            "center": {
+              "x": 261.5,
+              "y": 228.5,
+              "z": 612.5
+            },
+            "supportCenter": {
+              "x": 261.5,
+              "y": 228.5,
+              "z": 486
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 202.5,
+            "required": 40.5,
+            "reserve": 162
+          }
+        ],
+        "count": 12,
+        "volume": 645139324,
+        "weight": 120,
+        "height": 739,
+        "utilization": 0.5659116877192982,
+        "efficiency": 0.7274913441587731,
+        "center": {
+          "x": 521.75,
+          "y": 455.25,
+          "z": 334.9
+        },
+        "quadrants": [
+          37.18872061696296,
+          29.79848104336218,
+          30.650214572462197,
+          22.36258376721266
+        ],
+        "imbalance": 0.12355114041458586,
+        "distanceM": 55.91655709062926,
+        "workSeconds": 113.02547244712198,
+        "medianMs": 885.5013000000035,
+        "p95Ms": 1268.173299999995,
+        "totalMs": 10221.102099999975,
+        "complete": false,
+        "failedStep": 13,
+        "reason": "최대 적재 높이 초과 / 지지 조건 미달",
+        "excluded": 0,
+        "missing": 0
+      },
+      "placements": [
+        {
+          "id": "H2-01",
+          "typeId": "H2",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "w": 523,
+            "d": 457,
+            "h": 247
+          },
+          "orientation": 0,
+          "weight": 12,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 18,
+          "maxLoadKg": 120,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H4-01",
+          "typeId": "H4",
+          "position": {
+            "x": 0,
+            "y": 457,
+            "z": 0
+          },
+          "size": {
+            "w": 449,
+            "d": 531,
+            "h": 247
+          },
+          "orientation": 90,
+          "weight": 12,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 18,
+          "maxLoadKg": 120,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H3-01",
+          "typeId": "H3",
+          "position": {
+            "x": 523,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "w": 549,
+            "d": 433,
+            "h": 247
+          },
+          "orientation": 0,
+          "weight": 12,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 18,
+          "maxLoadKg": 120,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H1-01",
+          "typeId": "H1",
+          "position": {
+            "x": 535,
+            "y": 433,
+            "z": 0
+          },
+          "size": {
+            "w": 537,
+            "d": 441,
+            "h": 247
+          },
+          "orientation": 0,
+          "weight": 12,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 18,
+          "maxLoadKg": 120,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H6-01",
+          "typeId": "H6",
+          "position": {
+            "x": 12,
+            "y": 9,
+            "z": 247
+          },
+          "size": {
+            "w": 499,
+            "d": 439,
+            "h": 239
+          },
+          "orientation": 0,
+          "weight": 10,
+          "supports": [
+            {
+              "id": "H2-01",
+              "rect": {
+                "x": 12,
+                "y": 9,
+                "w": 499,
+                "d": 439
+              },
+              "area": 219061,
+              "share": 1,
+              "forcePoint": {
+                "x": 261.5,
+                "y": 228.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 8,
+          "maxLoadKg": 102,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H8-01",
+          "typeId": "H8",
+          "position": {
+            "x": 9,
+            "y": 469,
+            "z": 247
+          },
+          "size": {
+            "w": 431,
+            "d": 507,
+            "h": 239
+          },
+          "orientation": 90,
+          "weight": 10,
+          "supports": [
+            {
+              "id": "H4-01",
+              "rect": {
+                "x": 9,
+                "y": 469,
+                "w": 431,
+                "d": 507
+              },
+              "area": 218517,
+              "share": 1,
+              "forcePoint": {
+                "x": 224.5,
+                "y": 722.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 8,
+          "maxLoadKg": 102,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H7-01",
+          "typeId": "H7",
+          "position": {
+            "x": 541,
+            "y": 446,
+            "z": 247
+          },
+          "size": {
+            "w": 525,
+            "d": 415,
+            "h": 239
+          },
+          "orientation": 0,
+          "weight": 10,
+          "supports": [
+            {
+              "id": "H1-01",
+              "rect": {
+                "x": 541,
+                "y": 446,
+                "w": 525,
+                "d": 415
+              },
+              "area": 217875,
+              "share": 1,
+              "forcePoint": {
+                "x": 803.5,
+                "y": 653.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 8,
+          "maxLoadKg": 102,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H5-01",
+          "typeId": "H5",
+          "position": {
+            "x": 541,
+            "y": 5,
+            "z": 247
+          },
+          "size": {
+            "w": 513,
+            "d": 423,
+            "h": 239
+          },
+          "orientation": 0,
+          "weight": 10,
+          "supports": [
+            {
+              "id": "H3-01",
+              "rect": {
+                "x": 541,
+                "y": 5,
+                "w": 513,
+                "d": 423
+              },
+              "area": 216999,
+              "share": 1,
+              "forcePoint": {
+                "x": 797.5,
+                "y": 216.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 8,
+          "maxLoadKg": 102,
+          "maxLoadSource": "synthetic",
+          "material": "plastic",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H10-01",
+          "typeId": "H10",
+          "position": {
+            "x": 560,
+            "y": 6,
+            "z": 486
+          },
+          "size": {
+            "w": 475,
+            "d": 421,
+            "h": 253
+          },
+          "orientation": 0,
+          "weight": 8,
+          "supports": [
+            {
+              "id": "H5-01",
+              "rect": {
+                "x": 560,
+                "y": 6,
+                "w": 475,
+                "d": 421
+              },
+              "area": 199975,
+              "share": 1,
+              "forcePoint": {
+                "x": 797.5,
+                "y": 216.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "maxLoadKg": 84,
+          "maxLoadSource": "synthetic",
+          "material": "wood",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H12-01",
+          "typeId": "H12",
+          "position": {
+            "x": 562,
+            "y": 447,
+            "z": 486
+          },
+          "size": {
+            "w": 483,
+            "d": 413,
+            "h": 253
+          },
+          "orientation": 0,
+          "weight": 8,
+          "supports": [
+            {
+              "id": "H7-01",
+              "rect": {
+                "x": 562,
+                "y": 447,
+                "w": 483,
+                "d": 413
+              },
+              "area": 199479,
+              "share": 1,
+              "forcePoint": {
+                "x": 803.5,
+                "y": 653.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "maxLoadKg": 84,
+          "maxLoadSource": "synthetic",
+          "material": "wood",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H11-01",
+          "typeId": "H11",
+          "position": {
+            "x": 26,
+            "y": 472,
+            "z": 486
+          },
+          "size": {
+            "w": 397,
+            "d": 501,
+            "h": 253
+          },
+          "orientation": 90,
+          "weight": 8,
+          "supports": [
+            {
+              "id": "H8-01",
+              "rect": {
+                "x": 26,
+                "y": 472,
+                "w": 397,
+                "d": 501
+              },
+              "area": 198897,
+              "share": 1,
+              "forcePoint": {
+                "x": 224.5,
+                "y": 722.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "maxLoadKg": 84,
+          "maxLoadSource": "synthetic",
+          "material": "wood",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        {
+          "id": "H9-01",
+          "typeId": "H9",
+          "position": {
+            "x": 17,
+            "y": 26,
+            "z": 486
+          },
+          "size": {
+            "w": 489,
+            "d": 405,
+            "h": 253
+          },
+          "orientation": 0,
+          "weight": 8,
+          "supports": [
+            {
+              "id": "H6-01",
+              "rect": {
+                "x": 17,
+                "y": 26,
+                "w": 489,
+                "d": 405
+              },
+              "area": 198045,
+              "share": 1,
+              "forcePoint": {
+                "x": 261.5,
+                "y": 228.5
+              }
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "maxLoadKg": 84,
+          "maxLoadSource": "synthetic",
+          "material": "wood",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        }
+      ],
+      "heightAnalysis": {
+        "height": 739,
+        "layers": 3,
+        "headroom": 211,
+        "limit": 950,
+        "blockedBox": {
+          "id": "H13-01",
+          "typeId": "H13",
+          "size": {
+            "w": 465,
+            "d": 387,
+            "h": 231
+          },
+          "weight": 6,
+          "status": "normal",
+          "orientationAllowed": [
+            0,
+            90
+          ],
+          "maxLoadKg": 66,
+          "maxLoadSource": "synthetic",
+          "material": "wood",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        "inspected": 24,
+        "generated": 24442,
+        "upperInspected": 0,
+        "bestUpperSupport": null,
+        "rejectionCounts": {
+          "최대 적재 높이 초과": 192,
+          "지지 조건 미달": 128
+        }
+      },
+      "last": {
+        "observation": {
+          "id": "H13-01",
+          "typeId": "H13",
+          "size": {
+            "w": 465,
+            "d": 387,
+            "h": 231
+          },
+          "weight": 6,
+          "status": "normal",
+          "orientationAllowed": [
+            0,
+            90
+          ],
+          "maxLoadKg": 66,
+          "maxLoadSource": "synthetic",
+          "material": "wood",
+          "strengthFactor": 0.85,
+          "friction": 0.5
+        },
+        "rejections": {
+          "최대 적재 높이 초과": 192,
+          "지지 조건 미달": 128
+        },
+        "generated": 24442,
+        "checked": 24
+      },
+      "validation": {
+        "allCommittedPlacementsRechecked": true,
+        "allFinalSupportMarginsPassed": true,
+        "inventoryConserved": true
+      }
+    }
+  ]
+}

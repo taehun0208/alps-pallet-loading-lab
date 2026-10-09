@@ -1,0 +1,573 @@
+{
+  "verifiedAt": "2026-10-05T17:27:05.363Z",
+  "summary": {
+    "initial": 8,
+    "placed": 8,
+    "waiting": 0,
+    "transfers": 2,
+    "staged": 0,
+    "palletCount": 4
+  },
+  "peakConcurrent": 4,
+  "world": {
+    "runId": "89752763-1600-4b05-aafe-2be00d133f68",
+    "revision": 10,
+    "cursor": 0,
+    "boxes": [
+      {
+        "observation": {
+          "id": "A1-01",
+          "typeId": "A1",
+          "size": {
+            "w": 400,
+            "d": 400,
+            "h": 100
+          },
+          "weight": 1,
+          "status": "normal",
+          "orientationAllowed": [
+            0
+          ],
+          "maxLoadKg": 0,
+          "handling": "no-top-load",
+          "material": "paper"
+        },
+        "owner": 1,
+        "visited": [
+          0,
+          1
+        ],
+        "status": "placed"
+      },
+      {
+        "observation": {
+          "id": "B2-01",
+          "typeId": "B2",
+          "size": {
+            "w": 180,
+            "d": 190,
+            "h": 110
+          },
+          "weight": 1,
+          "status": "normal",
+          "orientationAllowed": [
+            0,
+            90
+          ],
+          "maxLoadKg": 50,
+          "material": "plastic"
+        },
+        "owner": 1,
+        "visited": [
+          1
+        ],
+        "status": "placed"
+      },
+      {
+        "observation": {
+          "id": "A3-01",
+          "typeId": "A3",
+          "size": {
+            "w": 400,
+            "d": 400,
+            "h": 100
+          },
+          "weight": 1,
+          "status": "normal",
+          "orientationAllowed": [
+            0
+          ],
+          "maxLoadKg": 0,
+          "handling": "no-top-load",
+          "material": "paper"
+        },
+        "owner": 3,
+        "visited": [
+          2,
+          3
+        ],
+        "status": "placed"
+      },
+      {
+        "observation": {
+          "id": "B4-01",
+          "typeId": "B4",
+          "size": {
+            "w": 180,
+            "d": 190,
+            "h": 110
+          },
+          "weight": 1,
+          "status": "normal",
+          "orientationAllowed": [
+            0,
+            90
+          ],
+          "maxLoadKg": 50,
+          "material": "plastic"
+        },
+        "owner": 3,
+        "visited": [
+          3
+        ],
+        "status": "placed"
+      },
+      {
+        "observation": {
+          "id": "F1-01",
+          "typeId": "F1",
+          "size": {
+            "w": 760,
+            "d": 550,
+            "h": 200
+          },
+          "weight": 10,
+          "status": "normal",
+          "orientationAllowed": [
+            0
+          ],
+          "maxLoadKg": 100,
+          "material": "plastic"
+        },
+        "owner": 0,
+        "visited": [
+          0
+        ],
+        "status": "placed"
+      },
+      {
+        "observation": {
+          "id": "C2-01",
+          "typeId": "C2",
+          "size": {
+            "w": 180,
+            "d": 190,
+            "h": 110
+          },
+          "weight": 1,
+          "status": "normal",
+          "orientationAllowed": [
+            0,
+            90
+          ],
+          "maxLoadKg": 50,
+          "material": "plastic"
+        },
+        "owner": 1,
+        "visited": [
+          1
+        ],
+        "status": "placed"
+      },
+      {
+        "observation": {
+          "id": "F3-01",
+          "typeId": "F3",
+          "size": {
+            "w": 760,
+            "d": 550,
+            "h": 200
+          },
+          "weight": 10,
+          "status": "normal",
+          "orientationAllowed": [
+            0
+          ],
+          "maxLoadKg": 100,
+          "material": "plastic"
+        },
+        "owner": 2,
+        "visited": [
+          2
+        ],
+        "status": "placed"
+      },
+      {
+        "observation": {
+          "id": "C4-01",
+          "typeId": "C4",
+          "size": {
+            "w": 180,
+            "d": 190,
+            "h": 110
+          },
+          "weight": 1,
+          "status": "normal",
+          "orientationAllowed": [
+            0,
+            90
+          ],
+          "maxLoadKg": 50,
+          "material": "plastic"
+        },
+        "owner": 3,
+        "visited": [
+          3
+        ],
+        "status": "placed"
+      }
+    ],
+    "cells": [
+      {
+        "queue": [],
+        "placements": [
+          {
+            "id": "F1-01",
+            "typeId": "F1",
+            "position": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "size": {
+              "w": 760,
+              "d": 550,
+              "h": 200
+            },
+            "orientation": 0,
+            "weight": 10,
+            "supports": [],
+            "supportRatio": 1,
+            "loadAbove": 0,
+            "maxLoadKg": 100,
+            "material": "plastic"
+          }
+        ],
+        "version": 2
+      },
+      {
+        "queue": [],
+        "placements": [
+          {
+            "id": "B2-01",
+            "typeId": "B2",
+            "position": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "size": {
+              "w": 180,
+              "d": 190,
+              "h": 110
+            },
+            "orientation": 0,
+            "weight": 1,
+            "supports": [],
+            "supportRatio": 1,
+            "loadAbove": 0,
+            "maxLoadKg": 50,
+            "material": "plastic"
+          },
+          {
+            "id": "C2-01",
+            "typeId": "C2",
+            "position": {
+              "x": 180,
+              "y": 0,
+              "z": 0
+            },
+            "size": {
+              "w": 180,
+              "d": 190,
+              "h": 110
+            },
+            "orientation": 0,
+            "weight": 1,
+            "supports": [],
+            "supportRatio": 1,
+            "loadAbove": 0,
+            "maxLoadKg": 50,
+            "material": "plastic"
+          },
+          {
+            "id": "A1-01",
+            "typeId": "A1",
+            "position": {
+              "x": 0,
+              "y": 190,
+              "z": 0
+            },
+            "size": {
+              "w": 400,
+              "d": 400,
+              "h": 100
+            },
+            "orientation": 0,
+            "weight": 1,
+            "supports": [],
+            "supportRatio": 1,
+            "loadAbove": 0,
+            "maxLoadKg": 0,
+            "handling": "no-top-load",
+            "material": "paper"
+          }
+        ],
+        "version": 3
+      },
+      {
+        "queue": [],
+        "placements": [
+          {
+            "id": "F3-01",
+            "typeId": "F3",
+            "position": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "size": {
+              "w": 760,
+              "d": 550,
+              "h": 200
+            },
+            "orientation": 0,
+            "weight": 10,
+            "supports": [],
+            "supportRatio": 1,
+            "loadAbove": 0,
+            "maxLoadKg": 100,
+            "material": "plastic"
+          }
+        ],
+        "version": 2
+      },
+      {
+        "queue": [],
+        "placements": [
+          {
+            "id": "B4-01",
+            "typeId": "B4",
+            "position": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "size": {
+              "w": 180,
+              "d": 190,
+              "h": 110
+            },
+            "orientation": 0,
+            "weight": 1,
+            "supports": [],
+            "supportRatio": 1,
+            "loadAbove": 0,
+            "maxLoadKg": 50,
+            "material": "plastic"
+          },
+          {
+            "id": "C4-01",
+            "typeId": "C4",
+            "position": {
+              "x": 180,
+              "y": 0,
+              "z": 0
+            },
+            "size": {
+              "w": 180,
+              "d": 190,
+              "h": 110
+            },
+            "orientation": 0,
+            "weight": 1,
+            "supports": [],
+            "supportRatio": 1,
+            "loadAbove": 0,
+            "maxLoadKg": 50,
+            "material": "plastic"
+          },
+          {
+            "id": "A3-01",
+            "typeId": "A3",
+            "position": {
+              "x": 0,
+              "y": 190,
+              "z": 0
+            },
+            "size": {
+              "w": 400,
+              "d": 400,
+              "h": 100
+            },
+            "orientation": 0,
+            "weight": 1,
+            "supports": [],
+            "supportRatio": 1,
+            "loadAbove": 0,
+            "maxLoadKg": 0,
+            "handling": "no-top-load",
+            "material": "paper"
+          }
+        ],
+        "version": 3
+      }
+    ],
+    "pads": [
+      {
+        "boxId": null,
+        "version": 2
+      },
+      {
+        "boxId": null,
+        "version": 0
+      },
+      {
+        "boxId": null,
+        "version": 2
+      },
+      {
+        "boxId": null,
+        "version": 0
+      }
+    ],
+    "records": [
+      {
+        "step": 1,
+        "kind": "place",
+        "robot": 1,
+        "boxId": "B2-01",
+        "from": 1,
+        "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "started": 0.31240000000000007,
+        "finished": 9.444268140968642
+      },
+      {
+        "step": 2,
+        "kind": "place",
+        "robot": 3,
+        "boxId": "B4-01",
+        "from": 3,
+        "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "started": 0.31240000000000007,
+        "finished": 9.444268140968642
+      },
+      {
+        "step": 3,
+        "kind": "send",
+        "robot": 0,
+        "boxId": "A1-01",
+        "from": 0,
+        "to": 1,
+        "reason": "A1-01를 지금 놓으면 F1의 검토 위치가 막힘 · 옆 전달대에 보류",
+        "started": 0.31240000000000007,
+        "finished": 13.318874284796776
+      },
+      {
+        "step": 4,
+        "kind": "send",
+        "robot": 2,
+        "boxId": "A3-01",
+        "from": 2,
+        "to": 3,
+        "reason": "A3-01를 지금 놓으면 F3의 검토 위치가 막힘 · 옆 전달대에 보류",
+        "started": 0.31240000000000007,
+        "finished": 13.318874284796776
+      },
+      {
+        "step": 5,
+        "kind": "place",
+        "robot": 1,
+        "boxId": "C2-01",
+        "from": 1,
+        "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
+        "position": {
+          "x": 180,
+          "y": 0,
+          "z": 0
+        },
+        "started": 10.756799999999979,
+        "finished": 20.431461900015975
+      },
+      {
+        "step": 6,
+        "kind": "place",
+        "robot": 3,
+        "boxId": "C4-01",
+        "from": 3,
+        "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
+        "position": {
+          "x": 180,
+          "y": 0,
+          "z": 0
+        },
+        "started": 10.756799999999979,
+        "finished": 20.431461900015975
+      },
+      {
+        "step": 7,
+        "kind": "place",
+        "robot": 0,
+        "boxId": "F1-01",
+        "from": 0,
+        "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "started": 14.589599999999967,
+        "finished": 24.17298996159152
+      },
+      {
+        "step": 8,
+        "kind": "place",
+        "robot": 2,
+        "boxId": "F3-01",
+        "from": 2,
+        "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "started": 14.589599999999967,
+        "finished": 24.17298996159152
+      },
+      {
+        "step": 9,
+        "kind": "receive-place",
+        "robot": 1,
+        "boxId": "A1-01",
+        "from": 0,
+        "to": 1,
+        "reason": "받는 팔 판단: 현재 지지·하중·잔량 조건을 만족하므로 전달대에서 팔레트로 바로 적재",
+        "position": {
+          "x": 0,
+          "y": 190,
+          "z": 0
+        },
+        "started": 21.58959999999994,
+        "finished": 34.03364482411165
+      },
+      {
+        "step": 10,
+        "kind": "receive-place",
+        "robot": 3,
+        "boxId": "A3-01",
+        "from": 2,
+        "to": 3,
+        "reason": "받는 팔 판단: 현재 지지·하중·잔량 조건을 만족하므로 전달대에서 팔레트로 바로 적재",
+        "position": {
+          "x": 0,
+          "y": 190,
+          "z": 0
+        },
+        "started": 21.58959999999994,
+        "finished": 34.03364482411165
+      }
+    ],
+    "time": 34.03364482411165
+  },
+  "errors": []
+}

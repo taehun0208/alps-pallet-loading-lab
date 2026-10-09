@@ -1,0 +1,8 @@
+metric,unit,preferred,n,compactMean,alpsTetrisMean,differenceMean,direction,multipleComparisonAdjusted,ci95Low,ci95High
+fill,percentage-points,higher,5,63.18583333333333,69.18866666666666,6.002833333333337,ALPS Tetris minus Compact,False,-1.0444077578560735,13.050074424522748
+floorContactCoverage,percentage-points,higher,5,86.83,90.05,3.2200000000000006,ALPS Tetris minus Compact,False,-2.840622759344428,9.280622759344428
+columnVoidLiters,L,lower,5,3.7256,5.4308,1.7052,ALPS Tetris minus Compact,False,-2.37070674950972,5.7811067495097195
+voidLiters,L,lower,5,482.12399999999997,434.0832,-48.04079999999997,ALPS Tetris minus Compact,False,-121.33663370466834,25.2550337046684
+count,boxes,higher,5,40.8,43.6,2.8,ALPS Tetris minus Compact,False,-1.355402534737573,6.955402534737573
+cogOffsetMm,mm,lower,5,75.29532411167308,48.790166607470766,-26.50515750420232,ALPS Tetris minus Compact,False,-106.57040586443613,53.56009085603149
+cogHeightMm,mm,lower,5,484.72559690285243,511.4393517969342,26.713754894081763,ALPS Tetris minus Compact,False,-11.764746495793009,65.19225628395654

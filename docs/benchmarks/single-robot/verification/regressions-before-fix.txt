@@ -1,0 +1,284 @@
+
+ RUN  v4.1.11 /Users/taehun/.codex/.chatgpt-projects/g-p-6ab3a6e330c48191ae7b59b2a3e286aa/PAC2026_이어가기_2026-10-09/pallet-loading-lab
+
+ ❯ tests/pallet-single-robot-regressions.test.ts (11 tests | 11 failed) 822ms
+     × never uses the same BED-BPP source order in development and evaluation 4ms
+     × uses the cargo contact area, not the pallet outline (200x200x1000 box, centre of 1000x800, 0.3 g) 0ms
+     × stores the applied policy settings, including the CoG weight 169ms
+     × records search effort and separates placement path time from unpriced process time 204ms
+     × counts boxes waiting in the buffer as known future demand, without double counting the current box 80ms
+     × gives planners an order-free catalogue: canonical type order and opaque IDs 201ms
+     × stops on duplicate run keys 45ms
+     × stops on a run whose configuration differs from the plan 30ms
+     × stops when a planned run is missing 30ms
+     × pools decision samples for percentiles and keeps unmeasured values null 29ms
+     × does not rank a policy with stability failures or unverified checks as the stability winner 28ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 11 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/pallet-single-robot-regressions.test.ts > P1 data split > never uses the same BED-BPP source order in development and evaluation
+AssertionError: bed-bpp-order: expected [ '00100005', '00100006' ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "00100005",
++   "00100006",
++ ]
+
+ ❯ tests/pallet-single-robot-regressions.test.ts:20:52
+     18|    const dev=new Set(PHASE_SEEDS.dev.flatMap(seed=>sourceOrders(s.buil…
+     19|    expect(dev.size).toBeGreaterThan(0);expect(evaluation.length).toBeG…
+     20|    expect(evaluation.filter(id=>dev.has(id)),s.id).toEqual([]);
+       |                                                    ^
+     21|   }
+     22|  });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/11]⎯
+
+ FAIL  tests/pallet-single-robot-regressions.test.ts > P1 transport tipping support area > uses the cargo contact area, not the pallet outline (200x200x1000 box, centre of 1000x800, 0.3 g)
+AssertionError: expected undefined to be close to -50, received difference is NaN, but expected 0.005
+ ❯ tests/pallet-single-robot-regressions.test.ts:30:27
+     28|   const t=transportMargin([box],{width:1000,depth:800,maxHeight:1500},…
+     29|   // Own footprint half-width 100 mm minus CoG height 500 mm x 0.3 = -…
+     30|   expect(t.looseMarginMm).toBeCloseTo(-50);
+       |                           ^
+     31|   expect(t.wrappedMarginMm).toBeCloseTo(-50);
+     32|   expect(t.marginMm).toBeUndefined();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/11]⎯
+
+ FAIL  tests/pallet-single-robot-regressions.test.ts > P2 run records > stores the applied policy settings, including the CoG weight
+AssertionError: expected undefined to be 1.5 // Object.is equality
+
+- Expected:
+1.5
+
++ Received:
+undefined
+
+ ❯ tests/pallet-single-robot-regressions.test.ts:39:58
+     37|  it('stores the applied policy settings, including the CoG weight',()=…
+     38|   const r=runSingleRobot(situation('mixed-small').build(3),strategyPol…
+     39|   expect(r.config?.policy.settings.strategy.weights.com).toBe(1.5);
+       |                                                          ^
+     40|  });
+     41|  it('records search effort and separates placement path time from unpr…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/11]⎯
+
+ FAIL  tests/pallet-single-robot-regressions.test.ts > P2 run records > records search effort and separates placement path time from unpriced process time
+TypeError: actual value must be number or bigint, received "undefined"
+ ❯ tests/pallet-single-robot-regressions.test.ts:43:34
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/11]⎯
+
+ FAIL  tests/pallet-single-robot-regressions.test.ts > P2 planner information boundary > counts boxes waiting in the buffer as known future demand, without double counting the current box
+AssertionError: expected 19 to be 20 // Object.is equality
+
+- Expected
++ Received
+
+- 20
++ 19
+
+ ❯ Object.audit tests/pallet-single-robot-regressions.test.ts:56:57
+     54|    if(state.buffered.length)buffered++;
+     55|    const demand=Object.values(input.remaining).reduce((a,b)=>a+b,0);
+     56|    expect(demand+1+state.placedTotal+state.unplaceable).toBe(state.tot…
+       |                                                         ^
+     57|   }});
+     58|   expect(buffered).toBeGreaterThan(0);
+ ❯ tryPlace src/pallet/singleRobot/compare.ts:61:34
+ ❯ runSingleRobot src/pallet/singleRobot/compare.ts:71:6
+ ❯ tests/pallet-single-robot-regressions.test.ts:53:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/11]⎯
+
+ FAIL  tests/pallet-single-robot-regressions.test.ts > P2 planner information boundary > gives planners an order-free catalogue: canonical type order and opaque IDs
+AssertionError: expected [ 'BED-00100030-001-0', …(42) ] to deeply equal [ 'BED-00100030-021-20', …(42) ]
+
+- Expected
++ Received
+
+  [
+-   "BED-00100030-021-20",
+-   "BED-00100030-022-21",
+-   "BED-00100030-023-22",
++   "BED-00100030-001-0",
++   "BED-00100030-002-1",
++   "BED-00100030-003-2",
+    "BED-00100030-004-3",
+    "BED-00100030-005-4",
++   "BED-00100030-006-5",
++   "BED-00100030-007-6",
++   "BED-00100030-008-7",
++   "BED-00100030-009-8",
+    "BED-00100030-010-9",
+    "BED-00100030-011-10",
+-   "BED-00100030-025-24",
+-   "BED-00100030-006-5",
+-   "BED-00100030-016-15",
+-   "BED-00100030-017-16",
+-   "BED-00100030-031-30",
+-   "BED-00100030-032-31",
+-   "BED-00100030-040-39",
+-   "BED-00100030-041-40",
+-   "BED-00100030-042-41",
+-   "BED-00100030-043-42",
+    "BED-00100030-012-11",
+    "BED-00100030-013-12",
+    "BED-00100030-014-13",
+    "BED-00100030-015-14",
+-   "BED-00100030-037-36",
+-   "BED-00100030-038-37",
+-   "BED-00100030-035-34",
+-   "BED-00100030-036-35",
+-   "BED-00100030-033-32",
+-   "BED-00100030-034-33",
+-   "BED-00100030-007-6",
+-   "BED-00100030-008-7",
+-   "BED-00100030-009-8",
+-   "BED-00100030-039-38",
++   "BED-00100030-016-15",
++   "BED-00100030-017-16",
++   "BED-00100030-018-17",
+    "BED-00100030-019-18",
+    "BED-00100030-020-19",
+-   "BED-00100030-029-28",
+-   "BED-00100030-030-29",
+-   "BED-00100030-001-0",
+-   "BED-00100030-002-1",
+-   "BED-00100030-003-2",
+-   "BED-00100030-027-26",
+-   "BED-00100030-028-27",
+-   "BED-00100030-018-17",
++   "BED-00100030-021-20",
++   "BED-00100030-022-21",
++   "BED-00100030-023-22",
+    "BED-00100030-024-23",
++   "BED-00100030-025-24",
+    "BED-00100030-026-25",
++   "BED-00100030-027-26",
++   "BED-00100030-028-27",
++   "BED-00100030-029-28",
++   "BED-00100030-030-29",
++   "BED-00100030-031-30",
++   "BED-00100030-032-31",
++   "BED-00100030-033-32",
++   "BED-00100030-034-33",
++   "BED-00100030-035-34",
++   "BED-00100030-036-35",
++   "BED-00100030-037-36",
++   "BED-00100030-038-37",
++   "BED-00100030-039-38",
++   "BED-00100030-040-39",
++   "BED-00100030-041-40",
++   "BED-00100030-042-41",
++   "BED-00100030-043-42",
+  ]
+
+ ❯ tests/pallet-single-robot-regressions.test.ts:65:37
+     63|   for(const input of inputs){
+     64|    const key=(t:PlanningInput['types'][number])=>JSON.stringify([t.siz…
+     65|    expect(input.types.map(t=>t.id)).toEqual([...input.types].sort((a,b…
+       |                                     ^
+     66|    expect(input.types.some(t=>/BED-\d+-\d{3}/.test(t.id)||/BED-\d+-\d{…
+     67|    expect(/BED-\d+-\d{3}/.test(input.current.id)).toBe(false);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/11]⎯
+
+ FAIL  tests/pallet-single-robot-regressions.test.ts > P1 aggregation integrity (summarize.py) > stops on duplicate run keys
+AssertionError: expected 1 to be 2 // Object.is equality
+
+- Expected
++ Received
+
+- 2
++ 1
+
+ ❯ tests/pallet-single-robot-regressions.test.ts:87:129
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/11]⎯
+
+ FAIL  tests/pallet-single-robot-regressions.test.ts > P1 aggregation integrity (summarize.py) > stops on a run whose configuration differs from the plan
+AssertionError: expected 1 to be 2 // Object.is equality
+
+- Expected
++ Received
+
+- 2
++ 1
+
+ ❯ tests/pallet-single-robot-regressions.test.ts:88:169
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/11]⎯
+
+ FAIL  tests/pallet-single-robot-regressions.test.ts > P1 aggregation integrity (summarize.py) > stops when a planned run is missing
+AssertionError: expected 1 to be 2 // Object.is equality
+
+- Expected
++ Received
+
+- 2
++ 1
+
+ ❯ tests/pallet-single-robot-regressions.test.ts:89:170
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/11]⎯
+
+ FAIL  tests/pallet-single-robot-regressions.test.ts > P1 aggregation integrity (summarize.py) > pools decision samples for percentiles and keeps unmeasured values null
+AssertionError: Traceback (most recent call last):
+  File "/Users/taehun/.codex/.chatgpt-projects/g-p-6ab3a6e330c48191ae7b59b2a3e286aa/PAC2026_이어가기_2026-10-09/pallet-loading-lab/docs/benchmarks/single-robot/summarize.py", line 9, in <module>
+    runs = [json.loads(l) for l in open(sys.argv[1])]
+                                   ~~~~^^^^^^^^^^^^^
+IsADirectoryError: [Errno 21] Is a directory: '/var/folders/cf/c1gxdsmn4qs48jxz2lhph5n80000gn/T/single-robot-DvMFXH'
+: expected 1 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ tests/pallet-single-robot-regressions.test.ts:94:27
+     92|   const r=summarize([run({compute:{samplesMs:samples,concurrency:1}}),…
+     93|    [{key:'s|eval|1|1|0|p',configHash:'c1'},{key:'s|eval|2|2|0|p',confi…
+     94|   expect(r.code,r.stderr).toBe(0);const row=r.summary.table.s.p;
+       |                           ^
+     95|   expect(row.compute.samples).toBe(101);expect(row.compute.p95Ms).toBe…
+     96|  });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/11]⎯
+
+ FAIL  tests/pallet-single-robot-regressions.test.ts > P1 aggregation integrity (summarize.py) > does not rank a policy with stability failures or unverified checks as the stability winner
+AssertionError: Traceback (most recent call last):
+  File "/Users/taehun/.codex/.chatgpt-projects/g-p-6ab3a6e330c48191ae7b59b2a3e286aa/PAC2026_이어가기_2026-10-09/pallet-loading-lab/docs/benchmarks/single-robot/summarize.py", line 9, in <module>
+    runs = [json.loads(l) for l in open(sys.argv[1])]
+                                   ~~~~^^^^^^^^^^^^^
+IsADirectoryError: [Errno 21] Is a directory: '/var/folders/cf/c1gxdsmn4qs48jxz2lhph5n80000gn/T/single-robot-9FDu49'
+: expected 1 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ tests/pallet-single-robot-regressions.test.ts:101:57
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/11]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  11 failed (11)
+   Start at  16:52:56
+   Duration  1.09s (transform 155ms, setup 0ms, import 200ms, tests 822ms, environment 0ms)
+

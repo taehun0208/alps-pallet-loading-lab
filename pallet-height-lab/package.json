@@ -1,0 +1,32 @@
+{
+  "name": "tetris-ai-lab",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "vitest run",
+    "test:browser": "playwright test",
+    "benchmark:strategies": "vitest run tests/pallet-strategy-benchmark.test.ts --reporter=dot",
+    "benchmark:presentation": "esbuild scripts/presentation-benchmark.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/presentation-benchmark.mjs --log-level=warning && node node_modules/.cache/presentation-benchmark.mjs",
+    "benchmark:capacity": "esbuild scripts/capacity-benchmark.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/pallet-capacity-benchmark.mjs --log-level=warning && node node_modules/.cache/pallet-capacity-benchmark.mjs"
+  },
+  "dependencies": {
+    "@dimforge/rapier3d-compat": "0.21.0",
+    "@types/three": "^0.186.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.0",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "@vitejs/plugin-react": "5.0.4",
+    "typescript": "5.9.3",
+    "vite": "7.3.6",
+    "vitest": "4.1.11"
+  }
+}

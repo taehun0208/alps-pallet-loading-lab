@@ -1,0 +1,568 @@
+{
+  "description": "Model-only single-seed trials, central default objective, 1-second simulation steps. Different workloads/pallets across profiles: not a matched algorithm superiority comparison. Public measured dimensions/masses do not verify assumed strength, uniform CoG, robot reach, or transport safety. p99 is host wall-clock synchronous planner time, excludes network/physical controller and reports sample count. Per-case wall cutoff is explicit.",
+  "node": "v24.14.1",
+  "platform": "darwin",
+  "arch": "arm64",
+  "seed": 42,
+  "budgetMs": 35000,
+  "limitSeconds": 2400,
+  "rows": [
+    {
+      "profile": "synthetic",
+      "input": {
+        "profile": "synthetic",
+        "label": "합성 혼합",
+        "count": 96,
+        "orderIds": [],
+        "pallet": {
+          "width": 1800,
+          "depth": 1500,
+          "maxHeight": 1600
+        },
+        "totalVolumeMm3": 3497373230,
+        "fourPalletVolumeRatio": 0.2023942841435185,
+        "sourceUrl": null,
+        "sourceSha256": null,
+        "assumptions": [
+          "규격·중량·강도 모두 합성 예제"
+        ]
+      },
+      "placed": 96,
+      "complete": true,
+      "failure": null,
+      "stoppedBy": "complete",
+      "modeledSeconds": 856.1,
+      "hostSeconds": 19.997661792,
+      "peakConcurrent": 4,
+      "robotCounts": [
+        37,
+        25,
+        20,
+        14
+      ],
+      "capacity": {
+        "usedPallets": 5,
+        "volumeMm3": 3497373230,
+        "utilization": 0.1619154273148148
+      },
+      "safety": {
+        "status": "pass",
+        "violations": [],
+        "minSupportRatio": 0.927689594356261,
+        "minMarginMm": 60,
+        "minTippingG": 0.36538461538461536,
+        "worstBoxId": "M025-01",
+        "worstRobot": 0,
+        "robotExecution": "unverified",
+        "compression": "unverified"
+      },
+      "exitReasons": {
+        "candidate-exhaustion": 4,
+        "order-complete": 1
+      },
+      "pallets": [
+        {
+          "robot": 1,
+          "cycle": 1,
+          "dispatched": true,
+          "count": 33,
+          "heightMm": 603,
+          "utilization": 0.18372247685185186,
+          "center": {
+            "x": 858.472232692549,
+            "y": 819.6594421409724,
+            "z": 221.69977384093477
+          },
+          "minMarginMm": 60,
+          "minTippingG": 0.6040469117703794
+        },
+        {
+          "robot": 2,
+          "cycle": 1,
+          "dispatched": true,
+          "count": 25,
+          "heightMm": 691,
+          "utilization": 0.18456488310185185,
+          "center": {
+            "x": 886.1596097965961,
+            "y": 580.6881832018818,
+            "z": 221.93427424934274
+          },
+          "minMarginMm": 66.5,
+          "minTippingG": 0.36538461538461536
+        },
+        {
+          "robot": 3,
+          "cycle": 1,
+          "dispatched": true,
+          "count": 20,
+          "heightMm": 830,
+          "utilization": 0.1826643810185185,
+          "center": {
+            "x": 1040.5325779036827,
+            "y": 667.2316507854752,
+            "z": 226.38584857069281
+          },
+          "minMarginMm": 76,
+          "minTippingG": 0.5474604662292853
+        },
+        {
+          "robot": 4,
+          "cycle": 1,
+          "dispatched": true,
+          "count": 14,
+          "heightMm": 733,
+          "utilization": 0.1946970625,
+          "center": {
+            "x": 839.5607939035486,
+            "y": 527.4425045495906,
+            "z": 242.5742720655141
+          },
+          "minMarginMm": 121.5,
+          "minTippingG": 0.632226593337193
+        },
+        {
+          "robot": 1,
+          "cycle": 2,
+          "dispatched": true,
+          "count": 4,
+          "heightMm": 402,
+          "utilization": 0.06392833310185185,
+          "center": {
+            "x": 742.2545805207329,
+            "y": 448.8252973320476,
+            "z": 138.53310832529735
+          },
+          "minMarginMm": 180.5,
+          "minTippingG": 1.212962962962963
+        }
+      ],
+      "latencyAll": {
+        "count": 857,
+        "p50": 0.022790999999415362,
+        "p95": 150.77637499999946,
+        "p99": 339.72133399999984,
+        "max": 486.8362500000003,
+        "deadlineCount": 0,
+        "validDeadlineRate": null
+      },
+      "latencyActive": {
+        "count": 163,
+        "p50": 78.75337500000023,
+        "p95": 339.72133399999984,
+        "p99": 426.78591700000106,
+        "max": 486.8362500000003,
+        "deadlineCount": 0,
+        "validDeadlineRate": null
+      },
+      "remaining": []
+    },
+    {
+      "profile": "bed-bpp-stress",
+      "input": {
+        "profile": "bed-bpp-stress",
+        "label": "BED-BPP 주문 결합 용량시험",
+        "count": 96,
+        "orderIds": [
+          "00100016",
+          "00100022"
+        ],
+        "pallet": {
+          "width": 1200,
+          "depth": 800,
+          "maxHeight": 1600
+        },
+        "totalVolumeMm3": 2530610000,
+        "fourPalletVolumeRatio": 0.4118831380208333,
+        "sourceUrl": "https://floriankagerer.github.io/assets/bed-bpp/bed-bpp_v1.json",
+        "sourceSha256": "6ecc91d92b9ce88de113ac66c45a450ac3eec303018f14cd73e4bd0eaf8eb3cc",
+        "assumptions": [
+          "원본 규격(mm)·중량(kg)·주문 내 순서 보존",
+          "유로 팔레트 1200×800 mm · 높이 상한은 사용자 시험조건",
+          "압축강도·마찰·내용물 무게중심은 원본에 없음 · 강도 미검증",
+          "균일 밀도 강체 · 마찰계수 0.6 · 지지면적 92% · 로봇/그리퍼는 시험 가정 · 중량 상하 규칙/100mm 높이차 제한 해제",
+          "원본 주문을 결합하고 요청 수량에서 자른 파생 시험 · 공식 원본 주문/리더보드 결과 아님"
+        ]
+      },
+      "placed": 96,
+      "complete": true,
+      "failure": null,
+      "stoppedBy": "complete",
+      "modeledSeconds": 818.1,
+      "hostSeconds": 7.413642500000002,
+      "peakConcurrent": 4,
+      "robotCounts": [
+        38,
+        27,
+        15,
+        16
+      ],
+      "capacity": {
+        "usedPallets": 7,
+        "volumeMm3": 2530610000,
+        "utilization": 0.2353617931547619
+      },
+      "safety": {
+        "status": "pass",
+        "violations": [],
+        "minSupportRatio": 0.9322033898305084,
+        "minMarginMm": 65,
+        "minTippingG": 0.16916067360521772,
+        "worstBoxId": "BED-00100016-019-18-01",
+        "worstRobot": 2,
+        "robotExecution": "unverified",
+        "compression": "unverified"
+      },
+      "exitReasons": {
+        "height-limit": 1,
+        "candidate-exhaustion": 4,
+        "order-complete": 2
+      },
+      "pallets": [
+        {
+          "robot": 1,
+          "cycle": 1,
+          "dispatched": true,
+          "count": 19,
+          "heightMm": 1570,
+          "utilization": 0.33736393229166667,
+          "center": {
+            "x": 622.491413655722,
+            "y": 298.4651050968539,
+            "z": 567.9118010715757
+          },
+          "minMarginMm": 95,
+          "minTippingG": 0.1814175650954229
+        },
+        {
+          "robot": 1,
+          "cycle": 2,
+          "dispatched": true,
+          "count": 13,
+          "heightMm": 720,
+          "utilization": 0.19591341145833333,
+          "center": {
+            "x": 488.46877061799,
+            "y": 336.9490873103145,
+            "z": 266.04739388607874
+          },
+          "minMarginMm": 75,
+          "minTippingG": 0.35605528226750993
+        },
+        {
+          "robot": 2,
+          "cycle": 1,
+          "dispatched": true,
+          "count": 25,
+          "heightMm": 1480,
+          "utilization": 0.44523828125,
+          "center": {
+            "x": 531.0787617142255,
+            "y": 303.4671475202696,
+            "z": 596.3899126039803
+          },
+          "minMarginMm": 75,
+          "minTippingG": 0.18140198208999966
+        },
+        {
+          "robot": 3,
+          "cycle": 1,
+          "dispatched": true,
+          "count": 15,
+          "heightMm": 1040,
+          "utilization": 0.23778841145833332,
+          "center": {
+            "x": 579.8819388755235,
+            "y": 346.48623362737237,
+            "z": 350.729751403368
+          },
+          "minMarginMm": 65,
+          "minTippingG": 0.241547931091549
+        },
+        {
+          "robot": 4,
+          "cycle": 1,
+          "dispatched": true,
+          "count": 16,
+          "heightMm": 1240,
+          "utilization": 0.27262565104166664,
+          "center": {
+            "x": 600.7632421420257,
+            "y": 407.7317374854482,
+            "z": 400.8367287543656
+          },
+          "minMarginMm": 75,
+          "minTippingG": 0.16916067360521772
+        },
+        {
+          "robot": 1,
+          "cycle": 3,
+          "dispatched": true,
+          "count": 6,
+          "heightMm": 340,
+          "utilization": 0.12253645833333333,
+          "center": {
+            "x": 472.226200505476,
+            "y": 324.3807919123842,
+            "z": 152.04507160909856
+          },
+          "minMarginMm": 110,
+          "minTippingG": 0.7096774193548387
+        },
+        {
+          "robot": 2,
+          "cycle": 2,
+          "dispatched": true,
+          "count": 2,
+          "heightMm": 240,
+          "utilization": 0.03606640625,
+          "center": {
+            "x": 254.71447994561518,
+            "y": 272.51529571719914,
+            "z": 95.05098572399727
+          },
+          "minMarginMm": 114.99999999999999,
+          "minTippingG": 0.9583333333333333
+        }
+      ],
+      "latencyAll": {
+        "count": 819,
+        "p50": 0.022625000001426088,
+        "p95": 36.05370799999946,
+        "p99": 85.76774999999907,
+        "max": 290.817665999999,
+        "deadlineCount": 0,
+        "validDeadlineRate": null
+      },
+      "latencyActive": {
+        "count": 202,
+        "p50": 12.222125000000233,
+        "p95": 79.55625000000146,
+        "p99": 160.7145410000012,
+        "max": 290.817665999999,
+        "deadlineCount": 0,
+        "validDeadlineRate": null
+      },
+      "remaining": []
+    },
+    {
+      "profile": "bed-bpp-stress",
+      "input": {
+        "profile": "bed-bpp-stress",
+        "label": "BED-BPP 주문 결합 용량시험",
+        "count": 120,
+        "orderIds": [
+          "00100016",
+          "00100022",
+          "00100025"
+        ],
+        "pallet": {
+          "width": 1200,
+          "depth": 800,
+          "maxHeight": 1600
+        },
+        "totalVolumeMm3": 3004735000,
+        "fourPalletVolumeRatio": 0.4890519205729167,
+        "sourceUrl": "https://floriankagerer.github.io/assets/bed-bpp/bed-bpp_v1.json",
+        "sourceSha256": "6ecc91d92b9ce88de113ac66c45a450ac3eec303018f14cd73e4bd0eaf8eb3cc",
+        "assumptions": [
+          "원본 규격(mm)·중량(kg)·주문 내 순서 보존",
+          "유로 팔레트 1200×800 mm · 높이 상한은 사용자 시험조건",
+          "압축강도·마찰·내용물 무게중심은 원본에 없음 · 강도 미검증",
+          "균일 밀도 강체 · 마찰계수 0.6 · 지지면적 92% · 로봇/그리퍼는 시험 가정 · 중량 상하 규칙/100mm 높이차 제한 해제",
+          "원본 주문을 결합하고 요청 수량에서 자른 파생 시험 · 공식 원본 주문/리더보드 결과 아님"
+        ]
+      },
+      "placed": 120,
+      "complete": true,
+      "failure": null,
+      "stoppedBy": "complete",
+      "modeledSeconds": 995.1,
+      "hostSeconds": 10.612771625000004,
+      "peakConcurrent": 4,
+      "robotCounts": [
+        44,
+        36,
+        19,
+        21
+      ],
+      "capacity": {
+        "usedPallets": 9,
+        "volumeMm3": 3004735000,
+        "utilization": 0.21735640914351853
+      },
+      "safety": {
+        "status": "pass",
+        "violations": [],
+        "minSupportRatio": 0.9259259259259259,
+        "minMarginMm": 65,
+        "minTippingG": 0.15117645994972242,
+        "worstBoxId": "BED-00100016-019-18-01",
+        "worstRobot": 2,
+        "robotExecution": "unverified",
+        "compression": "unverified"
+      },
+      "exitReasons": {
+        "height-limit": 1,
+        "candidate-exhaustion": 4,
+        "order-complete": 4
+      },
+      "pallets": [
+        {
+          "robot": 1,
+          "cycle": 1,
+          "dispatched": true,
+          "count": 19,
+          "heightMm": 1570,
+          "utilization": 0.33736393229166667,
+          "center": {
+            "x": 622.491413655722,
+            "y": 298.4651050968539,
+            "z": 567.9118010715757
+          },
+          "minMarginMm": 95,
+          "minTippingG": 0.1814175650954229
+        },
+        {
+          "robot": 2,
+          "cycle": 1,
+          "dispatched": true,
+          "count": 27,
+          "heightMm": 1480,
+          "utilization": 0.45724869791666667,
+          "center": {
+            "x": 536.2988081583804,
+            "y": 318.83882710816346,
+            "z": 582.0665237121628
+          },
+          "minMarginMm": 70,
+          "minTippingG": 0.18140198208999966
+        },
+        {
+          "robot": 4,
+          "cycle": 1,
+          "dispatched": true,
+          "count": 19,
+          "heightMm": 1440,
+          "utilization": 0.3041295572916667,
+          "center": {
+            "x": 565.6692352522177,
+            "y": 422.6354982840121,
+            "z": 411.2688596775238
+          },
+          "minMarginMm": 75,
+          "minTippingG": 0.15117645994972242
+        },
+        {
+          "robot": 3,
+          "cycle": 1,
+          "dispatched": true,
+          "count": 17,
+          "heightMm": 1300,
+          "utilization": 0.26316796875,
+          "center": {
+            "x": 558.5014548981572,
+            "y": 347.44827028774654,
+            "z": 407.9651632719043
+          },
+          "minMarginMm": 65,
+          "minTippingG": 0.19608636925998932
+        },
+        {
+          "robot": 1,
+          "cycle": 2,
+          "dispatched": true,
+          "count": 20,
+          "heightMm": 770,
+          "utilization": 0.271623046875,
+          "center": {
+            "x": 600.7709286459589,
+            "y": 334.18011076330373,
+            "z": 318.2025042138213
+          },
+          "minMarginMm": 70,
+          "minTippingG": 0.24372833339545855
+        },
+        {
+          "robot": 1,
+          "cycle": 3,
+          "dispatched": true,
+          "count": 5,
+          "heightMm": 670,
+          "utilization": 0.09369270833333333,
+          "center": {
+            "x": 319.43567115652576,
+            "y": 277.3827217835578,
+            "z": 253.90617742684626
+          },
+          "minMarginMm": 95,
+          "minTippingG": 0.3653846153846155
+        },
+        {
+          "robot": 2,
+          "cycle": 2,
+          "dispatched": true,
+          "count": 9,
+          "heightMm": 660,
+          "utilization": 0.16238346354166666,
+          "center": {
+            "x": 588.0045205037134,
+            "y": 281.2253793994188,
+            "z": 239.7142395866968
+          },
+          "minMarginMm": 85,
+          "minTippingG": 0.2762038612323393
+        },
+        {
+          "robot": 3,
+          "cycle": 2,
+          "dispatched": true,
+          "count": 2,
+          "heightMm": 220,
+          "utilization": 0.031510416666666666,
+          "center": {
+            "x": 200,
+            "y": 275,
+            "z": 110
+          },
+          "minMarginMm": 99.99999999999999,
+          "minTippingG": 0.909090909090909
+        },
+        {
+          "robot": 4,
+          "cycle": 2,
+          "dispatched": true,
+          "count": 2,
+          "heightMm": 220,
+          "utilization": 0.035087890625,
+          "center": {
+            "x": 295.8496176720476,
+            "y": 228.1733220050977,
+            "z": 100.64570943075616
+          },
+          "minMarginMm": 115,
+          "minTippingG": 1.0454545454545454
+        }
+      ],
+      "latencyAll": {
+        "count": 996,
+        "p50": 0.02583299999969313,
+        "p95": 40.65016699999978,
+        "p99": 91.11591699999917,
+        "max": 260.6782920000005,
+        "deadlineCount": 0,
+        "validDeadlineRate": null
+      },
+      "latencyActive": {
+        "count": 314,
+        "p50": 10.137750000001688,
+        "p95": 75.92583300000115,
+        "p99": 137.3525840000002,
+        "max": 260.6782920000005,
+        "deadlineCount": 0,
+        "validDeadlineRate": null
+      },
+      "remaining": []
+    }
+  ]
+}

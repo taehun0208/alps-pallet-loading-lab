@@ -1,9 +1,7 @@
-import {robotCount,robotKind} from './fleet';
-import {beltBounds} from './conveyor';
 /* Hallmark · factory stage · studied: yes · Visual Components / FactoryLens reference
  * Pre-emit critique: P5 H5 E4 S5 R5 V4. Light concrete, powder-coated steel; presentation only. */
 import * as THREE from 'three';
-import {cellPose,toWorld} from './layout';
+import {cellPose,toWorld,ROBOT_COUNT} from './layout';
 import {DEFAULT_ROBOT_ARM} from '../robotArm';
 import type {Pallet} from '../types';
 export const FACTORY={floor:'#9fa5a8',seam:'#899297',wall:'#c5c9ca',upper:'#e0e2e1',steel:'#89949b',dark:'#30373b',rack:'#b28f51',timber:'#b79a71',carton:'#b19370',tape:'#c6b694',paper:'#e1e2d9',yellow:'#d2af47',walk:'#6d8984',lane:'#818e98',lamp:'#f2f4f2',window:'#8aa6b2',ink:'#e6ebee',red:'#b5796b',font:'600 64px "Malgun Gothic",sans-serif'};
@@ -19,17 +17,16 @@ export function createFactoryEnvironment(pallet:Pallet){
  // Deterministic concrete microtexture, produced once rather than loaded from a CDN.
  const canvas=document.createElement('canvas');canvas.width=canvas.height=512;const c=canvas.getContext('2d')!;c.fillStyle=FACTORY.floor;c.fillRect(0,0,512,512);let seed=19;for(let i=0;i<13000;i++){seed=(seed*1664525+1013904223)>>>0;const x=seed%512;seed=(seed*1664525+1013904223)>>>0;const y=seed%512;c.globalAlpha=.05+(seed%8)/100;c.fillStyle=i%2?FACTORY.upper:FACTORY.dark;c.fillRect(x,y,1+(seed%3),1);}c.globalAlpha=1;
  const concrete=new THREE.CanvasTexture(canvas);concrete.colorSpace=THREE.SRGBColorSpace;concrete.wrapS=concrete.wrapT=THREE.RepeatWrapping;concrete.repeat.set(9,9);textures.push(concrete);
- const factoryWidth=Math.max(pallet.conveyorMode==='branched'?2*Math.max(Math.abs(beltBounds(pallet).left),Math.abs(beltBounds(pallet).right)+1150)/1000+4:18,robotCount(pallet)*Math.max(3600,pallet.width+2200)/1000+4,pallet.conveyorMode==='straight'&&robotCount(pallet)===1?Math.abs(beltBounds(pallet).left)/500+4:pallet.conveyorExtensionMm?(beltBounds(pallet).right-beltBounds(pallet).left)/1000+6:0);
- const floorMat=new THREE.MeshStandardMaterial({map:concrete,roughness:.93,metalness:.05}),floorGeo=new THREE.BoxGeometry(factoryWidth,.16,18),floor=new THREE.Mesh(floorGeo,floorMat);materials.push(floorMat);geometries.push(floorGeo);floor.position.y=FLOOR-.08;floor.receiveShadow=true;group.add(floor);
+ const floorMat=new THREE.MeshStandardMaterial({map:concrete,roughness:.93,metalness:.05}),floorGeo=new THREE.BoxGeometry(18,.16,18),floor=new THREE.Mesh(floorGeo,floorMat);materials.push(floorMat);geometries.push(floorGeo);floor.position.y=FLOOR-.08;floor.receiveShadow=true;group.add(floor);
  for(let n=-9;n<=9;n+=3){stripe(n,0,.013,18,FACTORY.seam);stripe(0,n,18,.013,FACTORY.seam);}
  // Paint is flat and traversable. The four radial shipping lanes follow the simulation routes.
- for(let i=0;i<robotCount(pallet);i++){
+ for(let i=0;i<ROBOT_COUNT;i++){
   const pose=cellPose(i,pallet),start=new THREE.Vector3(pose.x/1000,FLOOR+.025,pose.y/1000),out=new THREE.Vector3(0,0,1),mid=start.clone().addScaledVector(out,1.55),yaw=-Math.atan2(out.z,out.x);
   stripe(mid.x,mid.z,3.2,1.32,FACTORY.lane,yaw);for(const side of [-1,1]){const sideV=new THREE.Vector3(-out.z,0,out.x).multiplyScalar(side*.69),center=mid.clone().add(sideV);stripe(center.x,center.z,3.25,.035,FACTORY.yellow,yaw);}
   for(const distance of [1.2,2.1,2.8]){const center=start.clone().addScaledVector(out,distance);for(const side of [-1,1])stripe(center.x-out.z*side*.1,center.z+out.x*side*.1,.3,.045,FACTORY.ink,yaw+side*.65);}
   const end=start.clone().addScaledVector(out,3.3);sign(`OUT 0${i+1}`,1.05,.26,[end.x,FLOOR+.032,end.z],[-Math.PI/2,0,yaw+Math.PI/2]);
   const x=pose.x/1000,z=pose.y/1000;for(const offset of [-.7,.7]){stripe(x+offset,z,.035,1.45);stripe(x,z+offset,1.45,.035);}
-  if(robotKind(pallet,i)==='floor'){const base=toWorld({x:DEFAULT_ROBOT_ARM.baseX,y:DEFAULT_ROBOT_ARM.baseY,z:0},i,pallet);block(FACTORY.dark,[.69,.4,.69],[base.x/1000,-.2,base.y/1000],-pose.angle);block(FACTORY.steel,[.78,.04,.78],[base.x/1000,-.015,base.y/1000],-pose.angle);}
+  const base=toWorld({x:DEFAULT_ROBOT_ARM.baseX,y:DEFAULT_ROBOT_ARM.baseY,z:0},i,pallet);block(FACTORY.dark,[.69,.4,.69],[base.x/1000,-.2,base.y/1000],-pose.angle);block(FACTORY.steel,[.78,.04,.78],[base.x/1000,-.015,base.y/1000],-pose.angle);
   for(const x of [-810,-200])for(const y of [265,775]){const leg=toWorld({x,y,z:0},i,pallet);block(FACTORY.steel,[.065,.36,.065],[leg.x/1000,-.215,leg.y/1000]);}
  }
  // Clear pedestrian aisle behind the working envelope.
@@ -39,10 +36,10 @@ export function createFactoryEnvironment(pallet:Pallet){
  const rear=new THREE.Group(),side=new THREE.Group();group.add(rear,side);
  const wallMat=new THREE.MeshStandardMaterial({color:FACTORY.wall,roughness:.9}),upperMat=new THREE.MeshStandardMaterial({color:FACTORY.upper,roughness:.85});materials.push(wallMat,upperMat);
  function wall(size:Block['size'],at:Block['at'],material:THREE.Material,parent:THREE.Group){const geometry=new THREE.BoxGeometry(...size);geometries.push(geometry);const mesh=new THREE.Mesh(geometry,material);mesh.position.set(...at);mesh.receiveShadow=true;parent.add(mesh);}
- wall([factoryWidth,3.7,.16],[0,1.45,-8.8],wallMat,rear);wall([factoryWidth,1.3,.16],[0,3.95,-8.8],upperMat,rear);wall([.16,5.2,18],[-factoryWidth/2+.2,2.2,0],wallMat,side);
+ wall([18,3.7,.16],[0,1.45,-8.8],wallMat,rear);wall([18,1.3,.16],[0,3.95,-8.8],upperMat,rear);wall([.16,5.2,18],[-8.8,2.2,0],wallMat,side);
  for(let i=-8;i<=8;i++){block(FACTORY.steel,[.035,4.9,.08],[i,2.05,-8.66]);}
  for(const x of [-8.55,-4.25,0,4.25,8.55]){block(FACTORY.steel,[.2,5.4,.24],[x,2.3,-8.55]);block(FACTORY.yellow,[.27,.7,.3],[x,-.05,-8.55]);}
- for(const z of [-4.3,0,4.3,8.5]){block(FACTORY.steel,[.24,5.4,.2],[-factoryWidth/2+.45,2.3,z]);block(FACTORY.yellow,[.3,.7,.27],[-factoryWidth/2+.45,-.05,z]);}
+ for(const z of [-4.3,0,4.3,8.5]){block(FACTORY.steel,[.24,5.4,.2],[-8.55,2.3,z]);block(FACTORY.yellow,[.3,.7,.27],[-8.55,-.05,z]);}
  // Back-bay truss and suspended fixtures leave the central cell unobstructed.
  for(const z of [-7.6,-5.1]){block(FACTORY.steel,[17.2,.15,.12],[0,4.8,z]);for(let x=-8;x<8;x+=2)beam(new THREE.Vector3(x,4.8,z),new THREE.Vector3(x+1,5.3,z),.055,FACTORY.steel);block(FACTORY.steel,[17.2,.12,.1],[0,5.3,z]);}
  for(const x of [-6,-2,2,6]){block(FACTORY.dark,[2.1,.09,.3],[x,4.65,-5.1]);block(FACTORY.lamp,[1.95,.025,.25],[x,4.59,-5.1]);}
@@ -59,11 +56,11 @@ export function createFactoryEnvironment(pallet:Pallet){
  sign('RESERVE / 예비 재고',3.1,.34,[-5,3.05,-7.05],[0,0,0]);
  // Perimeter protection stays outside all four active cells and their radial lanes.
  function fence(x:number,z:number,length:number,rotate=false){const a=rotate?new THREE.Vector3(x,0,z):new THREE.Vector3(x,0,z),b=rotate?new THREE.Vector3(x,0,z+length):new THREE.Vector3(x+length,0,z);for(let i=0;i<=Math.ceil(length/1.4);i++){const v=a.clone().lerp(b,i/Math.ceil(length/1.4));block(FACTORY.yellow,[.07,1.45,.07],[v.x,.32,v.z]);}for(const y of [-.22,1])beam(a.clone().setY(y),b.clone().setY(y),.04,FACTORY.dark);const pts=[];for(let d=0;d<=length;d+=.13){const v=a.clone().lerp(b,d/length);pts.push(v.clone().setY(-.2),v.clone().setY(.99));}for(let y=-.2;y<=1;y+=.16)pts.push(a.clone().setY(y),b.clone().setY(y));const geo=new THREE.BufferGeometry().setFromPoints(pts),mat=new THREE.LineBasicMaterial({color:FACTORY.dark,transparent:true,opacity:.45});geometries.push(geo);materials.push(mat);group.add(new THREE.LineSegments(geo,mat));}
- if(!pallet.conveyorExtensionMm)fence(-4.4,-5.05,4.9);else fence(factoryWidth/2-.9,-6.8,1.5,true);fence(factoryWidth/2-.9,-2.8,4.6,true);
+ fence(-4.4,-5.05,4.9);fence(8.1,-2.8,4.6,true);
  // Electrical cabinet and a small operator terminal, clear of transport paths.
  block(FACTORY.paper,[.65,1.55,.48],[7.4,.37,-3.8]);block(FACTORY.steel,[.56,1.4,.025],[7.4,.37,-3.54]);block(FACTORY.dark,[.04,.25,.04],[7.58,.45,-3.51]);block(FACTORY.dark,[.09,1.2,.09],[5.9,.2,-3.9]);block(FACTORY.steel,[.52,.36,.08],[5.9,.85,-3.9]);block(FACTORY.window,[.44,.26,.01],[5.9,.85,-3.85]);
  for(const x of [6.9,7.9])block(FACTORY.yellow,[.09,.8,.09],[x,0,-3.2]);
  // One draw call per material for hundreds of stationary parts.
  for(const [color,parts] of batches){const material=new THREE.MeshStandardMaterial({color,roughness:color===FACTORY.steel?.48:.82,metalness:color===FACTORY.steel?.5:.04,emissive:color===FACTORY.lamp?FACTORY.lamp:0,emissiveIntensity:color===FACTORY.lamp?.55:0});materials.push(material);const mesh=new THREE.InstancedMesh(boxGeometry,material,parts.length),o=new THREE.Object3D();parts.forEach((part,i)=>{o.position.set(...part.at);o.rotation.set(0,part.yaw,0);o.scale.set(...part.size);o.updateMatrix();mesh.setMatrixAt(i,o.matrix);});mesh.castShadow=true;mesh.receiveShadow=true;mesh.instanceMatrix.needsUpdate=true;mesh.computeBoundingSphere();group.add(mesh);}
- return {group,update:(camera:THREE.Camera)=>{rear.visible=camera.position.z>-8.2;side.visible=camera.position.x>-factoryWidth/2+.8;},dispose:()=>{group.traverse(o=>{if(o instanceof THREE.InstancedMesh)o.dispose();});for(const t of textures)t.dispose();for(const m of materials)m.dispose();for(const g of geometries)g.dispose();group.clear();},instances:[...batches.values()].reduce((n,b)=>n+b.length,0)};
+ return {group,update:(camera:THREE.Camera)=>{rear.visible=camera.position.z>-8.2;side.visible=camera.position.x>-8.2;},dispose:()=>{group.traverse(o=>{if(o instanceof THREE.InstancedMesh)o.dispose();});for(const t of textures)t.dispose();for(const m of materials)m.dispose();for(const g of geometries)g.dispose();group.clear();},instances:[...batches.values()].reduce((n,b)=>n+b.length,0)};
 }

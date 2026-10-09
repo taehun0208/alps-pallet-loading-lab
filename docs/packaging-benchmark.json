@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-07T20:34:10.195Z",
+  "date": "2026-10-09T08:41:04.670Z",
   "settings": {
     "seed": 2026,
     "samples": 20,
@@ -34,7 +34,7 @@
         "support": 0.9828947368421053,
         "maxLoad": 1,
         "cogDeviation": 152.23046925109006,
-        "planningMs": 11.343186363636361,
+        "planningMs": 7.643193181818185,
         "cycleSeconds": 190.3068607764515,
         "replans": 0,
         "height": 1150
@@ -362,7 +362,7 @@
         "support": 0.9933333333333334,
         "maxLoad": 0.5,
         "cogDeviation": 67.01589375229032,
-        "planningMs": 6.278522727272719,
+        "planningMs": 4.004859909090907,
         "cycleSeconds": 150.45731412518867,
         "replans": 0,
         "height": 800
@@ -630,7 +630,7 @@
         "support": 0.9933333333333334,
         "maxLoad": 0.5,
         "cogDeviation": 82.66206807198965,
-        "planningMs": 5.446849999999999,
+        "planningMs": 3.66278027272727,
         "cycleSeconds": 148.6021224614065,
         "replans": 0,
         "height": 800
@@ -898,7 +898,7 @@
         "support": 0.9571010860484546,
         "maxLoad": 0.9307692307692307,
         "cogDeviation": 24.293523797432798,
-        "planningMs": 650.6749636363637,
+        "planningMs": 386.48925,
         "cycleSeconds": 189.60794928216401,
         "replans": 0,
         "height": 1050
@@ -1226,7 +1226,7 @@
         "support": 0.9571010860484546,
         "maxLoad": 0.9307692307692307,
         "cogDeviation": 24.293523797432798,
-        "planningMs": 608.0468272727265,
+        "planningMs": 386.6974186363634,
         "cycleSeconds": 189.60794928216401,
         "replans": 0,
         "height": 1050

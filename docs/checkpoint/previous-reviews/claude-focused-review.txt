@@ -1,0 +1,78 @@
+**Scope:** `rankAssignments` and `applyDecision` only.
+
+## `rankAssignments`: no confirmed bug
+
+- **DP keyed by robot mask.** Each offer adds at most one pick, because it extends the old `states` and writes to `next`. A robot is never reused, because of the `mask&(1<<bid.robot)` check. Future choices depend only on the mask, so keeping the best state per mask is sufficient.
+- **Objective order.** `better` ranks by recirculated picks, then immediate pick count, then score. This matches the contract: recirculated priority first, then immediate count, then score.
+- **Soft deferral.**
+  - `future` uses `Math.max(-Infinity, …)`, so a box with no soft bid keeps all its eligible bids.
+  - A tie goes to immediate pickup (`>=`).
+  - Boxes with `passes>=1` never fall back to a soft bid.
+  - Soft winners do not enter the mask, so they consume no robot slot.
+
+## `applyDecision`: one confirmed issue
+
+### 1. Soft-downstream (`defer`) proposals can reserve the box and launch a motion
+
+```ts
+const failures=[], action=interceptAction(s,w,proposal,...);
+...
+if(action){ b.status='reserved'; b.owner=proposal.robot; next.push(...); w.revision++; }
+```
+
+`proposal.disposition` is consulted only in the rejection branch. It is never consulted before `interceptAction` or before the reservation.
+
+When a `defer` proposal reaches apply time, `interceptAction` may succeed. For example, time has advanced and the box is now within the pickup window. The code then:
+
+- sets the box to `reserved`,
+- assigns the robot as owner,
+- pushes a motion.
+
+This breaks two parts of the contract:
+
+- "Soft downstream does not reserve capacity."
+- `launchNow=false` means not an immediate pickup.
+
+It also undermines the DP's guarantee. `rankAssignments` deliberately leaves the deferred robot's slot free for another box. Proposals are processed in order, and nothing in this function updates `cell.phase` after a reservation. So the deferred box can claim the robot first, and the DP-chosen immediate box for that robot is then rejected or diverted. That happens only if `interceptAction`'s path-reservation check blocks it; otherwise both launches are attempted on the same robot.
+
+**Minimal fix:** for `disposition==='defer'`:
+
+- record the check and reason,
+- do not call `interceptAction` for reservation (or ignore its result),
+- `continue` without reserving or rejecting.
+
+```ts
+if(proposal.disposition==='defer'){
+  b.flow!.checks[proposal.robot]={version:proposal.cellVersion,at:w.time,reason:proposal.reason,blocked:proposal.blocked,tested:proposal.tested};
+  b.flow!.lastReason=proposal.reason;
+  continue;
+}
+```
+
+## Regression test
+
+**Setup**
+- Robot 0 has `phase='loading'`, and its version matches the decision.
+- Boxes A and B are both on the belt and are geometrically interceptable by robot 0 at `world.time`.
+- `decision.proposals` contains, in this order:
+  1. Box A, robot 0, `disposition:'defer'`.
+  2. Box B, robot 0, immediate (`launchNow=true` from `rankAssignments`).
+
+**Expect**
+- Box A: `status==='belt'`, `owner` unset, and not in `cells[0].rejected`.
+- Box B: `status==='reserved'` with `owner===0`.
+- Exactly one motion is pushed, with its action belonging to box B.
+- `world.revision` increments by exactly 1.
+
+**Current code**
+- Box A is reserved and launched on robot 0.
+- Box B then either fails reservation or is double-launched.
+
+**Single-proposal variant:** a lone feasible `defer` proposal should produce zero motions and an unchanged `revision`.
+
+## Not reported
+
+These were considered but are not confirmed from the code shown:
+
+- **Pickup-window failure classification.** Whether a pickup-window failure triggers permanent `rejected` depends on the exact failure strings (whether they contain `구간`/`예약`). Those strings are not shown.
+- **Cycle check when `cellStates` is absent.** The per-proposal check compares phase but not cycle. This matters only if `cellStates` can legitimately be omitted, which the contract doesn't specify.

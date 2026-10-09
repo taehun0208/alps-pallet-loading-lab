@@ -1,0 +1,4 @@
+import type { Frame,Scenario } from './types';
+export function ArrivalFrames({frame,scenario,cursor,onFrame}:{frame:Frame;scenario:Scenario;cursor:number;onFrame:(n:number)=>void}){
+ return <details className="pallet-arrival-frames"><summary>{scenario.supplyMode==='stock-select'?'선택한 적재 순서 · 프레임 선택':'관측된 도착 순서 · 프레임 선택'}</summary><div className="pallet-arrival-list">{frame.records.map((r,i)=><button key={i} aria-label={`${i+1}번째 프레임 ${r.observation.id}`} aria-pressed={cursor===i+1} className={r.disposition==='blocked'?'blocked':r.disposition==='placed'?'':'excluded'} onClick={()=>onFrame(i+1)}><i style={{background:scenario.types.find(t=>t.id===r.observation.typeId)?.color}}/>{i+1}<small>{r.observation.typeId}</small></button>)}</div><p className="pallet-note">{scenario.supplyMode==='stock-select'?'계획기가 선택한 박스 순서를 표시합니다.':'이미 관측한 입고만 표시합니다.'} 각 프레임은 저장된 후보·선택 이유·지지 반력과 확정 배치를 읽습니다.</p></details>;
+}

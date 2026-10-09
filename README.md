@@ -1,30 +1,36 @@
-# ALPS / 6영역 알고리즘 벤치마크
+# 중앙 배정 · 혼합 적재 워크스페이스
 
-[공개 벤치마크 대시보드](https://pallet-loading-lab.eon3602.chatgpt.site/?palletView=benchmark&v=40#pallet) · [측정 조건·결과·검증 범위](docs/BENCHMARK-SIX-AREA.md)
+GitHub v19를 기반으로 중앙 오케스트레이터와 성능 평가 작업공간을 추가한 개발 버전입니다.
 
-무작위 순서·누락·파손·규격 오인식·그리퍼/TCP 검사를 필수로 적용합니다. 현대 추정 기준선은 활성 비교에서 제외하고 과거 기록은 보존했습니다. 실제 IK·진공 파지·동적 붕괴는 미검증입니다. 사전 측정 환경과 새 브라우저 측정 환경을 구분합니다.
+- 실행: `npm ci` → `npm run dev` → `http://127.0.0.1:5173/?palletDemo=compact&palletView=relay#pallet`
+- 빌드: `npm run build`
+- [중앙 배정 알고리즘·계산량·비교시험](docs/central-orchestration.md)
+- [동일 입력의 중앙/개별 방식 비교 결과](docs/benchmarks/orchestration-comparison.json)
+- [대시보드 사용과 검증 범위](docs/orchestration-workspace.md)
 
-## 이전 고정 패턴 실험 기록 · 활성 비교에서 제외
+중앙 배정은 관측된 박스의 후보 공간·후속 수용성·도착 및 작업비용을 비교하고, 즉시 작업 가능한 로봇 조합을 선택합니다. 집기 직전에 위치·제약·예약을 다시 검사합니다. 개별 로봇 판단 방식도 비교 기준으로 선택할 수 있습니다.
 
-[고정 패턴·ALPS 비교 시뮬레이터](https://pallet-loading-lab.eon3602.chatgpt.site/?palletView=single-study&v=39#pallet) · [구현·검증·실측 비교](docs/CONVENTIONAL-PATTERN.md)
+핵심 지표 6개와 3D 중심의 작업공간에서 이벤트 재생, 원인 박스 선택, 배정 근거, 같은 조건의 완료 실행 비교를 제공합니다. 강건성·실물 로봇·실측 압축강도는 미검증으로 표시합니다. 이 변경이 아래 공개 사이트에 자동 배포되는 것은 아닙니다.
 
-Column / Interlocking / Brick 선택, 기존 공통 제약 검사, 외부 중립 패턴 어댑터를 추가했습니다. HRPal 비공개 알고리즘 복제가 아닙니다. 온라인 18개 알고리즘 180회와 패턴·회전 민감도 27회를 실행했습니다. 기존 연속 공정과 계획기를 유지합니다.
+---
 
-# 중앙 오케스트레이션 · 도착 순서 개선 · v21
+## 이전 배포 기록
 
-- [중앙 배차 4대 로봇 시뮬레이터](https://pallet-loading-lab.eon3602.chatgpt.site/?palletDemo=compact&palletView=relay&v=21#pallet)
-- [논문 아이디어 비교 대시보드](https://pallet-loading-lab.eon3602.chatgpt.site/?palletView=adaptive&v=21#pallet)
-- [개선 내용·실측 비교·실행법·검증 한계](docs/ORDERING-IMPROVEMENTS.md)
-- [중앙 배정 구조·로봇 명령·검증](docs/CENTRAL-ORCHESTRATION.md)
+# Pallet Loading Lab · 최신 결과 v19
 
-현재 연속 공정은 중앙 Worker가 모든 팔레트 상태와 계측된 박스를 받아 로봇/박스 조합을 배정합니다. 기존 셀 순차 선별은 비교 옵션으로 남아 있습니다. Worker는 현장 서버의 역할을 모사하며 실제 서버·PLC 연결을 주장하지 않습니다. 아래의 독립 셀/전달대 설명은 이전 실험 기록입니다.
+2026-10-09 검증 완료본입니다. 기존 4대 로봇 컨베이어와 변형·관측 오차 적재 실험을 포함합니다.
 
-## 성능 대시보드 · v20 기록
+- [시뮬레이터 바로 실행 · 변형/관측 실험](https://pallet-loading-lab.eon3602.chatgpt.site/?palletView=adaptive&v=19#pallet)
+- [4대 로봇 컨베이어 대시보드](https://pallet-loading-lab.eon3602.chatgpt.site/?palletDemo=compact&palletView=relay&v=19#pallet)
+- [알고리즘·조작 방법·가정과 한계](docs/adaptive-packing.md)
+- [동일 입력 비교 결과 CSV](docs/adaptive-results/comparison.csv) · [JSON](docs/adaptive-results/comparison.json)
+- [검증 기록: 9개 파일 / 50개 테스트 통과](docs/adaptive-results/final-tests.txt)
 
-[공개 대시보드 실행](https://pallet-loading-lab.eon3602.chatgpt.site/?palletView=adaptive&v=20#pallet) · [구현·조작·가정·검증](docs/PERFORMANCE-DASHBOARD.md)
+로컬 실행: Node.js 22.12 이상에서 이 폴더로 이동한 뒤 `npm ci`, `npm run dev`를 실행합니다. 빌드는 `npm run build`입니다. 공개 실행 URL은 GitHub 저장소와 별도로 배포되어 있습니다.
 
-6개 핵심 지표, 단계별 3D 재생, 위험 박스 추적, 동일 조건 A/B/C 비교를 추가했습니다. 기존 계획기와 4대 컨베이어 화면은 유지합니다. 실물 로봇과 동적 안정성은 미검증입니다.
+이번 업로드는 완성된 v19 소스와 실측 결과입니다. 이후 요청된 3DORP GLA/GLAS 고도화는 이 버전에 포함되지 않았습니다. 실물 로봇 IK·힘 제어·진공 밀봉 검증 완료를 의미하지 않습니다.
 
+---
 ## 공용 컨베이어 스튜디오 · 2026-10-08
 
 4대의 로봇을 하나의 순환 컨베이어에 일렬로 배치했습니다. 벨트 폭 900 mm, 속도 600 mm/s, 데크 높이 450 mm입니다. 보류 박스는 다음 로봇의 픽업 구역에 실제 이송 시간이 지난 뒤 도착합니다. 기존 작업이 있으면 1 m 앞에서 기다렸다가 구역이 비면 접근합니다. 다음 로봇은 팔레트 직접 적재 또는 로컬 보관을 판단합니다. 모든 로봇이 독립 시계로 동시 작업하며 수량을 보존합니다.
@@ -264,8 +270,3 @@ HOLD, 공개 NEXT 밖 확률 탐색, 자동 가중치 학습, 신경망 강화�
 
 기존 화면에 A/B/C 비교 실험 탭을 추가했습니다. 실행 주소는 `?palletView=adaptive#pallet`입니다.
 구현·가정값·검증 결과·한계: [상세 문서](docs/adaptive-packing.md).
-
-
-## PAC 2026 알고리즘 평가
-
-`/?palletView=benchmark#pallet`에서 기존 16개 온라인 어댑터와 별도 오프라인 기준해를 같은 시드·제약으로 반복 측정합니다. 무작위 기준선, 6영역 점수, 범위별 순위, 분포/CI, 3D 단계 기록 및 JSON/CSV를 지원합니다. [설계·실행·검증·실측 결과](docs/BENCHMARK.md).

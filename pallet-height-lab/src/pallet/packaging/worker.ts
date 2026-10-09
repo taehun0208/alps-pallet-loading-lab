@@ -1,0 +1,2 @@
+import { compareMethods, preview } from './session';
+self.onmessage=event=>{const {id,kind,session,method,settings}=event.data;try{if(kind==='compare'){const rows=compareMethods(session,settings,(algorithm,step,total)=>postMessage({id,kind:'progress',algorithm,step,total}));postMessage({id,kind:'comparison',rows});}else postMessage({id,kind:'plan',plan:preview(session,method,settings)});}catch(e){postMessage({id,kind:'error',error:(e as Error).message});}};

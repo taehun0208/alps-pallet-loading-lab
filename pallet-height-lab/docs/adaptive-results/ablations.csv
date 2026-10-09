@@ -1,0 +1,17 @@
+case,mode,seed,placed,unplaced,retries,planningMs,placementFail
+ablation-full,C,42,8,4,3,2202.4875999999995,0
+ablation-load,C,42,8,4,3,1407.5189999999993,0
+ablation-suction,C,42,8,4,3,1227.7623999999996,0
+ablation-path,C,42,8,4,3,1257.8012999999983,0
+ablation-buffer,C,42,6,6,18,622.3905000000013,0
+ablation-replan,C,42,8,4,0,1182.6558999999997,0
+ablation-alignment,C,42,8,4,3,1153.8660999999993,0
+observation-noise,A,41,1,7,0,135.70580000000336,7
+observation-noise,B,41,1,7,0,181.051300000001,0
+observation-noise,C,41,2,6,4,511.5301999999974,0
+observation-noise,A,42,1,7,0,85.89210000000094,7
+observation-noise,B,42,1,7,0,233.41279999999642,0
+observation-noise,C,42,1,7,6,507.34430000000066,2
+observation-noise,A,43,2,6,0,450.8651000000009,4
+observation-noise,B,43,2,6,0,222.34979999999996,0
+observation-noise,C,43,2,6,3,569.9141999999993,0

@@ -1,0 +1,361 @@
+{
+  "stats": {
+    "startTime": "2026-10-03T09:48:18.988Z",
+    "duration": 168554.758,
+    "expected": 29,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "browser": "Microsoft Edge / Playwright 1.56, fresh test contexts",
+  "checks": [
+    {
+      "file": "browser.spec.ts",
+      "title": "initial pause, player stages, undo and no double commit",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3640
+        }
+      ]
+    },
+    {
+      "file": "browser.spec.ts",
+      "title": "weight changes are real and the latest rapid edit wins",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 2723
+        }
+      ]
+    },
+    {
+      "file": "browser.spec.ts",
+      "title": "future scenario differs from greedy and beam nodes have actual counts",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6110
+        }
+      ]
+    },
+    {
+      "file": "browser.spec.ts",
+      "title": "candidate pinning, actual branch, edit gating and JSON transfer",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 4474
+        }
+      ]
+    },
+    {
+      "file": "browser.spec.ts",
+      "title": "comparison uses common supply, synchronises by block count and draws records",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 2606
+        }
+      ]
+    },
+    {
+      "file": "browser.spec.ts",
+      "title": "keyboard and responsive viewports keep board and play usable, no console errors",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3834
+        }
+      ]
+    },
+    {
+      "file": "browser.spec.ts",
+      "title": "animation previews multiple actual landings, then one decision stops",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6969
+        }
+      ]
+    },
+    {
+      "file": "browser.spec.ts",
+      "title": "fast continuous play can be paused even while next decision is being computed",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3536
+        }
+      ]
+    },
+    {
+      "file": "browser.spec.ts",
+      "title": "line clearing overlay uses pre-clear board then displays post-clear measurements",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 2941
+        }
+      ]
+    },
+    {
+      "file": "browser.spec.ts",
+      "title": "export after actual application saves new board and preserves future consumption index",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 2676
+        }
+      ]
+    },
+    {
+      "file": "browser.spec.ts",
+      "title": "player strategy really preserves a well and compares the same state against balanced",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3969
+        }
+      ]
+    },
+    {
+      "file": "browser.spec.ts",
+      "title": "O builds four ready rows then NEXT I actually clears four with additional reward",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 8061
+        }
+      ]
+    },
+    {
+      "file": "browser.spec.ts",
+      "title": "dangerous well setup takes a real three-line escape",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3812
+        }
+      ]
+    },
+    {
+      "file": "browser.spec.ts",
+      "title": "strategy persists through JSON and common-strategy comparison reports real clear counts",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6716
+        }
+      ]
+    },
+    {
+      "file": "browser.spec.ts",
+      "title": "player strategy panels work on narrow screens with no runtime errors",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 2645
+        }
+      ]
+    },
+    {
+      "file": "pallet-browser.spec.ts",
+      "title": "pallet scene, full run, inspection, replay, physics and exports",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 31105
+        }
+      ]
+    },
+    {
+      "file": "pallet-browser.spec.ts",
+      "title": "comparison runs on common inputs and exports CSV",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 20176
+        }
+      ]
+    },
+    {
+      "file": "pallet-browser.spec.ts",
+      "title": "invalid imports, blocked state and stale worker reset",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3016
+        }
+      ]
+    },
+    {
+      "file": "pallet-browser.spec.ts",
+      "title": "responsive layout preserves accessible controls",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 1617
+        }
+      ]
+    },
+    {
+      "file": "pallet-browser.spec.ts",
+      "title": "pause freezes motion, cancel preserves confirmed state and rapid clicks cannot double commit",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 6387
+        }
+      ]
+    },
+    {
+      "file": "pallet-browser.spec.ts",
+      "title": "comparison cancellation keeps completed results and mobile comparison stays contained",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 2503
+        }
+      ]
+    },
+    {
+      "file": "pallet-browser.spec.ts",
+      "title": "materials, cumulative load and always-on inventory are applied to real placements and exports",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 11366
+        }
+      ]
+    },
+    {
+      "file": "three-browser.spec.ts",
+      "title": "renders WebGL, clears four planes and restores the complete board with undo",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3950
+        }
+      ]
+    },
+    {
+      "file": "three-browser.spec.ts",
+      "title": "manual XYZ rotations, depth movement and placement use actual geometry",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3237
+        }
+      ]
+    },
+    {
+      "file": "three-browser.spec.ts",
+      "title": "slice editing, cutaway, holes and board JSON survive an export/import",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3197
+        }
+      ]
+    },
+    {
+      "file": "three-browser.spec.ts",
+      "title": "switches algorithms, latest worker wins, autoplay pauses and both dimensions are reachable",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 7010
+        }
+      ]
+    },
+    {
+      "file": "three-browser.spec.ts",
+      "title": "works at all required mobile widths without overflow or wrapped clickable labels",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 1761
+        }
+      ]
+    },
+    {
+      "file": "three-resilience.spec.ts",
+      "title": "changing a complex rotation to a three-orientation piece never crashes",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 2914
+        }
+      ]
+    },
+    {
+      "file": "three-resilience.spec.ts",
+      "title": "WebGL failure retains working layer inspection and simulation",
+      "ok": true,
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 3094
+        }
+      ]
+    }
+  ]
+}

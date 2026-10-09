@@ -12,13 +12,7 @@ export interface Box {
 export interface Pose {position:Vec3;rotation:0|90}
 export interface Placed extends Pose {box:Box}
 export interface Observed extends Placed {yawErrorDeg:number;revision:number}
-export interface OrderingOptions {
- enabled:boolean;dependencyWeight:number;cdg:boolean;prior:boolean;equivalence:boolean;spaceCache:boolean;removalChecks:number;
-}
-export const DEFAULT_ORDERING:OrderingOptions={enabled:false,dependencyWeight:.12,cdg:true,prior:true,equivalence:true,spaceCache:true,removalChecks:8};
-export interface SearchStats {checked:number;spaceUpdates:number;priorChecks:number;priorHits:number;equivalentSkipped:number;dependencyChecks:number;dependencyEdges:number;capped:number}
 export interface Config {
- ordering?:OrderingOptions;
  mode:Mode;seed:number;count:number;pallet:Pallet;environment:'pallet'|'roll';
  walls:{left:boolean;right:boolean;back:boolean};frontFill:boolean;
  deformation:number;damageKinds:Damage[];materialResidual:number;
@@ -49,12 +43,10 @@ export interface Frame {
  events:{tick:number;id:string;kind:string;reasons:string[]}[];
  attempts:{pickGeometricPass:number;pickGeometricFail:number;placementPass:number;placementFail:number};
  incidents:Record<string,number>;done:boolean;
- search?:SearchStats;bufferPeak?:number;bufferedIds?:string[];
 }
 export const labels:Record<string,string>={boundary:'적재 경계 초과',collision:'변형 형상 충돌',support:'지지 부족·공중 부양',bridge:'큰 무지지 구간',tipping:'합력 작용점 전도 위험',load:'누적 상부하중 초과',strength:'하부 강도 정보 없음',rotation:'허용하지 않는 회전',grasp:'흡착 기하 조건 불충족',path:'상자·그리퍼 경로 간섭',budget:'탐색 예산 소진',unavailable:'유효 후보 없음',waiting:'버퍼 대기 한도',invalid:'잘못된 입력'};
 export const damageLabels:Record<Damage,string>={normal:'정상',corner:'모서리 눌림',dent:'윗면 함몰',bulge:'옆면 돌출',bottom:'불균일 바닥',tear:'구멍·찢김 마스크'};
 export const DEFAULT_CONFIG:Config={
- ordering:{...DEFAULT_ORDERING,enabled:true},
  mode:'C',seed:42,count:24,pallet:{width:1800,depth:1500,maxHeight:1600},environment:'pallet',
  walls:{left:true,right:true,back:true},frontFill:false,deformation:24,damageKinds:['normal','corner','dent','bulge','bottom','tear'],materialResidual:.8,
  noise:{dimensionMm:0,positionMm:0,surfaceMm:0,yawDeg:0},bufferSize:6,maxRetries:2,maxWait:8,

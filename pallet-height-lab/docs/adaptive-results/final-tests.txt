@@ -1,0 +1,13 @@
+
+ RUN  v4.1.11 C:/Users/dongu/Documents/Codex/2026-10-01/files-pasted-by-the-user-ai/outputs/tetris-ai-lab
+
+···········································stdout | tests/pallet-adaptive.test.ts > deformed pallet mechanics and causal planning > compares identical actual inputs and writes measured multi-seed results
+[{"mode":"A","seed":41,"placed":5,"ms":349},{"mode":"B","seed":41,"placed":7,"ms":685},{"mode":"C","seed":41,"placed":7,"ms":1642},{"mode":"A","seed":42,"placed":5,"ms":159},{"mode":"B","seed":42,"placed":6,"ms":419},{"mode":"C","seed":42,"placed":8,"ms":1309},{"mode":"A","seed":43,"placed":5,"ms":191},{"mode":"B","seed":43,"placed":5,"ms":380},{"mode":"C","seed":43,"placed":8,"ms":1558}]
+
+·······
+
+ Test Files  9 passed (9)
+      Tests  50 passed (50)
+   Start at  14:39:32
+   Duration  15.98s (transform 3.69s, setup 0ms, import 5.15s, tests 27.39s, environment 2ms)
+

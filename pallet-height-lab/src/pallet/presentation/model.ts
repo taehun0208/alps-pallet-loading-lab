@@ -1,0 +1,217 @@
+import { ArrivalEnvironment } from '../environment';
+import { inspectConstraints } from '../constraints';
+import { auditProposal } from '../benchmark/runner';
+import { distribution, fingerprint } from '../benchmark/statistics';
+import { top, volume } from '../geometry';
+import { defaultCapacityConfig, retailScenario, capacityAlgorithm, applyZonePreference } from '../capacity/experiment';
+import type { CapacityConfig } from '../capacity/experiment';
+import type { Candidate, Observation, Placement, PlanningInput, Scenario } from '../types';
+
+export const PRESENTATION_VERSION = 'alps-complete-order/2';
+export const STORE_ZONES = [{ name: '식품', floor: 1, x: 12, y: 8 }, { name: '생활용품', floor: 3, x: 16, y: 12 }, { name: '뷰티', floor: 1, x: 24, y: 8 }];
+export interface StoreSettings { cartBoxes: number; cartKg: number; walkSpeed: number; elevatorSeconds: number; takeSeconds: number; sortSeconds: number; switchSeconds: number; openSeconds: number; stockUnitSeconds: number; cartonSeconds: number; palletExchangeSeconds: number }
+export interface PresentationConfig { packing: CapacityConfig; store: StoreSettings; discoverySeeds: number[]; holdoutSeeds: number[]; baselineAlgorithm: string; robotCycleSeconds: number; overlapPlanning: boolean }
+export interface Policy { algorithm: string; organized: boolean; id: string }
+export interface Batch { index: number; boxes: Placement[] }
+export type StoreAction = 'walk' | 'take' | 'sort' | 'buffer' | 'retrieve' | 'open' | 'stock' | 'carton';
+export interface StoreEvent { kind: StoreAction; start: number; end: number; seconds: number; batch: number; box?: string; zone: number; from?: number; to?: number; source: string[]; cart: string[]; delivered: string[]; message: string }
+export interface StorePlan { method: 'sort' | 'direct'; seconds: number; redistributionSeconds: number; shelfSeconds: number; walked: number; rehandles: number; sorted: number; bufferPeak: number; completed: number; feasible: boolean; events: StoreEvent[]; alternatives?: { sort: number | null; direct: number | null }; visitOrders: number[][] }
+export interface PackingEvent { kind: 'plan' | 'robot' | 'exchange'; start: number; end: number; batch: number; before: Placement[]; after: Placement[]; box?: Observation; candidate?: Candidate; message: string; planningMs?: number; overlapSeconds?: number }
+export interface OrderRun {
+  id: string; policy: Policy; seed: number; split: 'discovery' | 'holdout'; fingerprint: string; scenario: Scenario;
+  status: 'complete' | 'partial' | 'timeout' | 'error'; reason: string; total: number; arrivals: string[]; unplaced: string[]; violations: string[];
+  batches: Batch[]; packingEvents: PackingEvent[]; store: StorePlan;
+  packingSeconds: number; robotSeconds: number; computeSeconds: number; exchangeSeconds: number; totalSeconds: number; planningWaitSeconds: number; overlappedComputeSeconds: number; pathEstimateSeconds: number; cycleOverruns: number;
+  utilization: number; envelopeFill: number; meanMs: number | null; p95Ms: number | null; maxMs: number | null; deadlineMisses: number;
+}
+export function defaultPresentationConfig(): PresentationConfig {
+  const packing = defaultCapacityConfig(); packing.scenario = retailScenario(4); packing.bufferCapacity = 0; packing.decisionMs = 60000;
+  return { packing, robotCycleSeconds: 8, overlapPlanning: true, baselineAlgorithm: 'strategy-greedy', discoverySeeds: [310, 311, 312, 313, 314], holdoutSeeds: Array.from({ length: 20 }, (_, i) => 2210 + i),
+    store: { cartBoxes: 6, cartKg: 80, walkSpeed: .9, elevatorSeconds: 45, takeSeconds: 4, sortSeconds: 2, switchSeconds: 2, openSeconds: 6, stockUnitSeconds: 2, cartonSeconds: 3, palletExchangeSeconds: 20 } };
+}
+export const policy = (algorithm: string, organized: boolean): Policy => ({ algorithm, organized, id: `${algorithm}:${organized ? 'alps' : 'space'}` });
+export function validatePresentationConfig(c: PresentationConfig) {
+  if (!Number.isFinite(c.robotCycleSeconds) || c.robotCycleSeconds <= 0) throw Error('로봇 사이클은 양의 초 단위 값이어야 합니다.');
+  const seeds = [...c.discoverySeeds, ...c.holdoutSeeds];
+  if (!c.discoverySeeds.length || !c.holdoutSeeds.length || seeds.some(n => !Number.isSafeInteger(n)) || new Set(seeds).size !== seeds.length) throw Error('선택·평가 시드는 서로 다른 정수여야 합니다.');
+  if (c.packing.scenario.types.some(t => !Number.isInteger(c.packing.groups[t.id]) || c.packing.groups[t.id] < 0 || c.packing.groups[t.id] > 2)) throw Error('모든 품목에 유효한 매장 구역이 필요합니다.');
+}
+// Each overlap window is consumed once. Initial planning has no preceding robot window.
+export const planningSchedule = (seconds: number, windowSeconds: number, overlap: boolean) => ({
+  wait: overlap ? Math.max(0, seconds - windowSeconds) : seconds,
+  hidden: overlap ? Math.min(seconds, windowSeconds) : 0,
+});
+const zoneOf = (p: Placement, groups: Record<string, number>) => groups[p.typeId];
+const units = (typeId: string) => ({ S1: 6, S2: 12, S3: 4, S4: 6, S5: 8, S6: 12 }[typeId] ?? 1);
+const overlap = (a: Placement, b: Placement) => a.position.x < b.position.x + b.size.w - 1e-6 && b.position.x < a.position.x + a.size.w - 1e-6 && a.position.y < b.position.y + b.size.d - 1e-6 && b.position.y < a.position.y + a.size.d - 1e-6;
+export const topBlockers = (box: Placement, stack: Placement[]) => stack.filter(p => p.id !== box.id && p.position.z >= top(box) - .5 && overlap(box, p));
+const ORDERS = [[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]];
+function trip(from: number, to: number, c: StoreSettings) {
+  const a = from < 0 ? { x: 0, y: 0, floor: 1 } : STORE_ZONES[from], b = to < 0 ? { x: 0, y: 0, floor: 1 } : STORE_ZONES[to];
+  const floors = a.floor !== b.floor, distance = floors ? a.x + a.y + b.x + b.y : Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
+  return { distance, seconds: distance / c.walkSpeed + (floors ? c.elevatorSeconds : 0) };
+}
+function oneStorePlan(batches: Batch[], groups: Record<string, number>, c: StoreSettings, method: StorePlan['method'], order: number[]): StorePlan {
+  const events: StoreEvent[] = [], all = batches.flatMap(b => b.boxes), active = new Map(all.map(b => [b.id, b])), cart = new Map<string, Placement>(), delivered: string[] = [];
+  const result: StorePlan = { method, seconds: 0, redistributionSeconds: 0, shelfSeconds: 0, walked: 0, rehandles: 0, sorted: 0, bufferPeak: 0, completed: 0, feasible: true, events, visitOrders: [order] };
+  let location = -1;
+  const add = (kind: StoreAction, seconds: number, batch: number, box?: Placement, extra: Partial<StoreEvent> = {}) => {
+    events.push({ kind, start: result.seconds, end: result.seconds + seconds, seconds, batch, box: box?.id, zone: location, source: [...active.keys()], cart: [...cart.keys()], delivered: [...delivered],
+      message: ({ walk: '매장 구역으로 이동', take: '상부가 열린 박스 꺼내기', sort: '입고장에서 부서별 분류', buffer: '필요한 박스를 막는 상자 임시 이동', retrieve: '임시 이동한 상자 다시 꺼내기', open: '박스 개봉', stock: '낱개 상품 진열', carton: '포장재 정리' } as const)[kind], ...extra });
+    result.seconds += seconds;
+    if (['open', 'stock', 'carton'].includes(kind)) result.shelfSeconds += seconds; else result.redistributionSeconds += seconds;
+  };
+  const walk = (to: number, batch: number) => { const r = trip(location, to, c); result.walked += r.distance; add('walk', r.seconds, batch, undefined, { from: location, to, zone: to }); location = to; };
+  const shelf = (b: Placement, batch: number) => { add('open', c.openSeconds, batch, b); add('stock', units(b.typeId) * c.stockUnitSeconds, batch, b); delivered.push(b.id); cart.delete(b.id); add('carton', c.cartonSeconds, batch, b); result.completed++; };
+  if (method === 'sort') {
+    const dock: Placement[] = []; let last = -1;
+    for (const batch of batches) {
+      const pending = new Map(batch.boxes.map(b => [b.id, b]));
+      while (pending.size) {
+        const choices = [...pending.values()].filter(b => !topBlockers(b, [...pending.values()]).length).sort((a, b) => Number(zoneOf(b, groups) === last) - Number(zoneOf(a, groups) === last) || top(b) - top(a) || a.id.localeCompare(b.id));
+        const b = choices[0]; if (!b) { result.feasible = false; return result; }
+        active.delete(b.id); pending.delete(b.id); add('take', c.takeSeconds, batch.index, b);
+        add('sort', c.sortSeconds + (last !== zoneOf(b, groups) ? c.switchSeconds : 0), batch.index, b); dock.push(b); last = zoneOf(b, groups); result.sorted++;
+      }
+    }
+    // Both policies may consolidate department goods across pallets at the dock.
+    for (const zone of order) {
+      const queue = dock.filter(b => zoneOf(b, groups) === zone);
+      while (queue.length) {
+        let kg = 0; const load: Placement[] = [];
+        while (queue.length && load.length < c.cartBoxes && kg + queue[0].weight <= c.cartKg) { const b = queue.shift()!; kg += b.weight; load.push(b); cart.set(b.id, b); }
+        if (!load.length) { result.feasible = false; return result; }
+        result.bufferPeak = Math.max(result.bufferPeak, cart.size); walk(zone, -1);
+        for (const b of load) shelf(b, batches.find(p => p.boxes.some(q => q.id === b.id))!.index);
+        walk(-1, -1);
+      }
+    }
+  } else {
+    for (const batch of batches) {
+      const pending = new Map(batch.boxes.map(b => [b.id, b])); location = -1;
+      for (const zone of order) {
+        const wanted = batch.boxes.filter(b => zoneOf(b, groups) === zone); if (!wanted.length) continue;
+        walk(zone, batch.index);
+        const remove = (b: Placement) => {
+          if (!pending.has(b.id)) return;
+          for (const blocker of topBlockers(b, [...pending.values()]).sort((a, b) => top(b) - top(a) || a.id.localeCompare(b.id))) remove(blocker);
+          // Every removal has a clear vertical footprint; this is a manual handling model.
+          pending.delete(b.id); active.delete(b.id); add('take', c.takeSeconds, batch.index, b);
+          if (zoneOf(b, groups) !== zone) {
+            cart.set(b.id, b); result.rehandles++; result.bufferPeak = Math.max(result.bufferPeak, cart.size);
+            add('buffer', c.sortSeconds, batch.index, b);
+            if (cart.size > c.cartBoxes || [...cart.values()].reduce((n, b) => n + b.weight, 0) > c.cartKg) result.feasible = false;
+          } else shelf(b, batch.index);
+        };
+        for (const b of wanted.sort((a, b) => top(b) - top(a) || a.id.localeCompare(b.id))) {
+          if (cart.has(b.id)) { add('retrieve', c.sortSeconds, batch.index, b); shelf(b, batch.index); }
+          else remove(b);
+        }
+      }
+      walk(-1, batch.index);
+    }
+  }
+  if (new Set(delivered).size !== all.length || delivered.length !== all.length || active.size || cart.size) result.feasible = false;
+  return result;
+}
+export function planStore(batches: Batch[], groups: Record<string, number>, c: StoreSettings): StorePlan {
+  if (!Number.isInteger(c.cartBoxes) || c.cartBoxes < 1 || !Number.isFinite(c.walkSpeed) || c.walkSpeed <= 0 || !Number.isFinite(c.cartKg) || c.cartKg <= 0 || Object.values(c).some(n => !Number.isFinite(n) || n < 0)) throw Error('매장 작업 가정을 확인하세요.');
+  const sorted = ORDERS.map(order => oneStorePlan(batches, groups, c, 'sort', order)).filter(p => p.feasible).sort((a, b) => a.seconds - b.seconds)[0];
+  // Optimize the route of EACH source pallet independently; no artificially slow baseline tour.
+  const perPallet = batches.map(batch => ORDERS.map(order => oneStorePlan([batch], groups, c, 'direct', order)).filter(p => p.feasible).sort((a, b) => a.seconds - b.seconds)[0]);
+  let direct: StorePlan | undefined;
+  if (perPallet.every(Boolean)) {
+    direct = { method: 'direct', seconds: 0, redistributionSeconds: 0, shelfSeconds: 0, walked: 0, rehandles: 0, sorted: 0, bufferPeak: 0, completed: 0, feasible: true, events: [], visitOrders: [] };
+    const done: string[] = [];
+    for (let i = 0; i < perPallet.length; i++) {
+      const p = perPallet[i]!; const later = batches.slice(i + 1).flatMap(b => b.boxes.map(b => b.id));
+      direct.events.push(...p.events.map(e => ({ ...e, start: e.start + direct!.seconds, end: e.end + direct!.seconds, source: [...e.source, ...later], delivered: [...done, ...e.delivered] })));
+      done.push(...batches[i].boxes.map(b => b.id));
+      for (const key of ['seconds', 'redistributionSeconds', 'shelfSeconds', 'walked', 'rehandles', 'sorted', 'completed'] as const) direct[key] += p[key];
+      direct.bufferPeak = Math.max(direct.bufferPeak, p.bufferPeak); direct.visitOrders.push(...p.visitOrders);
+    }
+  }
+  const chosen = direct && (!sorted || direct.seconds < sorted.seconds) ? direct : sorted;
+  if (!chosen) throw Error('두 매장 처리 방식 모두 용량 조건을 만족하지 못했습니다.');
+  return { ...chosen, alternatives: { sort: sorted?.seconds ?? null, direct: direct?.seconds ?? null } };
+}
+export function runOrder(c: PresentationConfig, p: Policy, seed: number, split: OrderRun['split']): OrderRun {
+  validatePresentationConfig(c);
+  const s = structuredClone(c.packing.scenario); s.constraints.robotMode = 'gripper'; s.supplyMode = 'arrival'; s.arrival = { seed, pattern: 'random-draw' }; s.events = [];
+  const env = new ArrivalEnvironment(s), arrivals = Array.from({ length: env.total }, (_, i) => env.current(i)!);
+  const row: OrderRun = { id: `${split}:${seed}:${p.id}`, policy: p, seed, split, fingerprint: fingerprint({ packing: c.packing, store: c.store, robotCycleSeconds: c.robotCycleSeconds, overlapPlanning: c.overlapPlanning, seed }), scenario: s,
+    status: 'complete', reason: '', total: env.total, arrivals: arrivals.map(o => o.id), unplaced: [], violations: [], batches: [], packingEvents: [], store: { method: 'sort', seconds: 0, redistributionSeconds: 0, shelfSeconds: 0, walked: 0, rehandles: 0, sorted: 0, bufferPeak: 0, completed: 0, feasible: false, events: [], visitOrders: [] },
+    packingSeconds: 0, robotSeconds: 0, computeSeconds: 0, exchangeSeconds: 0, totalSeconds: 0, planningWaitSeconds: 0, overlappedComputeSeconds: 0, pathEstimateSeconds: 0, cycleOverruns: 0, utilization: 0, envelopeFill: 0, meanMs: null, p95Ms: null, maxMs: null, deadlineMisses: 0 };
+  const def = capacityAlgorithm(p.algorithm), remaining = Object.fromEntries(s.types.map(t => [t.id, t.quantity])), times: number[] = [], observed = new Map(arrivals.map(o => [o.id, o]));
+  let stack: Placement[] = [], state: PlanningInput['strategyState'], step = 0, overlapWindow = 0;
+  const add = (event: Omit<PackingEvent, 'start' | 'end'>, seconds: number) => { row.packingEvents.push({ ...event, start: row.packingSeconds, end: row.packingSeconds + seconds }); row.packingSeconds += seconds; };
+  const close = () => { if (stack.length) { row.batches.push({ index: row.batches.length, boxes: structuredClone(stack) }); stack = []; state = undefined; } };
+  const attempt = (o: Observation) => {
+    const input: PlanningInput = { runId: row.id, stepId: step++, pallet: structuredClone(s.pallet), types: structuredClone(s.types), current: structuredClone(o), placements: structuredClone(stack), remaining: { ...remaining }, constraints: structuredClone(s.constraints), algorithm: 'greedy', settings: structuredClone(c.packing.settings), strategyState: structuredClone(state) };
+    const begin = performance.now(), a = def.plan(input); if (p.organized) applyZonePreference(a, input, c.packing);
+    const ms = performance.now() - begin; times.push(ms); row.computeSeconds += ms / 1000;
+    const schedule = planningSchedule(ms / 1000, overlapWindow, c.overlapPlanning); overlapWindow = 0;
+    row.planningWaitSeconds += schedule.wait; row.overlappedComputeSeconds += schedule.hidden;
+    if (ms > c.robotCycleSeconds * 1000) row.cycleOverruns++;
+    add({ kind: 'plan', before: structuredClone(stack), after: structuredClone(stack), batch: row.batches.length, box: o, planningMs: ms, overlapSeconds: schedule.hidden, message: schedule.wait > 0 ? '초기 준비 또는 계산 완료를 기다림' : '직전 로봇 동작 중 다음 박스 계산 완료' }, schedule.wait);
+    if (ms > c.packing.decisionMs) { row.status = 'timeout'; row.reason = `판단 기한 ${c.packing.decisionMs} ms 초과`; row.deadlineMisses++; return false; }
+    const errors = auditProposal(input, a); if (errors.length) { row.violations.push(...errors); row.status = 'error'; return false; }
+    const chosen = a.candidates.find(v => v.id === a.selectedId && v.valid); if (!chosen) return false;
+    const check = inspectConstraints(chosen.placement, o, stack, s.pallet, s.constraints); if (check.reasons.length) { row.violations.push(...check.reasons); row.status = 'error'; return false; }
+    const before = stack; stack = check.stack; state = structuredClone(a.strategyState); chosen.path = check.path; chosen.placement = check.placement;
+    row.pathEstimateSeconds += check.path.seconds; row.robotSeconds += c.robotCycleSeconds;
+    add({ kind: 'robot', before: structuredClone(before), after: structuredClone(stack), batch: row.batches.length, box: o, candidate: structuredClone(chosen), message: `${s.types.find(t => t.id === o.typeId)!.name} 집기·적재 · ${c.robotCycleSeconds}초 사이클` }, c.robotCycleSeconds); overlapWindow = c.robotCycleSeconds; return true;
+  };
+  try {
+    for (const o of arrivals) {
+      remaining[o.typeId]--;
+      if (attempt(o)) continue;
+      if (row.status !== 'complete') break;
+      if (stack.length) {
+        const before = stack; close(); row.exchangeSeconds += c.store.palletExchangeSeconds;
+        add({ kind: 'exchange', batch: row.batches.length, before, after: [], message: '빈 팔레트 교체 · 동일 작업 위치' }, c.store.palletExchangeSeconds);
+        overlapWindow = c.store.palletExchangeSeconds;
+        if (attempt(o)) continue;
+      }
+      if (row.status !== 'complete') break;
+      row.unplaced.push(o.id);
+    }
+    close();
+    const ids = new Set(row.batches.flatMap(b => b.boxes.map(b => b.id))); row.unplaced = arrivals.filter(o => !ids.has(o.id)).map(o => o.id);
+    if (ids.size + row.unplaced.length !== row.total || row.batches.reduce((n, b) => n + b.boxes.length, 0) !== ids.size) throw Error('수량 보존 실패');
+    for (const batch of row.batches) {
+      let rebuilt: Placement[] = [];
+      for (const box of batch.boxes) { const check = inspectConstraints(box, observed.get(box.id)!, rebuilt, s.pallet, s.constraints); row.violations.push(...check.reasons); rebuilt = check.stack; }
+    }
+    if (row.status === 'complete' && row.unplaced.length) row.status = 'partial';
+    row.store = planStore(row.batches, c.packing.groups, c.store);
+    if (row.status === 'complete' && row.store.completed !== row.total) row.status = 'partial';
+  } catch (e) { row.status = 'error'; row.reason = e instanceof Error ? e.message : String(e); }
+  const v = row.batches.flatMap(b => b.boxes).reduce((n, b) => n + volume(b.size), 0), area = s.pallet.width * s.pallet.depth;
+  row.utilization = row.batches.length ? v / (row.batches.length * area * s.pallet.maxHeight) : 0;
+  const envelope = row.batches.reduce((n, b) => n + area * Math.max(0, ...b.boxes.map(top)), 0); row.envelopeFill = envelope ? v / envelope : 0;
+  row.totalSeconds = row.packingSeconds + row.store.seconds;
+  const timing = distribution(times); row.meanMs = timing.mean; row.p95Ms = timing.p95; row.maxMs = timing.max;
+  return row;
+}
+export const eligible = (r: OrderRun) => r.status === 'complete' && !r.violations.length && r.store.feasible && r.store.completed === r.total && !r.deadlineMisses;
+export function choosePolicies(rows: OrderRun[], c: PresentationConfig) {
+  validatePresentationConfig(c);
+  const ids = [...new Set(rows.filter(r => r.split === 'discovery').map(r => r.policy.id))];
+  const ranking = ids.map(id => {
+    const rr = rows.filter(r => r.policy.id === id && r.split === 'discovery');
+    return { policy: rr[0].policy, eligible: c.discoverySeeds.every(seed => rr.some(r => r.seed === seed && eligible(r))), total: distribution(rr.filter(eligible).map(r => r.totalSeconds)), fill: distribution(rr.filter(eligible).map(r => r.utilization)) };
+  }).filter(r => r.eligible).sort((a, b) => a.total.mean! - b.total.mean! || b.fill.mean! - a.fill.mean! || a.policy.id.localeCompare(b.policy.id));
+  return { baseline: policy(c.baselineAlgorithm, false), alps: ranking.find(r => r.policy.organized)?.policy ?? null, worst: ranking.at(-1)?.policy ?? null, ranking };
+}
+export function pairedReport(rows: OrderRun[], before: Policy, after: Policy, seeds: number[]) {
+  const pairs = [...new Set(seeds)].flatMap(seed => {
+    const a = rows.find(r => r.seed === seed && r.split === 'holdout' && r.policy.id === before.id), b = rows.find(r => r.seed === seed && r.split === 'holdout' && r.policy.id === after.id);
+    if (!a || !b || !eligible(a) || !eligible(b) || a.fingerprint !== b.fingerprint || a.total !== b.total || a.arrivals.join('|') !== b.arrivals.join('|')) return [];
+    return [{ seed, saved: a.totalSeconds - b.totalSeconds, percent: 100 * (a.totalSeconds - b.totalSeconds) / a.totalSeconds, redistribution: a.store.redistributionSeconds - b.store.redistributionSeconds, robot: a.robotSeconds - b.robotSeconds, pallets: b.batches.length - a.batches.length, rehandles: a.store.rehandles - b.store.rehandles }];
+  });
+  const saved = distribution(pairs.map(p => p.saved));
+  return { expected: seeds.length, n: pairs.length, wins: pairs.filter(p => p.saved > 1e-6).length, losses: pairs.filter(p => p.saved < -1e-6).length, ties: pairs.filter(p => Math.abs(p.saved) <= 1e-6).length, saved,
+    percent: distribution(pairs.map(p => p.percent)), redistribution: distribution(pairs.map(p => p.redistribution)), rehandles: distribution(pairs.map(p => p.rehandles)), pallets: distribution(pairs.map(p => p.pallets)),
+    supportsImprovement: pairs.length === seeds.length && pairs.length >= 10 && saved.ci95 !== null && saved.ci95[0] > 0, pairs };
+}

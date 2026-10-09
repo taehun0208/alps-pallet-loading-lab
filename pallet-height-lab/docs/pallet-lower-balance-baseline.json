@@ -1,0 +1,51 @@
+{
+  "measuredAt": "2026-10-04T12:24:22.104Z",
+  "model": "all supplied inventory selectable; joint box/position planning with foundation preservation",
+  "results": [
+    {
+      "seed": 20261004,
+      "algorithm": "bl",
+      "count": 16
+    },
+    {
+      "seed": 20261004,
+      "algorithm": "greedy",
+      "count": 14
+    },
+    {
+      "seed": 20261004,
+      "algorithm": "rollout",
+      "count": 14
+    },
+    {
+      "seed": 7919,
+      "algorithm": "bl",
+      "count": 14
+    },
+    {
+      "seed": 7919,
+      "algorithm": "greedy",
+      "count": 15
+    },
+    {
+      "seed": 7919,
+      "algorithm": "rollout",
+      "count": 15
+    },
+    {
+      "seed": 15401,
+      "algorithm": "bl",
+      "count": 13
+    },
+    {
+      "seed": 15401,
+      "algorithm": "greedy",
+      "count": 13
+    },
+    {
+      "seed": 15401,
+      "algorithm": "rollout",
+      "count": 13
+    }
+  ]
+}

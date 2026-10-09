@@ -49,6 +49,3 @@
 .pallet-chart-3 { stroke: #d68da6; }
 .pallet-chart-4 { stroke: #8fbf81; }
 .pallet-chart-5 { stroke: #d9855d; }
-
-/* Random baseline is last in each comparison; neutral dashed trace. */
-.pallet-chart-random{stroke:#a2adbb;stroke-dasharray:5 4}

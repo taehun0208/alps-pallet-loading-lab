@@ -1,0 +1,75 @@
+{
+  "description": "Seed42 central mode, one repetition each, 1-second simulation steps, 1600-second cutoff. Busy seconds are modeled completed action durations; concurrency histogram is one-second sampled, not physical utilization. Counts do not require equal robot workload.",
+  "sourceHashes": {
+    "orchestrator.ts": "fa6493ee7c5f6dababbea8bf2be816ee0e57897ca0276913b418b9a3b29669aa",
+    "streamPlanner.ts": "ade6d2f0e27f15e1e8fe7ffbb3e8e229870a29753291f29dce49b9f06bc3abd8",
+    "streamEngine.ts": "0b7acbff9a9ff48e8e629a3997e992ecd2e78b62b9b611a74b2814530be48d96"
+  },
+  "rows": [
+    {
+      "seed": 42,
+      "count": 50,
+      "placed": 50,
+      "complete": true,
+      "modeledSeconds": 317.1,
+      "peakConcurrent": 4,
+      "concurrentSeconds": [
+        33,
+        54,
+        125,
+        100,
+        6
+      ],
+      "planningMs": 3677.3811699999947,
+      "robots": [
+        {
+          "robot": 1,
+          "placed": 21,
+          "launches": 21,
+          "busySeconds": 245.52123901294442,
+          "busyFraction": 0.7742707001354285,
+          "firstStart": 4.1,
+          "lastFinish": 271.88798690703703,
+          "offerAppearances": 21,
+          "assignmentWins": 21
+        },
+        {
+          "robot": 2,
+          "placed": 18,
+          "launches": 18,
+          "busySeconds": 218.93411813166898,
+          "busyFraction": 0.6904261057447776,
+          "firstStart": 27.1,
+          "lastFinish": 281.04109622834795,
+          "offerAppearances": 22,
+          "assignmentWins": 18
+        },
+        {
+          "robot": 3,
+          "placed": 9,
+          "launches": 9,
+          "busySeconds": 116.79303876179267,
+          "busyFraction": 0.3683161108855019,
+          "firstStart": 81.1,
+          "lastFinish": 272.50491650153464,
+          "offerAppearances": 20,
+          "assignmentWins": 10
+        },
+        {
+          "robot": 4,
+          "placed": 2,
+          "launches": 2,
+          "busySeconds": 19.53289410553998,
+          "busyFraction": 0.06159853076486906,
+          "firstStart": 242.1,
+          "lastFinish": 295.56703508232926,
+          "offerAppearances": 11,
+          "assignmentWins": 2
+        }
+      ],
+      "meanInfeedInterval": 5.163265306122449,
+      "activeInfeedSeconds": 253.1,
+      "remainingReasons": {}
+    }
+  ]
+}

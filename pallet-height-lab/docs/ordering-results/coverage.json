@@ -1,0 +1,541 @@
+{
+  "scope": "NDOP graph approximation only; no QOP or physical all-order certificate",
+  "plans": [
+    {
+      "nodes": [
+        "B001",
+        "B002",
+        "B003",
+        "B004"
+      ],
+      "edges": [
+        {
+          "from": "B001",
+          "to": "B003",
+          "kind": "support"
+        },
+        {
+          "from": "B002",
+          "to": "B004",
+          "kind": "support"
+        }
+      ],
+      "scope": "heuristic-only",
+      "complete": true
+    },
+    {
+      "nodes": [
+        "B003",
+        "B001",
+        "B002",
+        "B004"
+      ],
+      "edges": [
+        {
+          "from": "B003",
+          "to": "B002",
+          "kind": "support"
+        },
+        {
+          "from": "B001",
+          "to": "B004",
+          "kind": "support"
+        }
+      ],
+      "scope": "heuristic-only",
+      "complete": true
+    },
+    {
+      "nodes": [
+        "B004",
+        "B001",
+        "B002",
+        "B003"
+      ],
+      "edges": [
+        {
+          "from": "B004",
+          "to": "B002",
+          "kind": "support"
+        },
+        {
+          "from": "B001",
+          "to": "B003",
+          "kind": "support"
+        }
+      ],
+      "scope": "heuristic-only",
+      "complete": true
+    },
+    {
+      "nodes": [
+        "B002",
+        "B004",
+        "B003",
+        "B001"
+      ],
+      "edges": [
+        {
+          "from": "B002",
+          "to": "B003",
+          "kind": "support"
+        },
+        {
+          "from": "B004",
+          "to": "B001",
+          "kind": "support"
+        }
+      ],
+      "scope": "heuristic-only",
+      "complete": true
+    },
+    {
+      "nodes": [
+        "B003",
+        "B002",
+        "B004",
+        "B001"
+      ],
+      "edges": [
+        {
+          "from": "B003",
+          "to": "B004",
+          "kind": "support"
+        },
+        {
+          "from": "B002",
+          "to": "B001",
+          "kind": "support"
+        }
+      ],
+      "scope": "heuristic-only",
+      "complete": true
+    },
+    {
+      "nodes": [
+        "B003",
+        "B004",
+        "B001",
+        "B002"
+      ],
+      "edges": [
+        {
+          "from": "B003",
+          "to": "B001",
+          "kind": "support"
+        },
+        {
+          "from": "B004",
+          "to": "B002",
+          "kind": "support"
+        }
+      ],
+      "scope": "heuristic-only",
+      "complete": true
+    }
+  ],
+  "runs": [
+    {
+      "order": [
+        "B001",
+        "B002",
+        "B003",
+        "B004"
+      ],
+      "metrics": {
+        "orderingEnabled": true,
+        "search": {
+          "checked": 50,
+          "spaceUpdates": 32,
+          "priorChecks": 0,
+          "priorHits": 0,
+          "equivalentSkipped": 0,
+          "dependencyChecks": 21,
+          "dependencyEdges": 4,
+          "capped": 0
+        },
+        "bufferCapacity": 0,
+        "bufferPeak": 0,
+        "additionalHandlingEstimate": 0,
+        "fullSuccess": true,
+        "unplacedNominalVolumeMm3": 0,
+        "replans": 0,
+        "mode": "C",
+        "seed": 42,
+        "input": 4,
+        "placed": 4,
+        "completion": 1,
+        "unplaced": 0,
+        "reasonCounts": {},
+        "occupiedVolumeMm3": 16000000,
+        "utilization": 0.3463203463203463,
+        "nominalFulfilled": 1,
+        "heightMm": 200,
+        "rejectedExecutionEvents": {},
+        "finalViolations": [],
+        "forceResidualKg": 0,
+        "momentResidualKgMm": 0,
+        "pickGeometricPass": 4,
+        "pickGeometricFail": 0,
+        "placementPass": 4,
+        "placementFail": 0,
+        "retries": 0,
+        "waitTicks": 0,
+        "planningMs": 45.214500000000044,
+        "modelExecutionSeconds": 26.352941176470587,
+        "unknownStrengthBoxes": 0,
+        "physicalPickSuccessRate": null,
+        "physicalSeal": "미검증",
+        "information": "도착한 버퍼만 공개; A/B는 선두만 선택; C는 제한 버퍼 선택",
+        "volumeDefinition": "복합 충돌체 외형 합집합 / 팔레트 허용 체적; 재료 부피 아님"
+      },
+      "check": {
+        "status": "counterexample",
+        "order": [
+          "B003",
+          "B001",
+          "B002",
+          "B004"
+        ],
+        "visited": 1,
+        "milliseconds": 0.4089999999999918,
+        "physicalVerified": false,
+        "information": "NDOP 고정 계획 그래프만 검사; QOP 정책·전체 물리 보증 아님"
+      }
+    },
+    {
+      "order": [
+        "B003",
+        "B001",
+        "B002",
+        "B004"
+      ],
+      "metrics": {
+        "orderingEnabled": true,
+        "search": {
+          "checked": 50,
+          "spaceUpdates": 32,
+          "priorChecks": 0,
+          "priorHits": 0,
+          "equivalentSkipped": 0,
+          "dependencyChecks": 21,
+          "dependencyEdges": 4,
+          "capped": 0
+        },
+        "bufferCapacity": 0,
+        "bufferPeak": 0,
+        "additionalHandlingEstimate": 0,
+        "fullSuccess": true,
+        "unplacedNominalVolumeMm3": 0,
+        "replans": 0,
+        "mode": "C",
+        "seed": 42,
+        "input": 4,
+        "placed": 4,
+        "completion": 1,
+        "unplaced": 0,
+        "reasonCounts": {},
+        "occupiedVolumeMm3": 16000000,
+        "utilization": 0.3463203463203463,
+        "nominalFulfilled": 1,
+        "heightMm": 200,
+        "rejectedExecutionEvents": {},
+        "finalViolations": [],
+        "forceResidualKg": 0,
+        "momentResidualKgMm": 0,
+        "pickGeometricPass": 4,
+        "pickGeometricFail": 0,
+        "placementPass": 4,
+        "placementFail": 0,
+        "retries": 0,
+        "waitTicks": 0,
+        "planningMs": 15.271800000000098,
+        "modelExecutionSeconds": 26.352941176470587,
+        "unknownStrengthBoxes": 0,
+        "physicalPickSuccessRate": null,
+        "physicalSeal": "미검증",
+        "information": "도착한 버퍼만 공개; A/B는 선두만 선택; C는 제한 버퍼 선택",
+        "volumeDefinition": "복합 충돌체 외형 합집합 / 팔레트 허용 체적; 재료 부피 아님"
+      },
+      "check": {
+        "status": "counterexample",
+        "order": [
+          "B004",
+          "B001",
+          "B002",
+          "B003"
+        ],
+        "visited": 1,
+        "milliseconds": 0.05400000000008731,
+        "physicalVerified": false,
+        "information": "NDOP 고정 계획 그래프만 검사; QOP 정책·전체 물리 보증 아님"
+      }
+    },
+    {
+      "order": [
+        "B004",
+        "B001",
+        "B002",
+        "B003"
+      ],
+      "metrics": {
+        "orderingEnabled": true,
+        "search": {
+          "checked": 50,
+          "spaceUpdates": 32,
+          "priorChecks": 0,
+          "priorHits": 0,
+          "equivalentSkipped": 0,
+          "dependencyChecks": 21,
+          "dependencyEdges": 4,
+          "capped": 0
+        },
+        "bufferCapacity": 0,
+        "bufferPeak": 0,
+        "additionalHandlingEstimate": 0,
+        "fullSuccess": true,
+        "unplacedNominalVolumeMm3": 0,
+        "replans": 0,
+        "mode": "C",
+        "seed": 42,
+        "input": 4,
+        "placed": 4,
+        "completion": 1,
+        "unplaced": 0,
+        "reasonCounts": {},
+        "occupiedVolumeMm3": 16000000,
+        "utilization": 0.3463203463203463,
+        "nominalFulfilled": 1,
+        "heightMm": 200,
+        "rejectedExecutionEvents": {},
+        "finalViolations": [],
+        "forceResidualKg": 0,
+        "momentResidualKgMm": 0,
+        "pickGeometricPass": 4,
+        "pickGeometricFail": 0,
+        "placementPass": 4,
+        "placementFail": 0,
+        "retries": 0,
+        "waitTicks": 0,
+        "planningMs": 14.490600000000086,
+        "modelExecutionSeconds": 26.352941176470587,
+        "unknownStrengthBoxes": 0,
+        "physicalPickSuccessRate": null,
+        "physicalSeal": "미검증",
+        "information": "도착한 버퍼만 공개; A/B는 선두만 선택; C는 제한 버퍼 선택",
+        "volumeDefinition": "복합 충돌체 외형 합집합 / 팔레트 허용 체적; 재료 부피 아님"
+      },
+      "check": {
+        "status": "counterexample",
+        "order": [
+          "B002",
+          "B004",
+          "B003",
+          "B001"
+        ],
+        "visited": 3,
+        "milliseconds": 0.1649000000001024,
+        "physicalVerified": false,
+        "information": "NDOP 고정 계획 그래프만 검사; QOP 정책·전체 물리 보증 아님"
+      }
+    },
+    {
+      "order": [
+        "B002",
+        "B004",
+        "B003",
+        "B001"
+      ],
+      "metrics": {
+        "orderingEnabled": true,
+        "search": {
+          "checked": 50,
+          "spaceUpdates": 32,
+          "priorChecks": 0,
+          "priorHits": 0,
+          "equivalentSkipped": 0,
+          "dependencyChecks": 21,
+          "dependencyEdges": 4,
+          "capped": 0
+        },
+        "bufferCapacity": 0,
+        "bufferPeak": 0,
+        "additionalHandlingEstimate": 0,
+        "fullSuccess": true,
+        "unplacedNominalVolumeMm3": 0,
+        "replans": 0,
+        "mode": "C",
+        "seed": 42,
+        "input": 4,
+        "placed": 4,
+        "completion": 1,
+        "unplaced": 0,
+        "reasonCounts": {},
+        "occupiedVolumeMm3": 16000000,
+        "utilization": 0.3463203463203463,
+        "nominalFulfilled": 1,
+        "heightMm": 200,
+        "rejectedExecutionEvents": {},
+        "finalViolations": [],
+        "forceResidualKg": 0,
+        "momentResidualKgMm": 0,
+        "pickGeometricPass": 4,
+        "pickGeometricFail": 0,
+        "placementPass": 4,
+        "placementFail": 0,
+        "retries": 0,
+        "waitTicks": 0,
+        "planningMs": 13.47420000000011,
+        "modelExecutionSeconds": 26.352941176470587,
+        "unknownStrengthBoxes": 0,
+        "physicalPickSuccessRate": null,
+        "physicalSeal": "미검증",
+        "information": "도착한 버퍼만 공개; A/B는 선두만 선택; C는 제한 버퍼 선택",
+        "volumeDefinition": "복합 충돌체 외형 합집합 / 팔레트 허용 체적; 재료 부피 아님"
+      },
+      "check": {
+        "status": "counterexample",
+        "order": [
+          "B003",
+          "B002",
+          "B004",
+          "B001"
+        ],
+        "visited": 3,
+        "milliseconds": 0.07929999999998927,
+        "physicalVerified": false,
+        "information": "NDOP 고정 계획 그래프만 검사; QOP 정책·전체 물리 보증 아님"
+      }
+    },
+    {
+      "order": [
+        "B003",
+        "B002",
+        "B004",
+        "B001"
+      ],
+      "metrics": {
+        "orderingEnabled": true,
+        "search": {
+          "checked": 50,
+          "spaceUpdates": 32,
+          "priorChecks": 0,
+          "priorHits": 0,
+          "equivalentSkipped": 0,
+          "dependencyChecks": 21,
+          "dependencyEdges": 4,
+          "capped": 0
+        },
+        "bufferCapacity": 0,
+        "bufferPeak": 0,
+        "additionalHandlingEstimate": 0,
+        "fullSuccess": true,
+        "unplacedNominalVolumeMm3": 0,
+        "replans": 0,
+        "mode": "C",
+        "seed": 42,
+        "input": 4,
+        "placed": 4,
+        "completion": 1,
+        "unplaced": 0,
+        "reasonCounts": {},
+        "occupiedVolumeMm3": 16000000,
+        "utilization": 0.3463203463203463,
+        "nominalFulfilled": 1,
+        "heightMm": 200,
+        "rejectedExecutionEvents": {},
+        "finalViolations": [],
+        "forceResidualKg": 0,
+        "momentResidualKgMm": 0,
+        "pickGeometricPass": 4,
+        "pickGeometricFail": 0,
+        "placementPass": 4,
+        "placementFail": 0,
+        "retries": 0,
+        "waitTicks": 0,
+        "planningMs": 12.747899999999959,
+        "modelExecutionSeconds": 26.352941176470587,
+        "unknownStrengthBoxes": 0,
+        "physicalPickSuccessRate": null,
+        "physicalSeal": "미검증",
+        "information": "도착한 버퍼만 공개; A/B는 선두만 선택; C는 제한 버퍼 선택",
+        "volumeDefinition": "복합 충돌체 외형 합집합 / 팔레트 허용 체적; 재료 부피 아님"
+      },
+      "check": {
+        "status": "counterexample",
+        "order": [
+          "B003",
+          "B004",
+          "B001",
+          "B002"
+        ],
+        "visited": 4,
+        "milliseconds": 0.1369999999999436,
+        "physicalVerified": false,
+        "information": "NDOP 고정 계획 그래프만 검사; QOP 정책·전체 물리 보증 아님"
+      }
+    },
+    {
+      "order": [
+        "B003",
+        "B004",
+        "B001",
+        "B002"
+      ],
+      "metrics": {
+        "orderingEnabled": true,
+        "search": {
+          "checked": 50,
+          "spaceUpdates": 32,
+          "priorChecks": 0,
+          "priorHits": 0,
+          "equivalentSkipped": 0,
+          "dependencyChecks": 21,
+          "dependencyEdges": 4,
+          "capped": 0
+        },
+        "bufferCapacity": 0,
+        "bufferPeak": 0,
+        "additionalHandlingEstimate": 0,
+        "fullSuccess": true,
+        "unplacedNominalVolumeMm3": 0,
+        "replans": 0,
+        "mode": "C",
+        "seed": 42,
+        "input": 4,
+        "placed": 4,
+        "completion": 1,
+        "unplaced": 0,
+        "reasonCounts": {},
+        "occupiedVolumeMm3": 16000000,
+        "utilization": 0.3463203463203463,
+        "nominalFulfilled": 1,
+        "heightMm": 200,
+        "rejectedExecutionEvents": {},
+        "finalViolations": [],
+        "forceResidualKg": 0,
+        "momentResidualKgMm": 0,
+        "pickGeometricPass": 4,
+        "pickGeometricFail": 0,
+        "placementPass": 4,
+        "placementFail": 0,
+        "retries": 0,
+        "waitTicks": 0,
+        "planningMs": 11.752799999999866,
+        "modelExecutionSeconds": 26.352941176470587,
+        "unknownStrengthBoxes": 0,
+        "physicalPickSuccessRate": null,
+        "physicalSeal": "미검증",
+        "information": "도착한 버퍼만 공개; A/B는 선두만 선택; C는 제한 버퍼 선택",
+        "volumeDefinition": "복합 충돌체 외형 합집합 / 팔레트 허용 체적; 재료 부피 아님"
+      },
+      "check": {
+        "status": "covered-graph",
+        "visited": 17,
+        "milliseconds": 0.07690000000002328,
+        "physicalVerified": false,
+        "information": "NDOP 고정 계획 그래프만 검사; QOP 정책·전체 물리 보증 아님"
+      }
+    }
+  ]
+}

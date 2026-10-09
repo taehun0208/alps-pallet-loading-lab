@@ -1,9 +1,9 @@
 {
-  "measuredAt": "2026-10-05T17:24:29.181Z",
+  "measuredAt": "2026-10-09T08:41:17.639Z",
   "results": [
     {
       "peakConcurrent": 4,
-      "elapsed": 242.38326398709185,
+      "elapsed": 163.29390380699445,
       "seed": 20261004,
       "scenario": {
         "version": 1,
@@ -845,8 +845,8 @@
         }
       },
       "world": {
-        "runId": "relay-20261004",
-        "revision": 42,
+        "runId": "relay-20261004-1",
+        "revision": 36,
         "cursor": 1,
         "boxes": [
           {
@@ -874,11 +874,15 @@
               "strengthFactor": 0.8,
               "friction": 0.42
             },
-            "owner": 2,
+            "owner": 0,
             "visited": [
-              0,
-              1,
-              2
+              0
+            ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
             ],
             "status": "placed"
           },
@@ -907,9 +911,16 @@
               "strengthFactor": 0.76,
               "friction": 0.4
             },
-            "owner": 1,
+            "owner": 2,
             "visited": [
-              1
+              1,
+              2
+            ],
+            "forwardedAt": [
+              -1,
+              16,
+              -1,
+              -1
             ],
             "status": "placed"
           },
@@ -942,6 +953,12 @@
             "visited": [
               2
             ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
+            ],
             "status": "placed"
           },
           {
@@ -972,6 +989,12 @@
             "owner": 3,
             "visited": [
               3
+            ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
             ],
             "status": "placed"
           },
@@ -1004,6 +1027,12 @@
             "visited": [
               0
             ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
+            ],
             "status": "placed"
           },
           {
@@ -1034,6 +1063,12 @@
             "owner": 1,
             "visited": [
               1
+            ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
             ],
             "status": "placed"
           },
@@ -1066,6 +1101,12 @@
             "visited": [
               2
             ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
+            ],
             "status": "placed"
           },
           {
@@ -1096,6 +1137,12 @@
             "owner": 3,
             "visited": [
               3
+            ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
             ],
             "status": "placed"
           },
@@ -1128,6 +1175,12 @@
             "visited": [
               0
             ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
+            ],
             "status": "placed"
           },
           {
@@ -1158,6 +1211,12 @@
             "owner": 1,
             "visited": [
               1
+            ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
             ],
             "status": "placed"
           },
@@ -1190,6 +1249,12 @@
             "visited": [
               2
             ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
+            ],
             "status": "placed"
           },
           {
@@ -1220,6 +1285,12 @@
             "owner": 3,
             "visited": [
               3
+            ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
             ],
             "status": "placed"
           },
@@ -1252,6 +1323,12 @@
             "visited": [
               0
             ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
+            ],
             "status": "placed"
           },
           {
@@ -1279,14 +1356,17 @@
               "strengthFactor": 0.93,
               "friction": 0.32
             },
-            "owner": 0,
+            "owner": 1,
             "visited": [
-              1,
-              2,
-              3,
-              0
+              1
             ],
-            "status": "queued"
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
+            ],
+            "status": "placed"
           },
           {
             "observation": {
@@ -1316,6 +1396,12 @@
             "owner": 2,
             "visited": [
               2
+            ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
             ],
             "status": "placed"
           },
@@ -1348,6 +1434,12 @@
             "visited": [
               3
             ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
+            ],
             "status": "placed"
           },
           {
@@ -1379,6 +1471,12 @@
             "visited": [
               0
             ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
+            ],
             "status": "placed"
           },
           {
@@ -1406,10 +1504,15 @@
               "strengthFactor": 0.6,
               "friction": 0.46
             },
-            "owner": 2,
+            "owner": 1,
             "visited": [
-              1,
-              2
+              1
+            ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
             ],
             "status": "placed"
           },
@@ -1442,6 +1545,12 @@
             "visited": [
               2
             ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
+            ],
             "status": "placed"
           },
           {
@@ -1472,6 +1581,12 @@
             "owner": 3,
             "visited": [
               3
+            ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
             ],
             "status": "placed"
           },
@@ -1505,6 +1620,12 @@
             "visited": [
               0
             ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
+            ],
             "status": "placed"
           },
           {
@@ -1535,6 +1656,12 @@
             "owner": 1,
             "visited": [
               1
+            ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
             ],
             "status": "placed"
           },
@@ -1568,6 +1695,12 @@
               2,
               3
             ],
+            "forwardedAt": [
+              -1,
+              -1,
+              4,
+              -1
+            ],
             "status": "placed"
           },
           {
@@ -1598,6 +1731,12 @@
             "owner": 3,
             "visited": [
               3
+            ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
             ],
             "status": "placed"
           },
@@ -1630,6 +1769,12 @@
             "visited": [
               0
             ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
+            ],
             "status": "placed"
           },
           {
@@ -1657,10 +1802,15 @@
               "strengthFactor": 0.98,
               "friction": 0.27
             },
-            "owner": 2,
+            "owner": 1,
             "visited": [
-              1,
-              2
+              1
+            ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
             ],
             "status": "placed"
           },
@@ -1693,6 +1843,12 @@
             "visited": [
               2
             ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
+            ],
             "status": "placed"
           },
           {
@@ -1723,6 +1879,12 @@
             "owner": 3,
             "visited": [
               3
+            ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
             ],
             "status": "placed"
           },
@@ -1755,6 +1917,12 @@
             "visited": [
               0
             ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
+            ],
             "status": "placed"
           },
           {
@@ -1786,21 +1954,25 @@
             "visited": [
               1
             ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
+            ],
             "status": "placed"
           }
         ],
         "cells": [
           {
-            "queue": [
-              "B29-01"
-            ],
+            "queue": [],
             "placements": [
               {
                 "id": "B13-01",
                 "typeId": "B13",
                 "position": {
-                  "x": 0,
-                  "y": 344,
+                  "x": 814,
+                  "y": 0,
                   "z": 0
                 },
                 "size": {
@@ -1812,7 +1984,7 @@
                 "weight": 4.73,
                 "supports": [],
                 "supportRatio": 1,
-                "loadAbove": 0,
+                "loadAbove": 2.42,
                 "maxLoadKg": 17.12,
                 "maxLoadSource": "synthetic",
                 "material": "paper",
@@ -1823,16 +1995,16 @@
                 "id": "B25-01",
                 "typeId": "B25",
                 "position": {
-                  "x": 386,
-                  "y": 340,
+                  "x": 562,
+                  "y": 0,
                   "z": 0
                 },
                 "size": {
-                  "w": 231,
+                  "w": 252,
                   "d": 660,
-                  "h": 252
+                  "h": 231
                 },
-                "orientation": 90,
+                "orientation": "hwd",
                 "weight": 11.95,
                 "supports": [],
                 "supportRatio": 1,
@@ -1844,43 +2016,19 @@
                 "friction": 0.61
               },
               {
-                "id": "B16-01",
-                "typeId": "B16",
-                "position": {
-                  "x": 617,
-                  "y": 554,
-                  "z": 0
-                },
-                "size": {
-                  "w": 281,
-                  "d": 446,
-                  "h": 222
-                },
-                "orientation": 90,
-                "weight": 2.42,
-                "supports": [],
-                "supportRatio": 1,
-                "loadAbove": 0,
-                "maxLoadKg": 14.58,
-                "maxLoadSource": "synthetic",
-                "material": "plastic",
-                "strengthFactor": 0.6,
-                "friction": 0.21
-              },
-              {
                 "id": "B14-01",
                 "typeId": "B14",
                 "position": {
-                  "x": 617,
-                  "y": 146,
+                  "x": 154,
+                  "y": 0,
                   "z": 0
                 },
                 "size": {
-                  "w": 568,
-                  "d": 408,
+                  "w": 408,
+                  "d": 568,
                   "h": 320
                 },
-                "orientation": "whd",
+                "orientation": "hwd",
                 "weight": 5.16,
                 "supports": [],
                 "supportRatio": 1,
@@ -1892,11 +2040,84 @@
                 "friction": 0.3
               },
               {
+                "id": "B5-01",
+                "typeId": "B5",
+                "position": {
+                  "x": 181,
+                  "y": 568,
+                  "z": 0
+                },
+                "size": {
+                  "w": 381,
+                  "d": 349,
+                  "h": 280
+                },
+                "orientation": 90,
+                "weight": 6.63,
+                "supports": [],
+                "supportRatio": 1,
+                "loadAbove": 0,
+                "maxLoadKg": 0,
+                "maxLoadSource": "synthetic",
+                "handling": "no-top-load",
+                "material": "paper",
+                "strengthFactor": 0.76,
+                "friction": 0.58
+              },
+              {
+                "id": "B20-01",
+                "typeId": "B20",
+                "position": {
+                  "x": 562,
+                  "y": 660,
+                  "z": 0
+                },
+                "size": {
+                  "w": 451,
+                  "d": 311,
+                  "h": 291
+                },
+                "orientation": 90,
+                "weight": 8.7,
+                "supports": [],
+                "supportRatio": 1,
+                "loadAbove": 0,
+                "maxLoadKg": 95.72,
+                "maxLoadSource": "synthetic",
+                "material": "wood",
+                "strengthFactor": 0.78,
+                "friction": 0.35
+              },
+              {
+                "id": "B12-01",
+                "typeId": "B12",
+                "position": {
+                  "x": 39,
+                  "y": 0,
+                  "z": 0
+                },
+                "size": {
+                  "w": 115,
+                  "d": 492,
+                  "h": 319
+                },
+                "orientation": "hwd",
+                "weight": 6.12,
+                "supports": [],
+                "supportRatio": 1,
+                "loadAbove": 0,
+                "maxLoadKg": 51.46,
+                "maxLoadSource": "synthetic",
+                "material": "paper",
+                "strengthFactor": 0.8,
+                "friction": 0.42
+              },
+              {
                 "id": "B7-01",
                 "typeId": "B7",
                 "position": {
-                  "x": 898,
-                  "y": 554,
+                  "x": 40,
+                  "y": 568,
                   "z": 0
                 },
                 "size": {
@@ -1916,72 +2137,47 @@
                 "friction": 0.31
               },
               {
-                "id": "B20-01",
-                "typeId": "B20",
+                "id": "B16-01",
+                "typeId": "B16",
                 "position": {
-                  "x": 166,
-                  "y": 29,
-                  "z": 0
+                  "x": 814,
+                  "y": 214,
+                  "z": 286
                 },
                 "size": {
-                  "w": 451,
-                  "d": 311,
-                  "h": 291
+                  "w": 281,
+                  "d": 446,
+                  "h": 222
                 },
                 "orientation": 90,
-                "weight": 8.7,
-                "supports": [],
-                "supportRatio": 1,
-                "loadAbove": 6.629999999999999,
-                "maxLoadKg": 95.72,
-                "maxLoadSource": "synthetic",
-                "material": "wood",
-                "strengthFactor": 0.78,
-                "friction": 0.35
-              },
-              {
-                "id": "B5-01",
-                "typeId": "B5",
-                "position": {
-                  "x": 236,
-                  "y": 60,
-                  "z": 291
-                },
-                "size": {
-                  "w": 381,
-                  "d": 280,
-                  "h": 349
-                },
-                "orientation": "dhw",
-                "weight": 6.63,
+                "weight": 2.42,
                 "supports": [
                   {
-                    "id": "B20-01",
+                    "id": "B13-01",
                     "rect": {
-                      "x": 236,
-                      "y": 60,
-                      "w": 381,
-                      "d": 280
+                      "x": 814,
+                      "y": 214,
+                      "w": 281,
+                      "d": 442
                     },
-                    "area": 106680,
+                    "area": 124202,
                     "share": 1,
                     "forcePoint": {
-                      "x": 426.5000000000001,
-                      "y": 200.00000000000003
+                      "x": 954.5,
+                      "y": 437
                     }
                   }
                 ],
-                "supportRatio": 1,
+                "supportRatio": 0.9910313901345291,
                 "loadAbove": 0,
-                "maxLoadKg": 0,
+                "maxLoadKg": 14.58,
                 "maxLoadSource": "synthetic",
-                "handling": "no-top-load",
-                "material": "paper",
-                "strengthFactor": 0.76,
-                "friction": 0.58
+                "material": "plastic",
+                "strengthFactor": 0.6,
+                "friction": 0.21
               }
             ],
-            "version": 9
+            "version": 8
           },
           {
             "queue": [],
@@ -1990,8 +2186,8 @@
                 "id": "B23-01",
                 "typeId": "B23",
                 "position": {
-                  "x": 0,
-                  "y": 375,
+                  "x": 647,
+                  "y": 0,
                   "z": 0
                 },
                 "size": {
@@ -2003,7 +2199,7 @@
                 "weight": 6.18,
                 "supports": [],
                 "supportRatio": 1,
-                "loadAbove": 4.530000000000001,
+                "loadAbove": 4.53,
                 "maxLoadKg": 27.97,
                 "maxLoadSource": "synthetic",
                 "material": "plastic",
@@ -2011,43 +2207,19 @@
                 "friction": 0.34
               },
               {
-                "id": "B19-01",
-                "typeId": "B19",
-                "position": {
-                  "x": 0,
-                  "y": 81,
-                  "z": 0
-                },
-                "size": {
-                  "w": 544,
-                  "d": 294,
-                  "h": 222
-                },
-                "orientation": "whd",
-                "weight": 11.42,
-                "supports": [],
-                "supportRatio": 1,
-                "loadAbove": 0,
-                "maxLoadKg": 27.52,
-                "maxLoadSource": "synthetic",
-                "material": "paper",
-                "strengthFactor": 0.76,
-                "friction": 0.4
-              },
-              {
                 "id": "B4-01",
                 "typeId": "B4",
                 "position": {
-                  "x": 553,
-                  "y": 488,
+                  "x": 688,
+                  "y": 625,
                   "z": 0
                 },
                 "size": {
-                  "w": 293,
-                  "d": 512,
+                  "w": 512,
+                  "d": 293,
                   "h": 90
                 },
-                "orientation": 90,
+                "orientation": 0,
                 "weight": 0.96,
                 "supports": [],
                 "supportRatio": 1,
@@ -2059,19 +2231,67 @@
                 "friction": 0.53
               },
               {
-                "id": "B21-01",
-                "typeId": "B21",
+                "id": "B29-01",
+                "typeId": "B29",
                 "position": {
-                  "x": 553,
-                  "y": 58,
+                  "x": 362,
+                  "y": 0,
                   "z": 0
                 },
                 "size": {
-                  "w": 385,
-                  "d": 430,
-                  "h": 287
+                  "w": 285,
+                  "d": 657,
+                  "h": 292
                 },
-                "orientation": "whd",
+                "orientation": "hwd",
+                "weight": 16.91,
+                "supports": [],
+                "supportRatio": 1,
+                "loadAbove": 0,
+                "maxLoadKg": 60.18,
+                "maxLoadSource": "synthetic",
+                "material": "plastic",
+                "strengthFactor": 0.93,
+                "friction": 0.32
+              },
+              {
+                "id": "B8-01",
+                "typeId": "B8",
+                "position": {
+                  "x": 385,
+                  "y": 657,
+                  "z": 0
+                },
+                "size": {
+                  "w": 303,
+                  "d": 341,
+                  "h": 203
+                },
+                "orientation": "hwd",
+                "weight": 4.55,
+                "supports": [],
+                "supportRatio": 1,
+                "loadAbove": 0,
+                "maxLoadKg": 13.05,
+                "maxLoadSource": "synthetic",
+                "material": "plastic",
+                "strengthFactor": 0.98,
+                "friction": 0.27
+              },
+              {
+                "id": "B21-01",
+                "typeId": "B21",
+                "position": {
+                  "x": 75,
+                  "y": 0,
+                  "z": 0
+                },
+                "size": {
+                  "w": 287,
+                  "d": 430,
+                  "h": 385
+                },
+                "orientation": "dhw",
                 "weight": 14.46,
                 "supports": [],
                 "supportRatio": 1,
@@ -2083,34 +2303,58 @@
                 "friction": 0.55
               },
               {
+                "id": "B3-01",
+                "typeId": "B3",
+                "position": {
+                  "x": 32,
+                  "y": 430,
+                  "z": 0
+                },
+                "size": {
+                  "w": 330,
+                  "d": 446,
+                  "h": 248
+                },
+                "orientation": 0,
+                "weight": 10.05,
+                "supports": [],
+                "supportRatio": 1,
+                "loadAbove": 0,
+                "maxLoadKg": 41.04,
+                "maxLoadSource": "synthetic",
+                "material": "paper",
+                "strengthFactor": 0.6,
+                "friction": 0.46
+              },
+              {
                 "id": "B30-01",
                 "typeId": "B30",
                 "position": {
-                  "x": 94,
-                  "y": 375,
+                  "x": 647,
+                  "y": 0,
                   "z": 225
                 },
                 "size": {
-                  "w": 459,
-                  "d": 452,
+                  "w": 452,
+                  "d": 459,
                   "h": 270
                 },
-                "orientation": "hwd",
+                "orientation": "whd",
                 "weight": 4.53,
                 "supports": [
                   {
                     "id": "B23-01",
                     "rect": {
-                      "x": 94,
-                      "y": 375,
-                      "w": 459,
-                      "d": 452
+                      "x": 647,
+                      "y": 0,
+                      "w": 452,
+                      "d": 459
                     },
                     "area": 207468,
                     "share": 1,
                     "forcePoint": {
-                      "x": 323.5,
-                      "y": 601
+                      "x": 873,
+                      "y": 229.49999999999997
                     }
                   }
                 ],
@@ -2123,7 +2367,7 @@
                 "friction": 0.34
               }
             ],
-            "version": 10
+            "version": 8
           },
           {
             "queue": [],
@@ -2181,7 +2425,7 @@
                 "typeId": "B24",
                 "position": {
                   "x": 547,
-                  "y": 254,
+                  "y": 0,
                   "z": 0
                 },
                 "size": {
@@ -2193,7 +2437,7 @@
                 "weight": 12.81,
                 "supports": [],
                 "supportRatio": 1,
-                "loadAbove": 6.119999999999999,
+                "loadAbove": 11.42,
                 "maxLoadKg": 36.08,
                 "maxLoadSource": "synthetic",
                 "material": "plastic",
@@ -2201,43 +2445,19 @@
                 "friction": 0.47
               },
               {
-                "id": "B3-01",
-                "typeId": "B3",
-                "position": {
-                  "x": 495,
-                  "y": 694,
-                  "z": 0
-                },
-                "size": {
-                  "w": 446,
-                  "d": 248,
-                  "h": 330
-                },
-                "orientation": "dhw",
-                "weight": 10.05,
-                "supports": [],
-                "supportRatio": 1,
-                "loadAbove": 0,
-                "maxLoadKg": 41.04,
-                "maxLoadSource": "synthetic",
-                "material": "paper",
-                "strengthFactor": 0.6,
-                "friction": 0.46
-              },
-              {
                 "id": "B10-01",
                 "typeId": "B10",
                 "position": {
                   "x": 547,
-                  "y": 115,
+                  "y": 440,
                   "z": 0
                 },
                 "size": {
-                  "w": 276,
-                  "d": 139,
+                  "w": 139,
+                  "d": 276,
                   "h": 366
                 },
-                "orientation": 0,
+                "orientation": 90,
                 "weight": 4.99,
                 "supports": [],
                 "supportRatio": 1,
@@ -2252,16 +2472,16 @@
                 "id": "B6-01",
                 "typeId": "B6",
                 "position": {
-                  "x": 823,
-                  "y": 53,
+                  "x": 686,
+                  "y": 522,
                   "z": 0
                 },
                 "size": {
-                  "w": 172,
-                  "d": 201,
-                  "h": 310
+                  "w": 310,
+                  "d": 172,
+                  "h": 201
                 },
-                "orientation": "whd",
+                "orientation": 90,
                 "weight": 3.41,
                 "supports": [],
                 "supportRatio": 1,
@@ -2273,11 +2493,51 @@
                 "friction": 0.5
               },
               {
+                "id": "B19-01",
+                "typeId": "B19",
+                "position": {
+                  "x": 547,
+                  "y": 146,
+                  "z": 302
+                },
+                "size": {
+                  "w": 544,
+                  "d": 294,
+                  "h": 222
+                },
+                "orientation": "whd",
+                "weight": 11.42,
+                "supports": [
+                  {
+                    "id": "B24-01",
+                    "rect": {
+                      "x": 547,
+                      "y": 146,
+                      "w": 544,
+                      "d": 294
+                    },
+                    "area": 159936,
+                    "share": 1,
+                    "forcePoint": {
+                      "x": 819,
+                      "y": 293
+                    }
+                  }
+                ],
+                "supportRatio": 1,
+                "loadAbove": 0,
+                "maxLoadKg": 27.52,
+                "maxLoadSource": "synthetic",
+                "material": "paper",
+                "strengthFactor": 0.76,
+                "friction": 0.4
+              },
+              {
                 "id": "B1-01",
                 "typeId": "B1",
                 "position": {
                   "x": 9,
-                  "y": 0,
+                  "y": 24,
                   "z": 280
                 },
                 "size": {
@@ -2292,7 +2552,7 @@
                     "id": "B15-01",
                     "rect": {
                       "x": 9,
-                      "y": 0,
+                      "y": 24,
                       "w": 538,
                       "d": 670
                     },
@@ -2300,7 +2560,7 @@
                     "share": 1,
                     "forcePoint": {
                       "x": 278,
-                      "y": 335
+                      "y": 359
                     }
                   }
                 ],
@@ -2311,73 +2571,9 @@
                 "material": "plastic",
                 "strengthFactor": 0.72,
                 "friction": 0.33
-              },
-              {
-                "id": "B12-01",
-                "typeId": "B12",
-                "position": {
-                  "x": 547,
-                  "y": 254,
-                  "z": 302
-                },
-                "size": {
-                  "w": 492,
-                  "d": 319,
-                  "h": 115
-                },
-                "orientation": 0,
-                "weight": 6.12,
-                "supports": [
-                  {
-                    "id": "B24-01",
-                    "rect": {
-                      "x": 547,
-                      "y": 254,
-                      "w": 492,
-                      "d": 319
-                    },
-                    "area": 156948,
-                    "share": 1,
-                    "forcePoint": {
-                      "x": 793,
-                      "y": 413.5
-                    }
-                  }
-                ],
-                "supportRatio": 1,
-                "loadAbove": 0,
-                "maxLoadKg": 51.46,
-                "maxLoadSource": "synthetic",
-                "material": "paper",
-                "strengthFactor": 0.8,
-                "friction": 0.42
-              },
-              {
-                "id": "B8-01",
-                "typeId": "B8",
-                "position": {
-                  "x": 941,
-                  "y": 694,
-                  "z": 0
-                },
-                "size": {
-                  "w": 203,
-                  "d": 303,
-                  "h": 341
-                },
-                "orientation": "dhw",
-                "weight": 4.55,
-                "supports": [],
-                "supportRatio": 1,
-                "loadAbove": 0,
-                "maxLoadKg": 13.05,
-                "maxLoadSource": "synthetic",
-                "material": "plastic",
-                "strengthFactor": 0.98,
-                "friction": 0.27
               }
             ],
-            "version": 13
+            "version": 8
           },
           {
             "queue": [],
@@ -2386,8 +2582,8 @@
                 "id": "B18-01",
                 "typeId": "B18",
                 "position": {
-                  "x": 0,
-                  "y": 415,
+                  "x": 652,
+                  "y": 0,
                   "z": 0
                 },
                 "size": {
@@ -2399,7 +2595,7 @@
                 "weight": 10.57,
                 "supports": [],
                 "supportRatio": 1,
-                "loadAbove": 0,
+                "loadAbove": 7.39,
                 "maxLoadKg": 58.31,
                 "maxLoadSource": "synthetic",
                 "material": "plastic",
@@ -2410,8 +2606,8 @@
                 "id": "B11-01",
                 "typeId": "B11",
                 "position": {
-                  "x": 548,
-                  "y": 415,
+                  "x": 368,
+                  "y": 15,
                   "z": 0
                 },
                 "size": {
@@ -2423,7 +2619,7 @@
                 "weight": 8.55,
                 "supports": [],
                 "supportRatio": 1,
-                "loadAbove": 7.390000000000001,
+                "loadAbove": 5.1,
                 "maxLoadKg": 50.36,
                 "maxLoadSource": "synthetic",
                 "material": "plastic",
@@ -2431,35 +2627,11 @@
                 "friction": 0.38
               },
               {
-                "id": "B17-01",
-                "typeId": "B17",
-                "position": {
-                  "x": 832,
-                  "y": 461,
-                  "z": 0
-                },
-                "size": {
-                  "w": 293,
-                  "d": 524,
-                  "h": 270
-                },
-                "orientation": 0,
-                "weight": 5.1,
-                "supports": [],
-                "supportRatio": 1,
-                "loadAbove": 0,
-                "maxLoadKg": 10.45,
-                "maxLoadSource": "synthetic",
-                "material": "paper",
-                "strengthFactor": 0.72,
-                "friction": 0.29
-              },
-              {
                 "id": "B9-01",
                 "typeId": "B9",
                 "position": {
-                  "x": 146,
-                  "y": 19,
+                  "x": 368,
+                  "y": 585,
                   "z": 0
                 },
                 "size": {
@@ -2479,11 +2651,35 @@
                 "friction": 0.27
               },
               {
+                "id": "B28-01",
+                "typeId": "B28",
+                "position": {
+                  "x": 191,
+                  "y": 15,
+                  "z": 0
+                },
+                "size": {
+                  "w": 177,
+                  "d": 716,
+                  "h": 146
+                },
+                "orientation": 90,
+                "weight": 5.23,
+                "supports": [],
+                "supportRatio": 1,
+                "loadAbove": 0,
+                "maxLoadKg": 45.19,
+                "maxLoadSource": "synthetic",
+                "material": "paper",
+                "strengthFactor": 0.55,
+                "friction": 0.49
+              },
+              {
                 "id": "B2-01",
                 "typeId": "B2",
                 "position": {
-                  "x": 832,
-                  "y": 269,
+                  "x": 189,
+                  "y": 731,
                   "z": 0
                 },
                 "size": {
@@ -2503,12 +2699,52 @@
                 "friction": 0.28
               },
               {
+                "id": "B17-01",
+                "typeId": "B17",
+                "position": {
+                  "x": 382,
+                  "y": 61,
+                  "z": 146
+                },
+                "size": {
+                  "w": 270,
+                  "d": 524,
+                  "h": 293
+                },
+                "orientation": "hdw",
+                "weight": 5.1,
+                "supports": [
+                  {
+                    "id": "B11-01",
+                    "rect": {
+                      "x": 382,
+                      "y": 61,
+                      "w": 270,
+                      "d": 524
+                    },
+                    "area": 141480,
+                    "share": 1,
+                    "forcePoint": {
+                      "x": 517,
+                      "y": 323
+                    }
+                  }
+                ],
+                "supportRatio": 1,
+                "loadAbove": 0,
+                "maxLoadKg": 10.45,
+                "maxLoadSource": "synthetic",
+                "material": "paper",
+                "strengthFactor": 0.72,
+                "friction": 0.29
+              },
+              {
                 "id": "B26-01",
                 "typeId": "B26",
                 "position": {
-                  "x": 548,
-                  "y": 415,
-                  "z": 146
+                  "x": 652,
+                  "y": 72,
+                  "z": 178
                 },
                 "size": {
                   "w": 264,
@@ -2519,18 +2755,18 @@
                 "weight": 7.39,
                 "supports": [
                   {
-                    "id": "B11-01",
+                    "id": "B18-01",
                     "rect": {
-                      "x": 548,
-                      "y": 415,
+                      "x": 652,
+                      "y": 72,
                       "w": 264,
                       "d": 513
                     },
                     "area": 135432,
                     "share": 1,
                     "forcePoint": {
-                      "x": 680,
-                      "y": 671.5000000000001
+                      "x": 783.9999999999999,
+                      "y": 328.5
                     }
                   }
                 ],
@@ -2546,8 +2782,8 @@
                 "id": "B27-01",
                 "typeId": "B27",
                 "position": {
-                  "x": 146,
-                  "y": 1,
+                  "x": 368,
+                  "y": 585,
                   "z": 235
                 },
                 "size": {
@@ -2561,16 +2797,16 @@
                   {
                     "id": "B9-01",
                     "rect": {
-                      "x": 146,
-                      "y": 19,
+                      "x": 368,
+                      "y": 585,
                       "w": 663,
                       "d": 396
                     },
                     "area": 262548,
-                    "share": 1,
+                    "share": 1.0000000000000002,
                     "forcePoint": {
-                      "x": 477.49999999999994,
-                      "y": 208
+                      "x": 699.5,
+                      "y": 791.9999999999998
                     }
                   }
                 ],
@@ -2581,51 +2817,39 @@
                 "material": "plastic",
                 "strengthFactor": 0.66,
                 "friction": 0.57
-              },
-              {
-                "id": "B28-01",
-                "typeId": "B28",
-                "position": {
-                  "x": 0,
-                  "y": 238,
-                  "z": 0
-                },
-                "size": {
-                  "w": 146,
-                  "d": 177,
-                  "h": 716
-                },
-                "orientation": "hdw",
-                "weight": 5.23,
-                "supports": [],
-                "supportRatio": 1,
-                "loadAbove": 0,
-                "maxLoadKg": 45.19,
-                "maxLoadSource": "synthetic",
-                "material": "paper",
-                "strengthFactor": 0.55,
-                "friction": 0.49
               }
             ],
-            "version": 10
+            "version": 8
           }
         ],
         "pads": [
           {
             "boxId": null,
-            "version": 2
+            "version": 0,
+            "departedAt": 0,
+            "readyAt": 0,
+            "arrived": true
           },
           {
             "boxId": null,
-            "version": 8
+            "version": 3,
+            "departedAt": 91.23160080388263,
+            "readyAt": 109.20882683160757,
+            "arrived": true
           },
           {
             "boxId": null,
-            "version": 4
+            "version": 3,
+            "departedAt": 29.20724969548905,
+            "readyAt": 36.95878969334406,
+            "arrived": true
           },
           {
             "boxId": null,
-            "version": 2
+            "version": 0,
+            "departedAt": 0,
+            "readyAt": 0,
+            "arrived": true
           }
         ],
         "records": [
@@ -2637,12 +2861,12 @@
             "from": 3,
             "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
             "position": {
-              "x": 0,
-              "y": 415,
+              "x": 652,
+              "y": 0,
               "z": 0
             },
             "started": 0,
-            "finished": 10.495070280318433
+            "finished": 17.773318165785536
           },
           {
             "step": 2,
@@ -2652,12 +2876,12 @@
             "from": 1,
             "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
             "position": {
-              "x": 0,
-              "y": 375,
+              "x": 647,
+              "y": 0,
               "z": 0
             },
             "started": 0,
-            "finished": 10.56309860930806
+            "finished": 18.130385310121234
           },
           {
             "step": 3,
@@ -2672,7 +2896,7 @@
               "z": 0
             },
             "started": 0,
-            "finished": 10.582238202447469
+            "finished": 18.60443497211422
           },
           {
             "step": 4,
@@ -2682,86 +2906,71 @@
             "from": 0,
             "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
             "position": {
-              "x": 0,
-              "y": 344,
+              "x": 814,
+              "y": 0,
               "z": 0
             },
             "started": 0,
-            "finished": 12.890234122974528
+            "finished": 22.290710328873075
           },
           {
             "step": 5,
+            "kind": "send",
+            "robot": 2,
+            "boxId": "B9-01",
+            "from": 2,
+            "to": 3,
+            "reason": "B9-01를 지금 놓으면 B24의 검토 위치가 막힘 · 옆 컨베이어에 보류",
+            "started": 18.60443497211422,
+            "finished": 29.20724969548905
+          },
+          {
+            "step": 7,
             "kind": "place",
             "robot": 3,
             "boxId": "B11-01",
             "from": 3,
             "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
             "position": {
-              "x": 548,
-              "y": 415,
+              "x": 368,
+              "y": 15,
               "z": 0
             },
-            "started": 10.495070280318433,
-            "finished": 22.100812197103167
+            "started": 17.773318165785536,
+            "finished": 35.292123026677395
           },
           {
-            "step": 6,
+            "step": 8,
             "kind": "place",
             "robot": 1,
-            "boxId": "B19-01",
+            "boxId": "B4-01",
             "from": 1,
             "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
             "position": {
-              "x": 0,
-              "y": 81,
+              "x": 688,
+              "y": 625,
               "z": 0
             },
-            "started": 10.56309860930806,
-            "finished": 23.646250796347495
+            "started": 18.130385310121234,
+            "finished": 35.85021484309735
           },
           {
-            "step": 7,
+            "step": 10,
             "kind": "place",
             "robot": 0,
             "boxId": "B25-01",
             "from": 0,
             "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
             "position": {
-              "x": 386,
-              "y": 340,
+              "x": 562,
+              "y": 0,
               "z": 0
             },
-            "started": 12.890234122974528,
-            "finished": 23.99842147871992
+            "started": 22.290710328873075,
+            "finished": 43.50074396197662
           },
           {
-            "step": 8,
-            "kind": "send",
-            "robot": 2,
-            "boxId": "B9-01",
-            "from": 2,
-            "to": 3,
-            "reason": "B9-01를 지금 놓으면 B24의 검토 위치가 막힘 · 옆 전달대에 보류",
-            "started": 10.582238202447469,
-            "finished": 24.735189026847507
-          },
-          {
-            "step": 9,
-            "kind": "place",
-            "robot": 3,
-            "boxId": "B17-01",
-            "from": 3,
-            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
-            "position": {
-              "x": 832,
-              "y": 461,
-              "z": 0
-            },
-            "started": 22.100812197103167,
-            "finished": 34.52215715899518
-          },
-          {
-            "step": 10,
+            "step": 11,
             "kind": "place",
             "robot": 2,
             "boxId": "B22-01",
@@ -2772,52 +2981,57 @@
               "y": 694,
               "z": 0
             },
-            "started": 24.735189026847507,
-            "finished": 34.70338724153389
-          },
-          {
-            "step": 11,
-            "kind": "place",
-            "robot": 1,
-            "boxId": "B4-01",
-            "from": 1,
-            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
-            "position": {
-              "x": 553,
-              "y": 488,
-              "z": 0
-            },
-            "started": 23.646250796347495,
-            "finished": 35.727727190785814
+            "started": 29.20724969548905,
+            "finished": 47.46686662548065
           },
           {
             "step": 12,
-            "kind": "place",
-            "robot": 0,
-            "boxId": "B16-01",
-            "from": 0,
-            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
+            "kind": "receive-place",
+            "robot": 3,
+            "boxId": "B9-01",
+            "from": 2,
+            "to": 3,
+            "reason": "받는 팔 판단: 현재 지지·하중·잔량 조건을 만족하므로 컨베이어에서 팔레트로 바로 적재",
             "position": {
-              "x": 617,
-              "y": 554,
+              "x": 368,
+              "y": 585,
               "z": 0
             },
-            "started": 23.99842147871992,
-            "finished": 36.40221861298873
+            "started": 36.95878969334406,
+            "finished": 55.522380285826515
           },
           {
             "step": 13,
-            "kind": "send",
+            "kind": "place",
             "robot": 1,
-            "boxId": "B3-01",
+            "boxId": "B29-01",
             "from": 1,
-            "to": 2,
-            "reason": "B3-01를 지금 놓으면 B21의 검토 위치가 막힘 · 옆 전달대에 보류",
-            "started": 35.727727190785814,
-            "finished": 50.24606730687116
+            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
+            "position": {
+              "x": 362,
+              "y": 0,
+              "z": 0
+            },
+            "started": 35.85021484309735,
+            "finished": 57.348837918246716
           },
           {
             "step": 14,
+            "kind": "place",
+            "robot": 0,
+            "boxId": "B14-01",
+            "from": 0,
+            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
+            "position": {
+              "x": 154,
+              "y": 0,
+              "z": 0
+            },
+            "started": 43.50074396197662,
+            "finished": 65.89471019534837
+          },
+          {
+            "step": 15,
             "kind": "place",
             "robot": 2,
             "boxId": "B24-01",
@@ -2825,128 +3039,59 @@
             "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
             "position": {
               "x": 547,
-              "y": 254,
+              "y": 0,
               "z": 0
             },
-            "started": 34.70338724153389,
-            "finished": 50.67556894152256
-          },
-          {
-            "step": 15,
-            "kind": "send",
-            "robot": 0,
-            "boxId": "B12-01",
-            "from": 0,
-            "to": 1,
-            "reason": "B12-01를 지금 놓으면 B14의 검토 위치가 막힘 · 옆 전달대에 보류",
-            "started": 36.40221861298873,
-            "finished": 50.79315110781719
+            "started": 47.46686662548065,
+            "finished": 68.8588847532817
           },
           {
             "step": 16,
-            "kind": "receive-place",
+            "kind": "place",
             "robot": 3,
-            "boxId": "B9-01",
-            "from": 2,
-            "to": 3,
-            "reason": "받는 팔 판단: 현재 지지·하중·잔량 조건을 만족하므로 전달대에서 팔레트로 바로 적재",
+            "boxId": "B28-01",
+            "from": 3,
+            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
             "position": {
-              "x": 146,
-              "y": 19,
+              "x": 191,
+              "y": 15,
               "z": 0
             },
-            "started": 34.52215715899518,
-            "finished": 50.870117659089814
+            "started": 55.522380285826515,
+            "finished": 73.34264631039468
           },
           {
             "step": 17,
-            "kind": "receive-queue",
+            "kind": "place",
             "robot": 1,
-            "boxId": "B12-01",
-            "from": 0,
-            "to": 1,
-            "reason": "받는 팔 판단: 지금 적재하면 후속 배치를 막거나 적재/경로 후보가 없어 자기 대기 재고에 보관",
-            "started": 50.79315110781719,
-            "finished": 62.02393545058031
+            "boxId": "B8-01",
+            "from": 1,
+            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
+            "position": {
+              "x": 385,
+              "y": 657,
+              "z": 0
+            },
+            "started": 57.348837918246716,
+            "finished": 79.90263223435394
           },
           {
             "step": 18,
             "kind": "place",
-            "robot": 3,
-            "boxId": "B2-01",
-            "from": 3,
+            "robot": 0,
+            "boxId": "B5-01",
+            "from": 0,
             "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
             "position": {
-              "x": 832,
-              "y": 269,
+              "x": 181,
+              "y": 568,
               "z": 0
             },
-            "started": 50.870117659089814,
-            "finished": 63.02090340921411
+            "started": 65.89471019534837,
+            "finished": 85.6636843685489
           },
           {
             "step": 19,
-            "kind": "place",
-            "robot": 0,
-            "boxId": "B14-01",
-            "from": 0,
-            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
-            "position": {
-              "x": 617,
-              "y": 146,
-              "z": 0
-            },
-            "started": 50.79315110781719,
-            "finished": 66.72236459823277
-          },
-          {
-            "step": 20,
-            "kind": "receive-place",
-            "robot": 2,
-            "boxId": "B3-01",
-            "from": 1,
-            "to": 2,
-            "reason": "받는 팔 판단: 현재 지지·하중·잔량 조건을 만족하므로 전달대에서 팔레트로 바로 적재",
-            "position": {
-              "x": 495,
-              "y": 694,
-              "z": 0
-            },
-            "started": 50.67556894152256,
-            "finished": 69.35433455780996
-          },
-          {
-            "step": 21,
-            "kind": "place",
-            "robot": 3,
-            "boxId": "B26-01",
-            "from": 3,
-            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
-            "position": {
-              "x": 548,
-              "y": 415,
-              "z": 146
-            },
-            "started": 63.02090340921411,
-            "finished": 75.00132762798465
-          },
-          {
-            "step": 22,
-            "kind": "place",
-            "robot": 0,
-            "boxId": "B7-01",
-            "from": 0,
-            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
-            "position": {
-              "x": 898,
-              "y": 554,
-              "z": 0
-            },
-            "started": 66.72236459823277,
-            "finished": 79.73991916452044
-          },
-          {
-            "step": 23,
             "kind": "place",
             "robot": 2,
             "boxId": "B10-01",
@@ -2954,111 +3099,176 @@
             "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
             "position": {
               "x": 547,
-              "y": 115,
+              "y": 440,
               "z": 0
             },
-            "started": 69.35433455780996,
-            "finished": 80.7586840909259
+            "started": 68.8588847532817,
+            "finished": 88.70244140667447
           },
           {
-            "step": 24,
+            "step": 20,
             "kind": "send",
             "robot": 1,
-            "boxId": "B12-01",
+            "boxId": "B19-01",
             "from": 1,
             "to": 2,
-            "reason": "B12-01를 지금 놓으면 B29의 검토 위치가 막힘 · 옆 전달대에 보류",
-            "started": 69.35433455780996,
-            "finished": 83.9659541033142
+            "reason": "B19-01를 지금 놓으면 B21의 검토 위치가 막힘 · 옆 컨베이어에 보류",
+            "started": 79.90263223435394,
+            "finished": 91.23160080388263
           },
           {
-            "step": 25,
+            "step": 22,
             "kind": "place",
             "robot": 3,
-            "boxId": "B27-01",
+            "boxId": "B2-01",
             "from": 3,
             "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
             "position": {
-              "x": 146,
-              "y": 1,
-              "z": 235
+              "x": 189,
+              "y": 731,
+              "z": 0
             },
-            "started": 75.00132762798465,
-            "finished": 86.9179949449565
+            "started": 73.34264631039468,
+            "finished": 92.60620021490364
           },
           {
-            "step": 26,
+            "step": 23,
             "kind": "place",
             "robot": 0,
             "boxId": "B20-01",
             "from": 0,
             "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
             "position": {
-              "x": 166,
-              "y": 29,
+              "x": 562,
+              "y": 660,
               "z": 0
             },
-            "started": 79.73991916452044,
-            "finished": 91.47063705307154
+            "started": 85.6636843685489,
+            "finished": 105.72092974933892
           },
           {
-            "step": 27,
+            "step": 24,
             "kind": "place",
             "robot": 2,
             "boxId": "B6-01",
             "from": 2,
             "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
             "position": {
-              "x": 823,
-              "y": 53,
+              "x": 686,
+              "y": 522,
               "z": 0
             },
-            "started": 80.7586840909259,
-            "finished": 96.37877074165071
+            "started": 88.70244140667447,
+            "finished": 107.5421601649409
+          },
+          {
+            "step": 26,
+            "kind": "place",
+            "robot": 3,
+            "boxId": "B17-01",
+            "from": 3,
+            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
+            "position": {
+              "x": 382,
+              "y": 61,
+              "z": 146
+            },
+            "started": 92.60620021490364,
+            "finished": 113.19884117931326
+          },
+          {
+            "step": 27,
+            "kind": "place",
+            "robot": 1,
+            "boxId": "B21-01",
+            "from": 1,
+            "reason": "B3-01는 보류 · 다른 박스부터 적재",
+            "position": {
+              "x": 75,
+              "y": 0,
+              "z": 0
+            },
+            "started": 91.23160080388263,
+            "finished": 113.9955856622343
           },
           {
             "step": 28,
             "kind": "place",
-            "robot": 3,
-            "boxId": "B28-01",
-            "from": 3,
-            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
-            "position": {
-              "x": 0,
-              "y": 238,
-              "z": 0
-            },
-            "started": 86.9179949449565,
-            "finished": 100.81471893077916
-          },
-          {
-            "step": 29,
-            "kind": "place",
             "robot": 0,
-            "boxId": "B5-01",
+            "boxId": "B12-01",
             "from": 0,
             "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
             "position": {
-              "x": 236,
-              "y": 60,
-              "z": 291
+              "x": 39,
+              "y": 0,
+              "z": 0
             },
-            "started": 91.47063705307154,
-            "finished": 106.44593199518495
+            "started": 105.72092974933892,
+            "finished": 125.65819444060325
+          },
+          {
+            "step": 29,
+            "kind": "receive-place",
+            "robot": 2,
+            "boxId": "B19-01",
+            "from": 1,
+            "to": 2,
+            "reason": "받는 팔 판단: 현재 지지·하중·잔량 조건을 만족하므로 컨베이어에서 팔레트로 바로 적재",
+            "position": {
+              "x": 547,
+              "y": 146,
+              "z": 302
+            },
+            "started": 109.20882683160757,
+            "finished": 128.72934023230795
           },
           {
             "step": 30,
-            "kind": "receive-queue",
-            "robot": 2,
-            "boxId": "B12-01",
-            "from": 1,
-            "to": 2,
-            "reason": "받는 팔 판단: 지금 적재하면 후속 배치를 막거나 적재/경로 후보가 없어 자기 대기 재고에 보관",
-            "started": 96.37877074165071,
-            "finished": 109.65895484398514
+            "kind": "place",
+            "robot": 3,
+            "boxId": "B26-01",
+            "from": 3,
+            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
+            "position": {
+              "x": 652,
+              "y": 72,
+              "z": 178
+            },
+            "started": 113.19884117931326,
+            "finished": 130.89579664547176
           },
           {
             "step": 31,
+            "kind": "place",
+            "robot": 1,
+            "boxId": "B3-01",
+            "from": 1,
+            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
+            "position": {
+              "x": 32,
+              "y": 430,
+              "z": 0
+            },
+            "started": 113.9955856622343,
+            "finished": 132.35191400922997
+          },
+          {
+            "step": 32,
+            "kind": "place",
+            "robot": 0,
+            "boxId": "B7-01",
+            "from": 0,
+            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
+            "position": {
+              "x": 40,
+              "y": 568,
+              "z": 0
+            },
+            "started": 125.65819444060325,
+            "finished": 145.6690530338712
+          },
+          {
+            "step": 33,
             "kind": "place",
             "robot": 2,
             "boxId": "B1-01",
@@ -3066,152 +3276,59 @@
             "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
             "position": {
               "x": 9,
-              "y": 0,
+              "y": 24,
               "z": 280
             },
-            "started": 109.65895484398514,
-            "finished": 120.39026907134804
-          },
-          {
-            "step": 32,
-            "kind": "send",
-            "robot": 1,
-            "boxId": "B8-01",
-            "from": 1,
-            "to": 2,
-            "reason": "B8-01를 지금 놓으면 B21의 검토 위치가 막힘 · 옆 전달대에 보류",
-            "started": 109.65895484398514,
-            "finished": 126.5532579259949
-          },
-          {
-            "step": 33,
-            "kind": "place",
-            "robot": 2,
-            "boxId": "B12-01",
-            "from": 2,
-            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
-            "position": {
-              "x": 547,
-              "y": 254,
-              "z": 302
-            },
-            "started": 120.39026907134804,
-            "finished": 131.6527528141676
+            "started": 128.72934023230795,
+            "finished": 145.76683894016074
           },
           {
             "step": 34,
-            "kind": "receive-place",
-            "robot": 2,
-            "boxId": "B8-01",
-            "from": 1,
-            "to": 2,
-            "reason": "받는 팔 판단: 현재 지지·하중·잔량 조건을 만족하므로 전달대에서 팔레트로 바로 적재",
+            "kind": "place",
+            "robot": 3,
+            "boxId": "B27-01",
+            "from": 3,
+            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
             "position": {
-              "x": 941,
-              "y": 694,
-              "z": 0
+              "x": 368,
+              "y": 585,
+              "z": 235
             },
-            "started": 131.6527528141676,
-            "finished": 151.5984976236323
+            "started": 130.89579664547176,
+            "finished": 150.25780001420245
           },
           {
             "step": 35,
-            "kind": "send",
-            "robot": 1,
-            "boxId": "B29-01",
-            "from": 1,
-            "to": 2,
-            "reason": "B29-01를 지금 놓으면 B21의 검토 위치가 막힘 · 옆 전달대에 보류",
-            "started": 151.5984976236323,
-            "finished": 168.2876618695321
-          },
-          {
-            "step": 36,
-            "kind": "receive-queue",
-            "robot": 2,
-            "boxId": "B29-01",
-            "from": 1,
-            "to": 2,
-            "reason": "받는 팔 판단: 지금 적재하면 후속 배치를 막거나 적재/경로 후보가 없어 자기 대기 재고에 보관",
-            "started": 168.2876618695321,
-            "finished": 181.86008641145216
-          },
-          {
-            "step": 37,
-            "kind": "place",
-            "robot": 1,
-            "boxId": "B21-01",
-            "from": 1,
-            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
-            "position": {
-              "x": 553,
-              "y": 58,
-              "z": 0
-            },
-            "started": 168.2876618695321,
-            "finished": 184.015344434548
-          },
-          {
-            "step": 38,
             "kind": "place",
             "robot": 1,
             "boxId": "B30-01",
             "from": 1,
             "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
             "position": {
-              "x": 94,
-              "y": 375,
+              "x": 647,
+              "y": 0,
               "z": 225
             },
-            "started": 184.015344434548,
-            "finished": 197.2741221768849
+            "started": 132.35191400922997,
+            "finished": 153.05972001592065
           },
           {
-            "step": 39,
-            "kind": "send",
-            "robot": 2,
-            "boxId": "B29-01",
-            "from": 2,
-            "to": 3,
-            "reason": "자기 팔레트의 적재/접근 후보가 없어 옆 전달대에 보류",
-            "started": 181.86008641145216,
-            "finished": 198.54925065735193
-          },
-          {
-            "step": 40,
-            "kind": "receive-queue",
-            "robot": 3,
-            "boxId": "B29-01",
-            "from": 2,
-            "to": 3,
-            "reason": "받는 팔 판단: 지금 적재하면 후속 배치를 막거나 적재/경로 후보가 없어 자기 대기 재고에 보관",
-            "started": 198.54925065735193,
-            "finished": 212.121675199272
-          },
-          {
-            "step": 41,
-            "kind": "send",
-            "robot": 3,
-            "boxId": "B29-01",
-            "from": 3,
-            "to": 0,
-            "reason": "자기 팔레트의 적재/접근 후보가 없어 옆 전달대에 보류",
-            "started": 212.121675199272,
-            "finished": 228.81083944517178
-          },
-          {
-            "step": 42,
-            "kind": "receive-queue",
+            "step": 36,
+            "kind": "place",
             "robot": 0,
-            "boxId": "B29-01",
-            "from": 3,
-            "to": 0,
-            "reason": "받는 팔 판단: 지금 적재하면 후속 배치를 막거나 적재/경로 후보가 없어 자기 대기 재고에 보관",
-            "started": 228.81083944517178,
-            "finished": 242.38326398709185
+            "boxId": "B16-01",
+            "from": 0,
+            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
+            "position": {
+              "x": 814,
+              "y": 214,
+              "z": 286
+            },
+            "started": 145.6690530338712,
+            "finished": 163.29390380699445
           }
         ],
-        "time": 242.38326398709185
+        "time": 163.29390380699445
       },
       "physics": [
         {
@@ -3222,22 +3339,22 @@
               "id": "B13-01",
               "friction": 0.32,
               "planned": {
-                "x": 0,
-                "y": 344,
+                "x": 814,
+                "y": 0,
                 "z": 0
               },
               "actual": {
-                "x": -0.014667987823486328,
-                "y": 343.9985157251358,
-                "z": -0.09339380264282227
+                "x": 813.9808125495911,
+                "y": -0.001704573631286621,
+                "z": -0.12978243827819824
               },
               "rotation": [
-                4.180335011483294e-8,
-                8.347915070316958e-8,
-                -3.1951347523317963e-7,
+                0.000008487999366479926,
+                -0.000007408488727378426,
+                -0.00002810052683344111,
                 1
               ],
-              "displacementMm": 0.09455027927377509,
+              "displacementMm": 0.1312042114792592,
               "angleDeg": 0,
               "fell": false
             },
@@ -3245,45 +3362,22 @@
               "id": "B25-01",
               "friction": 0.61,
               "planned": {
-                "x": 386,
-                "y": 340,
+                "x": 562,
+                "y": 0,
                 "z": 0
               },
               "actual": {
-                "x": 385.9917239546776,
-                "y": 340.00021040439606,
-                "z": -0.0857839584350586
+                "x": 561.9869163036346,
+                "y": 0.0002962350845336914,
+                "z": -0.08941131830215454
               },
               "rotation": [
-                5.42240883305567e-8,
-                6.544045731970982e-7,
-                0.000002802912376864697,
+                -0.000005613270332105458,
+                0.0000014030512147655827,
+                -0.000014379766071215272,
                 1
               ],
-              "displacementMm": 0.08618250820773588,
-              "angleDeg": 0,
-              "fell": false
-            },
-            {
-              "id": "B16-01",
-              "friction": 0.21,
-              "planned": {
-                "x": 617,
-                "y": 554,
-                "z": 0
-              },
-              "actual": {
-                "x": 616.9857831001282,
-                "y": 553.9995331764221,
-                "z": -0.08860087394714355
-              },
-              "rotation": [
-                0.0000011116079576822813,
-                0.0000052171817515045404,
-                -0.000022501959392684512,
-                1
-              ],
-              "displacementMm": 0.08973546138743599,
+              "displacementMm": 0.0903640122301757,
               "angleDeg": 0,
               "fell": false
             },
@@ -3291,68 +3385,22 @@
               "id": "B14-01",
               "friction": 0.3,
               "planned": {
-                "x": 617,
-                "y": 146,
+                "x": 154,
+                "y": 0,
                 "z": 0
               },
               "actual": {
-                "x": 616.9932935237885,
-                "y": 145.98975694179535,
-                "z": -0.08795022964477539
+                "x": 153.99304246902466,
+                "y": -0.001167893409729004,
+                "z": -0.07683396339416504
               },
               "rotation": [
-                1.5006325781996566e-7,
-                -9.669917062637978e-7,
-                -3.1204976380649896e-7,
+                -0.000005222851541475393,
+                -0.0000043126647142344154,
+                -0.000017362019207212143,
                 1
               ],
-              "displacementMm": 0.08879831056460845,
-              "angleDeg": 0,
-              "fell": false
-            },
-            {
-              "id": "B7-01",
-              "friction": 0.31,
-              "planned": {
-                "x": 898,
-                "y": 554,
-                "z": 0
-              },
-              "actual": {
-                "x": 898.0083091259003,
-                "y": 554.00115442276,
-                "z": -0.0628589391708374
-              },
-              "rotation": [
-                -7.063628260084442e-8,
-                -2.4312329927056453e-8,
-                2.791658175738121e-7,
-                1
-              ],
-              "displacementMm": 0.06341624790870538,
-              "angleDeg": 0,
-              "fell": false
-            },
-            {
-              "id": "B20-01",
-              "friction": 0.35,
-              "planned": {
-                "x": 166,
-                "y": 29,
-                "z": 0
-              },
-              "actual": {
-                "x": 165.97452116012573,
-                "y": 28.9785213470459,
-                "z": -0.1426147222518921
-              },
-              "rotation": [
-                0.000020365989257697947,
-                7.281428082706043e-8,
-                -0.00002188021971960552,
-                1
-              ],
-              "displacementMm": 0.14645635123491785,
+              "displacementMm": 0.07715717168964413,
               "angleDeg": 0,
               "fell": false
             },
@@ -3360,22 +3408,114 @@
               "id": "B5-01",
               "friction": 0.58,
               "planned": {
-                "x": 236,
-                "y": 60,
-                "z": 291
+                "x": 181,
+                "y": 568,
+                "z": 0
               },
               "actual": {
-                "x": 236.00113105773926,
-                "y": 59.99590516090393,
-                "z": 290.8266966342926
+                "x": 180.987757563591,
+                "y": 567.9929440021515,
+                "z": -0.07824540138244629
               },
               "rotation": [
-                0.00002373360075580422,
-                6.308432176638235e-8,
-                -0.000026499981686356477,
+                0.00001447021531930659,
+                -0.00000848828858579509,
+                -0.000012386241905915085,
                 1
               ],
-              "displacementMm": 0.17335542554054711,
+              "displacementMm": 0.07951105075627313,
+              "angleDeg": 0,
+              "fell": false
+            },
+            {
+              "id": "B20-01",
+              "friction": 0.35,
+              "planned": {
+                "x": 562,
+                "y": 660,
+                "z": 0
+              },
+              "actual": {
+                "x": 561.9849796295166,
+                "y": 659.993494272232,
+                "z": -0.08648204803466797
+              },
+              "rotation": [
+                0.000022003390768077224,
+                -0.000006656010100414278,
+                -0.00001264659749722341,
+                1
+              ],
+              "displacementMm": 0.08801750198409272,
+              "angleDeg": 0,
+              "fell": false
+            },
+            {
+              "id": "B12-01",
+              "friction": 0.42,
+              "planned": {
+                "x": 39,
+                "y": 0,
+                "z": 0
+              },
+              "actual": {
+                "x": 39.0175986289978,
+                "y": 0.001631021499633789,
+                "z": -0.06876599788665771
+              },
+              "rotation": [
+                5.613113671643077e-7,
+                0.000013846749425283633,
+                0.00005897608207305893,
+                1
+              ],
+              "displacementMm": 0.0710009467477891,
+              "angleDeg": 0,
+              "fell": false
+            },
+            {
+              "id": "B7-01",
+              "friction": 0.31,
+              "planned": {
+                "x": 40,
+                "y": 568,
+                "z": 0
+              },
+              "actual": {
+                "x": 40.00037145614624,
+                "y": 568.000109910965,
+                "z": -0.06801474094390869
+              },
+              "rotation": [
+                -0.0000033391802389814984,
+                1.6190085716516478e-7,
+                0.000028250071409274824,
+                1
+              ],
+              "displacementMm": 0.0680158440788307,
+              "angleDeg": 0,
+              "fell": false
+            },
+            {
+              "id": "B16-01",
+              "friction": 0.21,
+              "planned": {
+                "x": 814,
+                "y": 214,
+                "z": 286
+              },
+              "actual": {
+                "x": 814.0185029506683,
+                "y": 214.00062483549118,
+                "z": 285.8415558338165
+              },
+              "rotation": [
+                0.000014122548236628063,
+                0.0000034119393603759818,
+                -0.000022151034499984235,
+                1
+              ],
+              "displacementMm": 0.15952210944067116,
               "angleDeg": 0,
               "fell": false
             }
@@ -3391,7 +3531,7 @@
             "contactNaturalFrequencyHz": 120
           },
           "steps": 360,
-          "milliseconds": 137.04650000000038
+          "milliseconds": 112.63045799999963
         },
         {
           "runId": "relay-20261004-1",
@@ -3401,45 +3541,22 @@
               "id": "B23-01",
               "friction": 0.34,
               "planned": {
-                "x": 0,
-                "y": 375,
+                "x": 647,
+                "y": 0,
                 "z": 0
               },
               "actual": {
-                "x": -0.02289557456970215,
-                "y": 374.99506771564484,
-                "z": -0.1837417483329773
+                "x": 646.9803080558777,
+                "y": -0.004366040229797363,
+                "z": -0.17210394144058228
               },
               "rotation": [
-                -0.000029749187888228334,
-                -7.508487165353017e-9,
-                -0.000015408619219670072,
+                -0.000013312667761056218,
+                -0.000002694707973205368,
+                -0.00002510316699044779,
                 1
               ],
-              "displacementMm": 0.18522841262694054,
-              "angleDeg": 0,
-              "fell": false
-            },
-            {
-              "id": "B19-01",
-              "friction": 0.4,
-              "planned": {
-                "x": 0,
-                "y": 81,
-                "z": 0
-              },
-              "actual": {
-                "x": -0.014492988586425781,
-                "y": 80.98910737037659,
-                "z": -0.09435272216796875
-              },
-              "rotation": [
-                -0.000001221646812155086,
-                -1.4368490841576431e-9,
-                -4.896576228929916e-7,
-                1
-              ],
-              "displacementMm": 0.09607878162625204,
+              "displacementMm": 0.1732818560322688,
               "angleDeg": 0,
               "fell": false
             },
@@ -3447,22 +3564,68 @@
               "id": "B4-01",
               "friction": 0.53,
               "planned": {
-                "x": 553,
-                "y": 488,
+                "x": 688,
+                "y": 625,
                 "z": 0
               },
               "actual": {
-                "x": 552.9869098067284,
-                "y": 487.99878084659576,
-                "z": -0.11457324028015137
+                "x": 687.9921140670776,
+                "y": 624.9962661266327,
+                "z": -0.1155194640159607
               },
               "rotation": [
-                5.948997383597998e-8,
-                -2.6974861455641985e-8,
-                -4.202295826871705e-7,
+                9.042857840313445e-8,
+                -5.69003134387458e-7,
+                -0.0000050403787099639885,
                 1
               ],
-              "displacementMm": 0.1153250488107643,
+              "displacementMm": 0.11584850588123248,
+              "angleDeg": 0,
+              "fell": false
+            },
+            {
+              "id": "B29-01",
+              "friction": 0.32,
+              "planned": {
+                "x": 362,
+                "y": 0,
+                "z": 0
+              },
+              "actual": {
+                "x": 361.9891446828842,
+                "y": -0.00008678436279296875,
+                "z": -0.08380627632141113
+              },
+              "rotation": [
+                -0.0000020249904082447756,
+                2.1303971209363226e-7,
+                -0.00001895644709293265,
+                1
+              ],
+              "displacementMm": 0.08450643402765595,
+              "angleDeg": 0,
+              "fell": false
+            },
+            {
+              "id": "B8-01",
+              "friction": 0.27,
+              "planned": {
+                "x": 385,
+                "y": 657,
+                "z": 0
+              },
+              "actual": {
+                "x": 384.9844337105751,
+                "y": 656.994889497757,
+                "z": -0.08682453632354736
+              },
+              "rotation": [
+                0.00002244707866339013,
+                0.000005218970272835577,
+                -0.00002420866076136008,
+                1
+              ],
+              "displacementMm": 0.08835681471983227,
               "angleDeg": 0,
               "fell": false
             },
@@ -3470,22 +3633,45 @@
               "id": "B21-01",
               "friction": 0.55,
               "planned": {
-                "x": 553,
-                "y": 58,
+                "x": 75,
+                "y": 0,
                 "z": 0
               },
               "actual": {
-                "x": 552.9880982637405,
-                "y": 57.994548082351685,
-                "z": -0.0864264965057373
+                "x": 74.99650740623474,
+                "y": -0.002321004867553711,
+                "z": -0.07002532482147217
               },
               "rotation": [
-                -2.405358827672899e-7,
-                0.000006019977263349574,
-                -0.0000036338301470095757,
+                6.230705906773437e-8,
+                0.000005264558694761945,
+                0.0000024606938495708164,
                 1
               ],
-              "displacementMm": 0.08741232195914939,
+              "displacementMm": 0.07015077612654773,
+              "angleDeg": 0,
+              "fell": false
+            },
+            {
+              "id": "B3-01",
+              "friction": 0.46,
+              "planned": {
+                "x": 32,
+                "y": 430,
+                "z": 0
+              },
+              "actual": {
+                "x": 31.985608339309692,
+                "y": 429.9972553253174,
+                "z": -0.0887831449508667
+              },
+              "rotation": [
+                0.000005780743776995223,
+                -0.000002359501650062157,
+                -0.000009128172678174451,
+                1
+              ],
+              "displacementMm": 0.08998388724602285,
               "angleDeg": 0,
               "fell": false
             },
@@ -3493,22 +3679,22 @@
               "id": "B30-01",
               "friction": 0.34,
               "planned": {
-                "x": 94,
-                "y": 375,
+                "x": 647,
+                "y": 0,
                 "z": 225
               },
               "actual": {
-                "x": 93.9945297241211,
-                "y": 374.98355263471603,
-                "z": 224.77336764335632
+                "x": 647.0063796043396,
+                "y": -0.006292581558227539,
+                "z": 224.79151725769043
               },
               "rotation": [
-                -0.000035170247429050505,
-                5.246784553492034e-7,
-                -0.000016835865608300082,
+                -0.000020294604837545194,
+                0.000001225439518748317,
+                -0.000019911636627512053,
                 1
               ],
-              "displacementMm": 0.22729422522546022,
+              "displacementMm": 0.20867522559018714,
               "angleDeg": 0,
               "fell": false
             }
@@ -3524,7 +3710,7 @@
             "contactNaturalFrequencyHz": 120
           },
           "steps": 360,
-          "milliseconds": 25.730400000000373
+          "milliseconds": 39.56304199999977
         },
         {
           "runId": "relay-20261004-2",
@@ -3539,17 +3725,17 @@
                 "z": 0
               },
               "actual": {
-                "x": -0.019727706909179688,
-                "y": -0.0040204524993896484,
-                "z": -0.12861132621765137
+                "x": -0.020144939422607422,
+                "y": -0.004229068756103516,
+                "z": -0.1373732089996338
               },
               "rotation": [
-                -0.000012387366950861178,
-                5.610947368950292e-7,
-                0.000006649112947343383,
+                -7.828596721992653e-7,
+                -3.5352081795281265e-7,
+                -0.0000016044339190557366,
                 1
               ],
-              "displacementMm": 0.13017764665893097,
+              "displacementMm": 0.13890681105597896,
               "angleDeg": 0,
               "fell": false
             },
@@ -3562,17 +3748,17 @@
                 "z": 0
               },
               "actual": {
-                "x": -0.012538433074951172,
-                "y": 693.9902393817902,
-                "z": -0.10044407844543457
+                "x": -0.013939142227172852,
+                "y": 693.9907162189484,
+                "z": -0.10708999633789062
               },
               "rotation": [
-                0.00003069223021157086,
-                -1.3679478172434756e-7,
-                0.000013472113096213434,
+                0.000013112600754539017,
+                0.000005425846211437602,
+                -0.0000030900159799784888,
                 1
               ],
-              "displacementMm": 0.10169314070558487,
+              "displacementMm": 0.10839167676668487,
               "angleDeg": 0,
               "fell": false
             },
@@ -3581,44 +3767,21 @@
               "friction": 0.47,
               "planned": {
                 "x": 547,
-                "y": 254,
+                "y": 0,
                 "z": 0
               },
               "actual": {
-                "x": 546.9814748764038,
-                "y": 253.98781962692738,
-                "z": -0.1276949644088745
+                "x": 546.9723702669144,
+                "y": -0.013650655746459961,
+                "z": -0.16251897811889648
               },
               "rotation": [
-                -0.000017383657905156724,
-                -9.354602070743567e-7,
-                0.000004076482127857162,
+                0.000039435319195035845,
+                -0.0000036356864256958943,
+                -0.00003305170685052872,
                 1
               ],
-              "displacementMm": 0.12960534567611864,
-              "angleDeg": 0,
-              "fell": false
-            },
-            {
-              "id": "B3-01",
-              "friction": 0.46,
-              "planned": {
-                "x": 495,
-                "y": 694,
-                "z": 0
-              },
-              "actual": {
-                "x": 494.98397451639175,
-                "y": 693.9852962493896,
-                "z": -0.08124947547912598
-              },
-              "rotation": [
-                0.00000838691175886197,
-                0.0000028833276246587047,
-                0.000010888014003285207,
-                1
-              ],
-              "displacementMm": 0.084110009348012,
+              "displacementMm": 0.16541511660517005,
               "angleDeg": 0,
               "fell": false
             },
@@ -3627,21 +3790,21 @@
               "friction": 0.63,
               "planned": {
                 "x": 547,
-                "y": 115,
+                "y": 440,
                 "z": 0
               },
               "actual": {
-                "x": 546.9970653653145,
-                "y": 114.98266386985779,
-                "z": -0.04220175743103027
+                "x": 547.014653339982,
+                "y": 439.9990702867508,
+                "z": -0.04807281494140625
               },
               "rotation": [
-                -0.0000025106519387918524,
-                0.0000013916292118665297,
-                1.7069415036985447e-7,
+                0.00001632021121622529,
+                -0.0000074176796260871924,
+                -0.000005158672593097435,
                 1
               ],
-              "displacementMm": 0.045718068849336393,
+              "displacementMm": 0.050265099977474255,
               "angleDeg": 0,
               "fell": false
             },
@@ -3649,22 +3812,45 @@
               "id": "B6-01",
               "friction": 0.5,
               "planned": {
-                "x": 823,
-                "y": 53,
+                "x": 686,
+                "y": 522,
                 "z": 0
               },
               "actual": {
-                "x": 823.0057075023651,
-                "y": 52.994685888290405,
-                "z": -0.051288604736328125
+                "x": 686.0029172897339,
+                "y": 521.993371784687,
+                "z": -0.062396109104156494
               },
               "rotation": [
-                -0.000028895135983475484,
-                0.00001356322354695294,
-                0.00001516640440968331,
+                0.00002092207250825595,
+                -0.000002158804136342951,
+                -0.00005170095755602233,
                 1
               ],
-              "displacementMm": 0.05187809115907325,
+              "displacementMm": 0.06281495243144081,
+              "angleDeg": 0,
+              "fell": false
+            },
+            {
+              "id": "B19-01",
+              "friction": 0.4,
+              "planned": {
+                "x": 547,
+                "y": 146,
+                "z": 302
+              },
+              "actual": {
+                "x": 546.9936339855194,
+                "y": 146.01007091999054,
+                "z": 301.79423236846924
+              },
+              "rotation": [
+                0.00004852199708693661,
+                0.000003670748128570267,
+                -0.00003164753798046149,
+                1
+              ],
+              "displacementMm": 0.206112269784218,
               "angleDeg": 0,
               "fell": false
             },
@@ -3673,67 +3859,21 @@
               "friction": 0.33,
               "planned": {
                 "x": 9,
-                "y": 0,
+                "y": 24,
                 "z": 280
               },
               "actual": {
-                "x": 8.980661392211914,
-                "y": -0.00593721866607666,
-                "z": 279.83570528030396
+                "x": 8.98382043838501,
+                "y": 24.0012788772583,
+                "z": 279.82894015312195
               },
               "rotation": [
-                -0.000012555836292449385,
-                -2.3074683497270598e-8,
-                0.000006048065188224427,
+                0.0000024477358238073066,
+                0.0000011808840554294875,
+                8.944605838223652e-7,
                 1
               ],
-              "displacementMm": 0.16553545613152548,
-              "angleDeg": 0,
-              "fell": false
-            },
-            {
-              "id": "B12-01",
-              "friction": 0.42,
-              "planned": {
-                "x": 547,
-                "y": 254,
-                "z": 302
-              },
-              "actual": {
-                "x": 546.980095744133,
-                "y": 253.9848117828369,
-                "z": 301.83399200439453
-              },
-              "rotation": [
-                -0.00002320673957001418,
-                -0.0000014882693903928157,
-                0.000007027086667221738,
-                1
-              ],
-              "displacementMm": 0.16788542505875123,
-              "angleDeg": 0,
-              "fell": false
-            },
-            {
-              "id": "B8-01",
-              "friction": 0.27,
-              "planned": {
-                "x": 941,
-                "y": 694,
-                "z": 0
-              },
-              "actual": {
-                "x": 941.0034821033478,
-                "y": 693.9976677894592,
-                "z": -0.053067684173583984
-              },
-              "rotation": [
-                1.1787638953819624e-7,
-                5.226298753768788e-7,
-                1.3980907453969849e-7,
-                1
-              ],
-              "displacementMm": 0.05323291606964953,
+              "displacementMm": 0.17182806800705636,
               "angleDeg": 0,
               "fell": false
             }
@@ -3749,7 +3889,7 @@
             "contactNaturalFrequencyHz": 120
           },
           "steps": 360,
-          "milliseconds": 34.85449999999946
+          "milliseconds": 31.649459000000206
         },
         {
           "runId": "relay-20261004-3",
@@ -3759,22 +3899,22 @@
               "id": "B18-01",
               "friction": 0.57,
               "planned": {
-                "x": 0,
-                "y": 415,
+                "x": 652,
+                "y": 0,
                 "z": 0
               },
               "actual": {
-                "x": -0.013803482055664062,
-                "y": 414.99635994434357,
-                "z": -0.12244874238967896
+                "x": 651.9813487529755,
+                "y": -0.0031548738479614258,
+                "z": -0.170274019241333
               },
               "rotation": [
-                0.000001286678298129118,
-                -0.000002296960019521066,
-                -0.0000191328399523627,
+                -0.00003687444404931739,
+                0.000005263003913569264,
+                0.000014029724297870416,
                 1
               ],
-              "displacementMm": 0.12327806226112144,
+              "displacementMm": 0.17132152192052422,
               "angleDeg": 0,
               "fell": false
             },
@@ -3782,45 +3922,22 @@
               "id": "B11-01",
               "friction": 0.38,
               "planned": {
-                "x": 548,
-                "y": 415,
+                "x": 368,
+                "y": 15,
                 "z": 0
               },
               "actual": {
-                "x": 547.974969625473,
-                "y": 414.99808073043823,
-                "z": -0.1811842918395996
+                "x": 367.9789261817932,
+                "y": 14.99840259552002,
+                "z": -0.15992778539657593
               },
               "rotation": [
-                -0.0000014331799320643768,
-                0.0000028653801109612687,
-                -0.000058290097513236105,
+                -0.000011166381227667443,
+                0.000002961243808385916,
+                8.266080158136901e-7,
                 1
               ],
-              "displacementMm": 0.18291514659543284,
-              "angleDeg": 0,
-              "fell": false
-            },
-            {
-              "id": "B17-01",
-              "friction": 0.29,
-              "planned": {
-                "x": 832,
-                "y": 461,
-                "z": 0
-              },
-              "actual": {
-                "x": 831.9878253936768,
-                "y": 460.9989469051361,
-                "z": -0.08542299270629883
-              },
-              "rotation": [
-                3.142487159379925e-8,
-                0.0000016615547338005854,
-                -2.8316736688793753e-7,
-                1
-              ],
-              "displacementMm": 0.0862926284848171,
+              "displacementMm": 0.16131817646111246,
               "angleDeg": 0,
               "fell": false
             },
@@ -3828,91 +3945,22 @@
               "id": "B9-01",
               "friction": 0.27,
               "planned": {
-                "x": 146,
-                "y": 19,
+                "x": 368,
+                "y": 585,
                 "z": 0
               },
               "actual": {
-                "x": 145.98346573114395,
-                "y": 18.99070930480957,
-                "z": -0.12107968330383301
+                "x": 367.9831631183624,
+                "y": 584.9916477203369,
+                "z": -0.1344013214111328
               },
               "rotation": [
-                -0.000011737711247405969,
-                -5.027172846894246e-7,
-                -0.00001533253634988796,
+                0.000012210541171953082,
+                3.691928043281223e-7,
+                0.000002235633019154193,
                 1
               ],
-              "displacementMm": 0.12255606379401253,
-              "angleDeg": 0,
-              "fell": false
-            },
-            {
-              "id": "B2-01",
-              "friction": 0.28,
-              "planned": {
-                "x": 832,
-                "y": 269,
-                "z": 0
-              },
-              "actual": {
-                "x": 832.0031921863556,
-                "y": 268.99327421188354,
-                "z": -0.0441892147064209
-              },
-              "rotation": [
-                3.3464064586041786e-7,
-                1.1620794992950323e-7,
-                1.6454156082090776e-7,
-                1
-              ],
-              "displacementMm": 0.044811973577230824,
-              "angleDeg": 0,
-              "fell": false
-            },
-            {
-              "id": "B26-01",
-              "friction": 0.28,
-              "planned": {
-                "x": 548,
-                "y": 415,
-                "z": 146
-              },
-              "actual": {
-                "x": 548.0032913684845,
-                "y": 414.99947583675385,
-                "z": 145.77943968772888
-              },
-              "rotation": [
-                -0.0000024722596663195873,
-                -0.0000034764473184623057,
-                -0.000048756406613392755,
-                1
-              ],
-              "displacementMm": 0.2205854918228815,
-              "angleDeg": 0,
-              "fell": false
-            },
-            {
-              "id": "B27-01",
-              "friction": 0.57,
-              "planned": {
-                "x": 146,
-                "y": 1,
-                "z": 235
-              },
-              "actual": {
-                "x": 146.0256648659706,
-                "y": 0.9964578151702881,
-                "z": 234.85418391227722
-              },
-              "rotation": [
-                -0.000012023340786981862,
-                3.711783165272209e-7,
-                -0.00001618671194592025,
-                1
-              ],
-              "displacementMm": 0.1480998442181297,
+              "displacementMm": 0.1357090872267096,
               "angleDeg": 0,
               "fell": false
             },
@@ -3920,22 +3968,114 @@
               "id": "B28-01",
               "friction": 0.49,
               "planned": {
-                "x": 0,
-                "y": 238,
+                "x": 191,
+                "y": 15,
                 "z": 0
               },
               "actual": {
-                "x": -0.023553848266601562,
-                "y": 237.98351788520813,
-                "z": -0.02880859375
+                "x": 190.9860064983368,
+                "y": 15.00078570842743,
+                "z": -0.10563540458679199
               },
               "rotation": [
-                -0.000026228142814943567,
-                -0.00004684747545979917,
-                0.0000634973548585549,
+                -0.000009655389476392884,
+                -0.000001719693727864069,
+                0.000022018502932041883,
                 1
               ],
-              "displacementMm": 0.04069863572690136,
+              "displacementMm": 0.1065611286011291,
+              "angleDeg": 0,
+              "fell": false
+            },
+            {
+              "id": "B2-01",
+              "friction": 0.28,
+              "planned": {
+                "x": 189,
+                "y": 731,
+                "z": 0
+              },
+              "actual": {
+                "x": 188.99180102348328,
+                "y": 730.9980251789093,
+                "z": -0.053368330001831055
+              },
+              "rotation": [
+                -0.000001619588374524028,
+                -0.00001602893644303549,
+                0.00003152572753606364,
+                1
+              ],
+              "displacementMm": 0.0540305634011565,
+              "angleDeg": 0,
+              "fell": false
+            },
+            {
+              "id": "B17-01",
+              "friction": 0.29,
+              "planned": {
+                "x": 382,
+                "y": 61,
+                "z": 146
+              },
+              "actual": {
+                "x": 381.9744923710823,
+                "y": 60.98882305622101,
+                "z": 145.80964183807373
+              },
+              "rotation": [
+                -0.00001085912390408339,
+                0.0000074295749072916806,
+                0.00001667413926043082,
+                1
+              ],
+              "displacementMm": 0.19238449266297264,
+              "angleDeg": 0,
+              "fell": false
+            },
+            {
+              "id": "B26-01",
+              "friction": 0.28,
+              "planned": {
+                "x": 652,
+                "y": 72,
+                "z": 178
+              },
+              "actual": {
+                "x": 651.9819848537445,
+                "y": 71.99802076816559,
+                "z": 177.76314306259155
+              },
+              "rotation": [
+                0.000025182333047268912,
+                0.0000020682266494986834,
+                -0.00007455403101630509,
+                1
+              ],
+              "displacementMm": 0.2375493036229958,
+              "angleDeg": 0,
+              "fell": false
+            },
+            {
+              "id": "B27-01",
+              "friction": 0.57,
+              "planned": {
+                "x": 368,
+                "y": 585,
+                "z": 235
+              },
+              "actual": {
+                "x": 368.01484203338623,
+                "y": 585.0031249523163,
+                "z": 234.83984899520874
+              },
+              "rotation": [
+                0.000017487860532128252,
+                0.000001069634663508623,
+                0.0000022556316707778024,
+                1
+              ],
+              "displacementMm": 0.16086763384120234,
               "angleDeg": 0,
               "fell": false
             }
@@ -3951,16 +4091,16 @@
             "contactNaturalFrequencyHz": 120
           },
           "steps": 360,
-          "milliseconds": 46.35529999999926
+          "milliseconds": 18.83100000000013
         }
       ],
-      "milliseconds": 7481.1972,
-      "placed": 29,
-      "transfers": 8
+      "milliseconds": 8098.729083000001,
+      "placed": 30,
+      "transfers": 2
     },
     {
       "peakConcurrent": 4,
-      "elapsed": 160.63877932546407,
+      "elapsed": 138.4083986579382,
       "seed": 7919,
       "scenario": {
         "version": 1,
@@ -4652,8 +4792,8 @@
         }
       },
       "world": {
-        "runId": "relay-7919",
-        "revision": 32,
+        "runId": "relay-7919-2",
+        "revision": 26,
         "cursor": 2,
         "boxes": [
           {
@@ -4684,6 +4824,12 @@
             "owner": 0,
             "visited": [
               0
+            ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
             ],
             "status": "placed"
           },
@@ -4716,6 +4862,12 @@
             "visited": [
               1
             ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
+            ],
             "status": "placed"
           },
           {
@@ -4746,6 +4898,12 @@
             "owner": 2,
             "visited": [
               2
+            ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
             ],
             "status": "placed"
           },
@@ -4778,6 +4936,12 @@
             "visited": [
               3
             ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
+            ],
             "status": "placed"
           },
           {
@@ -4808,6 +4972,12 @@
             "owner": 0,
             "visited": [
               0
+            ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
             ],
             "status": "placed"
           },
@@ -4840,6 +5010,12 @@
             "visited": [
               1
             ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
+            ],
             "status": "placed"
           },
           {
@@ -4867,10 +5043,15 @@
               "strengthFactor": 0.93,
               "friction": 0.47
             },
-            "owner": 3,
+            "owner": 2,
             "visited": [
-              2,
-              3
+              2
+            ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
             ],
             "status": "placed"
           },
@@ -4903,6 +5084,12 @@
             "visited": [
               3
             ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
+            ],
             "status": "placed"
           },
           {
@@ -4933,6 +5120,12 @@
             "owner": 0,
             "visited": [
               0
+            ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
             ],
             "status": "placed"
           },
@@ -4965,6 +5158,12 @@
             "visited": [
               1
             ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
+            ],
             "status": "placed"
           },
           {
@@ -4996,6 +5195,12 @@
             "visited": [
               2
             ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
+            ],
             "status": "placed"
           },
           {
@@ -5026,6 +5231,12 @@
             "owner": 3,
             "visited": [
               3
+            ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
             ],
             "status": "placed"
           },
@@ -5059,6 +5270,12 @@
             "visited": [
               0
             ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
+            ],
             "status": "placed"
           },
           {
@@ -5086,10 +5303,15 @@
               "strengthFactor": 0.89,
               "friction": 0.5
             },
-            "owner": 2,
+            "owner": 1,
             "visited": [
-              1,
-              2
+              1
+            ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
             ],
             "status": "placed"
           },
@@ -5118,14 +5340,17 @@
               "strengthFactor": 0.89,
               "friction": 0.42
             },
-            "owner": 1,
+            "owner": 2,
             "visited": [
-              2,
-              3,
-              0,
-              1
+              2
             ],
-            "status": "queued"
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
+            ],
+            "status": "placed"
           },
           {
             "observation": {
@@ -5155,6 +5380,12 @@
             "owner": 3,
             "visited": [
               3
+            ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
             ],
             "status": "placed"
           },
@@ -5188,6 +5419,12 @@
               0,
               1
             ],
+            "forwardedAt": [
+              20,
+              -1,
+              -1,
+              -1
+            ],
             "status": "placed"
           },
           {
@@ -5218,6 +5455,12 @@
             "owner": 1,
             "visited": [
               1
+            ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
             ],
             "status": "placed"
           },
@@ -5250,6 +5493,12 @@
             "visited": [
               2
             ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
+            ],
             "status": "placed"
           },
           {
@@ -5280,6 +5529,12 @@
             "owner": 3,
             "visited": [
               3
+            ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
             ],
             "status": "placed"
           },
@@ -5312,6 +5567,12 @@
             "visited": [
               0
             ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
+            ],
             "status": "placed"
           },
           {
@@ -5342,6 +5603,12 @@
             "owner": 1,
             "visited": [
               1
+            ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
             ],
             "status": "placed"
           },
@@ -5374,6 +5641,12 @@
             "visited": [
               2
             ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
+            ],
             "status": "placed"
           },
           {
@@ -5405,6 +5678,12 @@
             "visited": [
               3
             ],
+            "forwardedAt": [
+              -1,
+              -1,
+              -1,
+              -1
+            ],
             "status": "placed"
           }
         ],
@@ -5416,8 +5695,8 @@
                 "id": "B1-01",
                 "typeId": "B1",
                 "position": {
-                  "x": 0,
-                  "y": 397,
+                  "x": 811,
+                  "y": 0,
                   "z": 0
                 },
                 "size": {
@@ -5438,35 +5717,11 @@
                 "friction": 0.5
               },
               {
-                "id": "B19-01",
-                "typeId": "B19",
-                "position": {
-                  "x": 389,
-                  "y": 521,
-                  "z": 0
-                },
-                "size": {
-                  "w": 366,
-                  "d": 479,
-                  "h": 200
-                },
-                "orientation": 90,
-                "weight": 5.46,
-                "supports": [],
-                "supportRatio": 1,
-                "loadAbove": 0,
-                "maxLoadKg": 40.18,
-                "maxLoadSource": "synthetic",
-                "material": "paper",
-                "strengthFactor": 0.65,
-                "friction": 0.39
-              },
-              {
                 "id": "B15-01",
                 "typeId": "B15",
                 "position": {
-                  "x": 0,
-                  "y": 89,
+                  "x": 805,
+                  "y": 603,
                   "z": 0
                 },
                 "size": {
@@ -5486,11 +5741,35 @@
                 "friction": 0.35
               },
               {
+                "id": "B19-01",
+                "typeId": "B19",
+                "position": {
+                  "x": 445,
+                  "y": 0,
+                  "z": 0
+                },
+                "size": {
+                  "w": 366,
+                  "d": 479,
+                  "h": 200
+                },
+                "orientation": 90,
+                "weight": 5.46,
+                "supports": [],
+                "supportRatio": 1,
+                "loadAbove": 0,
+                "maxLoadKg": 40.18,
+                "maxLoadSource": "synthetic",
+                "material": "paper",
+                "strengthFactor": 0.65,
+                "friction": 0.39
+              },
+              {
                 "id": "B24-01",
                 "typeId": "B24",
                 "position": {
-                  "x": 395,
-                  "y": 47,
+                  "x": 678,
+                  "y": 479,
                   "z": 0
                 },
                 "size": {
@@ -5513,8 +5792,8 @@
                 "id": "B11-01",
                 "typeId": "B11",
                 "position": {
-                  "x": 633,
-                  "y": 0,
+                  "x": 445,
+                  "y": 479,
                   "z": 0
                 },
                 "size": {
@@ -5534,19 +5813,17 @@
                 "friction": 0.38
               }
             ],
-            "version": 8
+            "version": 6
           },
           {
-            "queue": [
-              "B13-01"
-            ],
+            "queue": [],
             "placements": [
               {
                 "id": "B8-01",
                 "typeId": "B8",
                 "position": {
-                  "x": 0,
-                  "y": 374,
+                  "x": 672,
+                  "y": 0,
                   "z": 0
                 },
                 "size": {
@@ -5558,7 +5835,7 @@
                 "weight": 7.08,
                 "supports": [],
                 "supportRatio": 1,
-                "loadAbove": 0.6500000000000004,
+                "loadAbove": 0.65,
                 "maxLoadKg": 58.01,
                 "maxLoadSource": "synthetic",
                 "material": "paper",
@@ -5569,8 +5846,8 @@
                 "id": "B22-01",
                 "typeId": "B22",
                 "position": {
-                  "x": 528,
-                  "y": 374,
+                  "x": 223,
+                  "y": 122,
                   "z": 0
                 },
                 "size": {
@@ -5593,16 +5870,16 @@
                 "id": "B12-01",
                 "typeId": "B12",
                 "position": {
-                  "x": 312,
-                  "y": 101,
+                  "x": 223,
+                  "y": 626,
                   "z": 0
                 },
                 "size": {
                   "w": 665,
-                  "d": 273,
-                  "h": 175
+                  "d": 175,
+                  "h": 273
                 },
-                "orientation": "whd",
+                "orientation": 0,
                 "weight": 8.63,
                 "supports": [],
                 "supportRatio": 1,
@@ -5617,8 +5894,8 @@
                 "id": "B9-01",
                 "typeId": "B9",
                 "position": {
-                  "x": 35,
-                  "y": 24,
+                  "x": 888,
+                  "y": 626,
                   "z": 0
                 },
                 "size": {
@@ -5638,177 +5915,11 @@
                 "friction": 0.36
               },
               {
-                "id": "B2-01",
-                "typeId": "B2",
-                "position": {
-                  "x": 977,
-                  "y": 101,
-                  "z": 0
-                },
-                "size": {
-                  "w": 152,
-                  "d": 349,
-                  "h": 196
-                },
-                "orientation": 90,
-                "weight": 3.83,
-                "supports": [],
-                "supportRatio": 1,
-                "loadAbove": 0,
-                "maxLoadKg": 69.77,
-                "maxLoadSource": "synthetic",
-                "material": "wood",
-                "strengthFactor": 0.76,
-                "friction": 0.48
-              },
-              {
-                "id": "B7-01",
-                "typeId": "B7",
-                "position": {
-                  "x": 387,
-                  "y": 374,
-                  "z": 96
-                },
-                "size": {
-                  "w": 141,
-                  "d": 164,
-                  "h": 311
-                },
-                "orientation": 90,
-                "weight": 0.65,
-                "supports": [
-                  {
-                    "id": "B8-01",
-                    "rect": {
-                      "x": 387,
-                      "y": 374,
-                      "w": 141,
-                      "d": 164
-                    },
-                    "area": 23124,
-                    "share": 1,
-                    "forcePoint": {
-                      "x": 457.49999999999994,
-                      "y": 456.0000000000001
-                    }
-                  }
-                ],
-                "supportRatio": 1,
-                "loadAbove": 0,
-                "maxLoadKg": 11.54,
-                "maxLoadSource": "synthetic",
-                "material": "paper",
-                "strengthFactor": 0.93,
-                "friction": 0.34
-              }
-            ],
-            "version": 8
-          },
-          {
-            "queue": [],
-            "placements": [
-              {
-                "id": "B18-01",
-                "typeId": "B18",
-                "position": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
-                "size": {
-                  "w": 422,
-                  "d": 758,
-                  "h": 257
-                },
-                "orientation": 90,
-                "weight": 16.96,
-                "supports": [],
-                "supportRatio": 1,
-                "loadAbove": 0,
-                "maxLoadKg": 25.25,
-                "maxLoadSource": "synthetic",
-                "material": "plastic",
-                "strengthFactor": 0.75,
-                "friction": 0.36
-              },
-              {
-                "id": "B14-01",
-                "typeId": "B14",
-                "position": {
-                  "x": 422,
-                  "y": 3,
-                  "z": 0
-                },
-                "size": {
-                  "w": 232,
-                  "d": 755,
-                  "h": 187
-                },
-                "orientation": 90,
-                "weight": 4.92,
-                "supports": [],
-                "supportRatio": 1,
-                "loadAbove": 0,
-                "maxLoadKg": 31.74,
-                "maxLoadSource": "synthetic",
-                "material": "paper",
-                "strengthFactor": 0.63,
-                "friction": 0.58
-              },
-              {
-                "id": "B23-01",
-                "typeId": "B23",
-                "position": {
-                  "x": 0,
-                  "y": 758,
-                  "z": 0
-                },
-                "size": {
-                  "w": 270,
-                  "d": 237,
-                  "h": 205
-                },
-                "orientation": "dhw",
-                "weight": 6.14,
-                "supports": [],
-                "supportRatio": 1,
-                "loadAbove": 0,
-                "maxLoadKg": 100.97,
-                "maxLoadSource": "synthetic",
-                "material": "plastic",
-                "strengthFactor": 0.62,
-                "friction": 0.33
-              },
-              {
-                "id": "B6-01",
-                "typeId": "B6",
-                "position": {
-                  "x": 654,
-                  "y": 254,
-                  "z": 0
-                },
-                "size": {
-                  "w": 377,
-                  "d": 504,
-                  "h": 325
-                },
-                "orientation": 90,
-                "weight": 17.91,
-                "supports": [],
-                "supportRatio": 1,
-                "loadAbove": 0,
-                "maxLoadKg": 141.1,
-                "maxLoadSource": "synthetic",
-                "material": "wood",
-                "strengthFactor": 0.74,
-                "friction": 0.42
-              },
-              {
                 "id": "B20-01",
                 "typeId": "B20",
                 "position": {
-                  "x": 270,
-                  "y": 758,
+                  "x": 332,
+                  "y": 818,
                   "z": 0
                 },
                 "size": {
@@ -5826,6 +5937,70 @@
                 "material": "paper",
                 "strengthFactor": 0.89,
                 "friction": 0.5
+              },
+              {
+                "id": "B2-01",
+                "typeId": "B2",
+                "position": {
+                  "x": 27,
+                  "y": 122,
+                  "z": 0
+                },
+                "size": {
+                  "w": 196,
+                  "d": 152,
+                  "h": 349
+                },
+                "orientation": "hdw",
+                "weight": 3.83,
+                "supports": [],
+                "supportRatio": 1,
+                "loadAbove": 0,
+                "maxLoadKg": 69.77,
+                "maxLoadSource": "synthetic",
+                "material": "wood",
+                "strengthFactor": 0.76,
+                "friction": 0.48
+              },
+              {
+                "id": "B7-01",
+                "typeId": "B7",
+                "position": {
+                  "x": 672,
+                  "y": 462,
+                  "z": 96
+                },
+                "size": {
+                  "w": 141,
+                  "d": 164,
+                  "h": 311
+                },
+                "orientation": 90,
+                "weight": 0.65,
+                "supports": [
+                  {
+                    "id": "B8-01",
+                    "rect": {
+                      "x": 672,
+                      "y": 462,
+                      "w": 141,
+                      "d": 164
+                    },
+                    "area": 23124,
+                    "share": 1,
+                    "forcePoint": {
+                      "x": 742.5,
+                      "y": 544
+                    }
+                  }
+                ],
+                "supportRatio": 1,
+                "loadAbove": 0,
+                "maxLoadKg": 11.54,
+                "maxLoadSource": "synthetic",
+                "material": "paper",
+                "strengthFactor": 0.93,
+                "friction": 0.34
               }
             ],
             "version": 7
@@ -5834,34 +6009,176 @@
             "queue": [],
             "placements": [
               {
-                "id": "B3-01",
-                "typeId": "B3",
+                "id": "B13-01",
+                "typeId": "B13",
                 "position": {
-                  "x": 0,
+                  "x": 724,
                   "y": 0,
                   "z": 0
                 },
                 "size": {
-                  "w": 402,
-                  "d": 611,
-                  "h": 261
+                  "w": 476,
+                  "d": 690,
+                  "h": 279
                 },
                 "orientation": 90,
-                "weight": 5.07,
+                "weight": 18,
                 "supports": [],
                 "supportRatio": 1,
-                "loadAbove": 1.0099999999999998,
-                "maxLoadKg": 23.02,
+                "loadAbove": 0,
+                "maxLoadKg": 20.34,
                 "maxLoadSource": "synthetic",
                 "material": "paper",
-                "strengthFactor": 0.72,
-                "friction": 0.52
+                "strengthFactor": 0.89,
+                "friction": 0.42
               },
+              {
+                "id": "B16-01",
+                "typeId": "B16",
+                "position": {
+                  "x": 345,
+                  "y": 65,
+                  "z": 0
+                },
+                "size": {
+                  "w": 379,
+                  "d": 625,
+                  "h": 340
+                },
+                "orientation": "hwd",
+                "weight": 19.73,
+                "supports": [],
+                "supportRatio": 1,
+                "loadAbove": 17.91,
+                "maxLoadKg": 83.83,
+                "maxLoadSource": "synthetic",
+                "material": "wood",
+                "strengthFactor": 0.93,
+                "friction": 0.47
+              },
+              {
+                "id": "B14-01",
+                "typeId": "B14",
+                "position": {
+                  "x": 445,
+                  "y": 690,
+                  "z": 0
+                },
+                "size": {
+                  "w": 755,
+                  "d": 232,
+                  "h": 187
+                },
+                "orientation": 0,
+                "weight": 4.92,
+                "supports": [],
+                "supportRatio": 1,
+                "loadAbove": 0,
+                "maxLoadKg": 31.74,
+                "maxLoadSource": "synthetic",
+                "material": "paper",
+                "strengthFactor": 0.63,
+                "friction": 0.58
+              },
+              {
+                "id": "B18-01",
+                "typeId": "B18",
+                "position": {
+                  "x": 88,
+                  "y": 0,
+                  "z": 0
+                },
+                "size": {
+                  "w": 257,
+                  "d": 758,
+                  "h": 422
+                },
+                "orientation": "hwd",
+                "weight": 16.96,
+                "supports": [],
+                "supportRatio": 1,
+                "loadAbove": 0,
+                "maxLoadKg": 25.25,
+                "maxLoadSource": "synthetic",
+                "material": "plastic",
+                "strengthFactor": 0.75,
+                "friction": 0.36
+              },
+              {
+                "id": "B23-01",
+                "typeId": "B23",
+                "position": {
+                  "x": 175,
+                  "y": 758,
+                  "z": 0
+                },
+                "size": {
+                  "w": 270,
+                  "d": 205,
+                  "h": 237
+                },
+                "orientation": 90,
+                "weight": 6.14,
+                "supports": [],
+                "supportRatio": 1,
+                "loadAbove": 0,
+                "maxLoadKg": 100.97,
+                "maxLoadSource": "synthetic",
+                "material": "plastic",
+                "strengthFactor": 0.62,
+                "friction": 0.33
+              },
+              {
+                "id": "B6-01",
+                "typeId": "B6",
+                "position": {
+                  "x": 345,
+                  "y": 65,
+                  "z": 340
+                },
+                "size": {
+                  "w": 377,
+                  "d": 504,
+                  "h": 325
+                },
+                "orientation": 90,
+                "weight": 17.91,
+                "supports": [
+                  {
+                    "id": "B16-01",
+                    "rect": {
+                      "x": 345,
+                      "y": 65,
+                      "w": 377,
+                      "d": 504
+                    },
+                    "area": 190008,
+                    "share": 1,
+                    "forcePoint": {
+                      "x": 533.5,
+                      "y": 317
+                    }
+                  }
+                ],
+                "supportRatio": 1,
+                "loadAbove": 0,
+                "maxLoadKg": 141.1,
+                "maxLoadSource": "synthetic",
+                "material": "wood",
+                "strengthFactor": 0.74,
+                "friction": 0.42
+              }
+            ],
+            "version": 6
+          },
+          {
+            "queue": [],
+            "placements": [
               {
                 "id": "B5-01",
                 "typeId": "B5",
                 "position": {
-                  "x": 402,
+                  "x": 706,
                   "y": 0,
                   "z": 0
                 },
@@ -5882,67 +6199,19 @@
                 "friction": 0.32
               },
               {
-                "id": "B4-01",
-                "typeId": "B4",
+                "id": "B17-01",
+                "typeId": "B17",
                 "position": {
-                  "x": 896,
-                  "y": 180,
-                  "z": 0
-                },
-                "size": {
-                  "w": 205,
-                  "d": 371,
-                  "h": 195
-                },
-                "orientation": "dhw",
-                "weight": 7.77,
-                "supports": [],
-                "supportRatio": 1,
-                "loadAbove": 0,
-                "maxLoadKg": 78.11,
-                "maxLoadSource": "synthetic",
-                "material": "wood",
-                "strengthFactor": 0.9,
-                "friction": 0.69
-              },
-              {
-                "id": "B16-01",
-                "typeId": "B16",
-                "position": {
-                  "x": 476,
+                  "x": 706,
                   "y": 551,
                   "z": 0
                 },
                 "size": {
-                  "w": 625,
-                  "d": 340,
-                  "h": 379
-                },
-                "orientation": 0,
-                "weight": 19.73,
-                "supports": [],
-                "supportRatio": 1,
-                "loadAbove": 0,
-                "maxLoadKg": 83.83,
-                "maxLoadSource": "synthetic",
-                "material": "wood",
-                "strengthFactor": 0.93,
-                "friction": 0.47
-              },
-              {
-                "id": "B17-01",
-                "typeId": "B17",
-                "position": {
-                  "x": 17,
-                  "y": 611,
-                  "z": 0
-                },
-                "size": {
                   "w": 459,
-                  "d": 297,
-                  "h": 401
+                  "d": 401,
+                  "h": 297
                 },
-                "orientation": "dhw",
+                "orientation": 90,
                 "weight": 15.34,
                 "supports": [],
                 "supportRatio": 1,
@@ -5954,19 +6223,91 @@
                 "friction": 0.48
               },
               {
+                "id": "B3-01",
+                "typeId": "B3",
+                "position": {
+                  "x": 304,
+                  "y": 341,
+                  "z": 0
+                },
+                "size": {
+                  "w": 402,
+                  "d": 611,
+                  "h": 261
+                },
+                "orientation": 90,
+                "weight": 5.07,
+                "supports": [],
+                "supportRatio": 1,
+                "loadAbove": 0,
+                "maxLoadKg": 23.02,
+                "maxLoadSource": "synthetic",
+                "material": "paper",
+                "strengthFactor": 0.72,
+                "friction": 0.52
+              },
+              {
+                "id": "B4-01",
+                "typeId": "B4",
+                "position": {
+                  "x": 335,
+                  "y": 136,
+                  "z": 0
+                },
+                "size": {
+                  "w": 371,
+                  "d": 205,
+                  "h": 195
+                },
+                "orientation": "hdw",
+                "weight": 7.77,
+                "supports": [],
+                "supportRatio": 1,
+                "loadAbove": 0,
+                "maxLoadKg": 78.11,
+                "maxLoadSource": "synthetic",
+                "material": "wood",
+                "strengthFactor": 0.9,
+                "friction": 0.69
+              },
+              {
+                "id": "B21-01",
+                "typeId": "B21",
+                "position": {
+                  "x": 4,
+                  "y": 555,
+                  "z": 0
+                },
+                "size": {
+                  "w": 300,
+                  "d": 397,
+                  "h": 119
+                },
+                "orientation": 90,
+                "weight": 1.01,
+                "supports": [],
+                "supportRatio": 1,
+                "loadAbove": 0,
+                "maxLoadKg": 18.92,
+                "maxLoadSource": "synthetic",
+                "material": "paper",
+                "strengthFactor": 0.8,
+                "friction": 0.54
+              },
+              {
                 "id": "B10-01",
                 "typeId": "B10",
                 "position": {
-                  "x": 912,
-                  "y": 26,
+                  "x": 4,
+                  "y": 183,
                   "z": 0
                 },
                 "size": {
                   "w": 189,
-                  "d": 154,
-                  "h": 372
+                  "d": 372,
+                  "h": 154
                 },
-                "orientation": "whd",
+                "orientation": 0,
                 "weight": 1.69,
                 "supports": [],
                 "supportRatio": 1,
@@ -5976,114 +6317,86 @@
                 "material": "paper",
                 "strengthFactor": 0.76,
                 "friction": 0.58
-              },
-              {
-                "id": "B21-01",
-                "typeId": "B21",
-                "position": {
-                  "x": 102,
-                  "y": 214,
-                  "z": 261
-                },
-                "size": {
-                  "w": 300,
-                  "d": 397,
-                  "h": 119
-                },
-                "orientation": 90,
-                "weight": 1.01,
-                "supports": [
-                  {
-                    "id": "B3-01",
-                    "rect": {
-                      "x": 102,
-                      "y": 214,
-                      "w": 300,
-                      "d": 397
-                    },
-                    "area": 119100,
-                    "share": 1,
-                    "forcePoint": {
-                      "x": 252,
-                      "y": 412.5
-                    }
-                  }
-                ],
-                "supportRatio": 1,
-                "loadAbove": 0,
-                "maxLoadKg": 18.92,
-                "maxLoadSource": "synthetic",
-                "material": "paper",
-                "strengthFactor": 0.8,
-                "friction": 0.54
               }
             ],
-            "version": 9
+            "version": 6
           }
         ],
         "pads": [
           {
             "boxId": null,
-            "version": 4
+            "version": 3,
+            "departedAt": 113.34958639316693,
+            "readyAt": 119.34958639316693,
+            "arrived": true
           },
           {
             "boxId": null,
-            "version": 2
+            "version": 0,
+            "departedAt": 0,
+            "readyAt": 0,
+            "arrived": true
           },
           {
             "boxId": null,
-            "version": 4
+            "version": 0,
+            "departedAt": 0,
+            "readyAt": 0,
+            "arrived": true
           },
           {
             "boxId": null,
-            "version": 2
+            "version": 0,
+            "departedAt": 0,
+            "readyAt": 0,
+            "arrived": true
           }
         ],
         "records": [
           {
             "step": 1,
             "kind": "place",
-            "robot": 2,
-            "boxId": "B18-01",
-            "from": 2,
-            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
-            "position": {
-              "x": 0,
-              "y": 0,
-              "z": 0
-            },
-            "started": 0,
-            "finished": 10.006346175247439
-          },
-          {
-            "step": 2,
-            "kind": "place",
             "robot": 1,
             "boxId": "B8-01",
             "from": 1,
             "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
             "position": {
-              "x": 0,
-              "y": 374,
+              "x": 672,
+              "y": 0,
               "z": 0
             },
             "started": 0,
-            "finished": 10.189598805526467
+            "finished": 17.35788170991078
+          },
+          {
+            "step": 2,
+            "kind": "place",
+            "robot": 2,
+            "boxId": "B13-01",
+            "from": 2,
+            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
+            "position": {
+              "x": 724,
+              "y": 0,
+              "z": 0
+            },
+            "started": 0,
+            "finished": 18.61153530531159
           },
           {
             "step": 3,
             "kind": "place",
             "robot": 3,
-            "boxId": "B3-01",
+            "boxId": "B5-01",
             "from": 3,
             "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
             "position": {
-              "x": 0,
+              "x": 706,
               "y": 0,
               "z": 0
             },
             "started": 0,
-            "finished": 10.206070631005922
+            "finished": 18.82802503205356
           },
           {
             "step": 4,
@@ -6093,128 +6406,132 @@
             "from": 0,
             "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
             "position": {
-              "x": 0,
-              "y": 397,
-              "z": 0
-            },
-            "started": 0,
-            "finished": 12.925992929150658
-          },
-          {
-            "step": 5,
-            "kind": "place",
-            "robot": 2,
-            "boxId": "B14-01",
-            "from": 2,
-            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
-            "position": {
-              "x": 422,
-              "y": 3,
-              "z": 0
-            },
-            "started": 10.006346175247439,
-            "finished": 20.894122011156497
-          },
-          {
-            "step": 6,
-            "kind": "place",
-            "robot": 3,
-            "boxId": "B5-01",
-            "from": 3,
-            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
-            "position": {
-              "x": 402,
+              "x": 811,
               "y": 0,
               "z": 0
             },
-            "started": 10.206070631005922,
-            "finished": 22.370615766998974
+            "started": 0,
+            "finished": 22.122976066302204
           },
           {
-            "step": 7,
+            "step": 5,
             "kind": "place",
             "robot": 1,
             "boxId": "B22-01",
             "from": 1,
             "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
             "position": {
-              "x": 528,
-              "y": 374,
+              "x": 223,
+              "y": 122,
               "z": 0
             },
-            "started": 10.189598805526467,
-            "finished": 22.810074255175245
+            "started": 17.35788170991078,
+            "finished": 36.562858403021345
           },
           {
-            "step": 8,
+            "step": 6,
             "kind": "place",
-            "robot": 0,
-            "boxId": "B19-01",
-            "from": 0,
+            "robot": 3,
+            "boxId": "B17-01",
+            "from": 3,
             "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
             "position": {
-              "x": 389,
-              "y": 521,
+              "x": 706,
+              "y": 551,
               "z": 0
             },
-            "started": 12.925992929150658,
-            "finished": 24.816525273757975
+            "started": 18.82802503205356,
+            "finished": 38.78335200891371
           },
           {
-            "step": 9,
-            "kind": "send",
+            "step": 7,
+            "kind": "place",
             "robot": 2,
             "boxId": "B16-01",
             "from": 2,
-            "to": 3,
-            "reason": "B16-01를 지금 놓으면 B13의 검토 위치가 막힘 · 옆 전달대에 보류",
-            "started": 20.894122011156497,
-            "finished": 35.51388937655452
-          },
-          {
-            "step": 10,
-            "kind": "place",
-            "robot": 1,
-            "boxId": "B12-01",
-            "from": 1,
             "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
             "position": {
-              "x": 312,
-              "y": 101,
+              "x": 345,
+              "y": 65,
               "z": 0
             },
-            "started": 22.810074255175245,
-            "finished": 37.3605341214936
+            "started": 18.61153530531159,
+            "finished": 40.98242282225508
           },
           {
-            "step": 11,
+            "step": 8,
             "kind": "place",
             "robot": 0,
             "boxId": "B15-01",
             "from": 0,
             "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
             "position": {
-              "x": 0,
-              "y": 89,
+              "x": 805,
+              "y": 603,
               "z": 0
             },
-            "started": 24.816525273757975,
-            "finished": 37.559320511426044
+            "started": 22.122976066302204,
+            "finished": 45.210969909922895
+          },
+          {
+            "step": 9,
+            "kind": "place",
+            "robot": 1,
+            "boxId": "B12-01",
+            "from": 1,
+            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
+            "position": {
+              "x": 223,
+              "y": 626,
+              "z": 0
+            },
+            "started": 36.562858403021345,
+            "finished": 55.16027458311703
+          },
+          {
+            "step": 10,
+            "kind": "place",
+            "robot": 3,
+            "boxId": "B3-01",
+            "from": 3,
+            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
+            "position": {
+              "x": 304,
+              "y": 341,
+              "z": 0
+            },
+            "started": 38.78335200891371,
+            "finished": 58.0982365101922
+          },
+          {
+            "step": 11,
+            "kind": "place",
+            "robot": 2,
+            "boxId": "B14-01",
+            "from": 2,
+            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
+            "position": {
+              "x": 445,
+              "y": 690,
+              "z": 0
+            },
+            "started": 40.98242282225508,
+            "finished": 59.33407369713949
           },
           {
             "step": 12,
             "kind": "place",
-            "robot": 3,
-            "boxId": "B4-01",
-            "from": 3,
+            "robot": 0,
+            "boxId": "B19-01",
+            "from": 0,
             "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
             "position": {
-              "x": 896,
-              "y": 180,
+              "x": 445,
+              "y": 0,
               "z": 0
             },
-            "started": 22.370615766998974,
-            "finished": 38.44521303356168
+            "started": 45.210969909922895,
+            "finished": 62.868954025118
           },
           {
             "step": 13,
@@ -6224,114 +6541,117 @@
             "from": 1,
             "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
             "position": {
-              "x": 35,
-              "y": 24,
+              "x": 888,
+              "y": 626,
               "z": 0
             },
-            "started": 37.3605341214936,
-            "finished": 48.36316117601825
+            "started": 55.16027458311703,
+            "finished": 74.71669148584746
           },
           {
             "step": 14,
+            "kind": "place",
+            "robot": 3,
+            "boxId": "B4-01",
+            "from": 3,
+            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
+            "position": {
+              "x": 335,
+              "y": 136,
+              "z": 0
+            },
+            "started": 58.0982365101922,
+            "finished": 79.39201502252762
+          },
+          {
+            "step": 15,
+            "kind": "place",
+            "robot": 2,
+            "boxId": "B18-01",
+            "from": 2,
+            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
+            "position": {
+              "x": 88,
+              "y": 0,
+              "z": 0
+            },
+            "started": 59.33407369713949,
+            "finished": 81.19343377734334
+          },
+          {
+            "step": 16,
             "kind": "place",
             "robot": 0,
             "boxId": "B24-01",
             "from": 0,
             "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
             "position": {
-              "x": 395,
-              "y": 47,
+              "x": 678,
+              "y": 479,
               "z": 0
             },
-            "started": 37.559320511426044,
-            "finished": 48.7592211959351
+            "started": 62.868954025118,
+            "finished": 83.0471526841167
           },
           {
-            "step": 15,
+            "step": 17,
+            "kind": "place",
+            "robot": 1,
+            "boxId": "B20-01",
+            "from": 1,
+            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
+            "position": {
+              "x": 332,
+              "y": 818,
+              "z": 0
+            },
+            "started": 74.71669148584746,
+            "finished": 94.81265391220532
+          },
+          {
+            "step": 18,
+            "kind": "place",
+            "robot": 3,
+            "boxId": "B21-01",
+            "from": 3,
+            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
+            "position": {
+              "x": 4,
+              "y": 555,
+              "z": 0
+            },
+            "started": 79.39201502252762,
+            "finished": 98.27558092172964
+          },
+          {
+            "step": 19,
             "kind": "place",
             "robot": 2,
             "boxId": "B23-01",
             "from": 2,
             "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
             "position": {
-              "x": 0,
+              "x": 175,
               "y": 758,
               "z": 0
             },
-            "started": 35.51388937655452,
-            "finished": 48.92287924211573
+            "started": 81.19343377734334,
+            "finished": 101.05494745394692
           },
           {
-            "step": 16,
-            "kind": "receive-place",
-            "robot": 3,
-            "boxId": "B16-01",
-            "from": 2,
-            "to": 3,
-            "reason": "받는 팔 판단: 현재 지지·하중·잔량 조건을 만족하므로 전달대에서 팔레트로 바로 적재",
-            "position": {
-              "x": 476,
-              "y": 551,
-              "z": 0
-            },
-            "started": 38.44521303356168,
-            "finished": 54.81840323589942
-          },
-          {
-            "step": 17,
+            "step": 20,
             "kind": "place",
             "robot": 0,
             "boxId": "B11-01",
             "from": 0,
             "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
             "position": {
-              "x": 633,
-              "y": 0,
+              "x": 445,
+              "y": 479,
               "z": 0
             },
-            "started": 48.7592211959351,
-            "finished": 60.885430638503344
-          },
-          {
-            "step": 18,
-            "kind": "place",
-            "robot": 1,
-            "boxId": "B2-01",
-            "from": 1,
-            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
-            "position": {
-              "x": 977,
-              "y": 101,
-              "z": 0
-            },
-            "started": 48.36316117601825,
-            "finished": 61.89523260809959
-          },
-          {
-            "step": 19,
-            "kind": "place",
-            "robot": 3,
-            "boxId": "B17-01",
-            "from": 3,
-            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
-            "position": {
-              "x": 17,
-              "y": 611,
-              "z": 0
-            },
-            "started": 54.81840323589942,
-            "finished": 69.17280671406121
-          },
-          {
-            "step": 20,
-            "kind": "send",
-            "robot": 2,
-            "boxId": "B13-01",
-            "from": 2,
-            "to": 3,
-            "reason": "B13-01를 지금 놓으면 B6의 검토 위치가 막힘 · 옆 전달대에 보류",
-            "started": 54.81840323589942,
-            "finished": 69.56179035609452
+            "started": 83.0471526841167,
+            "finished": 101.81138705440749
           },
           {
             "step": 21,
@@ -6340,155 +6660,73 @@
             "boxId": "B7-01",
             "from": 0,
             "to": 1,
-            "reason": "자기 팔레트의 적재/접근 후보가 없어 옆 전달대에 보류",
-            "started": 60.885430638503344,
-            "finished": 75.77548812784723
+            "reason": "자기 팔레트에 후보 없음 · 다른 구역의 적재 가능성을 확인하고 옆 컨베이어로 순환",
+            "started": 101.81138705440749,
+            "finished": 113.34958639316693
           },
           {
             "step": 22,
-            "kind": "send",
+            "kind": "place",
             "robot": 1,
-            "boxId": "B20-01",
+            "boxId": "B2-01",
             "from": 1,
-            "to": 2,
-            "reason": "자기 팔레트의 적재/접근 후보가 없어 옆 전달대에 보류",
-            "started": 61.89523260809959,
-            "finished": 77.17054624386604
+            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
+            "position": {
+              "x": 27,
+              "y": 122,
+              "z": 0
+            },
+            "started": 94.81265391220532,
+            "finished": 114.5787002150079
           },
           {
             "step": 23,
-            "kind": "place",
-            "robot": 2,
-            "boxId": "B6-01",
-            "from": 2,
-            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
-            "position": {
-              "x": 654,
-              "y": 254,
-              "z": 0
-            },
-            "started": 69.56179035609452,
-            "finished": 82.13917704357635
-          },
-          {
-            "step": 24,
             "kind": "place",
             "robot": 3,
             "boxId": "B10-01",
             "from": 3,
             "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
             "position": {
-              "x": 912,
-              "y": 26,
+              "x": 4,
+              "y": 183,
               "z": 0
             },
-            "started": 69.17280671406121,
-            "finished": 85.3629258953051
+            "started": 98.27558092172964,
+            "finished": 115.2510433849146
           },
           {
-            "step": 25,
+            "step": 24,
+            "kind": "place",
+            "robot": 2,
+            "boxId": "B6-01",
+            "from": 2,
+            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
+            "position": {
+              "x": 345,
+              "y": 65,
+              "z": 340
+            },
+            "started": 101.05494745394692,
+            "finished": 118.75287692277948
+          },
+          {
+            "step": 26,
             "kind": "receive-place",
             "robot": 1,
             "boxId": "B7-01",
             "from": 0,
             "to": 1,
-            "reason": "받는 팔 판단: 현재 지지·하중·잔량 조건을 만족하므로 전달대에서 팔레트로 바로 적재",
+            "reason": "받는 팔 판단: 현재 지지·하중·잔량 조건을 만족하므로 컨베이어에서 팔레트로 바로 적재",
             "position": {
-              "x": 387,
-              "y": 374,
+              "x": 672,
+              "y": 462,
               "z": 96
             },
-            "started": 77.17054624386604,
-            "finished": 94.33331474691819
-          },
-          {
-            "step": 26,
-            "kind": "receive-queue",
-            "robot": 3,
-            "boxId": "B13-01",
-            "from": 2,
-            "to": 3,
-            "reason": "받는 팔 판단: 지금 적재하면 후속 배치를 막거나 적재/경로 후보가 없어 자기 대기 재고에 보관",
-            "started": 85.3629258953051,
-            "finished": 96.9425350497031
-          },
-          {
-            "step": 27,
-            "kind": "receive-place",
-            "robot": 2,
-            "boxId": "B20-01",
-            "from": 1,
-            "to": 2,
-            "reason": "받는 팔 판단: 현재 지지·하중·잔량 조건을 만족하므로 전달대에서 팔레트로 바로 적재",
-            "position": {
-              "x": 270,
-              "y": 758,
-              "z": 0
-            },
-            "started": 82.13917704357635,
-            "finished": 98.39921052801655
-          },
-          {
-            "step": 28,
-            "kind": "place",
-            "robot": 3,
-            "boxId": "B21-01",
-            "from": 3,
-            "reason": "자기 팔레트의 지지·하중·회전·잔량 조건으로 선택",
-            "position": {
-              "x": 102,
-              "y": 214,
-              "z": 261
-            },
-            "started": 96.9425350497031,
-            "finished": 107.6019070967574
-          },
-          {
-            "step": 29,
-            "kind": "send",
-            "robot": 3,
-            "boxId": "B13-01",
-            "from": 3,
-            "to": 0,
-            "reason": "자기 팔레트의 적재/접근 후보가 없어 옆 전달대에 보류",
-            "started": 107.6019070967574,
-            "finished": 122.50617887910863
-          },
-          {
-            "step": 30,
-            "kind": "receive-queue",
-            "robot": 0,
-            "boxId": "B13-01",
-            "from": 3,
-            "to": 0,
-            "reason": "받는 팔 판단: 지금 적재하면 후속 배치를 막거나 적재/경로 후보가 없어 자기 대기 재고에 보관",
-            "started": 122.50617887910863,
-            "finished": 134.12034321111074
-          },
-          {
-            "step": 31,
-            "kind": "send",
-            "robot": 0,
-            "boxId": "B13-01",
-            "from": 0,
-            "to": 1,
-            "reason": "자기 팔레트의 적재/접근 후보가 없어 옆 전달대에 보류",
-            "started": 134.12034321111074,
-            "finished": 149.02461499346197
-          },
-          {
-            "step": 32,
-            "kind": "receive-queue",
-            "robot": 1,
-            "boxId": "B13-01",
-            "from": 0,
-            "to": 1,
-            "reason": "받는 팔 판단: 지금 적재하면 후속 배치를 막거나 적재/경로 후보가 없어 자기 대기 재고에 보관",
-            "started": 149.02461499346197,
-            "finished": 160.63877932546407
+            "started": 119.34958639316693,
+            "finished": 138.4083986579382
           }
         ],
-        "time": 160.63877932546407
+        "time": 138.4083986579382
       },
       "physics": [
         {
@@ -6499,45 +6737,22 @@
               "id": "B1-01",
               "friction": 0.5,
               "planned": {
-                "x": 0,
-                "y": 397,
+                "x": 811,
+                "y": 0,
                 "z": 0
               },
               "actual": {
-                "x": -0.015044927597045898,
-                "y": 396.99786162376404,
-                "z": -0.09339380264282227
+                "x": 810.9854214191437,
+                "y": -0.0008716583251953125,
+                "z": -0.08796977996826172
               },
               "rotation": [
-                0.0000015191175180007122,
-                6.178494800224144e-7,
-                -0.000002043702352239052,
+                -0.00001009288644127082,
+                -4.3362405222069356e-7,
+                -0.000012012655133730732,
                 1
               ],
-              "displacementMm": 0.09462201050185584,
-              "angleDeg": 0,
-              "fell": false
-            },
-            {
-              "id": "B19-01",
-              "friction": 0.39,
-              "planned": {
-                "x": 389,
-                "y": 521,
-                "z": 0
-              },
-              "actual": {
-                "x": 388.98471426963806,
-                "y": 520.9978680610657,
-                "z": -0.09456872940063477
-              },
-              "rotation": [
-                0.00001750767114572227,
-                -0.000005808523383166175,
-                -0.000015565861758659594,
-                1
-              ],
-              "displacementMm": 0.09581984813580152,
+              "displacementMm": 0.08917385825276719,
               "angleDeg": 0,
               "fell": false
             },
@@ -6545,22 +6760,45 @@
               "id": "B15-01",
               "friction": 0.35,
               "planned": {
-                "x": 0,
-                "y": 89,
+                "x": 805,
+                "y": 603,
                 "z": 0
               },
               "actual": {
-                "x": -0.014785528182983398,
-                "y": 88.99010634422302,
-                "z": -0.07920551300048828
+                "x": 804.9883806705475,
+                "y": 602.9911479949951,
+                "z": -0.0777750015258789
               },
               "rotation": [
-                2.801230607474281e-7,
-                -3.254461660162633e-7,
-                -3.506586097046238e-7,
+                0.00001693023841653485,
+                0.000006827117886132328,
+                -0.000013616962860396598,
                 1
               ],
-              "displacementMm": 0.08117887384014166,
+              "displacementMm": 0.07913480695549216,
+              "angleDeg": 0,
+              "fell": false
+            },
+            {
+              "id": "B19-01",
+              "friction": 0.39,
+              "planned": {
+                "x": 445,
+                "y": 0,
+                "z": 0
+              },
+              "actual": {
+                "x": 444.9843080788851,
+                "y": -0.0022788047790527344,
+                "z": -0.10038018226623535
+              },
+              "rotation": [
+                -0.000003197940486643347,
+                -0.0000025201550215570023,
+                0.0000011376886277503218,
+                1
+              ],
+              "displacementMm": 0.10162485095339911,
               "angleDeg": 0,
               "fell": false
             },
@@ -6568,22 +6806,22 @@
               "id": "B24-01",
               "friction": 0.34,
               "planned": {
-                "x": 395,
-                "y": 47,
+                "x": 678,
+                "y": 479,
                 "z": 0
               },
               "actual": {
-                "x": 395.01508378982544,
-                "y": 47.001365303993225,
-                "z": -0.060469865798950195
+                "x": 678.001173377037,
+                "y": 479.0004675388336,
+                "z": -0.06580448150634766
               },
               "rotation": [
-                0.000002574036216174136,
-                0.0000051301340135978535,
-                0.0000070021956162236165,
+                -0.000007568841738248011,
+                6.542301633771785e-8,
+                0.00003282009856775403,
                 1
               ],
-              "displacementMm": 0.06233770480403488,
+              "displacementMm": 0.06581660271201532,
               "angleDeg": 0,
               "fell": false
             },
@@ -6591,22 +6829,22 @@
               "id": "B11-01",
               "friction": 0.38,
               "planned": {
-                "x": 633,
-                "y": 0,
+                "x": 445,
+                "y": 479,
                 "z": 0
               },
               "actual": {
-                "x": 632.9895734190941,
-                "y": 0.001995682716369629,
-                "z": -0.09005212783813477
+                "x": 444.9910848736763,
+                "y": 479.000492811203,
+                "z": -0.09033524990081787
               },
               "rotation": [
-                -0.000007028898835415021,
-                0.00000597675079916371,
-                -0.000002662745146153611,
+                -2.9704011694775545e-8,
+                -1.0123528682015603e-9,
+                -2.7383580913920014e-7,
                 1
               ],
-              "displacementMm": 0.09067569722405094,
+              "displacementMm": 0.09077543563592824,
               "angleDeg": 0,
               "fell": false
             }
@@ -6622,7 +6860,7 @@
             "contactNaturalFrequencyHz": 120
           },
           "steps": 360,
-          "milliseconds": 14.39339999999902
+          "milliseconds": 8.301292000000103
         },
         {
           "runId": "relay-7919-1",
@@ -6632,22 +6870,22 @@
               "id": "B8-01",
               "friction": 0.53,
               "planned": {
-                "x": 0,
-                "y": 374,
+                "x": 672,
+                "y": 0,
                 "z": 0
               },
               "actual": {
-                "x": -0.0019326210021972656,
-                "y": 373.99896335601807,
-                "z": -0.11571827530860901
+                "x": 671.9920084476471,
+                "y": -0.003567814826965332,
+                "z": -0.11171358823776245
               },
               "rotation": [
-                -0.000004137536507187178,
-                0.000004816302407562034,
-                0.00003198326157871634,
+                -0.00002293992838531267,
+                -7.246951554407133e-7,
+                -0.000009779339961824007,
                 1
               ],
-              "displacementMm": 0.11573905518485296,
+              "displacementMm": 0.11205587895601497,
               "angleDeg": 0,
               "fell": false
             },
@@ -6655,22 +6893,22 @@
               "id": "B22-01",
               "friction": 0.56,
               "planned": {
-                "x": 528,
-                "y": 374,
+                "x": 223,
+                "y": 122,
                 "z": 0
               },
               "actual": {
-                "x": 527.9848937988281,
-                "y": 373.99436938762665,
-                "z": -0.08808648586273193
+                "x": 222.98582541942596,
+                "y": 121.9934116601944,
+                "z": -0.07574832439422607
               },
               "rotation": [
-                -0.000003158914751111297,
-                -0.000005040853920945665,
-                -0.0000021169694264244754,
+                0.000013092521840007976,
+                0.000005560680165217491,
+                -0.00002273530662932899,
                 1
               ],
-              "displacementMm": 0.08954959576228903,
+              "displacementMm": 0.07734425385493628,
               "angleDeg": 0,
               "fell": false
             },
@@ -6678,22 +6916,22 @@
               "id": "B12-01",
               "friction": 0.36,
               "planned": {
-                "x": 312,
-                "y": 101,
+                "x": 223,
+                "y": 626,
                 "z": 0
               },
               "actual": {
-                "x": 311.9883443415165,
-                "y": 100.98981952667236,
-                "z": -0.10198503732681274
+                "x": 222.9854966700077,
+                "y": 625.990292429924,
+                "z": -0.08287930488586426
               },
               "rotation": [
-                2.4808221610328474e-7,
-                3.2965193241807356e-8,
-                -2.1099940283875185e-7,
+                0.00003229025242035277,
+                -0.000002872133791242959,
+                -0.00001183333370136097,
                 1
               ],
-              "displacementMm": 0.10315252905484296,
+              "displacementMm": 0.08469688705029046,
               "angleDeg": 0,
               "fell": false
             },
@@ -6701,178 +6939,22 @@
               "id": "B9-01",
               "friction": 0.36,
               "planned": {
-                "x": 35,
-                "y": 24,
+                "x": 888,
+                "y": 626,
                 "z": 0
               },
               "actual": {
-                "x": 34.98540425300598,
-                "y": 23.996752500534058,
-                "z": -0.08823508024215698
+                "x": 887.9861643314362,
+                "y": 625.9963631629944,
+                "z": -0.08713239431381226
               },
               "rotation": [
-                7.713410354881489e-8,
-                -2.4666876541346028e-8,
-                -2.5701052663862356e-7,
+                -0.0000026387399429950165,
+                0.0000027618627882475266,
+                -0.000011350371096341405,
                 1
               ],
-              "displacementMm": 0.08949308056176511,
-              "angleDeg": 0,
-              "fell": false
-            },
-            {
-              "id": "B2-01",
-              "friction": 0.48,
-              "planned": {
-                "x": 977,
-                "y": 101,
-                "z": 0
-              },
-              "actual": {
-                "x": 976.9979228973389,
-                "y": 101.00013363361359,
-                "z": -0.07570046186447144
-              },
-              "rotation": [
-                -1.8591729045169814e-8,
-                2.9631859632672786e-8,
-                -6.736583912925198e-8,
-                1
-              ],
-              "displacementMm": 0.0757290706393645,
-              "angleDeg": 0,
-              "fell": false
-            },
-            {
-              "id": "B7-01",
-              "friction": 0.34,
-              "planned": {
-                "x": 387,
-                "y": 374,
-                "z": 96
-              },
-              "actual": {
-                "x": 386.9336767196655,
-                "y": 374.00347220897675,
-                "z": 95.88425827026367
-              },
-              "rotation": [
-                -0.000006682768344035139,
-                0.000002054850256172358,
-                0.00002938102261396125,
-                1
-              ],
-              "displacementMm": 0.13344280329736954,
-              "angleDeg": 0,
-              "fell": false
-            }
-          ],
-          "settings": {
-            "seconds": 3,
-            "dt": 0.008333333333333333,
-            "friction": 0.6,
-            "moveToleranceMm": 5,
-            "angleToleranceDeg": 3,
-            "materialFriction": true,
-            "solverIterations": 12,
-            "contactNaturalFrequencyHz": 120
-          },
-          "steps": 360,
-          "milliseconds": 17.881599999998798
-        },
-        {
-          "runId": "relay-7919-2",
-          "status": "stable",
-          "poses": [
-            {
-              "id": "B18-01",
-              "friction": 0.36,
-              "planned": {
-                "x": 0,
-                "y": 0,
-                "z": 0
-              },
-              "actual": {
-                "x": -0.014899730682373047,
-                "y": -0.0007816553115844727,
-                "z": -0.09638106822967529
-              },
-              "rotation": [
-                -0.000008587177035224158,
-                2.3240343693942123e-7,
-                -0.0000011588306279008975,
-                1
-              ],
-              "displacementMm": 0.09752908936582305,
-              "angleDeg": 0,
-              "fell": false
-            },
-            {
-              "id": "B14-01",
-              "friction": 0.58,
-              "planned": {
-                "x": 422,
-                "y": 3,
-                "z": 0
-              },
-              "actual": {
-                "x": 421.98739090561867,
-                "y": 2.997671663761139,
-                "z": -0.09230947494506836
-              },
-              "rotation": [
-                -0.000007576037205581088,
-                0.0000030896135285729542,
-                -1.0846095932492972e-7,
-                1
-              ],
-              "displacementMm": 0.09319575942816682,
-              "angleDeg": 0,
-              "fell": false
-            },
-            {
-              "id": "B23-01",
-              "friction": 0.33,
-              "planned": {
-                "x": 0,
-                "y": 758,
-                "z": 0
-              },
-              "actual": {
-                "x": -0.015292167663574219,
-                "y": 757.990592956543,
-                "z": -0.08709073066711426
-              },
-              "rotation": [
-                0.00002330888128199149,
-                0.000016790494555607438,
-                -1.3771936835382803e-7,
-                1
-              ],
-              "displacementMm": 0.08892209076818412,
-              "angleDeg": 0,
-              "fell": false
-            },
-            {
-              "id": "B6-01",
-              "friction": 0.42,
-              "planned": {
-                "x": 654,
-                "y": 254,
-                "z": 0
-              },
-              "actual": {
-                "x": 653.9867004156113,
-                "y": 253.99561631679535,
-                "z": -0.08281171321868896
-              },
-              "rotation": [
-                -0.000001572374230818241,
-                -0.0000012380692169244867,
-                -1.144584782508673e-8,
-                1
-              ],
-              "displacementMm": 0.08398735303345468,
+              "displacementMm": 0.08829896062169464,
               "angleDeg": 0,
               "fell": false
             },
@@ -6880,22 +6962,68 @@
               "id": "B20-01",
               "friction": 0.5,
               "planned": {
-                "x": 270,
-                "y": 758,
+                "x": 332,
+                "y": 818,
                 "z": 0
               },
               "actual": {
-                "x": 269.98560813069344,
-                "y": 757.993569612503,
-                "z": -0.0810244083404541
+                "x": 331.9852718412876,
+                "y": 817.9767336845398,
+                "z": -0.07688188552856445
               },
               "rotation": [
-                0.000013442620002024341,
-                -0.0000010048116791949724,
-                2.1905562164192816e-7,
+                0.0000071207573455467355,
+                -7.382308240266866e-7,
+                -8.353205203093239e-7,
                 1
               ],
-              "displacementMm": 0.08254350690647197,
+              "displacementMm": 0.0816643399323005,
+              "angleDeg": 0,
+              "fell": false
+            },
+            {
+              "id": "B2-01",
+              "friction": 0.48,
+              "planned": {
+                "x": 27,
+                "y": 122,
+                "z": 0
+              },
+              "actual": {
+                "x": 26.998873472213745,
+                "y": 121.98964262008667,
+                "z": -0.04821670055389404
+              },
+              "rotation": [
+                0.000022228819943848066,
+                -0.00003694040424306877,
+                0.000012130552931921557,
+                1
+              ],
+              "displacementMm": 0.04932944957959843,
+              "angleDeg": 0,
+              "fell": false
+            },
+            {
+              "id": "B7-01",
+              "friction": 0.34,
+              "planned": {
+                "x": 672,
+                "y": 462,
+                "z": 96
+              },
+              "actual": {
+                "x": 672.0233036279678,
+                "y": 461.96872594952583,
+                "z": 95.89212608337402
+              },
+              "rotation": [
+                -0.00002040800427494105,
+                -0.000005257956672721775,
+                -0.000006257515906327171,
+                1
+              ],
+              "displacementMm": 0.1147079212511155,
               "angleDeg": 0,
               "fell": false
             }
@@ -6911,78 +7039,32 @@
             "contactNaturalFrequencyHz": 120
           },
           "steps": 360,
-          "milliseconds": 16.06710000000021
+          "milliseconds": 11.833042000000205
         },
         {
-          "runId": "relay-7919-3",
+          "runId": "relay-7919-2",
           "status": "stable",
           "poses": [
             {
-              "id": "B3-01",
-              "friction": 0.52,
+              "id": "B13-01",
+              "friction": 0.42,
               "planned": {
-                "x": 0,
+                "x": 724,
                 "y": 0,
                 "z": 0
               },
               "actual": {
-                "x": -0.0154266357421875,
-                "y": -0.010430097579956055,
-                "z": -0.09484219551086426
+                "x": 723.9824647903442,
+                "y": -0.0020575523376464844,
+                "z": -0.1020212173461914
               },
               "rotation": [
-                -0.000032274223485728726,
-                0.0000028342481073195813,
-                -2.918004895491322e-7,
+                -0.0000021892308268434135,
+                0.000002340804257983109,
+                -0.000011315510164422449,
                 1
               ],
-              "displacementMm": 0.09665303965820499,
-              "angleDeg": 0,
-              "fell": false
-            },
-            {
-              "id": "B5-01",
-              "friction": 0.32,
-              "planned": {
-                "x": 402,
-                "y": 0,
-                "z": 0
-              },
-              "actual": {
-                "x": 401.98468032479286,
-                "y": -0.005439400672912598,
-                "z": -0.0876915454864502
-              },
-              "rotation": [
-                -0.000012533076187537517,
-                0.000005559137662203284,
-                -0.0000036470851227932144,
-                1
-              ],
-              "displacementMm": 0.08918568650817713,
-              "angleDeg": 0,
-              "fell": false
-            },
-            {
-              "id": "B4-01",
-              "friction": 0.69,
-              "planned": {
-                "x": 896,
-                "y": 180,
-                "z": 0
-              },
-              "actual": {
-                "x": 895.9880447387695,
-                "y": 179.99465358257294,
-                "z": -0.08137881755828857
-              },
-              "rotation": [
-                -0.000028016211217618547,
-                0.000013412031876214314,
-                -0.000004460042873688508,
-                1
-              ],
-              "displacementMm": 0.08242587213720198,
+              "displacementMm": 0.1035376544455808,
               "angleDeg": 0,
               "fell": false
             },
@@ -6990,91 +7072,114 @@
               "id": "B16-01",
               "friction": 0.47,
               "planned": {
-                "x": 476,
-                "y": 551,
+                "x": 345,
+                "y": 65,
                 "z": 0
               },
               "actual": {
-                "x": 475.9850710630417,
-                "y": 550.9862768650055,
-                "z": -0.07782471179962158
+                "x": 344.9817101955414,
+                "y": 64.99689072370529,
+                "z": -0.1436007022857666
               },
               "rotation": [
-                0.000012818889445043169,
-                -0.0000035111149827571353,
-                -0.0000037426552808028646,
+                -0.00001618684473214671,
+                -0.000003843367721856339,
+                -0.00003242517777835019,
                 1
               ],
-              "displacementMm": 0.0804231518872327,
+              "displacementMm": 0.1447941512740646,
               "angleDeg": 0,
               "fell": false
             },
             {
-              "id": "B17-01",
-              "friction": 0.48,
-              "planned": {
-                "x": 17,
-                "y": 611,
-                "z": 0
-              },
-              "actual": {
-                "x": 16.9863121509552,
-                "y": 610.983277797699,
-                "z": -0.0710223913192749
-              },
-              "rotation": [
-                0.0000026588111268210923,
-                -0.0000029899899800511776,
-                -0.0000013667017810803372,
-                1
-              ],
-              "displacementMm": 0.07423725028567438,
-              "angleDeg": 0,
-              "fell": false
-            },
-            {
-              "id": "B10-01",
+              "id": "B14-01",
               "friction": 0.58,
               "planned": {
-                "x": 912,
-                "y": 26,
+                "x": 445,
+                "y": 690,
                 "z": 0
               },
               "actual": {
-                "x": 912.0050184726715,
-                "y": 25.991193532943726,
-                "z": -0.036011695861816406
+                "x": 444.98800098896027,
+                "y": 689.9939444065094,
+                "z": -0.10373866558074951
               },
               "rotation": [
-                -0.00002066566958092153,
-                0.000009026270163303707,
-                0.000008126518878270872,
+                0.000011918818927370012,
+                -3.868490523473156e-7,
+                -0.000007391492090391694,
                 1
               ],
-              "displacementMm": 0.03741097658190564,
+              "displacementMm": 0.10460572266816782,
               "angleDeg": 0,
               "fell": false
             },
             {
-              "id": "B21-01",
-              "friction": 0.54,
+              "id": "B18-01",
+              "friction": 0.36,
               "planned": {
-                "x": 102,
-                "y": 214,
-                "z": 261
+                "x": 88,
+                "y": 0,
+                "z": 0
               },
               "actual": {
-                "x": 101.98716521263123,
-                "y": 213.98591989278793,
-                "z": 260.8872740268707
+                "x": 87.99906635284424,
+                "y": 0.0019303560256958008,
+                "z": -0.08294439315795898
               },
               "rotation": [
-                -0.0000453054926765617,
-                0.000008582931513956282,
-                0.000005009369942854391,
+                -0.00001117048850574065,
+                0.0000025265449039579835,
+                0.000013868972018826753,
                 1
               ],
-              "displacementMm": 0.11432465265132626,
+              "displacementMm": 0.08297210572077507,
+              "angleDeg": 0,
+              "fell": false
+            },
+            {
+              "id": "B23-01",
+              "friction": 0.33,
+              "planned": {
+                "x": 175,
+                "y": 758,
+                "z": 0
+              },
+              "actual": {
+                "x": 174.9882960319519,
+                "y": 757.9956567287445,
+                "z": -0.07599419355392456
+              },
+              "rotation": [
+                0.00001854499896580819,
+                -0.000016030897313612513,
+                -0.00002438663250359241,
+                1
+              ],
+              "displacementMm": 0.07701275431498984,
+              "angleDeg": 0,
+              "fell": false
+            },
+            {
+              "id": "B6-01",
+              "friction": 0.42,
+              "planned": {
+                "x": 345,
+                "y": 65,
+                "z": 340
+              },
+              "actual": {
+                "x": 345.0045590996742,
+                "y": 64.98624789714813,
+                "z": 339.818799495697
+              },
+              "rotation": [
+                -0.000021251671569189057,
+                0.000003882616056216648,
+                -0.00003225342879886739,
+                1
+              ],
+              "displacementMm": 0.1817787899683063,
               "angleDeg": 0,
               "fell": false
             }
@@ -7090,12 +7195,168 @@
             "contactNaturalFrequencyHz": 120
           },
           "steps": 360,
-          "milliseconds": 15.269099999999526
+          "milliseconds": 12.362624999999753
+        },
+        {
+          "runId": "relay-7919-3",
+          "status": "stable",
+          "poses": [
+            {
+              "id": "B5-01",
+              "friction": 0.32,
+              "planned": {
+                "x": 706,
+                "y": 0,
+                "z": 0
+              },
+              "actual": {
+                "x": 705.9850244522095,
+                "y": -0.0046198368072509766,
+                "z": -0.08892834186553955
+              },
+              "rotation": [
+                -0.000003133134896415868,
+                0.0000013714600299863378,
+                -0.0000016004025837901281,
+                1
+              ],
+              "displacementMm": 0.09029872596391532,
+              "angleDeg": 0,
+              "fell": false
+            },
+            {
+              "id": "B17-01",
+              "friction": 0.48,
+              "planned": {
+                "x": 706,
+                "y": 551,
+                "z": 0
+              },
+              "actual": {
+                "x": 705.9842960834503,
+                "y": 550.9925599098206,
+                "z": -0.08650577068328857
+              },
+              "rotation": [
+                0.0000064713703977759,
+                -0.0000014115663589109317,
+                -0.000001748258341649489,
+                1
+              ],
+              "displacementMm": 0.08823387273823673,
+              "angleDeg": 0,
+              "fell": false
+            },
+            {
+              "id": "B3-01",
+              "friction": 0.52,
+              "planned": {
+                "x": 304,
+                "y": 341,
+                "z": 0
+              },
+              "actual": {
+                "x": 303.9854353070259,
+                "y": 340.9978903532028,
+                "z": -0.09624290466308594
+              },
+              "rotation": [
+                -0.0000010765389788502944,
+                -0.0000032656384973961394,
+                0.0000011960459005422308,
+                1
+              ],
+              "displacementMm": 0.09736158168921778,
+              "angleDeg": 0,
+              "fell": false
+            },
+            {
+              "id": "B4-01",
+              "friction": 0.69,
+              "planned": {
+                "x": 335,
+                "y": 136,
+                "z": 0
+              },
+              "actual": {
+                "x": 334.98441618680954,
+                "y": 135.98530650138855,
+                "z": -0.08480608463287354
+              },
+              "rotation": [
+                0.0000015617438293702435,
+                -5.247736680757953e-7,
+                -7.945866400405066e-7,
+                1
+              ],
+              "displacementMm": 0.08746900094180772,
+              "angleDeg": 0,
+              "fell": false
+            },
+            {
+              "id": "B21-01",
+              "friction": 0.54,
+              "planned": {
+                "x": 4,
+                "y": 555,
+                "z": 0
+              },
+              "actual": {
+                "x": 3.98637056350708,
+                "y": 554.9962892532349,
+                "z": -0.10767814517021179
+              },
+              "rotation": [
+                0.00001740783227432985,
+                -0.000014406659829546697,
+                -0.000005771087216999149,
+                1
+              ],
+              "displacementMm": 0.10860070961078806,
+              "angleDeg": 0,
+              "fell": false
+            },
+            {
+              "id": "B10-01",
+              "friction": 0.58,
+              "planned": {
+                "x": 4,
+                "y": 183,
+                "z": 0
+              },
+              "actual": {
+                "x": 3.986757278442383,
+                "y": 183.00010704994202,
+                "z": -0.09670150279998779
+              },
+              "rotation": [
+                -6.57070188481157e-7,
+                0.000005992656952003017,
+                -7.733786944186249e-10,
+                1
+              ],
+              "displacementMm": 0.0976041073813941,
+              "angleDeg": 0,
+              "fell": false
+            }
+          ],
+          "settings": {
+            "seconds": 3,
+            "dt": 0.008333333333333333,
+            "friction": 0.6,
+            "moveToleranceMm": 5,
+            "angleToleranceDeg": 3,
+            "materialFriction": true,
+            "solverIterations": 12,
+            "contactNaturalFrequencyHz": 120
+          },
+          "steps": 360,
+          "milliseconds": 10.280500000000757
         }
       ],
-      "milliseconds": 2055.3420000000006,
-      "placed": 23,
-      "transfers": 6
+      "milliseconds": 4287.962292,
+      "placed": 24,
+      "transfers": 1
     }
   ]
 }

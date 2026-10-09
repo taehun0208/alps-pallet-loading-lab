@@ -1,0 +1,78 @@
+{
+  "verifiedAt": "2026-10-04T15:15:04.528894+00:00",
+  "unitTests": {
+    "passed": 151,
+    "files": 14,
+    "onlineTests": 13,
+    "command": "npm.cmd test -- --exclude '**/*benchmark*' --maxWorkers 2"
+  },
+  "engineExperiment": {
+    "testsPassed": 1,
+    "newPolicyRuns": 9,
+    "previousGreedyRunsUnderSameTaskConstraints": 3,
+    "inventorySets": 3,
+    "report": "pallet-online-before-requirements.json",
+    "firstPass": "pallet-online-first-pass.json",
+    "contactRefinement": "pallet-online-contact-pass.json"
+  },
+  "browser": {
+    "uniquePassed": 22,
+    "online": 4,
+    "research": 18,
+    "finalRun": "22 passed (3.5m)",
+    "lastPresetChangeRetestPassed": 4,
+    "lastRetest": "4 passed (26.5s)",
+    "retries": 0,
+    "skipped": 0,
+    "initialExpectationCorrections": [
+      "resized explanation literal spacing",
+      "changed research policy banner text"
+    ]
+  },
+  "build": {
+    "status": "passed",
+    "modules": 92,
+    "command": "npm.cmd run build"
+  },
+  "defaultTaskResult": {
+    "algorithm": "greedy",
+    "placed": 8,
+    "total": 30,
+    "blockedStep": 9,
+    "blockedBoxId": "B28-01",
+    "heightMm": 630,
+    "inventorySeed": 20261004,
+    "arrivalSeed": 42,
+    "online": true,
+    "heavyRule": "each",
+    "robotMode": "gripper",
+    "slendernessMode": "score"
+  },
+  "remainingProbes": {
+    "perType": 8,
+    "hardChecks": "same geometry, reactions, ancestor capacity, load centre, weight order, configured robot proxy as a real placement",
+    "jointPackingGuarantee": false
+  },
+  "robotScope": {
+    "checked": [
+      "tool included payload",
+      "TCP rectangular workspace",
+      "top approach/exit gripper and held-box sweep",
+      "path time estimate"
+    ],
+    "unverified": [
+      "joint limits",
+      "IK",
+      "full-link collision",
+      "joint torque",
+      "suction/packaging deformation"
+    ],
+    "numericLimitsAreExamples": true
+  },
+  "screenshots": [
+    "pallet-online-1366.png",
+    "pallet-online-320.png"
+  ],
+  "performanceClaim": "Requirement compliance and causal evaluation were verified; no universal packing-count improvement, global optimality, real-time upper bound, or real-robot certification is claimed.",
+  "historicalNotice": "Verification record from the previous implementation; current record is pallet-requirements-verification.json."
+}

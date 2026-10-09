@@ -1,0 +1,418 @@
+{
+  "verifiedAt": "2026-10-05T17:25:13.973Z",
+  "scenario": {
+    "version": 1,
+    "units": {
+      "length": "mm",
+      "weight": "kg",
+      "time": "s"
+    },
+    "id": "buffer-demo",
+    "name": "임시 보류 → 받침 적재 → 상단 복귀",
+    "pallet": {
+      "width": 400,
+      "depth": 400,
+      "maxHeight": 600
+    },
+    "types": [
+      {
+        "id": "CAP",
+        "name": "위 적재 금지 · 마지막 상자",
+        "size": {
+          "w": 400,
+          "d": 400,
+          "h": 100
+        },
+        "weight": 1,
+        "quantity": 1,
+        "orientations": [
+          0
+        ],
+        "handling": "no-top-load",
+        "material": "paper",
+        "maxLoadKg": 0,
+        "color": "#cc97df"
+      },
+      {
+        "id": "BASE",
+        "name": "튼튼한 하단",
+        "size": {
+          "w": 400,
+          "d": 400,
+          "h": 200
+        },
+        "weight": 10,
+        "quantity": 1,
+        "orientations": [
+          0
+        ],
+        "material": "plastic",
+        "maxLoadKg": 100,
+        "color": "#6bcab7"
+      },
+      {
+        "id": "MID",
+        "name": "중간 받침",
+        "size": {
+          "w": 400,
+          "d": 400,
+          "h": 150
+        },
+        "weight": 5,
+        "quantity": 1,
+        "orientations": [
+          0
+        ],
+        "material": "plastic",
+        "maxLoadKg": 60,
+        "color": "#e8b86a"
+      }
+    ],
+    "constraints": {
+      "robotMode": "gripper",
+      "supportRatio": 0.95,
+      "contactTolerance": 0.5,
+      "horizontalGap": 0,
+      "heavyRule": "each",
+      "stability": {
+        "maxSlenderness": 2,
+        "minMarginRatio": 0.1,
+        "lateralAccelerationG": 0.15,
+        "loadSafetyFactor": 1.25
+      },
+      "gripper": {
+        "width": 180,
+        "depth": 160,
+        "height": 160,
+        "mass": 3,
+        "payload": 20,
+        "margin": 5,
+        "lift": 200,
+        "speed": 650,
+        "pickSeconds": 1,
+        "placeSeconds": 1
+      },
+      "workspace": {
+        "xMin": -1400,
+        "xMax": 1600,
+        "yMin": -500,
+        "yMax": 1500,
+        "zMax": 2600
+      },
+      "standingHeight": {
+        "enabled": true,
+        "maxRiseMm": 100
+      }
+    },
+    "arrival": {
+      "seed": 42,
+      "pattern": "shuffle"
+    },
+    "events": [],
+    "supplyMode": "stock-select"
+  },
+  "settings": {
+    "plannerSeed": 2026,
+    "topK": 6,
+    "samples": 4,
+    "depth": 3,
+    "maxCandidates": 128,
+    "virtualCandidates": 16,
+    "candidateMode": "frontier",
+    "inventoryMode": "geometry",
+    "portfolio": false,
+    "weights": {
+      "maximum": 30,
+      "mean": 16,
+      "roughness": 20,
+      "void": 25,
+      "flat": 8,
+      "balance": 12,
+      "time": 4,
+      "future": 45,
+      "stability": 24,
+      "inventory": 32,
+      "foundation": 24,
+      "load": 12,
+      "contact": 12,
+      "futureSurface": 24
+    },
+    "policy": "online",
+    "reserveProbes": 8,
+    "stockPolicy": "compact",
+    "interiorPacking": true,
+    "temporaryBuffer": true
+  },
+  "metrics": {
+    "loadUtilization": 0.075,
+    "unknownCapacity": 0,
+    "slenderness": 1.125,
+    "supportBalances": [
+      {
+        "id": "BASE-01",
+        "isBase": true,
+        "planeZ": 0,
+        "mass": 16,
+        "loadAbove": 6,
+        "center": {
+          "x": 200,
+          "y": 200,
+          "z": 173.4375
+        },
+        "supportCenter": {
+          "x": 200,
+          "y": 200,
+          "z": 0
+        },
+        "offsetMm": 0,
+        "offsetRatio": 0,
+        "margin": 200,
+        "required": 40,
+        "reserve": 160
+      },
+      {
+        "id": "MID-01",
+        "isBase": false,
+        "planeZ": 200,
+        "mass": 6,
+        "loadAbove": 1,
+        "center": {
+          "x": 200,
+          "y": 200,
+          "z": 295.8333333333333
+        },
+        "supportCenter": {
+          "x": 200,
+          "y": 200,
+          "z": 200
+        },
+        "offsetMm": 0,
+        "offsetRatio": 0,
+        "margin": 200,
+        "required": 40,
+        "reserve": 160
+      },
+      {
+        "id": "CAP-01",
+        "isBase": false,
+        "planeZ": 350,
+        "mass": 1,
+        "loadAbove": 0,
+        "center": {
+          "x": 200,
+          "y": 200,
+          "z": 400
+        },
+        "supportCenter": {
+          "x": 200,
+          "y": 200,
+          "z": 350
+        },
+        "offsetMm": 0,
+        "offsetRatio": 0,
+        "margin": 200,
+        "required": 40,
+        "reserve": 160
+      }
+    ],
+    "count": 3,
+    "volume": 72000000,
+    "weight": 16,
+    "height": 450,
+    "utilization": 0.75,
+    "efficiency": 1,
+    "center": {
+      "x": 200,
+      "y": 200,
+      "z": 173.4375
+    },
+    "quadrants": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "imbalance": 0,
+    "distanceM": 12.09426269631897,
+    "workSeconds": 24.606557994336875,
+    "medianMs": 25.399999976158142,
+    "p95Ms": 26.599999964237213,
+    "totalMs": 63.3999999165535,
+    "complete": true,
+    "failedStep": null,
+    "reason": "",
+    "excluded": 0,
+    "missing": 0
+  },
+  "records": [
+    {
+      "id": "BASE-01",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "bufferAfter": [
+        {
+          "observation": {
+            "id": "CAP-01",
+            "typeId": "CAP",
+            "size": {
+              "w": 400,
+              "d": 400,
+              "h": 100
+            },
+            "weight": 1,
+            "status": "normal",
+            "orientationAllowed": [
+              0
+            ],
+            "maxLoadKg": 0,
+            "handling": "no-top-load",
+            "material": "paper"
+          },
+          "sinceStep": 1,
+          "reason": "CAP-01 먼저 배치하면 BASE-01의 검토 위치가 막힘 · BASE-01 먼저 + CAP-01 상단 배치 검증",
+          "protects": [
+            "BASE-01"
+          ],
+          "source": {
+            "x": -1300,
+            "y": 850,
+            "z": 0
+          },
+          "reservedTop": {
+            "id": "CAP-01",
+            "typeId": "CAP",
+            "position": {
+              "x": 0,
+              "y": 0,
+              "z": 200
+            },
+            "size": {
+              "w": 400,
+              "d": 400,
+              "h": 100
+            },
+            "orientation": 0,
+            "weight": 1,
+            "supports": [
+              {
+                "id": "BASE-01",
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 400,
+                  "d": 400
+                },
+                "area": 160000,
+                "share": 1,
+                "forcePoint": {
+                  "x": 200,
+                  "y": 200
+                }
+              }
+            ],
+            "supportRatio": 1,
+            "loadAbove": 0,
+            "maxLoadKg": 0,
+            "handling": "no-top-load",
+            "material": "paper"
+          }
+        }
+      ]
+    },
+    {
+      "id": "MID-01",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 200
+      },
+      "bufferAfter": [
+        {
+          "observation": {
+            "id": "CAP-01",
+            "typeId": "CAP",
+            "size": {
+              "w": 400,
+              "d": 400,
+              "h": 100
+            },
+            "weight": 1,
+            "status": "normal",
+            "orientationAllowed": [
+              0
+            ],
+            "maxLoadKg": 0,
+            "handling": "no-top-load",
+            "material": "paper"
+          },
+          "sinceStep": 1,
+          "reason": "CAP-01 먼저 배치하면 BASE-01의 검토 위치가 막힘 · BASE-01 먼저 + CAP-01 상단 배치 검증",
+          "protects": [
+            "BASE-01"
+          ],
+          "source": {
+            "x": -1300,
+            "y": 850,
+            "z": 0
+          },
+          "reservedTop": {
+            "id": "CAP-01",
+            "typeId": "CAP",
+            "position": {
+              "x": 0,
+              "y": 0,
+              "z": 350
+            },
+            "size": {
+              "w": 400,
+              "d": 400,
+              "h": 100
+            },
+            "orientation": 0,
+            "weight": 1,
+            "supports": [
+              {
+                "id": "MID-01",
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 400,
+                  "d": 400
+                },
+                "area": 160000,
+                "share": 1,
+                "forcePoint": {
+                  "x": 200,
+                  "y": 200
+                }
+              }
+            ],
+            "supportRatio": 1,
+            "loadAbove": 0,
+            "maxLoadKg": 0,
+            "handling": "no-top-load",
+            "material": "paper"
+          }
+        }
+      ]
+    },
+    {
+      "id": "CAP-01",
+      "pickup": {
+        "x": -1300,
+        "y": 850,
+        "z": 0
+      },
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 350
+      },
+      "bufferAfter": []
+    }
+  ],
+  "errors": []
+}

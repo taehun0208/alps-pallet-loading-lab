@@ -1,0 +1,10 @@
+{
+  "duration": 80,
+  "width": 1600,
+  "height": 900,
+  "fps": 30,
+  "chapters": 10,
+  "reference": "https://prompt-motion.com/rneayan-ea6129",
+  "audio": "original synthesized score",
+  "bytes": 4787100
+}

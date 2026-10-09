@@ -1,0 +1,5 @@
+import type {ExperimentResult} from './engine/types';
+const open=()=>new Promise<IDBDatabase>((resolve,reject)=>{const request=indexedDB.open('alps-local-runs',1);request.onupgradeneeded=()=>{request.result.createObjectStore('runs',{keyPath:'savedAt'});};request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error);});
+/** Results are local to this browser; no external service receives the run. */
+export async function saveRun(result:ExperimentResult){const db=await open();try{await new Promise<void>((resolve,reject)=>{const transaction=db.transaction('runs','readwrite');transaction.objectStore('runs').put({savedAt:Date.now(),result:structuredClone(result)});transaction.oncomplete=()=>resolve();transaction.onerror=()=>reject(transaction.error);});}finally{db.close();}}
+export async function latestRun():Promise<ExperimentResult|null>{const db=await open();try{return await new Promise((resolve,reject)=>{const request=db.transaction('runs').objectStore('runs').openCursor(null,'prev');request.onsuccess=()=>resolve(request.result?.value?.result??null);request.onerror=()=>reject(request.error);});}finally{db.close();}}

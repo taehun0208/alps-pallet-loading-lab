@@ -1,0 +1,6 @@
+import { useEffect,useState } from 'react';
+import type { Observation,ScenarioEvent } from './types';
+export function ObservationControls({current,enabled,onChange}:{current:Observation|null;enabled:boolean;onChange:(event:Omit<ScenarioEvent,'step'>)=>void}){
+ const [size,setSize]=useState(current?.size||{w:100,d:100,h:100});useEffect(()=>{if(current)setSize({...current.size});},[current?.id,current?.size.w,current?.size.d,current?.size.h]);
+ return <details className="pallet-observation-controls"><summary>현재 관측 수정 · 부분 재계획</summary><p className="pallet-note">현재 {current?.id||'박스 없음'}의 관측만 변경합니다. 확정 박스와 실제 투입 순서는 유지합니다.</p>{(['w','d','h'] as const).map((k,i)=><label className="pallet-field" key={k}><span>{['관측 가로 mm','관측 깊이 mm','관측 높이 mm'][i]}</span><input aria-label={['관측 가로 mm','관측 깊이 mm','관측 높이 mm'][i]} type="number" min={1} value={size[k]} onChange={e=>setSize(s=>({...s,[k]:Number(e.target.value)}))}/></label>)}<div className="pallet-actions"><button disabled={!enabled||!current} onClick={()=>onChange({kind:'resize',size})}>관측 치수로 재계획</button><button disabled={!enabled||!current} onClick={()=>onChange({kind:'damaged'})}>손상 관측 · 격리</button><button disabled={!enabled||!current} onClick={()=>onChange({kind:'missing'})}>누락 관측</button></div></details>;
+}

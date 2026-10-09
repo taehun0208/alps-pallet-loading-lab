@@ -1,0 +1,44 @@
+{
+  "schema": "alps-benchmark-figures/1",
+  "source": "summary.json",
+  "sourceSha256": "b52756fa705143f806561419f9f6d747dd480346727319ec6b05fc1c05a4b1fb",
+  "render": "Matplotlib; 16×9 inch ×240 dpi; SVG text converted to paths for Korean font portability",
+  "files": [
+    {
+      "path": "benchmark-10s-quality-preview.png",
+      "sha256": "01675339edab9e7a56a6dad91f24148e452af41fcc0960a465af94715a9e3bd3"
+    },
+    {
+      "path": "benchmark-10s-quality.png",
+      "sha256": "2be84bfa5bf68e7b11f20ec8c4101c5f27fb8010f0daff5e2fe12fc702817d98"
+    },
+    {
+      "path": "benchmark-10s-quality.svg",
+      "sha256": "1aa60455999dfe08c0f7641715f8aad12d6dca2ee34291c6864ddbf3217cbbd6"
+    },
+    {
+      "path": "benchmark-12s-quality-preview.png",
+      "sha256": "6001f63a5d45d635d7aa944598db23acac648c0c9cd9c4af6ccdcf595bfcbc21"
+    },
+    {
+      "path": "benchmark-12s-quality.png",
+      "sha256": "572b0157fa9dcafdd887fc913527357018c651f5f8da0aad7da18837c52e3c76"
+    },
+    {
+      "path": "benchmark-12s-quality.svg",
+      "sha256": "0be5fed10c8938ba216578d58ca629dc1231bee5d5cf21386208afcc01cc56f8"
+    },
+    {
+      "path": "benchmark-pareto-preview.png",
+      "sha256": "4500b2c89b9fcbef72d1ca9aaffd78d6f29752802e9a9bfd2400cf727489ea06"
+    },
+    {
+      "path": "benchmark-pareto.png",
+      "sha256": "66b3efa5af0798f1669bf7bafc98c547f73b8e7922e1577fc7d1ec18587629e1"
+    },
+    {
+      "path": "benchmark-pareto.svg",
+      "sha256": "4f26941fa7773a462c7d7e74ac8bc029495a3d1ac360c63ce8dbbdef8bf4211c"
+    }
+  ]
+}

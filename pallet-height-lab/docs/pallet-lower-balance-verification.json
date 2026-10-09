@@ -1,0 +1,39 @@
+{
+  "verifiedAt": "2026-10-04T13:22:31.569902+00:00",
+  "unitTests": {
+    "passed": 138,
+    "files": 13,
+    "command": "npm.cmd test -- --exclude '**/*benchmark*' --maxWorkers 2"
+  },
+  "engineExperiment": {
+    "testsPassed": 1,
+    "runs": 9,
+    "unchangedInventorySets": 3,
+    "report": "pallet-lower-balance-measurements.json",
+    "baseline": "pallet-lower-balance-baseline.json"
+  },
+  "browser": {
+    "uniquePassed": 18,
+    "legacyFlows": 14,
+    "stockFlows": 3,
+    "lowerSupportFlow": 1,
+    "lastMarkerChangeRetestPassed": 1,
+    "retries": 0,
+    "skipped": 0
+  },
+  "build": "TypeScript and Vite production build passed, 89 modules",
+  "defaultStockResult": {
+    "algorithm": "greedy",
+    "placed": 12,
+    "total": 30,
+    "remaining": 18,
+    "heightMm": 977
+  },
+  "tradeoff": "Strict feasible footprint/volume priority reduced packed count on these three sets; no claim of optimal count or industrial certification",
+  "screenshots": [
+    "pallet-lower-balance-1366.png",
+    "pallet-lower-balance-320.png",
+    "pallet-stock-1366.png",
+    "pallet-stock-320.png"
+  ]
+}

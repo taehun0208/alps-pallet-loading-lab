@@ -1,0 +1,2 @@
+import type { SupportBalance } from './types';
+export function SupportFacts({support:s}:{support?:SupportBalance}){return s?<><dt>자체 + 상부 누적 중량</dt><dd>{s.mass.toFixed(2)} kg</dd><dt>아랫단 하중 중심 x / y</dt><dd>{s.center.x.toFixed(1)} / {s.center.y.toFixed(1)} mm</dd><dt>받침 중심 x / y</dt><dd>{s.supportCenter.x.toFixed(1)} / {s.supportCenter.y.toFixed(1)} mm</dd><dt>받침 중심에서의 치우침</dt><dd>{s.offsetMm.toFixed(1)} mm</dd><dt>지지 경계 여유 / 필요 여유</dt><dd>{s.margin.toFixed(1)} / {s.required.toFixed(1)} mm</dd><dt>전도 여유</dt><dd>{s.reserve.toFixed(1)} mm</dd></>:null;}

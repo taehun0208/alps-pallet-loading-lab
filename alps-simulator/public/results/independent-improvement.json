@@ -1,0 +1,470 @@
+{
+  "schema": "alps-independent-density-contrast/1",
+  "sourceSummarySha256": "b52756fa705143f806561419f9f6d747dd480346727319ec6b05fc1c05a4b1fb",
+  "cycleSeconds": 10,
+  "evaluationStatus": "independent-evaluation",
+  "seeds": [
+    12042,
+    12043,
+    12044,
+    12045,
+    12046
+  ],
+  "contrasts": [
+    {
+      "metric": "fill",
+      "unit": "percentage-points",
+      "preferred": "higher",
+      "n": 5,
+      "seeds": [
+        12042,
+        12043,
+        12044,
+        12045,
+        12046
+      ],
+      "compactMean": 63.18583333333333,
+      "alpsTetrisMean": 69.18866666666666,
+      "differenceMean": 6.002833333333337,
+      "ci95": [
+        -1.0444077578560735,
+        13.050074424522748
+      ],
+      "direction": "ALPS Tetris minus Compact",
+      "multipleComparisonAdjusted": false,
+      "pairs": [
+        {
+          "seed": 12042,
+          "compact": 58.33555555555555,
+          "alpsTetris": 66.83555555555556,
+          "difference": 8.500000000000007
+        },
+        {
+          "seed": 12043,
+          "compact": 51.73805555555555,
+          "alpsTetris": 64.93083333333334,
+          "difference": 13.192777777777787
+        },
+        {
+          "seed": 12044,
+          "compact": 63.75555555555555,
+          "alpsTetris": 69.27638888888889,
+          "difference": 5.52083333333333
+        },
+        {
+          "seed": 12045,
+          "compact": 72.97111111111111,
+          "alpsTetris": 70.60833333333333,
+          "difference": -2.3627777777777803
+        },
+        {
+          "seed": 12046,
+          "compact": 69.12888888888888,
+          "alpsTetris": 74.29222222222222,
+          "difference": 5.163333333333342
+        }
+      ]
+    },
+    {
+      "metric": "floorContactCoverage",
+      "unit": "percentage-points",
+      "preferred": "higher",
+      "n": 5,
+      "seeds": [
+        12042,
+        12043,
+        12044,
+        12045,
+        12046
+      ],
+      "compactMean": 86.83,
+      "alpsTetrisMean": 90.05,
+      "differenceMean": 3.2200000000000006,
+      "ci95": [
+        -2.840622759344428,
+        9.280622759344428
+      ],
+      "direction": "ALPS Tetris minus Compact",
+      "multipleComparisonAdjusted": false,
+      "pairs": [
+        {
+          "seed": 12042,
+          "compact": 91.96666666666667,
+          "alpsTetris": 93.89999999999999,
+          "difference": 1.9333333333333313
+        },
+        {
+          "seed": 12043,
+          "compact": 79.88333333333333,
+          "alpsTetris": 89.88333333333334,
+          "difference": 10.000000000000009
+        },
+        {
+          "seed": 12044,
+          "compact": 80.03333333333333,
+          "alpsTetris": 86.28333333333333,
+          "difference": 6.25
+        },
+        {
+          "seed": 12045,
+          "compact": 91.96666666666667,
+          "alpsTetris": 91.96666666666667,
+          "difference": 0.0
+        },
+        {
+          "seed": 12046,
+          "compact": 90.3,
+          "alpsTetris": 88.21666666666667,
+          "difference": -2.083333333333337
+        }
+      ]
+    },
+    {
+      "metric": "columnVoidLiters",
+      "unit": "L",
+      "preferred": "lower",
+      "n": 5,
+      "seeds": [
+        12042,
+        12043,
+        12044,
+        12045,
+        12046
+      ],
+      "compactMean": 3.7256,
+      "alpsTetrisMean": 5.4308,
+      "differenceMean": 1.7052,
+      "ci95": [
+        -2.37070674950972,
+        5.7811067495097195
+      ],
+      "direction": "ALPS Tetris minus Compact",
+      "multipleComparisonAdjusted": false,
+      "pairs": [
+        {
+          "seed": 12042,
+          "compact": 4.032,
+          "alpsTetris": 3.84,
+          "difference": -0.19200000000000017
+        },
+        {
+          "seed": 12043,
+          "compact": 3.456,
+          "alpsTetris": 0.96,
+          "difference": -2.496
+        },
+        {
+          "seed": 12044,
+          "compact": 3.26,
+          "alpsTetris": 4.8,
+          "difference": 1.54
+        },
+        {
+          "seed": 12045,
+          "compact": 5.72,
+          "alpsTetris": 9.506,
+          "difference": 3.7860000000000005
+        },
+        {
+          "seed": 12046,
+          "compact": 2.16,
+          "alpsTetris": 8.048,
+          "difference": 5.888
+        }
+      ]
+    },
+    {
+      "metric": "voidLiters",
+      "unit": "L",
+      "preferred": "lower",
+      "n": 5,
+      "seeds": [
+        12042,
+        12043,
+        12044,
+        12045,
+        12046
+      ],
+      "compactMean": 482.12399999999997,
+      "alpsTetrisMean": 434.0832,
+      "differenceMean": -48.04079999999997,
+      "ci95": [
+        -121.33663370466834,
+        25.2550337046684
+      ],
+      "direction": "ALPS Tetris minus Compact",
+      "multipleComparisonAdjusted": false,
+      "pairs": [
+        {
+          "seed": 12042,
+          "compact": 551.968,
+          "alpsTetris": 429.568,
+          "difference": -122.39999999999998
+        },
+        {
+          "seed": 12043,
+          "compact": 526.972,
+          "alpsTetris": 504.996,
+          "difference": -21.976
+        },
+        {
+          "seed": 12044,
+          "compact": 521.92,
+          "alpsTetris": 442.41999999999996,
+          "difference": -79.5
+        },
+        {
+          "seed": 12045,
+          "compact": 389.2159999999999,
+          "alpsTetris": 423.24,
+          "difference": 34.024000000000115
+        },
+        {
+          "seed": 12046,
+          "compact": 420.544,
+          "alpsTetris": 370.192,
+          "difference": -50.351999999999975
+        }
+      ]
+    },
+    {
+      "metric": "count",
+      "unit": "boxes",
+      "preferred": "higher",
+      "n": 5,
+      "seeds": [
+        12042,
+        12043,
+        12044,
+        12045,
+        12046
+      ],
+      "compactMean": 40.8,
+      "alpsTetrisMean": 43.6,
+      "differenceMean": 2.8,
+      "ci95": [
+        -1.355402534737573,
+        6.955402534737573
+      ],
+      "direction": "ALPS Tetris minus Compact",
+      "multipleComparisonAdjusted": false,
+      "pairs": [
+        {
+          "seed": 12042,
+          "compact": 39,
+          "alpsTetris": 44,
+          "difference": 5
+        },
+        {
+          "seed": 12043,
+          "compact": 35,
+          "alpsTetris": 42,
+          "difference": 7
+        },
+        {
+          "seed": 12044,
+          "compact": 41,
+          "alpsTetris": 40,
+          "difference": -1
+        },
+        {
+          "seed": 12045,
+          "compact": 45,
+          "alpsTetris": 45,
+          "difference": 0
+        },
+        {
+          "seed": 12046,
+          "compact": 44,
+          "alpsTetris": 47,
+          "difference": 3
+        }
+      ]
+    },
+    {
+      "metric": "cogOffsetMm",
+      "unit": "mm",
+      "preferred": "lower",
+      "n": 5,
+      "seeds": [
+        12042,
+        12043,
+        12044,
+        12045,
+        12046
+      ],
+      "compactMean": 75.29532411167308,
+      "alpsTetrisMean": 48.790166607470766,
+      "differenceMean": -26.50515750420232,
+      "ci95": [
+        -106.57040586443613,
+        53.56009085603149
+      ],
+      "direction": "ALPS Tetris minus Compact",
+      "multipleComparisonAdjusted": false,
+      "pairs": [
+        {
+          "seed": 12042,
+          "compact": 64.297441611097,
+          "alpsTetris": 47.86645656505169,
+          "difference": -16.430985046045308
+        },
+        {
+          "seed": 12043,
+          "compact": 102.94188068124322,
+          "alpsTetris": 33.706253913232125,
+          "difference": -69.23562676801109
+        },
+        {
+          "seed": 12044,
+          "compact": 106.07651125506887,
+          "alpsTetris": 25.568692275737476,
+          "difference": -80.50781897933139
+        },
+        {
+          "seed": 12045,
+          "compact": 21.131943303392056,
+          "alpsTetris": 101.33318787365495,
+          "difference": 80.2012445702629
+        },
+        {
+          "seed": 12046,
+          "compact": 82.02884370756429,
+          "alpsTetris": 35.476242409677575,
+          "difference": -46.55260129788672
+        }
+      ]
+    },
+    {
+      "metric": "cogHeightMm",
+      "unit": "mm",
+      "preferred": "lower",
+      "n": 5,
+      "seeds": [
+        12042,
+        12043,
+        12044,
+        12045,
+        12046
+      ],
+      "compactMean": 484.72559690285243,
+      "alpsTetrisMean": 511.4393517969342,
+      "differenceMean": 26.713754894081763,
+      "ci95": [
+        -11.764746495793009,
+        65.19225628395654
+      ],
+      "direction": "ALPS Tetris minus Compact",
+      "multipleComparisonAdjusted": false,
+      "pairs": [
+        {
+          "seed": 12042,
+          "compact": 435.6190476190476,
+          "alpsTetris": 472.39669421487605,
+          "difference": 36.77764659582846
+        },
+        {
+          "seed": 12043,
+          "compact": 438.48017621145374,
+          "alpsTetris": 464.31558935361215,
+          "difference": 25.835413142158416
+        },
+        {
+          "seed": 12044,
+          "compact": 560.6837606837607,
+          "alpsTetris": 550.0222222222222,
+          "difference": -10.661538461538498
+        },
+        {
+          "seed": 12045,
+          "compact": 542.125,
+          "alpsTetris": 551.7479674796748,
+          "difference": 9.622967479674799
+        },
+        {
+          "seed": 12046,
+          "compact": 446.72,
+          "alpsTetris": 518.7142857142857,
+          "difference": 71.99428571428564
+        }
+      ]
+    }
+  ],
+  "timing": [
+    {
+      "algorithm": "blb",
+      "trials": 5,
+      "decisions": 360,
+      "maxDecisionReadyMs": 26.13229100004537,
+      "maxWorkerRoundTripMs": 26.005041000025813,
+      "cycleDeadlineMisses": 0,
+      "workerWatchdogs": 0,
+      "fallbacks": 0
+    },
+    {
+      "algorithm": "capacity-compact",
+      "trials": 5,
+      "decisions": 360,
+      "maxDecisionReadyMs": 67.23991600004956,
+      "maxWorkerRoundTripMs": 66.72908300004201,
+      "cycleDeadlineMisses": 0,
+      "workerWatchdogs": 0,
+      "fallbacks": 0
+    },
+    {
+      "algorithm": "strategy-greedy",
+      "trials": 5,
+      "decisions": 360,
+      "maxDecisionReadyMs": 41.30183300000499,
+      "maxWorkerRoundTripMs": 41.07120800000848,
+      "cycleDeadlineMisses": 0,
+      "workerWatchdogs": 0,
+      "fallbacks": 0
+    },
+    {
+      "algorithm": "lookahead",
+      "trials": 5,
+      "decisions": 360,
+      "maxDecisionReadyMs": 240.04900000002817,
+      "maxWorkerRoundTripMs": 239.940042000002,
+      "cycleDeadlineMisses": 0,
+      "workerWatchdogs": 0,
+      "fallbacks": 0
+    },
+    {
+      "algorithm": "future-hybrid",
+      "trials": 5,
+      "decisions": 360,
+      "maxDecisionReadyMs": 749.0467079999798,
+      "maxWorkerRoundTripMs": 748.9646669999929,
+      "cycleDeadlineMisses": 0,
+      "workerWatchdogs": 0,
+      "fallbacks": 0
+    },
+    {
+      "algorithm": "mcts",
+      "trials": 5,
+      "decisions": 360,
+      "maxDecisionReadyMs": 4585.458833000041,
+      "maxWorkerRoundTripMs": 4583.6000420000055,
+      "cycleDeadlineMisses": 0,
+      "workerWatchdogs": 0,
+      "fallbacks": 0
+    },
+    {
+      "algorithm": "floor-dense",
+      "trials": 5,
+      "decisions": 360,
+      "maxDecisionReadyMs": 464.9171250000363,
+      "maxWorkerRoundTripMs": 464.54562500002794,
+      "cycleDeadlineMisses": 0,
+      "workerWatchdogs": 0,
+      "fallbacks": 0
+    }
+  ],
+  "notes": [
+    "Paired Student t 95% intervals over five input seeds; exploratory, no multiple-comparison adjustment.",
+    "Decision-ready time = assumed recognition delay + measured worker round trip + measured commit validation; actual sensor/communications/full robot motion are unmeasured.",
+    "Static CoG and geometric void are not vibration or physical transport safety measurements."
+  ]
+}

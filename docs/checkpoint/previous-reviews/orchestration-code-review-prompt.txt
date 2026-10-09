@@ -1,0 +1,402 @@
+Review the implemented central coordinator code for concrete correctness bugs only. Do not propose a rewrite or general best practices. Return up to 5 issues with location and minimal fix; distinguish confirmed bug from limitation. We intentionally use bounded geometry probes, no true robot IK, no hard wallclock deadline, and soft downstream intents. busy robots omitted (no ETA). Scenario resets create new runID. Workers get observedProblem sanitized payload. Dashboard unverified physics and no MCU timing claims. Previous review fixes implemented: no duplicate local lookahead, typed soft defer vs no-candidate, phase stale guard, DP16 joint immediate matching with softfuture not consuming slots, explicit starvation bypass after1lap. Look for serious remaining defects. Under 1000 words final answer.
+
+FILE src/pallet/relay/orchestrator.ts
+/** Scores rank modeled feasible alternatives; they are not safety probabilities. */
+export type OrchestrationMode='central'|'independent';
+export interface OrchestrationBid {
+ robot:number;score:number;arrivalSeconds:number;workSeconds:number;
+ remainingVolumeRatio:number;futureFitRatio:number;eligible:boolean;reason:string;
+}
+export interface OrchestrationAssignment {
+ boxId:string;robot:number;launchNow:boolean;score:number;reason:string;bids:OrchestrationBid[];
+}
+export interface OrchestrationSnapshot {
+ mode:OrchestrationMode;at:number;observedBoxes:number;evaluatedBids:number;assignments:OrchestrationAssignment[];
+}
+export interface AssignmentOffer {boxId:string;passes:number;bids:OrchestrationBid[]}
+export function rankAssignments(offers:AssignmentOffer[]):OrchestrationAssignment[]{
+ const ordered=[...offers].sort((a,b)=>b.passes-a.passes||a.boxId.localeCompare(b.boxId));
+ type Match={picks:{offer:AssignmentOffer;bid:OrchestrationBid}[];repeated:number;score:number};
+ const better=(a:Match,b:Match)=>a.repeated>b.repeated||a.repeated===b.repeated&&(a.picks.length>b.picks.length||a.picks.length===b.picks.length&&a.score>b.score);
+ let states=new Map<number,Match>([[0,{picks:[],repeated:0,score:0}]]);
+ for(const offer of ordered){
+  const next=new Map(states),future=Math.max(-Infinity,...offer.bids.filter(b=>!b.eligible).map(b=>b.score));
+  // A downstream option wins only on modeled utility. Once recirculated, prioritize service.
+  const now=offer.bids.filter(b=>b.eligible&&(offer.passes>=1||b.score>=future));
+  for(const [mask,state] of states)for(const bid of now){
+   if(mask&(1<<bid.robot))continue;
+   const key=mask|(1<<bid.robot),candidate={picks:[...state.picks,{offer,bid}],repeated:state.repeated+(offer.passes>=1?1:0),score:state.score+bid.score};
+   if(!next.has(key)||better(candidate,next.get(key)!))next.set(key,candidate);
+  }
+  states=next;
+ }
+ const best=[...states.values()].reduce((a,b)=>better(b,a)?b:a),chosen=new Map(best.picks.map(p=>[p.offer.boxId,p.bid]));
+ return ordered.flatMap(offer=>{
+  const bids=[...offer.bids].sort((a,b)=>b.score-a.score||a.arrivalSeconds-b.arrivalSeconds||a.robot-b.robot);
+  // Soft downstream intentions never consume an immediate robot slot.
+  const winner=chosen.get(offer.boxId)??(offer.passes<1?bids.find(b=>!b.eligible):undefined);
+  if(!winner)return [];
+  return [{boxId:offer.boxId,robot:winner.robot,launchNow:winner.eligible,score:winner.score,
+   reason:`중앙 배정 R${winner.robot+1} · ${winner.eligible?'현재 집기':'하류 도착 대기'} · ${winner.reason}`,bids}];
+ });
+}
+
+FILE src/pallet/relay/streamPlanner.ts
+import {rankAssignments} from './orchestrator';
+import type {OrchestrationMode,OrchestrationSnapshot,AssignmentOffer} from './orchestrator';
+import {candidateSet} from '../planner';
+import {compactScore} from '../compactPacking';
+import {inspectConstraints} from '../constraints';
+import {COMPACT_SEARCH} from '../types';
+import {volume} from '../geometry';
+import {inPickWindow,movingPickup,stationArc,beltArc,loopLength} from './streamGeometry';
+import {park,toLocal,toWorld} from './layout';
+import {beltPickup} from './conveyor';
+import {receiveConstraints,inspectMotion,motionsConflict} from './motion';
+import {directReturn} from './streamReturn';
+import type {Candidate,PlanningInput,Scenario,PathPoint,Vec3} from '../types';
+import type {RelayWorld,RelayAction,RelayBox} from './types';
+
+export interface FlowProposal {disposition?:'defer'|'no-candidate'|'offer';robot:number;boxId:string;cellVersion:number;candidates:Candidate[];reason:string;blocked:number;tested:number}
+export interface FlowDecision {runId:string;proposals:FlowProposal[];milliseconds:number;checks:number;orchestration?:OrchestrationSnapshot;cellVersions?:number[];cellStates?:string[];snapshotTime?:number}
+const distance=(a:Vec3,b:Vec3)=>Math.hypot(a.x-b.x,a.y-b.y,a.z-b.z);
+const cache=new Map<string,Candidate[]>();
+const diagnostics=new Map<string,string>();
+const fitCache=new Map<string,boolean>();
+const settings={...COMPACT_SEARCH,policy:'legacy' as const,inventoryMode:'none' as const,temporaryBuffer:false,maxCandidates:64,portfolio:false};
+
+// This boundary deliberately excludes the future input manifest and unmeasured boxes.
+export function observedProblem(s:Scenario,w:RelayWorld){
+ const world=structuredClone(w);world.boxes=world.boxes.filter(b=>b.status==='placed'||b.flow&&b.flow.measuredAt<=w.time);
+ const ids=new Set(world.boxes.map(b=>b.observation.typeId));
+ return {scenario:{...structuredClone(s),types:s.types.filter(t=>ids.has(t.id)),events:[]},world};
+}
+function input(s:Scenario,w:RelayWorld,robot:number,b:RelayBox):PlanningInput{
+ return {runId:w.runId,stepId:w.revision,pallet:s.pallet,types:s.types,constraints:receiveConstraints(s),placements:w.cells[robot].placements,current:{...b.observation,pickupPosition:beltPickup(b.observation,robot,s.pallet)},remaining:{},algorithm:'greedy',settings};
+}
+function sites(ctx:PlanningInput,key?:string){
+ if(key&&cache.has(key))return structuredClone(cache.get(key)!);
+ const inspected=candidateSet(ctx,true).candidates,candidates=inspected.filter(c=>c.valid);
+ for(const c of candidates){compactScore(c,ctx);
+  // Small parcels use existing broad supports first, preserving floor for unknown large arrivals.
+  if(ctx.placements.length&&c.placement.position.z===0&&volume(c.placement.size)<35e6)c.score-=100;
+ }
+ candidates.sort((a,b)=>(a.placement.position.z-b.placement.position.z)*.04+b.score-a.score);
+ if(key){if(cache.size>600){cache.clear();diagnostics.clear();}cache.set(key,structuredClone(candidates));
+  const reasons=new Map<string,number>();for(const c of inspected)for(const reason of c.reasons)reasons.set(reason,(reasons.get(reason)||0)+1);
+  diagnostics.set(key,[...reasons].sort((a,b)=>b[1]-a[1]).slice(0,2).map(r=>r[0]).join(' / '));
+ }return candidates;
+}
+export function planIndependentStream(s:Scenario,w:RelayWorld,busy:number[]=[]):FlowDecision{
+ const start=performance.now(),proposals:FlowProposal[]=[];let checks=0;
+ const known=w.boxes.filter(b=>b.status==='belt'&&b.flow!.measuredAt<=w.time);
+ for(let robot=0;robot<4;robot++){
+  if(busy.includes(robot)||w.stream!.cells[robot].phase!=='loading')continue;
+  const eligible=known.filter(b=>inPickWindow(b,w.time,w.stream!.speed,s.pallet,robot)&&(!b.flow!.checks[robot]||b.flow!.checks[robot].version!==w.cells[robot].version||w.time-b.flow!.checks[robot].at>25))
+   .sort((a,b)=>beltArc(b,w.time,w.stream!.speed,s.pallet)-beltArc(a,w.time,w.stream!.speed,s.pallet)).slice(0,2);
+  for(const box of eligible){
+   const ctx=input(s,w,robot,box),key=`${w.runId}/${robot}/${w.cells[robot].version}/${box.observation.id}`,options=sites(ctx,key);checks++;
+   let chosen:Candidate[]=[],blocked=0,tested=0,reason='현재 지지·하중·높이 조건을 만족하는 위치 없음 · 그대로 순환';
+   if(!options.length&&diagnostics.get(key))reason=`${diagnostics.get(key)} · 그대로 순환`;
+   const dims=Object.values(box.observation.size).sort((a,b)=>b-a),foundation=dims[0]*dims[1]>=180000&&box.observation.weight>=6&&box.observation.maxLoadKg!==0&&box.observation.handling!=='no-top-load';
+   const cellAge=w.time-w.stream!.cells[robot].since;
+   const incomingFoundation=known.some(b=>b!==box&&b.observation.weight>=6&&b.observation.maxLoadKg!==0&&b.observation.handling!=='no-top-load'&&b.observation.size.w*b.observation.size.d>=180000&&stationArc(robot,s.pallet)-beltArc(b,w.time,w.stream!.speed,s.pallet)>0&&stationArc(robot,s.pallet)-beltArc(b,w.time,w.stream!.speed,s.pallet)<w.stream!.speed*20);
+   if(!ctx.placements.length&&!foundation&&!w.stream!.inputClosed&&box.flow!.passes<1&&(cellAge<10||incomingFoundation&&cellAge<30)){proposals.push({robot,boxId:box.observation.id,cellVersion:w.cells[robot].version,candidates:[],disposition:'defer',reason:'관측된 받침 도착을 잠시 기다림 · 바닥 후보 재검토',blocked:0,tested:0});continue;}
+   if(options.length){
+    const others=known.filter(b=>b!==box).sort((a,b)=>volume(b.observation.size)-volume(a.observation.size)).slice(0,3);
+    const feasible=others.filter(b=>{checks++;return sites({...ctx,current:{...b.observation,pickupPosition:beltPickup(b.observation,robot,s.pallet)}},`${w.runId}/${robot}/${w.cells[robot].version}/${b.observation.id}`).length>0;});tested=feasible.length;
+    let lowestLoss=Infinity;
+    for(const c of options.slice(0,6)){
+     let loss=0;
+     for(const b of feasible){checks++;const fitKey=`${key}/${c.id}/${b.observation.id}`;let fits=fitCache.get(fitKey);
+      if(fits===undefined){fits=sites({...ctx,current:{...b.observation,pickupPosition:beltPickup(b.observation,robot,s.pallet)},placements:[...ctx.placements,c.placement],settings:{...settings,maxCandidates:48}}).length>0;if(fitCache.size>2048)fitCache.clear();fitCache.set(fitKey,fits);}
+      if(!fits){
+      const elsewhere=w.cells.some((cell,other)=>other!==robot&&w.stream!.cells[other].phase==='loading'&&sites(input(s,w,other,b),`${w.runId}/${other}/${cell.version}/${b.observation.id}`).length>0);
+      if(!elsewhere)loss++;
+     }}
+     if(loss<lowestLoss){lowestLoss=loss;chosen=[c];}else if(loss===lowestLoss)chosen.push(c);
+     if(loss===0&&chosen.length>=2)break;
+    }
+    blocked=Number.isFinite(lowestLoss)?lowestLoss:0;
+    // A fragile cap is deferred while known load-bearing stock can still use this cell.
+    const cap=box.observation.handling==='no-top-load'||box.observation.maxLoadKg===0;
+    if(blocked>0||cap&&feasible.some(b=>b.observation.maxLoadKg!==0&&b.observation.handling!=='no-top-load')){
+     chosen=[];reason=`후속 막힘 표본 ${blocked}/${tested}${cap?' · 상부용 박스 보류':''} · 벨트에서 재검토`;
+    }else reason=`지지·하중·높이 통과 · 후속 막힘 표본 ${blocked}/${tested} · 이동 중 추적 집기`;
+   }
+   proposals.push({robot,boxId:box.observation.id,cellVersion:w.cells[robot].version,candidates:chosen,reason,blocked,tested,disposition:chosen.length?'offer':options.length?'defer':'no-candidate'});
+   if(chosen.length)break;
+  }
+ }
+ return {runId:w.runId,proposals,milliseconds:performance.now()-start,checks};
+}
+
+/** Central coordinator only considers measured belt stock, never the future manifest.
+ * At most eight observed offers x four cells x three observed fit probes are ranked.
+ * Downstream allocations are soft intentions: physical reservation occurs only at launch.
+ */
+export function planStream(s:Scenario,w:RelayWorld,busy:number[]=[],mode:OrchestrationMode=w.stream?.orchestrationMode??'central'):FlowDecision{
+ const start=performance.now();
+ const known=w.boxes.filter(b=>b.status==='belt'&&b.flow&&b.flow.measuredAt<=w.time);
+ if(mode==='independent')return {...planIndependentStream(s,w,busy),orchestration:{mode,at:w.time,observedBoxes:known.length,evaluatedBids:0,assignments:[]}};
+ const local:FlowDecision={runId:w.runId,proposals:[],milliseconds:0,checks:0};
+ // Central planning bypasses independent-cell policy deferrals and its lookahead.
+ for(let robot=0;robot<w.cells.length;robot++){
+  if(busy.includes(robot)||w.stream!.cells[robot].phase!=='loading')continue;
+  const eligible=known.filter(b=>inPickWindow(b,w.time,w.stream!.speed,s.pallet,robot)&&(!b.flow!.checks[robot]||b.flow!.checks[robot].version!==w.cells[robot].version||w.time-b.flow!.checks[robot].at>25))
+   .sort((a,b)=>beltArc(b,w.time,w.stream!.speed,s.pallet)-beltArc(a,w.time,w.stream!.speed,s.pallet)).slice(0,2);
+  for(const b of eligible){
+   const candidates=sites(input(s,w,robot,b),`${w.runId}/${robot}/${w.cells[robot].version}/${b.observation.id}`);local.checks++;
+   local.proposals.push({robot,boxId:b.observation.id,cellVersion:w.cells[robot].version,candidates,blocked:0,tested:0,disposition:candidates.length?'offer':'no-candidate',reason:candidates.length?'기하·지지·하중 모델 검사 통과':'제한된 후보 탐색에서 배치 후보 없음 · 다음 구역에서 재검토'});
+  }
+ }
+ const offers:AssignmentOffer[]=[],byPair=new Map<string,FlowProposal>();let probes=0;
+ const capacity=s.pallet.width*s.pallet.depth*s.pallet.maxHeight;
+ for(const boxId of [...new Set(local.proposals.map(p=>p.boxId))]){
+  const box=known.find(b=>b.observation.id===boxId)!;
+  const offer:AssignmentOffer={boxId,passes:box.flow!.passes,bids:[]};
+  for(let robot=0;robot<w.cells.length;robot++){
+   if(busy.includes(robot)||w.stream!.cells[robot].phase!=='loading')continue;
+   const eligible=inPickWindow(box,w.time,w.stream!.speed,s.pallet,robot);
+   const delta=(stationArc(robot,s.pallet)-1050-beltArc(box,w.time,w.stream!.speed,s.pallet)+loopLength(s.pallet))%loopLength(s.pallet);
+   const arrivalSeconds=eligible?0:delta/w.stream!.speed;
+   if(arrivalSeconds>20||!eligible&&box.flow!.passes>=1)continue;
+   const ctx=input(s,w,robot,box),key=`${w.runId}/${robot}/${w.cells[robot].version}/${boxId}`;
+   const current=local.proposals.find(p=>p.robot===robot&&p.boxId===boxId);
+   const options=current?current.candidates:sites(ctx,key);probes++;
+   if(!options.length)continue;
+   // Evaluate a bounded shortlist; support/path constraints already filtered these sites.
+   const sample=known.filter(b=>b.observation.id!==boxId).sort((a,b)=>volume(b.observation.size)-volume(a.observation.size)).slice(0,3);
+   const before=sample.filter(b=>{probes++;return sites(input(s,w,robot,b),`${w.runId}/${robot}/${w.cells[robot].version}/${b.observation.id}`).length>0;});
+   let best:{candidate:Candidate;score:number;fit:number}|undefined;
+   for(const candidate of options.slice(0,2)){
+    let retained=0;
+    for(const b of before){probes++;const fitKey=`${key}/${candidate.id}/${b.observation.id}`;let fit=fitCache.get(fitKey);
+     if(fit===undefined){fit=sites({...ctx,current:{...b.observation,pickupPosition:beltPickup(b.observation,robot,s.pallet)},placements:[...ctx.placements,candidate.placement],settings:{...settings,maxCandidates:48}}).length>0;if(fitCache.size>2048)fitCache.clear();fitCache.set(fitKey,fit);}
+     if(fit)retained++;
+    }
+    const fit=before.length?retained/before.length:1;
+    const height=(candidate.placement.position.z+candidate.placement.size.h)/s.pallet.maxHeight;
+    const used=ctx.placements.reduce((v,p)=>v+volume(p.size),0)/capacity;
+    const score=45*fit+25*(1-height)+20/(1+(arrivalSeconds+candidate.path.seconds)/10)+10*used;
+    if(!best||score>best.score)best={candidate,score,fit};
+   }
+   if(!best)continue;
+   const remainingVolumeRatio=Math.max(0,1-(ctx.placements.reduce((v,p)=>v+volume(p.size),0)+volume(box.observation.size))/capacity);
+   const reason=`관측 후속 수용 ${Math.round(best.fit*100)}% (${before.length}개 표본) · 배치 후 빈 부피 ${Math.round(remainingVolumeRatio*100)}% · 도착 ${arrivalSeconds.toFixed(1)}초`;
+   offer.bids.push({robot,score:best.score,arrivalSeconds,workSeconds:best.candidate.path.seconds,remainingVolumeRatio,futureFitRatio:best.fit,eligible,reason});
+   byPair.set(`${boxId}/${robot}`,{disposition:'offer',robot,boxId,cellVersion:w.cells[robot].version,candidates:[best.candidate],reason,blocked:Math.round(before.length*(1-best.fit)),tested:before.length});
+  }
+  offers.push(offer);
+ }
+ const assignments=rankAssignments(offers),selected=new Map(assignments.filter(a=>a.launchNow).map(a=>[a.boxId,a]));
+ const proposals:FlowProposal[]=assignments.filter(a=>a.launchNow).map(a=>({...byPair.get(`${a.boxId}/${a.robot}`)!,reason:a.reason}));
+ // Retain real infeasibility diagnostics. Intentional passes must not mark a pallet exhausted.
+ for(const proposal of local.proposals){
+  if(selected.has(proposal.boxId))continue;
+  const assignment=assignments.find(a=>a.boxId===proposal.boxId);
+  if(!assignment&&!proposal.candidates.length)proposals.push(proposal);
+ }
+ return {runId:w.runId,proposals,milliseconds:performance.now()-start,checks:local.checks+probes,
+  snapshotTime:w.time,cellVersions:w.cells.map(c=>c.version),cellStates:w.stream!.cells.map(c=>`${c.phase}/${c.cycle}`),orchestration:{mode,at:w.time,observedBoxes:known.length,evaluatedBids:offers.reduce((n,o)=>n+o.bids.length,0),assignments}};
+}
+
+// Recompute interception at launch time, not at the worker's earlier snapshot time.
+export function interceptAction(s:Scenario,w:RelayWorld,p:FlowProposal,running:RelayAction[],failures:string[]=[]):RelayAction|undefined{
+ const b=w.boxes.find(b=>b.observation.id===p.boxId);
+ if(!b||b.status!=='belt'||p.cellVersion!==w.cells[p.robot].version||w.stream!.cells[p.robot].phase!=='loading'||running.some(a=>a.robot===p.robot))return;
+ const g=s.constraints.gripper,idle=toLocal(park(p.robot,s.pallet),p.robot,s.pallet),speed=w.stream!.speed;
+ for(const c of p.candidates){
+  let approach=2,interceptResidual=Infinity;
+  for(let iteration=0;iteration<16;iteration++){
+   const startPickup=movingPickup(b,w.time+approach,speed,s.pallet,p.robot),safe=c.path.points[0].tcp.z;
+   const start={x:startPickup.x+b.observation.size.w/2,y:startPickup.y+b.observation.size.d/2,z:startPickup.z+b.observation.size.h};
+   const updated=(distance(idle,{...start,z:safe})+Math.abs(safe-start.z))/g.speed;interceptResidual=Math.abs(updated-approach);approach=updated;
+  }
+  if(!Number.isFinite(approach)||interceptResidual>1e-4){failures.push('추적 집기 시간 수렴 실패');continue;}
+  const graspAt=w.time+approach+g.pickSeconds,arc=beltArc(b,graspAt,speed,s.pallet)-stationArc(p.robot,s.pallet);
+  if(Math.abs(arc)>1050){failures.push('추적 집기 구간을 지남');continue;}
+  // The whole contact interval remains on the straight picking run.
+  const startPickup=movingPickup(b,w.time+approach,speed,s.pallet,p.robot),endPickup=movingPickup(b,graspAt,speed,s.pallet,p.robot);
+  if(Math.abs(startPickup.y-endPickup.y)>1e-5)continue;
+  const checked=inspectConstraints(c.placement,{...b.observation,pickupPosition:endPickup},w.cells[p.robot].placements,s.pallet,receiveConstraints(s));
+  if(checked.reasons.length){failures.push(...checked.reasons);continue;}
+  const original=directReturn(checked.path,idle,b.observation,checked.stack,receiveConstraints(s)),contact={x:endPickup.x+b.observation.size.w/2,y:endPickup.y+b.observation.size.d/2,z:endPickup.z+b.observation.size.h},contactStart={...contact,x:startPickup.x+b.observation.size.w/2,y:startPickup.y+b.observation.size.d/2};
+  const first={...contactStart,z:original.points[0].tcp.z};
+  const verifiedApproach=(distance(idle,first)+distance(first,contactStart))/g.speed;
+  if(Math.abs(verifiedApproach-approach)>1e-4){failures.push('검증 경로의 접근 높이 변경 · 재계획 필요');continue;}
+  const points:PathPoint[]=[{label:'이동 박스 추적 접근',tcp:idle,carrying:false,hold:0,pose:0},{label:'벨트 속도에 동기화',tcp:first,carrying:false,hold:0,pose:0},{label:'이동 중 접촉',tcp:contactStart,carrying:false,hold:0,pose:0},{label:'벨트 추적 · 파지',tcp:contact,carrying:false,hold:0,pose:0},...original.points.slice(2),{label:'다음 박스 관찰',tcp:idle,carrying:false,hold:0,pose:0}];
+  const segmentSeconds=[distance(idle,first)/g.speed,distance(first,contactStart)/g.speed,g.pickSeconds,...original.segmentSeconds.slice(1),distance(original.points.at(-1)!.tcp,idle)/g.speed];
+  const seconds=segmentSeconds.reduce((a,b)=>a+b,0),path={...original,points,segmentSeconds,seconds,lengthMm:points.slice(1).reduce((sum,p,i)=>sum+distance(points[i].tcp,p.tcp),0)};
+  const releaseIndex=points.findIndex(pt=>pt.label==='내려놓기'),releaseAt=w.time+segmentSeconds.slice(0,releaseIndex).reduce((a,b)=>a+b,0);
+  const a:RelayAction={runId:w.runId,revision:w.revision,cellVersion:p.cellVersion,robot:p.robot,kind:'place',boxId:p.boxId,from:p.robot,reason:p.reason,candidate:{...c,placement:checked.placement,path},path,pickup:endPickup,seconds,initialCenter:toWorld({x:contact.x,y:contact.y,z:contact.z-b.observation.size.h/2},p.robot,s.pallet),tracking:{enteredAt:b.flow!.enteredAt,graspAt,releaseAt}};
+  const bad=inspectMotion(s,w,a);if(!bad.length&&!running.some(other=>motionsConflict(s,w,a,other)))return a;
+  failures.push(...(bad.length?bad:['운반 경로 예약 대기']));
+ }return;
+}
+
+FILE src/pallet/relay/streamEngine.ts
+import {ArrivalEnvironment} from '../environment';
+import {top} from '../geometry';
+import {inspectConstraints} from '../constraints';
+import {receiveConstraints} from './motion';
+import {entryClear,STREAM_SPEED,loopLength} from './streamGeometry';
+import {interceptAction} from './streamPlanner';
+import type {FlowDecision} from './streamPlanner';
+import type {Scenario} from '../types';
+import type {RelayWorld,RelayMotion} from './types';
+let sequence=0;
+export function createStream(s:Scenario):RelayWorld{
+ const environment=new ArrivalEnvironment({...s,supplyMode:'arrival'}),boxes=Array.from({length:environment.total},(_,i)=>({observation:environment.current(i)!,owner:-1,visited:[],forwardedAt:Array(4).fill(-1),status:'pending' as const}));
+ return {runId:`flow-${s.arrival.seed}-${++sequence}`,revision:0,cursor:0,boxes,cells:Array.from({length:4},()=>({queue:[],placements:[],version:0})),pads:Array.from({length:4},()=>({boxId:null,version:0,departedAt:0,readyAt:0,arrived:true})),records:[],time:0,stream:{orchestrationMode:'central',speed:STREAM_SPEED,nextInfeed:0,entered:0,measured:0,passes:0,complete:false,inputClosed:false,cells:Array.from({length:4},()=>({phase:'loading',since:0,cycle:1,lastPlaced:0,rejected:[]})),dispatched:[]}};
+}
+export function applyDecision(s:Scenario,world:RelayWorld,motions:RelayMotion[],decision:FlowDecision){
+ if(decision.runId!==world.runId||decision.snapshotTime!==undefined&&decision.snapshotTime>world.time||decision.cellVersions?.some((v,i)=>world.cells[i]?.version!==v)||decision.cellStates?.some((state,i)=>state!==`${world.stream!.cells[i].phase}/${world.stream!.cells[i].cycle}`)||decision.orchestration&&decision.orchestration.mode!==(world.stream?.orchestrationMode??'central'))return {world,motions};
+ const w=structuredClone(world),next=[...motions];
+ if(decision.orchestration)w.stream!.orchestration=decision.orchestration;
+ for(const proposal of decision.proposals){
+  const b=w.boxes.find(b=>b.observation.id===proposal.boxId);
+  if(!b||b.status!=='belt'||proposal.cellVersion!==w.cells[proposal.robot].version||w.stream!.cells[proposal.robot].phase!=='loading')continue;
+  const failures:string[]=[],action=interceptAction(s,w,proposal,next.map(m=>m.action),failures);
+  const reason=action?proposal.reason:proposal.candidates.length?`${[...new Set(failures)].slice(0,2).join(' / ')||'현재 예약 불가'} · 다음 구역으로 통과`:proposal.reason;
+  b.flow!.checks[proposal.robot]={version:proposal.cellVersion,at:w.time,reason,blocked:proposal.blocked,tested:proposal.tested};b.flow!.lastReason=reason;
+  if(action){b.status='reserved';b.owner=proposal.robot;next.push({action,started:w.time,elapsed:0,progress:0});w.revision++;}
+  else if(proposal.disposition!=='defer'&&(!proposal.candidates.length||failures.some(r=>!r.includes('예약')&&!r.includes('구간')))){const cell=w.stream!.cells[proposal.robot];if(!cell.rejected.includes(b.observation.id))cell.rejected.push(b.observation.id);}
+ }
+ return {world:w,motions:next};
+}
+export function advanceStream(s:Scenario,world:RelayWorld,motions:RelayMotion[],time:number){
+ if(time<world.time)throw Error('시뮬레이션 시계는 역행할 수 없습니다.');
+ const w=structuredClone(world),flow=w.stream!;w.time=time;
+ const next:RelayMotion[]=[];
+ for(const m of motions){
+  const elapsed=time-m.started;
+  if(elapsed+1e-8<m.action.seconds){next.push({...m,elapsed,progress:elapsed/m.action.seconds});continue;}
+  const a=m.action,b=w.boxes.find(b=>b.observation.id===a.boxId)!;
+  if(b.status!=='reserved'||b.owner!==a.robot||a.cellVersion!==w.cells[a.robot].version)throw Error('추적 집기 예약이 일치하지 않습니다.');
+  const checked=inspectConstraints(a.candidate!.placement,{...b.observation,pickupPosition:a.pickup},w.cells[a.robot].placements,s.pallet,receiveConstraints(s));
+  if(checked.reasons.length)throw Error(checked.reasons.join(' / '));
+  b.status='placed';w.cells[a.robot].placements=checked.stack;w.cells[a.robot].version++;w.revision++;
+  flow.cells[a.robot].lastPlaced=time;flow.cells[a.robot].rejected=[];
+  w.records.push({step:w.records.length+1,kind:'place',robot:a.robot,boxId:a.boxId,from:a.robot,reason:a.reason,position:a.candidate!.placement.position,started:m.started,finished:m.started+a.seconds});
+ }
+ const pending=w.boxes.find(b=>b.status==='pending');
+ const belt=w.boxes.filter(b=>b.status==='belt'||b.status==='reserved'&&next.some(m=>m.action.boxId===b.observation.id&&time<m.action.tracking!.graspAt));
+ if(pending&&time>=flow.nextInfeed&&entryClear(pending,belt,time,flow.speed,s.pallet)){
+  pending.status='belt';pending.flow={enteredAt:time,measuredAt:time+650/flow.speed+.25,passes:0,lastReason:'이동 중 계측',checks:{}};flow.entered++;w.revision++;
+  // Seeded irregular release intervals plus physical belt clearance; no overlapping spawn.
+  const jitter=((s.arrival.seed*31+flow.entered*7919)%997)/997;flow.nextInfeed=time+2.6+jitter*2.6;
+ }
+ flow.inputClosed=!w.boxes.some(b=>b.status==='pending');
+ for(const b of w.boxes){if(!b.flow)continue;
+  if(world.time<b.flow.measuredAt&&time>=b.flow.measuredAt){flow.measured++;b.flow.lastReason='계측 완료 · 접근하는 작업셀에서 선별';w.revision++;}
+  if(b.status==='belt'){const laps=Math.floor((time-b.flow.enteredAt)*flow.speed/loopLength(s.pallet));if(laps>b.flow.passes){flow.passes+=laps-b.flow.passes;b.flow.passes=laps;}}
+ }
+ const allPlaced=w.boxes.every(b=>b.status==='placed');
+ flow.cells.forEach((state,robot)=>{
+  const cell=w.cells[robot],busy=next.some(m=>m.action.robot===robot),height=Math.max(0,...cell.placements.map(top));
+  const remaining=w.boxes.filter(b=>b.status!=='placed'),exhausted=!remaining.some(b=>b.status==='pending'||b.status==='reserved'||!state.rejected.includes(b.observation.id));
+  const reconsiderSeconds=loopLength(s.pallet)/flow.speed*1.1;
+  if(state.phase==='loading'&&!busy&&cell.placements.length&&(allPlaced||height>=s.pallet.maxHeight*.96||(state.rejected.length>=6||exhausted)&&time-state.lastPlaced>reconsiderSeconds)){
+   state.phase='checking';state.since=time;w.revision++;
+  }else if(state.phase==='checking'&&time-state.since>=3){state.phase='outbound';state.since=time;w.revision++;}
+  else if(state.phase==='outbound'&&time-state.since>=9){
+   flow.dispatched.push({robot,cycle:state.cycle,placements:structuredClone(cell.placements),at:time});cell.placements=[];cell.version++;state.phase='returning';state.since=time;w.revision++;
+  }else if(state.phase==='returning'&&time-state.since>=9){state.phase='loading';state.since=time;state.cycle++;state.rejected=[];state.lastPlaced=time;w.revision++;}
+ });
+ flow.complete=allPlaced&&!next.length&&flow.cells.every((c,i)=>c.phase==='loading'&&!w.cells[i].placements.length);
+ assertStreamInventory(w,next);return {world:w,motions:next};
+}
+export function assertStreamInventory(w:RelayWorld,motions:RelayMotion[]){
+ const ids=w.boxes.map(b=>b.observation.id),stored=[...w.cells.flatMap(c=>c.placements),...w.stream!.dispatched.flatMap(p=>p.placements)].map(p=>p.id),reserved=motions.map(m=>m.action.boxId);
+ if(new Set(ids).size!==ids.length||new Set(stored).size!==stored.length||new Set(reserved).size!==reserved.length||new Set(motions.map(m=>m.action.robot)).size!==motions.length)throw Error('박스 / 작업셀 중복 예약');
+ for(const b of w.boxes)if((b.status==='placed')!==stored.includes(b.observation.id)||(b.status==='reserved')!==reserved.includes(b.observation.id))throw Error('박스 수량 보존 오류');
+ if(stored.some(id=>!ids.includes(id))||reserved.some(id=>!ids.includes(id)))throw Error('알 수 없는 박스');return true;
+}
+
+FILE src/pallet/relay/useStream.ts
+import {useEffect,useRef,useState} from 'react';
+import {createStream,advanceStream,applyDecision} from './streamEngine';
+import {observedProblem} from './streamPlanner';
+import {frameClock} from './frameClock';
+import type {Scenario} from '../types';
+import {initializeStreamHistory,captureStreamHistory} from './streamHistory';
+import type {StreamSnapshot} from './streamHistory';
+import type {FlowDecision} from './streamPlanner';
+import type {OrchestrationMode} from './orchestrator';
+
+function initialSnapshot(scenario:Scenario,mode:OrchestrationMode):StreamSnapshot {
+ const world=createStream(scenario);world.stream!.orchestrationMode=mode;
+ return initializeStreamHistory(world);
+}
+export function useStream(scenario:Scenario,active:boolean){
+ const [version,setVersion]=useState(0),[playing,setPlayingState]=useState(false),[speed,setSpeed]=useState(4),[error,setError]=useState('');
+ const [orchestrationMode,setMode]=useState<OrchestrationMode>('central');
+ const [replayIndex,setReplayState]=useState<number|null>(null);
+ const [snapshot,setSnapshot]=useState(()=>initialSnapshot(scenario,orchestrationMode));
+ const live=useRef(snapshot),control=useRef({playing,active,speed});control.current={playing,active,speed};
+ const setPlaying=(update:boolean|((previous:boolean)=>boolean))=>{const value=typeof update==='function'?update(control.current.playing):update;control.current.playing=value;setPlayingState(value);if(value)setReplayState(null);};
+ useEffect(()=>{
+  const initial=initialSnapshot(scenario,orchestrationMode);live.current=initial;setSnapshot(initial);setError('');setReplayState(null);
+  const worker=new Worker(new URL('./stream.worker.ts',import.meta.url),{type:'module'});let disposed=false,raf=0,last=performance.now(),lastPublish=0,lastPlan=-Infinity;
+  const fail=(e:unknown)=>{setError(String(e));control.current.playing=false;setPlayingState(false);live.current={...live.current,busy:false};};
+  worker.onerror=e=>{if(!disposed)fail(e.message);};
+  worker.onmessage=e=>{if(disposed)return;live.current={...live.current,busy:false};if(e.data.error){fail(e.data.error);return;}
+   const d=e.data.decision as FlowDecision;if(d.runId!==live.current.world.runId||!control.current.playing||!control.current.active)return;
+   try{const next=applyDecision(scenario,live.current.world,live.current.motions,d);
+    live.current=captureStreamHistory({...live.current,...next,ms:d.checks?d.milliseconds:live.current.ms,checks:live.current.checks+d.checks,
+     latencySamples:d.checks?[...live.current.latencySamples,d.milliseconds].slice(-10000):live.current.latencySamples,
+     peak:Math.max(live.current.peak,next.motions.length)},d.checks>0);
+   }catch(error){fail(error);}
+  };
+  const tick=(now:number)=>{
+   if(disposed)return;
+   const frame=frameClock(now,last),dt=frame.delta;last=frame.last;const ctl=control.current;
+   if(ctl.playing&&ctl.active&&!live.current.world.stream!.complete){
+    try{const next=advanceStream(scenario,live.current.world,live.current.motions,live.current.world.time+dt*ctl.speed);live.current=captureStreamHistory({...live.current,...next});
+     if(!live.current.busy&&live.current.world.time-lastPlan>.65){lastPlan=live.current.world.time;live.current={...live.current,busy:true};worker.postMessage({...observedProblem(scenario,live.current.world),busy:live.current.motions.map(m=>m.action.robot)});}
+    }catch(error){fail(error);}
+   }
+   if(now-lastPublish>65){lastPublish=now;setSnapshot({...live.current});}raf=requestAnimationFrame(tick);
+  };raf=requestAnimationFrame(tick);
+  return()=>{disposed=true;cancelAnimationFrame(raf);worker.terminate();};
+ },[scenario,version,orchestrationMode]);
+ const reset=(autoplay=false)=>{setPlaying(autoplay);setReplayState(null);setVersion(v=>v+1);};
+ const setOrchestrationMode=(mode:OrchestrationMode)=>{if(mode===orchestrationMode)return;setPlaying(false);setReplayState(null);setMode(mode);};
+ const setReplayIndex=(index:number|null)=>{setPlaying(false);setReplayState(index===null?null:Math.max(0,Math.min(snapshot.history.length-1,index)));};
+ const selected=replayIndex===null?null:snapshot.history[replayIndex];
+ return {...snapshot,...selected,liveWorld:snapshot.world,liveTime:snapshot.world.time,playing,speed,error,setPlaying,setSpeed,reset,
+  orchestrationMode,setOrchestrationMode,replayIndex,setReplayIndex};
+}
+
+FILE src/pallet/relay/streamHistory.ts
+import type { RelayMotion,RelayWorld } from './types';
+
+export const HISTORY_LIMIT=600;
+export interface StreamFrame {
+ world:RelayWorld;motions:RelayMotion[];peak:number;ms:number;checks:number;
+ event?:'initial'|'state'|'decision';decisionMilliseconds?:number;
+}
+export interface StreamSnapshot extends StreamFrame {busy:boolean;history:StreamFrame[];latencySamples:number[]}
+
+/** Worlds and motion objects are immutable engine snapshots. Keep references instead of
+ * duplicating the full scene at animation frequency; callers must not mutate past frames.
+ */
+export function initializeStreamHistory(world:RelayWorld):StreamSnapshot {
+ const frame:StreamFrame={world,motions:[],peak:0,ms:0,checks:0,event:'initial'};
+ return {...frame,busy:false,history:[frame],latencySamples:[]};
+}
+const assignmentSignature=(w:RelayWorld)=>JSON.stringify(w.stream?.orchestration?.assignments.map(a=>[a.boxId,a.robot,a.launchNow]));
+
+/** Capture revisions or changed dispatch intentions. Force a decision event for each
+ * evaluated planner response even if assignments stay unchanged, preserving latency drilldown.
+ * Simulation time and motion elapsed values stay exactly as they were at the event.
+ */
+export function captureStreamHistory(snapshot:StreamSnapshot,forceDecision=false):StreamSnapshot {
+ const prior=snapshot.history.at(-1);
+ if(!forceDecision&&prior&&prior.world.runId===snapshot.world.runId&&prior.world.revision===snapshot.world.revision&&assignmentSignature(prior.world)===assignmentSignature(snapshot.world))return snapshot;
+ const frame:StreamFrame={world:snapshot.world,motions:snapshot.motions,peak:snapshot.peak,ms:snapshot.ms,checks:snapshot.checks,
+  event:forceDecision?'decision':'state',...(forceDecision?{decisionMilliseconds:snapshot.ms}:{})};
+ const history=prior&&prior.world.runId!==snapshot.world.runId?[]:snapshot.history;
+ return {...snapshot,history:[...history.slice(-(HISTORY_LIMIT-1)),frame]};
+}

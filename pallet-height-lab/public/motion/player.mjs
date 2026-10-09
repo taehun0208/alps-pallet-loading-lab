@@ -1,0 +1,20 @@
+import {CHAPTERS,DURATION,chapterAt} from './film.mjs';
+const film=document.querySelector('#film'),play=document.querySelector('#play'),seek=document.querySelector('#seek'),clock=document.querySelector('#clock'),sound=document.querySelector('#sound'),error=document.querySelector('#error');
+const labels=['프롤로그','인입·계측','재고·자세','후보 검사','공간 보존','순환 협업','높이 조합','공구·시간','팔레트 반출','엣지 판단'];
+const format=t=>`${String(Math.floor(t/60)).padStart(2,'0')}:${String(Math.floor(t)%60).padStart(2,'0')}`;
+seek.max=String(DURATION);
+// A complete Blob keeps scrubbing reliable on static hosts without byte-range support.
+// The complete film is cached locally; the same URL remains available for direct downloads.
+let mediaReady;
+let active=-1;
+const buttons=CHAPTERS.map((c,i)=>{const b=document.createElement('button');b.innerHTML=`<span>${format(c.at)}</span>${labels[i]}`;b.setAttribute('aria-label',`${labels[i]} 구간으로 이동`);b.addEventListener('click',()=>{film.currentTime=c.at+(film.paused?.8:0);update();});document.querySelector('.chapters').append(b);return b;});
+function update(){const t=film.currentTime||0,i=chapterAt(t);seek.value=String(t);clock.value=`${format(t)} / ${format(DURATION)}`;play.textContent=film.ended?'↺ 다시 보기':film.paused?'▶ 재생':'Ⅱ 일시정지';play.setAttribute('aria-label',film.paused?'영상 재생':'영상 일시정지');sound.textContent=film.muted?'소리 꺼짐':'소리 켜짐';sound.setAttribute('aria-label',film.muted?'소리 켜기':'소리 끄기');if(active!==i){active=i;document.querySelector('#chapter-label').textContent=CHAPTERS[i].title;document.querySelector('#chapter-line').textContent=CHAPTERS[i].line;document.querySelector('#chapter-body').textContent=CHAPTERS[i].body;buttons.forEach((b,k)=>b.setAttribute('aria-current',String(k===i)));}}
+async function start(){try{await mediaReady;if(film.ended)film.currentTime=0;await film.play();error.hidden=true;}catch{error.textContent='재생 버튼을 다시 누르거나 MP4 파일을 내려받아 주세요.';error.hidden=false;}update();}
+play.addEventListener('click',()=>film.paused?start():film.pause());film.addEventListener('click',()=>film.paused?start():film.pause());document.querySelector('#restart').addEventListener('click',()=>{film.currentTime=0;start();});seek.addEventListener('input',()=>{film.currentTime=Number(seek.value);update();});sound.addEventListener('click',()=>{film.muted=!film.muted;update();});
+document.querySelector('#fullscreen').addEventListener('click',async()=>{try{if(film.requestFullscreen)await film.requestFullscreen();else if(film.webkitEnterFullscreen)film.webkitEnterFullscreen();else throw Error();}catch{error.textContent='이 브라우저에서는 전체 화면을 지원하지 않습니다. MP4 파일을 내려받아 재생할 수 있습니다.';error.hidden=false;}});
+for(const e of ['timeupdate','play','pause','ended','seeked','loadedmetadata','volumechange'])film.addEventListener(e,update);
+film.addEventListener('waiting',()=>{play.textContent='불러오는 중';play.setAttribute('aria-busy','true');});film.addEventListener('playing',()=>{play.removeAttribute('aria-busy');update();});film.addEventListener('error',()=>{error.textContent='영상 파일을 불러오지 못했습니다. 새로고침하거나 MP4 다운로드를 이용해 주세요.';error.hidden=false;});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)film.pause();});update();
+const mediaControls=[play,seek,document.querySelector('#restart'),...buttons];
+mediaControls.forEach(b=>b.disabled=true);play.textContent='불러오는 중';play.setAttribute('aria-busy','true');
+mediaReady=(async()=>{try{const response=await fetch(new URL('./pallet-algorithm.mp4',import.meta.url));if(!response.ok)throw Error('Media download failed');const blob=await response.blob();await new Promise((resolve,reject)=>{film.addEventListener('loadedmetadata',resolve,{once:true});film.addEventListener('error',reject,{once:true});film.src=URL.createObjectURL(new Blob([blob],{type:'video/mp4'}));film.load();});mediaControls.forEach(b=>b.disabled=false);play.removeAttribute('aria-busy');update();}catch{error.textContent='영상을 불러오지 못했습니다. MP4 다운로드를 이용해 주세요.';error.hidden=false;play.textContent='불러오기 실패';play.removeAttribute('aria-busy');}})();

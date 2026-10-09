@@ -1,0 +1,360 @@
+{
+  "schema": "alps-benchmark-audit/1",
+  "completedTrials": 84,
+  "recordedDecisions": 6048,
+  "independentChecks": [
+    "volume/fill",
+    "mass-weighted CoG",
+    "box identity/count conservation",
+    "pallet boundary",
+    "pairwise axis-aligned overlap",
+    "identical input fingerprints per seed/cycle",
+    "source hashes unchanged",
+    "CSV/JSON row counts"
+  ],
+  "samePlacementsAcrossCyclePairs": 42,
+  "cyclePairs": 42,
+  "summarySha256": "04dfcb81e12b0d857158cfab8f6f1906ca0cded85315e8621b923da44195c087",
+  "indexSha256": "a96e52641c658678ebc2d628f2e51078f0c76f3d94cd699e695aede271a99417",
+  "rawFiles": [
+    {
+      "path": "trials/10s-11040-blb.json",
+      "sha256": "8b8f0db320a9d874a50dae4ff75bac7a248b29e8c4ec5f011875d7e120ca1788"
+    },
+    {
+      "path": "trials/10s-11040-capacity-compact.json",
+      "sha256": "142206e03c419926f7a3783d2383544649157574b602469eee5b394006327bf1"
+    },
+    {
+      "path": "trials/10s-11040-strategy-greedy.json",
+      "sha256": "67bc07c7e049ef36797943ffbf5625981ec1a943798115a18b126cdf5f7bce08"
+    },
+    {
+      "path": "trials/10s-11040-lookahead.json",
+      "sha256": "92e7626ffa4d3d6181ff5b2a29c1314675714d40a51e6981a195e26f870c10e6"
+    },
+    {
+      "path": "trials/10s-11040-future-hybrid.json",
+      "sha256": "bf07695f4818f0c2606070b22eef3991c1325c656bf720d2a137e00db7333a0b"
+    },
+    {
+      "path": "trials/10s-11040-mcts.json",
+      "sha256": "90bab1770ad16ca0087d3d7cb28676ed0709ea9adf75b5e5b39e254cc6b4d81d"
+    },
+    {
+      "path": "trials/12s-11040-lookahead.json",
+      "sha256": "b59529726011569364133a63a9bde33ed52629c41d1f89ef997f1a03c9646589"
+    },
+    {
+      "path": "trials/12s-11040-future-hybrid.json",
+      "sha256": "83f48d9a3378fcbb2e053e9c17202e7f15a1019cb5749174d898b61db8445a60"
+    },
+    {
+      "path": "trials/12s-11040-mcts.json",
+      "sha256": "168b43dae528431a44661ab7e6a429a08dac62e8cc13ba95bc82ec94e86be780"
+    },
+    {
+      "path": "trials/12s-11040-blb.json",
+      "sha256": "29ae48d7d2b791a3c8200b02589d8c04252dfcdc8652d5c371739d34ad0db4fb"
+    },
+    {
+      "path": "trials/12s-11040-capacity-compact.json",
+      "sha256": "4b05ebd5e5aa574f816223c358f29854c497ab9e27dbfdc092040fe61a486152"
+    },
+    {
+      "path": "trials/12s-11040-strategy-greedy.json",
+      "sha256": "59e2b4f5676b208cb2e542bf0aa5e2fcdf485f95086a8c28db015acf7d252c89"
+    },
+    {
+      "path": "trials/12s-11041-future-hybrid.json",
+      "sha256": "48ee8c52aed6c41bc65cd8dc4a018dedd7ff5110e2555f0f72d9a523540f41c3"
+    },
+    {
+      "path": "trials/12s-11041-mcts.json",
+      "sha256": "2d9fe78e9bd2f6f8d043368c5a25231d5c0d4c14f898b50513aafa06d1fca27b"
+    },
+    {
+      "path": "trials/12s-11041-blb.json",
+      "sha256": "c46dc59b91e067306a31caab364d1e33930a18c9c9f8a15759bd4da92c0a3ee5"
+    },
+    {
+      "path": "trials/12s-11041-capacity-compact.json",
+      "sha256": "31627cc5b8191a00c53e6e209f9fe4d34272ce75aca1b62480830cf39dd7dcf3"
+    },
+    {
+      "path": "trials/12s-11041-strategy-greedy.json",
+      "sha256": "41776f2ecaa286a338056895409bd09116cdc1235f09f65976355d1374fb9662"
+    },
+    {
+      "path": "trials/12s-11041-lookahead.json",
+      "sha256": "b3f8fda60da6b3d0591a0983fba86ed4319519f310b4db2f5d9bfb559f3fe0a3"
+    },
+    {
+      "path": "trials/10s-11041-capacity-compact.json",
+      "sha256": "ace3ff33d82653ab06ca2ca0cd67f46e4d4e1beae73da8d53e2160a6834fe9a0"
+    },
+    {
+      "path": "trials/10s-11041-strategy-greedy.json",
+      "sha256": "5d4765a9007ecd653898667e3f0f235b172ab0d867af364d8927765b57f8de3a"
+    },
+    {
+      "path": "trials/10s-11041-lookahead.json",
+      "sha256": "4ffd89df5ce00fb469920ee8bc2a706ac8d76a1d5bde2509070033565bbecac3"
+    },
+    {
+      "path": "trials/10s-11041-future-hybrid.json",
+      "sha256": "5045eb681112f8c7f80949cb9e460b0fc74e356fc5a3a45dafc953c70a52d1ee"
+    },
+    {
+      "path": "trials/10s-11041-mcts.json",
+      "sha256": "c965592221dd7971564858014c1bb36d4049b5a4eb7d567fa68d4b50d09d71c0"
+    },
+    {
+      "path": "trials/10s-11041-blb.json",
+      "sha256": "ad94821ff60dbde762e66b14eed1121b0f60b13510455c9dca23aba379534620"
+    },
+    {
+      "path": "trials/10s-11042-strategy-greedy.json",
+      "sha256": "4d1c931d4b523154833a9a656907357c43e2b1d0fd7c5fa9f9f987961942ef86"
+    },
+    {
+      "path": "trials/10s-11042-lookahead.json",
+      "sha256": "c7417ab3e22a8ca0c08ad2e37abf765e6a0cfb3b9902d3f8a65952b82ec49160"
+    },
+    {
+      "path": "trials/10s-11042-future-hybrid.json",
+      "sha256": "fa50379401ff20947dd228f18697c95bdb1459bb13626df7e042a762963b8b47"
+    },
+    {
+      "path": "trials/10s-11042-mcts.json",
+      "sha256": "fb102f155b95690bb5825edae96e2525fe0e4545af8c8db1933efc60b684fa62"
+    },
+    {
+      "path": "trials/10s-11042-blb.json",
+      "sha256": "6ef4b72c89d086edf91afbc3b15eb7bcbf8cc802c5fd9488008baa3bd395e08f"
+    },
+    {
+      "path": "trials/10s-11042-capacity-compact.json",
+      "sha256": "1e15c157baae299daad391c94c6f64fe3b165df8fcb207e7f8bb6a23fa25d4ba"
+    },
+    {
+      "path": "trials/12s-11042-mcts.json",
+      "sha256": "6fffcb050e1f286217323047e5c70a7e795ec7f9bab43d28917d5aad4645b149"
+    },
+    {
+      "path": "trials/12s-11042-blb.json",
+      "sha256": "6d3a27c0de9d043f4292dff6b57c5e80a5dd9603ef1cfdb21d8db62e5e16f918"
+    },
+    {
+      "path": "trials/12s-11042-capacity-compact.json",
+      "sha256": "5814ffc7df2ed752cc6f71c08e91b73754031538ff493cddfeb8de4e08d36702"
+    },
+    {
+      "path": "trials/12s-11042-strategy-greedy.json",
+      "sha256": "bbfaf905c2f585a8eb9035b9425bde89f14a20bbe500ae2563557ff951757c9c"
+    },
+    {
+      "path": "trials/12s-11042-lookahead.json",
+      "sha256": "f579a098a73f0bbeb8feb8c26225c12df0db873071e49fea4c6b8f4adb4adeb4"
+    },
+    {
+      "path": "trials/12s-11042-future-hybrid.json",
+      "sha256": "98e7a52a8891b3fc481d24191349ff00e02d3ba5a8ea7ce3155c97352e383445"
+    },
+    {
+      "path": "trials/12s-11043-blb.json",
+      "sha256": "c2a78ef917583f69742f4ebca1e47a35b31199720ac6f87179f578e1ebce59dd"
+    },
+    {
+      "path": "trials/12s-11043-capacity-compact.json",
+      "sha256": "b384291edd63f041732a1d0474f13356bd64647e33be44a8eb3d2f709e7bbc33"
+    },
+    {
+      "path": "trials/12s-11043-strategy-greedy.json",
+      "sha256": "20bed04f4b708ec9e678d159e8b002c0246aeda7a88731bc2c56c0eed48482a7"
+    },
+    {
+      "path": "trials/12s-11043-lookahead.json",
+      "sha256": "5a832cc19d6da1be664ca0c374aed877bb8f7ec4833524f59fba23c0bf588a8d"
+    },
+    {
+      "path": "trials/12s-11043-future-hybrid.json",
+      "sha256": "fd9746404fd7f8ac3bf5e053b9c1415d742d3a7ac6be9ed4e431b069391ff6f9"
+    },
+    {
+      "path": "trials/12s-11043-mcts.json",
+      "sha256": "6f383be98d0dc0f652d2f5e4c439f55864ecab3dd03b398f453f71bc6b9e5cba"
+    },
+    {
+      "path": "trials/10s-11043-lookahead.json",
+      "sha256": "77ffb5c7be65297d3f4baaaec3e3a1a20a916c5120da4433fd5f8940b95467f8"
+    },
+    {
+      "path": "trials/10s-11043-future-hybrid.json",
+      "sha256": "814cdf39bee34a67118f7686e909753f69199903494e8fd155ca8f7664ade09a"
+    },
+    {
+      "path": "trials/10s-11043-mcts.json",
+      "sha256": "fbc8947e9ba3673e0124f7171d4b14bd39e9c3081801133a61aa3f6170d601d0"
+    },
+    {
+      "path": "trials/10s-11043-blb.json",
+      "sha256": "21f39c9c0898f2c94b7f8d913de2853d25a6a5b57e3e5813994487e1a30dfe67"
+    },
+    {
+      "path": "trials/10s-11043-capacity-compact.json",
+      "sha256": "73846f44d57103785d28d86f29bc2623c3365eae6620549c734a3f6134294db1"
+    },
+    {
+      "path": "trials/10s-11043-strategy-greedy.json",
+      "sha256": "4a09839272cb30ac3853a8185db7c3fb2a617d9dc27a14efa5547bc21a1927ff"
+    },
+    {
+      "path": "trials/10s-11044-future-hybrid.json",
+      "sha256": "8f8bf1c7aba2a0ba461ddfb6875062597b9376f56bda9dfdf4ecc71d9c90bb76"
+    },
+    {
+      "path": "trials/10s-11044-mcts.json",
+      "sha256": "c997f4fe861bd681790f5ecb2a8fac763041c3f81dcab4cba50da628caa78ae6"
+    },
+    {
+      "path": "trials/10s-11044-blb.json",
+      "sha256": "2dc86d0506b7a1c072317b997fd3181f5c5dceab4c2c522bc85e9d8b60ad2b8b"
+    },
+    {
+      "path": "trials/10s-11044-capacity-compact.json",
+      "sha256": "76218a5336d551dabcc954808e50a9b8de030afd4449ac896ac2774961490680"
+    },
+    {
+      "path": "trials/10s-11044-strategy-greedy.json",
+      "sha256": "8b68d2368db8802f8e69b875d7e0d04d2213fa622b7683f7fcc76755c1103b8e"
+    },
+    {
+      "path": "trials/10s-11044-lookahead.json",
+      "sha256": "e111db558d7529bf1d5b2c5fdb33616fb1d31e68f50f230c5f8199ac22ed3291"
+    },
+    {
+      "path": "trials/12s-11044-capacity-compact.json",
+      "sha256": "47bb4bad97fb7a1d524edd15d2301e6c4d69fc7378a29898dbd1f1e388fb1b25"
+    },
+    {
+      "path": "trials/12s-11044-strategy-greedy.json",
+      "sha256": "f0f1780aceae5b27f5a711929020543d99546847130e381a7d12561609d54bca"
+    },
+    {
+      "path": "trials/12s-11044-lookahead.json",
+      "sha256": "fabc31df6b3268af07840b36a5a771412083172924020384c5d13ff0ac6dfa8f"
+    },
+    {
+      "path": "trials/12s-11044-future-hybrid.json",
+      "sha256": "3414837a1f6e6754e8473b877c1681642847cb11a35f09d35bd8ad8b79f7d048"
+    },
+    {
+      "path": "trials/12s-11044-mcts.json",
+      "sha256": "8f5733f9f390311686ffd6e9903d776d55c15ce183ef8f92f20bb515c0286649"
+    },
+    {
+      "path": "trials/12s-11044-blb.json",
+      "sha256": "3454ea8c4cc5520dac50d5a62e1b770dcb5744504ef702aa80ea19d9ca026836"
+    },
+    {
+      "path": "trials/12s-11045-strategy-greedy.json",
+      "sha256": "80e87274d0a68a1190282a7c985e15b97142db7933f598be5dda25c9955b0a6a"
+    },
+    {
+      "path": "trials/12s-11045-lookahead.json",
+      "sha256": "1e3fdd98cce321aa88e77c1d449436053244e5a43aa5fce12614d393b523cf89"
+    },
+    {
+      "path": "trials/12s-11045-future-hybrid.json",
+      "sha256": "b427794b3b74fe9580685a170512c925f1ab3cc97b5c1f63c29cd92a2c87f948"
+    },
+    {
+      "path": "trials/12s-11045-mcts.json",
+      "sha256": "2c13ceb3fbcca1a3fda9dcc84907b788e617d82ca1ddc104fdb5a529802a3ae6"
+    },
+    {
+      "path": "trials/12s-11045-blb.json",
+      "sha256": "57cf814143c128ca34eb26c6df1508f360f55ddbea6218e0d8591d6f24d64958"
+    },
+    {
+      "path": "trials/12s-11045-capacity-compact.json",
+      "sha256": "62726c073e49908a6733c5b9d73d74b81b3424d7d25cd6814e61c6b90f2f04e2"
+    },
+    {
+      "path": "trials/10s-11045-mcts.json",
+      "sha256": "fab29d09b88372b5955cdf9f3d6480a8cf3206aa0220c2b88f13c4c16b989876"
+    },
+    {
+      "path": "trials/10s-11045-blb.json",
+      "sha256": "b5c06f55d5313aaae8da1b172c31909e9e003a9788b088a3d89b8cf985a718c9"
+    },
+    {
+      "path": "trials/10s-11045-capacity-compact.json",
+      "sha256": "cf4fde85687e31451de51759f8a58bc2edafc350b43b3674ae040e9da2701b42"
+    },
+    {
+      "path": "trials/10s-11045-strategy-greedy.json",
+      "sha256": "d71b079c814a3275504904605cf9963fe2027e2071f03bb8b2b281ac5d0322c1"
+    },
+    {
+      "path": "trials/10s-11045-lookahead.json",
+      "sha256": "1f4819a942834ac932367c01d0890b5e331b895e8b80cdab4e2fcfbd8b428ed0"
+    },
+    {
+      "path": "trials/10s-11045-future-hybrid.json",
+      "sha256": "252d003839de47c86e0fb0fa40234d3c5b9e98f555d70dcb767d13e61c005f01"
+    },
+    {
+      "path": "trials/10s-11046-blb.json",
+      "sha256": "1ad312b02b86b96ee3d9c70e3548f392f7615a3b527b7dc55524035665091100"
+    },
+    {
+      "path": "trials/10s-11046-capacity-compact.json",
+      "sha256": "1265a155ec59e1df335ab00af16397d8e82b24ed9a4fd494f4eb9c6eb7a547da"
+    },
+    {
+      "path": "trials/10s-11046-strategy-greedy.json",
+      "sha256": "f0dcb81c4aba49c2357cc120b318f4530994e658565fcb2dab8e8d9891134f5c"
+    },
+    {
+      "path": "trials/10s-11046-lookahead.json",
+      "sha256": "45d5659c2b0db5d54fe4ab2cdaa036738b8b9163fc265ff056f83a41b6fb6498"
+    },
+    {
+      "path": "trials/10s-11046-future-hybrid.json",
+      "sha256": "37e1df764ed61ffd2cc1bfbeb88d9f670eaa06c20739579006c8bae394e847f9"
+    },
+    {
+      "path": "trials/10s-11046-mcts.json",
+      "sha256": "755081dc15dde13c3b7b378bab20de55a1412e19ed44e964a29650d46f5a3716"
+    },
+    {
+      "path": "trials/12s-11046-lookahead.json",
+      "sha256": "c2c98e10107bb2bee1c0b773335672a2c516f54e6d73a151d4b4aaba7c9add6d"
+    },
+    {
+      "path": "trials/12s-11046-future-hybrid.json",
+      "sha256": "fdbd27c8442ef72cd7e5d5c93cd2e116d84e7e6e0697daaef73e035f6d9bac4b"
+    },
+    {
+      "path": "trials/12s-11046-mcts.json",
+      "sha256": "f8ffb6d4687c4cd9ff117ba05dcc4d30f7b22481fc0f8f40b449966bf4d24582"
+    },
+    {
+      "path": "trials/12s-11046-blb.json",
+      "sha256": "4199880cd46fdfb491877cee429f1341aa957a4c75d95dba3ec436423f9ae8fc"
+    },
+    {
+      "path": "trials/12s-11046-capacity-compact.json",
+      "sha256": "52a143c47824ed810e71287f962fb347ae5024e511b30f6fca39dcae666f8914"
+    },
+    {
+      "path": "trials/12s-11046-strategy-greedy.json",
+      "sha256": "986fd72d3043193af4c465007a24f7dc359268de972ec7dc6849d7a09aecce82"
+    }
+  ],
+  "limitations": [
+    "No dynamic transport stability, physical robot, sensing, communication, full IK or global optimality certificate."
+  ]
+}

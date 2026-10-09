@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-04",
+  "model": "stock-select: all supplied boxes selectable; joint order/position choice; no AI",
+  "unit": {
+    "regressionFiles": 12,
+    "regressionPassed": 129,
+    "stockBenchmarkPassed": 1,
+    "stockBenchmarkRuns": 9,
+    "uniquePassed": 130,
+    "finalDiagnosticsRetestPassed": 6
+  },
+  "browser": {
+    "initialFull": {
+      "startTime": "2026-10-04T12:32:03.757Z",
+      "duration": 176131.071,
+      "expected": 17,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "intermediateUiCheck": {
+      "startTime": "2026-10-04T12:37:07.812Z",
+      "duration": 197465.545,
+      "expected": 2,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    "intermediateFailure": "45-second wait expired with planning still progressing at step 12/30; no input/constraint relaxation",
+    "finalStockCheck": {
+      "startTime": "2026-10-04T12:47:33.815Z",
+      "duration": 157883.761,
+      "expected": 3,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "uniqueValidated": 17,
+    "automaticRetries": 0,
+    "finalChanges": "Explicit stock generation message and arrival-only shuffle button; actual constraint rejection keys; retain last blocked analysis to inspect deferred reasons; longer assertion budget for CPU-variable calculations"
+  },
+  "build": "Final TypeScript / Vite success",
+  "measurement": "pallet-stock-measurements.json",
+  "screenshots": [
+    "pallet-stock-base-first.png",
+    "pallet-stock-320.png",
+    "pallet-stock-1366.png"
+  ],
+  "limits": [
+    "Whole input stock must be physically selectable in this mode",
+    "Sparse candidates and bounded lookahead do not guarantee global optimal packing",
+    "All remaining types are checked before residual inventory is reported",
+    "No changes to dimensions, strength values, support limits or confirmed coordinates to force success",
+    "No gripper width or actual robot model in ideal mode"
+  ]
+}

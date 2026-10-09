@@ -1,0 +1,31 @@
+{
+  "scope": "Synthetic geometry-only Python host benchmark; NOT AVR/full-planner timing",
+  "host": "arm64",
+  "python": "3.14.7",
+  "seed_base": 20261009,
+  "robots": 4,
+  "boxes_per_pallet": 100,
+  "candidate_count": 480,
+  "colliding_candidates": 239,
+  "all_outcomes_equal": true,
+  "full_scan_pair_checks_with_early_exit": 35179,
+  "grid_pair_checks_with_early_exit": 1979,
+  "pair_check_reduction_percent": 94.37448477785043,
+  "grid_build_ms_one_observation": 0.14875,
+  "host_timings_grid_excludes_build": {
+    "full_scan": {
+      "median_ms": 1.271167,
+      "p95_ms": 1.363625
+    },
+    "grid": {
+      "median_ms": 0.40237500000000004,
+      "p95_ms": 0.434125
+    }
+  },
+  "limitations": [
+    "No support/load/path/scheduling/packing-quality checks.",
+    "Index memory is not suitable for R3 in this Python representation.",
+    "Index build/update/query overhead must be included on target hardware.",
+    "One layer layout and one synthetic distribution; not general speedup."
+  ]
+}

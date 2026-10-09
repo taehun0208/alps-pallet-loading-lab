@@ -1,0 +1,10 @@
+import { it,expect } from 'vitest';
+import { verifyPhysics } from '../src/pallet/physics';
+import { DEFAULT_PHYSICS } from '../src/pallet/types';
+import type { Placement } from '../src/pallet/types';
+const b:Placement={id:'A-01',typeId:'A',position:{x:100,y:100,z:0},size:{w:300,d:200,h:200},weight:5,orientation:0,supports:[],supportRatio:1,loadAbove:0};
+const pallet={width:1200,depth:1000,maxHeight:1600};
+it('real gravity and collisions settle boxes without changing planned data',async()=>{const placed=[structuredClone(b)],before=JSON.stringify(placed);const r=await verifyPhysics(placed,pallet,DEFAULT_PHYSICS,'stable');expect(r.status).toBe('stable');expect(r.poses[0].actual.z).toBeGreaterThan(-5);expect(JSON.stringify(placed)).toBe(before);},20000);
+it('an unsupported elevated box falls in the separate scene',async()=>{const p={...b,position:{...b.position,z:800}};const r=await verifyPhysics([p],pallet,DEFAULT_PHYSICS,'fall');expect(r.status).toBe('fallen');expect(r.poses[0].displacementMm).toBeGreaterThan(700);expect(p.position.z).toBe(800);},20000);
+it('the high-stack solver still detects an overbalanced top box',async()=>{const upper={...b,id:'upper',position:{x:320,y:100,z:200}};const r=await verifyPhysics([b,upper],pallet,DEFAULT_PHYSICS,'tip');expect(r.status).not.toBe('stable');expect(r.poses.some(p=>p.angleDeg>3||p.fell)).toBe(true);},20000);
+it('physics uses each material coefficient and respects a box override',async()=>{const boxes=[{...b,id:'p',material:'plastic' as const},{...b,id:'k',position:{x:500,y:100,z:0},material:'paper' as const,friction:.9}];const r=await verifyPhysics(boxes,pallet,{...DEFAULT_PHYSICS,seconds:.1},'materials');expect(r.poses.map(p=>p.friction)).toEqual([.35,.9]);const uniform=await verifyPhysics(boxes,pallet,{...DEFAULT_PHYSICS,seconds:.1,materialFriction:false,friction:.7},'uniform');expect(uniform.poses.map(p=>p.friction)).toEqual([.7,.7]);},20000);

@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#071114"><meta name="description" content="4대 로봇이 혼합 박스를 검사하고 배치·보류·순환하는 원리를 설명하는 80초 모션그래픽."><title>공간을 읽고, 다음을 남긴다 · Pallet Loading Lab</title><link rel="stylesheet" href="./style.css"></head>
+<body><main>
+ <header><a class="brand" href="/?palletDemo=compact&palletView=relay#pallet">PALLET / LOADING LAB</a><a class="back" href="/?palletDemo=compact&palletView=relay#pallet">시뮬레이터 ↗</a></header>
+ <section class="intro"><div><p class="eyebrow">ALGORITHM IN MOTION · 01:20</p><h1>공간을 읽고, 다음을 남긴다.</h1></div><p>서로 다른 박스를 쌓는 네 로봇.<br>인입·적재·반출과 엣지에서의 판단을 따라갑니다.</p></section>
+ <section class="film" aria-label="알고리즘 설명 모션그래픽">
+  <video id="film" playsinline muted preload="auto" poster="./poster.jpg" aria-label="80초 팔레타이징 알고리즘 영상"><track kind="captions" src="./captions.vtt" srclang="ko" label="한국어 설명">브라우저에서 영상을 재생할 수 없습니다. 아래 MP4 다운로드를 이용하세요.</video>
+  <div class="controls"><button id="play" class="primary" aria-label="영상 재생">▶ 재생</button><button id="restart" aria-label="처음부터 재생">↺ 처음</button><label class="scrub"><span class="sr-only">영상 진행 위치</span><input id="seek" aria-label="영상 진행 위치" type="range" min="0" max="80" value="0" step="0.01"></label><output id="clock">00:00 / 01:20</output><button id="sound" aria-label="소리 켜기">소리 꺼짐</button><button id="fullscreen" aria-label="영상 전체 화면">전체 화면</button></div>
+  <p id="error" role="alert" hidden></p>
+ </section>
+ <div class="below"><section class="explanation" aria-label="현재 장면 설명"><p class="eyebrow" id="chapter-label">공간을 읽는 알고리즘</p><h2 id="chapter-line">서로 다른 박스. 하나의 적재 원리.</h2><p id="chapter-body">네 로봇이 도착한 재고를 나누고, 각자의 팔레트에서 다음 배치를 판단합니다.</p></section><a class="download" download="pallet-algorithm.mp4" href="./pallet-algorithm.mp4">MP4 다운로드 <span>1600 × 900 · 30 fps · 80초</span>↓</a></div>
+ <nav class="chapters" aria-label="영상 구간"></nav>
+ <details><summary>설명 범위와 디자인 레퍼런스</summary><p>기존 시뮬레이터의 <b>4대 협업 · 높이 채우기</b> 정책을 설명합니다. 도착한 전체 재고를 네 작업 구역에 나누고, 각 구역의 재고는 임의로 꺼낼 수 있다고 가정합니다. 그림은 동작 원리를 보여주는 개념도이며 실제 실행 기록이나 성능 측정값이 아닙니다. 입고 계측, AMR 3 m 전용 통로, 협동로봇 속도는 명시된 가정입니다. 실제 측정값은 시뮬레이터의 로컬 연산 패널에서 확인합니다.</p><p>허용된 자세만 탐색하며 재질 이름보다 설정된 허용 하중을 검사합니다. 남은 높이 조합은 후보 순위를 정하는 추정치입니다. 실제 배치는 지지·하중·정적 평형·경계·운반 경로 검사를 통과해야 합니다. 전체 로봇 링크의 연속 충돌과 포장 변형은 별도 검증이 필요하며 전역 최적해를 보장하지 않습니다.</p><p>디자인 참고: <a href="https://prompt-motion.com/rneayan-ea6129" target="_blank" rel="noreferrer">Oscilloscope-style studio motion graphic · @rneayan</a>. 어두운 격자와 절제된 선 모션을 참고했습니다. 도형·시퀀스·설명·사운드는 이 프로젝트를 위해 제작했습니다.</p></details>
+ <footer><span>FOUR ARMS. ONE CONTINUOUS DECISION.</span><span>PALLET LOADING LAB / MOTION 01</span></footer>
+</main><script type="module" src="./player.mjs"></script></body></html>

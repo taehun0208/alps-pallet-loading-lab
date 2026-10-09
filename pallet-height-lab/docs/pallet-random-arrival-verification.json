@@ -1,0 +1,43 @@
+{
+  "clientDate": "2026-10-04",
+  "timezone": "Asia/Seoul",
+  "verifiedAtUTC": "2026-10-04T06:00:48.846392+00:00",
+  "build": "TypeScript and Vite passed after reset guard",
+  "unit": {
+    "command": "npm.cmd test -- --exclude tests/pallet-ideal-benchmark.test.ts --exclude tests/pallet-benchmark.test.ts",
+    "files": 11,
+    "passed": 117,
+    "randomArrivalInvariantTests": 9,
+    "randomPolicySimulationTest": 1
+  },
+  "simulations": {
+    "cases": 3,
+    "algorithms": [
+      "bl",
+      "greedy",
+      "rollout"
+    ],
+    "runs": 9,
+    "boxesPerCase": 18,
+    "measurements": "pallet-random-arrival-measurements.json"
+  },
+  "browser": {
+    "command": "npm.cmd run test:browser -- tests/pallet-browser.spec.ts --retries=1 --reporter=line,json",
+    "stats": {
+      "startTime": "2026-10-04T05:56:07.597Z",
+      "duration": 101178.696,
+      "expected": 12,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "viewports": [
+      320,
+      375,
+      414,
+      768,
+      1366
+    ]
+  },
+  "model": "Finite inventory; uniform individual-box draws without replacement, lazily cached; no future arrival seed or state passed to planner."
+}

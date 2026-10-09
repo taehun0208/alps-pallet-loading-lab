@@ -1,0 +1,7076 @@
+{
+  "measuredAt": "2026-10-03T09:46:28.784Z",
+  "runtime": "Vitest / Node on this host",
+  "scenario": {
+    "version": 1,
+    "units": {
+      "length": "mm",
+      "weight": "kg",
+      "time": "s"
+    },
+    "id": "mixed",
+    "name": "혼합 박스 · 기본 예제",
+    "pallet": {
+      "width": 1200,
+      "depth": 1000,
+      "maxHeight": 1600
+    },
+    "types": [
+      {
+        "id": "A",
+        "name": "대형",
+        "size": {
+          "w": 600,
+          "d": 400,
+          "h": 300
+        },
+        "weight": 12,
+        "quantity": 8,
+        "orientations": [
+          0,
+          90
+        ],
+        "color": "#e8b86a",
+        "material": "plastic",
+        "strengthFactor": 1
+      },
+      {
+        "id": "B",
+        "name": "중형",
+        "size": {
+          "w": 400,
+          "d": 300,
+          "h": 250
+        },
+        "weight": 7,
+        "quantity": 12,
+        "orientations": [
+          0,
+          90
+        ],
+        "color": "#6bcab7",
+        "material": "plastic",
+        "strengthFactor": 1
+      },
+      {
+        "id": "C",
+        "name": "소형",
+        "size": {
+          "w": 300,
+          "d": 200,
+          "h": 200
+        },
+        "weight": 3,
+        "quantity": 16,
+        "orientations": [
+          0,
+          90
+        ],
+        "color": "#80a9e8",
+        "material": "paper",
+        "strengthFactor": 1
+      },
+      {
+        "id": "D",
+        "name": "미니",
+        "size": {
+          "w": 200,
+          "d": 200,
+          "h": 150
+        },
+        "weight": 1.5,
+        "quantity": 20,
+        "orientations": [
+          0,
+          90
+        ],
+        "color": "#cc97df",
+        "material": "paper",
+        "strengthFactor": 1
+      }
+    ],
+    "constraints": {
+      "supportRatio": 0.95,
+      "contactTolerance": 0.5,
+      "horizontalGap": 0,
+      "heavyRule": "off",
+      "stability": {
+        "maxSlenderness": 2,
+        "minMarginRatio": 0.1,
+        "lateralAccelerationG": 0.15,
+        "loadSafetyFactor": 1.25
+      },
+      "gripper": {
+        "width": 180,
+        "depth": 160,
+        "height": 160,
+        "mass": 3,
+        "payload": 20,
+        "margin": 5,
+        "lift": 200,
+        "speed": 650,
+        "pickSeconds": 1,
+        "placeSeconds": 1
+      },
+      "workspace": {
+        "xMin": -1400,
+        "xMax": 1600,
+        "yMin": -500,
+        "yMax": 1500,
+        "zMax": 2600
+      }
+    },
+    "arrival": {
+      "seed": 42,
+      "pattern": "shuffle"
+    },
+    "events": []
+  },
+  "settings": {
+    "plannerSeed": 2026,
+    "topK": 12,
+    "samples": 8,
+    "depth": 4,
+    "maxCandidates": 128,
+    "weights": {
+      "maximum": 30,
+      "mean": 16,
+      "roughness": 20,
+      "void": 25,
+      "flat": 8,
+      "balance": 12,
+      "time": 4,
+      "future": 45,
+      "stability": 24,
+      "inventory": 32,
+      "foundation": 24,
+      "load": 12
+    }
+  },
+  "results": [
+    {
+      "algorithm": "bl",
+      "seed": 42,
+      "metrics": {
+        "loadUtilization": 0.265625,
+        "unknownCapacity": 0,
+        "slenderness": 2,
+        "count": 25,
+        "volume": 588000000,
+        "weight": 120,
+        "height": 800,
+        "utilization": 0.30625,
+        "efficiency": 0.6125,
+        "center": {
+          "x": 575,
+          "y": 511.25,
+          "z": 298.3333333333333
+        },
+        "quadrants": [
+          27.666666666666664,
+          24.833333333333332,
+          35.833333333333336,
+          31.666666666666664
+        ],
+        "imbalance": 0.0916666666666667,
+        "distanceM": 138.70595086360362,
+        "workSeconds": 263.3937705593902,
+        "medianMs": 17.73834999999997,
+        "p95Ms": 54.173400000000015,
+        "totalMs": 577.8293999999999,
+        "complete": false,
+        "failedStep": 26,
+        "reason": "지지 조건 미달 / 독립 기둥 높이 / 받침 폭 초과 / 팔레트 경계 밖 / 설정된 작업공간 밖",
+        "excluded": 0,
+        "missing": 0
+      },
+      "placements": [
+        {
+          "id": "B-09",
+          "typeId": "B",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "w": 400,
+            "d": 300,
+            "h": 250
+          },
+          "orientation": 0,
+          "weight": 7,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 7.5,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-03",
+          "typeId": "D",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 250
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "B-09",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 1.5,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "C-06",
+          "typeId": "C",
+          "position": {
+            "x": 200,
+            "y": 0,
+            "z": 250
+          },
+          "size": {
+            "w": 200,
+            "d": 300,
+            "h": 200
+          },
+          "orientation": 90,
+          "weight": 3,
+          "supports": [
+            {
+              "id": "B-09",
+              "rect": {
+                "x": 200,
+                "y": 0,
+                "w": 200,
+                "d": 300
+              },
+              "area": 60000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 1.5,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "A-07",
+          "typeId": "A",
+          "position": {
+            "x": 0,
+            "y": 400,
+            "z": 0
+          },
+          "size": {
+            "w": 400,
+            "d": 600,
+            "h": 300
+          },
+          "orientation": 90,
+          "weight": 12,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 17,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "B-05",
+          "typeId": "B",
+          "position": {
+            "x": 0,
+            "y": 400,
+            "z": 300
+          },
+          "size": {
+            "w": 400,
+            "d": 300,
+            "h": 250
+          },
+          "orientation": 0,
+          "weight": 7,
+          "supports": [
+            {
+              "id": "A-07",
+              "rect": {
+                "x": 0,
+                "y": 400,
+                "w": 400,
+                "d": 300
+              },
+              "area": 120000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 4,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "C-09",
+          "typeId": "C",
+          "position": {
+            "x": 0,
+            "y": 700,
+            "z": 300
+          },
+          "size": {
+            "w": 300,
+            "d": 200,
+            "h": 200
+          },
+          "orientation": 0,
+          "weight": 3,
+          "supports": [
+            {
+              "id": "A-07",
+              "rect": {
+                "x": 0,
+                "y": 700,
+                "w": 300,
+                "d": 200
+              },
+              "area": 60000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 3,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-19",
+          "typeId": "D",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 400
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "D-03",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-07",
+          "typeId": "D",
+          "position": {
+            "x": 200,
+            "y": 0,
+            "z": 450
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "C-06",
+              "rect": {
+                "x": 200,
+                "y": 0,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-17",
+          "typeId": "D",
+          "position": {
+            "x": 0,
+            "y": 700,
+            "z": 500
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "C-09",
+              "rect": {
+                "x": 0,
+                "y": 700,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 1.5,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "C-10",
+          "typeId": "C",
+          "position": {
+            "x": 0,
+            "y": 400,
+            "z": 550
+          },
+          "size": {
+            "w": 300,
+            "d": 200,
+            "h": 200
+          },
+          "orientation": 0,
+          "weight": 3,
+          "supports": [
+            {
+              "id": "B-05",
+              "rect": {
+                "x": 0,
+                "y": 400,
+                "w": 300,
+                "d": 200
+              },
+              "area": 60000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-09",
+          "typeId": "D",
+          "position": {
+            "x": 0,
+            "y": 700,
+            "z": 650
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "D-17",
+              "rect": {
+                "x": 0,
+                "y": 700,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "C-12",
+          "typeId": "C",
+          "position": {
+            "x": 400,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "w": 300,
+            "d": 200,
+            "h": 200
+          },
+          "orientation": 0,
+          "weight": 3,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 1.5,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "B-08",
+          "typeId": "B",
+          "position": {
+            "x": 800,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "w": 400,
+            "d": 300,
+            "h": 250
+          },
+          "orientation": 0,
+          "weight": 7,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 7,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "A-03",
+          "typeId": "A",
+          "position": {
+            "x": 800,
+            "y": 400,
+            "z": 0
+          },
+          "size": {
+            "w": 400,
+            "d": 600,
+            "h": 300
+          },
+          "orientation": 90,
+          "weight": 12,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 12,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-20",
+          "typeId": "D",
+          "position": {
+            "x": 400,
+            "y": 0,
+            "z": 200
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "C-12",
+              "rect": {
+                "x": 400,
+                "y": 0,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "A-04",
+          "typeId": "A",
+          "position": {
+            "x": 400,
+            "y": 400,
+            "z": 0
+          },
+          "size": {
+            "w": 400,
+            "d": 600,
+            "h": 300
+          },
+          "orientation": 90,
+          "weight": 12,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 16,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-01",
+          "typeId": "D",
+          "position": {
+            "x": 400,
+            "y": 200,
+            "z": 0
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 1.5,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "B-03",
+          "typeId": "B",
+          "position": {
+            "x": 800,
+            "y": 0,
+            "z": 250
+          },
+          "size": {
+            "w": 400,
+            "d": 300,
+            "h": 250
+          },
+          "orientation": 0,
+          "weight": 7,
+          "supports": [
+            {
+              "id": "B-08",
+              "rect": {
+                "x": 800,
+                "y": 0,
+                "w": 400,
+                "d": 300
+              },
+              "area": 120000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "B-12",
+          "typeId": "B",
+          "position": {
+            "x": 400,
+            "y": 400,
+            "z": 300
+          },
+          "size": {
+            "w": 400,
+            "d": 300,
+            "h": 250
+          },
+          "orientation": 0,
+          "weight": 7,
+          "supports": [
+            {
+              "id": "A-04",
+              "rect": {
+                "x": 400,
+                "y": 400,
+                "w": 400,
+                "d": 300
+              },
+              "area": 120000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 2,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-15",
+          "typeId": "D",
+          "position": {
+            "x": 600,
+            "y": 200,
+            "z": 0
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 1.5,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-16",
+          "typeId": "D",
+          "position": {
+            "x": 400,
+            "y": 200,
+            "z": 150
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "D-01",
+              "rect": {
+                "x": 400,
+                "y": 200,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "A-08",
+          "typeId": "A",
+          "position": {
+            "x": 800,
+            "y": 400,
+            "z": 300
+          },
+          "size": {
+            "w": 400,
+            "d": 600,
+            "h": 300
+          },
+          "orientation": 90,
+          "weight": 12,
+          "supports": [
+            {
+              "id": "A-03",
+              "rect": {
+                "x": 800,
+                "y": 400,
+                "w": 400,
+                "d": 600
+              },
+              "area": 240000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "B-11",
+          "typeId": "B",
+          "position": {
+            "x": 400,
+            "y": 700,
+            "z": 300
+          },
+          "size": {
+            "w": 400,
+            "d": 300,
+            "h": 250
+          },
+          "orientation": 0,
+          "weight": 7,
+          "supports": [
+            {
+              "id": "A-04",
+              "rect": {
+                "x": 400,
+                "y": 700,
+                "w": 400,
+                "d": 300
+              },
+              "area": 120000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-10",
+          "typeId": "D",
+          "position": {
+            "x": 600,
+            "y": 200,
+            "z": 150
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "D-15",
+              "rect": {
+                "x": 600,
+                "y": 200,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "C-02",
+          "typeId": "C",
+          "position": {
+            "x": 300,
+            "y": 400,
+            "z": 550
+          },
+          "size": {
+            "w": 300,
+            "d": 200,
+            "h": 200
+          },
+          "orientation": 0,
+          "weight": 3,
+          "supports": [
+            {
+              "id": "B-05",
+              "rect": {
+                "x": 300,
+                "y": 400,
+                "w": 100,
+                "d": 200
+              },
+              "area": 20000,
+              "share": 0.3333333333333333
+            },
+            {
+              "id": "B-12",
+              "rect": {
+                "x": 400,
+                "y": 400,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 0.6666666666666666
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "paper",
+          "strengthFactor": 1
+        }
+      ],
+      "decisions": [
+        {
+          "step": 1,
+          "observation": "B-09",
+          "disposition": "placed",
+          "selectedId": "c0",
+          "generated": 8,
+          "valid": 8,
+          "milliseconds": 12.339600000000019,
+          "capped": false
+        },
+        {
+          "step": 2,
+          "observation": "D-03",
+          "disposition": "placed",
+          "selectedId": "c12",
+          "generated": 25,
+          "valid": 16,
+          "milliseconds": 37.48199999999997,
+          "capped": false
+        },
+        {
+          "step": 3,
+          "observation": "C-06",
+          "disposition": "placed",
+          "selectedId": "c26",
+          "generated": 64,
+          "valid": 26,
+          "milliseconds": 59.89549999999997,
+          "capped": false
+        },
+        {
+          "step": 4,
+          "observation": "A-07",
+          "disposition": "placed",
+          "selectedId": "c14",
+          "generated": 85,
+          "valid": 22,
+          "milliseconds": 19.3596,
+          "capped": false
+        },
+        {
+          "step": 5,
+          "observation": "B-05",
+          "disposition": "placed",
+          "selectedId": "c25",
+          "generated": 101,
+          "valid": 26,
+          "milliseconds": 31.83030000000008,
+          "capped": false
+        },
+        {
+          "step": 6,
+          "observation": "C-09",
+          "disposition": "placed",
+          "selectedId": "c27",
+          "generated": 105,
+          "valid": 39,
+          "milliseconds": 29.31600000000003,
+          "capped": false
+        },
+        {
+          "step": 7,
+          "observation": "D-19",
+          "disposition": "placed",
+          "selectedId": "c19",
+          "generated": 63,
+          "valid": 26,
+          "milliseconds": 42.49120000000005,
+          "capped": false
+        },
+        {
+          "step": 8,
+          "observation": "D-07",
+          "disposition": "placed",
+          "selectedId": "c19",
+          "generated": 63,
+          "valid": 25,
+          "milliseconds": 54.173400000000015,
+          "capped": false
+        },
+        {
+          "step": 9,
+          "observation": "D-17",
+          "disposition": "placed",
+          "selectedId": "c20",
+          "generated": 63,
+          "valid": 23,
+          "milliseconds": 12.710500000000025,
+          "capped": false
+        },
+        {
+          "step": 10,
+          "observation": "C-10",
+          "disposition": "placed",
+          "selectedId": "c47",
+          "generated": 139,
+          "valid": 36,
+          "milliseconds": 30.135800000000017,
+          "capped": true
+        },
+        {
+          "step": 11,
+          "observation": "D-09",
+          "disposition": "placed",
+          "selectedId": "c36",
+          "generated": 73,
+          "valid": 18,
+          "milliseconds": 11.158599999999979,
+          "capped": false
+        },
+        {
+          "step": 12,
+          "observation": "C-12",
+          "disposition": "placed",
+          "selectedId": "c0",
+          "generated": 149,
+          "valid": 30,
+          "milliseconds": 15.722899999999981,
+          "capped": true
+        },
+        {
+          "step": 13,
+          "observation": "B-08",
+          "disposition": "placed",
+          "selectedId": "c2",
+          "generated": 171,
+          "valid": 27,
+          "milliseconds": 17.534899999999993,
+          "capped": true
+        },
+        {
+          "step": 14,
+          "observation": "A-03",
+          "disposition": "placed",
+          "selectedId": "c9",
+          "generated": 211,
+          "valid": 13,
+          "milliseconds": 17.20029999999997,
+          "capped": true
+        },
+        {
+          "step": 15,
+          "observation": "D-20",
+          "disposition": "placed",
+          "selectedId": "c12",
+          "generated": 105,
+          "valid": 25,
+          "milliseconds": 17.941799999999944,
+          "capped": false
+        },
+        {
+          "step": 16,
+          "observation": "A-04",
+          "disposition": "placed",
+          "selectedId": "c2",
+          "generated": 224,
+          "valid": 4,
+          "milliseconds": 8.911299999999983,
+          "capped": true
+        },
+        {
+          "step": 17,
+          "observation": "D-01",
+          "disposition": "placed",
+          "selectedId": "c0",
+          "generated": 105,
+          "valid": 24,
+          "milliseconds": 24.42330000000004,
+          "capped": false
+        },
+        {
+          "step": 18,
+          "observation": "B-03",
+          "disposition": "placed",
+          "selectedId": "c4",
+          "generated": 215,
+          "valid": 22,
+          "milliseconds": 17.032100000000014,
+          "capped": true
+        },
+        {
+          "step": 19,
+          "observation": "B-12",
+          "disposition": "placed",
+          "selectedId": "c8",
+          "generated": 215,
+          "valid": 21,
+          "milliseconds": 17.989000000000033,
+          "capped": true
+        },
+        {
+          "step": 20,
+          "observation": "D-15",
+          "disposition": "placed",
+          "selectedId": "c0",
+          "generated": 109,
+          "valid": 25,
+          "milliseconds": 22.646799999999985,
+          "capped": false
+        },
+        {
+          "step": 21,
+          "observation": "D-16",
+          "disposition": "placed",
+          "selectedId": "c0",
+          "generated": 109,
+          "valid": 26,
+          "milliseconds": 15.150699999999915,
+          "capped": false
+        },
+        {
+          "step": 22,
+          "observation": "A-08",
+          "disposition": "placed",
+          "selectedId": "c1",
+          "generated": 229,
+          "valid": 1,
+          "milliseconds": 4.70049999999992,
+          "capped": true
+        },
+        {
+          "step": 23,
+          "observation": "B-11",
+          "disposition": "placed",
+          "selectedId": "c1",
+          "generated": 221,
+          "valid": 4,
+          "milliseconds": 7.345399999999927,
+          "capped": true
+        },
+        {
+          "step": 24,
+          "observation": "D-10",
+          "disposition": "placed",
+          "selectedId": "c0",
+          "generated": 109,
+          "valid": 21,
+          "milliseconds": 17.242899999999963,
+          "capped": false
+        },
+        {
+          "step": 25,
+          "observation": "C-02",
+          "disposition": "placed",
+          "selectedId": "c41",
+          "generated": 222,
+          "valid": 30,
+          "milliseconds": 23.525100000000066,
+          "capped": true
+        },
+        {
+          "step": 26,
+          "observation": "A-05",
+          "disposition": "blocked",
+          "selectedId": null,
+          "generated": 231,
+          "valid": 0,
+          "milliseconds": 9.569899999999961,
+          "capped": true
+        }
+      ],
+      "physics": {
+        "runId": "bl",
+        "status": "stable",
+        "poses": [
+          {
+            "id": "B-09",
+            "friction": 0.35,
+            "planned": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "actual": {
+              "x": -0.07433295249938965,
+              "y": -0.0512242317199707,
+              "z": -0.1713484525680542
+            },
+            "rotation": [
+              -0.00004728359272121452,
+              0.000009032799425767735,
+              -8.848768970892706e-7,
+              1
+            ],
+            "displacementMm": 0.19367395782614782,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "D-03",
+            "friction": 0.45,
+            "planned": {
+              "x": 0,
+              "y": 0,
+              "z": 250
+            },
+            "actual": {
+              "x": -0.2422928810119629,
+              "y": -0.18960833549499512,
+              "z": 249.13333654403687
+            },
+            "rotation": [
+              -0.00017425694386474788,
+              0.00000906389414012665,
+              0.00019435514695942402,
+              1
+            ],
+            "displacementMm": 0.9196535798768058,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "C-06",
+            "friction": 0.45,
+            "planned": {
+              "x": 200,
+              "y": 0,
+              "z": 250
+            },
+            "actual": {
+              "x": 199.94038343429565,
+              "y": -0.1562178134918213,
+              "z": 249.25886988639832
+            },
+            "rotation": [
+              -0.00017561891581863165,
+              0.000014036167158337776,
+              -0.000024317034331033938,
+              1
+            ],
+            "displacementMm": 0.7597578465838913,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "A-07",
+            "friction": 0.35,
+            "planned": {
+              "x": 0,
+              "y": 400,
+              "z": 0
+            },
+            "actual": {
+              "x": -0.15885233879089355,
+              "y": 399.9903619289398,
+              "z": -0.23124516010284424
+            },
+            "rotation": [
+              -0.000023121461708797142,
+              -0.000003987521267845295,
+              0.0001372508704662323,
+              1
+            ],
+            "displacementMm": 0.2807156604539333,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "B-05",
+            "friction": 0.35,
+            "planned": {
+              "x": 0,
+              "y": 400,
+              "z": 300
+            },
+            "actual": {
+              "x": -0.36112070083618164,
+              "y": 399.79992657899857,
+              "z": 299.2379367351532
+            },
+            "rotation": [
+              -0.00012982978660147637,
+              -0.00006434657552745193,
+              0.0005753584555350244,
+              0.9999998807907104
+            ],
+            "displacementMm": 0.8667052290096091,
+            "angleDeg": 0.05595291023658669,
+            "fell": false
+          },
+          {
+            "id": "C-09",
+            "friction": 0.45,
+            "planned": {
+              "x": 0,
+              "y": 700,
+              "z": 300
+            },
+            "actual": {
+              "x": -0.4750967025756836,
+              "y": 699.8459935188293,
+              "z": 299.0793228149414
+            },
+            "rotation": [
+              0.00012231535220053047,
+              -0.000006347987891786033,
+              0.0005516663077287376,
+              0.9999998807907104
+            ],
+            "displacementMm": 1.0474165132020168,
+            "angleDeg": 0.05595291023658669,
+            "fell": false
+          },
+          {
+            "id": "D-19",
+            "friction": 0.45,
+            "planned": {
+              "x": 0,
+              "y": 0,
+              "z": 400
+            },
+            "actual": {
+              "x": -0.3579854965209961,
+              "y": -0.2957940101623535,
+              "z": 398.4959304332733
+            },
+            "rotation": [
+              -0.00012609153054654598,
+              0.000004691362391895382,
+              0.00008566299948142841,
+              1
+            ],
+            "displacementMm": 1.57412609841801,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "D-07",
+            "friction": 0.45,
+            "planned": {
+              "x": 200,
+              "y": 0,
+              "z": 450
+            },
+            "actual": {
+              "x": 199.90381598472595,
+              "y": -0.4483520984649658,
+              "z": 448.79530668258667
+            },
+            "rotation": [
+              -0.00029762033955194056,
+              0.000021600493710138835,
+              -0.00006892107194289565,
+              1
+            ],
+            "displacementMm": 1.2890139479511116,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "D-17",
+            "friction": 0.45,
+            "planned": {
+              "x": 0,
+              "y": 700,
+              "z": 500
+            },
+            "actual": {
+              "x": -0.8878111839294434,
+              "y": 699.8642325401306,
+              "z": 498.2225179672241
+            },
+            "rotation": [
+              0.000035435678000794724,
+              -0.0000066531160882732365,
+              0.0008938045357353985,
+              0.9999996423721313
+            ],
+            "displacementMm": 1.9915029194833371,
+            "angleDeg": 0.096913285286603,
+            "fell": false
+          },
+          {
+            "id": "C-10",
+            "friction": 0.45,
+            "planned": {
+              "x": 0,
+              "y": 400,
+              "z": 550
+            },
+            "actual": {
+              "x": -0.7026374340057373,
+              "y": 399.40618756227195,
+              "z": 548.7661600112915
+            },
+            "rotation": [
+              -0.00022304333106148988,
+              -0.000012504257028922439,
+              0.0006287096766754985,
+              0.9999997615814209
+            ],
+            "displacementMm": 1.539049606933732,
+            "angleDeg": 0.07912936529690494,
+            "fell": false
+          },
+          {
+            "id": "D-09",
+            "friction": 0.45,
+            "planned": {
+              "x": 0,
+              "y": 700,
+              "z": 650
+            },
+            "actual": {
+              "x": -1.2210607528686523,
+              "y": 699.8620271682739,
+              "z": 647.5866913795471
+            },
+            "rotation": [
+              0.00008745113154873252,
+              -0.00001365745447401423,
+              0.0007778527797199786,
+              0.9999997615814209
+            ],
+            "displacementMm": 2.708151465860589,
+            "angleDeg": 0.07912936529690494,
+            "fell": false
+          },
+          {
+            "id": "C-12",
+            "friction": 0.45,
+            "planned": {
+              "x": 400,
+              "y": 0,
+              "z": 0
+            },
+            "actual": {
+              "x": 399.9584101140499,
+              "y": -0.05096793174743652,
+              "z": -0.12303739786148071
+            },
+            "rotation": [
+              -0.000015663259546272457,
+              0.000018339091184316203,
+              -0.000017420104995835572,
+              1
+            ],
+            "displacementMm": 0.1395193533258989,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "B-08",
+            "friction": 0.35,
+            "planned": {
+              "x": 800,
+              "y": 0,
+              "z": 0
+            },
+            "actual": {
+              "x": 799.8980820178986,
+              "y": -0.053191184997558594,
+              "z": -0.16623735427856445
+            },
+            "rotation": [
+              -0.0000011871424021592247,
+              -0.00001343719668511767,
+              -0.000015163761418079957,
+              1
+            ],
+            "displacementMm": 0.2021173797440759,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "A-03",
+            "friction": 0.35,
+            "planned": {
+              "x": 800,
+              "y": 400,
+              "z": 0
+            },
+            "actual": {
+              "x": 799.9324440956116,
+              "y": 399.98374581336975,
+              "z": -0.20938515663146973
+            },
+            "rotation": [
+              -0.000017848600691650063,
+              0.00007619803363922983,
+              -0.00005163946843822487,
+              1
+            ],
+            "displacementMm": 0.22061310617987878,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "D-20",
+            "friction": 0.45,
+            "planned": {
+              "x": 400,
+              "y": 0,
+              "z": 200
+            },
+            "actual": {
+              "x": 399.8846784234047,
+              "y": -0.0771641731262207,
+              "z": 199.38503503799438
+            },
+            "rotation": [
+              -0.0001209775437018834,
+              0.000019879900719388388,
+              -0.000014002021998749115,
+              1
+            ],
+            "displacementMm": 0.6304246823667743,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "A-04",
+            "friction": 0.35,
+            "planned": {
+              "x": 400,
+              "y": 400,
+              "z": 0
+            },
+            "actual": {
+              "x": 399.98206434975145,
+              "y": 399.99393820762634,
+              "z": -0.17208755016326904
+            },
+            "rotation": [
+              -0.000026434112442075275,
+              -0.000010498881238163449,
+              0.00003895506961271167,
+              1
+            ],
+            "displacementMm": 0.17312584381834834,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "D-01",
+            "friction": 0.45,
+            "planned": {
+              "x": 400,
+              "y": 200,
+              "z": 0
+            },
+            "actual": {
+              "x": 399.9156653881073,
+              "y": 199.95955526828766,
+              "z": -0.16991496086120605
+            },
+            "rotation": [
+              0.0000020934996882715495,
+              -0.00009932374814525247,
+              0.000011487562005640939,
+              1
+            ],
+            "displacementMm": 0.19395668849214978,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "B-03",
+            "friction": 0.35,
+            "planned": {
+              "x": 800,
+              "y": 0,
+              "z": 250
+            },
+            "actual": {
+              "x": 799.9038934707642,
+              "y": -0.0544130802154541,
+              "z": 249.1956353187561
+            },
+            "rotation": [
+              -0.0000028981021387153305,
+              -0.000013441176633932628,
+              -0.00000897877907846123,
+              1
+            ],
+            "displacementMm": 0.8119111950779395,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "B-12",
+            "friction": 0.35,
+            "planned": {
+              "x": 400,
+              "y": 400,
+              "z": 300
+            },
+            "actual": {
+              "x": 399.9433458142448,
+              "y": 399.9146021902561,
+              "z": 299.57449436187744
+            },
+            "rotation": [
+              -0.0001410781842423603,
+              0.00006353166827466339,
+              0.00014810118591412902,
+              1
+            ],
+            "displacementMm": 0.4376728581334696,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "D-15",
+            "friction": 0.45,
+            "planned": {
+              "x": 600,
+              "y": 200,
+              "z": 0
+            },
+            "actual": {
+              "x": 599.9293103814125,
+              "y": 199.97706413269043,
+              "z": -0.168551504611969
+            },
+            "rotation": [
+              0.000008851528036757372,
+              -0.00014048173034098,
+              -0.00003046815072593745,
+              1
+            ],
+            "displacementMm": 0.18420826770871654,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "D-16",
+            "friction": 0.45,
+            "planned": {
+              "x": 400,
+              "y": 200,
+              "z": 150
+            },
+            "actual": {
+              "x": 399.92354065179825,
+              "y": 199.96199905872345,
+              "z": 149.1937667131424
+            },
+            "rotation": [
+              0.000052595732995541766,
+              -0.00005105728268972598,
+              -0.000050396112783346325,
+              1
+            ],
+            "displacementMm": 0.8107417691858226,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "A-08",
+            "friction": 0.35,
+            "planned": {
+              "x": 800,
+              "y": 400,
+              "z": 300
+            },
+            "actual": {
+              "x": 799.9788761138916,
+              "y": 399.9523192644119,
+              "z": 299.1143822669983
+            },
+            "rotation": [
+              -0.000019533144950401038,
+              -0.00002748428778431844,
+              -0.0000687376013956964,
+              1
+            ],
+            "displacementMm": 0.8871518698157754,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "B-11",
+            "friction": 0.35,
+            "planned": {
+              "x": 400,
+              "y": 700,
+              "z": 300
+            },
+            "actual": {
+              "x": 399.89714695402654,
+              "y": 699.9441146850586,
+              "z": 299.6119260787964
+            },
+            "rotation": [
+              -0.00004685899693868123,
+              0.0001838551979744807,
+              0.0000316748337354511,
+              1
+            ],
+            "displacementMm": 0.4053434171298053,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "D-10",
+            "friction": 0.45,
+            "planned": {
+              "x": 600,
+              "y": 200,
+              "z": 150
+            },
+            "actual": {
+              "x": 599.8883619904518,
+              "y": 199.96292293071747,
+              "z": 149.23793375492096
+            },
+            "rotation": [
+              -0.000007742819434497505,
+              0.000029069322408759035,
+              -0.000053409632528200746,
+              1
+            ],
+            "displacementMm": 0.7710918986290357,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "C-02",
+            "friction": 0.45,
+            "planned": {
+              "x": 300,
+              "y": 400,
+              "z": 550
+            },
+            "actual": {
+              "x": 299.5678901672363,
+              "y": 399.7953922866145,
+              "z": 549.299681186676
+            },
+            "rotation": [
+              -0.00017556766397319734,
+              -0.0002517749380785972,
+              0.00012898205022793263,
+              1
+            ],
+            "displacementMm": 0.8479561688220596,
+            "angleDeg": 0,
+            "fell": false
+          }
+        ],
+        "settings": {
+          "seconds": 3,
+          "dt": 0.008333333333333333,
+          "friction": 0.6,
+          "moveToleranceMm": 5,
+          "angleToleranceDeg": 3,
+          "materialFriction": true
+        },
+        "steps": 360,
+        "milliseconds": 136.73630000000412
+      }
+    },
+    {
+      "algorithm": "greedy",
+      "seed": 42,
+      "metrics": {
+        "loadUtilization": 0.359375,
+        "unknownCapacity": 0,
+        "slenderness": 1.5833333333333333,
+        "count": 34,
+        "volume": 804000000,
+        "weight": 161.5,
+        "height": 950,
+        "utilization": 0.41875,
+        "efficiency": 0.7052631578947368,
+        "center": {
+          "x": 564.3962848297214,
+          "y": 514.5510835913312,
+          "z": 359.984520123839
+        },
+        "quadrants": [
+          46.83333333333333,
+          32.166666666666664,
+          41.66666666666667,
+          40.83333333333333
+        ],
+        "imbalance": 0.09081527347781217,
+        "distanceM": 179.10625621007597,
+        "workSeconds": 343.54808647704,
+        "medianMs": 9.604700000000093,
+        "p95Ms": 27.00870000000009,
+        "totalMs": 399.32640000000015,
+        "complete": false,
+        "failedStep": 35,
+        "reason": "지지 조건 미달 / 독립 기둥 높이 / 받침 폭 초과 / 누적 무게중심 여유 부족 / 팔레트 경계 밖 / 설정된 작업공간 밖",
+        "excluded": 0,
+        "missing": 0
+      },
+      "placements": [
+        {
+          "id": "B-09",
+          "typeId": "B",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "w": 300,
+            "d": 400,
+            "h": 250
+          },
+          "orientation": 90,
+          "weight": 7,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 15.25,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-03",
+          "typeId": "D",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 250
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "B-09",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 3,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "C-06",
+          "typeId": "C",
+          "position": {
+            "x": 0,
+            "y": 200,
+            "z": 250
+          },
+          "size": {
+            "w": 300,
+            "d": 200,
+            "h": 200
+          },
+          "orientation": 0,
+          "weight": 3,
+          "supports": [
+            {
+              "id": "B-09",
+              "rect": {
+                "x": 0,
+                "y": 200,
+                "w": 300,
+                "d": 200
+              },
+              "area": 60000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 5.5,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "A-07",
+          "typeId": "A",
+          "position": {
+            "x": 0,
+            "y": 400,
+            "z": 0
+          },
+          "size": {
+            "w": 400,
+            "d": 600,
+            "h": 300
+          },
+          "orientation": 90,
+          "weight": 12,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 23,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "B-05",
+          "typeId": "B",
+          "position": {
+            "x": 0,
+            "y": 400,
+            "z": 300
+          },
+          "size": {
+            "w": 400,
+            "d": 300,
+            "h": 250
+          },
+          "orientation": 0,
+          "weight": 7,
+          "supports": [
+            {
+              "id": "A-07",
+              "rect": {
+                "x": 0,
+                "y": 400,
+                "w": 400,
+                "d": 300
+              },
+              "area": 120000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 7,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "C-09",
+          "typeId": "C",
+          "position": {
+            "x": 0,
+            "y": 700,
+            "z": 300
+          },
+          "size": {
+            "w": 200,
+            "d": 300,
+            "h": 200
+          },
+          "orientation": 90,
+          "weight": 3,
+          "supports": [
+            {
+              "id": "A-07",
+              "rect": {
+                "x": 0,
+                "y": 700,
+                "w": 200,
+                "d": 300
+              },
+              "area": 60000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 3,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-19",
+          "typeId": "D",
+          "position": {
+            "x": 200,
+            "y": 800,
+            "z": 300
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "A-07",
+              "rect": {
+                "x": 200,
+                "y": 800,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 1.5,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-07",
+          "typeId": "D",
+          "position": {
+            "x": 200,
+            "y": 800,
+            "z": 450
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "D-19",
+              "rect": {
+                "x": 200,
+                "y": 800,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-17",
+          "typeId": "D",
+          "position": {
+            "x": 0,
+            "y": 800,
+            "z": 500
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "C-09",
+              "rect": {
+                "x": 0,
+                "y": 800,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 1.5,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "C-10",
+          "typeId": "C",
+          "position": {
+            "x": 0,
+            "y": 400,
+            "z": 550
+          },
+          "size": {
+            "w": 200,
+            "d": 300,
+            "h": 200
+          },
+          "orientation": 90,
+          "weight": 3,
+          "supports": [
+            {
+              "id": "B-05",
+              "rect": {
+                "x": 0,
+                "y": 400,
+                "w": 200,
+                "d": 300
+              },
+              "area": 60000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-09",
+          "typeId": "D",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 400
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "D-03",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 1.5,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "C-12",
+          "typeId": "C",
+          "position": {
+            "x": 200,
+            "y": 400,
+            "z": 550
+          },
+          "size": {
+            "w": 200,
+            "d": 300,
+            "h": 200
+          },
+          "orientation": 90,
+          "weight": 3,
+          "supports": [
+            {
+              "id": "B-05",
+              "rect": {
+                "x": 200,
+                "y": 400,
+                "w": 200,
+                "d": 300
+              },
+              "area": 60000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 1,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "B-08",
+          "typeId": "B",
+          "position": {
+            "x": 300,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "w": 300,
+            "d": 400,
+            "h": 250
+          },
+          "orientation": 90,
+          "weight": 7,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 9.25,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "A-03",
+          "typeId": "A",
+          "position": {
+            "x": 600,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "w": 600,
+            "d": 400,
+            "h": 300
+          },
+          "orientation": 0,
+          "weight": 12,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 12,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-20",
+          "typeId": "D",
+          "position": {
+            "x": 200,
+            "y": 0,
+            "z": 250
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "B-09",
+              "rect": {
+                "x": 200,
+                "y": 0,
+                "w": 100,
+                "d": 200
+              },
+              "area": 20000,
+              "share": 0.5
+            },
+            {
+              "id": "B-08",
+              "rect": {
+                "x": 300,
+                "y": 0,
+                "w": 100,
+                "d": 200
+              },
+              "area": 20000,
+              "share": 0.5
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 3,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "A-04",
+          "typeId": "A",
+          "position": {
+            "x": 600,
+            "y": 0,
+            "z": 300
+          },
+          "size": {
+            "w": 600,
+            "d": 400,
+            "h": 300
+          },
+          "orientation": 0,
+          "weight": 12,
+          "supports": [
+            {
+              "id": "A-03",
+              "rect": {
+                "x": 600,
+                "y": 0,
+                "w": 600,
+                "d": 400
+              },
+              "area": 240000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-01",
+          "typeId": "D",
+          "position": {
+            "x": 200,
+            "y": 0,
+            "z": 400
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "D-20",
+              "rect": {
+                "x": 200,
+                "y": 0,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 1.5,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "B-03",
+          "typeId": "B",
+          "position": {
+            "x": 400,
+            "y": 400,
+            "z": 0
+          },
+          "size": {
+            "w": 400,
+            "d": 300,
+            "h": 250
+          },
+          "orientation": 0,
+          "weight": 7,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 8,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "B-12",
+          "typeId": "B",
+          "position": {
+            "x": 400,
+            "y": 700,
+            "z": 0
+          },
+          "size": {
+            "w": 400,
+            "d": 300,
+            "h": 250
+          },
+          "orientation": 0,
+          "weight": 7,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 8,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-15",
+          "typeId": "D",
+          "position": {
+            "x": 0,
+            "y": 200,
+            "z": 450
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "C-06",
+              "rect": {
+                "x": 0,
+                "y": 200,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 1.5,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-16",
+          "typeId": "D",
+          "position": {
+            "x": 0,
+            "y": 200,
+            "z": 600
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "D-15",
+              "rect": {
+                "x": 0,
+                "y": 200,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "A-08",
+          "typeId": "A",
+          "position": {
+            "x": 800,
+            "y": 400,
+            "z": 0
+          },
+          "size": {
+            "w": 400,
+            "d": 600,
+            "h": 300
+          },
+          "orientation": 90,
+          "weight": 12,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 22,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "B-11",
+          "typeId": "B",
+          "position": {
+            "x": 800,
+            "y": 400,
+            "z": 300
+          },
+          "size": {
+            "w": 400,
+            "d": 300,
+            "h": 250
+          },
+          "orientation": 0,
+          "weight": 7,
+          "supports": [
+            {
+              "id": "A-08",
+              "rect": {
+                "x": 800,
+                "y": 400,
+                "w": 400,
+                "d": 300
+              },
+              "area": 120000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 2,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-10",
+          "typeId": "D",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 550
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "D-09",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "C-02",
+          "typeId": "C",
+          "position": {
+            "x": 300,
+            "y": 200,
+            "z": 250
+          },
+          "size": {
+            "w": 300,
+            "d": 200,
+            "h": 200
+          },
+          "orientation": 0,
+          "weight": 3,
+          "supports": [
+            {
+              "id": "B-08",
+              "rect": {
+                "x": 300,
+                "y": 200,
+                "w": 300,
+                "d": 200
+              },
+              "area": 60000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 4,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "A-05",
+          "typeId": "A",
+          "position": {
+            "x": 400,
+            "y": 400,
+            "z": 250
+          },
+          "size": {
+            "w": 400,
+            "d": 600,
+            "h": 300
+          },
+          "orientation": 90,
+          "weight": 12,
+          "supports": [
+            {
+              "id": "B-03",
+              "rect": {
+                "x": 400,
+                "y": 400,
+                "w": 400,
+                "d": 300
+              },
+              "area": 120000,
+              "share": 0.5
+            },
+            {
+              "id": "B-12",
+              "rect": {
+                "x": 400,
+                "y": 700,
+                "w": 400,
+                "d": 300
+              },
+              "area": 120000,
+              "share": 0.5
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 4,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-02",
+          "typeId": "D",
+          "position": {
+            "x": 200,
+            "y": 0,
+            "z": 550
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "D-01",
+              "rect": {
+                "x": 200,
+                "y": 0,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "B-07",
+          "typeId": "B",
+          "position": {
+            "x": 800,
+            "y": 700,
+            "z": 300
+          },
+          "size": {
+            "w": 400,
+            "d": 300,
+            "h": 250
+          },
+          "orientation": 0,
+          "weight": 7,
+          "supports": [
+            {
+              "id": "A-08",
+              "rect": {
+                "x": 800,
+                "y": 700,
+                "w": 400,
+                "d": 300
+              },
+              "area": 120000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 6,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-18",
+          "typeId": "D",
+          "position": {
+            "x": 400,
+            "y": 200,
+            "z": 450
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "C-02",
+              "rect": {
+                "x": 400,
+                "y": 200,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "A-06",
+          "typeId": "A",
+          "position": {
+            "x": 600,
+            "y": 600,
+            "z": 550
+          },
+          "size": {
+            "w": 600,
+            "d": 400,
+            "h": 300
+          },
+          "orientation": 0,
+          "weight": 12,
+          "supports": [
+            {
+              "id": "B-11",
+              "rect": {
+                "x": 800,
+                "y": 600,
+                "w": 400,
+                "d": 100
+              },
+              "area": 40000,
+              "share": 0.16666666666666666
+            },
+            {
+              "id": "A-05",
+              "rect": {
+                "x": 600,
+                "y": 600,
+                "w": 200,
+                "d": 400
+              },
+              "area": 80000,
+              "share": 0.3333333333333333
+            },
+            {
+              "id": "B-07",
+              "rect": {
+                "x": 800,
+                "y": 700,
+                "w": 400,
+                "d": 300
+              },
+              "area": 120000,
+              "share": 0.5
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-08",
+          "typeId": "D",
+          "position": {
+            "x": 200,
+            "y": 200,
+            "z": 450
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "C-06",
+              "rect": {
+                "x": 200,
+                "y": 200,
+                "w": 100,
+                "d": 200
+              },
+              "area": 20000,
+              "share": 0.5
+            },
+            {
+              "id": "C-02",
+              "rect": {
+                "x": 300,
+                "y": 200,
+                "w": 100,
+                "d": 200
+              },
+              "area": 20000,
+              "share": 0.5
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 3.5,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-12",
+          "typeId": "D",
+          "position": {
+            "x": 200,
+            "y": 200,
+            "z": 600
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "D-08",
+              "rect": {
+                "x": 200,
+                "y": 200,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 2,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "C-15",
+          "typeId": "C",
+          "position": {
+            "x": 200,
+            "y": 200,
+            "z": 750
+          },
+          "size": {
+            "w": 200,
+            "d": 300,
+            "h": 200
+          },
+          "orientation": 90,
+          "weight": 3,
+          "supports": [
+            {
+              "id": "C-12",
+              "rect": {
+                "x": 200,
+                "y": 400,
+                "w": 200,
+                "d": 100
+              },
+              "area": 20000,
+              "share": 0.3333333333333333
+            },
+            {
+              "id": "D-12",
+              "rect": {
+                "x": 200,
+                "y": 200,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 0.6666666666666666
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-05",
+          "typeId": "D",
+          "position": {
+            "x": 0,
+            "y": 800,
+            "z": 650
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "D-17",
+              "rect": {
+                "x": 0,
+                "y": 800,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "paper",
+          "strengthFactor": 1
+        }
+      ],
+      "decisions": [
+        {
+          "step": 1,
+          "observation": "B-09",
+          "disposition": "placed",
+          "selectedId": "c1",
+          "generated": 8,
+          "valid": 8,
+          "milliseconds": 2.2735999999999876,
+          "capped": false
+        },
+        {
+          "step": 2,
+          "observation": "D-03",
+          "disposition": "placed",
+          "selectedId": "c12",
+          "generated": 25,
+          "valid": 16,
+          "milliseconds": 2.573799999999892,
+          "capped": false
+        },
+        {
+          "step": 3,
+          "observation": "C-06",
+          "disposition": "placed",
+          "selectedId": "c27",
+          "generated": 64,
+          "valid": 26,
+          "milliseconds": 4.310699999999997,
+          "capped": false
+        },
+        {
+          "step": 4,
+          "observation": "A-07",
+          "disposition": "placed",
+          "selectedId": "c9",
+          "generated": 80,
+          "valid": 19,
+          "milliseconds": 4.19419999999991,
+          "capped": false
+        },
+        {
+          "step": 5,
+          "observation": "B-05",
+          "disposition": "placed",
+          "selectedId": "c21",
+          "generated": 98,
+          "valid": 25,
+          "milliseconds": 7.459100000000035,
+          "capped": false
+        },
+        {
+          "step": 6,
+          "observation": "C-09",
+          "disposition": "placed",
+          "selectedId": "c27",
+          "generated": 102,
+          "valid": 39,
+          "milliseconds": 13.567399999999907,
+          "capped": false
+        },
+        {
+          "step": 7,
+          "observation": "D-19",
+          "disposition": "placed",
+          "selectedId": "c16",
+          "generated": 49,
+          "valid": 26,
+          "milliseconds": 5.950399999999945,
+          "capped": false
+        },
+        {
+          "step": 8,
+          "observation": "D-07",
+          "disposition": "placed",
+          "selectedId": "c23",
+          "generated": 53,
+          "valid": 27,
+          "milliseconds": 4.8840999999999894,
+          "capped": false
+        },
+        {
+          "step": 9,
+          "observation": "D-17",
+          "disposition": "placed",
+          "selectedId": "c23",
+          "generated": 53,
+          "valid": 27,
+          "milliseconds": 7.019900000000007,
+          "capped": false
+        },
+        {
+          "step": 10,
+          "observation": "C-10",
+          "disposition": "placed",
+          "selectedId": "c46",
+          "generated": 125,
+          "valid": 36,
+          "milliseconds": 8.308700000000044,
+          "capped": false
+        },
+        {
+          "step": 11,
+          "observation": "D-09",
+          "disposition": "placed",
+          "selectedId": "c17",
+          "generated": 54,
+          "valid": 23,
+          "milliseconds": 6.237999999999829,
+          "capped": false
+        },
+        {
+          "step": 12,
+          "observation": "C-12",
+          "disposition": "placed",
+          "selectedId": "c44",
+          "generated": 127,
+          "valid": 30,
+          "milliseconds": 9.604700000000093,
+          "capped": false
+        },
+        {
+          "step": 13,
+          "observation": "B-08",
+          "disposition": "placed",
+          "selectedId": "c1",
+          "generated": 141,
+          "valid": 23,
+          "milliseconds": 10.945699999999988,
+          "capped": true
+        },
+        {
+          "step": 14,
+          "observation": "A-03",
+          "disposition": "placed",
+          "selectedId": "c0",
+          "generated": 150,
+          "valid": 14,
+          "milliseconds": 10.111400000000003,
+          "capped": true
+        },
+        {
+          "step": 15,
+          "observation": "D-20",
+          "disposition": "placed",
+          "selectedId": "c12",
+          "generated": 65,
+          "valid": 25,
+          "milliseconds": 8.50890000000004,
+          "capped": false
+        },
+        {
+          "step": 16,
+          "observation": "A-04",
+          "disposition": "placed",
+          "selectedId": "c9",
+          "generated": 166,
+          "valid": 8,
+          "milliseconds": 8.138100000000122,
+          "capped": true
+        },
+        {
+          "step": 17,
+          "observation": "D-01",
+          "disposition": "placed",
+          "selectedId": "c15",
+          "generated": 65,
+          "valid": 25,
+          "milliseconds": 13.592899999999872,
+          "capped": false
+        },
+        {
+          "step": 18,
+          "observation": "B-03",
+          "disposition": "placed",
+          "selectedId": "c0",
+          "generated": 168,
+          "valid": 14,
+          "milliseconds": 7.001500000000078,
+          "capped": true
+        },
+        {
+          "step": 19,
+          "observation": "B-12",
+          "disposition": "placed",
+          "selectedId": "c6",
+          "generated": 178,
+          "valid": 10,
+          "milliseconds": 7.8236000000001695,
+          "capped": true
+        },
+        {
+          "step": 20,
+          "observation": "D-15",
+          "disposition": "placed",
+          "selectedId": "c21",
+          "generated": 75,
+          "valid": 34,
+          "milliseconds": 14.176600000000008,
+          "capped": false
+        },
+        {
+          "step": 21,
+          "observation": "D-16",
+          "disposition": "placed",
+          "selectedId": "c29",
+          "generated": 75,
+          "valid": 33,
+          "milliseconds": 13.161800000000085,
+          "capped": false
+        },
+        {
+          "step": 22,
+          "observation": "A-08",
+          "disposition": "placed",
+          "selectedId": "c0",
+          "generated": 172,
+          "valid": 2,
+          "milliseconds": 4.95029999999997,
+          "capped": true
+        },
+        {
+          "step": 23,
+          "observation": "B-11",
+          "disposition": "placed",
+          "selectedId": "c9",
+          "generated": 182,
+          "valid": 14,
+          "milliseconds": 11.14409999999998,
+          "capped": true
+        },
+        {
+          "step": 24,
+          "observation": "D-10",
+          "disposition": "placed",
+          "selectedId": "c17",
+          "generated": 78,
+          "valid": 31,
+          "milliseconds": 13.614700000000084,
+          "capped": false
+        },
+        {
+          "step": 25,
+          "observation": "C-02",
+          "disposition": "placed",
+          "selectedId": "c2",
+          "generated": 176,
+          "valid": 43,
+          "milliseconds": 21.04449999999997,
+          "capped": true
+        },
+        {
+          "step": 26,
+          "observation": "A-05",
+          "disposition": "placed",
+          "selectedId": "c0",
+          "generated": 180,
+          "valid": 1,
+          "milliseconds": 8.614100000000008,
+          "capped": true
+        },
+        {
+          "step": 27,
+          "observation": "D-02",
+          "disposition": "placed",
+          "selectedId": "c8",
+          "generated": 78,
+          "valid": 30,
+          "milliseconds": 29.287700000000086,
+          "capped": false
+        },
+        {
+          "step": 28,
+          "observation": "B-07",
+          "disposition": "placed",
+          "selectedId": "c0",
+          "generated": 188,
+          "valid": 4,
+          "milliseconds": 20.017200000000003,
+          "capped": true
+        },
+        {
+          "step": 29,
+          "observation": "D-18",
+          "disposition": "placed",
+          "selectedId": "c3",
+          "generated": 78,
+          "valid": 30,
+          "milliseconds": 27.00870000000009,
+          "capped": false
+        },
+        {
+          "step": 30,
+          "observation": "A-06",
+          "disposition": "placed",
+          "selectedId": "c6",
+          "generated": 180,
+          "valid": 3,
+          "milliseconds": 10.07179999999994,
+          "capped": true
+        },
+        {
+          "step": 31,
+          "observation": "D-08",
+          "disposition": "placed",
+          "selectedId": "c1",
+          "generated": 80,
+          "valid": 26,
+          "milliseconds": 20.603099999999813,
+          "capped": false
+        },
+        {
+          "step": 32,
+          "observation": "D-12",
+          "disposition": "placed",
+          "selectedId": "c12",
+          "generated": 80,
+          "valid": 27,
+          "milliseconds": 15.098100000000159,
+          "capped": false
+        },
+        {
+          "step": 33,
+          "observation": "C-15",
+          "disposition": "placed",
+          "selectedId": "c61",
+          "generated": 193,
+          "valid": 34,
+          "milliseconds": 22.338899999999967,
+          "capped": true
+        },
+        {
+          "step": 34,
+          "observation": "D-05",
+          "disposition": "placed",
+          "selectedId": "c22",
+          "generated": 84,
+          "valid": 35,
+          "milliseconds": 17.68250000000012,
+          "capped": false
+        },
+        {
+          "step": 35,
+          "observation": "A-02",
+          "disposition": "blocked",
+          "selectedId": null,
+          "generated": 209,
+          "valid": 0,
+          "milliseconds": 8.005599999999959,
+          "capped": true
+        }
+      ],
+      "physics": {
+        "runId": "greedy",
+        "status": "stable",
+        "poses": [
+          {
+            "id": "B-09",
+            "friction": 0.35,
+            "planned": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "actual": {
+              "x": -0.0834345817565918,
+              "y": -0.03714561462402344,
+              "z": -0.271722674369812
+            },
+            "rotation": [
+              -0.00005546871034312062,
+              -0.000007550324426119914,
+              -0.00007226286106742918,
+              1
+            ],
+            "displacementMm": 0.2866606667915512,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "D-03",
+            "friction": 0.45,
+            "planned": {
+              "x": 0,
+              "y": 0,
+              "z": 250
+            },
+            "actual": {
+              "x": -0.2905726432800293,
+              "y": -0.22626519203186035,
+              "z": 248.81519675254822
+            },
+            "rotation": [
+              -0.0000740720279281959,
+              -0.00011932476627407596,
+              0.0008011013269424438,
+              0.9999996423721313
+            ],
+            "displacementMm": 1.240720409004481,
+            "angleDeg": 0.096913285286603,
+            "fell": false
+          },
+          {
+            "id": "C-06",
+            "friction": 0.45,
+            "planned": {
+              "x": 0,
+              "y": 200,
+              "z": 250
+            },
+            "actual": {
+              "x": -0.24159550666809082,
+              "y": 199.85861480236053,
+              "z": 249.0975797176361
+            },
+            "rotation": [
+              -0.0006935334531590343,
+              -0.00017954374197870493,
+              0.000799089961219579,
+              0.9999995231628418
+            ],
+            "displacementMm": 0.9448388904863558,
+            "angleDeg": 0.11190582380822713,
+            "fell": false
+          },
+          {
+            "id": "A-07",
+            "friction": 0.35,
+            "planned": {
+              "x": 0,
+              "y": 400,
+              "z": 0
+            },
+            "actual": {
+              "x": -0.12848377227783203,
+              "y": 399.99033212661743,
+              "z": -0.26164352893829346
+            },
+            "rotation": [
+              0.00004238343535689637,
+              -0.000007561505753983511,
+              0.000018249780623591505,
+              1
+            ],
+            "displacementMm": 0.29164856205674455,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "B-05",
+            "friction": 0.35,
+            "planned": {
+              "x": 0,
+              "y": 400,
+              "z": 300
+            },
+            "actual": {
+              "x": -0.16448497772216797,
+              "y": 399.7851073741913,
+              "z": 298.86338114738464
+            },
+            "rotation": [
+              0.00020760066399816424,
+              -0.000037384204915724695,
+              -0.00003136488885502331,
+              1
+            ],
+            "displacementMm": 1.1683905873653195,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "C-09",
+            "friction": 0.45,
+            "planned": {
+              "x": 0,
+              "y": 700,
+              "z": 300
+            },
+            "actual": {
+              "x": -0.15372037887573242,
+              "y": 699.965363740921,
+              "z": 299.0490436553955
+            },
+            "rotation": [
+              0.00046969277900643647,
+              -0.000006436042440327583,
+              0.0002461736439727247,
+              0.9999998807907104
+            ],
+            "displacementMm": 0.9639230232068444,
+            "angleDeg": 0.05595291023658669,
+            "fell": false
+          },
+          {
+            "id": "D-19",
+            "friction": 0.45,
+            "planned": {
+              "x": 200,
+              "y": 800,
+              "z": 300
+            },
+            "actual": {
+              "x": 199.81402158737183,
+              "y": 799.9984264373779,
+              "z": 299.0714490413666
+            },
+            "rotation": [
+              0.00018717849161475897,
+              -0.000022409803932532668,
+              -0.00007832828850951046,
+              1
+            ],
+            "displacementMm": 0.9469938378057533,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "D-07",
+            "friction": 0.45,
+            "planned": {
+              "x": 200,
+              "y": 800,
+              "z": 450
+            },
+            "actual": {
+              "x": 199.83667135238647,
+              "y": 800.0495374202728,
+              "z": 448.4624147415161
+            },
+            "rotation": [
+              0.00015352520858868957,
+              -0.00002241026231786236,
+              -0.00007494010787922889,
+              1
+            ],
+            "displacementMm": 1.5470289687803234,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "D-17",
+            "friction": 0.45,
+            "planned": {
+              "x": 0,
+              "y": 800,
+              "z": 500
+            },
+            "actual": {
+              "x": -0.26214122772216797,
+              "y": 800.1857936382294,
+              "z": 498.1126070022583
+            },
+            "rotation": [
+              0.0008728899993002415,
+              -0.00002204125303251203,
+              0.0001191053306683898,
+              0.9999996423721313
+            ],
+            "displacementMm": 1.9145468464371902,
+            "angleDeg": 0.096913285286603,
+            "fell": false
+          },
+          {
+            "id": "C-10",
+            "friction": 0.45,
+            "planned": {
+              "x": 0,
+              "y": 400,
+              "z": 550
+            },
+            "actual": {
+              "x": -0.503838062286377,
+              "y": 399.5128966867924,
+              "z": 548.4018564224243
+            },
+            "rotation": [
+              0.00004939860446029343,
+              -0.000059490837884368375,
+              -0.00047644542064517736,
+              0.9999998807907104
+            ],
+            "displacementMm": 1.7450459378746288,
+            "angleDeg": 0.05595291023658669,
+            "fell": false
+          },
+          {
+            "id": "D-09",
+            "friction": 0.45,
+            "planned": {
+              "x": 0,
+              "y": 0,
+              "z": 400
+            },
+            "actual": {
+              "x": -0.9028315544128418,
+              "y": -0.49016475677490234,
+              "z": 398.1794595718384
+            },
+            "rotation": [
+              -0.0006693394971080124,
+              -0.00006911980744916946,
+              0.002340492093935609,
+              0.9999970197677612
+            ],
+            "displacementMm": 2.090390813938534,
+            "angleDeg": 0.2797646178840461,
+            "fell": false
+          },
+          {
+            "id": "C-12",
+            "friction": 0.45,
+            "planned": {
+              "x": 200,
+              "y": 400,
+              "z": 550
+            },
+            "actual": {
+              "x": 199.7801959514618,
+              "y": 399.6152490377426,
+              "z": 548.2985615730286
+            },
+            "rotation": [
+              -0.000023666325432714075,
+              -0.00003667102282634005,
+              -0.0004117427743040025,
+              1
+            ],
+            "displacementMm": 1.7581922089142594,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "B-08",
+            "friction": 0.35,
+            "planned": {
+              "x": 300,
+              "y": 0,
+              "z": 0
+            },
+            "actual": {
+              "x": 299.9581962823868,
+              "y": -0.021886825561523438,
+              "z": -0.22178888320922852
+            },
+            "rotation": [
+              0.000017256836144952103,
+              -0.00003476834172033705,
+              0.00007406892837025225,
+              1
+            ],
+            "displacementMm": 0.22675293306734362,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "A-03",
+            "friction": 0.35,
+            "planned": {
+              "x": 600,
+              "y": 0,
+              "z": 0
+            },
+            "actual": {
+              "x": 599.8904287815094,
+              "y": -0.05371570587158203,
+              "z": -0.17824172973632812
+            },
+            "rotation": [
+              0.000003934948381356662,
+              0.000008842556781019084,
+              -0.000019938948753406294,
+              1
+            ],
+            "displacementMm": 0.21601236816024094,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "D-20",
+            "friction": 0.45,
+            "planned": {
+              "x": 200,
+              "y": 0,
+              "z": 250
+            },
+            "actual": {
+              "x": 199.72378015518188,
+              "y": -0.10780096054077148,
+              "z": 249.42817091941833
+            },
+            "rotation": [
+              -0.001392073929309845,
+              -0.00004939087011734955,
+              0.0007965664844959974,
+              0.9999986886978149
+            ],
+            "displacementMm": 0.6441327092794846,
+            "angleDeg": 0.18557482761840055,
+            "fell": false
+          },
+          {
+            "id": "A-04",
+            "friction": 0.35,
+            "planned": {
+              "x": 600,
+              "y": 0,
+              "z": 300
+            },
+            "actual": {
+              "x": 599.923300743103,
+              "y": -0.05469918251037598,
+              "z": 299.1291344165802
+            },
+            "rotation": [
+              -0.000007651343366887886,
+              -0.0000013309495443536434,
+              -0.00002474557732057292,
+              1
+            ],
+            "displacementMm": 0.8759461404452671,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "D-01",
+            "friction": 0.45,
+            "planned": {
+              "x": 200,
+              "y": 0,
+              "z": 400
+            },
+            "actual": {
+              "x": 199.83181357383728,
+              "y": -0.26959776878356934,
+              "z": 398.6156165599823
+            },
+            "rotation": [
+              -0.001036606146954,
+              -0.000025376131816301495,
+              0.00020194417447783053,
+              0.9999995231628418
+            ],
+            "displacementMm": 1.4203827441481074,
+            "angleDeg": 0.11190582380822713,
+            "fell": false
+          },
+          {
+            "id": "B-03",
+            "friction": 0.35,
+            "planned": {
+              "x": 400,
+              "y": 400,
+              "z": 0
+            },
+            "actual": {
+              "x": 399.964235972584,
+              "y": 399.9666556715965,
+              "z": -0.16073137521743774
+            },
+            "rotation": [
+              0.0000649245994281955,
+              -0.000026278416044078767,
+              -0.000022879814423504286,
+              1
+            ],
+            "displacementMm": 0.16800441920669928,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "B-12",
+            "friction": 0.35,
+            "planned": {
+              "x": 400,
+              "y": 700,
+              "z": 0
+            },
+            "actual": {
+              "x": 399.8711802327307,
+              "y": 699.9401807785034,
+              "z": -0.19587576389312744
+            },
+            "rotation": [
+              0.00007500759238610044,
+              -0.000005741015684179729,
+              0.000024082784875645302,
+              1
+            ],
+            "displacementMm": 0.24195079371742403,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "D-15",
+            "friction": 0.45,
+            "planned": {
+              "x": 0,
+              "y": 200,
+              "z": 450
+            },
+            "actual": {
+              "x": -0.692903995513916,
+              "y": 199.74058270454407,
+              "z": 448.15789461135864
+            },
+            "rotation": [
+              -0.0011553235817700624,
+              -0.00004212320709484629,
+              -0.00006139428296592087,
+              0.9999994039535522
+            ],
+            "displacementMm": 1.9851361522682385,
+            "angleDeg": 0.1251145157995564,
+            "fell": false
+          },
+          {
+            "id": "D-16",
+            "friction": 0.45,
+            "planned": {
+              "x": 0,
+              "y": 200,
+              "z": 600
+            },
+            "actual": {
+              "x": -0.8535385131835938,
+              "y": 199.333855509758,
+              "z": 597.8639006614685
+            },
+            "rotation": [
+              -0.0010516910115256906,
+              -0.00009755208884598687,
+              0.0007953208405524492,
+              0.9999991655349731
+            ],
+            "displacementMm": 2.394827104290021,
+            "angleDeg": 0.14803749444005213,
+            "fell": false
+          },
+          {
+            "id": "A-08",
+            "friction": 0.35,
+            "planned": {
+              "x": 800,
+              "y": 400,
+              "z": 0
+            },
+            "actual": {
+              "x": 799.8815715312958,
+              "y": 399.9785155057907,
+              "z": -0.24246573448181152
+            },
+            "rotation": [
+              0.00003305817881482653,
+              0.00005175397018319927,
+              -0.00012452098599169403,
+              1
+            ],
+            "displacementMm": 0.27069635773105744,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "B-11",
+            "friction": 0.35,
+            "planned": {
+              "x": 800,
+              "y": 400,
+              "z": 300
+            },
+            "actual": {
+              "x": 800.1038670539856,
+              "y": 400.1161739230156,
+              "z": 299.14724826812744
+            },
+            "rotation": [
+              0.00033549367799423635,
+              -0.000042827276047319174,
+              -0.00014749621914234012,
+              1
+            ],
+            "displacementMm": 0.8668738440535209,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "D-10",
+            "friction": 0.45,
+            "planned": {
+              "x": 0,
+              "y": 0,
+              "z": 550
+            },
+            "actual": {
+              "x": -1.8256902694702148,
+              "y": -0.7998108863830566,
+              "z": 547.727632522583
+            },
+            "rotation": [
+              -0.0007964421529322863,
+              -0.000032343174098059535,
+              0.0031733461655676365,
+              0.9999946355819702
+            ],
+            "displacementMm": 3.02266378653623,
+            "angleDeg": 0.37534369654698724,
+            "fell": false
+          },
+          {
+            "id": "C-02",
+            "friction": 0.45,
+            "planned": {
+              "x": 300,
+              "y": 200,
+              "z": 250
+            },
+            "actual": {
+              "x": 299.83697533607483,
+              "y": 199.8928427696228,
+              "z": 249.2518663406372
+            },
+            "rotation": [
+              -0.0002635610871948302,
+              -0.000023376800527330488,
+              -0.0003095038700848818,
+              1
+            ],
+            "displacementMm": 0.7731517867415105,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "A-05",
+            "friction": 0.35,
+            "planned": {
+              "x": 400,
+              "y": 400,
+              "z": 250
+            },
+            "actual": {
+              "x": 399.90608665393665,
+              "y": 400.10432600975037,
+              "z": 249.32021498680115
+            },
+            "rotation": [
+              0.0005061078118160367,
+              -0.000013688380022358615,
+              -0.00013301553553901613,
+              0.9999998807907104
+            ],
+            "displacementMm": 0.6941262832143813,
+            "angleDeg": 0.05595291023658669,
+            "fell": false
+          },
+          {
+            "id": "D-02",
+            "friction": 0.45,
+            "planned": {
+              "x": 200,
+              "y": 0,
+              "z": 550
+            },
+            "actual": {
+              "x": 199.75262880325317,
+              "y": -0.5634188652038574,
+              "z": 548.2263445854187
+            },
+            "rotation": [
+              -0.0008570493082515895,
+              0.000035723183827940375,
+              -0.0008757113828323781,
+              0.9999992847442627
+            ],
+            "displacementMm": 1.877361674350768,
+            "angleDeg": 0.1370560865110373,
+            "fell": false
+          },
+          {
+            "id": "B-07",
+            "friction": 0.35,
+            "planned": {
+              "x": 800,
+              "y": 700,
+              "z": 300
+            },
+            "actual": {
+              "x": 799.9950289726257,
+              "y": 700.1653075218201,
+              "z": 298.9623248577118
+            },
+            "rotation": [
+              0.0002729941043071449,
+              -0.000046820649004075676,
+              -0.0003896560810972005,
+              0.9999998807907104
+            ],
+            "displacementMm": 1.0507716159119929,
+            "angleDeg": 0.05595291023658669,
+            "fell": false
+          },
+          {
+            "id": "D-18",
+            "friction": 0.45,
+            "planned": {
+              "x": 400,
+              "y": 200,
+              "z": 450
+            },
+            "actual": {
+              "x": 399.9643921852112,
+              "y": 199.81809854507446,
+              "z": 448.8409638404846
+            },
+            "rotation": [
+              -0.00005492978380061686,
+              -0.00003086356809944846,
+              -0.000053927593398839235,
+              1
+            ],
+            "displacementMm": 1.1737635515052534,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "A-06",
+            "friction": 0.35,
+            "planned": {
+              "x": 600,
+              "y": 600,
+              "z": 550
+            },
+            "actual": {
+              "x": 600.2097308635712,
+              "y": 600.3700971603394,
+              "z": 548.8058686256409
+            },
+            "rotation": [
+              0.0005260602338239551,
+              -0.000037827536289114505,
+              -0.0004182641569059342,
+              0.9999997615814209
+            ],
+            "displacementMm": 1.2676390189854478,
+            "angleDeg": 0.07912936529690494,
+            "fell": false
+          },
+          {
+            "id": "D-08",
+            "friction": 0.45,
+            "planned": {
+              "x": 200,
+              "y": 200,
+              "z": 450
+            },
+            "actual": {
+              "x": 199.62066411972046,
+              "y": 199.65321719646454,
+              "z": 448.76192808151245
+            },
+            "rotation": [
+              -0.00111857196316123,
+              -0.00027921877335757017,
+              0.00167609634809196,
+              0.9999979734420776
+            ],
+            "displacementMm": 1.3405133711540547,
+            "angleDeg": 0.23069979563490706,
+            "fell": false
+          },
+          {
+            "id": "D-12",
+            "friction": 0.45,
+            "planned": {
+              "x": 200,
+              "y": 200,
+              "z": 600
+            },
+            "actual": {
+              "x": 199.9618113040924,
+              "y": 199.4253784418106,
+              "z": 597.9527711868286
+            },
+            "rotation": [
+              -0.0015087868086993694,
+              -0.00011465653369668871,
+              0.0003244417021051049,
+              0.9999988079071045
+            ],
+            "displacementMm": 2.1266861839750244,
+            "angleDeg": 0.17693865388211621,
+            "fell": false
+          },
+          {
+            "id": "C-15",
+            "friction": 0.45,
+            "planned": {
+              "x": 200,
+              "y": 200,
+              "z": 750
+            },
+            "actual": {
+              "x": 200.04981756210327,
+              "y": 198.91462326049805,
+              "z": 747.8291034698486
+            },
+            "rotation": [
+              -0.0015458377311006188,
+              -0.00006708354339934886,
+              -0.000723584380466491,
+              0.9999985694885254
+            ],
+            "displacementMm": 2.4276153321251392,
+            "angleDeg": 0.1938265879026583,
+            "fell": false
+          },
+          {
+            "id": "D-05",
+            "friction": 0.45,
+            "planned": {
+              "x": 0,
+              "y": 800,
+              "z": 650
+            },
+            "actual": {
+              "x": -0.3040432929992676,
+              "y": 800.4391431808472,
+              "z": 647.5441336631775
+            },
+            "rotation": [
+              0.0008148486958816648,
+              -0.000022155152691993862,
+              0.00016088865231722593,
+              0.9999996423721313
+            ],
+            "displacementMm": 2.513278440929381,
+            "angleDeg": 0.096913285286603,
+            "fell": false
+          }
+        ],
+        "settings": {
+          "seconds": 3,
+          "dt": 0.008333333333333333,
+          "friction": 0.6,
+          "moveToleranceMm": 5,
+          "angleToleranceDeg": 3,
+          "materialFriction": true
+        },
+        "steps": 360,
+        "milliseconds": 57.536800000001676
+      }
+    },
+    {
+      "algorithm": "rollout",
+      "seed": 42,
+      "metrics": {
+        "loadUtilization": 0.34375,
+        "unknownCapacity": 0,
+        "slenderness": 1.875,
+        "count": 29,
+        "volume": 702000000,
+        "weight": 142,
+        "height": 850,
+        "utilization": 0.365625,
+        "efficiency": 0.6882352941176471,
+        "center": {
+          "x": 601.7605633802817,
+          "y": 487.67605633802816,
+          "z": 357.9225352112676
+        },
+        "quadrants": [
+          34.25,
+          39.47222222222222,
+          31.25,
+          37.02777777777777
+        ],
+        "imbalance": 0.05790297339593114,
+        "distanceM": 155.6092656915939,
+        "workSeconds": 297.39887029475983,
+        "medianMs": 2899.0039500000003,
+        "p95Ms": 4805.7453999999925,
+        "totalMs": 87927.15989999997,
+        "complete": false,
+        "failedStep": 30,
+        "reason": "지지 조건 미달 / 팔레트 경계 밖 / 설정된 작업공간 밖",
+        "excluded": 0,
+        "missing": 0
+      },
+      "placements": [
+        {
+          "id": "B-09",
+          "typeId": "B",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "w": 400,
+            "d": 300,
+            "h": 250
+          },
+          "orientation": 0,
+          "weight": 7,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 6,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-03",
+          "typeId": "D",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 250
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "B-09",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 1.5,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "C-06",
+          "typeId": "C",
+          "position": {
+            "x": 200,
+            "y": 0,
+            "z": 250
+          },
+          "size": {
+            "w": 200,
+            "d": 300,
+            "h": 200
+          },
+          "orientation": 90,
+          "weight": 3,
+          "supports": [
+            {
+              "id": "B-09",
+              "rect": {
+                "x": 200,
+                "y": 0,
+                "w": 200,
+                "d": 300
+              },
+              "area": 60000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "A-07",
+          "typeId": "A",
+          "position": {
+            "x": 0,
+            "y": 400,
+            "z": 0
+          },
+          "size": {
+            "w": 400,
+            "d": 600,
+            "h": 300
+          },
+          "orientation": 90,
+          "weight": 12,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 22,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "B-05",
+          "typeId": "B",
+          "position": {
+            "x": 0,
+            "y": 700,
+            "z": 300
+          },
+          "size": {
+            "w": 400,
+            "d": 300,
+            "h": 250
+          },
+          "orientation": 0,
+          "weight": 7,
+          "supports": [
+            {
+              "id": "A-07",
+              "rect": {
+                "x": 0,
+                "y": 700,
+                "w": 400,
+                "d": 300
+              },
+              "area": 120000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 6,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "C-09",
+          "typeId": "C",
+          "position": {
+            "x": 0,
+            "y": 400,
+            "z": 300
+          },
+          "size": {
+            "w": 200,
+            "d": 300,
+            "h": 200
+          },
+          "orientation": 90,
+          "weight": 3,
+          "supports": [
+            {
+              "id": "A-07",
+              "rect": {
+                "x": 0,
+                "y": 400,
+                "w": 200,
+                "d": 300
+              },
+              "area": 60000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 1.5,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-19",
+          "typeId": "D",
+          "position": {
+            "x": 200,
+            "y": 400,
+            "z": 300
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "A-07",
+              "rect": {
+                "x": 200,
+                "y": 400,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 3,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-07",
+          "typeId": "D",
+          "position": {
+            "x": 200,
+            "y": 400,
+            "z": 450
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "D-19",
+              "rect": {
+                "x": 200,
+                "y": 400,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 1.5,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-17",
+          "typeId": "D",
+          "position": {
+            "x": 0,
+            "y": 400,
+            "z": 500
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "C-09",
+              "rect": {
+                "x": 0,
+                "y": 400,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "C-10",
+          "typeId": "C",
+          "position": {
+            "x": 0,
+            "y": 700,
+            "z": 550
+          },
+          "size": {
+            "w": 200,
+            "d": 300,
+            "h": 200
+          },
+          "orientation": 90,
+          "weight": 3,
+          "supports": [
+            {
+              "id": "B-05",
+              "rect": {
+                "x": 0,
+                "y": 700,
+                "w": 200,
+                "d": 300
+              },
+              "area": 60000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-09",
+          "typeId": "D",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 400
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "D-03",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "C-12",
+          "typeId": "C",
+          "position": {
+            "x": 200,
+            "y": 700,
+            "z": 550
+          },
+          "size": {
+            "w": 200,
+            "d": 300,
+            "h": 200
+          },
+          "orientation": 90,
+          "weight": 3,
+          "supports": [
+            {
+              "id": "B-05",
+              "rect": {
+                "x": 200,
+                "y": 700,
+                "w": 200,
+                "d": 300
+              },
+              "area": 60000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "B-08",
+          "typeId": "B",
+          "position": {
+            "x": 400,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "w": 400,
+            "d": 300,
+            "h": 250
+          },
+          "orientation": 0,
+          "weight": 7,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 12.5,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "A-03",
+          "typeId": "A",
+          "position": {
+            "x": 800,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "w": 400,
+            "d": 600,
+            "h": 300
+          },
+          "orientation": 90,
+          "weight": 12,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 16.666666666666664,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-20",
+          "typeId": "D",
+          "position": {
+            "x": 200,
+            "y": 400,
+            "z": 600
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "D-07",
+              "rect": {
+                "x": 200,
+                "y": 400,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "A-04",
+          "typeId": "A",
+          "position": {
+            "x": 600,
+            "y": 600,
+            "z": 0
+          },
+          "size": {
+            "w": 600,
+            "d": 400,
+            "h": 300
+          },
+          "orientation": 0,
+          "weight": 12,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 17.333333333333332,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-01",
+          "typeId": "D",
+          "position": {
+            "x": 400,
+            "y": 0,
+            "z": 250
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "B-08",
+              "rect": {
+                "x": 400,
+                "y": 0,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 3.5,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "B-03",
+          "typeId": "B",
+          "position": {
+            "x": 400,
+            "y": 300,
+            "z": 0
+          },
+          "size": {
+            "w": 400,
+            "d": 300,
+            "h": 250
+          },
+          "orientation": 0,
+          "weight": 7,
+          "supports": [],
+          "supportRatio": 1,
+          "loadAbove": 10.5,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "B-12",
+          "typeId": "B",
+          "position": {
+            "x": 400,
+            "y": 200,
+            "z": 250
+          },
+          "size": {
+            "w": 300,
+            "d": 400,
+            "h": 250
+          },
+          "orientation": 90,
+          "weight": 7,
+          "supports": [
+            {
+              "id": "B-08",
+              "rect": {
+                "x": 400,
+                "y": 200,
+                "w": 300,
+                "d": 100
+              },
+              "area": 30000,
+              "share": 0.25
+            },
+            {
+              "id": "B-03",
+              "rect": {
+                "x": 400,
+                "y": 300,
+                "w": 300,
+                "d": 300
+              },
+              "area": 90000,
+              "share": 0.75
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 7,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-15",
+          "typeId": "D",
+          "position": {
+            "x": 600,
+            "y": 0,
+            "z": 250
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "B-08",
+              "rect": {
+                "x": 600,
+                "y": 0,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 2.5,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-16",
+          "typeId": "D",
+          "position": {
+            "x": 400,
+            "y": 0,
+            "z": 400
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "D-01",
+              "rect": {
+                "x": 400,
+                "y": 0,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 2,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "A-08",
+          "typeId": "A",
+          "position": {
+            "x": 600,
+            "y": 600,
+            "z": 300
+          },
+          "size": {
+            "w": 600,
+            "d": 400,
+            "h": 300
+          },
+          "orientation": 0,
+          "weight": 12,
+          "supports": [
+            {
+              "id": "A-04",
+              "rect": {
+                "x": 600,
+                "y": 600,
+                "w": 600,
+                "d": 400
+              },
+              "area": 240000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 5.333333333333333,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "B-11",
+          "typeId": "B",
+          "position": {
+            "x": 400,
+            "y": 200,
+            "z": 500
+          },
+          "size": {
+            "w": 300,
+            "d": 400,
+            "h": 250
+          },
+          "orientation": 90,
+          "weight": 7,
+          "supports": [
+            {
+              "id": "B-12",
+              "rect": {
+                "x": 400,
+                "y": 200,
+                "w": 300,
+                "d": 400
+              },
+              "area": 120000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-10",
+          "typeId": "D",
+          "position": {
+            "x": 600,
+            "y": 0,
+            "z": 400
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "D-15",
+              "rect": {
+                "x": 600,
+                "y": 0,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 1,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "C-02",
+          "typeId": "C",
+          "position": {
+            "x": 400,
+            "y": 0,
+            "z": 550
+          },
+          "size": {
+            "w": 300,
+            "d": 200,
+            "h": 200
+          },
+          "orientation": 0,
+          "weight": 3,
+          "supports": [
+            {
+              "id": "D-16",
+              "rect": {
+                "x": 400,
+                "y": 0,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 0.6666666666666666
+            },
+            {
+              "id": "D-10",
+              "rect": {
+                "x": 600,
+                "y": 0,
+                "w": 100,
+                "d": 200
+              },
+              "area": 20000,
+              "share": 0.3333333333333333
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "A-05",
+          "typeId": "A",
+          "position": {
+            "x": 800,
+            "y": 0,
+            "z": 300
+          },
+          "size": {
+            "w": 400,
+            "d": 600,
+            "h": 300
+          },
+          "orientation": 90,
+          "weight": 12,
+          "supports": [
+            {
+              "id": "A-03",
+              "rect": {
+                "x": 800,
+                "y": 0,
+                "w": 400,
+                "d": 600
+              },
+              "area": 240000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 4.666666666666666,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-02",
+          "typeId": "D",
+          "position": {
+            "x": 600,
+            "y": 600,
+            "z": 600
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "A-08",
+              "rect": {
+                "x": 600,
+                "y": 600,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "paper",
+          "strengthFactor": 1
+        },
+        {
+          "id": "B-07",
+          "typeId": "B",
+          "position": {
+            "x": 800,
+            "y": 400,
+            "z": 600
+          },
+          "size": {
+            "w": 400,
+            "d": 300,
+            "h": 250
+          },
+          "orientation": 0,
+          "weight": 7,
+          "supports": [
+            {
+              "id": "A-08",
+              "rect": {
+                "x": 800,
+                "y": 600,
+                "w": 400,
+                "d": 100
+              },
+              "area": 40000,
+              "share": 0.3333333333333333
+            },
+            {
+              "id": "A-05",
+              "rect": {
+                "x": 800,
+                "y": 400,
+                "w": 400,
+                "d": 200
+              },
+              "area": 80000,
+              "share": 0.6666666666666666
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "D-18",
+          "typeId": "D",
+          "position": {
+            "x": 600,
+            "y": 800,
+            "z": 600
+          },
+          "size": {
+            "w": 200,
+            "d": 200,
+            "h": 150
+          },
+          "orientation": 0,
+          "weight": 1.5,
+          "supports": [
+            {
+              "id": "A-08",
+              "rect": {
+                "x": 600,
+                "y": 800,
+                "w": 200,
+                "d": 200
+              },
+              "area": 40000,
+              "share": 1
+            }
+          ],
+          "supportRatio": 1,
+          "loadAbove": 0,
+          "material": "paper",
+          "strengthFactor": 1
+        }
+      ],
+      "decisions": [
+        {
+          "step": 1,
+          "observation": "B-09",
+          "disposition": "placed",
+          "selectedId": "c0",
+          "generated": 8,
+          "valid": 8,
+          "milliseconds": 1081.7478,
+          "capped": false
+        },
+        {
+          "step": 2,
+          "observation": "D-03",
+          "disposition": "placed",
+          "selectedId": "c12",
+          "generated": 25,
+          "valid": 16,
+          "milliseconds": 1896.7502999999997,
+          "capped": false
+        },
+        {
+          "step": 3,
+          "observation": "C-06",
+          "disposition": "placed",
+          "selectedId": "c26",
+          "generated": 64,
+          "valid": 26,
+          "milliseconds": 1913.0402999999997,
+          "capped": false
+        },
+        {
+          "step": 4,
+          "observation": "A-07",
+          "disposition": "placed",
+          "selectedId": "c14",
+          "generated": 85,
+          "valid": 22,
+          "milliseconds": 2543.5444000000007,
+          "capped": false
+        },
+        {
+          "step": 5,
+          "observation": "B-05",
+          "disposition": "placed",
+          "selectedId": "c31",
+          "generated": 101,
+          "valid": 26,
+          "milliseconds": 2614.275600000001,
+          "capped": false
+        },
+        {
+          "step": 6,
+          "observation": "C-09",
+          "disposition": "placed",
+          "selectedId": "c34",
+          "generated": 105,
+          "valid": 39,
+          "milliseconds": 2365.2567,
+          "capped": false
+        },
+        {
+          "step": 7,
+          "observation": "D-19",
+          "disposition": "placed",
+          "selectedId": "c18",
+          "generated": 50,
+          "valid": 27,
+          "milliseconds": 2540.4812999999995,
+          "capped": false
+        },
+        {
+          "step": 8,
+          "observation": "D-07",
+          "disposition": "placed",
+          "selectedId": "c25",
+          "generated": 54,
+          "valid": 28,
+          "milliseconds": 2805.4500000000007,
+          "capped": false
+        },
+        {
+          "step": 9,
+          "observation": "D-17",
+          "disposition": "placed",
+          "selectedId": "c25",
+          "generated": 54,
+          "valid": 28,
+          "milliseconds": 2812.2884000000013,
+          "capped": false
+        },
+        {
+          "step": 10,
+          "observation": "C-10",
+          "disposition": "placed",
+          "selectedId": "c50",
+          "generated": 123,
+          "valid": 37,
+          "milliseconds": 2985.7194999999992,
+          "capped": false
+        },
+        {
+          "step": 11,
+          "observation": "D-09",
+          "disposition": "placed",
+          "selectedId": "c19",
+          "generated": 55,
+          "valid": 25,
+          "milliseconds": 2709.9349999999977,
+          "capped": false
+        },
+        {
+          "step": 12,
+          "observation": "C-12",
+          "disposition": "placed",
+          "selectedId": "c47",
+          "generated": 125,
+          "valid": 32,
+          "milliseconds": 3373.358800000002,
+          "capped": false
+        },
+        {
+          "step": 13,
+          "observation": "B-08",
+          "disposition": "placed",
+          "selectedId": "c0",
+          "generated": 126,
+          "valid": 23,
+          "milliseconds": 3635.9179000000004,
+          "capped": false
+        },
+        {
+          "step": 14,
+          "observation": "A-03",
+          "disposition": "placed",
+          "selectedId": "c0",
+          "generated": 143,
+          "valid": 13,
+          "milliseconds": 3407.282699999996,
+          "capped": true
+        },
+        {
+          "step": 15,
+          "observation": "D-20",
+          "disposition": "placed",
+          "selectedId": "c37",
+          "generated": 74,
+          "valid": 32,
+          "milliseconds": 3749.476999999999,
+          "capped": false
+        },
+        {
+          "step": 16,
+          "observation": "A-04",
+          "disposition": "placed",
+          "selectedId": "c3",
+          "generated": 152,
+          "valid": 5,
+          "milliseconds": 1714.2001999999993,
+          "capped": true
+        },
+        {
+          "step": 17,
+          "observation": "D-01",
+          "disposition": "placed",
+          "selectedId": "c8",
+          "generated": 76,
+          "valid": 32,
+          "milliseconds": 4194.305799999995,
+          "capped": false
+        },
+        {
+          "step": 18,
+          "observation": "B-03",
+          "disposition": "placed",
+          "selectedId": "c0",
+          "generated": 173,
+          "valid": 20,
+          "milliseconds": 4189.037700000001,
+          "capped": true
+        },
+        {
+          "step": 19,
+          "observation": "B-12",
+          "disposition": "placed",
+          "selectedId": "c1",
+          "generated": 173,
+          "valid": 23,
+          "milliseconds": 4349.825700000001,
+          "capped": true
+        },
+        {
+          "step": 20,
+          "observation": "D-15",
+          "disposition": "placed",
+          "selectedId": "c3",
+          "generated": 87,
+          "valid": 32,
+          "milliseconds": 4569.8369999999995,
+          "capped": false
+        },
+        {
+          "step": 21,
+          "observation": "D-16",
+          "disposition": "placed",
+          "selectedId": "c28",
+          "generated": 88,
+          "valid": 34,
+          "milliseconds": 4805.7453999999925,
+          "capped": false
+        },
+        {
+          "step": 22,
+          "observation": "A-08",
+          "disposition": "placed",
+          "selectedId": "c8",
+          "generated": 184,
+          "valid": 6,
+          "milliseconds": 2008.2552999999898,
+          "capped": true
+        },
+        {
+          "step": 23,
+          "observation": "B-11",
+          "disposition": "placed",
+          "selectedId": "c16",
+          "generated": 191,
+          "valid": 9,
+          "milliseconds": 3258.097499999989,
+          "capped": true
+        },
+        {
+          "step": 24,
+          "observation": "D-10",
+          "disposition": "placed",
+          "selectedId": "c16",
+          "generated": 88,
+          "valid": 27,
+          "milliseconds": 4037.6472000000067,
+          "capped": false
+        },
+        {
+          "step": 25,
+          "observation": "C-02",
+          "disposition": "placed",
+          "selectedId": "c32",
+          "generated": 201,
+          "valid": 40,
+          "milliseconds": 3648.183499999999,
+          "capped": true
+        },
+        {
+          "step": 26,
+          "observation": "A-05",
+          "disposition": "placed",
+          "selectedId": "c0",
+          "generated": 188,
+          "valid": 1,
+          "milliseconds": 410.4106000000029,
+          "capped": true
+        },
+        {
+          "step": 27,
+          "observation": "D-02",
+          "disposition": "placed",
+          "selectedId": "c24",
+          "generated": 90,
+          "valid": 26,
+          "milliseconds": 5039.8511,
+          "capped": false
+        },
+        {
+          "step": 28,
+          "observation": "B-07",
+          "disposition": "placed",
+          "selectedId": "c19",
+          "generated": 214,
+          "valid": 6,
+          "milliseconds": 1909.4291999999987,
+          "capped": true
+        },
+        {
+          "step": 29,
+          "observation": "D-18",
+          "disposition": "placed",
+          "selectedId": "c20",
+          "generated": 97,
+          "valid": 23,
+          "milliseconds": 3352.663799999995,
+          "capped": false
+        },
+        {
+          "step": 30,
+          "observation": "A-06",
+          "disposition": "blocked",
+          "selectedId": null,
+          "generated": 206,
+          "valid": 0,
+          "milliseconds": 5.14419999999518,
+          "capped": true
+        }
+      ],
+      "physics": {
+        "runId": "rollout",
+        "status": "stable",
+        "poses": [
+          {
+            "id": "B-09",
+            "friction": 0.35,
+            "planned": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "actual": {
+              "x": -0.04813671112060547,
+              "y": -0.046634674072265625,
+              "z": -0.2084970474243164
+            },
+            "rotation": [
+              0.000014531813576468267,
+              0.00008869211160345003,
+              -0.0000490331876790151,
+              1
+            ],
+            "displacementMm": 0.21900446243853733,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "D-03",
+            "friction": 0.45,
+            "planned": {
+              "x": 0,
+              "y": 0,
+              "z": 250
+            },
+            "actual": {
+              "x": -0.20319223403930664,
+              "y": -0.1439213752746582,
+              "z": 249.11691546440125
+            },
+            "rotation": [
+              -0.00011109100887551904,
+              0.00008875497587723657,
+              0.0001536407071398571,
+              1
+            ],
+            "displacementMm": 0.9175177073215002,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "C-06",
+            "friction": 0.45,
+            "planned": {
+              "x": 200,
+              "y": 0,
+              "z": 250
+            },
+            "actual": {
+              "x": 199.85604286193848,
+              "y": -0.12212395668029785,
+              "z": 249.32801127433777
+            },
+            "rotation": [
+              -0.00005898326708120294,
+              0.0001292941306019202,
+              -0.0000980977201834321,
+              1
+            ],
+            "displacementMm": 0.6980019812373497,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "A-07",
+            "friction": 0.35,
+            "planned": {
+              "x": 0,
+              "y": 400,
+              "z": 0
+            },
+            "actual": {
+              "x": -0.12240409851074219,
+              "y": 399.97866451740265,
+              "z": -0.2552211284637451
+            },
+            "rotation": [
+              0.000014588856174668763,
+              -0.00002515526648494415,
+              -0.000005771976702817483,
+              1
+            ],
+            "displacementMm": 0.28385875107911834,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "B-05",
+            "friction": 0.35,
+            "planned": {
+              "x": 0,
+              "y": 700,
+              "z": 300
+            },
+            "actual": {
+              "x": -0.1401066780090332,
+              "y": 700.1754403114319,
+              "z": 298.93118143081665
+            },
+            "rotation": [
+              0.0004021684580948204,
+              -0.000016779080397100188,
+              -0.00010699668928282335,
+              1
+            ],
+            "displacementMm": 1.0921457402422017,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "C-09",
+            "friction": 0.45,
+            "planned": {
+              "x": 0,
+              "y": 400,
+              "z": 300
+            },
+            "actual": {
+              "x": -0.12701749801635742,
+              "y": 400.06683245301247,
+              "z": 299.1389274597168
+            },
+            "rotation": [
+              -0.000022926438759895973,
+              -0.000016935293388087302,
+              0.0006484150653705001,
+              0.9999997615814209
+            ],
+            "displacementMm": 0.8729524278033525,
+            "angleDeg": 0.07912936529690494,
+            "fell": false
+          },
+          {
+            "id": "D-19",
+            "friction": 0.45,
+            "planned": {
+              "x": 200,
+              "y": 400,
+              "z": 300
+            },
+            "actual": {
+              "x": 199.81488585472107,
+              "y": 399.8634259973187,
+              "z": 298.7635016441345
+            },
+            "rotation": [
+              0.000060379014030331746,
+              0.0002158298739232123,
+              -0.0002766513207461685,
+              1
+            ],
+            "displacementMm": 1.2577153450001206,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "D-07",
+            "friction": 0.45,
+            "planned": {
+              "x": 200,
+              "y": 400,
+              "z": 450
+            },
+            "actual": {
+              "x": 199.8576521873474,
+              "y": 399.86884790996555,
+              "z": 447.60106801986694
+            },
+            "rotation": [
+              -0.00005677465014741756,
+              -0.0000845911999931559,
+              -0.00016098273044917732,
+              1
+            ],
+            "displacementMm": 2.4067277402715264,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "D-17",
+            "friction": 0.45,
+            "planned": {
+              "x": 0,
+              "y": 400,
+              "z": 500
+            },
+            "actual": {
+              "x": -0.2472996711730957,
+              "y": 399.907874946075,
+              "z": 498.69065284729004
+            },
+            "rotation": [
+              -0.00014320698392111808,
+              -0.000033917582186404616,
+              0.0005947881727479398,
+              0.9999998807907104
+            ],
+            "displacementMm": 1.3356774008841665,
+            "angleDeg": 0.05595291023658669,
+            "fell": false
+          },
+          {
+            "id": "C-10",
+            "friction": 0.45,
+            "planned": {
+              "x": 0,
+              "y": 700,
+              "z": 550
+            },
+            "actual": {
+              "x": -0.4565715789794922,
+              "y": 700.2219617366791,
+              "z": 548.5252380371094
+            },
+            "rotation": [
+              0.00042900434345938265,
+              -0.000023264245101017877,
+              0.000003361355084052775,
+              0.9999998807907104
+            ],
+            "displacementMm": 1.5596946709117232,
+            "angleDeg": 0.05595291023658669,
+            "fell": false
+          },
+          {
+            "id": "D-09",
+            "friction": 0.45,
+            "planned": {
+              "x": 0,
+              "y": 0,
+              "z": 400
+            },
+            "actual": {
+              "x": -0.3126859664916992,
+              "y": -0.23052692413330078,
+              "z": 398.4804034233093
+            },
+            "rotation": [
+              -0.00006298109656199813,
+              0.00009716908971313387,
+              0.000042689411202445626,
+              1
+            ],
+            "displacementMm": 1.5684670644553627,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "C-12",
+            "friction": 0.45,
+            "planned": {
+              "x": 200,
+              "y": 700,
+              "z": 550
+            },
+            "actual": {
+              "x": 199.79128241539001,
+              "y": 700.2806723117828,
+              "z": 548.4891176223755
+            },
+            "rotation": [
+              0.0004176365619059652,
+              -0.00005972620419925079,
+              -0.00027208850951865315,
+              0.9999998807907104
+            ],
+            "displacementMm": 1.5508402676430757,
+            "angleDeg": 0.05595291023658669,
+            "fell": false
+          },
+          {
+            "id": "B-08",
+            "friction": 0.35,
+            "planned": {
+              "x": 400,
+              "y": 0,
+              "z": 0
+            },
+            "actual": {
+              "x": 399.90329458523775,
+              "y": -0.059092044830322266,
+              "z": -0.2325400710105896
+            },
+            "rotation": [
+              0.00006390339694917202,
+              -0.00007807672227500007,
+              -0.00005245584907243028,
+              1
+            ],
+            "displacementMm": 0.2586864736165743,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "A-03",
+            "friction": 0.35,
+            "planned": {
+              "x": 800,
+              "y": 0,
+              "z": 0
+            },
+            "actual": {
+              "x": 799.8629450798035,
+              "y": -0.01773536205291748,
+              "z": -0.2139449119567871
+            },
+            "rotation": [
+              0.000007989761797944084,
+              -0.00003172829747200012,
+              -0.00002166446574847214,
+              1
+            ],
+            "displacementMm": 0.2546978986356651,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "D-20",
+            "friction": 0.45,
+            "planned": {
+              "x": 200,
+              "y": 400,
+              "z": 600
+            },
+            "actual": {
+              "x": 199.7622847557068,
+              "y": 399.81666305393446,
+              "z": 596.9664335250854
+            },
+            "rotation": [
+              -0.000002738329612839152,
+              -0.00006197560287546366,
+              -0.000283312750980258,
+              1
+            ],
+            "displacementMm": 3.0483842492191684,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "A-04",
+            "friction": 0.35,
+            "planned": {
+              "x": 600,
+              "y": 600,
+              "z": 0
+            },
+            "actual": {
+              "x": 599.8687326908112,
+              "y": 599.9453544616699,
+              "z": -0.22424161434173584
+            },
+            "rotation": [
+              0.00011270343384239823,
+              -0.000002933725909315399,
+              -0.000016379151929868385,
+              1
+            ],
+            "displacementMm": 0.2655212664244638,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "D-01",
+            "friction": 0.45,
+            "planned": {
+              "x": 400,
+              "y": 0,
+              "z": 250
+            },
+            "actual": {
+              "x": 399.7737318277359,
+              "y": -0.18817782402038574,
+              "z": 248.88350367546082
+            },
+            "rotation": [
+              0.000489672354888171,
+              -0.00018763018306344748,
+              -0.00009102786134462804,
+              0.9999998807907104
+            ],
+            "displacementMm": 1.1546307729929475,
+            "angleDeg": 0.05595291023658669,
+            "fell": false
+          },
+          {
+            "id": "B-03",
+            "friction": 0.35,
+            "planned": {
+              "x": 400,
+              "y": 300,
+              "z": 0
+            },
+            "actual": {
+              "x": 399.96191934042145,
+              "y": 299.9656967818737,
+              "z": -0.15675276517868042
+            },
+            "rotation": [
+              -0.00006181386561365798,
+              -0.0000593540353293065,
+              0.0000603523658355698,
+              1
+            ],
+            "displacementMm": 0.16491900072132556,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "B-12",
+            "friction": 0.35,
+            "planned": {
+              "x": 400,
+              "y": 200,
+              "z": 250
+            },
+            "actual": {
+              "x": 399.8854875564575,
+              "y": 199.91381019353867,
+              "z": 249.43146109580994
+            },
+            "rotation": [
+              0.0008225374040193856,
+              0.000009307586879003793,
+              -0.00003309224121039733,
+              0.9999996423721313
+            ],
+            "displacementMm": 0.5863260765491761,
+            "angleDeg": 0.096913285286603,
+            "fell": false
+          },
+          {
+            "id": "D-15",
+            "friction": 0.45,
+            "planned": {
+              "x": 600,
+              "y": 0,
+              "z": 250
+            },
+            "actual": {
+              "x": 599.899411201477,
+              "y": -0.2940952777862549,
+              "z": 248.83009791374207
+            },
+            "rotation": [
+              0.0002000418899115175,
+              -0.00005606883132713847,
+              0.00002146249607903883,
+              1
+            ],
+            "displacementMm": 1.21048793064414,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "D-16",
+            "friction": 0.45,
+            "planned": {
+              "x": 400,
+              "y": 0,
+              "z": 400
+            },
+            "actual": {
+              "x": 399.72034841775894,
+              "y": -0.13670921325683594,
+              "z": 398.0919897556305
+            },
+            "rotation": [
+              0.0005601347074843943,
+              0.0002714839356485754,
+              0.0013679047115147114,
+              0.999998927116394
+            ],
+            "displacementMm": 1.9332349854733686,
+            "angleDeg": 0.1678587440499769,
+            "fell": false
+          },
+          {
+            "id": "A-08",
+            "friction": 0.35,
+            "planned": {
+              "x": 600,
+              "y": 600,
+              "z": 300
+            },
+            "actual": {
+              "x": 599.8464405536652,
+              "y": 600.0831007957458,
+              "z": 298.7606883049011
+            },
+            "rotation": [
+              0.0002955437230411917,
+              0.000009477669664192945,
+              0.000020661233065766282,
+              1
+            ],
+            "displacementMm": 1.2515509272183483,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "B-11",
+            "friction": 0.35,
+            "planned": {
+              "x": 400,
+              "y": 200,
+              "z": 500
+            },
+            "actual": {
+              "x": 399.94794949889183,
+              "y": 200.1508727669716,
+              "z": 498.78793954849243
+            },
+            "rotation": [
+              0.0006508931401185691,
+              -0.00016972351295407861,
+              -0.000006651256626355462,
+              0.9999997615814209
+            ],
+            "displacementMm": 1.2225229587161155,
+            "angleDeg": 0.07912936529690494,
+            "fell": false
+          },
+          {
+            "id": "D-10",
+            "friction": 0.45,
+            "planned": {
+              "x": 600,
+              "y": 0,
+              "z": 400
+            },
+            "actual": {
+              "x": 599.793091416359,
+              "y": -0.15450119972229004,
+              "z": 398.36581349372864
+            },
+            "rotation": [
+              0.0004123378894291818,
+              0.00021201161143835634,
+              -0.0002480684488546103,
+              0.9999998807907104
+            ],
+            "displacementMm": 1.6544628493802376,
+            "angleDeg": 0.05595291023658669,
+            "fell": false
+          },
+          {
+            "id": "C-02",
+            "friction": 0.45,
+            "planned": {
+              "x": 400,
+              "y": 0,
+              "z": 550
+            },
+            "actual": {
+              "x": 399.22880828380585,
+              "y": 0.012660026550292969,
+              "z": 547.7708220481873
+            },
+            "rotation": [
+              0.0004463238874450326,
+              0.00008789166895439848,
+              0.001568261650390923,
+              0.9999986886978149
+            ],
+            "displacementMm": 2.3588410883836146,
+            "angleDeg": 0.18557482761840055,
+            "fell": false
+          },
+          {
+            "id": "A-05",
+            "friction": 0.35,
+            "planned": {
+              "x": 800,
+              "y": 0,
+              "z": 300
+            },
+            "actual": {
+              "x": 799.8970985412598,
+              "y": 0.015360116958618164,
+              "z": 298.8791227340698
+            },
+            "rotation": [
+              0.00011949408508371562,
+              -0.000003021780685230624,
+              0.00006152663263492286,
+              1
+            ],
+            "displacementMm": 1.1256955577255143,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "D-02",
+            "friction": 0.45,
+            "planned": {
+              "x": 600,
+              "y": 600,
+              "z": 600
+            },
+            "actual": {
+              "x": 599.74804520607,
+              "y": 600.169637799263,
+              "z": 598.4431982040405
+            },
+            "rotation": [
+              0.0004162250552326441,
+              0.0000035743980788538465,
+              0.0003820351848844439,
+              0.9999998807907104
+            ],
+            "displacementMm": 1.5861557404699482,
+            "angleDeg": 0.05595291023658669,
+            "fell": false
+          },
+          {
+            "id": "B-07",
+            "friction": 0.35,
+            "planned": {
+              "x": 800,
+              "y": 400,
+              "z": 600
+            },
+            "actual": {
+              "x": 799.8517394065857,
+              "y": 400.0841289758682,
+              "z": 598.6337661743164
+            },
+            "rotation": [
+              -0.00011990456550847739,
+              -0.000003379296458660974,
+              0.000025751025532372296,
+              1
+            ],
+            "displacementMm": 1.376827423674524,
+            "angleDeg": 0,
+            "fell": false
+          },
+          {
+            "id": "D-18",
+            "friction": 0.45,
+            "planned": {
+              "x": 600,
+              "y": 800,
+              "z": 600
+            },
+            "actual": {
+              "x": 599.6321067214012,
+              "y": 800.0383615493774,
+              "z": 598.3531951904297
+            },
+            "rotation": [
+              0.0008233647677116096,
+              0.0003542708873283118,
+              0.00004694568269769661,
+              0.9999996423721313
+            ],
+            "displacementMm": 1.6878338643754942,
+            "angleDeg": 0.096913285286603,
+            "fell": false
+          }
+        ],
+        "settings": {
+          "seconds": 3,
+          "dt": 0.008333333333333333,
+          "friction": 0.6,
+          "moveToleranceMm": 5,
+          "angleToleranceDeg": 3,
+          "materialFriction": true
+        },
+        "steps": 360,
+        "milliseconds": 44.609599999996135
+      }
+    }
+  ],
+  "materialExample": {
+    "scenario": {
+      "version": 1,
+      "units": {
+        "length": "mm",
+        "weight": "kg",
+        "time": "s"
+      },
+      "id": "materials",
+      "name": "가벼운 플라스틱 받침 · 무거운 종이 상자",
+      "pallet": {
+        "width": 1200,
+        "depth": 1000,
+        "maxHeight": 1600
+      },
+      "types": [
+        {
+          "id": "P",
+          "name": "플라스틱 받침",
+          "size": {
+            "w": 600,
+            "d": 400,
+            "h": 200
+          },
+          "weight": 3,
+          "quantity": 4,
+          "orientations": [
+            0,
+            90
+          ],
+          "color": "#e8b86a",
+          "material": "plastic",
+          "strengthFactor": 1
+        },
+        {
+          "id": "K",
+          "name": "종이 상자",
+          "size": {
+            "w": 300,
+            "d": 200,
+            "h": 200
+          },
+          "weight": 7,
+          "quantity": 12,
+          "orientations": [
+            0,
+            90
+          ],
+          "color": "#80a9e8",
+          "material": "paper",
+          "strengthFactor": 1
+        }
+      ],
+      "constraints": {
+        "supportRatio": 0.95,
+        "contactTolerance": 0.5,
+        "horizontalGap": 0,
+        "heavyRule": "off",
+        "stability": {
+          "maxSlenderness": 2,
+          "minMarginRatio": 0.1,
+          "lateralAccelerationG": 0.15,
+          "loadSafetyFactor": 1.25
+        },
+        "gripper": {
+          "width": 180,
+          "depth": 160,
+          "height": 160,
+          "mass": 3,
+          "payload": 20,
+          "margin": 5,
+          "lift": 200,
+          "speed": 650,
+          "pickSeconds": 1,
+          "placeSeconds": 1
+        },
+        "workspace": {
+          "xMin": -1400,
+          "xMax": 1600,
+          "yMin": -500,
+          "yMax": 1500,
+          "zMax": 2600
+        }
+      },
+      "arrival": {
+        "seed": 42,
+        "pattern": "ordered"
+      },
+      "events": []
+    },
+    "algorithm": "greedy",
+    "metrics": {
+      "loadUtilization": 0.4375,
+      "unknownCapacity": 0,
+      "slenderness": 0.4,
+      "count": 16,
+      "volume": 336000000,
+      "weight": 96,
+      "height": 400,
+      "utilization": 0.175,
+      "efficiency": 0.7,
+      "center": {
+        "x": 386.9791666666667,
+        "y": 473.4375,
+        "z": 275
+      },
+      "quadrants": [
+        38.749999999999986,
+        12.916666666666663,
+        36.41666666666666,
+        7.916666666666665
+      ],
+      "imbalance": 0.3211805555555554,
+      "distanceM": 67.4647375962026,
+      "workSeconds": 135.79190399415785,
+      "medianMs": 11.7670500000022,
+      "p95Ms": 26.754400000005262,
+      "totalMs": 202.0444000000134,
+      "complete": true,
+      "failedStep": null,
+      "reason": "",
+      "excluded": 0,
+      "missing": 0
+    },
+    "placements": [
+      {
+        "id": "P-01",
+        "typeId": "P",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "size": {
+          "w": 400,
+          "d": 600,
+          "h": 200
+        },
+        "orientation": 90,
+        "weight": 3,
+        "supports": [],
+        "supportRatio": 1,
+        "loadAbove": 27.999999999999996,
+        "material": "plastic",
+        "strengthFactor": 1
+      },
+      {
+        "id": "P-02",
+        "typeId": "P",
+        "position": {
+          "x": 0,
+          "y": 600,
+          "z": 0
+        },
+        "size": {
+          "w": 600,
+          "d": 400,
+          "h": 200
+        },
+        "orientation": 0,
+        "weight": 3,
+        "supports": [],
+        "supportRatio": 1,
+        "loadAbove": 25.666666666666664,
+        "material": "plastic",
+        "strengthFactor": 1
+      },
+      {
+        "id": "P-03",
+        "typeId": "P",
+        "position": {
+          "x": 400,
+          "y": 0,
+          "z": 0
+        },
+        "size": {
+          "w": 400,
+          "d": 600,
+          "h": 200
+        },
+        "orientation": 90,
+        "weight": 3,
+        "supports": [],
+        "supportRatio": 1,
+        "loadAbove": 28,
+        "material": "plastic",
+        "strengthFactor": 1
+      },
+      {
+        "id": "P-04",
+        "typeId": "P",
+        "position": {
+          "x": 600,
+          "y": 600,
+          "z": 0
+        },
+        "size": {
+          "w": 600,
+          "d": 400,
+          "h": 200
+        },
+        "orientation": 0,
+        "weight": 3,
+        "supports": [],
+        "supportRatio": 1,
+        "loadAbove": 2.333333333333333,
+        "material": "plastic",
+        "strengthFactor": 1
+      },
+      {
+        "id": "K-01",
+        "typeId": "K",
+        "position": {
+          "x": 300,
+          "y": 0,
+          "z": 200
+        },
+        "size": {
+          "w": 300,
+          "d": 200,
+          "h": 200
+        },
+        "orientation": 0,
+        "weight": 7,
+        "supports": [
+          {
+            "id": "P-01",
+            "rect": {
+              "x": 300,
+              "y": 0,
+              "w": 100,
+              "d": 200
+            },
+            "area": 20000,
+            "share": 0.3333333333333333
+          },
+          {
+            "id": "P-03",
+            "rect": {
+              "x": 400,
+              "y": 0,
+              "w": 200,
+              "d": 200
+            },
+            "area": 40000,
+            "share": 0.6666666666666666
+          }
+        ],
+        "supportRatio": 1,
+        "loadAbove": 0,
+        "material": "paper",
+        "strengthFactor": 1
+      },
+      {
+        "id": "K-02",
+        "typeId": "K",
+        "position": {
+          "x": 600,
+          "y": 0,
+          "z": 200
+        },
+        "size": {
+          "w": 200,
+          "d": 300,
+          "h": 200
+        },
+        "orientation": 90,
+        "weight": 7,
+        "supports": [
+          {
+            "id": "P-03",
+            "rect": {
+              "x": 600,
+              "y": 0,
+              "w": 200,
+              "d": 300
+            },
+            "area": 60000,
+            "share": 1
+          }
+        ],
+        "supportRatio": 1,
+        "loadAbove": 0,
+        "material": "paper",
+        "strengthFactor": 1
+      },
+      {
+        "id": "K-03",
+        "typeId": "K",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 200
+        },
+        "size": {
+          "w": 300,
+          "d": 200,
+          "h": 200
+        },
+        "orientation": 0,
+        "weight": 7,
+        "supports": [
+          {
+            "id": "P-01",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "w": 300,
+              "d": 200
+            },
+            "area": 60000,
+            "share": 1
+          }
+        ],
+        "supportRatio": 1,
+        "loadAbove": 0,
+        "material": "paper",
+        "strengthFactor": 1
+      },
+      {
+        "id": "K-04",
+        "typeId": "K",
+        "position": {
+          "x": 600,
+          "y": 300,
+          "z": 200
+        },
+        "size": {
+          "w": 200,
+          "d": 300,
+          "h": 200
+        },
+        "orientation": 90,
+        "weight": 7,
+        "supports": [
+          {
+            "id": "P-03",
+            "rect": {
+              "x": 600,
+              "y": 300,
+              "w": 200,
+              "d": 300
+            },
+            "area": 60000,
+            "share": 1
+          }
+        ],
+        "supportRatio": 1,
+        "loadAbove": 0,
+        "material": "paper",
+        "strengthFactor": 1
+      },
+      {
+        "id": "K-05",
+        "typeId": "K",
+        "position": {
+          "x": 300,
+          "y": 200,
+          "z": 200
+        },
+        "size": {
+          "w": 300,
+          "d": 200,
+          "h": 200
+        },
+        "orientation": 0,
+        "weight": 7,
+        "supports": [
+          {
+            "id": "P-01",
+            "rect": {
+              "x": 300,
+              "y": 200,
+              "w": 100,
+              "d": 200
+            },
+            "area": 20000,
+            "share": 0.3333333333333333
+          },
+          {
+            "id": "P-03",
+            "rect": {
+              "x": 400,
+              "y": 200,
+              "w": 200,
+              "d": 200
+            },
+            "area": 40000,
+            "share": 0.6666666666666666
+          }
+        ],
+        "supportRatio": 1,
+        "loadAbove": 0,
+        "material": "paper",
+        "strengthFactor": 1
+      },
+      {
+        "id": "K-06",
+        "typeId": "K",
+        "position": {
+          "x": 0,
+          "y": 200,
+          "z": 200
+        },
+        "size": {
+          "w": 300,
+          "d": 200,
+          "h": 200
+        },
+        "orientation": 0,
+        "weight": 7,
+        "supports": [
+          {
+            "id": "P-01",
+            "rect": {
+              "x": 0,
+              "y": 200,
+              "w": 300,
+              "d": 200
+            },
+            "area": 60000,
+            "share": 1
+          }
+        ],
+        "supportRatio": 1,
+        "loadAbove": 0,
+        "material": "paper",
+        "strengthFactor": 1
+      },
+      {
+        "id": "K-07",
+        "typeId": "K",
+        "position": {
+          "x": 0,
+          "y": 400,
+          "z": 200
+        },
+        "size": {
+          "w": 200,
+          "d": 300,
+          "h": 200
+        },
+        "orientation": 90,
+        "weight": 7,
+        "supports": [
+          {
+            "id": "P-01",
+            "rect": {
+              "x": 0,
+              "y": 400,
+              "w": 200,
+              "d": 200
+            },
+            "area": 40000,
+            "share": 0.6666666666666666
+          },
+          {
+            "id": "P-02",
+            "rect": {
+              "x": 0,
+              "y": 600,
+              "w": 200,
+              "d": 100
+            },
+            "area": 20000,
+            "share": 0.3333333333333333
+          }
+        ],
+        "supportRatio": 1,
+        "loadAbove": 0,
+        "material": "paper",
+        "strengthFactor": 1
+      },
+      {
+        "id": "K-08",
+        "typeId": "K",
+        "position": {
+          "x": 0,
+          "y": 700,
+          "z": 200
+        },
+        "size": {
+          "w": 200,
+          "d": 300,
+          "h": 200
+        },
+        "orientation": 90,
+        "weight": 7,
+        "supports": [
+          {
+            "id": "P-02",
+            "rect": {
+              "x": 0,
+              "y": 700,
+              "w": 200,
+              "d": 300
+            },
+            "area": 60000,
+            "share": 1
+          }
+        ],
+        "supportRatio": 1,
+        "loadAbove": 0,
+        "material": "paper",
+        "strengthFactor": 1
+      },
+      {
+        "id": "K-09",
+        "typeId": "K",
+        "position": {
+          "x": 200,
+          "y": 700,
+          "z": 200
+        },
+        "size": {
+          "w": 200,
+          "d": 300,
+          "h": 200
+        },
+        "orientation": 90,
+        "weight": 7,
+        "supports": [
+          {
+            "id": "P-02",
+            "rect": {
+              "x": 200,
+              "y": 700,
+              "w": 200,
+              "d": 300
+            },
+            "area": 60000,
+            "share": 1
+          }
+        ],
+        "supportRatio": 1,
+        "loadAbove": 0,
+        "material": "paper",
+        "strengthFactor": 1
+      },
+      {
+        "id": "K-10",
+        "typeId": "K",
+        "position": {
+          "x": 200,
+          "y": 400,
+          "z": 200
+        },
+        "size": {
+          "w": 200,
+          "d": 300,
+          "h": 200
+        },
+        "orientation": 90,
+        "weight": 7,
+        "supports": [
+          {
+            "id": "P-01",
+            "rect": {
+              "x": 200,
+              "y": 400,
+              "w": 200,
+              "d": 200
+            },
+            "area": 40000,
+            "share": 0.6666666666666666
+          },
+          {
+            "id": "P-02",
+            "rect": {
+              "x": 200,
+              "y": 600,
+              "w": 200,
+              "d": 100
+            },
+            "area": 20000,
+            "share": 0.3333333333333333
+          }
+        ],
+        "supportRatio": 1,
+        "loadAbove": 0,
+        "material": "paper",
+        "strengthFactor": 1
+      },
+      {
+        "id": "K-11",
+        "typeId": "K",
+        "position": {
+          "x": 400,
+          "y": 400,
+          "z": 200
+        },
+        "size": {
+          "w": 200,
+          "d": 300,
+          "h": 200
+        },
+        "orientation": 90,
+        "weight": 7,
+        "supports": [
+          {
+            "id": "P-02",
+            "rect": {
+              "x": 400,
+              "y": 600,
+              "w": 200,
+              "d": 100
+            },
+            "area": 20000,
+            "share": 0.3333333333333333
+          },
+          {
+            "id": "P-03",
+            "rect": {
+              "x": 400,
+              "y": 400,
+              "w": 200,
+              "d": 200
+            },
+            "area": 40000,
+            "share": 0.6666666666666666
+          }
+        ],
+        "supportRatio": 1,
+        "loadAbove": 0,
+        "material": "paper",
+        "strengthFactor": 1
+      },
+      {
+        "id": "K-12",
+        "typeId": "K",
+        "position": {
+          "x": 400,
+          "y": 700,
+          "z": 200
+        },
+        "size": {
+          "w": 300,
+          "d": 200,
+          "h": 200
+        },
+        "orientation": 0,
+        "weight": 7,
+        "supports": [
+          {
+            "id": "P-02",
+            "rect": {
+              "x": 400,
+              "y": 700,
+              "w": 200,
+              "d": 200
+            },
+            "area": 40000,
+            "share": 0.6666666666666666
+          },
+          {
+            "id": "P-04",
+            "rect": {
+              "x": 600,
+              "y": 700,
+              "w": 100,
+              "d": 200
+            },
+            "area": 20000,
+            "share": 0.3333333333333333
+          }
+        ],
+        "supportRatio": 1,
+        "loadAbove": 0,
+        "material": "paper",
+        "strengthFactor": 1
+      }
+    ],
+    "physics": {
+      "runId": "material-example",
+      "status": "stable",
+      "poses": [
+        {
+          "id": "P-01",
+          "friction": 0.35,
+          "planned": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "actual": {
+            "x": -0.2768099308013916,
+            "y": 0.09765923023223877,
+            "z": -1.0793045163154602
+          },
+          "rotation": [
+            -0.00007486501999665052,
+            -0.0003386687021702528,
+            -0.000021118268705322407,
+            1
+          ],
+          "displacementMm": 1.1185076226735222,
+          "angleDeg": 0,
+          "fell": false
+        },
+        {
+          "id": "P-02",
+          "friction": 0.35,
+          "planned": {
+            "x": 0,
+            "y": 600,
+            "z": 0
+          },
+          "actual": {
+            "x": -0.121307373046875,
+            "y": 599.8513877391815,
+            "z": -0.9743034839630127
+          },
+          "rotation": [
+            -0.00019228452583774924,
+            -0.0000945060164667666,
+            0.00013392019900493324,
+            1
+          ],
+          "displacementMm": 0.9930097490375301,
+          "angleDeg": 0,
+          "fell": false
+        },
+        {
+          "id": "P-03",
+          "friction": 0.35,
+          "planned": {
+            "x": 400,
+            "y": 0,
+            "z": 0
+          },
+          "actual": {
+            "x": 399.8377673618961,
+            "y": -0.07260143756866455,
+            "z": -0.9481072425842285
+          },
+          "rotation": [
+            -0.00018779424135573208,
+            -0.0001456528843846172,
+            -0.000050614369683898985,
+            1
+          ],
+          "displacementMm": 0.964623108288337,
+          "angleDeg": 0,
+          "fell": false
+        },
+        {
+          "id": "P-04",
+          "friction": 0.35,
+          "planned": {
+            "x": 600,
+            "y": 600,
+            "z": 0
+          },
+          "actual": {
+            "x": 599.9567687511444,
+            "y": 600.0596463680267,
+            "z": -0.3482908010482788
+          },
+          "rotation": [
+            -0.0001847368839662522,
+            0.00012401842104736716,
+            0.00038380493060685694,
+            1
+          ],
+          "displacementMm": 0.3559959440657242,
+          "angleDeg": 0,
+          "fell": false
+        },
+        {
+          "id": "K-01",
+          "friction": 0.45,
+          "planned": {
+            "x": 300,
+            "y": 0,
+            "z": 200
+          },
+          "actual": {
+            "x": 299.76229071617126,
+            "y": -0.3454148769378662,
+            "z": 198.55400323867798
+          },
+          "rotation": [
+            -0.0005097333923913538,
+            -0.000025503008146188222,
+            0.00016266180318780243,
+            0.9999998807907104
+          ],
+          "displacementMm": 1.5055642711562154,
+          "angleDeg": 0.05595291023658669,
+          "fell": false
+        },
+        {
+          "id": "K-02",
+          "friction": 0.45,
+          "planned": {
+            "x": 600,
+            "y": 0,
+            "z": 200
+          },
+          "actual": {
+            "x": 599.7617617249489,
+            "y": -0.4123389720916748,
+            "z": 198.348069190979
+          },
+          "rotation": [
+            -0.001145845395512879,
+            -0.00006356940866680816,
+            0.00020636538101825863,
+            0.9999994039535522
+          ],
+          "displacementMm": 1.71920222818542,
+          "angleDeg": 0.1251145157995564,
+          "fell": false
+        },
+        {
+          "id": "K-03",
+          "friction": 0.45,
+          "planned": {
+            "x": 0,
+            "y": 0,
+            "z": 200
+          },
+          "actual": {
+            "x": -0.4726529121398926,
+            "y": -0.5503654479980469,
+            "z": 198.0239987373352
+          },
+          "rotation": [
+            -0.00095522147603333,
+            -0.00009547709487378597,
+            0.0005236205761320889,
+            0.9999994039535522
+          ],
+          "displacementMm": 2.1049664823358296,
+          "angleDeg": 0.1251145157995564,
+          "fell": false
+        },
+        {
+          "id": "K-04",
+          "friction": 0.45,
+          "planned": {
+            "x": 600,
+            "y": 300,
+            "z": 200
+          },
+          "actual": {
+            "x": 599.7432097792625,
+            "y": 299.55942779779434,
+            "z": 198.8814115524292
+          },
+          "rotation": [
+            0.00008274680294562131,
+            0.00006997059244895354,
+            0.0006280826055444777,
+            0.9999998807907104
+          ],
+          "displacementMm": 1.2293434011136146,
+          "angleDeg": 0.05595291023658669,
+          "fell": false
+        },
+        {
+          "id": "K-05",
+          "friction": 0.45,
+          "planned": {
+            "x": 300,
+            "y": 200,
+            "z": 200
+          },
+          "actual": {
+            "x": 299.5907783508301,
+            "y": 199.69635605812073,
+            "z": 198.72658848762512
+          },
+          "rotation": [
+            -0.00006194011803017929,
+            0.00014591400395147502,
+            -0.000023177088223746978,
+            1
+          ],
+          "displacementMm": 1.3715826192534695,
+          "angleDeg": 0,
+          "fell": false
+        },
+        {
+          "id": "K-06",
+          "friction": 0.45,
+          "planned": {
+            "x": 0,
+            "y": 200,
+            "z": 200
+          },
+          "actual": {
+            "x": -0.4967629909515381,
+            "y": 199.65412616729736,
+            "z": 198.26650023460388
+          },
+          "rotation": [
+            0.00004320466905483045,
+            0.00010044051305158064,
+            0.00043412286322563887,
+            0.9999998807907104
+          ],
+          "displacementMm": 1.8361436800958488,
+          "angleDeg": 0.05595291023658669,
+          "fell": false
+        },
+        {
+          "id": "K-07",
+          "friction": 0.45,
+          "planned": {
+            "x": 0,
+            "y": 400,
+            "z": 200
+          },
+          "actual": {
+            "x": -0.46181678771972656,
+            "y": 399.76438358426094,
+            "z": 198.53367805480957
+          },
+          "rotation": [
+            -0.000019238621462136507,
+            -0.0000904981279745698,
+            0.0007200689287856221,
+            0.9999997615814209
+          ],
+          "displacementMm": 1.5552780740859602,
+          "angleDeg": 0.07912936529690494,
+          "fell": false
+        },
+        {
+          "id": "K-08",
+          "friction": 0.45,
+          "planned": {
+            "x": 0,
+            "y": 700,
+            "z": 200
+          },
+          "actual": {
+            "x": -0.6600618362426758,
+            "y": 700.0325083732605,
+            "z": 198.13775420188904
+          },
+          "rotation": [
+            0.00015705217083450407,
+            0.0000699789306963794,
+            0.0011936575174331665,
+            0.9999992847442627
+          ],
+          "displacementMm": 1.9760308283470758,
+          "angleDeg": 0.1370560865110373,
+          "fell": false
+        },
+        {
+          "id": "K-09",
+          "friction": 0.45,
+          "planned": {
+            "x": 200,
+            "y": 700,
+            "z": 200
+          },
+          "actual": {
+            "x": 199.41508769989014,
+            "y": 700.0694632530212,
+            "z": 198.40657114982605
+          },
+          "rotation": [
+            0.0001484918175265193,
+            -0.000007629649189766496,
+            0.0002519219706300646,
+            1
+          ],
+          "displacementMm": 1.698812244748307,
+          "angleDeg": 0,
+          "fell": false
+        },
+        {
+          "id": "K-10",
+          "friction": 0.45,
+          "planned": {
+            "x": 200,
+            "y": 400,
+            "z": 200
+          },
+          "actual": {
+            "x": 199.51403141021729,
+            "y": 399.8184561729431,
+            "z": 198.66117238998413
+          },
+          "rotation": [
+            -0.0003455622063484043,
+            -0.00008084839646471664,
+            0.000026583233193377964,
+            1
+          ],
+          "displacementMm": 1.4358213679767637,
+          "angleDeg": 0,
+          "fell": false
+        },
+        {
+          "id": "K-11",
+          "friction": 0.45,
+          "planned": {
+            "x": 400,
+            "y": 400,
+            "z": 200
+          },
+          "actual": {
+            "x": 399.6136337518692,
+            "y": 399.79662224650383,
+            "z": 198.81268739700317
+          },
+          "rotation": [
+            -0.0004604317946359515,
+            0.0000920218662940897,
+            0.0004014683363493532,
+            0.9999998807907104
+          ],
+          "displacementMm": 1.2650504359696166,
+          "angleDeg": 0.05595291023658669,
+          "fell": false
+        },
+        {
+          "id": "K-12",
+          "friction": 0.45,
+          "planned": {
+            "x": 400,
+            "y": 700,
+            "z": 200
+          },
+          "actual": {
+            "x": 399.4587779045105,
+            "y": 699.8881340026855,
+            "z": 198.97356033325195
+          },
+          "rotation": [
+            -0.0004616509540937841,
+            -0.00007531307346653193,
+            0.0007867355016060174,
+            0.9999996423721313
+          ],
+          "displacementMm": 1.1657674499980888,
+          "angleDeg": 0.096913285286603,
+          "fell": false
+        }
+      ],
+      "settings": {
+        "seconds": 3,
+        "dt": 0.008333333333333333,
+        "friction": 0.6,
+        "moveToleranceMm": 5,
+        "angleToleranceDeg": 3,
+        "materialFriction": true
+      },
+      "steps": 360,
+      "milliseconds": 17.74760000000242
+    }
+  }
+}

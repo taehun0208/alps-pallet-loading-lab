@@ -1,0 +1,669 @@
+{
+  "complete": true,
+  "historicalTrialsRecalculated": 133,
+  "historicalDecisions": 9576,
+  "historicalRawHashesPreserved": true,
+  "historicalSourceArchiveVerified": true,
+  "newTrialsRecalculated": 160,
+  "newDecisions": 11520,
+  "newSourceFreezeVerified": true,
+  "pairedInputVerified": true,
+  "checks": [
+    "box IDs and counts",
+    "accepted deadlines",
+    "bounds and pairwise non-overlap",
+    "exact floor union",
+    "exact column void",
+    "mass weighted CoG",
+    "same SKU face and vertical contact",
+    "weighted decision score",
+    "independent redistribution conservation and model-time calculation",
+    "selection independent of evaluation",
+    "seed-level paired Student-t intervals"
+  ],
+  "limitations": [
+    "Python geometry audit does not independently certify physical material limits, reach or complete arm kinematics. Shared constraint implementation and focused tests cover modeled feasibility only."
+  ],
+  "rawFiles": [
+    {
+      "path": "/cluster/trials/selection-21010-blb.json",
+      "sha256": "4fd78adef6bcf004a28bd942ada38be17a3ea3c41b26ffccbc7b7649680453f2"
+    },
+    {
+      "path": "/cluster/trials/selection-21010-capacity-compact.json",
+      "sha256": "ccffe665ed84f1950950c7b7e1051db61ea0bc8c8f7bc3977feb75d507871d65"
+    },
+    {
+      "path": "/cluster/trials/selection-21010-strategy-greedy.json",
+      "sha256": "f5bff2c33f21399b0f47d8de4aa20740f32834fb7405067253bacf51d7230712"
+    },
+    {
+      "path": "/cluster/trials/selection-21010-lookahead.json",
+      "sha256": "045d10a5afdd0683fd7d54354d7bdbe5b5901ebecfa5c5bbca0101734cba0fd9"
+    },
+    {
+      "path": "/cluster/trials/selection-21010-future-hybrid.json",
+      "sha256": "d66f52bbf38ef95cb91edb04fb334c6875e107f4191e5181e7f609d0de0ded3f"
+    },
+    {
+      "path": "/cluster/trials/selection-21010-mcts.json",
+      "sha256": "b6f46dbabc230d79b4a6363758491855ae71ae1ef35fb23b899e32b6cb82c98f"
+    },
+    {
+      "path": "/cluster/trials/selection-21010-floor-dense.json",
+      "sha256": "9b266324e56f6edb934afc4f5ad9552a68b5222e6228a5bcde9bb3713f06e1fa"
+    },
+    {
+      "path": "/cluster/trials/selection-21010-cluster-floor.json",
+      "sha256": "ff4b6a265fdc94f0027521c0b891ef3bf28b9aa86ddcd4b4446bfb2a52e978d1"
+    },
+    {
+      "path": "/cluster/trials/selection-21010-cluster-layer.json",
+      "sha256": "cd304d2061c2bc72051397501391190d92c6241d354b473635cf3d85a5a8c54c"
+    },
+    {
+      "path": "/cluster/trials/selection-21010-dispersed.json",
+      "sha256": "8d33fc4f342afc8d9912fa579dbb63b4ce739e4f4a4597288ed12835751d2a1d"
+    },
+    {
+      "path": "/cluster/trials/selection-21011-capacity-compact.json",
+      "sha256": "9effe37c216ac8ca6bfbc53d36f918316582d505f3e68cadd7737a306c1b444a"
+    },
+    {
+      "path": "/cluster/trials/selection-21011-strategy-greedy.json",
+      "sha256": "d9d759fec3bd932f499a4a1eab3788790e59dd737640f601c52e0d91fdfb278e"
+    },
+    {
+      "path": "/cluster/trials/selection-21011-lookahead.json",
+      "sha256": "d75956f6025b6287ac4893f9c8aed7bd57a34a0a6310d375169302584546b8ef"
+    },
+    {
+      "path": "/cluster/trials/selection-21011-future-hybrid.json",
+      "sha256": "6f108d2cfc778c5c8d8478338b88041ffa96b2762f4f7d57b74f4c2f154b32cc"
+    },
+    {
+      "path": "/cluster/trials/selection-21011-mcts.json",
+      "sha256": "3b546dfb621ec2b88b0bdc11a264b6960e22a0add7bdf8d637fc22b511d124ac"
+    },
+    {
+      "path": "/cluster/trials/selection-21011-floor-dense.json",
+      "sha256": "55bc2c31ca5e83129047f9277b4dbeae4feb2fb795fb9c409333a9db3b3fc8b8"
+    },
+    {
+      "path": "/cluster/trials/selection-21011-cluster-floor.json",
+      "sha256": "2a26e6558cd95cd54f837af2158a92ef9a12ccaf807f370dc5c71db317280265"
+    },
+    {
+      "path": "/cluster/trials/selection-21011-cluster-layer.json",
+      "sha256": "f0054307a79e28ba895301bf2272746ba2bc7b683749e9b222e173902e436a89"
+    },
+    {
+      "path": "/cluster/trials/selection-21011-dispersed.json",
+      "sha256": "7ef1adae1d93654ba503bca5287b34ca9b6021a016428212a04e9f86dd00b4be"
+    },
+    {
+      "path": "/cluster/trials/selection-21011-blb.json",
+      "sha256": "20360ca5a58e62c5d1a49c9ca77b40b22bdc894eda9118c99a55f15452e923b8"
+    },
+    {
+      "path": "/cluster/trials/selection-21012-strategy-greedy.json",
+      "sha256": "1ccc247d382d3340ce4ae4b3fa4f622c4956c565c387e3fabe9317da534c68a5"
+    },
+    {
+      "path": "/cluster/trials/selection-21012-lookahead.json",
+      "sha256": "44dd78ef87a8130c9a080f8ec6ca25f0ca42ab8836f56b5612bee7b449103363"
+    },
+    {
+      "path": "/cluster/trials/selection-21012-future-hybrid.json",
+      "sha256": "55b545096017bd0f55a656779810ff40e1254a54343aef1cfe9c458a14c1bfc4"
+    },
+    {
+      "path": "/cluster/trials/selection-21012-mcts.json",
+      "sha256": "33d908776bb5f3a38334a465435b8515418712f91f6563df82825e375de3d08d"
+    },
+    {
+      "path": "/cluster/trials/selection-21012-floor-dense.json",
+      "sha256": "b7b5ae268e70f515394e946de8f6d50a3a2fb3cc0519ade8110d82edab346fc7"
+    },
+    {
+      "path": "/cluster/trials/selection-21012-cluster-floor.json",
+      "sha256": "9591a238a23092844aac885fa81b8d26af3f4621fc14c708e2fd861aa8755d3d"
+    },
+    {
+      "path": "/cluster/trials/selection-21012-cluster-layer.json",
+      "sha256": "b88260dafba7f2121de7a3067c88fca19cdfb1476820d61eeddfd06ee5391843"
+    },
+    {
+      "path": "/cluster/trials/selection-21012-dispersed.json",
+      "sha256": "686bdb78626114714209c092bfa85cd534cc2a229de84c74f14fe593fbc7dac6"
+    },
+    {
+      "path": "/cluster/trials/selection-21012-blb.json",
+      "sha256": "9357f456fec2f0701cda8c65ee99d232cd24a1e979a1cb18f36f277df798e962"
+    },
+    {
+      "path": "/cluster/trials/selection-21012-capacity-compact.json",
+      "sha256": "45d0d60a2162f05ae05722a3f3542c5cdb039511219f6b48a57c5c5179540e69"
+    },
+    {
+      "path": "/cluster/trials/selection-21013-lookahead.json",
+      "sha256": "a29fb72297b0cfdfe995af558a4dc8caf38664521587362495f16796c66fdbad"
+    },
+    {
+      "path": "/cluster/trials/selection-21013-future-hybrid.json",
+      "sha256": "5e3a9dcb78c9eb52b4f53dd638ec98ddf1138291b0caea828b59ea67c5e5630f"
+    },
+    {
+      "path": "/cluster/trials/selection-21013-mcts.json",
+      "sha256": "45d41c834cbe76bfec842e45a9c7e0ff5b5a908b86fd647e588e8ced3da54687"
+    },
+    {
+      "path": "/cluster/trials/selection-21013-floor-dense.json",
+      "sha256": "845a8ace97d5e49f11f82b5c5488c9b2da84cc7548cd6bea252a73712fa54a9c"
+    },
+    {
+      "path": "/cluster/trials/selection-21013-cluster-floor.json",
+      "sha256": "919f6d21a3cb2c1db4e3dc44a4f31f94082db8e7b3b900ae7841a10836b736e7"
+    },
+    {
+      "path": "/cluster/trials/selection-21013-cluster-layer.json",
+      "sha256": "ea49f973c85b50e719de1e85d6cb513a125d3fbbb95b8347db7f77b0171860d5"
+    },
+    {
+      "path": "/cluster/trials/selection-21013-dispersed.json",
+      "sha256": "88df53e321975c99e4afbde1b27139741c2eae95a921151fbc6f8c6dd284b6fa"
+    },
+    {
+      "path": "/cluster/trials/selection-21013-blb.json",
+      "sha256": "98cbe828504efa0b8df8d3c9b6c0afe91ba3450f96580911709e2513075c6daa"
+    },
+    {
+      "path": "/cluster/trials/selection-21013-capacity-compact.json",
+      "sha256": "31fa95e1ee68e3a3f16c74af9235f1cd43842ca87ebde99cd064ae19f159ce11"
+    },
+    {
+      "path": "/cluster/trials/selection-21013-strategy-greedy.json",
+      "sha256": "0c4be3f78471904a066a46bc87ac2748139df561cfc551b3544a7b3b13d0bd38"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22010-blb.json",
+      "sha256": "6dfb944b59287cd4b8499219b9a0093a8dc0f6ff198525c2c72c023a0797859c"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22010-capacity-compact.json",
+      "sha256": "439f04156042fa9a72de4054685041fb17e6ec656595a4ec239fa7350c80d041"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22010-strategy-greedy.json",
+      "sha256": "e0a541a55d76a9f74cbb2ded9f32c8b84f1e483fc0f3121ca4645b349fb317dc"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22010-lookahead.json",
+      "sha256": "178bd346a9eb47ba72df30d58496661290485b0bbb3325b6e9c26293206a59cd"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22010-future-hybrid.json",
+      "sha256": "e18828bb59503c90645fb5ad2776ccd8131c84d6642a008ae3d546b0db470682"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22010-mcts.json",
+      "sha256": "97ac7d555f14059a29a94a2721a6d8594a8e04de6bc3d79b1d3028ac9a5a0631"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22010-floor-dense.json",
+      "sha256": "c733b811b00d4d701925f0b459db07c6be9a35f49f63b116408373232760011f"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22010-cluster-floor.json",
+      "sha256": "2bb8df4af7ca56b61b36a59999aec8fe39f64fe6d2805510ba28bb5bd4b0aada"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22010-cluster-layer.json",
+      "sha256": "ee57f4d809b40259009a6edd812612418ea20314e1fe1acf395c1c45d56adaee"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22010-dispersed.json",
+      "sha256": "db299498416af8b3fa86b9b5639ee9e6542a3c59747b832f023721d63d274b55"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22011-capacity-compact.json",
+      "sha256": "320c821808c6772c47ba33ed35b7a3775ba9e479ac03338e73077348ea881b26"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22011-strategy-greedy.json",
+      "sha256": "58d2f8a28f63e9d729f059d2fd53c8173e54f539aaa8b711aa496f1ae3ff13bf"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22011-lookahead.json",
+      "sha256": "fe9403d7a27de25e83ba5e0717cab93230b71fd78eb9377bd05279573cde5281"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22011-future-hybrid.json",
+      "sha256": "96f233b59edccd35cd9cb4e719bb3606ae41df1b2c726bb296badce67f8a27de"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22011-mcts.json",
+      "sha256": "b2d2c30b408aad2ca64e235d106ef98241509bc786eb47fa1c0c3048bac205d5"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22011-floor-dense.json",
+      "sha256": "cb953f7a008814a1e139032ff96a7e047da0f07fb0e1345f151048fd3a39a996"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22011-cluster-floor.json",
+      "sha256": "86e1a75ffe2b673c73e88464bb211fda059b7d949dbab16379d8b37a82504b0b"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22011-cluster-layer.json",
+      "sha256": "bd1832d03fc099db948c289669e05c78b300c5001ab5adc2aea5d1eadad66040"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22011-dispersed.json",
+      "sha256": "be3e512f949285c15de68232fce78bb74da04b121fbfaa80d78315d0c586190c"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22011-blb.json",
+      "sha256": "a9d9f5c1875db2044114f2150c7fa7d891ae3969111f482d5581347c2bac222e"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22012-strategy-greedy.json",
+      "sha256": "2485d14b34bd358cf4713e851a016d48f0508025a5cecb25d1e764963129fdcb"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22012-lookahead.json",
+      "sha256": "36677d49b52fbe1a52c863a0e60277d1c5356aa93d0a48ba67dfe63c8f1622c4"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22012-future-hybrid.json",
+      "sha256": "ac326e1b39b85255f4fdcb79b75f1ba7f26230e4b0a3a9e663840aa6f89ec5fb"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22012-mcts.json",
+      "sha256": "e924a192e0736b683be585ddc49f603db50f516042b08ec69daacc1f2dc6e571"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22012-floor-dense.json",
+      "sha256": "d6d4410cdad7ec83da8819fc8972286ae374eb4388787bda68e8eb2d3e513e75"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22012-cluster-floor.json",
+      "sha256": "107c86e64aa53c506994e7268565e866d3085269d1fa8369854b8162c3af14cf"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22012-cluster-layer.json",
+      "sha256": "1df453c98dea489da2ac1b01c2914acfebe96b6764734f4fd520a7184d3dc2d6"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22012-dispersed.json",
+      "sha256": "7dd28901b3ab445e56b6e4cc2889baa8d350ff1f20d4def7295267258766bb3f"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22012-blb.json",
+      "sha256": "303579455cb17271b70537ce30cdab3b8f592eaa570ea069dd627985cedaaea7"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22012-capacity-compact.json",
+      "sha256": "3242bfab0b72d5a1beec08e211f4be3dc0d853b8dcc6ea9e6d50d6e8a5ebf0ad"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22013-lookahead.json",
+      "sha256": "81f7edb88a09193ec79f6b19f606b3303b3a9155578a69f62c4d34f4053fca97"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22013-future-hybrid.json",
+      "sha256": "b9c3cfd2069265dd95947fda6db687be89accc2b03eb4704ba5cddfc522c7bba"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22013-mcts.json",
+      "sha256": "681a628ee4b7f019e35f9a97eae09f357eaa37b6ecd4e30e22bd94f5b95fb98f"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22013-floor-dense.json",
+      "sha256": "de3d49dc5d67d3d785ad6732f43413cfb643d046f9df7ccd97b055d525de9262"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22013-cluster-floor.json",
+      "sha256": "958b293e87be30e75540675f394ab7773c976885a1b6b36eecc9afeda78f24e9"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22013-cluster-layer.json",
+      "sha256": "aa43d20725ed9b10a0d0d7fc035d66cf933ff59861371f391c8c8604b940d528"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22013-dispersed.json",
+      "sha256": "6c23a1397d531b02e3a537de3ff495ab64ee17f872dcaeca1b4ba5bea5455151"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22013-blb.json",
+      "sha256": "25133b5666631912d2fc844c597b9ffe9994872417814006d663d1efc68f1e58"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22013-capacity-compact.json",
+      "sha256": "8e60d85a76ada4f66b6892291e0fae0c9080ec6227a987734a4f6336f4ee5cd8"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22013-strategy-greedy.json",
+      "sha256": "e8a88070362ba086d1b3d53c8556550e03adf46b39f73544afdbb9d3d58cebd3"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22014-future-hybrid.json",
+      "sha256": "1224865432fb9327df04ebe8f3be00664b390a74dfb2d5061c337e311ac75953"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22014-mcts.json",
+      "sha256": "df235f6a9860f315b73625376fc67ac81d693251839057f3b8a7d89376d5c16c"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22014-floor-dense.json",
+      "sha256": "3d218bcf5d128d52c13499845b3f399f4e6c8d248e1e8db3bc6f5843908dc3c6"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22014-cluster-floor.json",
+      "sha256": "803721d108b3ce1d82ee95878c3f534374fed0def8a32dbc6adf098b858677a1"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22014-cluster-layer.json",
+      "sha256": "925b61f6135f66ebac739ae75fc6c39d56e41db96d0558fe9fb434827ce962d3"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22014-dispersed.json",
+      "sha256": "37cfde7655b48a6ff07b672b120bb28c4a0647cc2958aaa3b6e2569dca1ad375"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22014-blb.json",
+      "sha256": "2008ed02d2fb0d0265933aae862ce884881643834dbe8d841f7f3a69ca80f0a4"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22014-capacity-compact.json",
+      "sha256": "22f4427934e79807a44f92c7785af94b8ee69774e81778dc418124da6fcd2afc"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22014-strategy-greedy.json",
+      "sha256": "4f2bc30bf9b5a2977f31629cad03416e6be6207344099d4abe490644a48fe83f"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22014-lookahead.json",
+      "sha256": "5acfbde0ef055ab8c666bdefa0811ad27b169a882045c010f889d6397cd0c646"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22015-mcts.json",
+      "sha256": "47ba702b2d8dbb31ce8afa4e47ff4bf3c5bf7017a1cb7599efd6e96049cbee3e"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22015-floor-dense.json",
+      "sha256": "8f100debbb6c7450c7e9a165f392dde79e211b13605b55da15dbc622b7771800"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22015-cluster-floor.json",
+      "sha256": "921003b80d107c3c2d531e7e8316c5a865d48c11bbfcdcd86a7df064f9b5aeae"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22015-cluster-layer.json",
+      "sha256": "b93f910431e19ff09e344ee08d008120974e4c352666104da1f8eb2610e8b2cb"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22015-dispersed.json",
+      "sha256": "6ee730e3cacd50d81d27a046a7ca513ad62d246995581e6041155b485008a2e7"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22015-blb.json",
+      "sha256": "b982dedd0eaa88c41f155ed6c561777cd14b4e4f36c0e05350a994b403b4b8a6"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22015-capacity-compact.json",
+      "sha256": "e6242b077ff19bd88e8888001c7743eec26cc9e2fbf1f938712461c7dfd71e9b"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22015-strategy-greedy.json",
+      "sha256": "8f6b985ad4d48a997febc810983bf9392348c2d87c305daeabfa800a84498eb4"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22015-lookahead.json",
+      "sha256": "c559bc21720d1abb46b895f3f807e47a4693fe59db5ee434ac4ea02749ec41cf"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22015-future-hybrid.json",
+      "sha256": "808b1d434e14b4c7bbb5824c2d801772ff78eaac2860044d86dd512d8da3ce1c"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22016-floor-dense.json",
+      "sha256": "675489ec5689496f2e25d35ef9178198e6955b14a3768fe6897ab6247693eb60"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22016-cluster-floor.json",
+      "sha256": "01ef923bab2a7fae24e2f67cf3837d73fb4906ac40d671e88e72cdcae272191d"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22016-cluster-layer.json",
+      "sha256": "18e813e8377af223bb01801f375427c7d845c77c16cb686cd63f363e386f933c"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22016-dispersed.json",
+      "sha256": "00b8be0e661e106e44ca2731e9ac7033eaec0e5cd4ca6b7cd020320e373e0803"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22016-blb.json",
+      "sha256": "d4acd2ad4db25410e892be1fd84d1e364aff44be5dfbedc36c1063185582aec1"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22016-capacity-compact.json",
+      "sha256": "b5869bce7d6705f992dcd0ca675c4127807bfa49da19648fd20764e7367d5cfe"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22016-strategy-greedy.json",
+      "sha256": "669b99d8c9cd1ac78ecac9baa3fb67e5e44695c06f643a1beaeeba3eb2dd64e0"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22016-lookahead.json",
+      "sha256": "be6d2131d12b3dbf059481043a8edead6e443eedc3398f725200e93ed9d85048"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22016-future-hybrid.json",
+      "sha256": "ef1e32e28751e834f2bc483a1d866b36c36f1b17ff90690dc35244aaca62e2f5"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22016-mcts.json",
+      "sha256": "6e3c7847934dd6fda15c6a3038b7a986500e6b36ec958cce7facca11d5191f30"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22017-cluster-floor.json",
+      "sha256": "f0b277d10d1bd25cf67c30ceabe5faf7ae2450c5804d4f283ae6f4aec65056a9"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22017-cluster-layer.json",
+      "sha256": "17446defb004ab591ccbafc24c0e44a632314032421fcab2948755efbe4482bf"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22017-dispersed.json",
+      "sha256": "4c985738da9deaa886278c4ec5d6a316bb2698ef9b92b49c8baae4b7837a62d0"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22017-blb.json",
+      "sha256": "d932dffcc093598e589599e607f0ae82563adf3173e92ad36842def6c041f005"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22017-capacity-compact.json",
+      "sha256": "ec2403d75c45541022a85010feccfc54dde140db302005122228267c615bb452"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22017-strategy-greedy.json",
+      "sha256": "0ae94635f1241277775b6a0a0fc673cd10e53d5437b4269a030e964cce9a2827"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22017-lookahead.json",
+      "sha256": "a0f115f9e09e7efc43902abb5c37d1ed1da0083b5067484c3f8ed389acbd09bc"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22017-future-hybrid.json",
+      "sha256": "e7d24e7c9c839378037d20d61f4050f675ddcfb456778f93787a0422249fe415"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22017-mcts.json",
+      "sha256": "e137f4956870fab80840e1243bb0b8346cfc310c5173c4cda04fe2698e284d82"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22017-floor-dense.json",
+      "sha256": "ba26e34f6766ec6c32086afc1263c6e38fc700639e04cf632d1eae94c4c5c3bd"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22018-cluster-layer.json",
+      "sha256": "0f714c803b16d10cc7456bf9d4f9de0ce23d7004ae2315667be2584003d80f54"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22018-dispersed.json",
+      "sha256": "e89e76472d86059ad2ac00c3ddba03d68b5342d3a65606c27ec3903e9297811b"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22018-blb.json",
+      "sha256": "bdc83035b0bcc06fa7f91acd722020f313b936474090c4932ca2b3581539c492"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22018-capacity-compact.json",
+      "sha256": "84f567b33ff31c76d63d54f5758396c309882e42714af8f3493db823c3f0b8be"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22018-strategy-greedy.json",
+      "sha256": "08ce4ecb8097ffd0dee3e610c3e6eb32045f9a83081febe37b4ac29f952d3d9d"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22018-lookahead.json",
+      "sha256": "8a1f5e40be67d1a152bf96e59da4276c9af28737fca36b1922c5c90184662790"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22018-future-hybrid.json",
+      "sha256": "073d5c09c964441c17ff6ea19c14215464ce489f3a0b7f3a3c126b7a76818473"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22018-mcts.json",
+      "sha256": "88a3263fdcde68061a561f49cb12d997b285471c9316b3954609384b0c2a1467"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22018-floor-dense.json",
+      "sha256": "09afe8098e4e2e6fd4bcc26d13870d2fde8ec9760d3aaf578222d48bd7c92fb0"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22018-cluster-floor.json",
+      "sha256": "c524e07fca2a8d94e3562fdc2c4e315760209f35227da97a0013b5218c64d9b9"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22019-dispersed.json",
+      "sha256": "dcd0a40db0beb2f9433bcacae760294f21dc940de02bfae7c8552fe86e353f33"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22019-blb.json",
+      "sha256": "2b275f250c8a2408d267802fef6b25ac210d416d8cb42dca0ee02e80bbeb3e18"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22019-capacity-compact.json",
+      "sha256": "246759c588f1b083349a5d96152f084947c81d16907cd04e72ee85b1746eb1cf"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22019-strategy-greedy.json",
+      "sha256": "1f110bdc04e16663a45acfa46a2f79ca95be42adc44c30ee2912b4d5019ce95f"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22019-lookahead.json",
+      "sha256": "a0ef72e9d5db52894d8fd416a7b8b4a2fa8f739c7acb6e882fb73076ff80dc2e"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22019-future-hybrid.json",
+      "sha256": "8e79dd5901296a57934577d658814f1fb6c994310a0d49d8a4d43b3577d66eb9"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22019-mcts.json",
+      "sha256": "c728fed8c05157eab9b11d7c98414a1afa7c09917e0fca5796ca6afc8642ba6f"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22019-floor-dense.json",
+      "sha256": "d7a535fbab0181b61f5ade385d04265f73cdc9b693fd21571dd08cecc77b5b27"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22019-cluster-floor.json",
+      "sha256": "8b3788d6a4854f055fd2fd2c067624fea9ece3e319394f441f7c7beef3c8276d"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22019-cluster-layer.json",
+      "sha256": "005a1da1d9cf60f6c71a8a883ca85f7ae2e843039b34dc87671ce360894b041f"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22020-blb.json",
+      "sha256": "8bc42a9d7461f4217e8eb09eb146ecc0435eecf41b596dbd927fcc356aa48d2d"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22020-capacity-compact.json",
+      "sha256": "e2dd016b9c0dadb4f9cb6d5180344991872ab56a2ed97c626f0da5ab42af904d"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22020-strategy-greedy.json",
+      "sha256": "87b8da8ae5e387814b9156b22c4c5175d0242650e821fce193e1788cdf75cdd7"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22020-lookahead.json",
+      "sha256": "169e60d1a4677a8113298b5b913b29d708be10b754f0e93e077fca2ca59c4917"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22020-future-hybrid.json",
+      "sha256": "1be543023b146c809e991908e4c5cf7f9344d4f0e3c1d60d63306d9fe113d992"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22020-mcts.json",
+      "sha256": "9b46a196bb54e750e1bd77e22d8ebe1bcc8aed578886740fc63a9cc130a69ef0"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22020-floor-dense.json",
+      "sha256": "2e670433b305192c978b61d06cfa2d0eec3d58ac1182e06c09275bbcd3a5a9d7"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22020-cluster-floor.json",
+      "sha256": "bc8f062d815f643f8f370cca1977079d2778ac66fc6ac5f2829a88b95562b9a9"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22020-cluster-layer.json",
+      "sha256": "3550fee86b1015a82e87363d2c32c3e9853ee552b300e75265b9fd12c4895e5c"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22020-dispersed.json",
+      "sha256": "71cbce293383d80348006754fa29ea9b59cdf9a2550ce7a451c0d8b09b98f700"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22021-capacity-compact.json",
+      "sha256": "3b9024bdf8822269bacefd57c6e6e4e7e22e36f6b75a3e4af8d72688e5de0313"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22021-strategy-greedy.json",
+      "sha256": "d37657ad704dbf754765c60d75969634f6a321136d63e98f296acd036c03116c"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22021-lookahead.json",
+      "sha256": "4fb3a07f64f0d2f0920213b682ff4aed0f18eb0ab1c6260faf5bf99d34fc161f"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22021-future-hybrid.json",
+      "sha256": "639272867d63cd6637509647168f04641795fd8ce647336cf7c8c5abad27e45b"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22021-mcts.json",
+      "sha256": "6caaed1e2362b46b8d4644c4ec4a236cff354c77d7b08cdc5b100d6df801607f"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22021-floor-dense.json",
+      "sha256": "c532983294b86ce9b873ba5c524707cd73f6df5a188cc235d17ee8110d263cdf"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22021-cluster-floor.json",
+      "sha256": "d15bc0c60874e4c94e6c141c52c1f77b5f2e8c11e8fa8b78a0816717f8c148b6"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22021-cluster-layer.json",
+      "sha256": "909914290c2cc924fd81ec67b6a0d36026180f027a9dfbcd69729f4009cfbb0e"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22021-dispersed.json",
+      "sha256": "9bf7d2b2f95232d2de67d9fcdf115f773e99c899dd2975f062389c1ec5b98672"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22021-blb.json",
+      "sha256": "3cc2e3fc03e29d836f1f4bee7622ee6e367db77392444b8a35691a13f6e81a83"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "schema": "alps-control-room-source-snapshot/1",
+  "createdAt": "2026-10-09T18:09:06.481212+00:00",
+  "files": [
+    {
+      "name": "core.js",
+      "original": "/Users/taehun/.codex/.chatgpt-projects/g-p-6ab3a6e330c48191ae7b59b2a3e286aa/alps-control-room/engine/core.js",
+      "copy": "docs/presentation/mcts/source/core.js",
+      "sha256": "7e3dcd3ad0bd419210c38b0fd44c4bc8a6ac0d32658cf44973f83b81218b9165",
+      "modified": false
+    },
+    {
+      "name": "constraints.js",
+      "original": "/Users/taehun/.codex/.chatgpt-projects/g-p-6ab3a6e330c48191ae7b59b2a3e286aa/alps-control-room/engine/constraints.js",
+      "copy": "docs/presentation/mcts/source/constraints.js",
+      "sha256": "85cacc1a99265898b87f151dfe8f330a0123cd19e1fe2afeddca32f66bdfefda",
+      "modified": false
+    },
+    {
+      "name": "search.js",
+      "original": "/Users/taehun/.codex/.chatgpt-projects/g-p-6ab3a6e330c48191ae7b59b2a3e286aa/alps-control-room/engine/search.js",
+      "copy": "docs/presentation/mcts/source/search.js",
+      "sha256": "5f2f054fa236c17ad018608082e3b00dc38a643ac601210a55d1a6cd12194752",
+      "modified": false
+    }
+  ],
+  "sourceInstructions": "Parent AGENTS.md read: sources/ synced references are read-only. Original engine was only read and copied; no external files edited.",
+  "configurationReferences": [
+    "alps-control-room/model.js:6,18-21",
+    "alps-control-room/engine/engine.js:7"
+  ],
+  "note": "Only the transitive raw-plan implementation (core, constraints, search) is copied verbatim. Runner config reproduces single-slot density settings and extends search budgets through raw plan; source engine is not patched."
+}

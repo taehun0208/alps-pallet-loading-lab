@@ -1,0 +1,75 @@
+# Review: Central Belt Assignment for the 4-Robot Stream
+
+## A. Concrete defects in the current code
+
+The new design will either inherit these defects or hide them.
+
+**1. The observation boundary is not enforced.**
+- `observedProblem` exists, but `planStream` never calls it.
+- `input()` passes the full `s.types`, which leaks the type catalog and therefore the manifest.
+- `createStream` stores every future `observation` in `w.boxes` while they are still `pending`. Any planner code can read them.
+- **Test (leak):** Mutate the size, weight and order of all `pending` and unmeasured boxes. Then run `planStream` on an identical snapshot. The proposals, reasons and `checks` must be deep-equal.
+
+**2. Deferral is counted as rejection, which closes pallets early.**
+- `applyDecision` pushes into `cell.rejected` whenever `!proposal.candidates.length`. That includes:
+  - the "wait for foundation" proposals,
+  - `blocked>0` deferrals,
+  - fragile-cap deferrals.
+- `rejected.length>=6` then triggers `checking`, so a cell closes under-filled because of its own voluntary deferrals.
+- **Test:** Use an empty cell and six small measured boxes plus one incoming foundation. The cell must not leave `loading` while it is only deferring. Assert `rejected` contains only hard-infeasible IDs.
+
+**3. Deferral can starve boxes.**
+- A no-top-load box is deferred whenever any `feasible` load-bearing box exists. A steady heavy stream defers it forever.
+- `blocked>0` defers whenever any of the three probes loses. Nothing escalates this by `passes`; only the foundation wait checks `passes<1`.
+- **Test (starvation):** Use a seeded stream of 200 heavy boxes with one fragile cap at index 5. Require it to be placed within `Pmax=2` passes, or reported as `hard-infeasible`.
+
+**4. Downstream deferral rests on assumptions nothing checks.** The `elsewhere` check only tests that some other cell is `loading` and has a site right now. It ignores:
+- whether that cell is busy or reserved;
+- whether the box reaches that station before the cell flips to `checking` or `outbound`;
+- whether that cell will itself defer the box. Cells A and B can each count the other as "elsewhere", which produces ping-pong deferral.
+- Cell versions for other robots are not captured in the proposal. The deferral reasoning goes stale while `applyDecision` validates only the proposing cell's version.
+- **Tests:**
+  - (a) Mutual deferral: two cells, one box, both see the other as feasible. The box must be placed within one lap.
+  - (b) Downstream closure: the downstream cell enters `checking` before arrival. The upstream deferral must be invalidated at apply time.
+
+**5. Intercept timing is inconsistent.**
+- `approach` uses `safe = c.path.points[0].tcp.z` from the stale candidate. The emitted path uses `original.points[0].tcp.z` from the rechecked `directReturn`.
+- The motion segments `idle→first→contactStart` therefore need not equal `approach`. The TCP can arrive before or after the box.
+- The fixed 16 iterations have no convergence test.
+- `startPickup.y≠endPickup.y` does `continue` without pushing a failure, so the reason becomes a generic "현재 예약 불가".
+- **Test (intercept):** For every launched action, assert that `|TCP(t) − boxTop(t)| < 2 mm` for all t in [contactStart, graspAt], using the belt kinematics. Also inject a candidate whose safe z differs by 200 mm from the recheck.
+
+**6. Static pickup is used for ranking but moving pickup for launch.** `beltPickup(...)` is used in `sites()` and probes, but launch uses `movingPickup`. Ranking-time path and reach feasibility therefore differ from launch-time feasibility.
+- **Test:** Measure the fraction of top-ranked candidates rejected at launch for path reasons. It must be ≤ X%. Report the rate, never hide it.
+
+**7. Control flow parses natural-language strings.** `failures.some(r=>!r.includes('예약')&&!r.includes('구간'))` decides rejection, so any wording change alters behavior.
+- **Fix:** Use enum reason codes and keep the Korean text for display only.
+
+**8. Results depend on tick size, so replay breaks.** `advanceStream` has three tick-dependent behaviors:
+- It infeeds at most one box per call.
+- It sets `nextInfeed = time + …` (tick time) rather than `nextInfeed + …`.
+- It completes motions in array order, not finish-time order.
+- **Test:** Run the same seed at dt = 1/60 s, dt = 0.5 s, and event-driven stepping. The event logs (infeed times, placements, positions) must match within 1e-6 s.
+
+**9. Placement commits at action end, not at release.**
+- `releaseAt` is computed but unused. Occupancy is committed after the robot returns to idle.
+- This is harmless within a cell, but it biases KPIs: throughput, time-to-place, and "pallet height" at close.
+- **Decide:** Commit at release or keep it at end, then document it in the KPI.
+
+**10. The compute counter is wrong and growth is unbounded.**
+- The `elsewhere` calls to `sites()` are not counted in `checks`.
+- Worst case per decision: 4 robots × 2 boxes × (1 + 3 + 6·3 + 6·3·3) ≈ 600 `candidateSet` calls.
+- Each call grows with the number of placements, and every cache hit `structuredClone`s 64 candidates with paths.
+- **Test:** Instrument `candidateSet` directly, not `checks`. Assert ≤ C_max calls per epoch. Plot calls against placements over a full pallet.
+
+**11. Caches are module-global and hidden.**
+- `cache`, `fitCache` and `diagnostics` persist across runs in the worker. They are cleared by size thresholds, so hit rate depends on history.
+- Results stay pure only if `candidateSet` is deterministic and scenario constraints never change under the same `runId`.
+- The keys omit constraint and settings hashes, so a scenario edit that keeps the `runId` serves stale candidates.
+- **Fix:** Use per-run cache objects keyed by `(runId, constraintsHash, settingsHash, cellVersion, boxId, pickupHash)`. Report the hit rate.
+- **Test:** Run A then B, then B alone. B's outputs must be identical.
+
+**12. Robot priority is fixed.** The `for robot 0..3` loop with `break` gives robot 0 first pick and its proposals apply first. This is not central assignment.
+
+**13. The simulation may never terminate.**
+- A box that fits no empty pallet circulates forever, and `flow.complete` is

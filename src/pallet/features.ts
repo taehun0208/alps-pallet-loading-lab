@@ -6,6 +6,7 @@ import { stability } from './stability';
 import { packingQuality } from './packing';
 import { materialInfo } from './materials';
 import { DEFAULT_STABILITY } from './types';
+import { comCost,meanTypeMass } from './palletCom';
 import type { Placement,Pallet,Features,Terms,Weights,PlanningInput,StabilitySettings } from './types';
 export function balance(placed:Placement[],p:Pallet){
  const weight=placed.reduce((s,b)=>s+b.weight,0),center={x:0,y:0,z:0};
@@ -15,10 +16,11 @@ export function balance(placed:Placement[],p:Pallet){
  return {center,quadrants,imbalance:weight?(Math.max(...quadrants)-Math.min(...quadrants))/weight:0};
 }
 export function loadSummary(placed:Placement[],cfg:StabilitySettings=DEFAULT_STABILITY){const loads=calculateLoads(placed);let loadUtilization=0,unknownCapacity=0;for(const b of placed){const capacity=materialInfo(b,cfg).capacity;if(capacity===null)unknownCapacity++;else loadUtilization=Math.max(loadUtilization,capacity?loads[b.id]/capacity:loads[b.id]>0?10:0);}return {loadUtilization,unknownCapacity};}
+function comFeatures(placed:Placement[],p:Pallet,input?:PlanningInput){const c=comCost(placed,p,input?meanTypeMass(input.types):undefined);return {comOffset:c.offset,comRamp:c.ramp};}
 export function features(placed:Placement[],p:Pallet,workSeconds:number,input?:PlanningInput,base?:ReturnType<typeof surface>):Features{
  const map=base?placeOnSurface(base,placed.at(-1)!,p):surface(placed,p),heights=map.heights;let diff=0,edges=0,flat=0;
  for(let y=0;y<NY;y++)for(let x=0;x<NX;x++){const i=y*NX+x;for(const j of [x<NX-1?i+1:-1,y<NY-1?i+NX:-1])if(j>=0){diff+=Math.abs(heights[i]-heights[j]);edges++;if(Math.abs(heights[i]-heights[j])<.5)flat++;}}
  const meanHeight=heights.reduce((a,b)=>a+b,0)/heights.length,total=placed.reduce((a,b)=>a+volume(b.size),0),cfg=input?.constraints.stability||DEFAULT_STABILITY,stable=stability(placed,cfg);
- return {...(input?packingQuality(placed.at(-1)!,input):{}),maxHeight:Math.max(0,...placed.map(top)),meanHeight,roughness:diff/edges,blockedVolume:Math.max(0,meanHeight*p.width*p.depth-total),flatRatio:flat/edges,imbalance:balance(placed,p).imbalance,workSeconds,slenderness:stable.slenderness,lowerBalance:stable.lowerBalance,loadUtilization:loadSummary(placed,cfg).loadUtilization,inventory:input?assessInventory(input,placed,map,placed.at(-1)!):emptyInventory()};
+ return {...(input?packingQuality(placed.at(-1)!,input):{}),maxHeight:Math.max(0,...placed.map(top)),meanHeight,roughness:diff/edges,blockedVolume:Math.max(0,meanHeight*p.width*p.depth-total),flatRatio:flat/edges,imbalance:balance(placed,p).imbalance,...comFeatures(placed,p,input),workSeconds,slenderness:stable.slenderness,lowerBalance:stable.lowerBalance,loadUtilization:loadSummary(placed,cfg).loadUtilization,inventory:input?assessInventory(input,placed,map,placed.at(-1)!):emptyInventory()};
 }
-export function terms(f:Features,p:Pallet,w:Weights,cfg:StabilitySettings=DEFAULT_STABILITY):Terms{return {maximum:-w.maximum*f.maxHeight/p.maxHeight,mean:-w.mean*f.meanHeight/p.maxHeight,roughness:-w.roughness*f.roughness/p.maxHeight,void:-w.void*f.blockedVolume/(p.width*p.depth*p.maxHeight),flat:w.flat*f.flatRatio,balance:-w.balance*f.imbalance,time:-w.time*f.workSeconds/30,stability:-w.stability*f.slenderness/cfg.maxSlenderness,inventory:w.inventory*f.inventory.opportunity,foundation:-w.foundation*f.inventory.foundationPenalty,load:-w.load*f.loadUtilization,contact:(w.contact??0)*(f.contactRatio??0),futureSurface:-(w.futureSurface??0)*(f.futureSurfacePenalty??0)};}
+export function terms(f:Features,p:Pallet,w:Weights,cfg:StabilitySettings=DEFAULT_STABILITY):Terms{return {maximum:-w.maximum*f.maxHeight/p.maxHeight,mean:-w.mean*f.meanHeight/p.maxHeight,roughness:-w.roughness*f.roughness/p.maxHeight,void:-w.void*f.blockedVolume/(p.width*p.depth*p.maxHeight),flat:w.flat*f.flatRatio,balance:-w.balance*f.imbalance,time:-w.time*f.workSeconds/30,stability:-w.stability*f.slenderness/cfg.maxSlenderness,inventory:w.inventory*f.inventory.opportunity,foundation:-w.foundation*f.inventory.foundationPenalty,load:-w.load*f.loadUtilization,contact:(w.contact??0)*(f.contactRatio??0),futureSurface:-(w.futureSurface??0)*(f.futureSurfacePenalty??0),com:-(w.com??0)*(f.comOffset??0)*(f.comRamp??0)};}

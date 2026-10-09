@@ -1,0 +1,495 @@
+
+ RUN  v4.1.11 /Users/taehun/.codex/.chatgpt-projects/g-p-6ab3a6e330c48191ae7b59b2a3e286aa/PAC2026_이어가기_2026-10-09/pallet-loading-lab
+
+stdout | tests/pallet-height-benchmark.test.ts > measures high stacking and separates unknown arrival blockage from selectable stock
+0 arrival 0 0 0단 세로 박스 주변 높이 부족
+1 stock-select 13 1035 5단 세로 박스 주변 높이 부족 / 무게 규칙 위반 / SUPPORT: 지지 조건 미달 55.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 57.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 76.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 77.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 83.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 82.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 88.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 87.4% / 필요 95.0% / 재질 허용 지지하중 초과 / 누적 무게중심 정적 평형 불가 / SUPPORT: 지지 조건 미달 44.0% / 필요 95.0% / 그리퍼 / 운반 접근 경로 간섭 / SUPPORT: 지지 조건 미달 18.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 71.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 73.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 82.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 86.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 88.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 69.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 73.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 75.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 84.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 87.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 90.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 91.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 87.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 85.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 83.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 78.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 44.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 17.3% / 필요 95.0% / 세로 박스 돌출 높이 초과 / SUPPORT: 지지 조건 미달 69.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 75.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 82.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 76.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 82.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 86.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 89.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 92.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 74.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 77.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 83.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 90.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 93.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 71.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 71.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 70.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 94.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 93.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 83.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 80.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 70.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 93.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 2.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 2.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 2.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 5.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 5.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 8.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 8.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 19.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 22.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 22.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 31.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 87.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 89.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 90.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 76.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 79.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 83.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 88.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 91.7% / 필요 95.0%
+2 stock-select 24 1472 6단 
+3 arrival 10 739 3단 누적 무게중심 정적 평형 불가 / SUPPORT: 지지 조건 미달 9.1% / 필요 95.0% / 무게 규칙 위반 / SUPPORT: 지지 조건 미달 24.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 25.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 25.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 25.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 24.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 23.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 10.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 25.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 26.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 26.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 26.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 25.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 24.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 11.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 27.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 28.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 28.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 26.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 15.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 29.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 30.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 31.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 31.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 29.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 28.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 70.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 72.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 73.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 74.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 69.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 68.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 73.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 75.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 76.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 77.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 72.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 80.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 83.6% / 필요 95.0%
+4 stock-select 12 739 3단 최대 적재 높이 초과 / SUPPORT: 지지 조건 미달 89.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 83.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 91.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 85.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 92.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 86.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 93.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 87.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 89.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 90.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 91.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 88.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 92.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 88.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 93.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 82.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 91.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 84.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 92.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 84.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 93.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 85.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 84.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 91.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 86.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 92.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 93.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 88.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 93.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 89.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 87.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 91.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 91.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 90.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 93.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 94.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 89.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 91.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 92.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 92.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 93.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 89.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 85.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 91.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 87.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 92.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 94.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 88.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 90.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 91.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 88.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 89.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 90.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 90.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 92.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 89.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 92.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 94.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 90.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 91.0% / 필요 95.0%
+
+ ❯ tests/pallet-height-benchmark.test.ts (1 test | 1 failed) 29089ms
+   × measures high stacking and separates unknown arrival blockage from selectable stock 29088ms
+stdout | tests/pallet-interior-benchmark.test.ts > measures interior packing and six poses against the unchanged prior random inputs
+20261004 two 9 446 0.0665 0 stable 3734
+
+stdout | tests/pallet-standing-height-benchmark.test.ts > measures local standing height on the same three mixed inputs before UI integration
+{"seed":20261004,"before":16,"after":16,"height":964,"beforeIsolated":0,"afterIsolated":0,"tall":1,"physics":"stable","milliseconds":25829}
+
+stdout | tests/pallet-buffer-benchmark.test.ts > measures deferral on three saved heterogeneous inputs with unchanged physical constraints
+{"seed":20261004,"before":16,"after":16,"height":964,"events":[],"remainingHeld":0,"physics":"stable","milliseconds":25879}
+
+stdout | tests/pallet-interior-benchmark.test.ts > measures interior packing and six poses against the unchanged prior random inputs
+20261004 six 16 964 0.1041 4 stable 25281
+
+stdout | tests/pallet-lower-balance-benchmark.test.ts > measures large-first lower-support planning on the unchanged mixed-stock inputs
+lower 20261004 bl: 16 -> 11/30, eccentricity=0.000
+lower 20261004 greedy: 14 -> 13/30, eccentricity=0.073
+lower 20261004 rollout: 14 -> 13/30, eccentricity=0.073
+lower 7919 bl: 14 -> 12/24, eccentricity=0.014
+lower 7919 greedy: 15 -> 12/24, eccentricity=0.000
+lower 7919 rollout: 15 -> 12/24, eccentricity=0.000
+lower 15401 bl: 13 -> 9/24, eccentricity=0.020
+lower 15401 greedy: 13 -> 9/24, eccentricity=0.020
+lower 15401 rollout: 13 -> 9/24, eccentricity=0.020
+
+ ✓ tests/pallet-lower-balance-benchmark.test.ts (1 test) 49694ms
+   ✓ measures large-first lower-support planning on the unchanged mixed-stock inputs  49694ms
+stdout | tests/pallet-stock-benchmark.test.ts > compares fixed-arrival failures against proactive stock selection on the same unmodified heterogeneous boxes
+stock 20261004 bl: 0 -> 11/30, median=319.2ms
+stock 20261004 greedy: 0 -> 13/30, median=375.2ms
+stock 20261004 rollout: 0 -> 13/30, median=989.2ms
+stock 7919 bl: 0 -> 12/24, median=228.3ms
+stock 7919 greedy: 0 -> 12/24, median=329.1ms
+stock 7919 rollout: 0 -> 12/24, median=827.9ms
+stock 15401 bl: 1 -> 9/24, median=138.8ms
+stock 15401 greedy: 1 -> 9/24, median=146.9ms
+stock 15401 rollout: 1 -> 9/24, median=517.9ms
+
+ ✓ tests/pallet-stock-benchmark.test.ts (1 test) 50012ms
+   ✓ compares fixed-arrival failures against proactive stock selection on the same unmodified heterogeneous boxes  50011ms
+stdout | tests/pallet-standing-height-benchmark.test.ts > measures local standing height on the same three mixed inputs before UI integration
+{"seed":7919,"before":11,"after":11,"height":687,"beforeIsolated":0,"afterIsolated":0,"tall":1,"physics":"stable","milliseconds":7534}
+
+stdout | tests/pallet-standing-height-benchmark.test.ts > measures local standing height on the same three mixed inputs before UI integration
+{"seed":20261005,"before":17,"after":17,"height":1145,"beforeIsolated":0,"afterIsolated":0,"tall":5,"physics":"stable","milliseconds":24480}
+
+ ✓ tests/pallet-standing-height-benchmark.test.ts (1 test) 58194ms
+   ✓ measures local standing height on the same three mixed inputs before UI integration  58193ms
+stdout | tests/pallet-buffer-benchmark.test.ts > measures deferral on three saved heterogeneous inputs with unchanged physical constraints
+{"seed":7919,"before":11,"after":11,"height":687,"events":[{"step":4,"held":["B9-01"]},{"step":10,"held":[],"released":"B9-01"}],"remainingHeld":0,"physics":"stable","milliseconds":7736}
+
+stdout | tests/pallet-buffer-benchmark.test.ts > measures deferral on three saved heterogeneous inputs with unchanged physical constraints
+{"seed":20261005,"before":17,"after":17,"height":1145,"events":[{"step":5,"held":["B26-01"]},{"step":6,"held":[],"released":"B26-01"},{"step":11,"held":["B3-01"]},{"step":17,"held":[],"released":"B3-01"}],"remainingHeld":0,"physics":"stable","milliseconds":24697}
+
+ ✓ tests/pallet-buffer-benchmark.test.ts (1 test) 58665ms
+   ✓ measures deferral on three saved heterogeneous inputs with unchanged physical constraints  58664ms
+stdout | tests/pallet-interior-benchmark.test.ts > measures interior packing and six poses against the unchanged prior random inputs
+7919 six 11 687 0.1674 2 stable 7527
+
+stdout | tests/pallet-interior-benchmark.test.ts > measures interior packing and six poses against the unchanged prior random inputs
+20261005 six 17 1145 0.1358 6 stable 24720
+
+ ✓ tests/pallet-interior-benchmark.test.ts (1 test) 61551ms
+   ✓ measures interior packing and six poses against the unchanged prior random inputs  61550ms
+stdout | tests/pallet-realistic-benchmark.test.ts > records model-only workload and geometry outcomes for public-data-derived stress trials
+{"profile":"synthetic","count":96,"placed":96,"complete":true,"stoppedBy":"complete","failure":null,"seconds":856.1,"hostSeconds":19.997661792,"robots":[37,25,20,14],"fill":0.1619154273148148,"pallets":5,"maxHeight":830,"minMargin":60,"violations":0,"exitReasons":{"candidate-exhaustion":4,"order-complete":1},"activeP99":426.78591700000106}
+{"profile":"bed-bpp-stress","count":96,"placed":96,"complete":true,"stoppedBy":"complete","failure":null,"seconds":818.1,"hostSeconds":7.413642500000002,"robots":[38,27,15,16],"fill":0.2353617931547619,"pallets":7,"maxHeight":1570,"minMargin":65,"violations":0,"exitReasons":{"height-limit":1,"candidate-exhaustion":4,"order-complete":2},"activeP99":160.7145410000012}
+{"profile":"bed-bpp-stress","count":120,"placed":120,"complete":true,"stoppedBy":"complete","failure":null,"seconds":995.1,"hostSeconds":10.612771625000004,"robots":[44,36,19,21],"fill":0.21735640914351853,"pallets":9,"maxHeight":1570,"minMargin":65,"violations":0,"exitReasons":{"height-limit":1,"candidate-exhaustion":4,"order-complete":4},"activeP99":137.3525840000002}
+
+ ✓ tests/pallet-realistic-benchmark.test.ts (1 test) 38041ms
+   ✓ records model-only workload and geometry outcomes for public-data-derived stress trials  38040ms
+stdout | tests/pallet-compact-benchmark.test.ts > compares unchanged heterogeneous stock, including holdout seeds, under identical hard constraints
+20261004 centred 13 1035 48.9 5491 undefined
+
+stdout | tests/pallet-compact-benchmark.test.ts > compares unchanged heterogeneous stock, including holdout seeds, under identical hard constraints
+20261004 compact 9 446 66.0 3860 stable
+7919 centred 11 619 57.4 2329 undefined
+
+stdout | tests/pallet-height-physics-benchmark.test.ts > checks centred stock positions and rigid-body convergence without relaxing movement tolerances
+{"name":"이전 검증 · 중앙 기둥 24개 · 6단","count":24,"height":1472,"layers":6,"physics":"stable","maxMm":0.7560912614901821,"maxDeg":0}
+
+stdout | tests/pallet-height-physics-benchmark.test.ts > checks centred stock positions and rigid-body convergence without relaxing movement tolerances
+{"name":"과제 조건 · 무작위 혼합 박스 30개","count":13,"height":1035,"layers":5,"physics":"stable","maxMm":0.48760139184926027,"maxDeg":0}
+
+ ✓ tests/pallet-height-physics-benchmark.test.ts (1 test) 20940ms
+   ✓ checks centred stock positions and rigid-body convergence without relaxing movement tolerances  20939ms
+stdout | tests/pallet-compact-benchmark.test.ts > compares unchanged heterogeneous stock, including holdout seeds, under identical hard constraints
+7919 compact 13 726 47.4 5125 stable
+15401 centred 10 758 37.9 2612 undefined
+
+ ✓ tests/pallet-stream-long.test.ts (1 test) 20731ms
+   ✓ validates 96 diverse boxes through simultaneous infeed, stacking and independent pallet exchange  20730ms
+stdout | tests/pallet-packaging-benchmark.test.ts > runs the same 22-box sequence through all five bounded planners
+[
+  {
+    method: 'first',
+    utilization: 0.34765104166666666,
+    packed: 19,
+    failed: 3,
+    excluded: 0,
+    support: 0.9828947368421053,
+    maxLoad: 1,
+    cogDeviation: 152.23046925109006,
+    planningMs: 7.643193181818185,
+    cycleSeconds: 190.3068607764515,
+    replans: 0,
+    height: 1150,
+    capped: 19
+  },
+  {
+    method: 'greedy',
+    utilization: 0.212234375,
+    packed: 15,
+    failed: 7,
+    excluded: 0,
+    support: 0.9933333333333334,
+    maxLoad: 0.5,
+    cogDeviation: 67.01589375229032,
+    planningMs: 4.004859909090907,
+    cycleSeconds: 150.45731412518867,
+    replans: 0,
+    height: 800,
+    capped: 19
+  },
+  {
+    method: 'tetris',
+    utilization: 0.212234375,
+    packed: 15,
+    failed: 7,
+    excluded: 0,
+    support: 0.9933333333333334,
+    maxLoad: 0.5,
+    cogDeviation: 82.66206807198965,
+    planningMs: 3.66278027272727,
+    cycleSeconds: 148.6021224614065,
+    replans: 0,
+    height: 800,
+    capped: 19
+  },
+  {
+    method: 'future',
+    utilization: 0.3721302083333333,
+    packed: 19,
+    failed: 3,
+    excluded: 0,
+    support: 0.9571010860484546,
+    maxLoad: 0.9307692307692307,
+    cogDeviation: 24.293523797432798,
+    planningMs: 386.48925,
+    cycleSeconds: 189.60794928216401,
+    replans: 0,
+    height: 1050,
+    capped: 22
+  },
+  {
+    method: 'robust',
+    utilization: 0.3721302083333333,
+    packed: 19,
+    failed: 3,
+    excluded: 0,
+    support: 0.9571010860484546,
+    maxLoad: 0.9307692307692307,
+    cogDeviation: 24.293523797432798,
+    planningMs: 386.6974186363634,
+    cycleSeconds: 189.60794928216401,
+    replans: 0,
+    height: 1050,
+    capped: 22
+  }
+]
+
+ ✓ tests/pallet-packaging-benchmark.test.ts (1 test) 17391ms
+   ✓ runs the same 22-box sequence through all five bounded planners  17390ms
+stdout | tests/pallet-robot-utilization-benchmark.test.ts > diagnoses seeded per-robot utilization without requiring four simultaneous jobs from a serial feeder
+{"seed":42,"count":20,"placed":20,"complete":true,"modeledSeconds":149.1,"peakConcurrent":3,"concurrentSeconds":[26,45,61,18,0],"planningMs":1653.5006270000001,"robots":[{"robot":1,"placed":10,"launches":10,"busySeconds":106.74646583745195,"busyFraction":0.7159387380110795,"firstStart":4.1,"lastFinish":116.37820472519006,"offerAppearances":11,"assignmentWins":10},{"robot":2,"placed":8,"launches":8,"busySeconds":84.8084157771531,"busyFraction":0.5688022520265131,"firstStart":32.1,"lastFinish":128.09188703355275,"offerAppearances":15,"assignmentWins":9},{"robot":3,"placed":2,"launches":2,"busySeconds":19.614973331350228,"busyFraction":0.13155582381857966,"firstStart":54.1,"lastFinish":79.83583847489882,"offerAppearances":8,"assignmentWins":2},{"robot":4,"placed":0,"launches":0,"busySeconds":0,"busyFraction":0,"firstStart":null,"lastFinish":null,"offerAppearances":2,"assignmentWins":0}],"meanInfeedInterval":5.105263157894737,"activeInfeedSeconds":97.1,"remainingReasons":{}}
+{"seed":42,"count":48,"placed":48,"complete":true,"modeledSeconds":339.1,"peakConcurrent":3,"concurrentSeconds":[43,80,140,77,0],"planningMs":6797.838052999997,"robots":[{"robot":1,"placed":19,"launches":19,"busySeconds":216.23461351473375,"busyFraction":0.6376721129894831,"firstStart":8.1,"lastFinish":249.116100724101,"offerAppearances":20,"assignmentWins":20},{"robot":2,"placed":17,"launches":17,"busySeconds":205.44392785470032,"busyFraction":0.6058505687251557,"firstStart":31.1,"lastFinish":259.70818904938324,"offerAppearances":26,"assignmentWins":18},{"robot":3,"placed":11,"launches":11,"busySeconds":132.6689708751826,"busyFraction":0.3912384868038413,"firstStart":80.1,"lastFinish":296.0213517695379,"offerAppearances":23,"assignmentWins":14},{"robot":4,"placed":1,"launches":1,"busySeconds":10.35076558279502,"busyFraction":0.030524227610719608,"firstStart":307.1,"lastFinish":317.45076558279504,"offerAppearances":12,"assignmentWins":1}],"meanInfeedInterval":5.25531914893617,"activeInfeedSeconds":247.1,"remainingReasons":{}}
+{"seed":42,"count":50,"placed":50,"complete":true,"modeledSeconds":317.1,"peakConcurrent":4,"concurrentSeconds":[33,54,125,100,6],"planningMs":7738.332789999999,"robots":[{"robot":1,"placed":21,"launches":21,"busySeconds":245.52123901294442,"busyFraction":0.7742707001354285,"firstStart":4.1,"lastFinish":271.88798690703703,"offerAppearances":21,"assignmentWins":21},{"robot":2,"placed":18,"launches":18,"busySeconds":218.93411813166898,"busyFraction":0.6904261057447776,"firstStart":27.1,"lastFinish":281.04109622834795,"offerAppearances":22,"assignmentWins":18},{"robot":3,"placed":9,"launches":9,"busySeconds":116.79303876179267,"busyFraction":0.3683161108855019,"firstStart":81.1,"lastFinish":272.50491650153464,"offerAppearances":20,"assignmentWins":10},{"robot":4,"placed":2,"launches":2,"busySeconds":19.53289410553998,"busyFraction":0.06159853076486906,"firstStart":242.1,"lastFinish":295.56703508232926,"offerAppearances":11,"assignmentWins":2}],"meanInfeedInterval":5.163265306122449,"activeInfeedSeconds":253.1,"remainingReasons":{}}
+{"seed":42,"count":96,"placed":96,"complete":true,"modeledSeconds":856.1,"peakConcurrent":4,"concurrentSeconds":[280,165,228,148,36],"planningMs":17690.84253299999,"robots":[{"robot":1,"placed":37,"launches":37,"busySeconds":443.93406538510123,"busyFraction":0.5185539836293671,"firstStart":4.1,"lastFinish":834.9667526378655,"offerAppearances":37,"assignmentWins":37},{"robot":2,"placed":25,"launches":25,"busySeconds":297.1346341490572,"busyFraction":0.34707935305344845,"firstStart":27.1,"lastFinish":513.2161791703973,"offerAppearances":53,"assignmentWins":29},{"robot":3,"placed":20,"launches":20,"busySeconds":252.87104896888218,"busyFraction":0.2953755974405819,"firstStart":60.1,"lastFinish":536.6358352019965,"offerAppearances":54,"assignmentWins":36},{"robot":4,"placed":14,"launches":14,"busySeconds":164.76850027478042,"busyFraction":0.19246408161988135,"firstStart":259.1,"lastFinish":560.208864538716,"offerAppearances":41,"assignmentWins":28}],"meanInfeedInterval":5.231578947368421,"activeInfeedSeconds":497.1,"remainingReasons":{}}
+
+ ✓ tests/pallet-robot-utilization-benchmark.test.ts (1 test) 38021ms
+   ✓ diagnoses seeded per-robot utilization without requiring four simultaneous jobs from a serial feeder  38020ms
+stdout | tests/pallet-compact-benchmark.test.ts > compares unchanged heterogeneous stock, including holdout seeds, under identical hard constraints
+15401 compact 11 633 52.1 3900 stable
+20261005 centred 10 584 64.7 4065 undefined
+
+stdout | tests/pallet-compact-benchmark.test.ts > compares unchanged heterogeneous stock, including holdout seeds, under identical hard constraints
+20261005 compact 10 597 46.8 4333 stable
+
+ ✓ tests/pallet-compact-benchmark.test.ts (1 test) 32026ms
+   ✓ compares unchanged heterogeneous stock, including holdout seeds, under identical hard constraints  32025ms
+stdout | tests/pallet-operations-height.test.ts > runs the full irregular 192-box batch with the physical tool and retains unplaced stock
+{"elapsedMs":12565.360625,"peak":4,"placed":81,"total":192,"heights":[1585,1599,1581,1576],"robotSeconds":464.28935073947304}
+
+ ✓ tests/pallet-operations-height.test.ts (1 test) 12574ms
+   ✓ runs the full irregular 192-box batch with the physical tool and retains unplaced stock  12573ms
+ ✓ tests/pallet-throughput.test.ts (1 test) 15408ms
+   ✓ records fixed-input throughput while preserving support, height and stock invariants  15407ms
+stdout | tests/pallet-relay-benchmark.test.ts > runs heterogeneous stock through four cells without multiplying stock or relaxing packing constraints
+{"peakConcurrent":4,"elapsed":163.29390380699445,"seed":20261004,"initial":30,"placed":30,"waiting":0,"transfers":2,"byRobot":[8,7,7,8],"physics":["stable","stable","stable","stable"],"ms":8099}
+
+stdout | tests/pallet-relay-benchmark.test.ts > runs heterogeneous stock through four cells without multiplying stock or relaxing packing constraints
+{"peakConcurrent":4,"elapsed":138.4083986579382,"seed":7919,"initial":24,"placed":24,"waiting":0,"transfers":1,"byRobot":[5,7,6,6],"physics":["stable","stable","stable","stable"],"ms":4288}
+
+ ✓ tests/pallet-relay-benchmark.test.ts (1 test) 12706ms
+   ✓ runs heterogeneous stock through four cells without multiplying stock or relaxing packing constraints  12704ms
+stdout | tests/pallet-random-benchmark.test.ts > simulates random starting inventory and per-step arrivals under the three actual algorithms
+20261004/733 bl: 18/18 height=750
+20261004/733 greedy: 18/18 height=750
+20261004/733 rollout: 18/18 height=750
+20261005/734 bl: 16/18 height=850
+20261005/734 greedy: 13/18 height=800
+20261005/734 rollout: 15/18 height=1000
+20261006/735 bl: 14/18 height=850
+20261006/735 greedy: 4/18 height=250
+20261006/735 rollout: 14/18 height=850
+
+ ✓ tests/pallet-random-benchmark.test.ts (1 test) 100598ms
+   ✓ simulates random starting inventory and per-step arrivals under the three actual algorithms  100597ms
+stdout | tests/pallet-relay-height.test.ts > measures four-cell height filling with irregular finite stock and validates every committed stack
+{"elapsedMs":12942.728583,"peak":4,"placed":81,"total":192,"heights":[1585,1599,1581,1576],"fill":[0.6617669703125,0.62971833125,0.6983844546875,0.729401153125],"transfers":5,"reasons":["R4: 27개 대기 · 현재 실행 가능한 작업 없음","R1: 28개 대기 · 현재 실행 가능한 작업 없음","R2: 29개 대기 · 현재 실행 가능한 작업 없음","R3: 27개 대기 · 현재 실행 가능한 작업 없음"]}
+
+ ✓ tests/pallet-relay-height.test.ts (1 test) 12948ms
+   ✓ measures four-cell height filling with irregular finite stock and validates every committed stack  12947ms
+ ✓ tests/pallet-adaptive-ablation.test.ts (1 test) 10997ms
+   ✓ measures matched-input ablations and noisy A/B/C runs without crediting unsafe placements  10994ms
+ ✓ tests/pallet-orchestrator-fairness.test.ts (1 test) 9193ms
+   ✓ serves every reachable cell on a short batch without unbounded balancing delays  9192ms
+stdout | tests/pallet-strategy-benchmark.test.ts > benchmarks identical mixed inventory and hidden arrivals for every strategy
+┌─────────┬──────┬───────────────────────┬────────┬───────┬────────┬─────────────┬──────────────┬─────────┐
+│ (index) │ seed │ algorithm             │ placed │ total │ height │ utilization │ milliseconds │ FPL     │
+├─────────┼──────┼───────────────────────┼────────┼───────┼────────┼─────────────┼──────────────┼─────────┤
+│ 0       │ 42   │ 'strategy-greedy'     │ 4      │ 18    │ 217    │ '0.062'     │ '47'         │ '0.000' │
+│ 1       │ 42   │ 'macs'                │ 4      │ 18    │ 217    │ '0.062'     │ '19'         │ '0.000' │
+│ 2       │ 42   │ 'tetris-reserved'     │ 6      │ 18    │ 217    │ '0.097'     │ '357'        │ '0.583' │
+│ 3       │ 42   │ 'dynamic-reservation' │ 14     │ 18    │ 1045   │ '0.222'     │ '2186'       │ '1.489' │
+│ 4       │ 42   │ 'lookahead'           │ 4      │ 18    │ 217    │ '0.062'     │ '208'        │ '1.029' │
+│ 5       │ 42   │ 'future-hybrid'       │ 14     │ 18    │ 631    │ '0.222'     │ '2659'       │ '1.444' │
+│ 6       │ 43   │ 'strategy-greedy'     │ 3      │ 18    │ 197    │ '0.032'     │ '9'          │ '0.000' │
+│ 7       │ 43   │ 'macs'                │ 3      │ 18    │ 197    │ '0.032'     │ '9'          │ '0.000' │
+│ 8       │ 43   │ 'tetris-reserved'     │ 8      │ 18    │ 386    │ '0.153'     │ '268'        │ '0.353' │
+│ 9       │ 43   │ 'dynamic-reservation' │ 6      │ 18    │ 603    │ '0.111'     │ '303'        │ '1.462' │
+│ 10      │ 43   │ 'lookahead'           │ 6      │ 18    │ 603    │ '0.111'     │ '309'        │ '1.462' │
+│ 11      │ 43   │ 'future-hybrid'       │ 6      │ 18    │ 603    │ '0.111'     │ '284'        │ '1.462' │
+│ 12      │ 44   │ 'strategy-greedy'     │ 1      │ 18    │ 179    │ '0.021'     │ '1'          │ '0.000' │
+│ 13      │ 44   │ 'macs'                │ 1      │ 18    │ 179    │ '0.021'     │ '1'          │ '0.000' │
+│ 14      │ 44   │ 'tetris-reserved'     │ 11     │ 18    │ 627    │ '0.184'     │ '560'        │ '0.975' │
+│ 15      │ 44   │ 'dynamic-reservation' │ 11     │ 18    │ 603    │ '0.184'     │ '1290'       │ '0.644' │
+│ 16      │ 44   │ 'lookahead'           │ 10     │ 18    │ 434    │ '0.172'     │ '695'        │ '2.202' │
+│ 17      │ 44   │ 'future-hybrid'       │ 11     │ 18    │ 603    │ '0.184'     │ '1414'       │ '0.644' │
+└─────────┴──────┴───────────────────────┴────────┴───────┴────────┴─────────────┴──────────────┴─────────┘
+
+ ✓ tests/pallet-strategy-benchmark.test.ts (1 test) 10676ms
+   ✓ benchmarks identical mixed inventory and hidden arrivals for every strategy  10675ms
+ ✓ tests/pallet-random-arrival.test.ts (9 tests) 5180ms
+   ✓ bl uses the same draw stream, conserves counts and retains constraints  470ms
+   ✓ greedy uses the same draw stream, conserves counts and retains constraints  395ms
+   ✓ rollout uses the same draw stream, conserves counts and retains constraints  4033ms
+ ✓ tests/pallet-orchestrator-benchmark.test.ts (1 test) 8924ms
+   ✓ records matched central/baseline simulations without asserting unmeasured superiority  8923ms
+stdout | tests/pallet-compact-demo-benchmark.test.ts > runs repeated randomly generated SKUs without fitting their dimensions to the pallet
+27 1101 0.548355878746594 stable 무게 규칙 위반 / 그리퍼 / 운반 접근 경로 간섭 / 취급 제한 / 재질 허용 지지하중 초과 / SUPPORT: 지지 조건 미달 83.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 85.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 88.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 71.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 73.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 78.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 80.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 83.1% / 필요 95.0% / 누적 무게중심 정적 평형 불가 / SUPPORT: 지지 조건 미달 15.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 4.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 5.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 6.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 2.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 7.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 7.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 18.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 3.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 21.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 3.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 23.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 10.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 11.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 67.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 69.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 89.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 91.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 92.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 94.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 1.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 2.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 3.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 3.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 10.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 14.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 3.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 4.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 2.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 6.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 6.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 9.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 19.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 23.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 2.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 6.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 24.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 3.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 5.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 8.0% / 필요 95.0% / 세로 박스 주변 높이 부족 / SUPPORT: 지지 조건 미달 92.4% / 필요 95.0% / 세로 박스 돌출 높이 초과 / SUPPORT: 지지 조건 미달 93.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 80.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 79.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 47.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 37.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 40.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 35.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 28.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 22.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 21.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 18.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 85.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 86.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 90.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 91.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 69.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 73.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 68.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 72.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 70.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 52.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 6.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 54.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 51.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 47.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 35.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 30.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 12.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 15.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 16.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 11.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 13.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 15.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 18.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 19.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 13.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 15.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 17.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 21.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 14.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 16.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 19.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 23.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 31.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 30.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 23.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 21.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 19.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 17.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 23.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 20.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 25.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 22.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 29.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 26.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 33.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 29.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 46.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 41.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 36.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 40.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 46.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 33.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 29.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 31.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 27.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 30.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 27.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 20.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 18.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 16.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 14.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 12.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 36.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 0.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 0.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 0.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 1.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 0.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 7.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 11.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 26.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 4.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 5.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 8.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 12.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 4.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 6.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 9.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 13.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 40.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 37.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 10.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 11.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 2.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 12.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 8.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 12.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 24.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 20.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 24.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 25.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 28.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 24.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 42.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 45.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 51.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 47.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 50.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 25.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 35.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 39.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 61.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 49.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 48.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 55.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 43.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 43.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 80.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 91.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 85.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 94.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 74.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 79.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 88.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 75.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 77.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 79.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 81.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 69.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 66.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 63.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 2.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 20.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 18.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 27.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 25.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 41.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 62.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 42.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 65.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 38.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 24.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 63.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 65.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 59.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 38.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 81.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 83.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 82.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 86.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 84.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 90.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 22.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 18.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 0.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 1.8% / 필요 95.0%
+
+ ✓ tests/pallet-compact-demo-benchmark.test.ts (1 test) 6918ms
+   ✓ runs repeated randomly generated SKUs without fitting their dimensions to the pallet  6917ms
+stdout | tests/pallet-adaptive.test.ts > deformed pallet mechanics and causal planning > compares identical actual inputs and writes measured multi-seed results
+[{"mode":"A","seed":41,"placed":5,"ms":158},{"mode":"B","seed":41,"placed":7,"ms":471},{"mode":"C","seed":41,"placed":7,"ms":1184},{"mode":"A","seed":42,"placed":5,"ms":148},{"mode":"B","seed":42,"placed":6,"ms":302},{"mode":"C","seed":42,"placed":8,"ms":989},{"mode":"A","seed":43,"placed":5,"ms":135},{"mode":"B","seed":43,"placed":5,"ms":302},{"mode":"C","seed":43,"placed":8,"ms":1479}]
+
+ ✓ tests/pallet-adaptive.test.ts (16 tests) 6943ms
+     ✓ 10 seeded observations and finite retries are reproducible; planner has no future input  643ms
+     ✓ compares identical actual inputs and writes measured multi-seed results  6235ms
+ ✓ tests/pallet-engine.test.ts (21 tests) 4043ms
+     ✓ bl packs identical feasible input completely  341ms
+     ✓ rollout packs identical feasible input completely  3081ms
+ ✓ tests/pallet-strategies.test.ts (19 tests) 1503ms
+   ✓ preserves actual arrival streams across all strategies and samples futures without replacement  776ms
+ ✓ tests/pallet-compact.test.ts (9 tests) 2769ms
+   ✓ replays a mixed repeated inventory deterministically with all quantities and hard checks preserved  2697ms
+ ✓ tests/pallet-stream.test.ts (5 tests) 2972ms
+     ✓ runs overlapping infeed and four independent robots with interception and conserved stock  2751ms
+ ✓ tests/pallet-stability.test.ts (11 tests) 1075ms
+     ✓ uses the lighter strong plastic foundations for the heavier paper boxes  929ms
+stdout | tests/pallet-field-benchmark.test.ts > runs varied per-item boxes and actual per-box material ratings before UI integration
+field 20261004/42 bl: 0/30 height=0, median=3.0ms
+field 20261004/42 greedy: 0/30 height=0, median=0.8ms
+field 20261004/42 rollout: 0/30 height=0, median=0.5ms
+field 7919/834 bl: 0/24 height=0, median=0.2ms
+field 7919/834 greedy: 0/24 height=0, median=0.9ms
+field 7919/834 rollout: 0/24 height=0, median=0.3ms
+field 15401/902 bl: 1/24 height=154, median=16.8ms
+field 15401/902 greedy: 1/24 height=154, median=10.0ms
+field 15401/902 rollout: 1/24 height=154, median=898.0ms
+
+ ✓ tests/pallet-field-benchmark.test.ts (1 test) 1875ms
+   ✓ runs varied per-item boxes and actual per-box material ratings before UI integration  1874ms
+ ✓ tests/pallet-ideal.test.ts (5 tests) 1473ms
+     ✓ ignores every gripper dimension, payload and workspace while retaining packing constraints  743ms
+     ✓ uniform box mass uses the geometric centroid and hidden future order never enters planning  719ms
+stdout | tests/pallet-compact-physics-benchmark.test.ts > checks whether mixed contact results converge with finer solver settings
+20261004 0.008333333333333333 24 moved 46.26482625515383 2.1107231104687636
+
+stdout | tests/pallet-compact-physics-benchmark.test.ts > checks whether mixed contact results converge with finer solver settings
+20261004 0.004166666666666667 12 moved 46.08574468705334 2.0676375913505884
+
+ ✓ tests/pallet-orchestrator.test.ts (15 tests) 973ms
+ ✓ tests/three-engine.test.ts (15 tests) 721ms
+     ✓ conserves occupied volume across a deterministic 40-block run  555ms
+stdout | tests/pallet-compact-physics-benchmark.test.ts > checks whether mixed contact results converge with finer solver settings
+20261005 0.008333333333333333 24 moved 21.546030897867816 0.15825874002676765
+
+ ✓ tests/pallet-operations.test.ts (4 tests) 354ms
+ ✓ tests/pallet-relay.test.ts (10 tests) 577ms
+stdout | tests/pallet-compact-physics-benchmark.test.ts > checks whether mixed contact results converge with finer solver settings
+20261005 0.004166666666666667 12 moved 21.757355969496988 0.1251145157995564
+
+ ✓ tests/pallet-compact-physics-benchmark.test.ts (1 test) 698ms
+   ✓ checks whether mixed contact results converge with finer solver settings  697ms
+ ✓ tests/pallet-online.test.ts (13 tests) 266ms
+ ✓ tests/pallet-buffer.test.ts (10 tests) 99ms
+ ✓ tests/pallet-heterogeneous.test.ts (7 tests) 159ms
+ ✓ tests/pallet-conveyor.test.ts (6 tests) 396ms
+stdout | tests/pallet-online-benchmark.test.ts > compares the rewritten causal planner on unchanged mixed inputs with task constraints and hidden arrivals
+online 20261004 bl: old greedy 0 -> 0/30, median=0.8ms, reason=세로 박스 주변 높이 부족
+online 20261004 greedy: old greedy 0 -> 0/30, median=0.5ms, reason=세로 박스 주변 높이 부족
+online 20261004 rollout: old greedy 0 -> 0/30, median=0.5ms, reason=세로 박스 주변 높이 부족
+online 7919 bl: old greedy 0 -> 0/24, median=0.5ms, reason=세로 박스 주변 높이 부족
+online 7919 greedy: old greedy 0 -> 0/24, median=0.4ms, reason=세로 박스 주변 높이 부족
+online 7919 rollout: old greedy 0 -> 0/24, median=0.3ms, reason=세로 박스 주변 높이 부족
+online 15401 bl: old greedy 1 -> 1/24, median=24.6ms, reason=세로 박스 주변 높이 부족 / 팔레트 경계 밖 / 설정된 작업공간 밖 / 세로 박스 돌출 높이 초과 / 누적 무게중심 정적 평형 불가 / SUPPORT: 지지 조건 미달 41.3% / 필요 95.0% / 무게 규칙 위반 / SUPPORT: 지지 조건 미달 44.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 2.2% / 필요 95.0%
+online 15401 greedy: old greedy 1 -> 1/24, median=46.4ms, reason=세로 박스 주변 높이 부족 / 팔레트 경계 밖 / 설정된 작업공간 밖 / 세로 박스 돌출 높이 초과 / 누적 무게중심 정적 평형 불가 / SUPPORT: 지지 조건 미달 41.3% / 필요 95.0% / 무게 규칙 위반 / SUPPORT: 지지 조건 미달 44.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 2.2% / 필요 95.0%
+online 15401 rollout: old greedy 1 -> 1/24, median=60.9ms, reason=세로 박스 주변 높이 부족 / 팔레트 경계 밖 / 설정된 작업공간 밖 / 세로 박스 돌출 높이 초과 / 누적 무게중심 정적 평형 불가 / SUPPORT: 지지 조건 미달 41.3% / 필요 95.0% / 무게 규칙 위반 / SUPPORT: 지지 조건 미달 44.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 2.2% / 필요 95.0%
+
+ ✓ tests/pallet-online-benchmark.test.ts (1 test) 327ms
+   ✓ compares the rewritten causal planner on unchanged mixed inputs with task constraints and hidden arrivals  326ms
+ ✓ tests/pallet-physics.test.ts (4 tests) 157ms
+ ✓ tests/pallet-orientation.test.ts (9 tests) 131ms
+ ✓ tests/pallet-standing-height.test.ts (8 tests) 68ms
+ ✓ tests/strategy.test.ts (16 tests) 147ms
+ ✓ tests/engine.test.ts (33 tests) 256ms
+ ✓ tests/pallet-requirements.test.ts (11 tests) 80ms
+ ✓ tests/pallet-packaging.test.ts (18 tests) 67ms
+ ✓ tests/pallet-active-buffer.test.ts (8 tests) 148ms
+ ✓ tests/pallet-lower-balance.test.ts (9 tests) 60ms
+ ✓ tests/pallet-packaging-integration.test.ts (5 tests) 69ms
+ ✓ tests/find-fixtures.test.ts (1 test) 19ms
+ ✓ tests/pallet-stock.test.ts (6 tests) 84ms
+ ✓ tests/pallet-cargo-limits.test.ts (2 tests) 13ms
+ ✓ tests/pallet-benchmark-inventory.test.ts (4 tests) 10ms
+ ✓ tests/pallet-robot-arm.test.ts (5 tests) 27ms
+ ✓ tests/pallet-hyundai-view.test.ts (1 test) 13ms
+ ✓ tests/pallet-equilibrium.test.ts (2 tests) 15ms
+ ✓ tests/pallet-stream-settings.test.ts (5 tests) 9ms
+ ✓ tests/pallet-stream-history.test.ts (4 tests) 11ms
+ ✓ tests/pallet-evaluation.test.ts (8 tests) 10ms
+ ✓ tests/pallet-com-assessment.test.ts (7 tests) 7ms
+ ✓ tests/pallet-single-robot.test.ts (6 tests) 14ms
+ ✓ tests/pallet-stream-return.test.ts (3 tests) 4ms
+ ✓ tests/pallet-height.test.ts (3 tests) 5ms
+ ✓ tests/pallet-eccentric-cog.test.ts (2 tests) 6ms
+ ✓ tests/pallet-dispatch-reasons.test.ts (4 tests) 5ms
+ ✓ tests/pallet-single-robot-regressions.test.ts (20 tests) 7449ms
+     ✓ stores the applied policy settings, including the CoG weight  813ms
+     ✓ records search effort and separates placement path time from unpriced process time  686ms
+     ✓ counts boxes waiting in the buffer as known future demand, without double counting the current box  2707ms
+     ✓ gives planners an order-free catalogue: canonical type order and opaque IDs  1048ms
+     ✓ P2 counts planner effort only, leaves unmeasured search effort null, and corrects visible quantities  1792ms
+ ❯ tests/pallet-benchmark.test.ts (1 test | 1 failed) 121668ms
+   × measures ideal reference and material examples with actual three algorithms 121667ms
+ ❯ tests/pallet-single-robot-stages.test.ts (22 tests | 1 failed) 80556ms
+     ✓ handles an empty order without inventing completion 3ms
+     ✓ places a single box, and a box that exactly fills the pallet volume 11ms
+     ✓ isolates over-height and over-payload boxes that fit no empty pallet, and stops cleanly 29ms
+     ✓ applies the support threshold exactly at the boundary (92%) 1ms
+     ✓ retries a box on a fresh pallet after an exchange (no buffer) 4ms
+     ✓ enforces 0/2/4 buffer capacity and drains every waiting box at order end 55ms
+     ✓ rejects invalid buffer capacities before planning 1ms
+     ✓ rejects duplicate catalogue IDs and inconsistent arrival sequences 0ms
+     ✓ separates ordinary, boundary and exception trials and rejects unknown selections 1ms
+     ✓ changes only buffer capacity across the paired 0/2/4 spot experiments 3ms
+     ✓ keeps the same box multiset across arrival seeds and orders large boxes last when asked 1ms
+     ✓ missing: corrects the count only when the gap is observed 126ms
+     ✓ damaged: isolates without placing 115ms
+     ✓ resize: the planner sees the corrected size only from that arrival on 135ms
+     ✓ mismeasure: detects the true size at pick and replans before placing 124ms
+     ✓ resize beyond any pallet: isolates instead of claiming completion 126ms
+     ✓ buffer-down: no box enters the buffer during the outage  1182ms
+     ✓ disturb: quarantines an invalid pallet and keeps loading a valid one 174ms
+     × conserves boxes, resolves every event and never double-loads under combined events 5694ms
+     ✓ applies identical events to every policy  2145ms
+     ✓ reproduces inputs, events and all non-timing results for the same seeds  65983ms
+     ✓ gives the same placements when only catalogue metadata order and names change  4638ms
+stdout | tests/pallet-ideal-benchmark.test.ts > runs fixed, development and separate holdout inputs before UI integration
+final reference/42 bl: 30/30 height=800, median=38.7 ms
+final reference/42 greedy: 30/30 height=600, median=31.9 ms
+final reference/42 rollout: 30/30 height=600, median=4050.4 ms
+final identical/42 bl: 12/12 height=200, median=9.2 ms
+final identical/42 greedy: 12/12 height=200, median=7.4 ms
+final identical/42 rollout: 12/12 height=200, median=532.7 ms
+final mixed/42 bl: 25/56 height=800, median=29.0 ms
+final mixed/42 greedy: 25/56 height=800, median=27.7 ms
+final mixed/42 rollout: 25/56 height=800, median=2267.3 ms
+final materials/42 bl: 16/16 height=600, median=11.1 ms
+final materials/42 greedy: 16/16 height=400, median=14.6 ms
+final materials/42 rollout: 16/16 height=400, median=731.7 ms
+final large-late/42 bl: 25/28 height=550, median=14.7 ms
+final large-late/42 greedy: 24/28 height=700, median=15.8 ms
+final large-late/42 rollout: 26/28 height=800, median=1557.8 ms
+final impossible/42 bl: 1/2 height=150, median=0.1 ms
+final impossible/42 greedy: 1/2 height=150, median=0.1 ms
+final impossible/42 rollout: 1/2 height=150, median=1.4 ms
+final random/1717 bl: 1/30 height=200, median=0.8 ms
+final random/1717 greedy: 1/30 height=200, median=0.8 ms
+final random/1717 rollout: 1/30 height=200, median=493.7 ms
+final random/1819 bl: 21/30 height=1250, median=32.7 ms
+final random/1819 greedy: 12/30 height=600, median=17.6 ms
+final random/1819 rollout: 17/30 height=1050, median=1440.1 ms
+final random/1921 bl: 13/30 height=1000, median=10.8 ms
+final random/1921 greedy: 11/30 height=750, median=13.0 ms
+final random/1921 rollout: 26/30 height=1500, median=1339.3 ms
+
+ ❯ tests/pallet-ideal-benchmark.test.ts (1 test | 1 failed) 297458ms
+   × runs fixed, development and separate holdout inputs before UI integration 297458ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/pallet-benchmark.test.ts > measures ideal reference and material examples with actual three algorithms
+AssertionError: expected 800 to be 600 // Object.is equality
+
+- Expected
++ Received
+
+- 600
++ 800
+
+ ❯ tests/pallet-benchmark.test.ts:9:1575
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  tests/pallet-height-benchmark.test.ts > measures high stacking and separates unknown arrival blockage from selectable stock
+AssertionError: expected +0 to be 8 // Object.is equality
+
+- Expected
++ Received
+
+- 8
++ 0
+
+ ❯ tests/pallet-height-benchmark.test.ts:28:35
+     26|   return r;
+     27|  });
+     28|  expect(results[0].metrics.count).toBe(8);
+       |                                   ^
+     29|  expect(results[0].heightAnalysis.headroom).toBe(970);
+     30|  expect(results[0].heightAnalysis.bestUpperSupport).toBeLessThan(.95);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  tests/pallet-ideal-benchmark.test.ts > runs fixed, development and separate holdout inputs before UI integration
+Error: Test timed out in 240000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ tests/pallet-ideal-benchmark.test.ts:16:1
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  tests/pallet-single-robot-stages.test.ts > 5 combined exceptions > conserves boxes, resolves every event and never double-loads under combined events
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ tests/pallet-single-robot-stages.test.ts:140:2
+    138|
+    139| describe('5 combined exceptions',()=>{
+    140|  it('conserves boxes, resolves every event and never double-loads unde…
+       |  ^
+    141|   for(const policy of [compactPolicy(),strategyPolicy('strategy-greedy…
+    142|    const c=buildCase('event-combined','dev',d);expect(c.events).toHave…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  4 failed | 67 passed (71)
+      Tests  4 failed | 424 passed (428)
+   Start at  17:39:39
+   Duration  297.72s (transform 2.30s, setup 0ms, import 7.55s, tests 1216.27s, environment 5ms)
+
+EXIT 1

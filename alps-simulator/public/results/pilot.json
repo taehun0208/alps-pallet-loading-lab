@@ -1,0 +1,410 @@
+{
+  "schema": "alps-sim-pilot/1",
+  "createdAt": "2026-10-09T18:27:12.335Z",
+  "provenance": {
+    "newSimulationExecuted": true,
+    "sourceSha256": "7b5a5907787f926701d5260da573b0506f5bfb3942c64a2a3fc82a6739bfd498",
+    "sourceFiles": [
+      {
+        "path": "src/engine/README.md",
+        "sha256": "0fbd7570a5051cc6b9b8ac6f9fcae7027db51857f0f8664638b72d31de964ffc"
+      },
+      {
+        "path": "src/engine/client.ts",
+        "sha256": "b9b5b3615c7708e8499bcb97b0fd28d34a9d5e4758b81ce981b9fd86bed6ac95"
+      },
+      {
+        "path": "src/engine/config.ts",
+        "sha256": "f144dcefadc62277326c803b570e00cfc813816ca66c7088e36745b7d0edd804"
+      },
+      {
+        "path": "src/engine/coordinator.worker.ts",
+        "sha256": "bbd0e085e2fd83888bde436c1ba2eac5959ed8ce688de7f8181a36bc477e2c59"
+      },
+      {
+        "path": "src/engine/core.ts",
+        "sha256": "34eae0e969da31992b98bb07758b5e830e4bdcf1d3e732e0e6d40dae8c8761d0"
+      },
+      {
+        "path": "src/engine/mcts.ts",
+        "sha256": "82afc4dd9a6073b8a55a59be4fa3409cf14874b02c515828d57abf8bb1e9c160"
+      },
+      {
+        "path": "src/engine/planner.ts",
+        "sha256": "94c493e3759b8bb7555168527d1fb4955347549e5d2c6dc9c2800c603a746839"
+      },
+      {
+        "path": "src/engine/planner.worker.ts",
+        "sha256": "8cf1ba240cbc4fd14d6ab5e7eca9e75f72922ef362b2ad5c2bc90c42de296b3d"
+      },
+      {
+        "path": "src/engine/supervisor.ts",
+        "sha256": "a66f30a00b03eea72888c02a177affe185bd26c5cce7d77a563639548da4b6ca"
+      },
+      {
+        "path": "src/engine/types.ts",
+        "sha256": "4f37c59b7dde484dbd8cd747026cda6509fb902ab82d9d2907affb3554889160"
+      },
+      {
+        "path": "src/engine/validation.ts",
+        "sha256": "025cf0c615d889839c4243bcf7bfa4224bd242698eb7ef9236e8d3b222c410b7"
+      },
+      {
+        "path": "src/engine/vendor/pallet/benchmark/hardConstraints.ts",
+        "sha256": "813aed969b85bcd8007be9e8110a2f9f98a52d1dea989c342ddadd1322e96402"
+      },
+      {
+        "path": "src/engine/vendor/pallet/benchmark/model.ts",
+        "sha256": "17a757fe7e5fcf1470f27a0ffd80f03b6630193dc81479ce509ba00ba87f45af"
+      },
+      {
+        "path": "src/engine/vendor/pallet/benchmark/motionMetrics.ts",
+        "sha256": "55912f67f6c10c1aceb59b815cd30767ce1a3f5447191f15b1e15f4f250e686c"
+      },
+      {
+        "path": "src/engine/vendor/pallet/benchmark/registry.ts",
+        "sha256": "0bdd50be740949d01788f6fada5164827b4f92af3c9bb233ef717311ab09d000"
+      },
+      {
+        "path": "src/engine/vendor/pallet/benchmark/runner.ts",
+        "sha256": "13229d2e9a6f76b8e5df4dae7d4c384bb2cdd3770f610e1ea901c2654b111842"
+      },
+      {
+        "path": "src/engine/vendor/pallet/benchmark/scenarios.ts",
+        "sha256": "4b6b4cddd5a344342cabae7f2c5f596939a01c9c9ff457bec2c98a292ad0a29c"
+      },
+      {
+        "path": "src/engine/vendor/pallet/benchmark/statistics.ts",
+        "sha256": "80a98f83a2ab1666478bd607cc4d0b4443c73bfd4f1bd30c029e36074a636e2d"
+      },
+      {
+        "path": "src/engine/vendor/pallet/benchmark/version.ts",
+        "sha256": "adcc0b4b5cfc1e917765f76c201d5b5ef030e414969694ce7c1ee47a1a546216"
+      },
+      {
+        "path": "src/engine/vendor/pallet/candidates.ts",
+        "sha256": "dbb869df7ef478cfbd504b4dbdd5a2ac91e6b93d310651a32849063e52ee9732"
+      },
+      {
+        "path": "src/engine/vendor/pallet/capacity/experiment.ts",
+        "sha256": "f5f9c0e150771d3295064bcf68fb8065556340918a923ae894c7d4dd26b857db"
+      },
+      {
+        "path": "src/engine/vendor/pallet/compactPacking.ts",
+        "sha256": "527dea85f7713724eb4a8ac6f0816cf56b0dc76df7ee992fe3edb61e0e775dcb"
+      },
+      {
+        "path": "src/engine/vendor/pallet/compactPlanner.ts",
+        "sha256": "77f5b5002f02718df66511d0ed4ac87da85aea8abb5414a02a3e06589d6040fc"
+      },
+      {
+        "path": "src/engine/vendor/pallet/constraints.ts",
+        "sha256": "a25e55b51303af489b8d53f82bfda5b434351c71052eaccfd953319a01c26b48"
+      },
+      {
+        "path": "src/engine/vendor/pallet/environment.ts",
+        "sha256": "0a4d2e01337248b8fb93cb2955febfc4c6c334cf1d37555eb6e29dddd76cf0e7"
+      },
+      {
+        "path": "src/engine/vendor/pallet/equilibrium.ts",
+        "sha256": "730d13528ddd3ae5631bcd0462edd75180b2d518400d4cd0f11c4519eca00b57"
+      },
+      {
+        "path": "src/engine/vendor/pallet/features.ts",
+        "sha256": "3adfe9b5d4a1f2433a0ad3b27d057658deadded5a59491c02375124f7d563a47"
+      },
+      {
+        "path": "src/engine/vendor/pallet/frontier.ts",
+        "sha256": "25e0086cc7d1a4cba6fe9215d9d7c709e60746699e37a8c24769890b7258fee8"
+      },
+      {
+        "path": "src/engine/vendor/pallet/geometry.ts",
+        "sha256": "dca25f1e1f6c9fc22ca9bf52fa227a285d0ccdab6caa69f51a966082b7c80226"
+      },
+      {
+        "path": "src/engine/vendor/pallet/highStack.ts",
+        "sha256": "9b3abae2b1a4e7de5f1562a272b9706819b9b92e78112fbaccef0df1d14a8baa"
+      },
+      {
+        "path": "src/engine/vendor/pallet/interior.ts",
+        "sha256": "eb992239da1cf9b066f1fbc3983bd26b2e9be32a7422d9c8141b0c75f3876fb9"
+      },
+      {
+        "path": "src/engine/vendor/pallet/inventory.ts",
+        "sha256": "08d603440448f7da5982e96cac50e82b1c635da3347b84c55188906413860913"
+      },
+      {
+        "path": "src/engine/vendor/pallet/inventoryGeneration.ts",
+        "sha256": "970c882d5335d067aae4b63d4173b02c396f618c7b2dc8b8a19c4d587fbc0e41"
+      },
+      {
+        "path": "src/engine/vendor/pallet/materials.ts",
+        "sha256": "419e8b279994c07bb00bba1c1cfb1fa9513c124f9fd2bc2ecfd119528592f1a0"
+      },
+      {
+        "path": "src/engine/vendor/pallet/onlinePlanner.ts",
+        "sha256": "0956e231343b9c5b1f34a49049be0208dc83b078168a089e82f862dc621e43ff"
+      },
+      {
+        "path": "src/engine/vendor/pallet/orientations.ts",
+        "sha256": "96b2407ff48c7b84347b5c744ed612156767cb9f06eaa19e4b583d1854f07378"
+      },
+      {
+        "path": "src/engine/vendor/pallet/packaging/planner.ts",
+        "sha256": "c47edac43463fdfa5bc8129016aef4cd815367a56434aaa4ad7d8e4041d9c07b"
+      },
+      {
+        "path": "src/engine/vendor/pallet/packaging/robot.ts",
+        "sha256": "6fd97359a7ae20045c31df87a8b46b799317a0ce35736b941aac29b9282a4b0a"
+      },
+      {
+        "path": "src/engine/vendor/pallet/packaging/spec.ts",
+        "sha256": "69fec58109c9123ef6bf10c3708a3c73c6f5f1e37c3b2fdd27d935987f700049"
+      },
+      {
+        "path": "src/engine/vendor/pallet/packing.ts",
+        "sha256": "d5e7df98d87b91bce909efd39d222551fc9136842617b853df926996bab318da"
+      },
+      {
+        "path": "src/engine/vendor/pallet/patternEvaluation.ts",
+        "sha256": "4f0d983e58b257fcb66dbc96b1518afdde1122bf26493bc198f4f6ff04a24053"
+      },
+      {
+        "path": "src/engine/vendor/pallet/planner.ts",
+        "sha256": "b2ab9e5e8c6a3f29475dac2245bd16f5918e83ed08f07dfe2bba40074a25e773"
+      },
+      {
+        "path": "src/engine/vendor/pallet/randomPlanner.ts",
+        "sha256": "d22d29df33654f45a4ab8e572468a38221d753e0debde3f1aa45f0157e1a1003"
+      },
+      {
+        "path": "src/engine/vendor/pallet/relay/practical.ts",
+        "sha256": "b68b25e4844ba727e88b0a867c01af90c7bfae30cd72a8abb030e24a7ef60b78"
+      },
+      {
+        "path": "src/engine/vendor/pallet/remainingSites.ts",
+        "sha256": "afd1b1ba420cf8f0b77fab0b0327c65eb8a4c942490506573cdb172f65a3fac0"
+      },
+      {
+        "path": "src/engine/vendor/pallet/rng.ts",
+        "sha256": "d9aece855fa8d41e454e8caaffb36114a9fd6abf4aced327832a2efc7ce551cc"
+      },
+      {
+        "path": "src/engine/vendor/pallet/robotReach.ts",
+        "sha256": "a25c8f7c6a370536887deba817517b9bbdf6efcd10df8ce82a025e97e3d270dd"
+      },
+      {
+        "path": "src/engine/vendor/pallet/scenarios.ts",
+        "sha256": "f0ceffd078219c6dcb39474514c118b402dd1e6d7c191a4d5559ae1ae8a2e588"
+      },
+      {
+        "path": "src/engine/vendor/pallet/stability.ts",
+        "sha256": "4302e1a0d02ff747008607cf22528d99706ae31461016572a67fec300be86752"
+      },
+      {
+        "path": "src/engine/vendor/pallet/standingHeight.ts",
+        "sha256": "c7027709a5fea97d534c0040b2f9e16dddffb28ae5640a98ceb72d70b9fb7d73"
+      },
+      {
+        "path": "src/engine/vendor/pallet/stockPlanner.ts",
+        "sha256": "9aff69789ec3dd3b6108a2d150580a47b1c4c2ea1c400c7acf8e16c460e62060"
+      },
+      {
+        "path": "src/engine/vendor/pallet/strategies/DynamicReservationStrategy.ts",
+        "sha256": "9434c83e4293b397489904d9f2fd8e3ce0fcd3fdee152cfe425f871f259b5864"
+      },
+      {
+        "path": "src/engine/vendor/pallet/strategies/GreedyStrategy.ts",
+        "sha256": "6e4186a16d6516385fe30419bda165c273094ecf893c5c6d7baca93e0c6c45f5"
+      },
+      {
+        "path": "src/engine/vendor/pallet/strategies/HybridStrategy.ts",
+        "sha256": "d31696f1b9f72eb6b0be69184f92e10223a32eb8d2d00106c024d35092cb9649"
+      },
+      {
+        "path": "src/engine/vendor/pallet/strategies/LookaheadStrategy.ts",
+        "sha256": "1bfb774f9ee0c67f60da427a40007722f9bcca156f12829b52eb874aad738340"
+      },
+      {
+        "path": "src/engine/vendor/pallet/strategies/MacsStrategy.ts",
+        "sha256": "4518e6ead05dc3a402d89dcf00e77f8d0713c30abe8294400079c342a749b41d"
+      },
+      {
+        "path": "src/engine/vendor/pallet/strategies/PackingStrategy.ts",
+        "sha256": "f7c6125ef8335b3a84d6c015ddc285ed517c7ff0d60b1ee6dc9e0e1f4ef211e0"
+      },
+      {
+        "path": "src/engine/vendor/pallet/strategies/TetrisReservationStrategy.ts",
+        "sha256": "d1f6f5bcf44dc21ac5e9d14691a0c3f46f4f2e9292b9d161f38f6d4ff93d63c7"
+      },
+      {
+        "path": "src/engine/vendor/pallet/strategies/currentScore.ts",
+        "sha256": "c328a3a5b61b9c5e314447a244be52f0a63f3767bd52c9674c5cb12f17b605a4"
+      },
+      {
+        "path": "src/engine/vendor/pallet/strategies/demo.ts",
+        "sha256": "3e6a4add342b94e40cf20724b046730e24ad26a29642f0a42ab7b24d89cf3b78"
+      },
+      {
+        "path": "src/engine/vendor/pallet/strategies/evaluator.ts",
+        "sha256": "4012b5053dde03a8d7960517f7200d6a72ee1d7c168ff9fbdb1aea0c847b91fd"
+      },
+      {
+        "path": "src/engine/vendor/pallet/strategies/feasibility.ts",
+        "sha256": "f7721d81f37b6c44aa135fabb030ae264d6e8071e0c4f3e917188bc398c4ea1f"
+      },
+      {
+        "path": "src/engine/vendor/pallet/strategies/freeSpace.ts",
+        "sha256": "8b281778a868d6568e3902898e20854000059d6797557bf99b233d96177c9969"
+      },
+      {
+        "path": "src/engine/vendor/pallet/strategies/index.ts",
+        "sha256": "596f223fe8bf5e4e6561b76e5ae164fbb6ff7fb539bd8e43848249f3a0d1ff30"
+      },
+      {
+        "path": "src/engine/vendor/pallet/strategies/lookaheadSimulation.ts",
+        "sha256": "af79c22852f3e6c803a5076bc1e124bb18d49e0eb008a2f3973b1f91f18eef8b"
+      },
+      {
+        "path": "src/engine/vendor/pallet/strategies/metrics.ts",
+        "sha256": "81dbba69a426e05dc6543add4bd0ca25acc8109402496a1f5c9a88b3938466cd"
+      },
+      {
+        "path": "src/engine/vendor/pallet/surface.ts",
+        "sha256": "e1cdadb7d4faec51537b6a71c9209c62fe98db114437b67f29383cb83211ac41"
+      },
+      {
+        "path": "src/engine/vendor/pallet/temporaryBuffer.ts",
+        "sha256": "d726f343a6d0149e3441e494905a5612b770948ee2591cbcf8c27cea4f04d1c0"
+      },
+      {
+        "path": "src/engine/vendor/pallet/tiltRobot.ts",
+        "sha256": "4e410a3f906d6924db6566ceef6754da2b045d5ba3b11577234e90b12ea5c17f"
+      },
+      {
+        "path": "src/engine/vendor/pallet/types.ts",
+        "sha256": "7608a5f37423408f41f78f8e0a46ba4ca1afb07f61ad99cdabdab9046f7bb242"
+      },
+      {
+        "path": "src/engine/vendor/provenance.json",
+        "sha256": "5207c0af2cc45247eaba496aac38caac41ea6990ddda8de560bee7db85f57b0f"
+      },
+      {
+        "path": "src/metrics/benchmark.ts",
+        "sha256": "2f2388b8d16ac72e8e8206375713ab4938d02dda7f1409cbac5976eb9b309fa5"
+      },
+      {
+        "path": "src/metrics/from-trial.ts",
+        "sha256": "ef0c391a817bdc0f605205a01e8423db04acc1be684504a76d26e8cc4a06dcdf"
+      },
+      {
+        "path": "src/metrics/quality.ts",
+        "sha256": "79046a1f09c3e60034b9f4fd9b48a5063987a4536811cf69b4bdeaf48ad3a87c"
+      },
+      {
+        "path": "src/metrics/statistics.ts",
+        "sha256": "e35f498159139288f39e825eca9e1f5e9f59db4e9663fcc3897e80f6b05c5a30"
+      },
+      {
+        "path": "scripts/benchmark.ts",
+        "sha256": "1ab2e7b02d4fb6f00de755df5c65540b6fc02e5b9971e248720a6c774c1bffb0"
+      },
+      {
+        "path": "scripts/benchmark-worker.ts",
+        "sha256": "f35172b9df07f7b49ca1d75b8aa570b410c8f75be54d431893cdae000aedf41b"
+      }
+    ],
+    "environment": {
+      "platform": "darwin",
+      "arch": "arm64",
+      "cpu": "Apple M5",
+      "node": "v24.14.1"
+    },
+    "engineTransport": "Node worker_threads with shared createPlannerSupervisor and canonical executePlanning",
+    "warmup": "separate 6-box seed 99100 per algorithm; excluded",
+    "timingUnit": "wall-clock milliseconds"
+  },
+  "config": {
+    "cycleSeconds": 10,
+    "recognitionDelaySeconds": 0,
+    "reserveSeconds": 1,
+    "maxHeightMm": 1200,
+    "quantityPerSku": 1,
+    "searchBudgetMs": null,
+    "maxCandidates": 48,
+    "mcts": {
+      "depth": 3,
+      "scenarios": 3,
+      "maxIterations": 384
+    }
+  },
+  "excludedFromBenchmark": true,
+  "rows": [
+    {
+      "algorithm": "blb",
+      "elapsedMs": 52.020375,
+      "status": "finished",
+      "fill": 0.10769166666666667,
+      "count": 6,
+      "maxDecisionMs": 8.996958,
+      "deadlineMisses": 0,
+      "violations": [],
+      "decisions": 6
+    },
+    {
+      "algorithm": "capacity-compact",
+      "elapsedMs": 21.836083000000002,
+      "status": "finished",
+      "fill": 0.10769166666666667,
+      "count": 6,
+      "maxDecisionMs": 4.589292,
+      "deadlineMisses": 0,
+      "violations": [],
+      "decisions": 6
+    },
+    {
+      "algorithm": "strategy-greedy",
+      "elapsedMs": 19.508250000000004,
+      "status": "finished",
+      "fill": 0.10769166666666667,
+      "count": 6,
+      "maxDecisionMs": 3.995584000000008,
+      "deadlineMisses": 0,
+      "violations": [],
+      "decisions": 6
+    },
+    {
+      "algorithm": "lookahead",
+      "elapsedMs": 57.24766700000001,
+      "status": "finished",
+      "fill": 0.10769166666666667,
+      "count": 6,
+      "maxDecisionMs": 13.246625000000023,
+      "deadlineMisses": 0,
+      "violations": [],
+      "decisions": 6
+    },
+    {
+      "algorithm": "future-hybrid",
+      "elapsedMs": 144.788875,
+      "status": "finished",
+      "fill": 0.10769166666666667,
+      "count": 6,
+      "maxDecisionMs": 41.94562500000001,
+      "deadlineMisses": 0,
+      "violations": [],
+      "decisions": 6
+    },
+    {
+      "algorithm": "mcts",
+      "elapsedMs": 1221.1049589999998,
+      "status": "finished",
+      "fill": 0.10769166666666667,
+      "count": 6,
+      "maxDecisionMs": 422.251541,
+      "deadlineMisses": 0,
+      "violations": [],
+      "decisions": 6
+    }
+  ]
+}

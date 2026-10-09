@@ -1,0 +1,782 @@
+[
+  {
+    "seed": 41,
+    "central": false,
+    "placed": 12,
+    "input": 12,
+    "peak": 3,
+    "seconds": 136.25,
+    "planningMs": 1096.8401000000013,
+    "checks": 126,
+    "decisions": 137,
+    "complete": true,
+    "unplaced": [],
+    "records": [
+      {
+        "step": 1,
+        "kind": "place",
+        "robot": 0,
+        "boxId": "M007-01",
+        "from": 0,
+        "reason": "지지·하중·높이 통과 · 후속 막힘 표본 0/2 · 이동 중 추적 집기",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "started": 14.25,
+        "finished": 24.77587841300605
+      },
+      {
+        "step": 2,
+        "kind": "place",
+        "robot": 1,
+        "boxId": "M001-01",
+        "from": 1,
+        "reason": "지지·하중·높이 통과 · 후속 막힘 표본 0/2 · 이동 중 추적 집기",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "started": 22.25,
+        "finished": 32.66917163084445
+      },
+      {
+        "step": 3,
+        "kind": "place",
+        "robot": 0,
+        "boxId": "M012-01",
+        "from": 0,
+        "reason": "지지·하중·높이 통과 · 후속 막힘 표본 0/2 · 이동 중 추적 집기",
+        "position": {
+          "x": 411,
+          "y": 0,
+          "z": 0
+        },
+        "started": 25.25,
+        "finished": 36.472280746753164
+      },
+      {
+        "step": 4,
+        "kind": "place",
+        "robot": 1,
+        "boxId": "M008-01",
+        "from": 1,
+        "reason": "지지·하중·높이 통과 · 후속 막힘 표본 0/3 · 이동 중 추적 집기",
+        "position": {
+          "x": 0,
+          "y": 467,
+          "z": 0
+        },
+        "started": 37.25,
+        "finished": 47.4402834588275
+      },
+      {
+        "step": 5,
+        "kind": "place",
+        "robot": 0,
+        "boxId": "M003-01",
+        "from": 0,
+        "reason": "지지·하중·높이 통과 · 후속 막힘 표본 0/3 · 이동 중 추적 집기",
+        "position": {
+          "x": 748,
+          "y": 0,
+          "z": 0
+        },
+        "started": 37.25,
+        "finished": 48.832886101908265
+      },
+      {
+        "step": 6,
+        "kind": "place",
+        "robot": 2,
+        "boxId": "M011-01",
+        "from": 2,
+        "reason": "지지·하중·높이 통과 · 후속 막힘 표본 0/3 · 이동 중 추적 집기",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "started": 46.25,
+        "finished": 55.24104253416975
+      },
+      {
+        "step": 7,
+        "kind": "place",
+        "robot": 0,
+        "boxId": "M002-01",
+        "from": 0,
+        "reason": "지지·하중·높이 통과 · 후속 막힘 표본 0/2 · 이동 중 추적 집기",
+        "position": {
+          "x": 56,
+          "y": 0,
+          "z": 315
+        },
+        "started": 49.25,
+        "finished": 59.501566635248984
+      },
+      {
+        "step": 8,
+        "kind": "place",
+        "robot": 0,
+        "boxId": "M010-01",
+        "from": 0,
+        "reason": "지지·하중·높이 통과 · 후속 막힘 표본 0/3 · 이동 중 추적 집기",
+        "position": {
+          "x": 934,
+          "y": 0,
+          "z": 0
+        },
+        "started": 60.25,
+        "finished": 73.29279718766152
+      },
+      {
+        "step": 9,
+        "kind": "place",
+        "robot": 1,
+        "boxId": "M004-01",
+        "from": 1,
+        "reason": "지지·하중·높이 통과 · 후속 막힘 표본 0/3 · 이동 중 추적 집기",
+        "position": {
+          "x": 0,
+          "y": 828,
+          "z": 0
+        },
+        "started": 69.25,
+        "finished": 80.04178924410704
+      },
+      {
+        "step": 10,
+        "kind": "place",
+        "robot": 1,
+        "boxId": "M006-01",
+        "from": 1,
+        "reason": "지지·하중·높이 통과 · 후속 막힘 표본 0/2 · 이동 중 추적 집기",
+        "position": {
+          "x": 318,
+          "y": 467,
+          "z": 199
+        },
+        "started": 80.25,
+        "finished": 89.62160948197473
+      },
+      {
+        "step": 11,
+        "kind": "place",
+        "robot": 3,
+        "boxId": "M005-01",
+        "from": 3,
+        "reason": "지지·하중·높이 통과 · 후속 막힘 표본 0/1 · 이동 중 추적 집기",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "started": 86.25,
+        "finished": 101.26158868461667
+      },
+      {
+        "step": 12,
+        "kind": "place",
+        "robot": 3,
+        "boxId": "M009-01",
+        "from": 3,
+        "reason": "지지·하중·높이 통과 · 후속 막힘 표본 0/0 · 이동 중 추적 집기",
+        "position": {
+          "x": 326,
+          "y": 0,
+          "z": 0
+        },
+        "started": 102.25,
+        "finished": 115.05032233083728
+      }
+    ]
+  },
+  {
+    "seed": 41,
+    "central": true,
+    "placed": 12,
+    "input": 12,
+    "peak": 3,
+    "seconds": 136.25,
+    "planningMs": 953.7892000000038,
+    "checks": 126,
+    "decisions": 137,
+    "complete": true,
+    "unplaced": [],
+    "records": [
+      {
+        "step": 1,
+        "kind": "place",
+        "robot": 0,
+        "boxId": "M007-01",
+        "from": 0,
+        "reason": "중앙 배정 · 지지·하중·높이 통과 · 후속 막힘 표본 0/2 · 이동 중 추적 집기",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "started": 14.25,
+        "finished": 24.77587841300605
+      },
+      {
+        "step": 2,
+        "kind": "place",
+        "robot": 1,
+        "boxId": "M001-01",
+        "from": 1,
+        "reason": "중앙 배정 · 지지·하중·높이 통과 · 후속 막힘 표본 0/2 · 이동 중 추적 집기",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "started": 22.25,
+        "finished": 32.66917163084445
+      },
+      {
+        "step": 3,
+        "kind": "place",
+        "robot": 0,
+        "boxId": "M012-01",
+        "from": 0,
+        "reason": "중앙 배정 · 지지·하중·높이 통과 · 후속 막힘 표본 0/2 · 이동 중 추적 집기",
+        "position": {
+          "x": 411,
+          "y": 0,
+          "z": 0
+        },
+        "started": 25.25,
+        "finished": 36.472280746753164
+      },
+      {
+        "step": 4,
+        "kind": "place",
+        "robot": 1,
+        "boxId": "M008-01",
+        "from": 1,
+        "reason": "중앙 배정 · 지지·하중·높이 통과 · 후속 막힘 표본 0/3 · 이동 중 추적 집기",
+        "position": {
+          "x": 0,
+          "y": 467,
+          "z": 0
+        },
+        "started": 37.25,
+        "finished": 47.4402834588275
+      },
+      {
+        "step": 5,
+        "kind": "place",
+        "robot": 0,
+        "boxId": "M003-01",
+        "from": 0,
+        "reason": "중앙 배정 · 지지·하중·높이 통과 · 후속 막힘 표본 0/3 · 이동 중 추적 집기",
+        "position": {
+          "x": 748,
+          "y": 0,
+          "z": 0
+        },
+        "started": 37.25,
+        "finished": 48.832886101908265
+      },
+      {
+        "step": 6,
+        "kind": "place",
+        "robot": 2,
+        "boxId": "M011-01",
+        "from": 2,
+        "reason": "중앙 배정 · 지지·하중·높이 통과 · 후속 막힘 표본 0/3 · 이동 중 추적 집기",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "started": 46.25,
+        "finished": 55.24104253416975
+      },
+      {
+        "step": 7,
+        "kind": "place",
+        "robot": 0,
+        "boxId": "M002-01",
+        "from": 0,
+        "reason": "중앙 배정 · 지지·하중·높이 통과 · 후속 막힘 표본 0/2 · 이동 중 추적 집기",
+        "position": {
+          "x": 56,
+          "y": 0,
+          "z": 315
+        },
+        "started": 49.25,
+        "finished": 59.501566635248984
+      },
+      {
+        "step": 8,
+        "kind": "place",
+        "robot": 0,
+        "boxId": "M010-01",
+        "from": 0,
+        "reason": "중앙 배정 · 지지·하중·높이 통과 · 후속 막힘 표본 0/3 · 이동 중 추적 집기",
+        "position": {
+          "x": 934,
+          "y": 0,
+          "z": 0
+        },
+        "started": 60.25,
+        "finished": 73.29279718766152
+      },
+      {
+        "step": 9,
+        "kind": "place",
+        "robot": 1,
+        "boxId": "M004-01",
+        "from": 1,
+        "reason": "중앙 배정 · 지지·하중·높이 통과 · 후속 막힘 표본 0/3 · 이동 중 추적 집기",
+        "position": {
+          "x": 0,
+          "y": 828,
+          "z": 0
+        },
+        "started": 69.25,
+        "finished": 80.04178924410704
+      },
+      {
+        "step": 10,
+        "kind": "place",
+        "robot": 1,
+        "boxId": "M006-01",
+        "from": 1,
+        "reason": "중앙 배정 · 지지·하중·높이 통과 · 후속 막힘 표본 0/2 · 이동 중 추적 집기",
+        "position": {
+          "x": 318,
+          "y": 467,
+          "z": 199
+        },
+        "started": 80.25,
+        "finished": 89.62160948197473
+      },
+      {
+        "step": 11,
+        "kind": "place",
+        "robot": 3,
+        "boxId": "M005-01",
+        "from": 3,
+        "reason": "중앙 배정 · 지지·하중·높이 통과 · 후속 막힘 표본 0/1 · 이동 중 추적 집기",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "started": 86.25,
+        "finished": 101.26158868461667
+      },
+      {
+        "step": 12,
+        "kind": "place",
+        "robot": 3,
+        "boxId": "M009-01",
+        "from": 3,
+        "reason": "중앙 배정 · 지지·하중·높이 통과 · 후속 막힘 표본 0/0 · 이동 중 추적 집기",
+        "position": {
+          "x": 326,
+          "y": 0,
+          "z": 0
+        },
+        "started": 102.25,
+        "finished": 115.05032233083728
+      }
+    ]
+  },
+  {
+    "seed": 42,
+    "central": false,
+    "placed": 12,
+    "input": 12,
+    "peak": 2,
+    "seconds": 216.25,
+    "planningMs": 867.5156999999917,
+    "checks": 97,
+    "decisions": 217,
+    "complete": true,
+    "unplaced": [],
+    "records": [
+      {
+        "step": 1,
+        "kind": "place",
+        "robot": 0,
+        "boxId": "M007-01",
+        "from": 0,
+        "reason": "지지·하중·높이 통과 · 후속 막힘 표본 0/2 · 이동 중 추적 집기",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "started": 15.25,
+        "finished": 24.48406409696236
+      },
+      {
+        "step": 2,
+        "kind": "place",
+        "robot": 1,
+        "boxId": "M006-01",
+        "from": 1,
+        "reason": "지지·하중·높이 통과 · 후속 막힘 표본 0/2 · 이동 중 추적 집기",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "started": 22.25,
+        "finished": 31.944446580480474
+      },
+      {
+        "step": 3,
+        "kind": "place",
+        "robot": 0,
+        "boxId": "M001-01",
+        "from": 0,
+        "reason": "지지·하중·높이 통과 · 후속 막힘 표본 0/2 · 이동 중 추적 집기",
+        "position": {
+          "x": 0,
+          "y": 364,
+          "z": 0
+        },
+        "started": 26.25,
+        "finished": 36.32987221019489
+      },
+      {
+        "step": 4,
+        "kind": "place",
+        "robot": 1,
+        "boxId": "M012-01",
+        "from": 1,
+        "reason": "지지·하중·높이 통과 · 후속 막힘 표본 0/2 · 이동 중 추적 집기",
+        "position": {
+          "x": 0,
+          "y": 228,
+          "z": 0
+        },
+        "started": 32.25,
+        "finished": 43.70165809714839
+      },
+      {
+        "step": 5,
+        "kind": "place",
+        "robot": 0,
+        "boxId": "M004-01",
+        "from": 0,
+        "reason": "지지·하중·높이 통과 · 후속 막힘 표본 0/2 · 이동 중 추적 집기",
+        "position": {
+          "x": 102,
+          "y": 607,
+          "z": 0
+        },
+        "started": 37.25,
+        "finished": 48.207158392261576
+      },
+      {
+        "step": 6,
+        "kind": "place",
+        "robot": 1,
+        "boxId": "M009-01",
+        "from": 1,
+        "reason": "지지·하중·높이 통과 · 후속 막힘 표본 0/3 · 이동 중 추적 집기",
+        "position": {
+          "x": 343,
+          "y": 53,
+          "z": 0
+        },
+        "started": 48.25,
+        "finished": 57.71772553812312
+      },
+      {
+        "step": 7,
+        "kind": "place",
+        "robot": 0,
+        "boxId": "M002-01",
+        "from": 0,
+        "reason": "지지·하중·높이 통과 · 후속 막힘 표본 0/3 · 이동 중 추적 집기",
+        "position": {
+          "x": 137,
+          "y": 767,
+          "z": 0
+        },
+        "started": 48.25,
+        "finished": 59.72771853192411
+      },
+      {
+        "step": 8,
+        "kind": "place",
+        "robot": 1,
+        "boxId": "M005-01",
+        "from": 1,
+        "reason": "지지·하중·높이 통과 · 후속 막힘 표본 0/3 · 이동 중 추적 집기",
+        "position": {
+          "x": 600,
+          "y": 59,
+          "z": 0
+        },
+        "started": 59.25,
+        "finished": 69.19129800508681
+      },
+      {
+        "step": 9,
+        "kind": "place",
+        "robot": 0,
+        "boxId": "M010-01",
+        "from": 0,
+        "reason": "지지·하중·높이 통과 · 후속 막힘 표본 0/2 · 이동 중 추적 집기",
+        "position": {
+          "x": 102,
+          "y": 194,
+          "z": 133
+        },
+        "started": 60.25,
+        "finished": 69.81273580623935
+      },
+      {
+        "step": 10,
+        "kind": "place",
+        "robot": 1,
+        "boxId": "M011-01",
+        "from": 1,
+        "reason": "지지·하중·높이 통과 · 후속 막힘 표본 0/2 · 이동 중 추적 집기",
+        "position": {
+          "x": 733,
+          "y": 228,
+          "z": 0
+        },
+        "started": 71.25,
+        "finished": 81.81381419983755
+      },
+      {
+        "step": 11,
+        "kind": "place",
+        "robot": 1,
+        "boxId": "M008-01",
+        "from": 1,
+        "reason": "지지·하중·높이 통과 · 후속 막힘 표본 0/1 · 이동 중 추적 집기",
+        "position": {
+          "x": 733,
+          "y": 228,
+          "z": 175
+        },
+        "started": 82.25,
+        "finished": 92.72097341702599
+      },
+      {
+        "step": 12,
+        "kind": "place",
+        "robot": 0,
+        "boxId": "M003-01",
+        "from": 0,
+        "reason": "지지·하중·높이 통과 · 후속 막힘 표본 0/0 · 이동 중 추적 집기",
+        "position": {
+          "x": 628,
+          "y": 607,
+          "z": 0
+        },
+        "started": 183.25,
+        "finished": 194.56102881517134
+      }
+    ]
+  },
+  {
+    "seed": 42,
+    "central": true,
+    "placed": 12,
+    "input": 12,
+    "peak": 2,
+    "seconds": 216.25,
+    "planningMs": 805.1314999999995,
+    "checks": 97,
+    "decisions": 217,
+    "complete": true,
+    "unplaced": [],
+    "records": [
+      {
+        "step": 1,
+        "kind": "place",
+        "robot": 0,
+        "boxId": "M007-01",
+        "from": 0,
+        "reason": "중앙 배정 · 지지·하중·높이 통과 · 후속 막힘 표본 0/2 · 이동 중 추적 집기",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "started": 15.25,
+        "finished": 24.48406409696236
+      },
+      {
+        "step": 2,
+        "kind": "place",
+        "robot": 1,
+        "boxId": "M006-01",
+        "from": 1,
+        "reason": "중앙 배정 · 지지·하중·높이 통과 · 후속 막힘 표본 0/2 · 이동 중 추적 집기",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "started": 22.25,
+        "finished": 31.944446580480474
+      },
+      {
+        "step": 3,
+        "kind": "place",
+        "robot": 0,
+        "boxId": "M001-01",
+        "from": 0,
+        "reason": "중앙 배정 · 지지·하중·높이 통과 · 후속 막힘 표본 0/2 · 이동 중 추적 집기",
+        "position": {
+          "x": 0,
+          "y": 364,
+          "z": 0
+        },
+        "started": 26.25,
+        "finished": 36.32987221019489
+      },
+      {
+        "step": 4,
+        "kind": "place",
+        "robot": 1,
+        "boxId": "M012-01",
+        "from": 1,
+        "reason": "중앙 배정 · 지지·하중·높이 통과 · 후속 막힘 표본 0/2 · 이동 중 추적 집기",
+        "position": {
+          "x": 0,
+          "y": 228,
+          "z": 0
+        },
+        "started": 32.25,
+        "finished": 43.70165809714839
+      },
+      {
+        "step": 5,
+        "kind": "place",
+        "robot": 0,
+        "boxId": "M004-01",
+        "from": 0,
+        "reason": "중앙 배정 · 지지·하중·높이 통과 · 후속 막힘 표본 0/2 · 이동 중 추적 집기",
+        "position": {
+          "x": 102,
+          "y": 607,
+          "z": 0
+        },
+        "started": 37.25,
+        "finished": 48.207158392261576
+      },
+      {
+        "step": 6,
+        "kind": "place",
+        "robot": 1,
+        "boxId": "M009-01",
+        "from": 1,
+        "reason": "중앙 배정 · 지지·하중·높이 통과 · 후속 막힘 표본 0/3 · 이동 중 추적 집기",
+        "position": {
+          "x": 343,
+          "y": 53,
+          "z": 0
+        },
+        "started": 48.25,
+        "finished": 57.71772553812312
+      },
+      {
+        "step": 7,
+        "kind": "place",
+        "robot": 0,
+        "boxId": "M002-01",
+        "from": 0,
+        "reason": "중앙 배정 · 지지·하중·높이 통과 · 후속 막힘 표본 0/3 · 이동 중 추적 집기",
+        "position": {
+          "x": 137,
+          "y": 767,
+          "z": 0
+        },
+        "started": 48.25,
+        "finished": 59.72771853192411
+      },
+      {
+        "step": 8,
+        "kind": "place",
+        "robot": 1,
+        "boxId": "M005-01",
+        "from": 1,
+        "reason": "중앙 배정 · 지지·하중·높이 통과 · 후속 막힘 표본 0/3 · 이동 중 추적 집기",
+        "position": {
+          "x": 600,
+          "y": 59,
+          "z": 0
+        },
+        "started": 59.25,
+        "finished": 69.19129800508681
+      },
+      {
+        "step": 9,
+        "kind": "place",
+        "robot": 0,
+        "boxId": "M010-01",
+        "from": 0,
+        "reason": "중앙 배정 · 지지·하중·높이 통과 · 후속 막힘 표본 0/2 · 이동 중 추적 집기",
+        "position": {
+          "x": 102,
+          "y": 194,
+          "z": 133
+        },
+        "started": 60.25,
+        "finished": 69.81273580623935
+      },
+      {
+        "step": 10,
+        "kind": "place",
+        "robot": 1,
+        "boxId": "M011-01",
+        "from": 1,
+        "reason": "중앙 배정 · 지지·하중·높이 통과 · 후속 막힘 표본 0/2 · 이동 중 추적 집기",
+        "position": {
+          "x": 733,
+          "y": 228,
+          "z": 0
+        },
+        "started": 71.25,
+        "finished": 81.81381419983755
+      },
+      {
+        "step": 11,
+        "kind": "place",
+        "robot": 1,
+        "boxId": "M008-01",
+        "from": 1,
+        "reason": "중앙 배정 · 지지·하중·높이 통과 · 후속 막힘 표본 0/1 · 이동 중 추적 집기",
+        "position": {
+          "x": 733,
+          "y": 228,
+          "z": 175
+        },
+        "started": 82.25,
+        "finished": 92.72097341702599
+      },
+      {
+        "step": 12,
+        "kind": "place",
+        "robot": 0,
+        "boxId": "M003-01",
+        "from": 0,
+        "reason": "중앙 배정 · 지지·하중·높이 통과 · 후속 막힘 표본 0/0 · 이동 중 추적 집기",
+        "position": {
+          "x": 628,
+          "y": 607,
+          "z": 0
+        },
+        "started": 183.25,
+        "finished": 194.56102881517134
+      }
+    ]
+  }
+]

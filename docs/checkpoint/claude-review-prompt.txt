@@ -1,0 +1,17 @@
+한국어로 로봇 혼합 팔레타이징 설계를 비판적으로 검토해 주세요. 아래는 사용자가 요청한 공개 데모와 연구 내용의 요약입니다. 구현이나 실측 결과라고 꾸미지 말고, 수학적 오류와 실험 설계의 함정을 우선 찾아 주세요.
+
+목표: 점수 기반 패턴 평가, 계산량 단순화, 다중 로봇 중앙 오케스트레이터 설계.
+공개 데모 https://pallet-loading-lab.eon3602.chatgpt.site/?palletDemo=compact&v=17&palletView=relay#pallet 은 순환 컨베이어와 독립 팔레트가 있는 4개 작업셀. 작업셀 진입 박스만 각 셀에서 선별하고 놓친 박스는 다음 셀에서 판단. 로봇/박스/겹치는 운반 경로 예약 이미 존재. 기본 후보 64개, 관측된 후속 박스 최대 3개. 바닥 지지 92% 이상, 무게중심 지지영역, 누적 하중/재질/회전/전도, 툴/화물 경로 근사 검사를 표시. 균등 질량 직육면체, 수평 강체 접촉. 실제 관절 IK/전체 링크 충돌/흡착/포장 변형 미검증. 모든 계산은 브라우저 로컬. 사용자는 예시로 3개 로봇을 들어 중앙에서 남은 공간과 받아야 할 박스를 고려해 다음 작업 로봇을 정하길 원함.
+
+논문 Zhu, Fu, Zhou (2024), 3D dynamic heterogeneous robotic palletization problem, EJOR 316, 584–596, DOI 10.1016/j.ejor.2024.02.007. 하나의 팔로 여러 열린 팔레트를 선택. 관측 가능한 Nk와 실제 집기 가능한 Nb를 구별. 최대 빈 직육면체, 탐색/Monte Carlo와 단순 로봇 경로. 지지면적 비율만으로 안정성 판단 불충분. 바닥 4구역 중 3개 지지 휴리스틱을 쓰지만 반례 존재. 163,200개 단계의 SME 비교 중 2,256개 불일치(1.4% 미만); 실제 낙하 확률 아님. 후보 검색에는 근사, 실행 전 선택된 배치에 정밀 SME 검사 후 탈락 시 다음 후보를 제안. 논문은 가벼운 박스와 특정 진공 그리퍼/연장봉 기구 전제; 다중 팔 조율의 증거는 아님.
+
+검토할 제안:
+1. 경계/겹침/허용하중/안정성/관측/집기 시간창/예약 충돌 hard constraints 선검사. 유효 후보만 점수 비교.
+2. KPI는 전체 공급 물량 처리율, 사용 팔레트 수(마지막 부분 팔레트 포함), 고정 용량 이용률 sum(V)/(P*L*W*Hmax), makespan/처리량, 의사결정 p50/p95/p99와 deadline miss, 재순환/대기/교체, 정밀 재검사 탈락률. 패턴을 고르는 점수와 KPI는 구분. 같은 박스를 동일 용량의 팔레트 중 하나에 놓는 즉시 전체 이용률 증가량은 동일하여 배정 점수로 변별력 없음.
+3. 후보는 (box, robot, pallet, pose, start time). 중앙은 관측 상태만 사용하고 각 로봇의 유효 후보 top 3~5개를 수집, 남은 공간의 형태/미래 관측 박스 수용 손실, 완료시각, 하중 및 지지여유, 재순환 위험을 평가. 독립 셀은 동시 실행 가능. versioned state/atomic reservation/actual completion feedback 필요.
+4. 공간은 extreme points 또는 maximal empty spaces; 2D height map은 가려진 공간을 누락하므로 1차 필터. 전체 무게중심은 누적 질량/모멘트로 O(1) 갱신, 지지/하중은 접촉 그래프의 영향받는 하위 연결을 갱신하되 하중 재분배 주의, 면적비 분배만으로 정밀 평형 보장하지 않음. convex hull 내부의 무게중심 또는 상부 하중을 포함한 합력 작용점과 signed margin 확인.
+5. 3 arms * 3 observed boxes * 2 rotations * 20 positions = 360 candidates per event. 기존 n=100 boxes 단순 AABB 비교시 36,000 pair checks. 4 arms는 480 / 48,000. 이것은 연산 수 예시일 뿐 ms 측정 아님. exhaustive joint 21 choices per arm = 9,261 combinations for 3 arms; shortlist 5+idle => 216, 4 arms=>1,296. temporal/geometry conflict 확인은 별도 비용. 병렬화로 복잡도가 사라지지 않음. sparse conflicts, branch pruning, small horizon, spatial hash, caching, event-based replan 활용.
+6. 점수는 고정 기준으로 정규화된 가중합을 초기 baseline으로 쓰되 강제 제약을 점수로 상쇄하지 않기. weight tuning은 train seeds에서 하고 held-out seeds로 비교. 계산시간 다 써버리면 이미 정밀 검증된 유효 후보 반환, 없으면 보류/재순환. timeout과 infeasible 구별.
+7. Claude API는 실시간 제어 경로 밖에서 설계/코드 검토, 실패 분석, 점수 가중치 후보 및 실험 생성. 실시간 좌표/안전 승인은 결정론적 엔진. API token budget은 물리 탐색 compute나 control latency를 대체하지 않음.
+
+답변: 제안의 핵심 수정사항 5개 이내, 권장 점수식과 각 항목 정규화, 더 정확한 계산복잡도 표현, 최소 비교실험과 반례 3개. 실제 데이터 없이 붕괴 확률이나 실행시간을 만들어내지 마세요.

@@ -1,0 +1,787 @@
+{
+  "schema": "alps-claude-execution/1",
+  "case": "hrpal",
+  "status": "not_evaluated",
+  "startedAt": "2026-10-09T17:46:14.050Z",
+  "finishedAt": "2026-10-09T17:46:14.053Z",
+  "wallSeconds": 0.002132332999999996,
+  "provenance": {
+    "inputPath": "public/presentation-example.json",
+    "inputSha256": "d41000f55d800b200450895bc3a41e8f352ba75f542894394e5f10a023d4a323",
+    "modelSchema": "alps-complete-order/2",
+    "sourceHashes": {
+      "src/pallet/presentation/model.ts": "9318ac9c5a933bb34233ca0f8344f292da43795b95e5d667b95803a9e549e7bf",
+      "src/pallet/capacity/experiment.ts": "f5f9c0e150771d3295064bcf68fb8065556340918a923ae894c7d4dd26b857db"
+    },
+    "sourceCommit": "b582caa52e2245f40f2c9fba0f770887c3a9e8c2",
+    "scriptSha256": "0fe51bd99a2233e988ababeee2bcedc35dd20d91b79ed2cacc815695b8383253",
+    "bundleSha256": "31e1a079668efe67bcea75e1fb14a99c9cc5f3484e6452a725fb0e501fbde244",
+    "inputCreatedAt": "2026-10-09T17:29:12.183Z",
+    "inputExtendedAt": "2026-10-09T17:35:50.198Z"
+  },
+  "environment": {
+    "os": "darwin",
+    "arch": "arm64",
+    "release": "25.6.0",
+    "cpu": "Apple M5",
+    "logicalCpus": 10,
+    "node": "v24.14.1",
+    "execution": "serial synchronous calls in one Node process; measured elapsed time, not isolated CPU time"
+  },
+  "config": {
+    "packing": {
+      "scenario": {
+        "version": 1,
+        "units": {
+          "length": "mm",
+          "weight": "kg",
+          "time": "s"
+        },
+        "id": "team-retail-capacity",
+        "name": "팀 논의 · 대형마트 6품목",
+        "pallet": {
+          "width": 1200,
+          "depth": 1000,
+          "maxHeight": 1200,
+          "robotLayout": {
+            "count": 1,
+            "architecture": "floor",
+            "floorCount": 1
+          }
+        },
+        "types": [
+          {
+            "id": "S1",
+            "name": "생수",
+            "size": {
+              "w": 400,
+              "d": 300,
+              "h": 280
+            },
+            "weight": 12,
+            "maxLoadKg": 85,
+            "maxLoadSource": "synthetic",
+            "quantity": 4,
+            "color": "#bf8c43",
+            "orientations": [
+              0,
+              90
+            ],
+            "handling": "upright",
+            "material": "paper",
+            "friction": 0.45
+          },
+          {
+            "id": "S2",
+            "name": "과자",
+            "size": {
+              "w": 500,
+              "d": 340,
+              "h": 250
+            },
+            "weight": 3,
+            "maxLoadKg": 24,
+            "maxLoadSource": "synthetic",
+            "quantity": 4,
+            "color": "#bf8c43",
+            "orientations": [
+              0,
+              90
+            ],
+            "handling": "upright",
+            "material": "paper",
+            "friction": 0.45
+          },
+          {
+            "id": "S3",
+            "name": "세제",
+            "size": {
+              "w": 320,
+              "d": 240,
+              "h": 320
+            },
+            "weight": 8,
+            "maxLoadKg": 55,
+            "maxLoadSource": "synthetic",
+            "quantity": 4,
+            "color": "#479b92",
+            "orientations": [
+              0,
+              90
+            ],
+            "handling": "upright",
+            "material": "paper",
+            "friction": 0.45
+          },
+          {
+            "id": "S4",
+            "name": "생활용품",
+            "size": {
+              "w": 400,
+              "d": 300,
+              "h": 220
+            },
+            "weight": 4,
+            "maxLoadKg": 40,
+            "maxLoadSource": "synthetic",
+            "quantity": 4,
+            "color": "#479b92",
+            "orientations": [
+              0,
+              90
+            ],
+            "handling": "upright",
+            "material": "paper",
+            "friction": 0.45
+          },
+          {
+            "id": "S5",
+            "name": "헤어케어",
+            "size": {
+              "w": 300,
+              "d": 250,
+              "h": 240
+            },
+            "weight": 6,
+            "maxLoadKg": 45,
+            "maxLoadSource": "synthetic",
+            "quantity": 4,
+            "color": "#7f8ab9",
+            "orientations": [
+              0,
+              90
+            ],
+            "handling": "upright",
+            "material": "paper",
+            "friction": 0.45
+          },
+          {
+            "id": "S6",
+            "name": "스킨케어",
+            "size": {
+              "w": 250,
+              "d": 200,
+              "h": 200
+            },
+            "weight": 4,
+            "maxLoadKg": 30,
+            "maxLoadSource": "synthetic",
+            "quantity": 4,
+            "color": "#7f8ab9",
+            "orientations": [
+              0,
+              90
+            ],
+            "handling": "upright",
+            "material": "paper",
+            "friction": 0.45
+          }
+        ],
+        "constraints": {
+          "robotMode": "gripper",
+          "supportRatio": 0.85,
+          "contactTolerance": 0.5,
+          "horizontalGap": 0,
+          "heavyRule": "off",
+          "stability": {
+            "maxSlenderness": 2,
+            "minMarginRatio": 0.05,
+            "lateralAccelerationG": 0,
+            "loadSafetyFactor": 1.2,
+            "slendernessMode": "score"
+          },
+          "gripper": {
+            "width": 180,
+            "depth": 160,
+            "height": 160,
+            "mass": 8,
+            "payload": 38,
+            "margin": 5,
+            "lift": 180,
+            "speed": 650,
+            "pickSeconds": 0.7,
+            "placeSeconds": 0.45,
+            "rotationSpeed": 90
+          },
+          "workspace": {
+            "xMin": -1400,
+            "xMax": 1800,
+            "yMin": -600,
+            "yMax": 1600,
+            "zMax": 2600
+          },
+          "reach": {
+            "baseX": -700,
+            "baseY": 500,
+            "minRadius": 0,
+            "maxRadius": 2700
+          },
+          "standingHeight": {
+            "enabled": false,
+            "maxRiseMm": 100
+          }
+        },
+        "arrival": {
+          "seed": 42,
+          "pattern": "random-draw"
+        },
+        "events": [],
+        "supplyMode": "arrival"
+      },
+      "groups": {
+        "S1": 0,
+        "S2": 0,
+        "S3": 1,
+        "S4": 1,
+        "S5": 2,
+        "S6": 2
+      },
+      "settings": {
+        "plannerSeed": 2026,
+        "topK": 4,
+        "samples": 2,
+        "depth": 2,
+        "maxCandidates": 48,
+        "virtualCandidates": 8,
+        "candidateMode": "frontier",
+        "inventoryMode": "geometry",
+        "portfolio": false,
+        "weights": {
+          "maximum": 30,
+          "mean": 16,
+          "roughness": 20,
+          "void": 25,
+          "flat": 8,
+          "balance": 12,
+          "time": 4,
+          "future": 45,
+          "stability": 24,
+          "inventory": 32,
+          "foundation": 24,
+          "load": 12,
+          "contact": 12,
+          "futureSurface": 24
+        },
+        "policy": "online",
+        "reserveProbes": 4,
+        "strategy": {
+          "criticalK": 3,
+          "futureCandidates": 4,
+          "lossMode": "normalized",
+          "lookaheadDepth": 2,
+          "lookaheadSamples": 2,
+          "lookaheadCandidates": 3,
+          "lookaheadMode": "expected",
+          "approach": false,
+          "approachHeight": 250,
+          "approachMargin": 20,
+          "weights": {
+            "compactness": 0.2,
+            "support": 0.15,
+            "stability": 0.15,
+            "centerOfMass": 0.1,
+            "flatness": 0.1,
+            "height": 0.15,
+            "fragmentation": 0.15,
+            "macs": 1,
+            "fpl": 1.5,
+            "deadEnd": 25,
+            "reservation": 20,
+            "lowerSpace": 2,
+            "lookahead": 1
+          },
+          "criticalWeights": {
+            "volume": 1,
+            "aspect": 1,
+            "weight": 1,
+            "orientation": 1,
+            "scarcity": 3
+          }
+        }
+      },
+      "algorithms": [
+        "blb",
+        "capacity-compact",
+        "strategy-greedy",
+        "lookahead",
+        "future-hybrid"
+      ],
+      "heights": [
+        1200
+      ],
+      "discoverySeeds": [
+        42,
+        43
+      ],
+      "holdoutSeeds": [
+        1042,
+        1043
+      ],
+      "bufferCapacity": 0,
+      "decisionMs": 60000,
+      "trialMs": 60000,
+      "groupStrength": 1,
+      "groupHeightSlack": 100
+    },
+    "robotCycleSeconds": 8,
+    "overlapPlanning": true,
+    "baselineAlgorithm": "strategy-greedy",
+    "discoverySeeds": [
+      310,
+      311,
+      312,
+      313,
+      314
+    ],
+    "holdoutSeeds": [
+      2210,
+      2211,
+      2212,
+      2213,
+      2214,
+      2215,
+      2216,
+      2217,
+      2218,
+      2219,
+      2220,
+      2221,
+      2222,
+      2223,
+      2224,
+      2225,
+      2226,
+      2227,
+      2228,
+      2229
+    ],
+    "store": {
+      "cartBoxes": 6,
+      "cartKg": 80,
+      "walkSpeed": 0.9,
+      "elevatorSeconds": 45,
+      "takeSeconds": 4,
+      "sortSeconds": 2,
+      "switchSeconds": 2,
+      "openSeconds": 6,
+      "stockUnitSeconds": 2,
+      "cartonSeconds": 3,
+      "palletExchangeSeconds": 20
+    }
+  },
+  "selection": {
+    "baseline": {
+      "algorithm": "strategy-greedy",
+      "organized": false,
+      "id": "strategy-greedy:space"
+    },
+    "alps": {
+      "algorithm": "capacity-compact",
+      "organized": true,
+      "id": "capacity-compact:alps"
+    },
+    "worst": {
+      "algorithm": "strategy-greedy",
+      "organized": false,
+      "id": "strategy-greedy:space"
+    },
+    "ranking": [
+      {
+        "policy": {
+          "algorithm": "capacity-compact",
+          "organized": true,
+          "id": "capacity-compact:alps"
+        },
+        "eligible": true,
+        "total": {
+          "n": 5,
+          "mean": 1112.9335782081332,
+          "median": 1111.3338445833333,
+          "std": 2.190883143527382,
+          "min": 1111.3334452913332,
+          "max": 1115.3336811663332,
+          "p05": 1111.3334482913333,
+          "p95": 1115.3336368747332,
+          "ci95": [
+            1110.2136735953798,
+            1115.6534828208867
+          ]
+        },
+        "fill": {
+          "n": 5,
+          "mean": 0.4307666666666667,
+          "median": 0.4307666666666667,
+          "std": 0,
+          "min": 0.4307666666666667,
+          "max": 0.4307666666666667,
+          "p05": 0.4307666666666667,
+          "p95": 0.4307666666666667,
+          "ci95": [
+            0.4307666666666667,
+            0.4307666666666667
+          ]
+        }
+      },
+      {
+        "policy": {
+          "algorithm": "future-hybrid",
+          "organized": false,
+          "id": "future-hybrid:space"
+        },
+        "eligible": true,
+        "total": {
+          "n": 5,
+          "mean": 1128.1371959751334,
+          "median": 1127.3366797923331,
+          "std": 3.3462475087987062,
+          "min": 1123.3385167923332,
+          "max": 1131.3379182493334,
+          "p05": 1124.138090392133,
+          "p95": 1131.3376306495334,
+          "ci95": [
+            1123.9829470086902,
+            1132.2914449415766
+          ]
+        },
+        "fill": {
+          "n": 5,
+          "mean": 0.4307666666666667,
+          "median": 0.4307666666666667,
+          "std": 0,
+          "min": 0.4307666666666667,
+          "max": 0.4307666666666667,
+          "p05": 0.4307666666666667,
+          "p95": 0.4307666666666667,
+          "ci95": [
+            0.4307666666666667,
+            0.4307666666666667
+          ]
+        }
+      },
+      {
+        "policy": {
+          "algorithm": "blb",
+          "organized": true,
+          "id": "blb:alps"
+        },
+        "eligible": true,
+        "total": {
+          "n": 5,
+          "mean": 1161.6001431334,
+          "median": 1115.3334276663331,
+          "std": 107.94606441832838,
+          "min": 1111.3334430833333,
+          "max": 1354.6667859586664,
+          "p05": 1111.3334443501333,
+          "p95": 1306.8001506751998,
+          "ci95": [
+            1027.5888886274722,
+            1295.6113976393278
+          ]
+        },
+        "fill": {
+          "n": 5,
+          "mean": 0.38769,
+          "median": 0.4307666666666667,
+          "std": 0.09632235491076595,
+          "min": 0.21538333333333334,
+          "max": 0.4307666666666667,
+          "p05": 0.25846,
+          "p95": 0.4307666666666667,
+          "ci95": [
+            0.26810917333333334,
+            0.5072708266666667
+          ]
+        }
+      },
+      {
+        "policy": {
+          "algorithm": "blb",
+          "organized": false,
+          "id": "blb:space"
+        },
+        "eligible": true,
+        "total": {
+          "n": 5,
+          "mean": 1165.0668310582666,
+          "median": 1123.3334641243332,
+          "std": 91.31822922611138,
+          "min": 1119.3334745423333,
+          "max": 1328.000137875,
+          "p05": 1119.3335058255334,
+          "p95": 1289.4667998582668,
+          "ci95": [
+            1051.6984509899962,
+            1278.435211126537
+          ]
+        },
+        "fill": {
+          "n": 5,
+          "mean": 0.38769,
+          "median": 0.4307666666666667,
+          "std": 0.09632235491076595,
+          "min": 0.21538333333333334,
+          "max": 0.4307666666666667,
+          "p05": 0.25846,
+          "p95": 0.4307666666666667,
+          "ci95": [
+            0.26810917333333334,
+            0.5072708266666667
+          ]
+        }
+      },
+      {
+        "policy": {
+          "algorithm": "capacity-compact",
+          "organized": false,
+          "id": "capacity-compact:space"
+        },
+        "eligible": true,
+        "total": {
+          "n": 5,
+          "mean": 1167.2001565916,
+          "median": 1119.3334944163332,
+          "std": 109.35614029723433,
+          "min": 1111.3334461253332,
+          "max": 1362.6669033326666,
+          "p05": 1112.9334519753334,
+          "p95": 1314.8002154078,
+          "ci95": [
+            1031.4383423177087,
+            1302.9619708654914
+          ]
+        },
+        "fill": {
+          "n": 5,
+          "mean": 0.38769000000000003,
+          "median": 0.4307666666666667,
+          "std": 0.09632235491076593,
+          "min": 0.21538333333333334,
+          "max": 0.4307666666666667,
+          "p05": 0.25846,
+          "p95": 0.4307666666666667,
+          "ci95": [
+            0.2681091733333334,
+            0.5072708266666667
+          ]
+        }
+      },
+      {
+        "policy": {
+          "algorithm": "future-hybrid",
+          "organized": true,
+          "id": "future-hybrid:alps"
+        },
+        "eligible": true,
+        "total": {
+          "n": 5,
+          "mean": 1195.115032877711,
+          "median": 1210.4479233604443,
+          "std": 89.86853143119573,
+          "min": 1111.3371107083333,
+          "max": 1328.003611084,
+          "p05": 1111.3374584415333,
+          "p95": 1305.292422839489,
+          "ci95": [
+            1083.5464017970296,
+            1306.6836639583923
+          ]
+        },
+        "fill": {
+          "n": 5,
+          "mean": 0.3015366666666667,
+          "median": 0.21538333333333334,
+          "std": 0.11797031017732104,
+          "min": 0.21538333333333334,
+          "max": 0.4307666666666667,
+          "p05": 0.21538333333333334,
+          "p95": 0.4307666666666667,
+          "ci95": [
+            0.1550806624899001,
+            0.44799267084343325
+          ]
+        }
+      },
+      {
+        "policy": {
+          "algorithm": "lookahead",
+          "organized": true,
+          "id": "lookahead:alps"
+        },
+        "eligible": true,
+        "total": {
+          "n": 5,
+          "mean": 1230.0933851304887,
+          "median": 1206.4478303614444,
+          "std": 119.41022253251172,
+          "min": 1115.3369833333331,
+          "max": 1354.6743796246665,
+          "p05": 1116.1369252667332,
+          "p95": 1354.6737115662665,
+          "ci95": [
+            1081.849780246485,
+            1378.3369900144926
+          ]
+        },
+        "fill": {
+          "n": 5,
+          "mean": 0.3015366666666667,
+          "median": 0.21538333333333334,
+          "std": 0.11797031017732104,
+          "min": 0.21538333333333334,
+          "max": 0.4307666666666667,
+          "p05": 0.21538333333333334,
+          "p95": 0.4307666666666667,
+          "ci95": [
+            0.1550806624899001,
+            0.44799267084343325
+          ]
+        }
+      },
+      {
+        "policy": {
+          "algorithm": "lookahead",
+          "organized": false,
+          "id": "lookahead:space"
+        },
+        "eligible": true,
+        "total": {
+          "n": 5,
+          "mean": 1234.092871905489,
+          "median": 1210.4490877354444,
+          "std": 119.50947367340254,
+          "min": 1115.3371620833334,
+          "max": 1362.6712339996666,
+          "p05": 1117.7370923583335,
+          "p95": 1361.0709996498665,
+          "ci95": [
+            1085.726050209704,
+            1382.4596936012738
+          ]
+        },
+        "fill": {
+          "n": 5,
+          "mean": 0.3015366666666667,
+          "median": 0.21538333333333334,
+          "std": 0.11797031017732104,
+          "min": 0.21538333333333334,
+          "max": 0.4307666666666667,
+          "p05": 0.21538333333333334,
+          "p95": 0.4307666666666667,
+          "ci95": [
+            0.1550806624899001,
+            0.44799267084343325
+          ]
+        }
+      },
+      {
+        "policy": {
+          "algorithm": "strategy-greedy",
+          "organized": true,
+          "id": "strategy-greedy:alps"
+        },
+        "eligible": true,
+        "total": {
+          "n": 5,
+          "mean": 1301.4670442000665,
+          "median": 1354.6668197496665,
+          "std": 104.69055714774679,
+          "min": 1115.3334885003333,
+          "max": 1354.6673440836664,
+          "p05": 1157.8669074502666,
+          "p95": 1354.6672723502666,
+          "ci95": [
+            1171.4973878360877,
+            1431.4367005640454
+          ]
+        },
+        "fill": {
+          "n": 5,
+          "mean": 0.25846,
+          "median": 0.21538333333333334,
+          "std": 0.09632235491076595,
+          "min": 0.21538333333333334,
+          "max": 0.4307666666666667,
+          "p05": 0.21538333333333334,
+          "p95": 0.38769,
+          "ci95": [
+            0.13887917333333338,
+            0.37804082666666666
+          ]
+        }
+      },
+      {
+        "policy": {
+          "algorithm": "strategy-greedy",
+          "organized": false,
+          "id": "strategy-greedy:space"
+        },
+        "eligible": true,
+        "total": {
+          "n": 5,
+          "mean": 1376.8891006722888,
+          "median": 1358.6668614996665,
+          "std": 43.11001779395555,
+          "min": 1354.6668420416665,
+          "max": 1453.7780837367777,
+          "p05": 1354.6668478916665,
+          "p95": 1435.5558359477554,
+          "ci95": [
+            1323.369524970556,
+            1430.4086763740215
+          ]
+        },
+        "fill": {
+          "n": 5,
+          "mean": 0.20102444444444445,
+          "median": 0.21538333333333334,
+          "std": 0.03210745163692199,
+          "min": 0.14358888888888888,
+          "max": 0.21538333333333334,
+          "p05": 0.15794777777777777,
+          "p95": 0.21538333333333334,
+          "ci95": [
+            0.16116416888888888,
+            0.24088472000000002
+          ]
+        }
+      }
+    ]
+  },
+  "policies": [],
+  "warmup": null,
+  "rows": [],
+  "summary": [],
+  "pairedReports": [],
+  "assumptions": [],
+  "limitations": [
+    "This 24-box full-order experiment is not the 72-box single-pallet maximum-height capacity benchmark. Fill divides packed volume by all used pallets at the configured maximum height.",
+    "Saved ALPS/worst selection ranks modeled total work time, including store work; it is not a claim of maximum loading capacity or universal best/worst algorithm.",
+    "Eight-second end-to-end operation is unvalidated. Timed code covers plan plus zone preference, excluding post-plan audits, sensing, communication, controller and physical robot execution.",
+    "Eligibility excludes incomplete, invalid and 60-second decision-limit failures; an 8-second overrun is counted and adds modeled wait but does not itself make a run ineligible. The decision limit is checked after a synchronous call returns.",
+    "Measured timings depend on this shared host. p95DecisionMs summarizes per-order P95 values and is not a pooled P95 across all decisions. CI describes arrival-order sampling under these assumptions, not field validity.",
+    "Source hashes verify the two recorded model files only; the executor source and compiled bundle hashes additionally identify this calculation tool. Other original benchmark dependencies were not fully fingerprinted.",
+    "No HRPal algorithm was executed, reverse-engineered or replaced with a heuristic. Numerical HRPal performance comparison is unavailable."
+  ],
+  "metrics": null,
+  "hrpal": {
+    "product": "HD Hyundai Robotics HRPal",
+    "version": "v2.2.1 as listed on the official product page at research time",
+    "supportedOs": "MS Windows",
+    "executed": false,
+    "substituteAlgorithmUsed": false,
+    "evidenceAsOf": "2026-10-10 KST",
+    "accessStatus": [
+      "Official legacy ZIP and Hi6 PDF downloads returned HTTP 402 (Firebase storage unavailable) during the recorded research, not a valid software/PDF download.",
+      "The current official homepage download requires member login. No login bypass or unofficial binary was used.",
+      "The research environment is macOS. A supported Windows installation or genuine original JOB/POSE/project output is still required.",
+      "No public HRPal packing implementation, online mixed-SKU planning API or comparable benchmark was found in the examined official sources. This is not proof that private capabilities do not exist."
+    ],
+    "officialUrls": [
+      "https://www.hd-hyundairobotics.com/biz/product/support/287",
+      "https://down-hd.web.app/en/docs/software/HRpal/",
+      "https://manual2-hd.web.app/docs/en/hi5a/fn/Hi5aPA230424FMEN4/3/5/3-5-1/"
+    ],
+    "researchPath": "docs/presentation/HRPAL-RESEARCH.md"
+  }
+}

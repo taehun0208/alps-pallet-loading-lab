@@ -1,0 +1,4929 @@
+{
+  "scenario": {
+    "version": 1,
+    "units": {
+      "length": "mm",
+      "weight": "kg",
+      "time": "s"
+    },
+    "id": "strategy-lab",
+    "name": "미래 공간 비교 · 혼합 박스 18개",
+    "pallet": {
+      "width": 1000,
+      "depth": 800,
+      "maxHeight": 1400
+    },
+    "types": [
+      {
+        "id": "Wide",
+        "name": "Wide",
+        "size": {
+          "w": 487,
+          "d": 363,
+          "h": 193
+        },
+        "weight": 12,
+        "quantity": 3,
+        "color": "#e1b65f",
+        "orientations": [
+          0,
+          90
+        ],
+        "material": "plastic",
+        "maxLoadKg": 120
+      },
+      {
+        "id": "Long",
+        "name": "Long",
+        "size": {
+          "w": 731,
+          "d": 143,
+          "h": 127
+        },
+        "weight": 6,
+        "quantity": 2,
+        "color": "#aa9de5",
+        "orientations": [
+          0,
+          90
+        ],
+        "material": "plastic",
+        "maxLoadKg": 120
+      },
+      {
+        "id": "Small",
+        "name": "Small",
+        "size": {
+          "w": 223,
+          "d": 177,
+          "h": 151
+        },
+        "weight": 3,
+        "quantity": 5,
+        "color": "#6abbaa",
+        "orientations": [
+          0,
+          90
+        ],
+        "material": "paper",
+        "maxLoadKg": 18
+      },
+      {
+        "id": "Medium",
+        "name": "Medium",
+        "size": {
+          "w": 341,
+          "d": 269,
+          "h": 217
+        },
+        "weight": 8,
+        "quantity": 4,
+        "color": "#72b5c6",
+        "orientations": [
+          0,
+          90
+        ],
+        "material": "plastic",
+        "maxLoadKg": 120
+      },
+      {
+        "id": "Heavy",
+        "name": "Heavy",
+        "size": {
+          "w": 417,
+          "d": 311,
+          "h": 179
+        },
+        "weight": 18,
+        "quantity": 2,
+        "color": "#ca879f",
+        "orientations": [
+          0,
+          90
+        ],
+        "material": "plastic",
+        "maxLoadKg": 120
+      },
+      {
+        "id": "Tall",
+        "name": "Tall",
+        "size": {
+          "w": 197,
+          "d": 233,
+          "h": 357
+        },
+        "weight": 5,
+        "quantity": 2,
+        "color": "#8bbb89",
+        "orientations": [
+          0,
+          90,
+          "whd",
+          "hwd",
+          "hdw",
+          "dhw"
+        ],
+        "material": "plastic",
+        "maxLoadKg": 120
+      }
+    ],
+    "constraints": {
+      "robotMode": "ideal",
+      "supportRatio": 0.95,
+      "contactTolerance": 0.5,
+      "horizontalGap": 0,
+      "heavyRule": "each",
+      "stability": {
+        "maxSlenderness": 2,
+        "minMarginRatio": 0.1,
+        "lateralAccelerationG": 0.15,
+        "loadSafetyFactor": 1.25,
+        "slendernessMode": "score"
+      },
+      "gripper": {
+        "width": 180,
+        "depth": 160,
+        "height": 160,
+        "mass": 3,
+        "payload": 35,
+        "margin": 5,
+        "lift": 200,
+        "speed": 650,
+        "pickSeconds": 1,
+        "placeSeconds": 1,
+        "rotationSpeed": 180
+      },
+      "workspace": {
+        "xMin": -1400,
+        "xMax": 1600,
+        "yMin": -500,
+        "yMax": 1500,
+        "zMax": 2600
+      },
+      "reach": {
+        "baseX": -700,
+        "baseY": 500,
+        "minRadius": 0,
+        "maxRadius": 2400
+      },
+      "standingHeight": {
+        "enabled": true,
+        "maxRiseMm": 240
+      }
+    },
+    "arrival": {
+      "seed": 42,
+      "pattern": "random-draw"
+    },
+    "events": [],
+    "supplyMode": "arrival"
+  },
+  "settings": {
+    "plannerSeed": 2026,
+    "topK": 6,
+    "samples": 4,
+    "depth": 3,
+    "maxCandidates": 48,
+    "virtualCandidates": 16,
+    "candidateMode": "frontier",
+    "inventoryMode": "geometry",
+    "portfolio": false,
+    "weights": {
+      "maximum": 30,
+      "mean": 16,
+      "roughness": 20,
+      "void": 25,
+      "flat": 8,
+      "balance": 12,
+      "time": 4,
+      "future": 45,
+      "stability": 24,
+      "inventory": 32,
+      "foundation": 24,
+      "load": 12,
+      "contact": 12,
+      "futureSurface": 24
+    },
+    "policy": "online",
+    "reserveProbes": 8,
+    "strategy": {
+      "criticalK": 3,
+      "futureCandidates": 8,
+      "lossMode": "normalized",
+      "lookaheadDepth": 2,
+      "lookaheadSamples": 3,
+      "lookaheadCandidates": 4,
+      "lookaheadMode": "expected",
+      "approach": false,
+      "approachHeight": 250,
+      "approachMargin": 20,
+      "weights": {
+        "compactness": 0.2,
+        "support": 0.15,
+        "stability": 0.15,
+        "centerOfMass": 0.1,
+        "flatness": 0.1,
+        "height": 0.15,
+        "fragmentation": 0.15,
+        "macs": 1,
+        "fpl": 1.5,
+        "deadEnd": 25,
+        "reservation": 20,
+        "lowerSpace": 2,
+        "lookahead": 1
+      },
+      "criticalWeights": {
+        "volume": 1,
+        "aspect": 1,
+        "weight": 1,
+        "orientation": 1,
+        "scarcity": 3
+      }
+    }
+  },
+  "rows": [
+    {
+      "episode": 0,
+      "algorithm": "strategy-greedy",
+      "seed": 42,
+      "arrivalSequence": [
+        "Medium-01",
+        "Small-03",
+        "Heavy-02",
+        "Medium-03",
+        "Wide-03",
+        "Small-04",
+        "Long-02",
+        "Medium-02",
+        "Tall-01",
+        "Small-02",
+        "Wide-02",
+        "Tall-02",
+        "Medium-04",
+        "Long-01",
+        "Wide-01",
+        "Small-05",
+        "Heavy-01",
+        "Small-01"
+      ],
+      "observedSequence": [
+        "Medium-01",
+        "Small-03",
+        "Heavy-02",
+        "Medium-03",
+        "Wide-03"
+      ],
+      "metrics": {
+        "loadUtilization": 0,
+        "unknownCapacity": 0,
+        "slenderness": 0.8531073446327684,
+        "supportBalances": [
+          {
+            "id": "Medium-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 8,
+            "loadAbove": 0,
+            "center": {
+              "x": 500,
+              "y": 400,
+              "z": 108.5
+            },
+            "supportCenter": {
+              "x": 500,
+              "y": 400,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 134.5,
+            "required": 26.900000000000002,
+            "reserve": 107.6
+          },
+          {
+            "id": "Small-03",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 3,
+            "loadAbove": 0,
+            "center": {
+              "x": 477,
+              "y": 88.5,
+              "z": 75.5
+            },
+            "supportCenter": {
+              "x": 477,
+              "y": 88.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 88.5,
+            "required": 17.7,
+            "reserve": 70.8
+          },
+          {
+            "id": "Heavy-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 18,
+            "loadAbove": 0,
+            "center": {
+              "x": 155.5,
+              "y": 438,
+              "z": 89.5
+            },
+            "supportCenter": {
+              "x": 155.5,
+              "y": 438,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 155.5,
+            "required": 31.1,
+            "reserve": 124.4
+          },
+          {
+            "id": "Medium-03",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 8,
+            "loadAbove": 0,
+            "center": {
+              "x": 805,
+              "y": 436,
+              "z": 108.5
+            },
+            "supportCenter": {
+              "x": 805,
+              "y": 436,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 134.5,
+            "required": 26.900000000000002,
+            "reserve": 107.6
+          }
+        ],
+        "count": 4,
+        "volume": 68984480,
+        "weight": 37,
+        "height": 217,
+        "utilization": 0.06159328571428571,
+        "efficiency": 0.39737603686635947,
+        "center": {
+          "x": 396.4864864864865,
+          "y": 401.0135135135135,
+          "z": 96.58108108108108
+        },
+        "quadrants": [
+          11.169129270574572,
+          6.119950989381032,
+          12.640287769784173,
+          7.070631970260223
+        ],
+        "imbalance": 0.17622531838927408,
+        "distanceM": 0,
+        "workSeconds": 0,
+        "medianMs": 13.168800000000033,
+        "p95Ms": 27.576200000000085,
+        "totalMs": 83.2704,
+        "complete": false,
+        "failedStep": 5,
+        "reason": "지지 조건 미달 (45.3%) / 지지 조건 미달 (44.9%) / 지지 조건 미달 (60.0%) / 지지 조건 미달 (59.5%) / 지지 조건 미달 (73.4%) / 지지 조건 미달 (72.8%) / 지지 조건 미달 (60.7%) / 지지 조건 미달 (60.2%) / 지지 조건 미달 (58.7%) / 지지 조건 미달 (58.2%) / 지지 조건 미달 (59.0%) / 무게 규칙 위반 / 지지 조건 미달 (68.5%) / 누적 무게중심 정적 평형 불가 / 지지 조건 미달 (9.2%) / 지지 조건 미달 (16.8%) / 지지 조건 미달 (20.3%) / 지지 조건 미달 (32.5%) / 지지 조건 미달 (39.2%) / 지지 조건 미달 (26.0%) / 지지 조건 미달 (43.3%) / 지지 조건 미달 (27.9%) / 지지 조건 미달 (49.0%) / 지지 조건 미달 (22.9%) / 지지 조건 미달 (21.0%) / 지지 조건 미달 (40.0%) / 지지 조건 미달 (39.0%) / 지지 조건 미달 (35.8%) / 지지 조건 미달 (35.5%) / 지지 조건 미달 (43.0%) / 지지 조건 미달 (51.9%) / 지지 조건 미달 (57.9%) / 지지 조건 미달 (66.2%) / 지지 조건 미달 (57.1%) / 지지 조건 미달 (56.1%) / 지지 조건 미달 (51.5%) / 지지 조건 미달 (21.3%)",
+        "excluded": 0,
+        "missing": 0,
+        "strategyDetails": {
+          "algorithm": "strategy-greedy",
+          "seed": 42,
+          "totalBoxes": 18,
+          "placedBoxes": 4,
+          "failedBoxes": 1,
+          "unprocessedBoxes": 13,
+          "unplacedBoxes": 14,
+          "averageSupport": 1,
+          "stabilityViolations": 0,
+          "averageDecisionMs": 16.65408,
+          "maxDecisionMs": 27.576200000000085,
+          "replans": 0,
+          "averageFutureFeasible": null,
+          "minFutureFeasible": null,
+          "futureDeadEnds": 0,
+          "futurePlacementLoss": 0,
+          "reservedSlotCount": 0,
+          "reservationChanges": 0
+        }
+      },
+      "diagnostics": {
+        "algorithm": "strategy-greedy",
+        "seed": 42,
+        "totalBoxes": 18,
+        "placedBoxes": 4,
+        "failedBoxes": 1,
+        "unprocessedBoxes": 13,
+        "unplacedBoxes": 14,
+        "averageSupport": 1,
+        "stabilityViolations": 0,
+        "averageDecisionMs": 16.65408,
+        "maxDecisionMs": 27.576200000000085,
+        "replans": 0,
+        "averageFutureFeasible": null,
+        "minFutureFeasible": null,
+        "futureDeadEnds": 0,
+        "futurePlacementLoss": 0,
+        "reservedSlotCount": 0,
+        "reservationChanges": 0
+      }
+    },
+    {
+      "episode": 0,
+      "algorithm": "macs",
+      "seed": 42,
+      "arrivalSequence": [
+        "Medium-01",
+        "Small-03",
+        "Heavy-02",
+        "Medium-03",
+        "Wide-03",
+        "Small-04",
+        "Long-02",
+        "Medium-02",
+        "Tall-01",
+        "Small-02",
+        "Wide-02",
+        "Tall-02",
+        "Medium-04",
+        "Long-01",
+        "Wide-01",
+        "Small-05",
+        "Heavy-01",
+        "Small-01"
+      ],
+      "observedSequence": [
+        "Medium-01",
+        "Small-03",
+        "Heavy-02",
+        "Medium-03",
+        "Wide-03"
+      ],
+      "metrics": {
+        "loadUtilization": 0,
+        "unknownCapacity": 0,
+        "slenderness": 0.8531073446327684,
+        "supportBalances": [
+          {
+            "id": "Medium-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 8,
+            "loadAbove": 0,
+            "center": {
+              "x": 500,
+              "y": 400,
+              "z": 108.5
+            },
+            "supportCenter": {
+              "x": 500,
+              "y": 400,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 134.5,
+            "required": 26.900000000000002,
+            "reserve": 107.6
+          },
+          {
+            "id": "Small-03",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 3,
+            "loadAbove": 0,
+            "center": {
+              "x": 477,
+              "y": 88.5,
+              "z": 75.5
+            },
+            "supportCenter": {
+              "x": 477,
+              "y": 88.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 88.5,
+            "required": 17.7,
+            "reserve": 70.8
+          },
+          {
+            "id": "Heavy-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 18,
+            "loadAbove": 0,
+            "center": {
+              "x": 155.5,
+              "y": 438,
+              "z": 89.5
+            },
+            "supportCenter": {
+              "x": 155.5,
+              "y": 438,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 155.5,
+            "required": 31.1,
+            "reserve": 124.4
+          },
+          {
+            "id": "Medium-03",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 8,
+            "loadAbove": 0,
+            "center": {
+              "x": 805,
+              "y": 436,
+              "z": 108.5
+            },
+            "supportCenter": {
+              "x": 805,
+              "y": 436,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 134.5,
+            "required": 26.900000000000002,
+            "reserve": 107.6
+          }
+        ],
+        "count": 4,
+        "volume": 68984480,
+        "weight": 37,
+        "height": 217,
+        "utilization": 0.06159328571428571,
+        "efficiency": 0.39737603686635947,
+        "center": {
+          "x": 396.4864864864865,
+          "y": 401.0135135135135,
+          "z": 96.58108108108108
+        },
+        "quadrants": [
+          11.169129270574572,
+          6.119950989381032,
+          12.640287769784173,
+          7.070631970260223
+        ],
+        "imbalance": 0.17622531838927408,
+        "distanceM": 0,
+        "workSeconds": 0,
+        "medianMs": 9.171699999999987,
+        "p95Ms": 14.008199999999988,
+        "totalMs": 46.73560000000009,
+        "complete": false,
+        "failedStep": 5,
+        "reason": "지지 조건 미달 (45.3%) / 지지 조건 미달 (44.9%) / 지지 조건 미달 (60.0%) / 지지 조건 미달 (59.5%) / 지지 조건 미달 (73.4%) / 지지 조건 미달 (72.8%) / 지지 조건 미달 (60.7%) / 지지 조건 미달 (60.2%) / 지지 조건 미달 (58.7%) / 지지 조건 미달 (58.2%) / 지지 조건 미달 (59.0%) / 무게 규칙 위반 / 지지 조건 미달 (68.5%) / 누적 무게중심 정적 평형 불가 / 지지 조건 미달 (9.2%) / 지지 조건 미달 (16.8%) / 지지 조건 미달 (20.3%) / 지지 조건 미달 (32.5%) / 지지 조건 미달 (39.2%) / 지지 조건 미달 (26.0%) / 지지 조건 미달 (43.3%) / 지지 조건 미달 (27.9%) / 지지 조건 미달 (49.0%) / 지지 조건 미달 (22.9%) / 지지 조건 미달 (21.0%) / 지지 조건 미달 (40.0%) / 지지 조건 미달 (39.0%) / 지지 조건 미달 (35.8%) / 지지 조건 미달 (35.5%) / 지지 조건 미달 (43.0%) / 지지 조건 미달 (51.9%) / 지지 조건 미달 (57.9%) / 지지 조건 미달 (66.2%) / 지지 조건 미달 (57.1%) / 지지 조건 미달 (56.1%) / 지지 조건 미달 (51.5%) / 지지 조건 미달 (21.3%)",
+        "excluded": 0,
+        "missing": 0,
+        "strategyDetails": {
+          "algorithm": "macs",
+          "seed": 42,
+          "totalBoxes": 18,
+          "placedBoxes": 4,
+          "failedBoxes": 1,
+          "unprocessedBoxes": 13,
+          "unplacedBoxes": 14,
+          "averageSupport": 1,
+          "stabilityViolations": 0,
+          "averageDecisionMs": 9.347120000000018,
+          "maxDecisionMs": 14.008199999999988,
+          "replans": 0,
+          "averageFutureFeasible": null,
+          "minFutureFeasible": null,
+          "futureDeadEnds": 0,
+          "futurePlacementLoss": 0,
+          "reservedSlotCount": 0,
+          "reservationChanges": 0
+        }
+      },
+      "diagnostics": {
+        "algorithm": "macs",
+        "seed": 42,
+        "totalBoxes": 18,
+        "placedBoxes": 4,
+        "failedBoxes": 1,
+        "unprocessedBoxes": 13,
+        "unplacedBoxes": 14,
+        "averageSupport": 1,
+        "stabilityViolations": 0,
+        "averageDecisionMs": 9.347120000000018,
+        "maxDecisionMs": 14.008199999999988,
+        "replans": 0,
+        "averageFutureFeasible": null,
+        "minFutureFeasible": null,
+        "futureDeadEnds": 0,
+        "futurePlacementLoss": 0,
+        "reservedSlotCount": 0,
+        "reservationChanges": 0
+      }
+    },
+    {
+      "episode": 0,
+      "algorithm": "tetris-reserved",
+      "seed": 42,
+      "arrivalSequence": [
+        "Medium-01",
+        "Small-03",
+        "Heavy-02",
+        "Medium-03",
+        "Wide-03",
+        "Small-04",
+        "Long-02",
+        "Medium-02",
+        "Tall-01",
+        "Small-02",
+        "Wide-02",
+        "Tall-02",
+        "Medium-04",
+        "Long-01",
+        "Wide-01",
+        "Small-05",
+        "Heavy-01",
+        "Small-01"
+      ],
+      "observedSequence": [
+        "Medium-01",
+        "Small-03",
+        "Heavy-02",
+        "Medium-03",
+        "Wide-03",
+        "Small-04",
+        "Long-02"
+      ],
+      "metrics": {
+        "loadUtilization": 0,
+        "unknownCapacity": 0,
+        "slenderness": 0.8531073446327684,
+        "supportBalances": [
+          {
+            "id": "Medium-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 8,
+            "loadAbove": 0,
+            "center": {
+              "x": 829.5,
+              "y": 134.5,
+              "z": 108.5
+            },
+            "supportCenter": {
+              "x": 829.5,
+              "y": 134.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 134.5,
+            "required": 26.900000000000002,
+            "reserve": 107.6
+          },
+          {
+            "id": "Small-03",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 3,
+            "loadAbove": 0,
+            "center": {
+              "x": 88.5,
+              "y": 688.5,
+              "z": 75.5
+            },
+            "supportCenter": {
+              "x": 88.5,
+              "y": 688.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 88.5,
+            "required": 17.7,
+            "reserve": 70.8
+          },
+          {
+            "id": "Heavy-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 18,
+            "loadAbove": 0,
+            "center": {
+              "x": 503.5,
+              "y": 591.5,
+              "z": 89.5
+            },
+            "supportCenter": {
+              "x": 503.5,
+              "y": 591.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 155.5,
+            "required": 31.1,
+            "reserve": 124.4
+          },
+          {
+            "id": "Medium-03",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 8,
+            "loadAbove": 0,
+            "center": {
+              "x": 829.5,
+              "y": 403.5,
+              "z": 108.5
+            },
+            "supportCenter": {
+              "x": 829.5,
+              "y": 403.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 134.5,
+            "required": 26.900000000000002,
+            "reserve": 107.6
+          },
+          {
+            "id": "Wide-03",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 12,
+            "loadAbove": 0,
+            "center": {
+              "x": 243.5,
+              "y": 181.5,
+              "z": 96.5
+            },
+            "supportCenter": {
+              "x": 243.5,
+              "y": 181.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 181.5,
+            "required": 36.300000000000004,
+            "reserve": 145.2
+          },
+          {
+            "id": "Small-04",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 3,
+            "loadAbove": 0,
+            "center": {
+              "x": 111.5,
+              "y": 451.5,
+              "z": 75.5
+            },
+            "supportCenter": {
+              "x": 111.5,
+              "y": 451.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 88.5,
+            "required": 17.7,
+            "reserve": 70.8
+          }
+        ],
+        "count": 6,
+        "volume": 109063334,
+        "weight": 52,
+        "height": 217,
+        "utilization": 0.09737797678571429,
+        "efficiency": 0.6282450115207373,
+        "center": {
+          "x": 497.25,
+          "y": 395.1730769230769,
+          "z": 95.34615384615384
+        },
+        "quadrants": [
+          12.985766773795525,
+          12.271075600581703,
+          13.811660878937595,
+          12.931496746685177
+        ],
+        "imbalance": 0.029626639968382527,
+        "distanceM": 0,
+        "workSeconds": 0,
+        "medianMs": 87.3723,
+        "p95Ms": 286.09820000000013,
+        "totalMs": 798.7859,
+        "complete": false,
+        "failedStep": 7,
+        "reason": "누적 무게중심 정적 평형 불가 / 지지 조건 미달 (47.6%) / 지지 조건 미달 (57.0%) / 지지 조건 미달 (42.5%) / 지지 조건 미달 (18.4%) / 지지 조건 미달 (49.7%) / 지지 조건 미달 (48.3%) / 지지 조건 미달 (40.2%) / 지지 조건 미달 (39.1%) / 지지 조건 미달 (28.2%) / 지지 조건 미달 (9.8%) / 지지 조건 미달 (34.1%) / 지지 조건 미달 (40.4%) / 지지 조건 미달 (46.6%) / 지지 조건 미달 (73.6%) / 지지 조건 미달 (64.2%)",
+        "excluded": 0,
+        "missing": 0,
+        "strategyDetails": {
+          "algorithm": "tetris-reserved",
+          "seed": 42,
+          "totalBoxes": 18,
+          "placedBoxes": 6,
+          "failedBoxes": 1,
+          "unprocessedBoxes": 11,
+          "unplacedBoxes": 12,
+          "averageSupport": 1,
+          "stabilityViolations": 0,
+          "averageDecisionMs": 114.11227142857142,
+          "maxDecisionMs": 286.09820000000013,
+          "replans": 0,
+          "averageFutureFeasible": 4.142857142857143,
+          "minFutureFeasible": 0,
+          "futureDeadEnds": 0,
+          "futurePlacementLoss": 0.5829755736491488,
+          "reservedSlotCount": 1,
+          "reservationChanges": 3
+        }
+      },
+      "diagnostics": {
+        "algorithm": "tetris-reserved",
+        "seed": 42,
+        "totalBoxes": 18,
+        "placedBoxes": 6,
+        "failedBoxes": 1,
+        "unprocessedBoxes": 11,
+        "unplacedBoxes": 12,
+        "averageSupport": 1,
+        "stabilityViolations": 0,
+        "averageDecisionMs": 114.11227142857142,
+        "maxDecisionMs": 286.09820000000013,
+        "replans": 0,
+        "averageFutureFeasible": 4.142857142857143,
+        "minFutureFeasible": 0,
+        "futureDeadEnds": 0,
+        "futurePlacementLoss": 0.5829755736491488,
+        "reservedSlotCount": 1,
+        "reservationChanges": 3
+      }
+    },
+    {
+      "episode": 0,
+      "algorithm": "dynamic-reservation",
+      "seed": 42,
+      "arrivalSequence": [
+        "Medium-01",
+        "Small-03",
+        "Heavy-02",
+        "Medium-03",
+        "Wide-03",
+        "Small-04",
+        "Long-02",
+        "Medium-02",
+        "Tall-01",
+        "Small-02",
+        "Wide-02",
+        "Tall-02",
+        "Medium-04",
+        "Long-01",
+        "Wide-01",
+        "Small-05",
+        "Heavy-01",
+        "Small-01"
+      ],
+      "observedSequence": [
+        "Medium-01",
+        "Small-03",
+        "Heavy-02",
+        "Medium-03",
+        "Wide-03",
+        "Small-04",
+        "Long-02",
+        "Medium-02",
+        "Tall-01",
+        "Small-02",
+        "Wide-02",
+        "Tall-02",
+        "Medium-04",
+        "Long-01",
+        "Wide-01"
+      ],
+      "metrics": {
+        "loadUtilization": 0.2708333333333333,
+        "unknownCapacity": 0,
+        "slenderness": 3.8847583643122676,
+        "supportBalances": [
+          {
+            "id": "Medium-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 34,
+            "loadAbove": 26,
+            "center": {
+              "x": 494.70588235294116,
+              "y": 397.6470588235294,
+              "z": 479.1764705882353
+            },
+            "supportCenter": {
+              "x": 500,
+              "y": 400,
+              "z": 0
+            },
+            "offsetMm": 5.7934457657624385,
+            "offsetRatio": 0.039361469494861266,
+            "margin": 129.20588235294116,
+            "required": 71.87647058823529,
+            "reserve": 57.32941176470587
+          },
+          {
+            "id": "Small-03",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 6,
+            "loadAbove": 3,
+            "center": {
+              "x": 477,
+              "y": 88.5,
+              "z": 151
+            },
+            "supportCenter": {
+              "x": 477,
+              "y": 88.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 88.5,
+            "required": 22.65,
+            "reserve": 65.85
+          },
+          {
+            "id": "Heavy-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 18,
+            "loadAbove": 0,
+            "center": {
+              "x": 155.5,
+              "y": 438,
+              "z": 89.5
+            },
+            "supportCenter": {
+              "x": 155.5,
+              "y": 438,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 155.5,
+            "required": 31.1,
+            "reserve": 124.4
+          },
+          {
+            "id": "Medium-03",
+            "isBase": false,
+            "planeZ": 217,
+            "mass": 26,
+            "loadAbove": 18,
+            "center": {
+              "x": 493.0769230769231,
+              "y": 396.9230769230769,
+              "z": 593.2307692307693
+            },
+            "supportCenter": {
+              "x": 500,
+              "y": 400,
+              "z": 217
+            },
+            "offsetMm": 7.5760444629200725,
+            "offsetRatio": 0.05147269087789521,
+            "margin": 127.5769230769231,
+            "required": 56.43461538461539,
+            "reserve": 71.1423076923077
+          },
+          {
+            "id": "Wide-03",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 32,
+            "loadAbove": 20,
+            "center": {
+              "x": 813.25,
+              "y": 375.75,
+              "z": 268.375
+            },
+            "supportCenter": {
+              "x": 816,
+              "y": 403,
+              "z": 0
+            },
+            "offsetMm": 27.38840995749845,
+            "offsetRatio": 0.11190965092402463,
+            "margin": 178.75,
+            "required": 40.25625,
+            "reserve": 138.49375
+          },
+          {
+            "id": "Small-04",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 3,
+            "loadAbove": 0,
+            "center": {
+              "x": 222.5,
+              "y": 111.5,
+              "z": 75.5
+            },
+            "supportCenter": {
+              "x": 222.5,
+              "y": 111.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 88.5,
+            "required": 17.7,
+            "reserve": 70.8
+          },
+          {
+            "id": "Long-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 12,
+            "loadAbove": 6,
+            "center": {
+              "x": 634.5,
+              "y": 718,
+              "z": 127
+            },
+            "supportCenter": {
+              "x": 634.5,
+              "y": 718,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 71.5,
+            "required": 19.05,
+            "reserve": 52.45
+          },
+          {
+            "id": "Medium-02",
+            "isBase": false,
+            "planeZ": 434,
+            "mass": 18,
+            "loadAbove": 10,
+            "center": {
+              "x": 490,
+              "y": 395.55555555555554,
+              "z": 712.2222222222222
+            },
+            "supportCenter": {
+              "x": 500,
+              "y": 400,
+              "z": 434
+            },
+            "offsetMm": 10.943175335329009,
+            "offsetRatio": 0.07434944237918216,
+            "margin": 124.5,
+            "required": 41.73333333333333,
+            "reserve": 82.76666666666668
+          },
+          {
+            "id": "Tall-01",
+            "isBase": false,
+            "planeZ": 651,
+            "mass": 10,
+            "loadAbove": 5,
+            "center": {
+              "x": 482,
+              "y": 392,
+              "z": 848
+            },
+            "supportCenter": {
+              "x": 482,
+              "y": 400,
+              "z": 651
+            },
+            "offsetMm": 8,
+            "offsetRatio": 0.0469208211143695,
+            "margin": 116.5,
+            "required": 29.549999999999997,
+            "reserve": 86.95
+          },
+          {
+            "id": "Small-02",
+            "isBase": false,
+            "planeZ": 151,
+            "mass": 3,
+            "loadAbove": 0,
+            "center": {
+              "x": 477,
+              "y": 88.5,
+              "z": 226.5
+            },
+            "supportCenter": {
+              "x": 477,
+              "y": 88.5,
+              "z": 151
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 88.5,
+            "required": 17.7,
+            "reserve": 70.8
+          },
+          {
+            "id": "Wide-02",
+            "isBase": false,
+            "planeZ": 193,
+            "mass": 20,
+            "loadAbove": 8,
+            "center": {
+              "x": 811.6,
+              "y": 359.4,
+              "z": 371.5
+            },
+            "supportCenter": {
+              "x": 816,
+              "y": 403,
+              "z": 193
+            },
+            "offsetMm": 43.821455931997534,
+            "offsetRatio": 0.17905544147843952,
+            "margin": 177.10000000000002,
+            "required": 36.300000000000004,
+            "reserve": 140.8
+          },
+          {
+            "id": "Tall-02",
+            "isBase": false,
+            "planeZ": 848,
+            "mass": 5,
+            "loadAbove": 0,
+            "center": {
+              "x": 482,
+              "y": 392,
+              "z": 946.5
+            },
+            "supportCenter": {
+              "x": 482,
+              "y": 392,
+              "z": 848
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 116.5,
+            "required": 23.3,
+            "reserve": 93.2
+          },
+          {
+            "id": "Medium-04",
+            "isBase": false,
+            "planeZ": 386,
+            "mass": 8,
+            "loadAbove": 0,
+            "center": {
+              "x": 805,
+              "y": 294,
+              "z": 494.5
+            },
+            "supportCenter": {
+              "x": 805,
+              "y": 294,
+              "z": 386
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 134.5,
+            "required": 26.900000000000002,
+            "reserve": 107.6
+          },
+          {
+            "id": "Long-01",
+            "isBase": false,
+            "planeZ": 127,
+            "mass": 6,
+            "loadAbove": 0,
+            "center": {
+              "x": 634.5,
+              "y": 718,
+              "z": 190.5
+            },
+            "supportCenter": {
+              "x": 634.5,
+              "y": 718,
+              "z": 127
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 71.5,
+            "required": 14.3,
+            "reserve": 57.2
+          }
+        ],
+        "count": 14,
+        "volume": 248277270,
+        "weight": 105,
+        "height": 1045,
+        "utilization": 0.22167613392857144,
+        "efficiency": 0.29698238038277514,
+        "center": {
+          "x": 540.8238095238095,
+          "y": 408.66190476190474,
+          "z": 277.5952380952381
+        },
+        "quadrants": [
+          22.478546310933318,
+          26.684040662609,
+          22.932353433258864,
+          32.90505959319882
+        ],
+        "imbalance": 0.0993001264977667,
+        "distanceM": 0,
+        "workSeconds": 0,
+        "medianMs": 149.9443000000001,
+        "p95Ms": 625.8969999999999,
+        "totalMs": 4037.5478000000016,
+        "complete": false,
+        "failedStep": 15,
+        "reason": "지지 조건 미달 (45.3%) / 지지 조건 미달 (44.9%) / 지지 조건 미달 (60.0%) / 지지 조건 미달 (59.5%) / 지지 조건 미달 (73.4%) / 지지 조건 미달 (72.8%) / 누적 무게중심 정적 평형 불가 / 지지 조건 미달 (0.9%) / 무게 규칙 위반 / 지지 조건 미달 (1.0%) / 지지 조건 미달 (2.9%) / 지지 조건 미달 (3.4%) / 지지 조건 미달 (3.5%) / 지지 조건 미달 (3.7%) / 지지 조건 미달 (3.8%) / 지지 조건 미달 (7.6%) / 지지 조건 미달 (7.8%) / 지지 조건 미달 (51.9%) / 지지 조건 미달 (51.5%) / 지지 조건 미달 (48.5%) / 지지 조건 미달 (48.2%) / 지지 조건 미달 (41.5%) / 지지 조건 미달 (41.2%) / 지지 조건 미달 (39.6%) / 지지 조건 미달 (39.3%) / 지지 조건 미달 (38.4%) / 지지 조건 미달 (38.1%) / 지지 조건 미달 (24.3%) / 지지 조건 미달 (24.1%) / 지지 조건 미달 (22.3%) / 지지 조건 미달 (22.1%) / 지지 조건 미달 (5.2%) / 지지 조건 미달 (3.2%) / 지지 조건 미달 (6.9%) / 지지 조건 미달 (4.2%)",
+        "excluded": 0,
+        "missing": 0,
+        "strategyDetails": {
+          "algorithm": "dynamic-reservation",
+          "seed": 42,
+          "totalBoxes": 18,
+          "placedBoxes": 14,
+          "failedBoxes": 1,
+          "unprocessedBoxes": 3,
+          "unplacedBoxes": 4,
+          "averageSupport": 0.9967987194877951,
+          "stabilityViolations": 0,
+          "averageDecisionMs": 269.16985333333344,
+          "maxDecisionMs": 625.8969999999999,
+          "replans": 0,
+          "averageFutureFeasible": 4.714285714285714,
+          "minFutureFeasible": 0,
+          "futureDeadEnds": 1,
+          "futurePlacementLoss": 1.489328513064182,
+          "reservedSlotCount": 11,
+          "reservationChanges": 131
+        }
+      },
+      "diagnostics": {
+        "algorithm": "dynamic-reservation",
+        "seed": 42,
+        "totalBoxes": 18,
+        "placedBoxes": 14,
+        "failedBoxes": 1,
+        "unprocessedBoxes": 3,
+        "unplacedBoxes": 4,
+        "averageSupport": 0.9967987194877951,
+        "stabilityViolations": 0,
+        "averageDecisionMs": 269.16985333333344,
+        "maxDecisionMs": 625.8969999999999,
+        "replans": 0,
+        "averageFutureFeasible": 4.714285714285714,
+        "minFutureFeasible": 0,
+        "futureDeadEnds": 1,
+        "futurePlacementLoss": 1.489328513064182,
+        "reservedSlotCount": 11,
+        "reservationChanges": 131
+      }
+    },
+    {
+      "episode": 0,
+      "algorithm": "lookahead",
+      "seed": 42,
+      "arrivalSequence": [
+        "Medium-01",
+        "Small-03",
+        "Heavy-02",
+        "Medium-03",
+        "Wide-03",
+        "Small-04",
+        "Long-02",
+        "Medium-02",
+        "Tall-01",
+        "Small-02",
+        "Wide-02",
+        "Tall-02",
+        "Medium-04",
+        "Long-01",
+        "Wide-01",
+        "Small-05",
+        "Heavy-01",
+        "Small-01"
+      ],
+      "observedSequence": [
+        "Medium-01",
+        "Small-03",
+        "Heavy-02",
+        "Medium-03",
+        "Wide-03"
+      ],
+      "metrics": {
+        "loadUtilization": 0,
+        "unknownCapacity": 0,
+        "slenderness": 0.8531073446327684,
+        "supportBalances": [
+          {
+            "id": "Medium-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 8,
+            "loadAbove": 0,
+            "center": {
+              "x": 500,
+              "y": 400,
+              "z": 108.5
+            },
+            "supportCenter": {
+              "x": 500,
+              "y": 400,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 134.5,
+            "required": 26.900000000000002,
+            "reserve": 107.6
+          },
+          {
+            "id": "Small-03",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 3,
+            "loadAbove": 0,
+            "center": {
+              "x": 477,
+              "y": 88.5,
+              "z": 75.5
+            },
+            "supportCenter": {
+              "x": 477,
+              "y": 88.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 88.5,
+            "required": 17.7,
+            "reserve": 70.8
+          },
+          {
+            "id": "Heavy-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 18,
+            "loadAbove": 0,
+            "center": {
+              "x": 844.5,
+              "y": 438,
+              "z": 89.5
+            },
+            "supportCenter": {
+              "x": 844.5,
+              "y": 438,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 155.5,
+            "required": 31.1,
+            "reserve": 124.4
+          },
+          {
+            "id": "Medium-03",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 8,
+            "loadAbove": 0,
+            "center": {
+              "x": 170.5,
+              "y": 436,
+              "z": 108.5
+            },
+            "supportCenter": {
+              "x": 170.5,
+              "y": 436,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 134.5,
+            "required": 26.900000000000002,
+            "reserve": 107.6
+          }
+        ],
+        "count": 4,
+        "volume": 68984480,
+        "weight": 37,
+        "height": 217,
+        "utilization": 0.06159328571428571,
+        "efficiency": 0.39737603686635947,
+        "center": {
+          "x": 594.4864864864865,
+          "y": 401.0135135135135,
+          "z": 96.58108108108108
+        },
+        "quadrants": [
+          6.738785070098522,
+          10.550295189857083,
+          7.070631970260223,
+          12.640287769784173
+        ],
+        "imbalance": 0.15950007296447707,
+        "distanceM": 0,
+        "workSeconds": 0,
+        "medianMs": 80.96640000000025,
+        "p95Ms": 90.59429999999975,
+        "totalMs": 330.5066000000006,
+        "complete": false,
+        "failedStep": 5,
+        "reason": "지지 조건 미달 (44.9%) / 지지 조건 미달 (45.3%) / 지지 조건 미달 (59.5%) / 지지 조건 미달 (60.0%) / 지지 조건 미달 (72.8%) / 지지 조건 미달 (73.4%) / 지지 조건 미달 (60.2%) / 지지 조건 미달 (60.7%) / 지지 조건 미달 (58.2%) / 지지 조건 미달 (58.7%) / 지지 조건 미달 (55.3%) / 무게 규칙 위반 / 지지 조건 미달 (64.7%) / 누적 무게중심 정적 평형 불가 / 지지 조건 미달 (21.0%) / 지지 조건 미달 (35.8%) / 지지 조건 미달 (35.5%) / 지지 조건 미달 (25.2%) / 지지 조건 미달 (27.0%) / 지지 조건 미달 (25.1%) / 지지 조건 미달 (44.6%) / 지지 조건 미달 (46.5%) / 지지 조건 미달 (40.8%) / 지지 조건 미달 (20.3%) / 지지 조건 미달 (39.2%) / 지지 조건 미달 (9.2%) / 지지 조건 미달 (6.7%) / 지지 조건 미달 (51.9%) / 지지 조건 미달 (51.5%) / 지지 조건 미달 (60.6%) / 지지 조건 미달 (62.5%) / 지지 조건 미달 (54.2%) / 지지 조건 미달 (8.9%) / 지지 조건 미달 (67.3%)",
+        "excluded": 0,
+        "missing": 0,
+        "strategyDetails": {
+          "algorithm": "lookahead",
+          "seed": 42,
+          "totalBoxes": 18,
+          "placedBoxes": 4,
+          "failedBoxes": 1,
+          "unprocessedBoxes": 13,
+          "unplacedBoxes": 14,
+          "averageSupport": 1,
+          "stabilityViolations": 0,
+          "averageDecisionMs": 66.10132000000013,
+          "maxDecisionMs": 90.59429999999975,
+          "replans": 0,
+          "averageFutureFeasible": 7.083333333333333,
+          "minFutureFeasible": 0,
+          "futureDeadEnds": 1,
+          "futurePlacementLoss": 1.0289751551383644,
+          "reservedSlotCount": 0,
+          "reservationChanges": 0
+        }
+      },
+      "diagnostics": {
+        "algorithm": "lookahead",
+        "seed": 42,
+        "totalBoxes": 18,
+        "placedBoxes": 4,
+        "failedBoxes": 1,
+        "unprocessedBoxes": 13,
+        "unplacedBoxes": 14,
+        "averageSupport": 1,
+        "stabilityViolations": 0,
+        "averageDecisionMs": 66.10132000000013,
+        "maxDecisionMs": 90.59429999999975,
+        "replans": 0,
+        "averageFutureFeasible": 7.083333333333333,
+        "minFutureFeasible": 0,
+        "futureDeadEnds": 1,
+        "futurePlacementLoss": 1.0289751551383644,
+        "reservedSlotCount": 0,
+        "reservationChanges": 0
+      }
+    },
+    {
+      "episode": 0,
+      "algorithm": "future-hybrid",
+      "seed": 42,
+      "arrivalSequence": [
+        "Medium-01",
+        "Small-03",
+        "Heavy-02",
+        "Medium-03",
+        "Wide-03",
+        "Small-04",
+        "Long-02",
+        "Medium-02",
+        "Tall-01",
+        "Small-02",
+        "Wide-02",
+        "Tall-02",
+        "Medium-04",
+        "Long-01",
+        "Wide-01",
+        "Small-05",
+        "Heavy-01",
+        "Small-01"
+      ],
+      "observedSequence": [
+        "Medium-01",
+        "Small-03",
+        "Heavy-02",
+        "Medium-03",
+        "Wide-03",
+        "Small-04",
+        "Long-02",
+        "Medium-02",
+        "Tall-01",
+        "Small-02",
+        "Wide-02",
+        "Tall-02",
+        "Medium-04",
+        "Long-01",
+        "Wide-01"
+      ],
+      "metrics": {
+        "loadUtilization": 0.20833333333333334,
+        "unknownCapacity": 0,
+        "slenderness": 2.345724907063197,
+        "supportBalances": [
+          {
+            "id": "Medium-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 21,
+            "loadAbove": 13,
+            "center": {
+              "x": 495.7142857142857,
+              "y": 398.0952380952381,
+              "z": 292.1190476190476
+            },
+            "supportCenter": {
+              "x": 500,
+              "y": 400,
+              "z": 0
+            },
+            "offsetMm": 4.689932286569575,
+            "offsetRatio": 0.03186404673393515,
+            "margin": 130.21428571428572,
+            "required": 43.817857142857136,
+            "reserve": 86.39642857142859
+          },
+          {
+            "id": "Small-03",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 3,
+            "loadAbove": 0,
+            "center": {
+              "x": 477,
+              "y": 88.5,
+              "z": 75.5
+            },
+            "supportCenter": {
+              "x": 477,
+              "y": 88.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 88.5,
+            "required": 17.7,
+            "reserve": 70.8
+          },
+          {
+            "id": "Heavy-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 31,
+            "loadAbove": 13,
+            "center": {
+              "x": 155.5,
+              "y": 438,
+              "z": 205.91935483870967
+            },
+            "supportCenter": {
+              "x": 155.5,
+              "y": 438,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 155.5,
+            "required": 31.1,
+            "reserve": 124.4
+          },
+          {
+            "id": "Medium-03",
+            "isBase": false,
+            "planeZ": 179,
+            "mass": 13,
+            "loadAbove": 5,
+            "center": {
+              "x": 155.5,
+              "y": 438,
+              "z": 367.11538461538464
+            },
+            "supportCenter": {
+              "x": 155.5,
+              "y": 438,
+              "z": 179
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 134.5,
+            "required": 28.217307692307696,
+            "reserve": 106.2826923076923
+          },
+          {
+            "id": "Wide-03",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 32,
+            "loadAbove": 20,
+            "center": {
+              "x": 813.25,
+              "y": 375.75,
+              "z": 268.375
+            },
+            "supportCenter": {
+              "x": 816,
+              "y": 403,
+              "z": 0
+            },
+            "offsetMm": 27.38840995749845,
+            "offsetRatio": 0.11190965092402463,
+            "margin": 178.75,
+            "required": 40.25625,
+            "reserve": 138.49375
+          },
+          {
+            "id": "Small-04",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 3,
+            "loadAbove": 0,
+            "center": {
+              "x": 88.5,
+              "y": 111.5,
+              "z": 75.5
+            },
+            "supportCenter": {
+              "x": 88.5,
+              "y": 111.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 88.5,
+            "required": 17.7,
+            "reserve": 70.8
+          },
+          {
+            "id": "Long-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 12,
+            "loadAbove": 6,
+            "center": {
+              "x": 634.5,
+              "y": 718,
+              "z": 127
+            },
+            "supportCenter": {
+              "x": 634.5,
+              "y": 718,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 71.5,
+            "required": 19.05,
+            "reserve": 52.45
+          },
+          {
+            "id": "Medium-02",
+            "isBase": false,
+            "planeZ": 217,
+            "mass": 13,
+            "loadAbove": 5,
+            "center": {
+              "x": 493.0769230769231,
+              "y": 396.9230769230769,
+              "z": 405.11538461538464
+            },
+            "supportCenter": {
+              "x": 500,
+              "y": 400,
+              "z": 217
+            },
+            "offsetMm": 7.5760444629200725,
+            "offsetRatio": 0.05147269087789521,
+            "margin": 127.5769230769231,
+            "required": 28.217307692307696,
+            "reserve": 99.3596153846154
+          },
+          {
+            "id": "Tall-01",
+            "isBase": false,
+            "planeZ": 396,
+            "mass": 5,
+            "loadAbove": 0,
+            "center": {
+              "x": 155.5,
+              "y": 438,
+              "z": 494.5
+            },
+            "supportCenter": {
+              "x": 155.5,
+              "y": 438,
+              "z": 396
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 116.5,
+            "required": 23.3,
+            "reserve": 93.2
+          },
+          {
+            "id": "Small-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 3,
+            "loadAbove": 0,
+            "center": {
+              "x": 265.5,
+              "y": 111.5,
+              "z": 75.5
+            },
+            "supportCenter": {
+              "x": 265.5,
+              "y": 111.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 88.5,
+            "required": 17.7,
+            "reserve": 70.8
+          },
+          {
+            "id": "Wide-02",
+            "isBase": false,
+            "planeZ": 193,
+            "mass": 20,
+            "loadAbove": 8,
+            "center": {
+              "x": 811.6,
+              "y": 359.4,
+              "z": 371.5
+            },
+            "supportCenter": {
+              "x": 816,
+              "y": 403,
+              "z": 193
+            },
+            "offsetMm": 43.821455931997534,
+            "offsetRatio": 0.17905544147843952,
+            "margin": 177.10000000000002,
+            "required": 36.300000000000004,
+            "reserve": 140.8
+          },
+          {
+            "id": "Tall-02",
+            "isBase": false,
+            "planeZ": 434,
+            "mass": 5,
+            "loadAbove": 0,
+            "center": {
+              "x": 482,
+              "y": 392,
+              "z": 532.5
+            },
+            "supportCenter": {
+              "x": 482,
+              "y": 400,
+              "z": 434
+            },
+            "offsetMm": 8,
+            "offsetRatio": 0.0469208211143695,
+            "margin": 116.5,
+            "required": 23.3,
+            "reserve": 93.2
+          },
+          {
+            "id": "Medium-04",
+            "isBase": false,
+            "planeZ": 386,
+            "mass": 8,
+            "loadAbove": 0,
+            "center": {
+              "x": 805,
+              "y": 294,
+              "z": 494.5
+            },
+            "supportCenter": {
+              "x": 805,
+              "y": 294,
+              "z": 386
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 134.5,
+            "required": 26.900000000000002,
+            "reserve": 107.6
+          },
+          {
+            "id": "Long-01",
+            "isBase": false,
+            "planeZ": 127,
+            "mass": 6,
+            "loadAbove": 0,
+            "center": {
+              "x": 634.5,
+              "y": 718,
+              "z": 190.5
+            },
+            "supportCenter": {
+              "x": 634.5,
+              "y": 718,
+              "z": 127
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 71.5,
+            "required": 14.3,
+            "reserve": 57.2
+          }
+        ],
+        "count": 14,
+        "volume": 248277270,
+        "weight": 105,
+        "height": 631,
+        "utilization": 0.22167613392857144,
+        "efficiency": 0.49183294374009506,
+        "center": {
+          "x": 489.15714285714284,
+          "y": 414.4047619047619,
+          "z": 221.9952380952381
+        },
+        "quadrants": [
+          25.734476992397113,
+          22.243457702967746,
+          27.36700571143632,
+          29.65505959319882
+        ],
+        "imbalance": 0.07058668466886739,
+        "distanceM": 0,
+        "workSeconds": 0,
+        "medianMs": 124.38659999999982,
+        "p95Ms": 759.3654000000006,
+        "totalMs": 4071.0506000000014,
+        "complete": false,
+        "failedStep": 15,
+        "reason": "누적 무게중심 정적 평형 불가 / 지지 조건 미달 (30.0%) / 무게 규칙 위반 / 지지 조건 미달 (41.0%) / 지지 조건 미달 (46.0%) / 지지 조건 미달 (47.1%) / 지지 조건 미달 (41.4%) / 지지 조건 미달 (40.0%) / 지지 조건 미달 (51.9%) / 지지 조건 미달 (49.8%) / 지지 조건 미달 (51.5%) / 지지 조건 미달 (46.5%) / 지지 조건 미달 (48.5%)",
+        "excluded": 0,
+        "missing": 0,
+        "strategyDetails": {
+          "algorithm": "future-hybrid",
+          "seed": 42,
+          "totalBoxes": 18,
+          "placedBoxes": 14,
+          "failedBoxes": 1,
+          "unprocessedBoxes": 3,
+          "unplacedBoxes": 4,
+          "averageSupport": 0.9935974389755903,
+          "stabilityViolations": 0,
+          "averageDecisionMs": 271.40337333333343,
+          "maxDecisionMs": 759.3654000000006,
+          "replans": 0,
+          "averageFutureFeasible": 4.261904761904762,
+          "minFutureFeasible": 0,
+          "futureDeadEnds": 2,
+          "futurePlacementLoss": 1.4440739074896787,
+          "reservedSlotCount": 8,
+          "reservationChanges": 138
+        }
+      },
+      "diagnostics": {
+        "algorithm": "future-hybrid",
+        "seed": 42,
+        "totalBoxes": 18,
+        "placedBoxes": 14,
+        "failedBoxes": 1,
+        "unprocessedBoxes": 3,
+        "unplacedBoxes": 4,
+        "averageSupport": 0.9935974389755903,
+        "stabilityViolations": 0,
+        "averageDecisionMs": 271.40337333333343,
+        "maxDecisionMs": 759.3654000000006,
+        "replans": 0,
+        "averageFutureFeasible": 4.261904761904762,
+        "minFutureFeasible": 0,
+        "futureDeadEnds": 2,
+        "futurePlacementLoss": 1.4440739074896787,
+        "reservedSlotCount": 8,
+        "reservationChanges": 138
+      }
+    },
+    {
+      "episode": 1,
+      "algorithm": "strategy-greedy",
+      "seed": 43,
+      "arrivalSequence": [
+        "Tall-02",
+        "Long-02",
+        "Small-05",
+        "Wide-01",
+        "Wide-02",
+        "Medium-04",
+        "Wide-03",
+        "Long-01",
+        "Heavy-02",
+        "Small-02",
+        "Small-04",
+        "Heavy-01",
+        "Tall-01",
+        "Small-01",
+        "Medium-01",
+        "Small-03",
+        "Medium-02",
+        "Medium-03"
+      ],
+      "observedSequence": [
+        "Tall-02",
+        "Long-02",
+        "Small-05",
+        "Wide-01"
+      ],
+      "metrics": {
+        "loadUtilization": 0,
+        "unknownCapacity": 0,
+        "slenderness": 0.8881118881118881,
+        "supportBalances": [
+          {
+            "id": "Tall-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 5,
+            "loadAbove": 0,
+            "center": {
+              "x": 500,
+              "y": 400,
+              "z": 98.5
+            },
+            "supportCenter": {
+              "x": 500,
+              "y": 400,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 116.5,
+            "required": 23.3,
+            "reserve": 93.2
+          },
+          {
+            "id": "Long-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 6,
+            "loadAbove": 0,
+            "center": {
+              "x": 71.5,
+              "y": 365.5,
+              "z": 63.5
+            },
+            "supportCenter": {
+              "x": 71.5,
+              "y": 365.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 71.5,
+            "required": 14.3,
+            "reserve": 57.2
+          },
+          {
+            "id": "Small-05",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 3,
+            "loadAbove": 0,
+            "center": {
+              "x": 911.5,
+              "y": 333,
+              "z": 75.5
+            },
+            "supportCenter": {
+              "x": 911.5,
+              "y": 333,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 88.5,
+            "required": 17.7,
+            "reserve": 70.8
+          }
+        ],
+        "count": 3,
+        "volume": 35622469,
+        "weight": 14,
+        "height": 197,
+        "utilization": 0.031805775892857144,
+        "efficiency": 0.22603089467005077,
+        "center": {
+          "x": 404.5357142857143,
+          "y": 370.85714285714283,
+          "z": 78.57142857142857
+        },
+        "quadrants": [
+          4.5331737346101235,
+          3.651345291479821,
+          3.966826265389877,
+          1.8486547085201792
+        ],
+        "imbalance": 0.1917513590064246,
+        "distanceM": 0,
+        "workSeconds": 0,
+        "medianMs": 3.587300000000141,
+        "p95Ms": 4.289800000000469,
+        "totalMs": 14.685400000002119,
+        "complete": false,
+        "failedStep": 4,
+        "reason": "누적 무게중심 정적 평형 불가 / 지지 조건 미달 (39.4%) / 무게 규칙 위반 / 지지 조건 미달 (33.7%) / 지지 조건 미달 (33.8%) / 지지 조건 미달 (29.0%) / 지지 조건 미달 (19.7%) / 지지 조건 미달 (22.3%) / 지지 조건 미달 (17.7%) / 지지 조건 미달 (20.1%) / 지지 조건 미달 (11.6%) / 지지 조건 미달 (13.2%) / 지지 조건 미달 (47.1%) / 지지 조건 미달 (8.3%) / 지지 조건 미달 (18.6%) / 지지 조건 미달 (18.4%) / 지지 조건 미달 (35.0%) / 지지 조건 미달 (23.5%) / 지지 조건 미달 (13.1%) / 지지 조건 미달 (29.4%) / 지지 조건 미달 (24.7%) / 지지 조건 미달 (31.6%) / 지지 조건 미달 (20.9%)",
+        "excluded": 0,
+        "missing": 0,
+        "strategyDetails": {
+          "algorithm": "strategy-greedy",
+          "seed": 43,
+          "totalBoxes": 18,
+          "placedBoxes": 3,
+          "failedBoxes": 1,
+          "unprocessedBoxes": 14,
+          "unplacedBoxes": 15,
+          "averageSupport": 1,
+          "stabilityViolations": 0,
+          "averageDecisionMs": 3.6713500000005297,
+          "maxDecisionMs": 4.289800000000469,
+          "replans": 0,
+          "averageFutureFeasible": null,
+          "minFutureFeasible": null,
+          "futureDeadEnds": 0,
+          "futurePlacementLoss": 0,
+          "reservedSlotCount": 0,
+          "reservationChanges": 0
+        }
+      },
+      "diagnostics": {
+        "algorithm": "strategy-greedy",
+        "seed": 43,
+        "totalBoxes": 18,
+        "placedBoxes": 3,
+        "failedBoxes": 1,
+        "unprocessedBoxes": 14,
+        "unplacedBoxes": 15,
+        "averageSupport": 1,
+        "stabilityViolations": 0,
+        "averageDecisionMs": 3.6713500000005297,
+        "maxDecisionMs": 4.289800000000469,
+        "replans": 0,
+        "averageFutureFeasible": null,
+        "minFutureFeasible": null,
+        "futureDeadEnds": 0,
+        "futurePlacementLoss": 0,
+        "reservedSlotCount": 0,
+        "reservationChanges": 0
+      }
+    },
+    {
+      "episode": 1,
+      "algorithm": "macs",
+      "seed": 43,
+      "arrivalSequence": [
+        "Tall-02",
+        "Long-02",
+        "Small-05",
+        "Wide-01",
+        "Wide-02",
+        "Medium-04",
+        "Wide-03",
+        "Long-01",
+        "Heavy-02",
+        "Small-02",
+        "Small-04",
+        "Heavy-01",
+        "Tall-01",
+        "Small-01",
+        "Medium-01",
+        "Small-03",
+        "Medium-02",
+        "Medium-03"
+      ],
+      "observedSequence": [
+        "Tall-02",
+        "Long-02",
+        "Small-05",
+        "Wide-01"
+      ],
+      "metrics": {
+        "loadUtilization": 0,
+        "unknownCapacity": 0,
+        "slenderness": 0.8881118881118881,
+        "supportBalances": [
+          {
+            "id": "Tall-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 5,
+            "loadAbove": 0,
+            "center": {
+              "x": 500,
+              "y": 400,
+              "z": 98.5
+            },
+            "supportCenter": {
+              "x": 500,
+              "y": 400,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 116.5,
+            "required": 23.3,
+            "reserve": 93.2
+          },
+          {
+            "id": "Long-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 6,
+            "loadAbove": 0,
+            "center": {
+              "x": 71.5,
+              "y": 365.5,
+              "z": 63.5
+            },
+            "supportCenter": {
+              "x": 71.5,
+              "y": 365.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 71.5,
+            "required": 14.3,
+            "reserve": 57.2
+          },
+          {
+            "id": "Small-05",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 3,
+            "loadAbove": 0,
+            "center": {
+              "x": 911.5,
+              "y": 333,
+              "z": 75.5
+            },
+            "supportCenter": {
+              "x": 911.5,
+              "y": 333,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 88.5,
+            "required": 17.7,
+            "reserve": 70.8
+          }
+        ],
+        "count": 3,
+        "volume": 35622469,
+        "weight": 14,
+        "height": 197,
+        "utilization": 0.031805775892857144,
+        "efficiency": 0.22603089467005077,
+        "center": {
+          "x": 404.5357142857143,
+          "y": 370.85714285714283,
+          "z": 78.57142857142857
+        },
+        "quadrants": [
+          4.5331737346101235,
+          3.651345291479821,
+          3.966826265389877,
+          1.8486547085201792
+        ],
+        "imbalance": 0.1917513590064246,
+        "distanceM": 0,
+        "workSeconds": 0,
+        "medianMs": 2.784549999999399,
+        "p95Ms": 9.252400000001217,
+        "totalMs": 17.069400000000314,
+        "complete": false,
+        "failedStep": 4,
+        "reason": "누적 무게중심 정적 평형 불가 / 지지 조건 미달 (39.4%) / 무게 규칙 위반 / 지지 조건 미달 (33.7%) / 지지 조건 미달 (33.8%) / 지지 조건 미달 (29.0%) / 지지 조건 미달 (19.7%) / 지지 조건 미달 (22.3%) / 지지 조건 미달 (17.7%) / 지지 조건 미달 (20.1%) / 지지 조건 미달 (11.6%) / 지지 조건 미달 (13.2%) / 지지 조건 미달 (47.1%) / 지지 조건 미달 (8.3%) / 지지 조건 미달 (18.6%) / 지지 조건 미달 (18.4%) / 지지 조건 미달 (35.0%) / 지지 조건 미달 (23.5%) / 지지 조건 미달 (13.1%) / 지지 조건 미달 (29.4%) / 지지 조건 미달 (24.7%) / 지지 조건 미달 (31.6%) / 지지 조건 미달 (20.9%)",
+        "excluded": 0,
+        "missing": 0,
+        "strategyDetails": {
+          "algorithm": "macs",
+          "seed": 43,
+          "totalBoxes": 18,
+          "placedBoxes": 3,
+          "failedBoxes": 1,
+          "unprocessedBoxes": 14,
+          "unplacedBoxes": 15,
+          "averageSupport": 1,
+          "stabilityViolations": 0,
+          "averageDecisionMs": 4.267350000000079,
+          "maxDecisionMs": 9.252400000001217,
+          "replans": 0,
+          "averageFutureFeasible": null,
+          "minFutureFeasible": null,
+          "futureDeadEnds": 0,
+          "futurePlacementLoss": 0,
+          "reservedSlotCount": 0,
+          "reservationChanges": 0
+        }
+      },
+      "diagnostics": {
+        "algorithm": "macs",
+        "seed": 43,
+        "totalBoxes": 18,
+        "placedBoxes": 3,
+        "failedBoxes": 1,
+        "unprocessedBoxes": 14,
+        "unplacedBoxes": 15,
+        "averageSupport": 1,
+        "stabilityViolations": 0,
+        "averageDecisionMs": 4.267350000000079,
+        "maxDecisionMs": 9.252400000001217,
+        "replans": 0,
+        "averageFutureFeasible": null,
+        "minFutureFeasible": null,
+        "futureDeadEnds": 0,
+        "futurePlacementLoss": 0,
+        "reservedSlotCount": 0,
+        "reservationChanges": 0
+      }
+    },
+    {
+      "episode": 1,
+      "algorithm": "tetris-reserved",
+      "seed": 43,
+      "arrivalSequence": [
+        "Tall-02",
+        "Long-02",
+        "Small-05",
+        "Wide-01",
+        "Wide-02",
+        "Medium-04",
+        "Wide-03",
+        "Long-01",
+        "Heavy-02",
+        "Small-02",
+        "Small-04",
+        "Heavy-01",
+        "Tall-01",
+        "Small-01",
+        "Medium-01",
+        "Small-03",
+        "Medium-02",
+        "Medium-03"
+      ],
+      "observedSequence": [
+        "Tall-02",
+        "Long-02",
+        "Small-05",
+        "Wide-01",
+        "Wide-02",
+        "Medium-04",
+        "Wide-03",
+        "Long-01",
+        "Heavy-02"
+      ],
+      "metrics": {
+        "loadUtilization": 0.125,
+        "unknownCapacity": 0,
+        "slenderness": 1.7762237762237763,
+        "supportBalances": [
+          {
+            "id": "Tall-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 5,
+            "loadAbove": 0,
+            "center": {
+              "x": 821.5,
+              "y": 116.5,
+              "z": 98.5
+            },
+            "supportCenter": {
+              "x": 821.5,
+              "y": 116.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 116.5,
+            "required": 23.3,
+            "reserve": 93.2
+          },
+          {
+            "id": "Long-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 12,
+            "loadAbove": 6,
+            "center": {
+              "x": 365.5,
+              "y": 728.5,
+              "z": 127
+            },
+            "supportCenter": {
+              "x": 365.5,
+              "y": 728.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 71.5,
+            "required": 19.05,
+            "reserve": 52.45
+          },
+          {
+            "id": "Small-05",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 3,
+            "loadAbove": 0,
+            "center": {
+              "x": 842.5,
+              "y": 711.5,
+              "z": 75.5
+            },
+            "supportCenter": {
+              "x": 842.5,
+              "y": 711.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 88.5,
+            "required": 17.7,
+            "reserve": 70.8
+          },
+          {
+            "id": "Wide-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 24,
+            "loadAbove": 12,
+            "center": {
+              "x": 243.5,
+              "y": 181.5,
+              "z": 193
+            },
+            "supportCenter": {
+              "x": 243.5,
+              "y": 181.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 181.5,
+            "required": 36.300000000000004,
+            "reserve": 145.2
+          },
+          {
+            "id": "Wide-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 12,
+            "loadAbove": 0,
+            "center": {
+              "x": 730.5,
+              "y": 414.5,
+              "z": 96.5
+            },
+            "supportCenter": {
+              "x": 730.5,
+              "y": 414.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 181.5,
+            "required": 36.300000000000004,
+            "reserve": 145.2
+          },
+          {
+            "id": "Medium-04",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 8,
+            "loadAbove": 0,
+            "center": {
+              "x": 170.5,
+              "y": 522.5,
+              "z": 108.5
+            },
+            "supportCenter": {
+              "x": 170.5,
+              "y": 522.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 134.5,
+            "required": 26.900000000000002,
+            "reserve": 107.6
+          },
+          {
+            "id": "Wide-03",
+            "isBase": false,
+            "planeZ": 193,
+            "mass": 12,
+            "loadAbove": 0,
+            "center": {
+              "x": 243.5,
+              "y": 181.5,
+              "z": 289.5
+            },
+            "supportCenter": {
+              "x": 243.5,
+              "y": 181.5,
+              "z": 193
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 181.5,
+            "required": 36.300000000000004,
+            "reserve": 145.2
+          },
+          {
+            "id": "Long-01",
+            "isBase": false,
+            "planeZ": 127,
+            "mass": 6,
+            "loadAbove": 0,
+            "center": {
+              "x": 365.5,
+              "y": 728.5,
+              "z": 190.5
+            },
+            "supportCenter": {
+              "x": 365.5,
+              "y": 728.5,
+              "z": 127
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 71.5,
+            "required": 14.3,
+            "reserve": 57.2
+          }
+        ],
+        "count": 8,
+        "volume": 171159552,
+        "weight": 64,
+        "height": 386,
+        "utilization": 0.15282102857142857,
+        "efficiency": 0.5542731606217617,
+        "center": {
+          "x": 421.796875,
+          "y": 390.140625,
+          "z": 139.078125
+        },
+        "quadrants": [
+          24.504246101739014,
+          10.373292378705855,
+          16.02401677688075,
+          13.09844474267438
+        ],
+        "imbalance": 0.2207961519223931,
+        "distanceM": 0,
+        "workSeconds": 0,
+        "medianMs": 29.282900000000154,
+        "p95Ms": 286.3793000000005,
+        "totalMs": 546.7831999999999,
+        "complete": false,
+        "failedStep": 9,
+        "reason": "무게 규칙 위반 / 지지 조건 미달 (87.1%) / 지지 조건 미달 (93.8%) / 지지 조건 미달 (79.8%) / 지지 조건 미달 (85.4%) / 지지 조건 미달 (78.2%) / 지지 조건 미달 (91.3%) / 지지 조건 미달 (85.6%) / 지지 조건 미달 (80.4%) / 지지 조건 미달 (75.4%) / 지지 조건 미달 (46.9%) / 누적 무게중심 정적 평형 불가 / 지지 조건 미달 (27.8%) / 지지 조건 미달 (55.9%) / 지지 조건 미달 (59.5%) / 지지 조건 미달 (64.1%) / 지지 조건 미달 (36.4%) / 지지 조건 미달 (43.4%) / 지지 조건 미달 (46.2%) / 지지 조건 미달 (49.8%) / 지지 조건 미달 (31.4%) / 지지 조건 미달 (37.4%) / 지지 조건 미달 (39.8%) / 지지 조건 미달 (42.9%) / 지지 조건 미달 (6.5%) / 지지 조건 미달 (12.9%)",
+        "excluded": 0,
+        "missing": 0,
+        "strategyDetails": {
+          "algorithm": "tetris-reserved",
+          "seed": 43,
+          "totalBoxes": 18,
+          "placedBoxes": 8,
+          "failedBoxes": 1,
+          "unprocessedBoxes": 9,
+          "unplacedBoxes": 10,
+          "averageSupport": 1,
+          "stabilityViolations": 0,
+          "averageDecisionMs": 60.753688888888874,
+          "maxDecisionMs": 286.3793000000005,
+          "replans": 0,
+          "averageFutureFeasible": 4.222222222222222,
+          "minFutureFeasible": 0,
+          "futureDeadEnds": 0,
+          "futurePlacementLoss": 0.35325437947199606,
+          "reservedSlotCount": 0,
+          "reservationChanges": 6
+        }
+      },
+      "diagnostics": {
+        "algorithm": "tetris-reserved",
+        "seed": 43,
+        "totalBoxes": 18,
+        "placedBoxes": 8,
+        "failedBoxes": 1,
+        "unprocessedBoxes": 9,
+        "unplacedBoxes": 10,
+        "averageSupport": 1,
+        "stabilityViolations": 0,
+        "averageDecisionMs": 60.753688888888874,
+        "maxDecisionMs": 286.3793000000005,
+        "replans": 0,
+        "averageFutureFeasible": 4.222222222222222,
+        "minFutureFeasible": 0,
+        "futureDeadEnds": 0,
+        "futurePlacementLoss": 0.35325437947199606,
+        "reservedSlotCount": 0,
+        "reservationChanges": 6
+      }
+    },
+    {
+      "episode": 1,
+      "algorithm": "dynamic-reservation",
+      "seed": 43,
+      "arrivalSequence": [
+        "Tall-02",
+        "Long-02",
+        "Small-05",
+        "Wide-01",
+        "Wide-02",
+        "Medium-04",
+        "Wide-03",
+        "Long-01",
+        "Heavy-02",
+        "Small-02",
+        "Small-04",
+        "Heavy-01",
+        "Tall-01",
+        "Small-01",
+        "Medium-01",
+        "Small-03",
+        "Medium-02",
+        "Medium-03"
+      ],
+      "observedSequence": [
+        "Tall-02",
+        "Long-02",
+        "Small-05",
+        "Wide-01",
+        "Wide-02",
+        "Medium-04",
+        "Wide-03"
+      ],
+      "metrics": {
+        "loadUtilization": 0.20833333333333334,
+        "unknownCapacity": 0,
+        "slenderness": 1.6611570247933884,
+        "supportBalances": [
+          {
+            "id": "Tall-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 5,
+            "loadAbove": 0,
+            "center": {
+              "x": 500,
+              "y": 400,
+              "z": 98.5
+            },
+            "supportCenter": {
+              "x": 500,
+              "y": 400,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 116.5,
+            "required": 23.3,
+            "reserve": 93.2
+          },
+          {
+            "id": "Long-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 6,
+            "loadAbove": 0,
+            "center": {
+              "x": 71.5,
+              "y": 365.5,
+              "z": 63.5
+            },
+            "supportCenter": {
+              "x": 71.5,
+              "y": 365.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 71.5,
+            "required": 14.3,
+            "reserve": 57.2
+          },
+          {
+            "id": "Small-05",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 3,
+            "loadAbove": 0,
+            "center": {
+              "x": 888.5,
+              "y": 88.5,
+              "z": 75.5
+            },
+            "supportCenter": {
+              "x": 888.5,
+              "y": 88.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 88.5,
+            "required": 17.7,
+            "reserve": 70.8
+          },
+          {
+            "id": "Wide-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 32,
+            "loadAbove": 20,
+            "center": {
+              "x": 795.25,
+              "y": 437.75,
+              "z": 268.375
+            },
+            "supportCenter": {
+              "x": 798,
+              "y": 465,
+              "z": 0
+            },
+            "offsetMm": 27.38840995749845,
+            "offsetRatio": 0.11190965092402463,
+            "margin": 178.75,
+            "required": 40.25625,
+            "reserve": 138.49375
+          },
+          {
+            "id": "Wide-02",
+            "isBase": false,
+            "planeZ": 193,
+            "mass": 20,
+            "loadAbove": 8,
+            "center": {
+              "x": 793.6,
+              "y": 421.4,
+              "z": 371.5
+            },
+            "supportCenter": {
+              "x": 798,
+              "y": 465,
+              "z": 193
+            },
+            "offsetMm": 43.821455931997534,
+            "offsetRatio": 0.17905544147843952,
+            "margin": 177.10000000000002,
+            "required": 36.300000000000004,
+            "reserve": 140.8
+          },
+          {
+            "id": "Medium-04",
+            "isBase": false,
+            "planeZ": 386,
+            "mass": 8,
+            "loadAbove": 0,
+            "center": {
+              "x": 787,
+              "y": 356,
+              "z": 494.5
+            },
+            "supportCenter": {
+              "x": 787,
+              "y": 356,
+              "z": 386
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 134.5,
+            "required": 26.900000000000002,
+            "reserve": 107.6
+          }
+        ],
+        "count": 6,
+        "volume": 123765128,
+        "weight": 46,
+        "height": 603,
+        "utilization": 0.11050457857142858,
+        "efficiency": 0.25656121061359866,
+        "center": {
+          "x": 674.8369565217391,
+          "y": 401.44565217391306,
+          "z": 210.6086956521739
+        },
+        "quadrants": [
+          4.5331737346101235,
+          15.978952772073923,
+          3.966826265389877,
+          21.52104722792608
+        ],
+        "imbalance": 0.38161349918556964,
+        "distanceM": 0,
+        "workSeconds": 0,
+        "medianMs": 34.50960000000123,
+        "p95Ms": 150.8760000000002,
+        "totalMs": 371.5466000000015,
+        "complete": false,
+        "failedStep": 7,
+        "reason": "누적 무게중심 정적 평형 불가 / 지지 조건 미달 (39.4%) / 무게 규칙 위반 / 지지 조건 미달 (33.7%) / 지지 조건 미달 (33.8%) / 지지 조건 미달 (29.0%) / 지지 조건 미달 (8.3%) / 지지 조건 미달 (18.6%) / 지지 조건 미달 (18.4%) / 지지 조건 미달 (35.0%) / 지지 조건 미달 (35.5%) / 지지 조건 미달 (24.7%) / 지지 조건 미달 (47.1%) / 지지 조건 미달 (15.7%) / 지지 조건 미달 (42.0%) / 지지 조건 미달 (20.9%) / 지지 조건 미달 (23.2%) / 지지 조건 미달 (44.1%) / 지지 조건 미달 (13.6%) / 지지 조건 미달 (30.7%) / 지지 조건 미달 (12.3%) / 지지 조건 미달 (27.7%) / 지지 조건 미달 (9.9%) / 지지 조건 미달 (19.3%) / 지지 조건 미달 (51.9%) / 지지 조건 미달 (1.1%)",
+        "excluded": 0,
+        "missing": 0,
+        "strategyDetails": {
+          "algorithm": "dynamic-reservation",
+          "seed": 43,
+          "totalBoxes": 18,
+          "placedBoxes": 6,
+          "failedBoxes": 1,
+          "unprocessedBoxes": 11,
+          "unplacedBoxes": 12,
+          "averageSupport": 1,
+          "stabilityViolations": 0,
+          "averageDecisionMs": 53.078085714285926,
+          "maxDecisionMs": 150.8760000000002,
+          "replans": 0,
+          "averageFutureFeasible": 5.333333333333333,
+          "minFutureFeasible": 0,
+          "futureDeadEnds": 2,
+          "futurePlacementLoss": 1.4617252472984612,
+          "reservedSlotCount": 5,
+          "reservationChanges": 107
+        }
+      },
+      "diagnostics": {
+        "algorithm": "dynamic-reservation",
+        "seed": 43,
+        "totalBoxes": 18,
+        "placedBoxes": 6,
+        "failedBoxes": 1,
+        "unprocessedBoxes": 11,
+        "unplacedBoxes": 12,
+        "averageSupport": 1,
+        "stabilityViolations": 0,
+        "averageDecisionMs": 53.078085714285926,
+        "maxDecisionMs": 150.8760000000002,
+        "replans": 0,
+        "averageFutureFeasible": 5.333333333333333,
+        "minFutureFeasible": 0,
+        "futureDeadEnds": 2,
+        "futurePlacementLoss": 1.4617252472984612,
+        "reservedSlotCount": 5,
+        "reservationChanges": 107
+      }
+    },
+    {
+      "episode": 1,
+      "algorithm": "lookahead",
+      "seed": 43,
+      "arrivalSequence": [
+        "Tall-02",
+        "Long-02",
+        "Small-05",
+        "Wide-01",
+        "Wide-02",
+        "Medium-04",
+        "Wide-03",
+        "Long-01",
+        "Heavy-02",
+        "Small-02",
+        "Small-04",
+        "Heavy-01",
+        "Tall-01",
+        "Small-01",
+        "Medium-01",
+        "Small-03",
+        "Medium-02",
+        "Medium-03"
+      ],
+      "observedSequence": [
+        "Tall-02",
+        "Long-02",
+        "Small-05",
+        "Wide-01",
+        "Wide-02",
+        "Medium-04",
+        "Wide-03"
+      ],
+      "metrics": {
+        "loadUtilization": 0.20833333333333334,
+        "unknownCapacity": 0,
+        "slenderness": 1.6611570247933884,
+        "supportBalances": [
+          {
+            "id": "Tall-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 5,
+            "loadAbove": 0,
+            "center": {
+              "x": 500,
+              "y": 400,
+              "z": 98.5
+            },
+            "supportCenter": {
+              "x": 500,
+              "y": 400,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 116.5,
+            "required": 23.3,
+            "reserve": 93.2
+          },
+          {
+            "id": "Long-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 6,
+            "loadAbove": 0,
+            "center": {
+              "x": 71.5,
+              "y": 365.5,
+              "z": 63.5
+            },
+            "supportCenter": {
+              "x": 71.5,
+              "y": 365.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 71.5,
+            "required": 14.3,
+            "reserve": 57.2
+          },
+          {
+            "id": "Small-05",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 3,
+            "loadAbove": 0,
+            "center": {
+              "x": 888.5,
+              "y": 88.5,
+              "z": 75.5
+            },
+            "supportCenter": {
+              "x": 888.5,
+              "y": 88.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 88.5,
+            "required": 17.7,
+            "reserve": 70.8
+          },
+          {
+            "id": "Wide-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 32,
+            "loadAbove": 20,
+            "center": {
+              "x": 795.25,
+              "y": 437.75,
+              "z": 268.375
+            },
+            "supportCenter": {
+              "x": 798,
+              "y": 465,
+              "z": 0
+            },
+            "offsetMm": 27.38840995749845,
+            "offsetRatio": 0.11190965092402463,
+            "margin": 178.75,
+            "required": 40.25625,
+            "reserve": 138.49375
+          },
+          {
+            "id": "Wide-02",
+            "isBase": false,
+            "planeZ": 193,
+            "mass": 20,
+            "loadAbove": 8,
+            "center": {
+              "x": 793.6,
+              "y": 421.4,
+              "z": 371.5
+            },
+            "supportCenter": {
+              "x": 798,
+              "y": 465,
+              "z": 193
+            },
+            "offsetMm": 43.821455931997534,
+            "offsetRatio": 0.17905544147843952,
+            "margin": 177.10000000000002,
+            "required": 36.300000000000004,
+            "reserve": 140.8
+          },
+          {
+            "id": "Medium-04",
+            "isBase": false,
+            "planeZ": 386,
+            "mass": 8,
+            "loadAbove": 0,
+            "center": {
+              "x": 787,
+              "y": 356,
+              "z": 494.5
+            },
+            "supportCenter": {
+              "x": 787,
+              "y": 356,
+              "z": 386
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 134.5,
+            "required": 26.900000000000002,
+            "reserve": 107.6
+          }
+        ],
+        "count": 6,
+        "volume": 123765128,
+        "weight": 46,
+        "height": 603,
+        "utilization": 0.11050457857142858,
+        "efficiency": 0.25656121061359866,
+        "center": {
+          "x": 674.8369565217391,
+          "y": 401.44565217391306,
+          "z": 210.6086956521739
+        },
+        "quadrants": [
+          4.5331737346101235,
+          15.978952772073923,
+          3.966826265389877,
+          21.52104722792608
+        ],
+        "imbalance": 0.38161349918556964,
+        "distanceM": 0,
+        "workSeconds": 0,
+        "medianMs": 45.77280000000064,
+        "p95Ms": 81.16280000000006,
+        "totalMs": 331.28009999999995,
+        "complete": false,
+        "failedStep": 7,
+        "reason": "누적 무게중심 정적 평형 불가 / 지지 조건 미달 (39.4%) / 무게 규칙 위반 / 지지 조건 미달 (33.7%) / 지지 조건 미달 (33.8%) / 지지 조건 미달 (29.0%) / 지지 조건 미달 (8.3%) / 지지 조건 미달 (18.6%) / 지지 조건 미달 (18.4%) / 지지 조건 미달 (35.0%) / 지지 조건 미달 (35.5%) / 지지 조건 미달 (24.7%) / 지지 조건 미달 (47.1%) / 지지 조건 미달 (15.7%) / 지지 조건 미달 (42.0%) / 지지 조건 미달 (20.9%) / 지지 조건 미달 (23.2%) / 지지 조건 미달 (44.1%) / 지지 조건 미달 (13.6%) / 지지 조건 미달 (30.7%) / 지지 조건 미달 (12.3%) / 지지 조건 미달 (27.7%) / 지지 조건 미달 (9.9%) / 지지 조건 미달 (19.3%) / 지지 조건 미달 (51.9%) / 지지 조건 미달 (1.1%)",
+        "excluded": 0,
+        "missing": 0,
+        "strategyDetails": {
+          "algorithm": "lookahead",
+          "seed": 43,
+          "totalBoxes": 18,
+          "placedBoxes": 6,
+          "failedBoxes": 1,
+          "unprocessedBoxes": 11,
+          "unplacedBoxes": 12,
+          "averageSupport": 1,
+          "stabilityViolations": 0,
+          "averageDecisionMs": 47.32572857142856,
+          "maxDecisionMs": 81.16280000000006,
+          "replans": 0,
+          "averageFutureFeasible": 5.333333333333333,
+          "minFutureFeasible": 0,
+          "futureDeadEnds": 2,
+          "futurePlacementLoss": 1.4617252472984612,
+          "reservedSlotCount": 0,
+          "reservationChanges": 0
+        }
+      },
+      "diagnostics": {
+        "algorithm": "lookahead",
+        "seed": 43,
+        "totalBoxes": 18,
+        "placedBoxes": 6,
+        "failedBoxes": 1,
+        "unprocessedBoxes": 11,
+        "unplacedBoxes": 12,
+        "averageSupport": 1,
+        "stabilityViolations": 0,
+        "averageDecisionMs": 47.32572857142856,
+        "maxDecisionMs": 81.16280000000006,
+        "replans": 0,
+        "averageFutureFeasible": 5.333333333333333,
+        "minFutureFeasible": 0,
+        "futureDeadEnds": 2,
+        "futurePlacementLoss": 1.4617252472984612,
+        "reservedSlotCount": 0,
+        "reservationChanges": 0
+      }
+    },
+    {
+      "episode": 1,
+      "algorithm": "future-hybrid",
+      "seed": 43,
+      "arrivalSequence": [
+        "Tall-02",
+        "Long-02",
+        "Small-05",
+        "Wide-01",
+        "Wide-02",
+        "Medium-04",
+        "Wide-03",
+        "Long-01",
+        "Heavy-02",
+        "Small-02",
+        "Small-04",
+        "Heavy-01",
+        "Tall-01",
+        "Small-01",
+        "Medium-01",
+        "Small-03",
+        "Medium-02",
+        "Medium-03"
+      ],
+      "observedSequence": [
+        "Tall-02",
+        "Long-02",
+        "Small-05",
+        "Wide-01",
+        "Wide-02",
+        "Medium-04",
+        "Wide-03"
+      ],
+      "metrics": {
+        "loadUtilization": 0.20833333333333334,
+        "unknownCapacity": 0,
+        "slenderness": 1.6611570247933884,
+        "supportBalances": [
+          {
+            "id": "Tall-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 5,
+            "loadAbove": 0,
+            "center": {
+              "x": 500,
+              "y": 400,
+              "z": 98.5
+            },
+            "supportCenter": {
+              "x": 500,
+              "y": 400,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 116.5,
+            "required": 23.3,
+            "reserve": 93.2
+          },
+          {
+            "id": "Long-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 6,
+            "loadAbove": 0,
+            "center": {
+              "x": 71.5,
+              "y": 365.5,
+              "z": 63.5
+            },
+            "supportCenter": {
+              "x": 71.5,
+              "y": 365.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 71.5,
+            "required": 14.3,
+            "reserve": 57.2
+          },
+          {
+            "id": "Small-05",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 3,
+            "loadAbove": 0,
+            "center": {
+              "x": 888.5,
+              "y": 88.5,
+              "z": 75.5
+            },
+            "supportCenter": {
+              "x": 888.5,
+              "y": 88.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 88.5,
+            "required": 17.7,
+            "reserve": 70.8
+          },
+          {
+            "id": "Wide-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 32,
+            "loadAbove": 20,
+            "center": {
+              "x": 795.25,
+              "y": 437.75,
+              "z": 268.375
+            },
+            "supportCenter": {
+              "x": 798,
+              "y": 465,
+              "z": 0
+            },
+            "offsetMm": 27.38840995749845,
+            "offsetRatio": 0.11190965092402463,
+            "margin": 178.75,
+            "required": 40.25625,
+            "reserve": 138.49375
+          },
+          {
+            "id": "Wide-02",
+            "isBase": false,
+            "planeZ": 193,
+            "mass": 20,
+            "loadAbove": 8,
+            "center": {
+              "x": 793.6,
+              "y": 421.4,
+              "z": 371.5
+            },
+            "supportCenter": {
+              "x": 798,
+              "y": 465,
+              "z": 193
+            },
+            "offsetMm": 43.821455931997534,
+            "offsetRatio": 0.17905544147843952,
+            "margin": 177.10000000000002,
+            "required": 36.300000000000004,
+            "reserve": 140.8
+          },
+          {
+            "id": "Medium-04",
+            "isBase": false,
+            "planeZ": 386,
+            "mass": 8,
+            "loadAbove": 0,
+            "center": {
+              "x": 787,
+              "y": 356,
+              "z": 494.5
+            },
+            "supportCenter": {
+              "x": 787,
+              "y": 356,
+              "z": 386
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 134.5,
+            "required": 26.900000000000002,
+            "reserve": 107.6
+          }
+        ],
+        "count": 6,
+        "volume": 123765128,
+        "weight": 46,
+        "height": 603,
+        "utilization": 0.11050457857142858,
+        "efficiency": 0.25656121061359866,
+        "center": {
+          "x": 674.8369565217391,
+          "y": 401.44565217391306,
+          "z": 210.6086956521739
+        },
+        "quadrants": [
+          4.5331737346101235,
+          15.978952772073923,
+          3.966826265389877,
+          21.52104722792608
+        ],
+        "imbalance": 0.38161349918556964,
+        "distanceM": 0,
+        "workSeconds": 0,
+        "medianMs": 36.57040000000052,
+        "p95Ms": 155.02909999999974,
+        "totalMs": 384.1672000000035,
+        "complete": false,
+        "failedStep": 7,
+        "reason": "누적 무게중심 정적 평형 불가 / 지지 조건 미달 (39.4%) / 무게 규칙 위반 / 지지 조건 미달 (33.7%) / 지지 조건 미달 (33.8%) / 지지 조건 미달 (29.0%) / 지지 조건 미달 (8.3%) / 지지 조건 미달 (18.6%) / 지지 조건 미달 (18.4%) / 지지 조건 미달 (35.0%) / 지지 조건 미달 (35.5%) / 지지 조건 미달 (24.7%) / 지지 조건 미달 (47.1%) / 지지 조건 미달 (15.7%) / 지지 조건 미달 (42.0%) / 지지 조건 미달 (20.9%) / 지지 조건 미달 (23.2%) / 지지 조건 미달 (44.1%) / 지지 조건 미달 (13.6%) / 지지 조건 미달 (30.7%) / 지지 조건 미달 (12.3%) / 지지 조건 미달 (27.7%) / 지지 조건 미달 (9.9%) / 지지 조건 미달 (19.3%) / 지지 조건 미달 (51.9%) / 지지 조건 미달 (1.1%)",
+        "excluded": 0,
+        "missing": 0,
+        "strategyDetails": {
+          "algorithm": "future-hybrid",
+          "seed": 43,
+          "totalBoxes": 18,
+          "placedBoxes": 6,
+          "failedBoxes": 1,
+          "unprocessedBoxes": 11,
+          "unplacedBoxes": 12,
+          "averageSupport": 1,
+          "stabilityViolations": 0,
+          "averageDecisionMs": 54.88102857142907,
+          "maxDecisionMs": 155.02909999999974,
+          "replans": 0,
+          "averageFutureFeasible": 5.333333333333333,
+          "minFutureFeasible": 0,
+          "futureDeadEnds": 2,
+          "futurePlacementLoss": 1.4617252472984612,
+          "reservedSlotCount": 5,
+          "reservationChanges": 107
+        }
+      },
+      "diagnostics": {
+        "algorithm": "future-hybrid",
+        "seed": 43,
+        "totalBoxes": 18,
+        "placedBoxes": 6,
+        "failedBoxes": 1,
+        "unprocessedBoxes": 11,
+        "unplacedBoxes": 12,
+        "averageSupport": 1,
+        "stabilityViolations": 0,
+        "averageDecisionMs": 54.88102857142907,
+        "maxDecisionMs": 155.02909999999974,
+        "replans": 0,
+        "averageFutureFeasible": 5.333333333333333,
+        "minFutureFeasible": 0,
+        "futureDeadEnds": 2,
+        "futurePlacementLoss": 1.4617252472984612,
+        "reservedSlotCount": 5,
+        "reservationChanges": 107
+      }
+    },
+    {
+      "episode": 2,
+      "algorithm": "strategy-greedy",
+      "seed": 44,
+      "arrivalSequence": [
+        "Heavy-02",
+        "Wide-03",
+        "Wide-02",
+        "Heavy-01",
+        "Medium-01",
+        "Small-04",
+        "Small-05",
+        "Small-02",
+        "Medium-03",
+        "Medium-04",
+        "Long-02",
+        "Wide-01",
+        "Tall-02",
+        "Tall-01",
+        "Medium-02",
+        "Long-01",
+        "Small-01",
+        "Small-03"
+      ],
+      "observedSequence": [
+        "Heavy-02",
+        "Wide-03"
+      ],
+      "metrics": {
+        "loadUtilization": 0,
+        "unknownCapacity": 0,
+        "slenderness": 0.5755627009646302,
+        "supportBalances": [
+          {
+            "id": "Heavy-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 18,
+            "loadAbove": 0,
+            "center": {
+              "x": 500,
+              "y": 400,
+              "z": 89.5
+            },
+            "supportCenter": {
+              "x": 500,
+              "y": 400,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 155.5,
+            "required": 31.1,
+            "reserve": 124.4
+          }
+        ],
+        "count": 1,
+        "volume": 23213973,
+        "weight": 18,
+        "height": 179,
+        "utilization": 0.020726761607142857,
+        "efficiency": 0.16210875,
+        "center": {
+          "x": 500,
+          "y": 400,
+          "z": 89.5
+        },
+        "quadrants": [
+          4.5,
+          4.5,
+          4.5,
+          4.5
+        ],
+        "imbalance": 0,
+        "distanceM": 0,
+        "workSeconds": 0,
+        "medianMs": 1.1201000000000931,
+        "p95Ms": 1.4927999999999884,
+        "totalMs": 2.2402000000001863,
+        "complete": false,
+        "failedStep": 2,
+        "reason": "팔레트 경계 밖 / 지지 조건 미달 (73.4%) / 지지 조건 미달 (63.9%) / 누적 무게중심 정적 평형 불가 / 지지 조건 미달 (13.8%) / 지지 조건 미달 (3.1%) / 지지 조건 미달 (30.2%) / 지지 조건 미달 (52.0%) / 지지 조건 미달 (4.4%) / 지지 조건 미달 (29.3%)",
+        "excluded": 0,
+        "missing": 0,
+        "strategyDetails": {
+          "algorithm": "strategy-greedy",
+          "seed": 44,
+          "totalBoxes": 18,
+          "placedBoxes": 1,
+          "failedBoxes": 1,
+          "unprocessedBoxes": 16,
+          "unplacedBoxes": 17,
+          "averageSupport": 1,
+          "stabilityViolations": 0,
+          "averageDecisionMs": 1.1201000000000931,
+          "maxDecisionMs": 1.4927999999999884,
+          "replans": 0,
+          "averageFutureFeasible": null,
+          "minFutureFeasible": null,
+          "futureDeadEnds": 0,
+          "futurePlacementLoss": 0,
+          "reservedSlotCount": 0,
+          "reservationChanges": 0
+        }
+      },
+      "diagnostics": {
+        "algorithm": "strategy-greedy",
+        "seed": 44,
+        "totalBoxes": 18,
+        "placedBoxes": 1,
+        "failedBoxes": 1,
+        "unprocessedBoxes": 16,
+        "unplacedBoxes": 17,
+        "averageSupport": 1,
+        "stabilityViolations": 0,
+        "averageDecisionMs": 1.1201000000000931,
+        "maxDecisionMs": 1.4927999999999884,
+        "replans": 0,
+        "averageFutureFeasible": null,
+        "minFutureFeasible": null,
+        "futureDeadEnds": 0,
+        "futurePlacementLoss": 0,
+        "reservedSlotCount": 0,
+        "reservationChanges": 0
+      }
+    },
+    {
+      "episode": 2,
+      "algorithm": "macs",
+      "seed": 44,
+      "arrivalSequence": [
+        "Heavy-02",
+        "Wide-03",
+        "Wide-02",
+        "Heavy-01",
+        "Medium-01",
+        "Small-04",
+        "Small-05",
+        "Small-02",
+        "Medium-03",
+        "Medium-04",
+        "Long-02",
+        "Wide-01",
+        "Tall-02",
+        "Tall-01",
+        "Medium-02",
+        "Long-01",
+        "Small-01",
+        "Small-03"
+      ],
+      "observedSequence": [
+        "Heavy-02",
+        "Wide-03"
+      ],
+      "metrics": {
+        "loadUtilization": 0,
+        "unknownCapacity": 0,
+        "slenderness": 0.5755627009646302,
+        "supportBalances": [
+          {
+            "id": "Heavy-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 18,
+            "loadAbove": 0,
+            "center": {
+              "x": 500,
+              "y": 400,
+              "z": 89.5
+            },
+            "supportCenter": {
+              "x": 500,
+              "y": 400,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 155.5,
+            "required": 31.1,
+            "reserve": 124.4
+          }
+        ],
+        "count": 1,
+        "volume": 23213973,
+        "weight": 18,
+        "height": 179,
+        "utilization": 0.020726761607142857,
+        "efficiency": 0.16210875,
+        "center": {
+          "x": 500,
+          "y": 400,
+          "z": 89.5
+        },
+        "quadrants": [
+          4.5,
+          4.5,
+          4.5,
+          4.5
+        ],
+        "imbalance": 0,
+        "distanceM": 0,
+        "workSeconds": 0,
+        "medianMs": 3.686200000000099,
+        "p95Ms": 6.3606999999992695,
+        "totalMs": 7.372400000000198,
+        "complete": false,
+        "failedStep": 2,
+        "reason": "팔레트 경계 밖 / 지지 조건 미달 (73.4%) / 지지 조건 미달 (63.9%) / 누적 무게중심 정적 평형 불가 / 지지 조건 미달 (13.8%) / 지지 조건 미달 (3.1%) / 지지 조건 미달 (30.2%) / 지지 조건 미달 (52.0%) / 지지 조건 미달 (4.4%) / 지지 조건 미달 (29.3%)",
+        "excluded": 0,
+        "missing": 0,
+        "strategyDetails": {
+          "algorithm": "macs",
+          "seed": 44,
+          "totalBoxes": 18,
+          "placedBoxes": 1,
+          "failedBoxes": 1,
+          "unprocessedBoxes": 16,
+          "unplacedBoxes": 17,
+          "averageSupport": 1,
+          "stabilityViolations": 0,
+          "averageDecisionMs": 3.686200000000099,
+          "maxDecisionMs": 6.3606999999992695,
+          "replans": 0,
+          "averageFutureFeasible": null,
+          "minFutureFeasible": null,
+          "futureDeadEnds": 0,
+          "futurePlacementLoss": 0,
+          "reservedSlotCount": 0,
+          "reservationChanges": 0
+        }
+      },
+      "diagnostics": {
+        "algorithm": "macs",
+        "seed": 44,
+        "totalBoxes": 18,
+        "placedBoxes": 1,
+        "failedBoxes": 1,
+        "unprocessedBoxes": 16,
+        "unplacedBoxes": 17,
+        "averageSupport": 1,
+        "stabilityViolations": 0,
+        "averageDecisionMs": 3.686200000000099,
+        "maxDecisionMs": 6.3606999999992695,
+        "replans": 0,
+        "averageFutureFeasible": null,
+        "minFutureFeasible": null,
+        "futureDeadEnds": 0,
+        "futurePlacementLoss": 0,
+        "reservedSlotCount": 0,
+        "reservationChanges": 0
+      }
+    },
+    {
+      "episode": 2,
+      "algorithm": "tetris-reserved",
+      "seed": 44,
+      "arrivalSequence": [
+        "Heavy-02",
+        "Wide-03",
+        "Wide-02",
+        "Heavy-01",
+        "Medium-01",
+        "Small-04",
+        "Small-05",
+        "Small-02",
+        "Medium-03",
+        "Medium-04",
+        "Long-02",
+        "Wide-01",
+        "Tall-02",
+        "Tall-01",
+        "Medium-02",
+        "Long-01",
+        "Small-01",
+        "Small-03"
+      ],
+      "observedSequence": [
+        "Heavy-02",
+        "Wide-03",
+        "Wide-02",
+        "Heavy-01",
+        "Medium-01",
+        "Small-04",
+        "Small-05",
+        "Small-02",
+        "Medium-03",
+        "Medium-04",
+        "Long-02",
+        "Wide-01"
+      ],
+      "metrics": {
+        "loadUtilization": 0.2708333333333333,
+        "unknownCapacity": 0,
+        "slenderness": 1.8488745980707395,
+        "supportBalances": [
+          {
+            "id": "Heavy-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 44,
+            "loadAbove": 26,
+            "center": {
+              "x": 844.5,
+              "y": 208.5,
+              "z": 231.27272727272728
+            },
+            "supportCenter": {
+              "x": 844.5,
+              "y": 208.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 155.5,
+            "required": 34.69090909090909,
+            "reserve": 120.80909090909091
+          },
+          {
+            "id": "Wide-03",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 30.52914798206278,
+            "loadAbove": 18.52914798206278,
+            "center": {
+              "x": 199.73237367802582,
+              "y": 168.0102820211516,
+              "z": 275.051116333725
+            },
+            "supportCenter": {
+              "x": 243.5,
+              "y": 181.5,
+              "z": 0
+            },
+            "offsetMm": 45.799318826908696,
+            "offsetRatio": 0.17974384526478102,
+            "margin": 168.0102820211516,
+            "required": 41.257667450058754,
+            "reserve": 126.75261457109283
+          },
+          {
+            "id": "Wide-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 18.47085201793722,
+            "loadAbove": 6.470852017937219,
+            "center": {
+              "x": 205.8292061179898,
+              "y": 532.0972323379461,
+              "z": 156.75637290604516
+            },
+            "supportCenter": {
+              "x": 243.5,
+              "y": 544.5,
+              "z": 0
+            },
+            "offsetMm": 39.660022155563475,
+            "offsetRatio": 0.15470551902262916,
+            "margin": 169.09723233794614,
+            "required": 36.300000000000004,
+            "reserve": 132.79723233794613
+          },
+          {
+            "id": "Heavy-01",
+            "isBase": false,
+            "planeZ": 179,
+            "mass": 26,
+            "loadAbove": 8,
+            "center": {
+              "x": 844.5,
+              "y": 208.5,
+              "z": 329.4230769230769
+            },
+            "supportCenter": {
+              "x": 844.5,
+              "y": 208.5,
+              "z": 179
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 155.5,
+            "required": 31.1,
+            "reserve": 124.4
+          },
+          {
+            "id": "Medium-01",
+            "isBase": false,
+            "planeZ": 193,
+            "mass": 16,
+            "loadAbove": 8,
+            "center": {
+              "x": 170.5,
+              "y": 134.5,
+              "z": 410
+            },
+            "supportCenter": {
+              "x": 170.5,
+              "y": 134.5,
+              "z": 193
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 134.5,
+            "required": 32.55,
+            "reserve": 101.95
+          },
+          {
+            "id": "Small-04",
+            "isBase": false,
+            "planeZ": 193,
+            "mass": 3,
+            "loadAbove": 0,
+            "center": {
+              "x": 88.5,
+              "y": 380.5,
+              "z": 268.5
+            },
+            "supportCenter": {
+              "x": 88.5,
+              "y": 380.5,
+              "z": 193
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 88.5,
+            "required": 17.7,
+            "reserve": 70.8
+          },
+          {
+            "id": "Small-05",
+            "isBase": false,
+            "planeZ": 193,
+            "mass": 3,
+            "loadAbove": 0,
+            "center": {
+              "x": 265.5,
+              "y": 380.5,
+              "z": 268.5
+            },
+            "supportCenter": {
+              "x": 265.5,
+              "y": 380.5,
+              "z": 193
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 88.5,
+            "required": 17.7,
+            "reserve": 70.8
+          },
+          {
+            "id": "Small-02",
+            "isBase": false,
+            "planeZ": 193,
+            "mass": 3,
+            "loadAbove": 0,
+            "center": {
+              "x": 88.5,
+              "y": 603.5,
+              "z": 268.5
+            },
+            "supportCenter": {
+              "x": 88.5,
+              "y": 603.5,
+              "z": 193
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 88.5,
+            "required": 17.7,
+            "reserve": 70.8
+          },
+          {
+            "id": "Medium-03",
+            "isBase": false,
+            "planeZ": 410,
+            "mass": 8,
+            "loadAbove": 0,
+            "center": {
+              "x": 170.5,
+              "y": 134.5,
+              "z": 518.5
+            },
+            "supportCenter": {
+              "x": 170.5,
+              "y": 134.5,
+              "z": 410
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 134.5,
+            "required": 26.900000000000002,
+            "reserve": 107.6
+          },
+          {
+            "id": "Medium-04",
+            "isBase": false,
+            "planeZ": 358,
+            "mass": 8,
+            "loadAbove": 0,
+            "center": {
+              "x": 844.5,
+              "y": 208.5,
+              "z": 466.5
+            },
+            "supportCenter": {
+              "x": 844.5,
+              "y": 208.5,
+              "z": 358
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 134.5,
+            "required": 26.900000000000002,
+            "reserve": 107.6
+          },
+          {
+            "id": "Long-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 6,
+            "loadAbove": 0,
+            "center": {
+              "x": 558.5,
+              "y": 403.5,
+              "z": 63.5
+            },
+            "supportCenter": {
+              "x": 558.5,
+              "y": 403.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 71.5,
+            "required": 14.3,
+            "reserve": 57.2
+          }
+        ],
+        "count": 11,
+        "volume": 205537045,
+        "weight": 99,
+        "height": 627,
+        "utilization": 0.18351521875,
+        "efficiency": 0.40976284888357256,
+        "center": {
+          "x": 509.17676767676767,
+          "y": 268.2070707070707,
+          "z": 220.7020202020202
+        },
+        "quadrants": [
+          32.681967564012666,
+          44.90739158455601,
+          16.86348698144188,
+          4.547153869989446
+        ],
+        "imbalance": 0.40767916883400573,
+        "distanceM": 0,
+        "workSeconds": 0,
+        "medianMs": 71.69669999999951,
+        "p95Ms": 141.9416000000001,
+        "totalMs": 864.1404000000002,
+        "complete": false,
+        "failedStep": 12,
+        "reason": "누적 무게중심 정적 평형 불가 / 지지 조건 미달 (28.5%) / 무게 규칙 위반 / 지지 조건 미달 (27.5%) / 지지 조건 미달 (23.3%) / 지지 조건 미달 (26.9%) / 지지 조건 미달 (25.9%) / 지지 조건 미달 (22.0%) / 지지 조건 미달 (23.2%) / 지지 조건 미달 (21.7%) / 지지 조건 미달 (48.2%) / 지지 조건 미달 (58.7%) / 지지 조건 미달 (67.0%) / 지지 조건 미달 (35.7%) / 지지 조건 미달 (29.3%) / 지지 조건 미달 (22.3%) / 지지 조건 미달 (19.2%) / 지지 조건 미달 (11.0%) / 지지 조건 미달 (3.5%) / 지지 조건 미달 (64.4%) / 지지 조건 미달 (34.0%) / 지지 조건 미달 (21.0%) / 지지 조건 미달 (10.3%) / 지지 조건 미달 (3.3%) / 지지 조건 미달 (58.2%) / 지지 조건 미달 (30.0%) / 지지 조건 미달 (17.9%) / 지지 조건 미달 (8.8%) / 지지 조건 미달 (2.8%) / 지지 조건 미달 (50.4%) / 지지 조건 미달 (14.0%) / 지지 조건 미달 (12.0%) / 지지 조건 미달 (19.7%) / 지지 조건 미달 (12.9%) / 지지 조건 미달 (11.1%) / 지지 조건 미달 (45.0%) / 지지 조건 미달 (17.8%) / 지지 조건 미달 (11.3%) / 지지 조건 미달 (9.7%) / 지지 조건 미달 (39.5%) / 지지 조건 미달 (14.6%) / 지지 조건 미달 (8.6%) / 지지 조건 미달 (7.4%) / 지지 조건 미달 (37.3%) / 지지 조건 미달 (13.2%) / 지지 조건 미달 (7.5%) / 지지 조건 미달 (6.4%) / 지지 조건 미달 (5.6%)",
+        "excluded": 0,
+        "missing": 0,
+        "strategyDetails": {
+          "algorithm": "tetris-reserved",
+          "seed": 44,
+          "totalBoxes": 18,
+          "placedBoxes": 11,
+          "failedBoxes": 1,
+          "unprocessedBoxes": 6,
+          "unplacedBoxes": 7,
+          "averageSupport": 1,
+          "stabilityViolations": 0,
+          "averageDecisionMs": 72.01170000000002,
+          "maxDecisionMs": 141.9416000000001,
+          "replans": 0,
+          "averageFutureFeasible": 5.416666666666667,
+          "minFutureFeasible": 0,
+          "futureDeadEnds": 1,
+          "futurePlacementLoss": 0.9751866306034083,
+          "reservedSlotCount": 0,
+          "reservationChanges": 6
+        }
+      },
+      "diagnostics": {
+        "algorithm": "tetris-reserved",
+        "seed": 44,
+        "totalBoxes": 18,
+        "placedBoxes": 11,
+        "failedBoxes": 1,
+        "unprocessedBoxes": 6,
+        "unplacedBoxes": 7,
+        "averageSupport": 1,
+        "stabilityViolations": 0,
+        "averageDecisionMs": 72.01170000000002,
+        "maxDecisionMs": 141.9416000000001,
+        "replans": 0,
+        "averageFutureFeasible": 5.416666666666667,
+        "minFutureFeasible": 0,
+        "futureDeadEnds": 1,
+        "futurePlacementLoss": 0.9751866306034083,
+        "reservedSlotCount": 0,
+        "reservationChanges": 6
+      }
+    },
+    {
+      "episode": 2,
+      "algorithm": "dynamic-reservation",
+      "seed": 44,
+      "arrivalSequence": [
+        "Heavy-02",
+        "Wide-03",
+        "Wide-02",
+        "Heavy-01",
+        "Medium-01",
+        "Small-04",
+        "Small-05",
+        "Small-02",
+        "Medium-03",
+        "Medium-04",
+        "Long-02",
+        "Wide-01",
+        "Tall-02",
+        "Tall-01",
+        "Medium-02",
+        "Long-01",
+        "Small-01",
+        "Small-03"
+      ],
+      "observedSequence": [
+        "Heavy-02",
+        "Wide-03",
+        "Wide-02",
+        "Heavy-01",
+        "Medium-01",
+        "Small-04",
+        "Small-05",
+        "Small-02",
+        "Medium-03",
+        "Medium-04",
+        "Long-02",
+        "Wide-01"
+      ],
+      "metrics": {
+        "loadUtilization": 0.2708333333333333,
+        "unknownCapacity": 0,
+        "slenderness": 1.8488745980707395,
+        "supportBalances": [
+          {
+            "id": "Heavy-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 44,
+            "loadAbove": 26,
+            "center": {
+              "x": 155.5,
+              "y": 208.5,
+              "z": 231.27272727272728
+            },
+            "supportCenter": {
+              "x": 155.5,
+              "y": 208.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 155.5,
+            "required": 34.69090909090909,
+            "reserve": 120.80909090909091
+          },
+          {
+            "id": "Wide-03",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 32,
+            "loadAbove": 20,
+            "center": {
+              "x": 729.25,
+              "y": 184.25000000000003,
+              "z": 268.375
+            },
+            "supportCenter": {
+              "x": 756.5,
+              "y": 181.5,
+              "z": 0
+            },
+            "offsetMm": 27.38840995749845,
+            "offsetRatio": 0.11190965092402463,
+            "margin": 178.74999999999997,
+            "required": 40.25625,
+            "reserve": 138.49374999999998
+          },
+          {
+            "id": "Wide-02",
+            "isBase": false,
+            "planeZ": 193,
+            "mass": 20,
+            "loadAbove": 8,
+            "center": {
+              "x": 712.9,
+              "y": 185.9,
+              "z": 371.5
+            },
+            "supportCenter": {
+              "x": 756.5,
+              "y": 181.5,
+              "z": 193
+            },
+            "offsetMm": 43.82145593199754,
+            "offsetRatio": 0.17905544147843952,
+            "margin": 177.1,
+            "required": 36.300000000000004,
+            "reserve": 140.79999999999998
+          },
+          {
+            "id": "Heavy-01",
+            "isBase": false,
+            "planeZ": 179,
+            "mass": 26,
+            "loadAbove": 8,
+            "center": {
+              "x": 155.5,
+              "y": 208.5,
+              "z": 329.4230769230769
+            },
+            "supportCenter": {
+              "x": 155.5,
+              "y": 208.5,
+              "z": 179
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 155.5,
+            "required": 31.1,
+            "reserve": 124.4
+          },
+          {
+            "id": "Medium-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 11,
+            "loadAbove": 3,
+            "center": {
+              "x": 128.22727272727272,
+              "y": 565.1363636363636,
+              "z": 158.6818181818182
+            },
+            "supportCenter": {
+              "x": 134.5,
+              "y": 587.5,
+              "z": 0
+            },
+            "offsetMm": 23.226694531141874,
+            "offsetRatio": 0.13116502266062388,
+            "margin": 128.22727272727272,
+            "required": 26.900000000000002,
+            "reserve": 101.32727272727271
+          },
+          {
+            "id": "Small-04",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 6,
+            "loadAbove": 3,
+            "center": {
+              "x": 911.5,
+              "y": 528.5,
+              "z": 151
+            },
+            "supportCenter": {
+              "x": 911.5,
+              "y": 528.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 88.5,
+            "required": 22.65,
+            "reserve": 65.85
+          },
+          {
+            "id": "Small-05",
+            "isBase": false,
+            "planeZ": 151,
+            "mass": 3,
+            "loadAbove": 0,
+            "center": {
+              "x": 911.5,
+              "y": 528.5,
+              "z": 226.5
+            },
+            "supportCenter": {
+              "x": 911.5,
+              "y": 528.5,
+              "z": 151
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 88.5,
+            "required": 17.7,
+            "reserve": 70.8
+          },
+          {
+            "id": "Small-02",
+            "isBase": false,
+            "planeZ": 217,
+            "mass": 3,
+            "loadAbove": 0,
+            "center": {
+              "x": 111.5,
+              "y": 505.5,
+              "z": 292.5
+            },
+            "supportCenter": {
+              "x": 111.5,
+              "y": 505.5,
+              "z": 217
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 88.5,
+            "required": 17.7,
+            "reserve": 70.8
+          },
+          {
+            "id": "Medium-03",
+            "isBase": false,
+            "planeZ": 386,
+            "mass": 8,
+            "loadAbove": 0,
+            "center": {
+              "x": 647.5,
+              "y": 192.5,
+              "z": 494.5
+            },
+            "supportCenter": {
+              "x": 647.5,
+              "y": 192.5,
+              "z": 386
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 134.5,
+            "required": 26.900000000000002,
+            "reserve": 107.6
+          },
+          {
+            "id": "Medium-04",
+            "isBase": false,
+            "planeZ": 358,
+            "mass": 8,
+            "loadAbove": 0,
+            "center": {
+              "x": 155.5,
+              "y": 208.5,
+              "z": 466.5
+            },
+            "supportCenter": {
+              "x": 155.5,
+              "y": 208.5,
+              "z": 358
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 134.5,
+            "required": 26.900000000000002,
+            "reserve": 107.6
+          },
+          {
+            "id": "Long-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 6,
+            "loadAbove": 0,
+            "center": {
+              "x": 441.5,
+              "y": 403.5,
+              "z": 63.5
+            },
+            "supportCenter": {
+              "x": 441.5,
+              "y": 403.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 71.5,
+            "required": 14.3,
+            "reserve": 57.2
+          }
+        ],
+        "count": 11,
+        "volume": 205537045,
+        "weight": 99,
+        "height": 603,
+        "utilization": 0.18351521875,
+        "efficiency": 0.4260718179933665,
+        "center": {
+          "x": 401.07575757575756,
+          "y": 271.5,
+          "z": 220.16666666666666
+        },
+        "quadrants": [
+          44.90739158455601,
+          32.27011565725656,
+          15.547153869989446,
+          6.275338888197985
+        ],
+        "imbalance": 0.3902227545086669,
+        "distanceM": 0,
+        "workSeconds": 0,
+        "medianMs": 163.4375,
+        "p95Ms": 363.01590000000033,
+        "totalMs": 2129.9264999999996,
+        "complete": false,
+        "failedStep": 12,
+        "reason": "누적 무게중심 정적 평형 불가 / 지지 조건 미달 (29.4%) / 무게 규칙 위반 / 지지 조건 미달 (28.5%) / 지지 조건 미달 (26.9%) / 지지 조건 미달 (8.9%) / 지지 조건 미달 (8.4%) / 지지 조건 미달 (4.3%) / 재질 허용 지지하중 초과 / 지지 조건 미달 (22.3%) / 지지 조건 미달 (3.9%) / 지지 조건 미달 (20.3%) / 지지 조건 미달 (0.6%) / 지지 조건 미달 (0.5%) / 지지 조건 미달 (1.9%) / 지지 조건 미달 (0.9%) / 지지 조건 미달 (0.3%) / 지지 조건 미달 (1.1%) / 지지 조건 미달 (0.2%) / 지지 조건 미달 (0.1%) / 지지 조건 미달 (20.2%)",
+        "excluded": 0,
+        "missing": 0,
+        "strategyDetails": {
+          "algorithm": "dynamic-reservation",
+          "seed": 44,
+          "totalBoxes": 18,
+          "placedBoxes": 11,
+          "failedBoxes": 1,
+          "unprocessedBoxes": 6,
+          "unplacedBoxes": 7,
+          "averageSupport": 1,
+          "stabilityViolations": 0,
+          "averageDecisionMs": 177.49387499999997,
+          "maxDecisionMs": 363.01590000000033,
+          "replans": 0,
+          "averageFutureFeasible": 8,
+          "minFutureFeasible": 0,
+          "futureDeadEnds": 1,
+          "futurePlacementLoss": 0.6440197778616678,
+          "reservedSlotCount": 12,
+          "reservationChanges": 156
+        }
+      },
+      "diagnostics": {
+        "algorithm": "dynamic-reservation",
+        "seed": 44,
+        "totalBoxes": 18,
+        "placedBoxes": 11,
+        "failedBoxes": 1,
+        "unprocessedBoxes": 6,
+        "unplacedBoxes": 7,
+        "averageSupport": 1,
+        "stabilityViolations": 0,
+        "averageDecisionMs": 177.49387499999997,
+        "maxDecisionMs": 363.01590000000033,
+        "replans": 0,
+        "averageFutureFeasible": 8,
+        "minFutureFeasible": 0,
+        "futureDeadEnds": 1,
+        "futurePlacementLoss": 0.6440197778616678,
+        "reservedSlotCount": 12,
+        "reservationChanges": 156
+      }
+    },
+    {
+      "episode": 2,
+      "algorithm": "lookahead",
+      "seed": 44,
+      "arrivalSequence": [
+        "Heavy-02",
+        "Wide-03",
+        "Wide-02",
+        "Heavy-01",
+        "Medium-01",
+        "Small-04",
+        "Small-05",
+        "Small-02",
+        "Medium-03",
+        "Medium-04",
+        "Long-02",
+        "Wide-01",
+        "Tall-02",
+        "Tall-01",
+        "Medium-02",
+        "Long-01",
+        "Small-01",
+        "Small-03"
+      ],
+      "observedSequence": [
+        "Heavy-02",
+        "Wide-03",
+        "Wide-02",
+        "Heavy-01",
+        "Medium-01",
+        "Small-04",
+        "Small-05",
+        "Small-02",
+        "Medium-03",
+        "Medium-04",
+        "Long-02"
+      ],
+      "metrics": {
+        "loadUtilization": 0.08333333333333333,
+        "unknownCapacity": 0,
+        "slenderness": 1.6133828996282529,
+        "supportBalances": [
+          {
+            "id": "Heavy-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 21,
+            "loadAbove": 3,
+            "center": {
+              "x": 149.21428571428572,
+              "y": 205.21428571428572,
+              "z": 113.07142857142857
+            },
+            "supportCenter": {
+              "x": 155.5,
+              "y": 208.5,
+              "z": 0
+            },
+            "offsetMm": 7.092680907032223,
+            "offsetRatio": 0.0404225999081304,
+            "margin": 149.21428571428572,
+            "required": 31.1,
+            "reserve": 118.11428571428573
+          },
+          {
+            "id": "Wide-03",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 20,
+            "loadAbove": 8,
+            "center": {
+              "x": 818.5,
+              "y": 243.5,
+              "z": 178.5
+            },
+            "supportCenter": {
+              "x": 818.5,
+              "y": 243.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 181.5,
+            "required": 36.300000000000004,
+            "reserve": 145.2
+          },
+          {
+            "id": "Wide-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 15,
+            "loadAbove": 3,
+            "center": {
+              "x": 393.5,
+              "y": 598.5,
+              "z": 130.9
+            },
+            "supportCenter": {
+              "x": 393.5,
+              "y": 598.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 181.5,
+            "required": 36.300000000000004,
+            "reserve": 145.2
+          },
+          {
+            "id": "Heavy-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 21,
+            "loadAbove": 3,
+            "center": {
+              "x": 481.5,
+              "y": 208.5,
+              "z": 113.07142857142857
+            },
+            "supportCenter": {
+              "x": 481.5,
+              "y": 208.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 155.5,
+            "required": 31.1,
+            "reserve": 124.4
+          },
+          {
+            "id": "Medium-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 16,
+            "loadAbove": 8,
+            "center": {
+              "x": 807.5,
+              "y": 645.5,
+              "z": 217
+            },
+            "supportCenter": {
+              "x": 807.5,
+              "y": 645.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 134.5,
+            "required": 32.55,
+            "reserve": 101.95
+          },
+          {
+            "id": "Small-04",
+            "isBase": false,
+            "planeZ": 179,
+            "mass": 3,
+            "loadAbove": 0,
+            "center": {
+              "x": 481.5,
+              "y": 208.5,
+              "z": 254.5
+            },
+            "supportCenter": {
+              "x": 481.5,
+              "y": 208.5,
+              "z": 179
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 88.5,
+            "required": 17.7,
+            "reserve": 70.8
+          },
+          {
+            "id": "Small-05",
+            "isBase": false,
+            "planeZ": 179,
+            "mass": 3,
+            "loadAbove": 0,
+            "center": {
+              "x": 111.5,
+              "y": 185.5,
+              "z": 254.5
+            },
+            "supportCenter": {
+              "x": 111.5,
+              "y": 185.5,
+              "z": 179
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 88.5,
+            "required": 17.7,
+            "reserve": 70.8
+          },
+          {
+            "id": "Small-02",
+            "isBase": false,
+            "planeZ": 193,
+            "mass": 3,
+            "loadAbove": 0,
+            "center": {
+              "x": 393.5,
+              "y": 598.5,
+              "z": 268.5
+            },
+            "supportCenter": {
+              "x": 393.5,
+              "y": 598.5,
+              "z": 193
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 88.5,
+            "required": 17.7,
+            "reserve": 70.8
+          },
+          {
+            "id": "Medium-03",
+            "isBase": false,
+            "planeZ": 193,
+            "mass": 8,
+            "loadAbove": 0,
+            "center": {
+              "x": 818.5,
+              "y": 243.5,
+              "z": 301.5
+            },
+            "supportCenter": {
+              "x": 818.5,
+              "y": 243.5,
+              "z": 193
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 134.5,
+            "required": 26.900000000000002,
+            "reserve": 107.6
+          },
+          {
+            "id": "Medium-04",
+            "isBase": false,
+            "planeZ": 217,
+            "mass": 8,
+            "loadAbove": 0,
+            "center": {
+              "x": 807.5,
+              "y": 645.5,
+              "z": 325.5
+            },
+            "supportCenter": {
+              "x": 807.5,
+              "y": 645.5,
+              "z": 217
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 134.5,
+            "required": 26.900000000000002,
+            "reserve": 107.6
+          }
+        ],
+        "count": 10,
+        "volume": 192261354,
+        "weight": 93,
+        "height": 434,
+        "utilization": 0.17166192321428572,
+        "efficiency": 0.5537481394009217,
+        "center": {
+          "x": 520.8333333333334,
+          "y": 353.3709677419355,
+          "z": 147.8978494623656
+        },
+        "quadrants": [
+          31.41409701820537,
+          25.3007774887599,
+          12.115386597606378,
+          24.169738895428353
+        ],
+        "imbalance": 0.207513015275258,
+        "distanceM": 0,
+        "workSeconds": 0,
+        "medianMs": 104.42920000000049,
+        "p95Ms": 176.29119999999966,
+        "totalMs": 1089.7727000000014,
+        "complete": false,
+        "failedStep": 11,
+        "reason": "누적 무게중심 정적 평형 불가 / 지지 조건 미달 (24.2%) / 무게 규칙 위반 / 지지 조건 미달 (12.4%) / 지지 조건 미달 (10.3%) / 지지 조건 미달 (18.8%) / 지지 조건 미달 (16.2%) / 지지 조건 미달 (11.4%) / 지지 조건 미달 (1.3%) / 지지 조건 미달 (4.5%) / 지지 조건 미달 (13.0%) / 지지 조건 미달 (30.5%) / 지지 조건 미달 (19.0%) / 지지 조건 미달 (11.7%)",
+        "excluded": 0,
+        "missing": 0,
+        "strategyDetails": {
+          "algorithm": "lookahead",
+          "seed": 44,
+          "totalBoxes": 18,
+          "placedBoxes": 10,
+          "failedBoxes": 1,
+          "unprocessedBoxes": 7,
+          "unplacedBoxes": 8,
+          "averageSupport": 1,
+          "stabilityViolations": 0,
+          "averageDecisionMs": 99.07024545454557,
+          "maxDecisionMs": 176.29119999999966,
+          "replans": 0,
+          "averageFutureFeasible": 4.2,
+          "minFutureFeasible": 0,
+          "futureDeadEnds": 2,
+          "futurePlacementLoss": 2.202062221520915,
+          "reservedSlotCount": 0,
+          "reservationChanges": 0
+        }
+      },
+      "diagnostics": {
+        "algorithm": "lookahead",
+        "seed": 44,
+        "totalBoxes": 18,
+        "placedBoxes": 10,
+        "failedBoxes": 1,
+        "unprocessedBoxes": 7,
+        "unplacedBoxes": 8,
+        "averageSupport": 1,
+        "stabilityViolations": 0,
+        "averageDecisionMs": 99.07024545454557,
+        "maxDecisionMs": 176.29119999999966,
+        "replans": 0,
+        "averageFutureFeasible": 4.2,
+        "minFutureFeasible": 0,
+        "futureDeadEnds": 2,
+        "futurePlacementLoss": 2.202062221520915,
+        "reservedSlotCount": 0,
+        "reservationChanges": 0
+      }
+    },
+    {
+      "episode": 2,
+      "algorithm": "future-hybrid",
+      "seed": 44,
+      "arrivalSequence": [
+        "Heavy-02",
+        "Wide-03",
+        "Wide-02",
+        "Heavy-01",
+        "Medium-01",
+        "Small-04",
+        "Small-05",
+        "Small-02",
+        "Medium-03",
+        "Medium-04",
+        "Long-02",
+        "Wide-01",
+        "Tall-02",
+        "Tall-01",
+        "Medium-02",
+        "Long-01",
+        "Small-01",
+        "Small-03"
+      ],
+      "observedSequence": [
+        "Heavy-02",
+        "Wide-03",
+        "Wide-02",
+        "Heavy-01",
+        "Medium-01",
+        "Small-04",
+        "Small-05",
+        "Small-02",
+        "Medium-03",
+        "Medium-04",
+        "Long-02",
+        "Wide-01"
+      ],
+      "metrics": {
+        "loadUtilization": 0.2708333333333333,
+        "unknownCapacity": 0,
+        "slenderness": 1.8488745980707395,
+        "supportBalances": [
+          {
+            "id": "Heavy-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 44,
+            "loadAbove": 26,
+            "center": {
+              "x": 155.5,
+              "y": 208.5,
+              "z": 231.27272727272728
+            },
+            "supportCenter": {
+              "x": 155.5,
+              "y": 208.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 155.5,
+            "required": 34.69090909090909,
+            "reserve": 120.80909090909091
+          },
+          {
+            "id": "Wide-03",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 32,
+            "loadAbove": 20,
+            "center": {
+              "x": 729.25,
+              "y": 184.25000000000003,
+              "z": 268.375
+            },
+            "supportCenter": {
+              "x": 756.5,
+              "y": 181.5,
+              "z": 0
+            },
+            "offsetMm": 27.38840995749845,
+            "offsetRatio": 0.11190965092402463,
+            "margin": 178.74999999999997,
+            "required": 40.25625,
+            "reserve": 138.49374999999998
+          },
+          {
+            "id": "Wide-02",
+            "isBase": false,
+            "planeZ": 193,
+            "mass": 20,
+            "loadAbove": 8,
+            "center": {
+              "x": 712.9,
+              "y": 185.9,
+              "z": 371.5
+            },
+            "supportCenter": {
+              "x": 756.5,
+              "y": 181.5,
+              "z": 193
+            },
+            "offsetMm": 43.82145593199754,
+            "offsetRatio": 0.17905544147843952,
+            "margin": 177.1,
+            "required": 36.300000000000004,
+            "reserve": 140.79999999999998
+          },
+          {
+            "id": "Heavy-01",
+            "isBase": false,
+            "planeZ": 179,
+            "mass": 26,
+            "loadAbove": 8,
+            "center": {
+              "x": 155.5,
+              "y": 208.5,
+              "z": 329.4230769230769
+            },
+            "supportCenter": {
+              "x": 155.5,
+              "y": 208.5,
+              "z": 179
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 155.5,
+            "required": 31.1,
+            "reserve": 124.4
+          },
+          {
+            "id": "Medium-01",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 11,
+            "loadAbove": 3,
+            "center": {
+              "x": 128.22727272727272,
+              "y": 565.1363636363636,
+              "z": 158.6818181818182
+            },
+            "supportCenter": {
+              "x": 134.5,
+              "y": 587.5,
+              "z": 0
+            },
+            "offsetMm": 23.226694531141874,
+            "offsetRatio": 0.13116502266062388,
+            "margin": 128.22727272727272,
+            "required": 26.900000000000002,
+            "reserve": 101.32727272727271
+          },
+          {
+            "id": "Small-04",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 6,
+            "loadAbove": 3,
+            "center": {
+              "x": 911.5,
+              "y": 528.5,
+              "z": 151
+            },
+            "supportCenter": {
+              "x": 911.5,
+              "y": 528.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 88.5,
+            "required": 22.65,
+            "reserve": 65.85
+          },
+          {
+            "id": "Small-05",
+            "isBase": false,
+            "planeZ": 151,
+            "mass": 3,
+            "loadAbove": 0,
+            "center": {
+              "x": 911.5,
+              "y": 528.5,
+              "z": 226.5
+            },
+            "supportCenter": {
+              "x": 911.5,
+              "y": 528.5,
+              "z": 151
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 88.5,
+            "required": 17.7,
+            "reserve": 70.8
+          },
+          {
+            "id": "Small-02",
+            "isBase": false,
+            "planeZ": 217,
+            "mass": 3,
+            "loadAbove": 0,
+            "center": {
+              "x": 111.5,
+              "y": 505.5,
+              "z": 292.5
+            },
+            "supportCenter": {
+              "x": 111.5,
+              "y": 505.5,
+              "z": 217
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 88.5,
+            "required": 17.7,
+            "reserve": 70.8
+          },
+          {
+            "id": "Medium-03",
+            "isBase": false,
+            "planeZ": 358,
+            "mass": 8,
+            "loadAbove": 0,
+            "center": {
+              "x": 155.5,
+              "y": 208.5,
+              "z": 466.5
+            },
+            "supportCenter": {
+              "x": 155.5,
+              "y": 208.5,
+              "z": 358
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 134.5,
+            "required": 26.900000000000002,
+            "reserve": 107.6
+          },
+          {
+            "id": "Medium-04",
+            "isBase": false,
+            "planeZ": 386,
+            "mass": 8,
+            "loadAbove": 0,
+            "center": {
+              "x": 647.5,
+              "y": 192.5,
+              "z": 494.5
+            },
+            "supportCenter": {
+              "x": 647.5,
+              "y": 192.5,
+              "z": 386
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 134.5,
+            "required": 26.900000000000002,
+            "reserve": 107.6
+          },
+          {
+            "id": "Long-02",
+            "isBase": true,
+            "planeZ": 0,
+            "mass": 6,
+            "loadAbove": 0,
+            "center": {
+              "x": 441.5,
+              "y": 403.5,
+              "z": 63.5
+            },
+            "supportCenter": {
+              "x": 441.5,
+              "y": 403.5,
+              "z": 0
+            },
+            "offsetMm": 0,
+            "offsetRatio": 0,
+            "margin": 71.5,
+            "required": 14.3,
+            "reserve": 57.2
+          }
+        ],
+        "count": 11,
+        "volume": 205537045,
+        "weight": 99,
+        "height": 603,
+        "utilization": 0.18351521875,
+        "efficiency": 0.4260718179933665,
+        "center": {
+          "x": 401.07575757575756,
+          "y": 271.5,
+          "z": 220.16666666666666
+        },
+        "quadrants": [
+          44.90739158455601,
+          32.27011565725656,
+          15.547153869989446,
+          6.275338888197985
+        ],
+        "imbalance": 0.3902227545086669,
+        "distanceM": 0,
+        "workSeconds": 0,
+        "medianMs": 181.27214999999978,
+        "p95Ms": 401.446100000001,
+        "totalMs": 2215.017300000005,
+        "complete": false,
+        "failedStep": 12,
+        "reason": "누적 무게중심 정적 평형 불가 / 지지 조건 미달 (29.4%) / 무게 규칙 위반 / 지지 조건 미달 (28.5%) / 지지 조건 미달 (26.9%) / 지지 조건 미달 (8.9%) / 지지 조건 미달 (8.4%) / 지지 조건 미달 (4.3%) / 재질 허용 지지하중 초과 / 지지 조건 미달 (22.3%) / 지지 조건 미달 (3.9%) / 지지 조건 미달 (20.3%) / 지지 조건 미달 (0.6%) / 지지 조건 미달 (0.5%) / 지지 조건 미달 (1.9%) / 지지 조건 미달 (0.9%) / 지지 조건 미달 (0.3%) / 지지 조건 미달 (1.1%) / 지지 조건 미달 (0.2%) / 지지 조건 미달 (0.1%) / 지지 조건 미달 (20.2%)",
+        "excluded": 0,
+        "missing": 0,
+        "strategyDetails": {
+          "algorithm": "future-hybrid",
+          "seed": 44,
+          "totalBoxes": 18,
+          "placedBoxes": 11,
+          "failedBoxes": 1,
+          "unprocessedBoxes": 6,
+          "unplacedBoxes": 7,
+          "averageSupport": 1,
+          "stabilityViolations": 0,
+          "averageDecisionMs": 184.5847750000004,
+          "maxDecisionMs": 401.446100000001,
+          "replans": 0,
+          "averageFutureFeasible": 7.9393939393939394,
+          "minFutureFeasible": 0,
+          "futureDeadEnds": 1,
+          "futurePlacementLoss": 0.6440197778616678,
+          "reservedSlotCount": 12,
+          "reservationChanges": 152
+        }
+      },
+      "diagnostics": {
+        "algorithm": "future-hybrid",
+        "seed": 44,
+        "totalBoxes": 18,
+        "placedBoxes": 11,
+        "failedBoxes": 1,
+        "unprocessedBoxes": 6,
+        "unplacedBoxes": 7,
+        "averageSupport": 1,
+        "stabilityViolations": 0,
+        "averageDecisionMs": 184.5847750000004,
+        "maxDecisionMs": 401.446100000001,
+        "replans": 0,
+        "averageFutureFeasible": 7.9393939393939394,
+        "minFutureFeasible": 0,
+        "futureDeadEnds": 1,
+        "futurePlacementLoss": 0.6440197778616678,
+        "reservedSlotCount": 12,
+        "reservationChanges": 152
+      }
+    }
+  ]
+}

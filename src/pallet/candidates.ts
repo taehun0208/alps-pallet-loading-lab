@@ -7,11 +7,15 @@ import { surface } from './surface';
 import { inspectConstraints } from './constraints';
 import { features,terms } from './features';
 import { emptyInventory } from './inventory';
+import { loadCom } from './palletCom';
 import type { Candidate,PlanningInput,Placement } from './types';
 export function candidateOrigins(input:PlanningInput,supportTargets=false){
  const {current,pallet,placements,constraints,settings}=input;
  const raw=(current.packaging?permittedOrientations(current.packaging).filter(o=>current.orientationAllowed.includes(o)):allowedOrientations(current.size,current.orientationAllowed,current.handling,current.maxLoadByAxis)).flatMap(orientation=>{const size=oriented(current.size,orientation);const origins=(settings.candidateMode==='frontier'?frontierOrigins:sparseOrigins)(pallet,size,placements,constraints.horizontalGap).map(position=>({position,size,orientation,balanceTarget:false}));
-  if(supportTargets){const targets=balancedOrigins(size,placements,current.weight);if(settings.policy==='online'){const x=(pallet.width-size.w)/2,y=(pallet.depth-size.d)/2;targets.push({x,y,z:landingHeight(x,y,size,placements)});}
+  const balanceAware=(settings.weights.com??0)>0||(settings.strategy?.weights?.com??0)>0;
+  if(supportTargets||balanceAware){const targets=supportTargets?balancedOrigins(size,placements,current.weight):[];if(settings.policy==='online'||balanceAware){const x=(pallet.width-size.w)/2,y=(pallet.depth-size.d)/2;targets.push({x,y,z:landingHeight(x,y,size,placements)});}
+   // Counterweight hint: the footprint mirrored through the pallet centre from the current load CoG.
+   const com=balanceAware?loadCom(placements).center:null;if(com){const x=Math.max(0,Math.min(pallet.width-size.w,pallet.width-com.x-size.w/2)),y=Math.max(0,Math.min(pallet.depth-size.d,pallet.depth-com.y-size.d/2));targets.push({x,y,z:landingHeight(x,y,size,placements)});}
    for(const position of targets){const existing=origins.find(r=>Math.abs(r.position.x-position.x)<1e-6&&Math.abs(r.position.y-position.y)<1e-6);if(existing)existing.balanceTarget=true;else origins.push({position,size,orientation,balanceTarget:true});}}return origins;});
  raw.sort((a,b)=>{const inside=(v:typeof a)=>v.position.x>=0&&v.position.y>=0&&v.position.x+v.size.w<=pallet.width&&v.position.y+v.size.d<=pallet.depth;return Number(inside(b))-Number(inside(a))||a.position.z-b.position.z||a.position.y-b.position.y||a.position.x-b.position.x||orientationRank(a.orientation)-orientationRank(b.orientation);});
  const budget=settings.candidateMode==='frontier'?diverseBudget(raw,placements,pallet,constraints,settings.maxCandidates,settings.stockPolicy==='compact',settings.interiorPacking):raw.slice(0,settings.maxCandidates);return {budget,generated:raw.length,capped:raw.length>settings.maxCandidates};

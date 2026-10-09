@@ -1,0 +1,1 @@
+Connection test only. Reply with exactly: CONNECTED

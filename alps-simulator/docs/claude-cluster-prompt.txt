@@ -1,0 +1,3523 @@
+사용자는 ALPS가 무엇인지 파악한 뒤 촘촘한 바닥 사용과 빈틈 최소화, 비슷한 SKU의 군집/수직 겹침을 기준으로 기존/ALPS/관측 최하위 3개 화면을 만들고 과거 계산의 의미를 검증하라고 했습니다. Claude Opus 5.5로 독립 평가도 명시 요청했습니다. 당신은 독립 검토자입니다. 아래 실제 소스와 계산을 감사하십시오. ALPS는 기존 프로젝트에서 중앙 분류+온라인 배치 시스템으로 쓰였으나 이번 비교는 한 팔레트에 동일 SKU를 모으는 정책 비교입니다. 이전 133회 원자료는 보존했으며 독립 5개 시드의 개선 CI가 0을 포함했습니다. 새로운 10개 정책×선정4개+확인12개=160회가 실행 중입니다. 이 요청은 코드와 선정 40회에 대한 선행 검토이며 최종 확인120회 숫자는 아직 없습니다. 공개 논문이나 현장 최적성으로 일반화하지 마십시오.
+한국어로 P0/P1/P2 버그, 측정 정의의 함정, 선정/확인 분리와 점수 타당성, 공정 비교 여부, 과거 검증으로 주장할 수 있는 범위, 반드시 고쳐야 할 구체 사항, 최종 발표 가능한 문장을 평가해 주세요. 새로운 정책을 확인결과를 보고 조정하도록 요구하지 마십시오. 가능한 실제 계산 버그와 설계 trade-off를 구분해 주세요. 안정성과 시간은 모델이고 사용자 합의로 자중 순서 금지 규칙은 해제되어 있습니다. API키/비밀은 포함되지 않습니다. 전체 답변 3000단어 이내.
+
+### src/engine/clusterPacking.ts
+import {candidateOrigins} from './vendor/pallet/candidates';
+import {geometricFeasible} from './vendor/pallet/frontier';
+import {inspectConstraints} from './vendor/pallet/constraints';
+import {features,terms} from './vendor/pallet/features';
+import {extraOrigins,fromOrigin,denseRank,compareDenseRank} from './floorDense';
+import {contact,department} from '../metrics/clustering';
+import type {Candidate,DecisionRequest,Placement,PlanningInput} from './types';
+
+export const CLUSTER_POLICY_VERSION='cluster-packing/1';
+/** Floor first and exact new buried void first for all three policies.
+ * Only the tie-breaking objective changes. Deliberately dispersed is an artificial
+ * negative control; it still obeys every shared physical constraint.
+ */
+export function clusterRank(box:Placement,input:PlanningInput,policy:DecisionRequest['algorithm']){
+ const dense=denseRank(box,input);let same=0,zone=0,total=0;
+ for(const other of input.placements){const c=contact(box,other);total+=c.area;if(box.typeId===other.typeId)same+=c.area;if(department(box.typeId)===department(other.typeId))zone+=c.area;}
+ const norm=2*(box.size.w*box.size.d+box.size.w*box.size.h+box.size.d*box.size.h);
+ const purity=same/norm,zonePurity=zone/norm;
+ // Layer policy allows same-SKU preference only inside a 250mm bottom-height band.
+ // Connected policy considers every valid upper-layer height after filling the floor.
+ const layer=policy==='cluster-layer'?0:Math.floor(box.position.z/250);
+ return [box.position.z<1e-5?0:1,dense[1],layer,policy==='dispersed'?purity:-purity,
+  policy==='dispersed'?zonePurity:-zonePurity,dense[0],dense[2],-total,...dense.slice(3)];
+}
+export function searchCluster(request:DecisionRequest,base:Candidate[],deadline:number,publish:(candidate:Candidate)=>void){
+ const input=request.input,seen=new Set<string>();let best:Candidate|null=null,rank:number[]|null=null,checks=0;
+ const key=(p:Placement)=>[...Object.values(p.position),...Object.values(p.size)].join(':');
+ const consider=(candidate:Candidate)=>{const r=clusterRank(candidate.placement,input,request.algorithm);if(performance.now()<deadline&&(!rank||compareDenseRank(r,rank)<0)){best=candidate;rank=r;publish(candidate);}};
+ for(const c of base)if(c.valid){seen.add(key(c.placement));consider(c);}
+ const expanded={...input,settings:{...input.settings,maxCandidates:128}};
+ const origins=[...candidateOrigins(expanded,false).budget,...candidateOrigins(expanded,true).budget,...extraOrigins(input,deadline).raw];
+ for(const raw of origins){
+  if(performance.now()>=deadline)break;
+  const proposal=fromOrigin(raw,input),k=key(proposal);if(seen.has(k))continue;seen.add(k);
+  if(!geometricFeasible(raw,input.placements,input.pallet,input.constraints))continue;
+  const check=inspectConstraints(proposal,input.current,input.placements,input.pallet,input.constraints);checks++;if(check.reasons.length)continue;
+  const r=clusterRank(check.placement,input,request.algorithm);if(rank&&compareDenseRank(r,rank)>=0)continue;
+  const f=features(check.stack,input.pallet,check.path.seconds,{...input,settings:{...input.settings,inventoryMode:'none'}});
+  consider({id:`cluster-${k}`,placement:check.placement,valid:true,reasons:[],path:check.path,features:f,terms:terms(f,input.pallet,input.settings.weights,input.constraints.stability),score:0,fastScore:0,future:null});
+ }
+ return {candidate:best,diagnostics:{policy:CLUSTER_POLICY_VERSION,mode:request.algorithm,fullConstraintChecks:checks,origins:seen.size,rank:rank??[],stop:performance.now()>=deadline?'deadline':'finite_pool_exhausted'}};
+}
+
+
+### src/engine/planner.ts
+import { capacityAlgorithm } from './vendor/pallet/capacity/experiment';
+import { validateCandidate } from './validation';
+import { searchMcts } from './mcts';
+import { searchFloorDense } from './floorDense';
+import { searchCluster } from './clusterPacking';
+import type { Candidate, DecisionOutcome, DecisionRequest } from './types';
+/** CPU-only planner. Production execution requires the external supervisor watchdog. */
+export function executePlanning(request: DecisionRequest, onIncumbent: (candidate: Candidate, planningMs: number) => void = () => {}): DecisionOutcome {
+  const started=performance.now(), deadline=started+Math.min(request.availableMs,request.searchBudgetMs);
+  let incumbent:Candidate|null=null;
+  const publish=(candidate:Candidate)=>{
+    if(performance.now()>=deadline)return;
+    const checked=validateCandidate(request.input,candidate);
+    if(!checked.reasons.length&&performance.now()<deadline){incumbent={...candidate,placement:checked.placement,path:checked.path};onIncumbent(incumbent,performance.now()-started);}
+  };
+  const base=capacityAlgorithm('blb').plan(structuredClone(request.input));
+  const basic=base.candidates.find(c=>c.id===base.selectedId&&c.valid);if(basic)publish(basic);
+  let fallback=false, fallbackReason:DecisionOutcome['fallbackReason']='none', strategyState:DecisionOutcome['strategyState'], simulations=0,completeScenarios=0;
+  let searchDiagnostics:DecisionOutcome['searchDiagnostics'];
+  if(performance.now()<deadline){
+    if(['cluster-floor','cluster-layer','dispersed'].includes(request.algorithm)){
+      const result=searchCluster(request,base.candidates,deadline,publish);searchDiagnostics=result.diagnostics;
+      if(result.candidate)publish(result.candidate);
+    }else if(request.algorithm==='floor-dense'){
+      const result=searchFloorDense(request,base.candidates,deadline,publish);searchDiagnostics=result.diagnostics;simulations=result.simulations;completeScenarios=result.completeScenarios;
+      if(result.candidate)publish(result.candidate);
+    }else if(request.algorithm==='mcts'){
+      const result=searchMcts(request,base.candidates,deadline,publish);simulations=result.simulations;completeScenarios=result.completeScenarios;
+      if(result.candidate)publish(result.candidate);
+      fallback=result.fallback;fallbackReason=fallback?'insufficient_scenarios':'none';
+    }else if(request.algorithm!=='blb'){
+      const result=capacityAlgorithm(request.algorithm).plan(structuredClone(request.input));
+      const candidate=result.candidates.find(c=>c.id===result.selectedId&&c.valid);
+      if(performance.now()<deadline){if(candidate){publish(candidate);strategyState=result.strategyState;}else if(incumbent){fallback=true;fallbackReason='no_valid_candidate';}}
+    }
+  }
+  const elapsed=performance.now()-started;
+  if(elapsed>=request.searchBudgetMs){fallback=true;fallbackReason=request.searchBudgetMs<request.availableMs?'search_budget':'watchdog';}
+  if(!incumbent&&!fallback)fallbackReason='no_valid_candidate';
+  return {candidate:incumbent,strategyState,planningMs:elapsed,elapsedMs:elapsed,fallback,fallbackReason,validDeadline:elapsed<=request.availableMs,watchdog:false,simulations,completeScenarios,searchDiagnostics,
+    message:'Finite candidate search; synthetic remaining-count forecasts only. No global optimum or physical cycle guarantee.'};
+}
+
+
+### src/engine/core.ts
+import { defaultCapacityConfig, retailScenario, crossZoneBlockers } from './vendor/pallet/capacity/experiment';
+import { ArrivalEnvironment } from './vendor/pallet/environment';
+import { fingerprint, percentile } from './vendor/pallet/benchmark/statistics';
+import { volume, top, intersects } from './vendor/pallet/geometry';
+import { materialInfo } from './vendor/pallet/materials';
+import { validateCandidate } from './validation';
+import { ALGORITHMS, availablePlanningMs, validateConfig } from './config';
+import type { AlgorithmId, DecisionOutcome, DecisionTrace, ExperimentRequest, ExperimentResult, Placement, PlanningInput, RunOptions, Scenario, SimulationConfig, TrialMetrics, TrialResult } from './types';
+export const SOURCE_VERSION='common-engine-cycle/2-floor-dense';
+let decisionRunCounter = 0;
+export const ASSUMPTIONS=[
+ 'One robot, one pallet, no waiting buffer. Only the current observed box and residual SKU counts enter planning; actual future order is hidden.',
+ '10/12 seconds are assumed robot cycles, not measured robot/IK/sensor/end-to-end guarantees. Recognition delay is configured; reserve is a budget allowance, not a measured duration.',
+ 'Planning and independent commit validation overlap the preceding robot motion. The first decision is startup time. Rejected-box removal time and conveyor delays are not modeled.',
+ 'Hard constraints use the canonical swept gripper/cargo path proxy, support and synthetic material limits. Heavy-on-light order rule is disabled by mentor agreement; allowable load checks remain.',
+ 'Box mass is uniformly distributed within each box. Cargo center of mass excludes pallet mass; static proxies do not validate transport stability.',
+ 'MCTS uses sampled remaining counts, UCT, expansion, stochastic rollout and backpropagation, with finite candidate/horizon/iteration limits. No global optimality claim.',
+ 'Worker startup/loading is excluded from per-decision timing. Browser/OS scheduling and synthetic material inputs require separate real-cell validation.',
+];
+function trialMetrics(scenario:Scenario,stack:Placement[],decisions:DecisionTrace[],total:number):TrialMetrics{
+ const pallet=scenario.pallet,v=stack.reduce((s,p)=>s+volume(p.size),0),height=Math.max(0,...stack.map(top)),mass=stack.reduce((s,p)=>s+p.weight,0);
+ const center={x:mass?stack.reduce((s,p)=>s+p.weight*(p.position.x+p.size.w/2),0)/mass:pallet.width/2,y:mass?stack.reduce((s,p)=>s+p.weight*(p.position.y+p.size.d/2),0)/mass:pallet.depth/2,z:mass?stack.reduce((s,p)=>s+p.weight*(p.position.z+p.size.h/2),0)/mass:0};
+ const xs=[...new Set([0,pallet.width,...stack.flatMap(p=>[p.position.x,p.position.x+p.size.w])])].sort((a,b)=>a-b),ys=[...new Set([0,pallet.depth,...stack.flatMap(p=>[p.position.y,p.position.y+p.size.d])])].sort((a,b)=>a-b);
+ let column=0,projectedArea=0;for(let x=1;x<xs.length;x++)for(let y=1;y<ys.length;y++){const mx=(xs[x]+xs[x-1])/2,my=(ys[y]+ys[y-1])/2;const area=(xs[x]-xs[x-1])*(ys[y]-ys[y-1]),localTop=Math.max(0,...stack.filter(p=>mx>=p.position.x&&mx<p.position.x+p.size.w&&my>=p.position.y&&my<p.position.y+p.size.d).map(top));column+=area*localTop;if(localTop>0)projectedArea+=area;}
+ const loads=stack.map(p=>{const capacity=materialInfo(p,scenario.constraints.stability).capacity;return capacity===null?null:capacity>0?p.loadAbove/capacity:p.loadAbove?Infinity:0;});
+ const times=decisions.map(d=>d.decisionMs),compute=decisions.reduce((s,d)=>s+d.decisionMs,0),robot=decisions.filter(d=>d.accepted).reduce((s,d)=>s+(d.timing.robotEnd!-d.timing.robotStart!),0),wait=decisions.reduce((s,d)=>s+d.timing.exposedWaitSeconds,0);
+ const groups={S1:0,S2:0,S3:1,S4:1,S5:2,S6:2};
+ const floorArea=stack.filter(p=>Math.abs(p.position.z)<1e-6).reduce((s,p)=>s+p.size.w*p.size.d,0);
+ return {floorContactAreaMm2:floorArea,floorCoverage:floorArea/(pallet.width*pallet.depth),projectedFootprintAreaMm2:projectedArea,projectedFootprintCoverage:projectedArea/(pallet.width*pallet.depth),count:stack.length,total,fill:v/(pallet.width*pallet.depth*pallet.maxHeight),volumeMm3:v,usedHeightMm:height,envelopeFill:height?v/(pallet.width*pallet.depth*height):0,
+ allowedEmptyMm3:pallet.width*pallet.depth*pallet.maxHeight-v,envelopeEmptyMm3:pallet.width*pallet.depth*height-v,columnVoidMm3:Math.max(0,column-v),massKg:mass,center,cogHorizontalOffsetMm:Math.hypot(center.x-pallet.width/2,center.y-pallet.depth/2),cogHeightMm:center.z,
+ minSupportRatio:stack.length?Math.min(...stack.map(p=>p.supportRatio)):null,maxLoadRatio:loads.length&&loads.every((v):v is number=>v!==null&&Number.isFinite(v))?Math.max(...loads):null,
+ computeMs:compute,meanDecisionMs:times.length?times.reduce((s,n)=>s+n,0)/times.length:null,p95DecisionMs:percentile(times,.95),maxDecisionMs:times.length?Math.max(...times):null,
+ deadlineMisses:decisions.filter(d=>!d.validDeadline).length,fallbackCount:decisions.filter(d=>d.fallback).length,robotSeconds:robot,planningWaitSeconds:wait,totalSeconds:robot+wait,
+ storeProxy:{crossZoneBlockers:crossZoneBlockers(stack,groups),label:'Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.',measuredSeconds:null}};
+}
+export async function runTrial(config:SimulationConfig,algorithm:AlgorithmId,seed:number,options:RunOptions):Promise<TrialResult>{
+ validateConfig(config);if(!ALGORITHMS.some(a=>a.id===algorithm))throw Error('Unknown algorithm');if(!Number.isInteger(seed))throw Error('Seed must be an integer');
+ const scenario=retailScenario(config.quantityPerSku);scenario.pallet.maxHeight=config.maxHeightMm;scenario.supplyMode='arrival';scenario.arrival={seed,pattern:'random-draw'};
+ const env=new ArrivalEnvironment(scenario),arrivals=Array.from({length:env.total},(_,i)=>env.current(i)!),pending=Object.fromEntries(scenario.types.map(t=>[t.id,t.quantity]));
+ const settings=defaultCapacityConfig().settings;settings.maxCandidates=config.maxCandidates;settings.temporaryBuffer=false;
+ // Planner RNG is fixed independently of the hidden arrival RNG, identical across algorithms.
+ settings.plannerSeed=91473;
+ const id=`cycle-${config.cycleSeconds}:${seed}:${algorithm}`,decisionRunId=++decisionRunCounter,decisions:DecisionTrace[]=[],violations:string[]=[];
+ let stack:Placement[]=[],state:PlanningInput['strategyState'],status:TrialResult['status']='finished',reason='',processed=0;
+ let nextPlanningStart=0,robotStart=0,robotEnd=0;
+ for(const box of arrivals){
+  if(options.signal?.aborted){status='cancelled';reason='Cancelled by user';break;}
+  pending[box.typeId]--;
+  const input:PlanningInput={runId:'common-online-trial',stepId:processed,pallet:structuredClone(scenario.pallet),types:structuredClone(scenario.types),constraints:structuredClone(scenario.constraints),placements:structuredClone(stack),current:structuredClone(box),remaining:{...pending},algorithm:'greedy',settings:structuredClone(settings),strategyState:structuredClone(state)};
+  const availableMs=availablePlanningMs(config),searchBudgetMs=config.searchBudgetMs??availableMs;
+  let result:DecisionOutcome;
+  try{result=await options.planDecision({id:`decision-${decisionRunId}-${processed}`,algorithm,input,availableMs,searchBudgetMs,mcts:config.mcts},options.signal);}
+  catch(error){if(options.signal?.aborted||(error instanceof Error&&error.name==='AbortError')){status='cancelled';reason='Cancelled by user';break;}status='error';reason=error instanceof Error?error.message:String(error);break;}
+  if(options.signal?.aborted){status='cancelled';reason='Cancelled by user';break;}
+  const checkStarted=performance.now(),checked=result.candidate?validateCandidate(input,result.candidate):null;
+  const errors=checked?.reasons??[],validationMs=performance.now()-checkStarted;
+  if(errors.length)violations.push(...errors.map(e=>`${box.id}: ${e}`));
+  const finite=[result.elapsedMs,result.planningMs].every(v=>Number.isFinite(v)&&v>=0);
+  // The independent commit check uses the explicitly reserved allowance. The
+  // supervisor already requires the candidate to arrive inside the search window.
+  const validDeadline=finite&&result.validDeadline&&config.recognitionDelaySeconds*1000+result.elapsedMs+validationMs<=config.cycleSeconds*1000;
+  const accepted=Boolean(result.candidate&&checked&&!errors.length&&validDeadline);
+  const decisionMs=finite?result.elapsedMs:0,prep=(config.recognitionDelaySeconds*1000+decisionMs+validationMs)/1000,start=nextPlanningStart,end=start+prep;
+  const overlap=Math.max(0,Math.min(end,robotEnd)-Math.max(start,robotStart)),exposed=Math.max(0,prep-overlap);
+  let moveStart:number|null=null,moveEnd:number|null=null;
+  if(accepted){stack=checked!.stack;state=structuredClone(result.strategyState);moveStart=Math.max(end,robotEnd);moveEnd=moveStart+config.cycleSeconds;robotStart=moveStart;robotEnd=moveEnd;nextPlanningStart=moveStart;}else nextPlanningStart=end;
+  const trace:DecisionTrace={index:processed,box:structuredClone(box),accepted,reason:accepted?'Validated current-box placement':errors.join(' / ')||(!validDeadline?'Decision missed available deadline':result.message||'No valid candidate'),placement:accepted?structuredClone(checked!.placement):undefined,
+    recognitionMs:config.recognitionDelaySeconds*1000,planningMs:finite?result.planningMs:0,decisionMs,validationMs,availableMs,searchBudgetMs,fallback:result.fallback,fallbackReason:result.fallbackReason,validDeadline,watchdog:result.watchdog,simulations:result.simulations,completeScenarios:result.completeScenarios,searchDiagnostics:result.searchDiagnostics,remaining:{...pending},timing:{start,end,robotStart:moveStart,robotEnd:moveEnd,exposedWaitSeconds:exposed,overlappedPlanningSeconds:overlap}};
+  decisions.push(trace);processed++;
+  options.onProgress?.({algorithm,seed,completedTrials:0,totalTrials:1,processed,totalBoxes:arrivals.length,placements:structuredClone(stack),decision:structuredClone(trace)});
+ }
+ const placedIds=new Set(stack.map(p=>p.id)),unplaced=arrivals.slice(0,processed).filter(o=>!placedIds.has(o.id)),unprocessed=arrivals.slice(processed);
+ if(placedIds.size!==stack.length||new Set([...stack,...unplaced,...unprocessed].map(p=>p.id)).size!==arrivals.length||stack.length+unplaced.length+unprocessed.length!==arrivals.length)violations.push('Box identity / quantity conservation failed');
+ for(let i=0;i<stack.length;i++){const p=stack[i];if(stack.slice(0,i).some(q=>intersects(p,q)))violations.push(`${p.id}: independent overlap audit`);if(p.position.x<0||p.position.y<0||p.position.z<0||p.position.x+p.size.w>scenario.pallet.width+1e-6||p.position.y+p.size.d>scenario.pallet.depth+1e-6||top(p)>scenario.pallet.maxHeight+1e-6)violations.push(`${p.id}: independent boundary audit`);}
+ if(violations.length&&status==='finished'){status='error';reason='Independent audit failed';}
+ return {id,algorithm,seed,config:structuredClone(config),scenario,status,reason,arrivals,placements:stack,unplaced,unprocessed,decisions,violations,metrics:trialMetrics(scenario,stack,decisions,arrivals.length),sourceVersion:SOURCE_VERSION,inputFingerprint:fingerprint({scenario,config,arrivals})};
+}
+export async function createExperiment(request:ExperimentRequest,options:RunOptions,onTrial?:(row:TrialResult)=>void):Promise<ExperimentResult>{
+ validateConfig(request.config);if(!request.algorithms.length||new Set(request.algorithms).size!==request.algorithms.length||request.algorithms.some(a=>!ALGORITHMS.some(v=>v.id===a)))throw Error('Select distinct known algorithms');
+ if(!request.seeds.length||new Set(request.seeds).size!==request.seeds.length||request.seeds.some(s=>!Number.isInteger(s)))throw Error('Select distinct integer seeds');
+ const rows:TrialResult[]=[],totalTrials=request.algorithms.length*request.seeds.length;
+ outer:for(const seed of request.seeds)for(const algorithm of request.algorithms){
+  if(options.signal?.aborted)break outer;
+  const row=await runTrial(request.config,algorithm,seed,{...options,onProgress:p=>options.onProgress?.({...p,completedTrials:rows.length,totalTrials})});rows.push(row);onTrial?.(row);if(row.status==='cancelled')break outer;
+ }
+ return {...structuredClone(request),rows,cancelled:Boolean(options.signal?.aborted||rows.some(r=>r.status==='cancelled')),assumptions:ASSUMPTIONS};
+}
+
+
+### src/metrics/clustering.ts
+/** Physical face contacts. Projection overlap through air is deliberately excluded. */
+export interface ClusterBox {id:string;typeId:string;position:{x:number;y:number;z:number};size:{w:number;d:number;h:number}}
+export const department=(typeId:string)=>Math.floor((Number(typeId.replace(/\D/g,''))-1)/2);
+const eps=1e-5;
+const overlap=(a:number,al:number,b:number,bl:number)=>Math.max(0,Math.min(a+al,b+bl)-Math.max(a,b));
+export function contact(a:ClusterBox,b:ClusterBox){
+ const x=overlap(a.position.x,a.size.w,b.position.x,b.size.w),y=overlap(a.position.y,a.size.d,b.position.y,b.size.d),z=overlap(a.position.z,a.size.h,b.position.z,b.size.h);
+ const touching=(axis:'x'|'y'|'z',size:'w'|'d'|'h')=>Math.abs(a.position[axis]+a.size[size]-b.position[axis])<eps||Math.abs(b.position[axis]+b.size[size]-a.position[axis])<eps;
+ const vertical=touching('z','h')?x*y:0;
+ return {vertical,area:vertical+(touching('x','w')?y*z:0)+(touching('y','d')?x*z:0)};
+}
+export function clusteringMetrics(boxes:readonly ClusterBox[]){
+ let total=0,same=0,zone=0,vertical=0,sameVertical=0;
+ const edges=new Map(boxes.map(b=>[b.id,[] as string[]]));
+ for(let i=0;i<boxes.length;i++)for(let j=i+1;j<boxes.length;j++){
+  const a=boxes[i],b=boxes[j],c=contact(a,b);total+=c.area;vertical+=c.vertical;
+  if(department(a.typeId)===department(b.typeId))zone+=c.area;
+  if(a.typeId===b.typeId){same+=c.area;sameVertical+=c.vertical;if(c.area>eps){edges.get(a.id)!.push(b.id);edges.get(b.id)!.push(a.id);}}
+ }
+ const seen=new Set<string>(),largest:Record<string,number>={};let components=0;
+ for(const box of boxes){if(seen.has(box.id))continue;components++;const queue=[box.id];seen.add(box.id);let size=0;
+  for(let q=0;q<queue.length;q++){size++;for(const id of edges.get(queue[q])!)if(!seen.has(id)){seen.add(id);queue.push(id);}}
+  largest[box.typeId]=Math.max(largest[box.typeId]??0,size);
+ }
+ return {contactAreaMm2:total,sameSkuContactAreaMm2:same,sameSkuContact:total?same/total:null,sameDepartmentContact:total?zone/total:null,
+  verticalContactAreaMm2:vertical,sameSkuVertical:vertical?sameVertical/vertical:null,
+  largestComponentShare:boxes.length?Object.values(largest).reduce((a,b)=>a+b,0)/boxes.length:null,components};
+}
+export const CLUSTER_DEFINITIONS={
+ sameSkuContact:'Sum of shared face area between identical SKUs / all box-to-box shared face area. Each pair counted once; pallet boundary excluded. Null with no contacts.',
+ sameSkuVertical:'Same-SKU touching horizontal face area / all touching horizontal face area. Non-touching XY projections are excluded; null when no vertical contact.',
+ sameDepartmentContact:'Shared face area within S1/S2, S3/S4, or S5/S6 / all shared face area. Distinct from exact SKU similarity.',
+ largestComponentShare:'Sum of largest face-connected component sizes per SKU / placed count. Reported with count and contact purity to avoid singleton inflation.',
+};
+
+
+### src/cluster/evaluation.ts
+import {clusteringMetrics} from '../metrics/clustering';
+import {footprintMetrics} from '../metrics/footprint';
+import {qualityMetrics} from '../metrics/quality';
+import type {TrialResult} from '../engine/types';
+
+export const SELECTION_RULE={version:'cluster-selection/1',selectionSeeds:[21010,21011,21012,21013],evaluationSeeds:Array.from({length:12},(_,i)=>22010+i),
+ weights:{fill:30,floor:25,sameSkuContact:30,voidEfficiency:10,balance:5},
+ gate:'All selection runs finished, zero violations and deadline misses. ALPS selection mean fill must be within 5 percentage points of the best conventional selection mean fill.',
+ rule:'Highest weighted mean on selection seeds only. Baseline = best conventional score. ALPS = best of floor-dense/cluster-floor/cluster-layer after fill gate. Lowest = lowest score among all eligible tested policies, including the deliberately dispersed control.',
+ displaySeed:22010,
+ caution:'User-priority decision score, not an industry standard or universal optimality certificate. Independent evaluation never changes selected IDs or display seed.'};
+const clamp=(v:number)=>Math.max(0,Math.min(1,v));
+export function evaluateTrial(row:TrialResult){
+ const cluster=clusteringMetrics(row.placements),floor=footprintMetrics(row.placements,row.scenario.pallet),quality=qualityMetrics(row.placements,{...row.scenario.pallet,maxHeight:row.config.maxHeightMm});
+ const voidEfficiency=quality.volumeLiters?1-quality.columnVoidLiters/quality.volumeLiters:0;
+ const balance=1-row.metrics.cogHorizontalOffsetMm/(Math.hypot(row.scenario.pallet.width,row.scenario.pallet.depth)/2);
+ const score=30*clamp(quality.fill)+25*clamp(floor.floorContactCoverage)+30*clamp(cluster.sameSkuContact??0)+10*clamp(voidEfficiency)+5*clamp(balance);
+ return {algorithm:row.algorithm,seed:row.seed,id:row.id,eligible:row.status==='finished'&&!row.violations.length&&row.metrics.deadlineMisses===0,
+  count:row.placements.length,total:row.arrivals.length,fill:quality.fill,floor:floor.floorContactCoverage,sameSkuContact:cluster.sameSkuContact??0,
+  sameSkuVertical:cluster.sameSkuVertical,sameDepartmentContact:cluster.sameDepartmentContact,componentShare:cluster.largestComponentShare,
+  columnVoidLiters:quality.columnVoidLiters,cogOffsetMm:row.metrics.cogHorizontalOffsetMm,cogHeightMm:row.metrics.cogHeightMm,
+  minSupport:row.metrics.minSupportRatio,maxLoadRatio:row.metrics.maxLoadRatio,deadlineMisses:row.metrics.deadlineMisses,
+  maxDecisionMs:row.metrics.maxDecisionMs,score};
+}
+export type Evaluated=ReturnType<typeof evaluateTrial>;
+
+
+### scripts/benchmark-cluster.ts
+import {mkdirSync,readFileSync,writeFileSync,readdirSync,existsSync} from 'node:fs';
+import {resolve,join,relative} from 'node:path';
+import {createHash} from 'node:crypto';
+import {cpus,platform} from 'node:os';
+import {Worker} from 'node:worker_threads';
+import {ALGORITHMS,DEFAULT_CONFIG} from '../src/engine/config';
+import {runTrial} from '../src/engine/core';
+import {createPlannerSupervisor,type WorkerPort} from '../src/engine/supervisor';
+import {evaluateTrial,SELECTION_RULE,type Evaluated} from '../src/cluster/evaluation';
+import {estimate,pairedEstimate} from '../src/metrics/statistics';
+import {CLUSTER_DEFINITIONS} from '../src/metrics/clustering';
+import {planRedistribution} from '../src/redistribution';
+import type {AlgorithmId,PlannerEvent} from '../src/engine/types';
+
+const root=process.cwd(),out=resolve(root,'public/cluster');mkdirSync(join(out,'trials'),{recursive:true});
+const save=(name:string,value:unknown)=>writeFileSync(join(out,name),JSON.stringify(value,null,2)+'\n');
+const walk=(dir:string):string[]=>readdirSync(dir,{withFileTypes:true}).flatMap(f=>f.isDirectory()?walk(join(dir,f.name)):[join(dir,f.name)]).sort();
+const paths=[...walk(resolve(root,'src/engine')),...walk(resolve(root,'src/metrics')),resolve(root,'src/cluster/evaluation.ts'),resolve(root,'scripts/benchmark-cluster.ts')];
+const source=paths.map(p=>({path:relative(root,p),sha256:createHash('sha256').update(readFileSync(p)).digest('hex')}));
+const provenance={createdAt:new Date().toISOString(),sourceSha256:createHash('sha256').update(JSON.stringify(source)).digest('hex'),source,
+ environment:{node:process.version,cpu:cpus()[0].model,platform:platform()},execution:'Sequential Node worker_threads with canonical supervisor, observed current box and remaining counts only.',
+ config:DEFAULT_CONFIG,rule:SELECTION_RULE};
+if(existsSync(join(out,'freeze.json')))throw Error('Freeze already exists; preserve first outcomes and use a new versioned directory.');
+save('freeze.json',provenance);
+function factory():WorkerPort{const w=new Worker(new URL('./cluster-worker.mjs',import.meta.url));const port:WorkerPort={onmessage:null,onerror:null,postMessage:m=>w.postMessage(m),terminate:()=>{void w.terminate();}};w.on('message',(data:PlannerEvent)=>port.onmessage?.({data}));w.on('error',e=>port.onerror?.({message:e.message}));return port;}
+const supervisor=createPlannerSupervisor(factory),rows:(Evaluated&{split:string;traceUrl:string;redistribution:ReturnType<typeof planRedistribution>['metrics']})[]=[];
+const alpsIds:AlgorithmId[]=['floor-dense','cluster-floor','cluster-layer'];
+let selected:{before:AlgorithmId;after:AlgorithmId;worst:AlgorithmId;fillGate:number}|null=null;
+const metricKeys=['score','fill','floor','sameSkuContact','sameSkuVertical','sameDepartmentContact','componentShare','columnVoidLiters','cogOffsetMm','cogHeightMm','count','maxDecisionMs'] as const;
+function summaries(split:string){return ALGORITHMS.map(a=>{const rr=rows.filter(r=>r.algorithm===a.id&&r.split===split);return {id:a.id,name:a.name,n:rr.length,eligible:rr.length===(split==='selection'?4:12)&&rr.every(r=>r.eligible),metrics:Object.fromEntries(metricKeys.map(k=>[k,estimate(rr.map(r=>r[k]).filter((v):v is number=>v!==null))]))};});}
+function persist(complete:boolean){const comparisons=selected?metricKeys.map(metric=>({metric,...pairedEstimate(rows.filter(r=>r.split==='evaluation'&&r.algorithm===selected!.after&&r.eligible),rows.filter(r=>r.split==='evaluation'&&r.algorithm===selected!.before&&r.eligible),r=>r[metric]??0)})):[];
+ save('index.json',{schema:'alps-cluster/1',complete,provenance,selected,selection:summaries('selection'),evaluation:summaries('evaluation'),paired:comparisons,rows,definitions:CLUSTER_DEFINITIONS,
+  limits:['Synthetic one-pallet six-SKU workload; arrival seeds vary but dimensions, inventory and pallet are fixed.','No claim of globally most/least efficient algorithm. Negative control intentionally minimizes SKU clustering.','10-second cycle and redistribution seconds are model assumptions, not measured real-cell times.','Exploratory unadjusted 95% paired Student t intervals over arrival seeds; score weights are design priorities.','Mixed loading does not prove clustering improves redistribution: both are separately computed.'],reviewUrl:'/cluster/claude-review.txt'});
+}
+try{
+ for(const a of ALGORITHMS){await runTrial({...DEFAULT_CONFIG,quantityPerSku:1},a.id,20999,{planDecision:supervisor.planDecision});}
+ for(const split of ['selection','evaluation'] as const){
+  const seeds=split==='selection'?SELECTION_RULE.selectionSeeds:SELECTION_RULE.evaluationSeeds;
+  for(let i=0;i<seeds.length;i++){
+   const order=[...ALGORITHMS.slice(i%ALGORITHMS.length),...ALGORITHMS.slice(0,i%ALGORITHMS.length)];
+   let input:string|undefined;
+   for(const a of order){const row=await runTrial(DEFAULT_CONFIG,a.id,seeds[i],{planDecision:supervisor.planDecision});
+    if(input&&input!==row.inputFingerprint)throw Error('Input pairing failed');input=row.inputFingerprint;
+    const file=`trials/${split}-${seeds[i]}-${a.id}.json`;save(file,row);
+    const redistribution=planRedistribution(row.placements,{cycleSeconds:10,palletWidthMm:row.scenario.pallet.width,palletDepthMm:row.scenario.pallet.depth,unplacedCount:row.unplaced.length}).metrics;
+    const e={...evaluateTrial(row),split,traceUrl:`/cluster/${file}`,redistribution};rows.push(e);persist(false);
+    process.stdout.write(`${rows.length}/160 ${split} ${seeds[i]} ${a.id} fill ${(e.fill*100).toFixed(1)} floor ${(e.floor*100).toFixed(1)} cluster ${(e.sameSkuContact*100).toFixed(1)} score ${e.score.toFixed(2)} ${e.eligible?'PASS':'FAIL'}\n`);
+   }
+  }
+  if(split==='selection'){
+   const ranked=summaries('selection').filter(r=>r.eligible).sort((a,b)=>(b.metrics.score.mean??0)-(a.metrics.score.mean??0));
+   const conventional=ranked.filter(r=>!alpsIds.includes(r.id)&&r.id!=='dispersed');
+   const fillGate=Math.max(...conventional.map(r=>r.metrics.fill.mean??0))-.05;
+   const after=ranked.find(r=>alpsIds.includes(r.id)&&(r.metrics.fill.mean??0)>=fillGate);
+   if(!after||!conventional.length)throw Error('No ALPS candidate passed predeclared fill gate; do not force a winner.');
+   selected={before:conventional[0].id,after:after.id,worst:ranked.at(-1)!.id,fillGate};save('selection.json',{selected,rule:SELECTION_RULE,summaries:ranked,selectedAt:new Date().toISOString()});persist(false);
+   process.stdout.write(`FROZEN SELECTION ${JSON.stringify(selected)}\n`);
+  }
+ }
+ persist(true);
+ const fields=Object.keys(rows[0]).filter(k=>k!=='redistribution');writeFileSync(join(out,'trials.csv'),fields.join(',')+'\n'+rows.map(r=>fields.map(k=>JSON.stringify((r as Record<string,unknown>)[k])??'').join(',')).join('\n')+'\n');
+}finally{supervisor.dispose();}
+
+
+### scripts/audit-cluster.py
+"""Independent Python geometry/statistics audit. Does not run/modify old trials."""
+from pathlib import Path
+import json, math, hashlib, zipfile, statistics
+ROOT=Path(__file__).resolve().parents[1]
+OUT=ROOT/'public/cluster'
+OLD=ROOT/'public/results'
+def digest(p): return hashlib.sha256(p.read_bytes()).hexdigest()
+def close(a,b):
+    assert math.isclose(a,b,rel_tol=1e-8,abs_tol=1e-7),(a,b)
+def area_union(boxes,pallet):
+    xs=sorted({0,pallet['width']}|{p['position']['x']+d for p in boxes for d in [0,p['size']['w']]})
+    ys=sorted({0,pallet['depth']}|{p['position']['y']+d for p in boxes for d in [0,p['size']['d']]})
+    area=column=0
+    for l,r in zip(xs,xs[1:]):
+        for f,b in zip(ys,ys[1:]):
+            x,y=(l+r)/2,(f+b)/2
+            covers=[p for p in boxes if p['position']['x']<=x<p['position']['x']+p['size']['w'] and p['position']['y']<=y<p['position']['y']+p['size']['d']]
+            if covers:
+                area+=(r-l)*(b-f)
+                column+=(r-l)*(b-f)*max(p['position']['z']+p['size']['h'] for p in covers)
+    return area,column
+
+def geometry(r):
+    ps=r['placements'];p=r['scenario']['pallet'];m=r['metrics'];arr=r['arrivals']
+    assert r['status']=='finished' and not r['violations'] and not r['unprocessed']
+    assert len(ps)+len(r['unplaced'])==len(arr)==len(r['decisions'])==72
+    ids=[b['id'] for b in ps+r['unplaced']]
+    assert len(set(ids))==len(ids) and set(ids)=={b['id'] for b in arr}
+    assert [d['box']['id'] for d in r['decisions']]==[b['id'] for b in arr]
+    accepted=[d for d in r['decisions'] if d['accepted']]
+    assert len(accepted)==len(ps)
+    for d in accepted:
+        assert d['validDeadline']
+        assert r['config']['recognitionDelaySeconds']*1000+d['decisionMs']+d['validationMs']<=10000+1e-7
+    volume=sum(math.prod(b['size'].values()) for b in ps)
+    mass=sum(b['weight'] for b in ps)
+    for i,a in enumerate(ps):
+        for ax,sz,limit in [('x','w',p['width']),('y','d',p['depth']),('z','h',p['maxHeight'])]:
+            assert a['position'][ax]>=-1e-7 and a['position'][ax]+a['size'][sz]<=limit+1e-7
+        for b in ps[:i]:
+            assert not all(a['position'][ax]<b['position'][ax]+b['size'][sz]-1e-7 and b['position'][ax]<a['position'][ax]+a['size'][sz]-1e-7 for ax,sz in [('x','w'),('y','d'),('z','h')])
+    close(m['volumeMm3'],volume);close(m['fill'],volume/(p['width']*p['depth']*p['maxHeight']))
+    c={ax:sum(b['weight']*(b['position'][ax]+b['size'][sz]/2) for b in ps)/mass for ax,sz in [('x','w'),('y','d'),('z','h')]}
+    for ax,v in c.items(): close(m['center'][ax],v)
+    floor,_=area_union([b for b in ps if abs(b['position']['z'])<1e-6],p)
+    _,column=area_union(ps,p)
+    close(m['columnVoidMm3'],max(0,column-volume))
+    contact=same=vertical=same_v=0
+    for i,a in enumerate(ps):
+        for b in ps[:i]:
+            amounts={ax:max(0,min(a['position'][ax]+a['size'][sz],b['position'][ax]+b['size'][sz])-max(a['position'][ax],b['position'][ax])) for ax,sz in [('x','w'),('y','d'),('z','h')]}
+            for ax,sz,other in [('x','w',('y','z')),('y','d',('x','z')),('z','h',('x','y'))]:
+                if abs(a['position'][ax]+a['size'][sz]-b['position'][ax])<1e-5 or abs(b['position'][ax]+b['size'][sz]-a['position'][ax])<1e-5:
+                    ar=math.prod(amounts[v] for v in other);contact+=ar
+                    if a['typeId']==b['typeId']: same+=ar
+                    if ax=='z':
+                        vertical+=ar
+                        if a['typeId']==b['typeId']:same_v+=ar
+    f=floor/(p['width']*p['depth']);cl=same/contact if contact else 0;void=max(0,column-volume)/1e6
+    balance=1-math.hypot(c['x']-p['width']/2,c['y']-p['depth']/2)/(math.hypot(p['width'],p['depth'])/2)
+    clamp=lambda x:max(0,min(1,x))
+    score=30*clamp(m['fill'])+25*f+30*cl+10*clamp(1-void/(volume/1e6))+5*clamp(balance)
+    return {'fill':m['fill'],'floor':f,'sameSkuContact':cl,'sameSkuVertical':same_v/vertical if vertical else None,'columnVoidLiters':void,'score':score}
+
+def main():
+    old=json.loads((OLD/'index.json').read_text());audit=json.loads((OLD/'audit.json').read_text())
+    for f in audit['rawFiles']:assert digest(OLD/f['path'])==f['sha256'],f['path']
+    snapshot=json.loads((OLD/'source-snapshot-v2.json').read_text())
+    assert digest(OLD/snapshot['path'])==snapshot['sha256']
+    historical=json.loads((OLD/'summary.json').read_text())
+    with zipfile.ZipFile(OLD/snapshot['path']) as z:
+        for f in historical['provenance']['sourceFiles']:
+            assert hashlib.sha256(z.read(f['path'])).hexdigest()==f['sha256'],f['path']
+    for b in old['trials']:
+        r=json.loads((ROOT/'public'/b['traceUrl'].lstrip('/')).read_text());geometry(r)
+    new=json.loads((OUT/'index.json').read_text());freeze=json.loads((OUT/'freeze.json').read_text())
+    for f in freeze['source']:assert digest(ROOT/f['path'])==f['sha256'],f['path']
+    pairing={};raw_files=[]
+    for b in new['rows']:
+        path=ROOT/'public'/b['traceUrl'].lstrip('/');r=json.loads(path.read_text());derived=geometry(r)
+        for k,v in derived.items():
+            if v is None:assert b[k] is None
+            else: close(v,b[k])
+        pairing.setdefault(b['seed'],[]).append(r['inputFingerprint']);raw_files.append({'path':b['traceUrl'],'sha256':digest(path)})
+    assert all(len(set(v))==1 for v in pairing.values())
+    if new['complete']:
+        assert len(new['rows'])==160 and len(pairing)==16
+        assert all(len(v)==10 for v in pairing.values())
+        assert all(r['eligible'] for r in new['rows'])
+    sel=new['selected']
+    if sel:
+        ranked=sorted([s for s in new['selection'] if s['eligible']],key=lambda s:s['metrics']['score']['mean'],reverse=True)
+        alps={'floor-dense','cluster-floor','cluster-layer'}
+        baseline=[s for s in ranked if s['id'] not in alps|{'dispersed'}]
+        assert sel['before']==baseline[0]['id'] and sel['worst']==ranked[-1]['id']
+        gate=max(s['metrics']['fill']['mean'] for s in baseline)-.05
+        close(gate,sel['fillGate'])
+        assert sel['after']==next(s['id'] for s in ranked if s['id'] in alps and s['metrics']['fill']['mean']>=gate)
+        assert not set(freeze['rule']['selectionSeeds'])&set(freeze['rule']['evaluationSeeds'])
+    for s in new['evaluation']+new['selection']:
+        split='evaluation' if s in new['evaluation'] else 'selection'
+        for k,e in s['metrics'].items():
+            vals=[r[k] for r in new['rows'] if r['algorithm']==s['id'] and r['split']==split and r[k] is not None]
+            assert len(vals)==e['n']
+            if vals:close(statistics.mean(vals),e['mean'])
+    t_values={2:12.7062047364,3:4.3026527297,4:3.1824463053,5:2.7764451052,6:2.5705818356,7:2.4469118511,8:2.3646242510,9:2.3060041352,10:2.2621571629,11:2.2281388520,12:2.2009851601}
+    for e in new['paired']:
+        metric=e['metric'];a={r['seed']:r for r in new['rows'] if r['split']=='evaluation' and r['algorithm']==sel['after']};b={r['seed']:r for r in new['rows'] if r['split']=='evaluation' and r['algorithm']==sel['before']}
+        vals=[(a[s][metric] or 0)-(b[s][metric] or 0) for s in sorted(a.keys()&b.keys())]
+        assert vals==e['observations']
+        if vals:close(statistics.mean(vals),e['mean'])
+        if len(vals)>1:
+            half=t_values[len(vals)]*statistics.stdev(vals)/math.sqrt(len(vals))
+            close(e['ci95'][0],statistics.mean(vals)-half);close(e['ci95'][1],statistics.mean(vals)+half)
+    report={'complete':new['complete'],'historicalTrialsRecalculated':len(old['trials']),'historicalDecisions':9576,'historicalRawHashesPreserved':True,'historicalSourceArchiveVerified':True,'newTrialsRecalculated':len(new['rows']),'newDecisions':len(new['rows'])*72,'newSourceFreezeVerified':True,'pairedInputVerified':True,'checks':['box IDs and counts','accepted deadlines','bounds and pairwise non-overlap','exact floor union','exact column void','mass weighted CoG','same SKU face and vertical contact','weighted decision score','selection independent of evaluation','seed-level paired Student-t intervals'],'limitations':['Python geometry audit does not independently certify physical material limits, reach or complete arm kinematics. Shared constraint implementation and focused tests cover modeled feasibility only.'],'rawFiles':raw_files}
+    (OUT/'audit.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');print(json.dumps({k:v for k,v in report.items() if k!='rawFiles'},ensure_ascii=False))
+if __name__=='__main__':main()
+
+
+### src/redistribution.ts
+/** Sequential, rule-based handling model for the actual final pallet coordinates.
+ * It is not a store walking model or a robot reach/collision certification.
+ * Every algorithm uses the same zone order, top-access rule and movement duration.
+ */
+export type RedistributionZone = 0 | 1 | 2;
+export interface HandlingPoint { x: number; y: number; z: number }
+export interface RedistributionBox {
+  id: string; typeId: string; position: HandlingPoint;
+  size: { w: number; d: number; h: number }; weight: number; color?: string;
+}
+export type RedistributionStage = 'pallet-to-buffer' | 'pallet-to-destination' | 'buffer-to-destination';
+export interface RedistributionStep {
+  index: number; boxId: string; box: RedistributionBox; zone: RedistributionZone;
+  stage: RedistributionStage; from: HandlingPoint; to: HandlingPoint;
+  fromSlot: number | null; toSlot: number | null;
+  start: number; end: number; seconds: number;
+}
+export interface RedistributionOptions {
+  cycleSeconds: 10 | 12;
+  palletWidthMm?: number; palletDepthMm?: number; unplacedCount?: number;
+  zoneOrder?: readonly RedistributionZone[];
+}
+export interface RedistributionPlan {
+  schema: 'alps-redistribution/1'; initialBoxes: RedistributionBox[];
+  zoneOrder: RedistributionZone[]; cycleSeconds: 10 | 12;
+  steps: RedistributionStep[];
+  bufferSlots: { slot: number; position: HandlingPoint }[];
+  destinations: { boxId: string; zone: RedistributionZone; slot: number; position: HandlingPoint }[];
+  finalBoxes: RedistributionBox[];
+  metrics: {
+    targetBoxes: number; excludedUnplaced: number; extraHandles: number;
+    totalMoves: number; totalSeconds: number; secondsPer100Boxes: number | null;
+    bufferPeak: number; deliveredBoxes: number; conserved: boolean;
+  };
+  assumptions: string[];
+}
+
+const ZONES: Record<string, RedistributionZone> = { S1: 0, S2: 0, S3: 1, S4: 1, S5: 2, S6: 2 };
+const EPS = 1e-6;
+const top = (b: RedistributionBox) => b.position.z + b.size.h;
+const overlapXY = (a: RedistributionBox, b: RedistributionBox) =>
+  a.position.x < b.position.x + b.size.w - EPS && b.position.x < a.position.x + a.size.w - EPS
+  && a.position.y < b.position.y + b.size.d - EPS && b.position.y < a.position.y + a.size.d - EPS;
+const intersect = (a: RedistributionBox, b: RedistributionBox) => overlapXY(a, b)
+  && a.position.z < top(b) - EPS && b.position.z < top(a) - EPS;
+const byTop = (a: RedistributionBox, b: RedistributionBox) => top(b) - top(a) || a.id.localeCompare(b.id);
+export function redistributionZone(typeId: string): RedistributionZone {
+  const zone = ZONES[typeId];
+  if (zone === undefined) throw Error(`No redistribution zone for SKU: ${typeId}`);
+  return zone;
+}
+/** All vertically higher boxes sharing the footprint obstruct a vertical extraction. */
+export function redistributionBlockers(box: RedistributionBox, boxes: readonly RedistributionBox[]): RedistributionBox[] {
+  return boxes.filter(other => other.id !== box.id && other.position.z >= top(box) - EPS && overlapXY(box, other)).sort(byTop);
+}
+
+export function planRedistribution(input: readonly RedistributionBox[], options: RedistributionOptions): RedistributionPlan {
+  const cycle = options.cycleSeconds, width = options.palletWidthMm ?? 1200, depth = options.palletDepthMm ?? 1000;
+  const excluded = options.unplacedCount ?? 0, order: RedistributionZone[] = [...(options.zoneOrder ?? [0, 1, 2])];
+  if (![10, 12].includes(cycle)) throw Error('Redistribution cycle must be 10 or 12 seconds');
+  if (![width, depth].every(n => Number.isFinite(n) && n > 0)) throw Error('Invalid pallet dimensions');
+  if (!Number.isInteger(excluded) || excluded < 0) throw Error('Invalid unplaced count');
+  if (order.length !== 3 || new Set(order).size !== 3 || order.some(z => ![0, 1, 2].includes(z))) throw Error('Zone order must contain zones 0, 1 and 2 exactly once');
+  if (new Set(input.map(b => b.id)).size !== input.length) throw Error('Duplicate box identity');
+  for (const b of input) {
+    redistributionZone(b.typeId);
+    if (!b.id || ![...Object.values(b.position), ...Object.values(b.size), b.weight].every(Number.isFinite)
+      || Object.values(b.size).some(n => n <= 0) || Object.values(b.position).some(n => n < 0) || b.weight < 0) throw Error(`Invalid box geometry: ${b.id}`);
+    if (b.position.x + b.size.w > width + EPS || b.position.y + b.size.d > depth + EPS) throw Error(`Box outside pallet: ${b.id}`);
+  }
+  for (let i = 0; i < input.length; i++) if (input.slice(i + 1).some(b => intersect(input[i], b))) throw Error(`Overlapping input boxes: ${input[i].id}`);
+  const initialBoxes = structuredClone([...input]), pallet = new Map(initialBoxes.map(b => [b.id, b]));
+  const buffer = new Map<string, { box: RedistributionBox; slot: number; position: HandlingPoint }>();
+  const delivered = new Map<string, RedistributionBox>(), occupiedSlots = new Set<number>();
+  const bufferSlots = new Map<number, HandlingPoint>(), destinationCounts = [0, 0, 0];
+  const steps: RedistributionStep[] = [], destinations: RedistributionPlan['destinations'] = [];
+  const pitchX = Math.max(100, ...initialBoxes.map(b => b.size.w)) + 100;
+  const pitchY = Math.max(100, ...initialBoxes.map(b => b.size.d)) + 100;
+  let bufferPeak = 0;
+  const destinationFor = (zone: RedistributionZone) => {
+    const slot = destinationCounts[zone]++;
+    // Nonoverlapping staging cells are explanatory geometry, not a robot workspace claim.
+    return { slot, position: { x: width + 400 + zone * 3 * pitchX + (slot % 3) * pitchX,
+      y: Math.floor(slot / 3) * pitchY, z: 0 } };
+  };
+  const add = (box: RedistributionBox, stage: RedistributionStage, from: HandlingPoint, to: HandlingPoint,
+    fromSlot: number | null, toSlot: number | null) => {
+    const start = steps.length * cycle;
+    steps.push({ index: steps.length, boxId: box.id, box: structuredClone(box), zone: redistributionZone(box.typeId),
+      stage, from: { ...from }, to: { ...to }, fromSlot, toSlot, start, end: start + cycle, seconds: cycle });
+  };
+  const deliver = (box: RedistributionBox, from: HandlingPoint, fromSlot: number | null) => {
+    if (delivered.has(box.id)) throw Error(`Box delivered twice: ${box.id}`);
+    const zone = redistributionZone(box.typeId), target = destinationFor(zone);
+    add(box, fromSlot === null ? 'pallet-to-destination' : 'buffer-to-destination', from, target.position, fromSlot, target.slot);
+    if (fromSlot === null) pallet.delete(box.id);
+    else { buffer.delete(box.id); occupiedSlots.delete(fromSlot); }
+    destinations.push({ boxId: box.id, zone, ...target });
+    delivered.set(box.id, { ...structuredClone(box), position: { ...target.position } });
+  };
+  const hold = (box: RedistributionBox) => {
+    let slot = 0; while (occupiedSlots.has(slot)) slot++;
+    const position = { x: -400 - (slot % 3 + 1) * pitchX, y: Math.floor(slot / 3) * pitchY, z: 0 };
+    add(box, 'pallet-to-buffer', box.position, position, null, slot);
+    pallet.delete(box.id); occupiedSlots.add(slot); bufferSlots.set(slot, position);
+    buffer.set(box.id, { box, slot, position }); bufferPeak = Math.max(bufferPeak, buffer.size);
+  };
+  const extract = (box: RedistributionBox, currentZone: RedistributionZone) => {
+    if (!pallet.has(box.id)) return;
+    for (const blocker of redistributionBlockers(box, [...pallet.values()])) extract(blocker, currentZone);
+    if (redistributionBlockers(box, [...pallet.values()]).length) throw Error(`Blocked vertical extraction: ${box.id}`);
+    // A target-zone blocker can go directly to its destination; no artificial baseline penalty.
+    if (redistributionZone(box.typeId) === currentZone) deliver(box, box.position, null); else hold(box);
+  };
+  for (const zone of order) {
+    const wanted = initialBoxes.filter(b => redistributionZone(b.typeId) === zone).sort(byTop);
+    for (const box of wanted) {
+      if (delivered.has(box.id)) continue;
+      const held = buffer.get(box.id);
+      if (held) deliver(held.box, held.position, held.slot); else extract(box, zone);
+    }
+  }
+  const extraHandles = steps.filter(s => s.stage === 'pallet-to-buffer').length;
+  const conserved = delivered.size === initialBoxes.length && !pallet.size && !buffer.size && !occupiedSlots.size
+    && destinations.length === initialBoxes.length && steps.length === initialBoxes.length + extraHandles;
+  if (!conserved) throw Error('Redistribution cargo conservation failed');
+  return { schema: 'alps-redistribution/1', initialBoxes, zoneOrder: order, cycleSeconds: cycle, steps,
+    bufferSlots: [...bufferSlots].map(([slot, position]) => ({ slot, position })), destinations,
+    finalBoxes: [...delivered.values()],
+    metrics: { targetBoxes: initialBoxes.length, excludedUnplaced: excluded, extraHandles,
+      totalMoves: steps.length, totalSeconds: steps.length * cycle,
+      secondsPer100Boxes: initialBoxes.length ? steps.length * cycle / initialBoxes.length * 100 : null,
+      bufferPeak, deliveredBoxes: delivered.size, conserved },
+    assumptions: [
+      'Only boxes actually placed on the source pallet are redistributed; unplaced cargo is excluded and counted separately.',
+      'All policies use the same zone order and top-access handling rule. A target-zone blocker is delivered directly; other-zone blockers use a temporary slot.',
+      'Every pallet-to-zone, pallet-to-buffer and buffer-to-zone movement uses the same assumed 10/12 second cycle.',
+      'Buffer slots and destination cells are nonoverlapping explanatory staging locations. Space, grasp, reach, full-link collision and transport stability at these locations are not validated.',
+      'This is sequential handling model time, not measured human work, store walking, shelf stocking or real robot cycle time.',
+      'Compare equal target cargo where possible; seconds per 100 boxes is a normalization, not a correction for different SKU mixes or causal proof.',
+    ] };
+}
+
+export interface RedistributionFrame {
+  pallet: RedistributionBox[]; buffer: RedistributionBox[]; destination: RedistributionBox[];
+  moving: { step: RedistributionStep; box: RedistributionBox; progress: number } | null;
+  completedMoves: number; deliveredBoxes: number; done: boolean;
+}
+/** State projection used by replay. A carried box belongs to exactly one moving state. */
+export function redistributionFrame(plan: RedistributionPlan, seconds: number): RedistributionFrame {
+  if (!Number.isFinite(seconds)) throw Error('Replay time must be finite');
+  const time = Math.max(0, Math.min(seconds, plan.metrics.totalSeconds));
+  const pallet = new Map(plan.initialBoxes.map(b => [b.id, structuredClone(b)]));
+  const buffer = new Map<string, RedistributionBox>(), destination = new Map<string, RedistributionBox>();
+  let moving: RedistributionFrame['moving'] = null, completedMoves = 0;
+  for (const step of plan.steps) {
+    if (time < step.start) break;
+    const source = step.stage === 'buffer-to-destination' ? buffer : pallet;
+    const box = source.get(step.boxId);
+    if (!box) throw Error(`Replay source box missing: ${step.boxId}`);
+    source.delete(step.boxId);
+    if (time < step.end) {
+      moving = { step, box: { ...box, position: { ...step.from } }, progress: (time - step.start) / step.seconds };
+      break;
+    }
+    const target = step.stage === 'pallet-to-buffer' ? buffer : destination;
+    target.set(step.boxId, { ...box, position: { ...step.to } }); completedMoves++;
+  }
+  return { pallet: [...pallet.values()], buffer: [...buffer.values()], destination: [...destination.values()],
+    moving, completedMoves, deliveredBoxes: destination.size, done: completedMoves === plan.steps.length };
+}
+
+
+### tests/cluster-planner.test.ts
+import {describe,it,expect} from 'vitest';
+import {executePlanning} from '../src/engine/planner';
+import {validateCandidate} from '../src/engine/validation';
+import {defaultCapacityConfig} from '../src/engine/vendor/pallet/capacity/experiment';
+import type {AlgorithmId,PlanningInput,Placement} from '../src/engine/types';
+const base=defaultCapacityConfig();
+function block(id:string,typeId:string,x:number):Placement{return {id,typeId,position:{x,y:0,z:0},size:{w:200,d:200,h:200},weight:2,orientation:0,supports:[],supportRatio:1,loadAbove:0,material:'paper',maxLoadKg:100,maxLoadSource:'synthetic',handling:'upright',friction:.45};}
+function fixture():PlanningInput{return {runId:'fixture',stepId:1,pallet:{width:800,depth:200,maxHeight:800},constraints:structuredClone(base.scenario.constraints),types:[],placements:[block('neighbor','S1',0)],current:{id:'current',typeId:'S1',size:{w:200,d:200,h:200},weight:2,status:'normal',orientationAllowed:[0],material:'paper',maxLoadKg:100,maxLoadSource:'synthetic',handling:'upright',friction:.45},remaining:{S1:0},algorithm:'greedy',settings:{...structuredClone(base.settings),maxCandidates:16}};}
+const plan=(algorithm:AlgorithmId,input=fixture())=>executePlanning({id:'test',algorithm,input,availableMs:9000,searchBudgetMs:9000,mcts:{depth:1,scenarios:1,maxIterations:1}});
+describe('new cluster policies use common feasibility and current observations',()=>{
+ it.each(['cluster-floor','cluster-layer','dispersed'] as const)('%s fills a valid floor before stacking and preserves input',algorithm=>{
+  const input=fixture(),copy=structuredClone(input),result=plan(algorithm,input);
+  expect(result.candidate).not.toBeNull();expect(result.candidate!.placement.position.z).toBe(0);
+  expect(validateCandidate(input,result.candidate!).reasons).toEqual([]);expect(input).toEqual(copy);
+ });
+ it('connects identical SKUs while deliberate dispersal avoids them on the same usable floor',()=>{
+  expect(plan('cluster-floor').candidate!.placement.position.x).toBe(200);
+  expect(plan('dispersed').candidate!.placement.position.x).toBeGreaterThan(200);
+ });
+ it.each(['cluster-floor','cluster-layer','dispersed'] as const)('%s cannot bypass payload limits',algorithm=>{
+  const input=fixture();input.constraints.gripper.payload=input.constraints.gripper.mass;
+  expect(plan(algorithm,input).candidate).toBeNull();
+ });
+ it('ignores a changed future order outside the public observation contract',()=>{
+  const a=fixture(),b=fixture();Object.assign(a,{actualFutureOrder:['S1'],actualArrivalSeed:1});Object.assign(b,{actualFutureOrder:['S6'],actualArrivalSeed:9});
+  expect(plan('cluster-layer',a).candidate!.placement).toEqual(plan('cluster-layer',b).candidate!.placement);
+ });
+});
+
+
+### tests/clustering.test.ts
+import {describe,it,expect} from 'vitest';
+import {contact,clusteringMetrics,type ClusterBox} from '../src/metrics/clustering';
+const b=(id:string,typeId:string,x=0,y=0,z=0):ClusterBox=>({id,typeId,position:{x,y,z},size:{w:100,d:100,h:100}});
+describe('independent hand-calculated cluster geometry',()=>{
+ it('counts a shared face once and excludes edge/corner adjacency',()=>{
+  expect(contact(b('a','S1'),b('b','S1',100)).area).toBe(10000);
+  expect(contact(b('a','S1'),b('b','S1',100,100)).area).toBe(0);
+  const m=clusteringMetrics([b('a','S1'),b('b','S1',100),b('c','S2',200)]);
+  expect(m.contactAreaMm2).toBe(20000);expect(m.sameSkuContact).toBe(.5);
+  expect(m.sameDepartmentContact).toBe(1);expect(m.sameSkuVertical).toBeNull();
+ });
+ it('distinguishes direct vertical stacking from projection overlap through air',()=>{
+  expect(clusteringMetrics([b('a','S1'),b('b','S1',0,0,100)]).sameSkuVertical).toBe(1);
+  expect(clusteringMetrics([b('a','S1'),b('b','S2',0,0,100)]).sameSkuVertical).toBe(0);
+  expect(clusteringMetrics([b('a','S1'),b('b','S1',0,0,200)]).sameSkuVertical).toBeNull();
+ });
+ it('uses area weighting, not counts of neighboring boxes',()=>{
+  const c=b('c','S2',0,0,100);c.size.w=50;
+  const m=clusteringMetrics([b('a','S1'),b('b','S1',100),c]);
+  expect(m.sameSkuContact).toBeCloseTo(2/3);expect(m.sameSkuVertical).toBe(0);
+ });
+ it('measures fragmentation without merging separated boxes of the same SKU',()=>{
+  const boxes=[b('a','S1'),b('b','S1',100),b('c','S1',400),b('d','S2',600)];
+  const copy=structuredClone(boxes),m=clusteringMetrics(boxes);
+  expect(m.components).toBe(3);expect(m.largestComponentShare).toBe(.75);expect(boxes).toEqual(copy);
+ });
+ it('returns unknown, not a perfect result, when no contacts exist',()=>{
+  expect(clusteringMetrics([]).sameSkuContact).toBeNull();
+  expect(clusteringMetrics([b('a','S1'),b('b','S1',300)]).sameSkuContact).toBeNull();
+ });
+});
+
+
+### public/cluster/selection.json
+{
+  "selected": {
+    "before": "capacity-compact",
+    "after": "cluster-layer",
+    "worst": "blb",
+    "fillGate": 0.60281875
+  },
+  "rule": {
+    "version": "cluster-selection/1",
+    "selectionSeeds": [
+      21010,
+      21011,
+      21012,
+      21013
+    ],
+    "evaluationSeeds": [
+      22010,
+      22011,
+      22012,
+      22013,
+      22014,
+      22015,
+      22016,
+      22017,
+      22018,
+      22019,
+      22020,
+      22021
+    ],
+    "weights": {
+      "fill": 30,
+      "floor": 25,
+      "sameSkuContact": 30,
+      "voidEfficiency": 10,
+      "balance": 5
+    },
+    "gate": "All selection runs finished, zero violations and deadline misses. ALPS selection mean fill must be within 5 percentage points of the best conventional selection mean fill.",
+    "rule": "Highest weighted mean on selection seeds only. Baseline = best conventional score. ALPS = best of floor-dense/cluster-floor/cluster-layer after fill gate. Lowest = lowest score among all eligible tested policies, including the deliberately dispersed control.",
+    "displaySeed": 22010,
+    "caution": "User-priority decision score, not an industry standard or universal optimality certificate. Independent evaluation never changes selected IDs or display seed."
+  },
+  "summaries": [
+    {
+      "id": "cluster-layer",
+      "name": "ALPS 군집 · 연결 우선",
+      "n": 4,
+      "eligible": true,
+      "metrics": {
+        "score": {
+          "n": 4,
+          "mean": 70.29314546526786,
+          "sd": 2.793032881006409,
+          "ci95": [
+            65.84880687889772,
+            74.73748405163799
+          ],
+          "min": 66.32876980505652,
+          "max": 72.88153018942235,
+          "observations": [
+            71.12328986853896,
+            72.88153018942235,
+            66.32876980505652,
+            70.83899199805356
+          ]
+        },
+        "fill": {
+          "n": 4,
+          "mean": 0.6796590277777778,
+          "sd": 0.04908119681232148,
+          "ci95": [
+            0.6015598910502404,
+            0.7577581645053151
+          ],
+          "min": 0.6220361111111111,
+          "max": 0.7279416666666667,
+          "observations": [
+            0.7279416666666667,
+            0.6566555555555555,
+            0.6220361111111111,
+            0.7120027777777778
+          ]
+        },
+        "floor": {
+          "n": 4,
+          "mean": 0.8485416666666666,
+          "sd": 0.058229013863842424,
+          "ci95": [
+            0.7558863116505428,
+            0.9411970216827905
+          ],
+          "min": 0.7893333333333333,
+          "max": 0.9238333333333333,
+          "observations": [
+            0.8613333333333333,
+            0.9238333333333333,
+            0.7893333333333333,
+            0.8196666666666667
+          ]
+        },
+        "sameSkuContact": {
+          "n": 4,
+          "mean": 0.47688027287030244,
+          "sd": 0.039187546293814074,
+          "ci95": [
+            0.4145241419120418,
+            0.5392364038285631
+          ],
+          "min": 0.44206929914736653,
+          "max": 0.5239103139013452,
+          "observations": [
+            0.44206929914736653,
+            0.5239103139013452,
+            0.4472259956443927,
+            0.4943154827881053
+          ]
+        },
+        "sameSkuVertical": {
+          "n": 4,
+          "mean": 0.7298693134291473,
+          "sd": 0.11780471282686,
+          "ci95": [
+            0.5424157268877632,
+            0.9173228999705314
+          ],
+          "min": 0.5546022749330332,
+          "max": 0.808605829330877,
+          "observations": [
+            0.7834640435996278,
+            0.7728051058530511,
+            0.5546022749330332,
+            0.808605829330877
+          ]
+        },
+        "sameDepartmentContact": {
+          "n": 4,
+          "mean": 0.6087098849589867,
+          "sd": 0.03662389750522394,
+          "ci95": [
+            0.5504330913083938,
+            0.6669866786095796
+          ],
+          "min": 0.5552968066067232,
+          "max": 0.6376610026002298,
+          "observations": [
+            0.6376610026002298,
+            0.6250403587443946,
+            0.5552968066067232,
+            0.6168413718845995
+          ]
+        },
+        "componentShare": {
+          "n": 4,
+          "mean": 0.7312794910684193,
+          "sd": 0.10715483130338696,
+          "ci95": [
+            0.560772242580165,
+            0.9017867395566735
+          ],
+          "min": 0.5833333333333334,
+          "max": 0.8260869565217391,
+          "observations": [
+            0.5833333333333334,
+            0.7906976744186046,
+            0.725,
+            0.8260869565217391
+          ]
+        },
+        "columnVoidLiters": {
+          "n": 4,
+          "mean": 7.024,
+          "sd": 3.5787044210626466,
+          "ci95": [
+            1.3294826687142018,
+            12.718517331285799
+          ],
+          "min": 2.264,
+          "max": 10.872,
+          "observations": [
+            6.96,
+            2.264,
+            8,
+            10.872
+          ]
+        },
+        "cogOffsetMm": {
+          "n": 4,
+          "mean": 85.15551952266242,
+          "sd": 24.48521229174629,
+          "ci95": [
+            46.19408282648535,
+            124.11695621883948
+          ],
+          "min": 61.40641710060429,
+          "max": 114.99555031801879,
+          "observations": [
+            69.3511397282882,
+            94.8689709437384,
+            61.40641710060429,
+            114.99555031801879
+          ]
+        },
+        "cogHeightMm": {
+          "n": 4,
+          "mean": 542.4098628304992,
+          "sd": 31.50036070180978,
+          "ci95": [
+            492.2857595649532,
+            592.5339660960451
+          ],
+          "min": 512.9497907949791,
+          "max": 573.7725631768953,
+          "observations": [
+            565.1597444089457,
+            517.7573529411765,
+            512.9497907949791,
+            573.7725631768953
+          ]
+        },
+        "count": {
+          "n": 4,
+          "mean": 44.25,
+          "sd": 3.5,
+          "ci95": [
+            38.680718965725,
+            49.819281034275
+          ],
+          "min": 40,
+          "max": 48,
+          "observations": [
+            48,
+            43,
+            40,
+            46
+          ]
+        },
+        "maxDecisionMs": {
+          "n": 4,
+          "mean": 73.2977394999998,
+          "sd": 21.82199988624476,
+          "ci95": [
+            38.574068043881475,
+            108.02141095611813
+          ],
+          "min": 52.23275000000285,
+          "max": 100.3214169999701,
+          "observations": [
+            52.23275000000285,
+            59.436458000011044,
+            81.20033300001523,
+            100.3214169999701
+          ]
+        }
+      }
+    },
+    {
+      "id": "floor-dense",
+      "name": "ALPS Tetris · 바닥 밀집",
+      "n": 4,
+      "eligible": true,
+      "metrics": {
+        "score": {
+          "n": 4,
+          "mean": 69.77376261682821,
+          "sd": 1.6141212457957024,
+          "ci95": [
+            67.20533551933383,
+            72.34218971432259
+          ],
+          "min": 67.47861734584853,
+          "max": 71.18214573939498,
+          "observations": [
+            71.18214573939498,
+            70.51019129777029,
+            69.92409608429907,
+            67.47861734584853
+          ]
+        },
+        "fill": {
+          "n": 4,
+          "mean": 0.6460833333333333,
+          "sd": 0.03627066680633442,
+          "ci95": [
+            0.5883686085490402,
+            0.7037980581176265
+          ],
+          "min": 0.6142083333333334,
+          "max": 0.6813083333333333,
+          "observations": [
+            0.6813083333333333,
+            0.6734277777777777,
+            0.6153888888888889,
+            0.6142083333333334
+          ]
+        },
+        "floor": {
+          "n": 4,
+          "mean": 0.8929583333333334,
+          "sd": 0.0582507947807804,
+          "ci95": [
+            0.8002683200178918,
+            0.985648346648775
+          ],
+          "min": 0.8086666666666666,
+          "max": 0.9405,
+          "observations": [
+            0.903,
+            0.9405,
+            0.8086666666666666,
+            0.9196666666666666
+          ]
+        },
+        "sameSkuContact": {
+          "n": 4,
+          "mean": 0.447893773623212,
+          "sd": 0.07698551677357457,
+          "ci95": [
+            0.3253926369143752,
+            0.5703949103320488
+          ],
+          "min": 0.3752328523368644,
+          "max": 0.5498479388688696,
+          "observations": [
+            0.4622040248754297,
+            0.4042902784116842,
+            0.5498479388688696,
+            0.3752328523368644
+          ]
+        },
+        "sameSkuVertical": {
+          "n": 4,
+          "mean": 0.6070376542470396,
+          "sd": 0.1397515282397368,
+          "ci95": [
+            0.3846617868937501,
+            0.8294135216003291
+          ],
+          "min": 0.45157667386609074,
+          "max": 0.7348734873487349,
+          "observations": [
+            0.7348734873487349,
+            0.5267763794772508,
+            0.7149240762960818,
+            0.45157667386609074
+          ]
+        },
+        "sameDepartmentContact": {
+          "n": 4,
+          "mean": 0.5705073796326956,
+          "sd": 0.06780964986024729,
+          "ci95": [
+            0.46260709480198026,
+            0.6784076644634109
+          ],
+          "min": 0.49145049628826426,
+          "max": 0.6449180914411307,
+          "observations": [
+            0.5412337286106068,
+            0.6044272021907805,
+            0.6449180914411307,
+            0.49145049628826426
+          ]
+        },
+        "componentShare": {
+          "n": 4,
+          "mean": 0.5073751451800232,
+          "sd": 0.058424272494775484,
+          "ci95": [
+            0.4144090901096039,
+            0.6003412002504426
+          ],
+          "min": 0.43902439024390244,
+          "max": 0.5777777777777777,
+          "observations": [
+            0.5777777777777777,
+            0.4888888888888889,
+            0.5238095238095238,
+            0.43902439024390244
+          ]
+        },
+        "columnVoidLiters": {
+          "n": 4,
+          "mean": 7.888999999999999,
+          "sd": 3.541314821738766,
+          "ci95": [
+            2.253977864826667,
+            13.524022135173333
+          ],
+          "min": 4.568,
+          "max": 12.56,
+          "observations": [
+            4.568,
+            8.604,
+            12.56,
+            5.824
+          ]
+        },
+        "cogOffsetMm": {
+          "n": 4,
+          "mean": 44.329671444510986,
+          "sd": 39.44155612107558,
+          "ci95": [
+            -18.430645831888803,
+            107.08998872091078
+          ],
+          "min": 16.860812028147386,
+          "max": 101.79321211116185,
+          "observations": [
+            101.79321211116185,
+            38.289781698912016,
+            16.860812028147386,
+            20.374879939822684
+          ]
+        },
+        "cogHeightMm": {
+          "n": 4,
+          "mean": 508.6124669280167,
+          "sd": 11.272098432242867,
+          "ci95": [
+            490.6760429236821,
+            526.5488909323514
+          ],
+          "min": 493.2307692307692,
+          "max": 519.639175257732,
+          "observations": [
+            519.639175257732,
+            513.3892617449665,
+            493.2307692307692,
+            508.1906614785992
+          ]
+        },
+        "count": {
+          "n": 4,
+          "mean": 43.25,
+          "sd": 2.0615528128088303,
+          "ci95": [
+            39.96960943384786,
+            46.53039056615214
+          ],
+          "min": 41,
+          "max": 45,
+          "observations": [
+            45,
+            45,
+            42,
+            41
+          ]
+        },
+        "maxDecisionMs": {
+          "n": 4,
+          "mean": 196.17854175001594,
+          "sd": 56.21508991670318,
+          "ci95": [
+            106.72778914625628,
+            285.6292943537756
+          ],
+          "min": 160.1801250000135,
+          "max": 279.2439580000355,
+          "observations": [
+            163.23737500000425,
+            160.1801250000135,
+            182.0527090000105,
+            279.2439580000355
+          ]
+        }
+      }
+    },
+    {
+      "id": "cluster-floor",
+      "name": "ALPS 군집 · 층 우선",
+      "n": 4,
+      "eligible": true,
+      "metrics": {
+        "score": {
+          "n": 4,
+          "mean": 69.04932718850458,
+          "sd": 1.6677320158402427,
+          "ci95": [
+            66.39559339248393,
+            71.70306098452522
+          ],
+          "min": 66.64474290963534,
+          "max": 70.4238521941001,
+          "observations": [
+            70.4238521941001,
+            69.29777228737285,
+            69.83094136291004,
+            66.64474290963534
+          ]
+        },
+        "fill": {
+          "n": 4,
+          "mean": 0.6579958333333333,
+          "sd": 0.048773878266257294,
+          "ci95": [
+            0.5803857089915321,
+            0.7356059576751346
+          ],
+          "min": 0.6203694444444444,
+          "max": 0.7288083333333333,
+          "observations": [
+            0.7288083333333333,
+            0.632575,
+            0.6502305555555555,
+            0.6203694444444444
+          ]
+        },
+        "floor": {
+          "n": 4,
+          "mean": 0.8485416666666666,
+          "sd": 0.058229013863842424,
+          "ci95": [
+            0.7558863116505428,
+            0.9411970216827905
+          ],
+          "min": 0.7893333333333333,
+          "max": 0.9238333333333333,
+          "observations": [
+            0.8613333333333333,
+            0.9238333333333333,
+            0.7893333333333333,
+            0.8196666666666667
+          ]
+        },
+        "sameSkuContact": {
+          "n": 4,
+          "mean": 0.4578029253186326,
+          "sd": 0.05627085638910857,
+          "ci95": [
+            0.3682634358128398,
+            0.5473424148244254
+          ],
+          "min": 0.41579697485173095,
+          "max": 0.5404647435897436,
+          "observations": [
+            0.41579697485173095,
+            0.43133895163828373,
+            0.5404647435897436,
+            0.4436110311947721
+          ]
+        },
+        "sameSkuVertical": {
+          "n": 4,
+          "mean": 0.6725122199100815,
+          "sd": 0.06007559084995985,
+          "ci95": [
+            0.5769185488404969,
+            0.7681058909796661
+          ],
+          "min": 0.5991644678979772,
+          "max": 0.7330680461599681,
+          "observations": [
+            0.7080501829587036,
+            0.6497661826236771,
+            0.5991644678979772,
+            0.7330680461599681
+          ]
+        },
+        "sameDepartmentContact": {
+          "n": 4,
+          "mean": 0.5849697405119946,
+          "sd": 0.03142567984656591,
+          "ci95": [
+            0.5349644711523724,
+            0.6349750098716167
+          ],
+          "min": 0.5609510501006946,
+          "max": 0.6307692307692307,
+          "observations": [
+            0.5791304614347234,
+            0.5690282197433297,
+            0.6307692307692307,
+            0.5609510501006946
+          ]
+        },
+        "componentShare": {
+          "n": 4,
+          "mean": 0.7099541934453715,
+          "sd": 0.07194114029521725,
+          "ci95": [
+            0.5954797853795799,
+            0.824428601511163
+          ],
+          "min": 0.6170212765957447,
+          "max": 0.7804878048780488,
+          "observations": [
+            0.6170212765957447,
+            0.7804878048780488,
+            0.75,
+            0.6923076923076923
+          ]
+        },
+        "columnVoidLiters": {
+          "n": 4,
+          "mean": 6.147,
+          "sd": 1.4311258970940792,
+          "ci95": [
+            3.8697593381869,
+            8.424240661813101
+          ],
+          "min": 4.6,
+          "max": 7.52,
+          "observations": [
+            7.196,
+            7.52,
+            5.272,
+            4.6
+          ]
+        },
+        "cogOffsetMm": {
+          "n": 4,
+          "mean": 89.57534363306871,
+          "sd": 22.33867426657491,
+          "ci95": [
+            54.02952794058796,
+            125.12115932554946
+          ],
+          "min": 59.2131510629302,
+          "max": 111.6624229541333,
+          "observations": [
+            59.2131510629302,
+            98.86598398100546,
+            88.55981653420586,
+            111.6624229541333
+          ]
+        },
+        "cogHeightMm": {
+          "n": 4,
+          "mean": 506.05562292225875,
+          "sd": 27.359336769776203,
+          "ci95": [
+            462.52081281304237,
+            549.5904330314751
+          ],
+          "min": 471.08365019011404,
+          "max": 537.6229508196722,
+          "observations": [
+            537.6229508196722,
+            471.08365019011404,
+            504.5744680851064,
+            510.94142259414224
+          ]
+        },
+        "count": {
+          "n": 4,
+          "mean": 41.75,
+          "sd": 3.593976442141304,
+          "ci95": [
+            36.03118147518608,
+            47.46881852481392
+          ],
+          "min": 39,
+          "max": 47,
+          "observations": [
+            47,
+            41,
+            40,
+            39
+          ]
+        },
+        "maxDecisionMs": {
+          "n": 4,
+          "mean": 83.10309375000543,
+          "sd": 32.59280832594559,
+          "ci95": [
+            31.240662531877113,
+            134.96552496813374
+          ],
+          "min": 58.51579199999833,
+          "max": 130.85583300000872,
+          "observations": [
+            58.51579199999833,
+            75.62495800000033,
+            130.85583300000872,
+            67.41579200001433
+          ]
+        }
+      }
+    },
+    {
+      "id": "dispersed",
+      "name": "분산 적재 · 대조군",
+      "n": 4,
+      "eligible": true,
+      "metrics": {
+        "score": {
+          "n": 4,
+          "mean": 68.94180953064486,
+          "sd": 1.6910117728117722,
+          "ci95": [
+            66.25103244634305,
+            71.63258661494667
+          ],
+          "min": 66.40685950439442,
+          "max": 69.86286462081854,
+          "observations": [
+            69.71777393641614,
+            66.40685950439442,
+            69.86286462081854,
+            69.77974006095039
+          ]
+        },
+        "fill": {
+          "n": 4,
+          "mean": 0.6719638888888889,
+          "sd": 0.027865576338023338,
+          "ci95": [
+            0.6276235386578902,
+            0.7163042391198876
+          ],
+          "min": 0.6407888888888889,
+          "max": 0.6978361111111111,
+          "observations": [
+            0.692975,
+            0.6562555555555556,
+            0.6407888888888889,
+            0.6978361111111111
+          ]
+        },
+        "floor": {
+          "n": 4,
+          "mean": 0.8913333333333333,
+          "sd": 0.03444722211022406,
+          "ci95": [
+            0.8365201159670678,
+            0.9461465506995989
+          ],
+          "min": 0.8435,
+          "max": 0.9238333333333333,
+          "observations": [
+            0.9238333333333333,
+            0.8435,
+            0.892,
+            0.906
+          ]
+        },
+        "sameSkuContact": {
+          "n": 4,
+          "mean": 0.39504388466321716,
+          "sd": 0.042874470864690706,
+          "ci95": [
+            0.32682103396570344,
+            0.4632667353607309
+          ],
+          "min": 0.3689744699264388,
+          "max": 0.45868545718570713,
+          "observations": [
+            0.36997437129585137,
+            0.3689744699264388,
+            0.45868545718570713,
+            0.38254124024487124
+          ]
+        },
+        "sameSkuVertical": {
+          "n": 4,
+          "mean": 0.6315759545684381,
+          "sd": 0.07980175463321573,
+          "ci95": [
+            0.5045935549739708,
+            0.7585583541629053
+          ],
+          "min": 0.5748595505617977,
+          "max": 0.7480909990108803,
+          "observations": [
+            0.5854822624305457,
+            0.6178710062705285,
+            0.7480909990108803,
+            0.5748595505617977
+          ]
+        },
+        "sameDepartmentContact": {
+          "n": 4,
+          "mean": 0.4602524015817557,
+          "sd": 0.07073239843805182,
+          "ci95": [
+            0.3477013715446629,
+            0.5728034316188484
+          ],
+          "min": 0.39926438771094763,
+          "max": 0.5300069036113029,
+          "observations": [
+            0.5123738587217683,
+            0.39926438771094763,
+            0.5300069036113029,
+            0.3993644562830039
+          ]
+        },
+        "componentShare": {
+          "n": 4,
+          "mean": 0.43403679653679655,
+          "sd": 0.02395689339502376,
+          "ci95": [
+            0.3959160331010669,
+            0.47215755997252623
+          ],
+          "min": 0.4090909090909091,
+          "max": 0.4666666666666667,
+          "observations": [
+            0.4666666666666667,
+            0.42857142857142855,
+            0.4090909090909091,
+            0.4318181818181818
+          ]
+        },
+        "columnVoidLiters": {
+          "n": 4,
+          "mean": 3.9629999999999996,
+          "sd": 3.1970542691671655,
+          "ci95": [
+            -1.1242267733773192,
+            9.050226773377318
+          ],
+          "min": 0,
+          "max": 7.212,
+          "observations": [
+            0,
+            2.88,
+            7.212,
+            5.76
+          ]
+        },
+        "cogOffsetMm": {
+          "n": 4,
+          "mean": 48.46545735971184,
+          "sd": 12.67863965369599,
+          "ci95": [
+            28.2909123986444,
+            68.64000232077927
+          ],
+          "min": 35.03059914695746,
+          "max": 63.58563685711099,
+          "observations": [
+            41.634962665823096,
+            63.58563685711099,
+            53.61063076895582,
+            35.03059914695746
+          ]
+        },
+        "cogHeightMm": {
+          "n": 4,
+          "mean": 495.5586455276533,
+          "sd": 15.781858544774115,
+          "ci95": [
+            470.4461868193615,
+            520.6711042359451
+          ],
+          "min": 480.88850174216026,
+          "max": 513.7084870848709,
+          "observations": [
+            480.88850174216026,
+            503.7313432835821,
+            483.90625,
+            513.7084870848709
+          ]
+        },
+        "count": {
+          "n": 4,
+          "mean": 43.75,
+          "sd": 1.2583057392117916,
+          "ci95": [
+            41.74775477465383,
+            45.75224522534617
+          ],
+          "min": 42,
+          "max": 45,
+          "observations": [
+            45,
+            42,
+            44,
+            44
+          ]
+        },
+        "maxDecisionMs": {
+          "n": 4,
+          "mean": 136.54737524998927,
+          "sd": 14.487037783627528,
+          "ci95": [
+            113.49526531536581,
+            159.59948518461275
+          ],
+          "min": 122.34029199997894,
+          "max": 150.1422920000041,
+          "observations": [
+            150.1422920000041,
+            147.87099999998463,
+            125.83591699998942,
+            122.34029199997894
+          ]
+        }
+      }
+    },
+    {
+      "id": "capacity-compact",
+      "name": "Compact",
+      "n": 4,
+      "eligible": true,
+      "metrics": {
+        "score": {
+          "n": 4,
+          "mean": 67.17017051633343,
+          "sd": 2.0764611660535293,
+          "ci95": [
+            63.86605743333044,
+            70.47428359933642
+          ],
+          "min": 65.03566525257453,
+          "max": 69.39398471906298,
+          "observations": [
+            65.03566525257453,
+            65.81600801903402,
+            68.43502407466215,
+            69.39398471906298
+          ]
+        },
+        "fill": {
+          "n": 4,
+          "mean": 0.65281875,
+          "sd": 0.03559597257058565,
+          "ci95": [
+            0.5961776143045898,
+            0.7094598856954102
+          ],
+          "min": 0.6238083333333333,
+          "max": 0.7016222222222223,
+          "observations": [
+            0.6567416666666667,
+            0.7016222222222223,
+            0.6291027777777778,
+            0.6238083333333333
+          ]
+        },
+        "floor": {
+          "n": 4,
+          "mean": 0.8777083333333333,
+          "sd": 0.04476530878225204,
+          "ci95": [
+            0.8064767375634875,
+            0.9489399291031791
+          ],
+          "min": 0.8196666666666667,
+          "max": 0.9211666666666667,
+          "observations": [
+            0.8196666666666667,
+            0.9211666666666667,
+            0.867,
+            0.903
+          ]
+        },
+        "sameSkuContact": {
+          "n": 4,
+          "mean": 0.3720911878221091,
+          "sd": 0.09287884819707387,
+          "ci95": [
+            0.22430021417946044,
+            0.5198821614647577
+          ],
+          "min": 0.25650196914061757,
+          "max": 0.44844773568783824,
+          "observations": [
+            0.3373078439101301,
+            0.25650196914061757,
+            0.44610720254985037,
+            0.44844773568783824
+          ]
+        },
+        "sameSkuVertical": {
+          "n": 4,
+          "mean": 0.5463904065508494,
+          "sd": 0.1391583514011562,
+          "ci95": [
+            0.32495841591672503,
+            0.7678223971849737
+          ],
+          "min": 0.37532644278515465,
+          "max": 0.6828193832599119,
+          "observations": [
+            0.49435516493215165,
+            0.37532644278515465,
+            0.6330606352261791,
+            0.6828193832599119
+          ]
+        },
+        "sameDepartmentContact": {
+          "n": 4,
+          "mean": 0.49090073480827323,
+          "sd": 0.0499267747213639,
+          "ci95": [
+            0.41145609493449825,
+            0.5703453746820483
+          ],
+          "min": 0.43229771123076044,
+          "max": 0.5538918501037555,
+          "observations": [
+            0.4829523058730784,
+            0.43229771123076044,
+            0.4944610720254985,
+            0.5538918501037555
+          ]
+        },
+        "componentShare": {
+          "n": 4,
+          "mean": 0.5716592838685861,
+          "sd": 0.09021567985725903,
+          "ci95": [
+            0.4281060053476553,
+            0.7152125623895169
+          ],
+          "min": 0.4444444444444444,
+          "max": 0.6428571428571429,
+          "observations": [
+            0.5714285714285714,
+            0.4444444444444444,
+            0.6428571428571429,
+            0.627906976744186
+          ]
+        },
+        "columnVoidLiters": {
+          "n": 4,
+          "mean": 11.862,
+          "sd": 9.629284639404252,
+          "ci95": [
+            -3.460340661677053,
+            27.184340661677055
+          ],
+          "min": 4.05,
+          "max": 25.68,
+          "observations": [
+            10.88,
+            25.68,
+            6.838,
+            4.05
+          ]
+        },
+        "cogOffsetMm": {
+          "n": 4,
+          "mean": 62.07417011124717,
+          "sd": 35.82110751308151,
+          "ci95": [
+            5.074794482867013,
+            119.07354573962732
+          ],
+          "min": 25.374040605158903,
+          "max": 109.76704831646018,
+          "observations": [
+            25.374040605158903,
+            109.76704831646018,
+            65.729976680713,
+            47.4256148426566
+          ]
+        },
+        "cogHeightMm": {
+          "n": 4,
+          "mean": 517.59827255552,
+          "sd": 11.591772834403425,
+          "ci95": [
+            499.15317524115795,
+            536.0433698698821
+          ],
+          "min": 510.7370517928287,
+          "max": 534.9319727891157,
+          "observations": [
+            511.75471698113205,
+            534.9319727891157,
+            510.7370517928287,
+            512.9693486590038
+          ]
+        },
+        "count": {
+          "n": 4,
+          "mean": 43,
+          "sd": 1.4142135623730951,
+          "ci95": [
+            40.7496706367603,
+            45.2503293632397
+          ],
+          "min": 42,
+          "max": 45,
+          "observations": [
+            42,
+            45,
+            42,
+            43
+          ]
+        },
+        "maxDecisionMs": {
+          "n": 4,
+          "mean": 32.91170825000245,
+          "sd": 6.6249453060485815,
+          "ci95": [
+            22.369941893978005,
+            43.45347460602689
+          ],
+          "min": 27.10320800000045,
+          "max": 42.37075000000186,
+          "observations": [
+            32.03362500000003,
+            27.10320800000045,
+            42.37075000000186,
+            30.13925000000745
+          ]
+        }
+      }
+    },
+    {
+      "id": "mcts",
+      "name": "UCT MCTS",
+      "n": 4,
+      "eligible": true,
+      "metrics": {
+        "score": {
+          "n": 4,
+          "mean": 66.06657213977653,
+          "sd": 2.4544987939330887,
+          "ci95": [
+            62.16091683071869,
+            69.97222744883436
+          ],
+          "min": 63.17803653324808,
+          "max": 68.13142008466113,
+          "observations": [
+            64.87728709998748,
+            68.13142008466113,
+            63.17803653324808,
+            68.07954484120944
+          ]
+        },
+        "fill": {
+          "n": 4,
+          "mean": 0.6420590277777778,
+          "sd": 0.07738787343378747,
+          "ci95": [
+            0.5189176518355874,
+            0.7652004037199682
+          ],
+          "min": 0.5387555555555555,
+          "max": 0.7049027777777778,
+          "observations": [
+            0.6267416666666666,
+            0.7049027777777778,
+            0.5387555555555555,
+            0.6978361111111111
+          ]
+        },
+        "floor": {
+          "n": 4,
+          "mean": 0.7902083333333333,
+          "sd": 0.08234270920524328,
+          "ci95": [
+            0.6591827079940239,
+            0.9212339586726427
+          ],
+          "min": 0.6836666666666666,
+          "max": 0.8795,
+          "observations": [
+            0.778,
+            0.8795,
+            0.6836666666666666,
+            0.8196666666666667
+          ]
+        },
+        "sameSkuContact": {
+          "n": 4,
+          "mean": 0.42855477683151805,
+          "sd": 0.07337126210483921,
+          "ci95": [
+            0.3118047258311463,
+            0.5453048278318897
+          ],
+          "min": 0.36343986413463025,
+          "max": 0.533776126090509,
+          "observations": [
+            0.41264154564647176,
+            0.36343986413463025,
+            0.533776126090509,
+            0.4043615714544612
+          ]
+        },
+        "sameSkuVertical": {
+          "n": 4,
+          "mean": 0.6247990943640718,
+          "sd": 0.08389237999156877,
+          "ci95": [
+            0.4913075969905759,
+            0.7582905917375676
+          ],
+          "min": 0.5332794593006172,
+          "max": 0.7349125775521714,
+          "observations": [
+            0.6303363518758085,
+            0.5332794593006172,
+            0.7349125775521714,
+            0.6006679887276902
+          ]
+        },
+        "sameDepartmentContact": {
+          "n": 4,
+          "mean": 0.538801425623335,
+          "sd": 0.06983363805313338,
+          "ci95": [
+            0.4276805239194091,
+            0.6499223273272609
+          ],
+          "min": 0.44353095568936235,
+          "max": 0.5947156291983878,
+          "observations": [
+            0.5947156291983878,
+            0.44353095568936235,
+            0.5872275374924224,
+            0.5297315801131672
+          ]
+        },
+        "componentShare": {
+          "n": 4,
+          "mean": 0.5636245209415941,
+          "sd": 0.05737479181092706,
+          "ci95": [
+            0.4723284238335733,
+            0.6549206180496149
+          ],
+          "min": 0.5238095238095238,
+          "max": 0.6486486486486487,
+          "observations": [
+            0.5365853658536586,
+            0.5238095238095238,
+            0.6486486486486487,
+            0.5454545454545454
+          ]
+        },
+        "columnVoidLiters": {
+          "n": 4,
+          "mean": 32.677,
+          "sd": 10.020552546308679,
+          "ci95": [
+            16.73206478596772,
+            48.62193521403228
+          ],
+          "min": 22.508,
+          "max": 44.394,
+          "observations": [
+            22.508,
+            44.394,
+            37.35,
+            26.456
+          ]
+        },
+        "cogOffsetMm": {
+          "n": 4,
+          "mean": 70.16518368098761,
+          "sd": 26.091861723854638,
+          "ci95": [
+            28.647209210247766,
+            111.68315815172745
+          ],
+          "min": 33.54941694582773,
+          "max": 94.99560322776358,
+          "observations": [
+            78.85467975813438,
+            73.26103479222475,
+            94.99560322776358,
+            33.54941694582773
+          ]
+        },
+        "cogHeightMm": {
+          "n": 4,
+          "mean": 536.3663565601744,
+          "sd": 24.720696477940425,
+          "ci95": [
+            497.03021197484225,
+            575.7025011455065
+          ],
+          "min": 504.77064220183485,
+          "max": 560.3584905660377,
+          "observations": [
+            560.3584905660377,
+            529.4322344322344,
+            504.77064220183485,
+            550.9040590405904
+          ]
+        },
+        "count": {
+          "n": 4,
+          "mean": 41,
+          "sd": 2.943920288775949,
+          "ci95": [
+            36.31556587694364,
+            45.68443412305636
+          ],
+          "min": 37,
+          "max": 44,
+          "observations": [
+            41,
+            42,
+            37,
+            44
+          ]
+        },
+        "maxDecisionMs": {
+          "n": 4,
+          "mean": 2599.6771462500046,
+          "sd": 529.9363718726547,
+          "ci95": [
+            1756.4301218948963,
+            3442.924170605113
+          ],
+          "min": 2035.7844590000168,
+          "max": 3080.9424169999984,
+          "observations": [
+            2260.535334000004,
+            3080.9424169999984,
+            2035.7844590000168,
+            3021.4463749999995
+          ]
+        }
+      }
+    },
+    {
+      "id": "future-hybrid",
+      "name": "Future Hybrid",
+      "n": 4,
+      "eligible": true,
+      "metrics": {
+        "score": {
+          "n": 4,
+          "mean": 65.73432273016867,
+          "sd": 4.098318934795058,
+          "ci95": [
+            59.21298275417889,
+            72.25566270615846
+          ],
+          "min": 60.699879787263974,
+          "max": 70.30763624728489,
+          "observations": [
+            60.699879787263974,
+            64.54687442672028,
+            70.30763624728489,
+            67.38290045940555
+          ]
+        },
+        "fill": {
+          "n": 4,
+          "mean": 0.6282909722222222,
+          "sd": 0.06307852703509072,
+          "ci95": [
+            0.5279189595689269,
+            0.7286629848755175
+          ],
+          "min": 0.5443972222222222,
+          "max": 0.6974888888888889,
+          "observations": [
+            0.5443972222222222,
+            0.6366888888888889,
+            0.6345888888888889,
+            0.6974888888888889
+          ]
+        },
+        "floor": {
+          "n": 4,
+          "mean": 0.7855833333333334,
+          "sd": 0.04428892930811561,
+          "ci95": [
+            0.7151097636121807,
+            0.8560569030544861
+          ],
+          "min": 0.7321666666666666,
+          "max": 0.8405,
+          "observations": [
+            0.7875,
+            0.7321666666666666,
+            0.7821666666666667,
+            0.8405
+          ]
+        },
+        "sameSkuContact": {
+          "n": 4,
+          "mean": 0.4270037753538891,
+          "sd": 0.10047314891909781,
+          "ci95": [
+            0.2671285745741694,
+            0.5868789761336088
+          ],
+          "min": 0.3485796476087738,
+          "max": 0.5686050734035379,
+          "observations": [
+            0.3485796476087738,
+            0.42772317772317775,
+            0.5686050734035379,
+            0.363107202680067
+          ]
+        },
+        "sameSkuVertical": {
+          "n": 4,
+          "mean": 0.5249130680321817,
+          "sd": 0.14782263894589798,
+          "ci95": [
+            0.2896942624556473,
+            0.7601318736087161
+          ],
+          "min": 0.39219913759310077,
+          "max": 0.7366236510452041,
+          "observations": [
+            0.39219913759310077,
+            0.4853705628991534,
+            0.7366236510452041,
+            0.4854589205912685
+          ]
+        },
+        "sameDepartmentContact": {
+          "n": 4,
+          "mean": 0.5405755794928516,
+          "sd": 0.08184385303420458,
+          "ci95": [
+            0.41034374564274134,
+            0.6708074133429619
+          ],
+          "min": 0.46930485762144053,
+          "max": 0.6396742231675053,
+          "observations": [
+            0.5756921970514204,
+            0.47763104013104013,
+            0.6396742231675053,
+            0.46930485762144053
+          ]
+        },
+        "componentShare": {
+          "n": 4,
+          "mean": 0.5051823176823177,
+          "sd": 0.04436619597573523,
+          "ci95": [
+            0.4345857994507205,
+            0.5757788359139149
+          ],
+          "min": 0.4772727272727273,
+          "max": 0.5714285714285714,
+          "observations": [
+            0.48484848484848486,
+            0.48717948717948717,
+            0.5714285714285714,
+            0.4772727272727273
+          ]
+        },
+        "columnVoidLiters": {
+          "n": 4,
+          "mean": 9.780000000000001,
+          "sd": 3.467200984463789,
+          "ci95": [
+            4.262909518630346,
+            15.297090481369656
+          ],
+          "min": 6.192,
+          "max": 14.224,
+          "observations": [
+            14.224,
+            10.592,
+            6.192,
+            8.112
+          ]
+        },
+        "cogOffsetMm": {
+          "n": 4,
+          "mean": 70.71842241759576,
+          "sd": 24.57399975001321,
+          "ci95": [
+            31.615705062159428,
+            109.82113977303209
+          ],
+          "min": 42.89215474275643,
+          "max": 93.01726175033717,
+          "observations": [
+            93.01726175033717,
+            89.68134568667186,
+            42.89215474275643,
+            57.28292749061756
+          ]
+        },
+        "cogHeightMm": {
+          "n": 4,
+          "mean": 525.9955396309153,
+          "sd": 18.615265980178197,
+          "ci95": [
+            496.3744974105179,
+            555.6165818513128
+          ],
+          "min": 503.90625,
+          "max": 547.936507936508,
+          "observations": [
+            531.9955156950673,
+            547.936507936508,
+            503.90625,
+            520.1438848920864
+          ]
+        },
+        "count": {
+          "n": 4,
+          "mean": 39.5,
+          "sd": 4.795831523312719,
+          "ci95": [
+            31.86876184389608,
+            47.13123815610392
+          ],
+          "min": 33,
+          "max": 44,
+          "observations": [
+            33,
+            39,
+            42,
+            44
+          ]
+        },
+        "maxDecisionMs": {
+          "n": 4,
+          "mean": 428.39649999999574,
+          "sd": 48.57570197195544,
+          "ci95": [
+            351.101718365994,
+            505.6912816339975
+          ],
+          "min": 374.1138749999809,
+          "max": 483.783792000002,
+          "observations": [
+            404.78087499999856,
+            450.9074580000015,
+            374.1138749999809,
+            483.783792000002
+          ]
+        }
+      }
+    },
+    {
+      "id": "lookahead",
+      "name": "Lookahead",
+      "n": 4,
+      "eligible": true,
+      "metrics": {
+        "score": {
+          "n": 4,
+          "mean": 64.3954745150433,
+          "sd": 2.7361452745726593,
+          "ci95": [
+            60.0416568051294,
+            68.74929222495722
+          ],
+          "min": 61.34396612502572,
+          "max": 67.3470423743117,
+          "observations": [
+            61.34396612502572,
+            65.933904143928,
+            67.3470423743117,
+            62.95698541690781
+          ]
+        },
+        "fill": {
+          "n": 4,
+          "mean": 0.5734166666666667,
+          "sd": 0.08146636323340675,
+          "ci95": [
+            0.44378550332747513,
+            0.7030478300058582
+          ],
+          "min": 0.4665666666666667,
+          "max": 0.6641555555555556,
+          "observations": [
+            0.4665666666666667,
+            0.5895361111111111,
+            0.6641555555555556,
+            0.5734083333333333
+          ]
+        },
+        "floor": {
+          "n": 4,
+          "mean": 0.7558333333333334,
+          "sd": 0.06186200293724255,
+          "ci95": [
+            0.6573970819902907,
+            0.854269584676376
+          ],
+          "min": 0.678,
+          "max": 0.8196666666666667,
+          "observations": [
+            0.678,
+            0.7378333333333333,
+            0.7878333333333334,
+            0.8196666666666667
+          ]
+        },
+        "sameSkuContact": {
+          "n": 4,
+          "mean": 0.45450053265910184,
+          "sd": 0.08143507587910954,
+          "ci95": [
+            0.3249191544824532,
+            0.5840819108357505
+          ],
+          "min": 0.3510752165028705,
+          "max": 0.5238992445168017,
+          "observations": [
+            0.5238992445168017,
+            0.5151207873546079,
+            0.42790688226212725,
+            0.3510752165028705
+          ]
+        },
+        "sameSkuVertical": {
+          "n": 4,
+          "mean": 0.6091092373003363,
+          "sd": 0.14588812501836385,
+          "ci95": [
+            0.376968675074418,
+            0.8412497995262546
+          ],
+          "min": 0.40946902654867257,
+          "max": 0.7179918414084305,
+          "observations": [
+            0.5911637630662021,
+            0.71781231817804,
+            0.7179918414084305,
+            0.40946902654867257
+          ]
+        },
+        "sameDepartmentContact": {
+          "n": 4,
+          "mean": 0.5243001406902327,
+          "sd": 0.08323634518982384,
+          "ci95": [
+            0.3918525410822175,
+            0.6567477402982478
+          ],
+          "min": 0.40089520288021796,
+          "max": 0.5777512675216224,
+          "observations": [
+            0.5480454387473247,
+            0.5777512675216224,
+            0.5705086536117656,
+            0.40089520288021796
+          ]
+        },
+        "componentShare": {
+          "n": 4,
+          "mean": 0.4777037803353593,
+          "sd": 0.0675600048098902,
+          "ci95": [
+            0.37020073648871665,
+            0.585206824182002
+          ],
+          "min": 0.42105263157894735,
+          "max": 0.5757575757575758,
+          "observations": [
+            0.5757575757575758,
+            0.4594594594594595,
+            0.45454545454545453,
+            0.42105263157894735
+          ]
+        },
+        "columnVoidLiters": {
+          "n": 4,
+          "mean": 9.91575,
+          "sd": 7.710845019624417,
+          "ci95": [
+            -2.353925121722316,
+            22.185425121722314
+          ],
+          "min": 4.992,
+          "max": 21.32,
+          "observations": [
+            7.915,
+            21.32,
+            5.436,
+            4.992
+          ]
+        },
+        "cogOffsetMm": {
+          "n": 4,
+          "mean": 33.78932031975934,
+          "sd": 22.197731626129343,
+          "ci95": [
+            -1.5322241800488072,
+            69.1108648195675
+          ],
+          "min": 8.407733718581873,
+          "max": 62.5596414579333,
+          "observations": [
+            31.585153890247195,
+            62.5596414579333,
+            8.407733718581873,
+            32.604752212275
+          ]
+        },
+        "cogHeightMm": {
+          "n": 4,
+          "mean": 506.1925988154318,
+          "sd": 11.523872424399086,
+          "ci95": [
+            487.8555462055431,
+            524.5296514253205
+          ],
+          "min": 491.35135135135135,
+          "max": 517.1851851851852,
+          "observations": [
+            491.35135135135135,
+            503.12227074235807,
+            517.1851851851852,
+            513.1115879828326
+          ]
+        },
+        "count": {
+          "n": 4,
+          "mean": 38,
+          "sd": 4.546060565661952,
+          "ci95": [
+            30.766203174569547,
+            45.23379682543045
+          ],
+          "min": 33,
+          "max": 44,
+          "observations": [
+            33,
+            37,
+            44,
+            38
+          ]
+        },
+        "maxDecisionMs": {
+          "n": 4,
+          "mean": 130.56361475000676,
+          "sd": 75.65153444835234,
+          "ci95": [
+            10.185141602289477,
+            250.94208789772404
+          ],
+          "min": 81.59016700000211,
+          "max": 243.185833000025,
+          "observations": [
+            104.29433400000016,
+            81.59016700000211,
+            93.18412499999977,
+            243.185833000025
+          ]
+        }
+      }
+    },
+    {
+      "id": "strategy-greedy",
+      "name": "Greedy",
+      "n": 4,
+      "eligible": true,
+      "metrics": {
+        "score": {
+          "n": 4,
+          "mean": 64.0509690394008,
+          "sd": 3.4473859010321846,
+          "ci95": [
+            58.565408777559206,
+            69.5365293012424
+          ],
+          "min": 58.99382174088696,
+          "max": 66.50277558133241,
+          "observations": [
+            58.99382174088696,
+            65.933904143928,
+            66.50277558133241,
+            64.77337469145584
+          ]
+        },
+        "fill": {
+          "n": 4,
+          "mean": 0.5562333333333334,
+          "sd": 0.09528034466361938,
+          "ci95": [
+            0.4046210429121103,
+            0.7078456237545564
+          ],
+          "min": 0.4141,
+          "max": 0.6116555555555555,
+          "observations": [
+            0.4141,
+            0.5895361111111111,
+            0.6116555555555555,
+            0.6096416666666666
+          ]
+        },
+        "floor": {
+          "n": 4,
+          "mean": 0.7454166666666666,
+          "sd": 0.08014344778097723,
+          "ci95": [
+            0.6178905570243793,
+            0.8729427763089539
+          ],
+          "min": 0.6363333333333333,
+          "max": 0.8196666666666667,
+          "observations": [
+            0.6363333333333333,
+            0.7378333333333333,
+            0.7878333333333334,
+            0.8196666666666667
+          ]
+        },
+        "sameSkuContact": {
+          "n": 4,
+          "mean": 0.4714111498815649,
+          "sd": 0.07042411081625781,
+          "ci95": [
+            0.3593506742459462,
+            0.5834716255171837
+          ],
+          "min": 0.37533110367892975,
+          "max": 0.5319869678727858,
+          "observations": [
+            0.5319869678727858,
+            0.5151207873546079,
+            0.46320574061993647,
+            0.37533110367892975
+          ]
+        },
+        "sameSkuVertical": {
+          "n": 4,
+          "mean": 0.6322254111533887,
+          "sd": 0.14268068068191261,
+          "ci95": [
+            0.40518860861646777,
+            0.8592622136903096
+          ],
+          "min": 0.44210440055724004,
+          "max": 0.7623979286994622,
+          "observations": [
+            0.6065869971788126,
+            0.71781231817804,
+            0.7623979286994622,
+            0.44210440055724004
+          ]
+        },
+        "sameDepartmentContact": {
+          "n": 4,
+          "mean": 0.5569924479540779,
+          "sd": 0.09826879037675171,
+          "ci95": [
+            0.40062487352368104,
+            0.7133600223844747
+          ],
+          "min": 0.43221404682274245,
+          "max": 0.6704825235159193,
+          "observations": [
+            0.5475219539560273,
+            0.5777512675216224,
+            0.6704825235159193,
+            0.43221404682274245
+          ]
+        },
+        "componentShare": {
+          "n": 4,
+          "mean": 0.5189589415199172,
+          "sd": 0.05926183839029798,
+          "ci95": [
+            0.4246601322046724,
+            0.613257750835162
+          ],
+          "min": 0.4594594594594595,
+          "max": 0.5952380952380952,
+          "observations": [
+            0.5333333333333333,
+            0.4594594594594595,
+            0.5952380952380952,
+            0.4878048780487805
+          ]
+        },
+        "columnVoidLiters": {
+          "n": 4,
+          "mean": 12.25075,
+          "sd": 6.515902463716493,
+          "ci95": [
+            1.8824951393251386,
+            22.619004860674863
+          ],
+          "min": 6.475,
+          "max": 21.32,
+          "observations": [
+            6.475,
+            21.32,
+            12.384,
+            8.824
+          ]
+        },
+        "cogOffsetMm": {
+          "n": 4,
+          "mean": 41.17124048823595,
+          "sd": 16.852393993518152,
+          "ci95": [
+            14.355320988170075,
+            67.98715998830183
+          ],
+          "min": 26.080089877971236,
+          "max": 62.5596414579333,
+          "observations": [
+            29.4501201609162,
+            62.5596414579333,
+            46.59511045612309,
+            26.080089877971236
+          ]
+        },
+        "cogHeightMm": {
+          "n": 4,
+          "mean": 500.0706820385808,
+          "sd": 27.76190065308801,
+          "ci95": [
+            455.895302957818,
+            544.2460611193436
+          ],
+          "min": 476.23762376237624,
+          "max": 538.0196078431372,
+          "observations": [
+            476.23762376237624,
+            503.12227074235807,
+            482.9032258064516,
+            538.0196078431372
+          ]
+        },
+        "count": {
+          "n": 4,
+          "mean": 37.5,
+          "sd": 5.446711546122731,
+          "ci95": [
+            28.83306648200343,
+            46.16693351799657
+          ],
+          "min": 30,
+          "max": 42,
+          "observations": [
+            30,
+            37,
+            42,
+            41
+          ]
+        },
+        "maxDecisionMs": {
+          "n": 4,
+          "mean": 22.686541499999976,
+          "sd": 3.7017133463845866,
+          "ci95": [
+            16.796289518759313,
+            28.57679348124064
+          ],
+          "min": 17.887499999999818,
+          "max": 26.709875000000466,
+          "observations": [
+            17.887499999999818,
+            22.18300000000454,
+            26.709875000000466,
+            23.96579099999508
+          ]
+        }
+      }
+    },
+    {
+      "id": "blb",
+      "name": "Bottom-Left-Back",
+      "n": 4,
+      "eligible": true,
+      "metrics": {
+        "score": {
+          "n": 4,
+          "mean": 63.336327625080216,
+          "sd": 2.795579245204596,
+          "ci95": [
+            58.88793720504285,
+            67.78471804511759
+          ],
+          "min": 60.61724168790334,
+          "max": 67.22364319741149,
+          "observations": [
+            63.11190643810224,
+            67.22364319741149,
+            62.39251917690378,
+            60.61724168790334
+          ]
+        },
+        "fill": {
+          "n": 4,
+          "mean": 0.5687687499999999,
+          "sd": 0.044062872645302786,
+          "ci95": [
+            0.4986548868745258,
+            0.6388826131254741
+          ],
+          "min": 0.5158222222222222,
+          "max": 0.6195555555555555,
+          "observations": [
+            0.584675,
+            0.6195555555555555,
+            0.5158222222222222,
+            0.5550222222222222
+          ]
+        },
+        "floor": {
+          "n": 4,
+          "mean": 0.8054583333333333,
+          "sd": 0.04126593407175963,
+          "ci95": [
+            0.7397950236226208,
+            0.8711216430440457
+          ],
+          "min": 0.767,
+          "max": 0.8571666666666666,
+          "observations": [
+            0.778,
+            0.8571666666666666,
+            0.767,
+            0.8196666666666667
+          ]
+        },
+        "sameSkuContact": {
+          "n": 4,
+          "mean": 0.4032724608326067,
+          "sd": 0.05000256758071078,
+          "ci95": [
+            0.3237072176062334,
+            0.48283770405898
+          ],
+          "min": 0.3304188000525141,
+          "max": 0.4390823011127957,
+          "observations": [
+            0.4111960828853386,
+            0.4323926592797784,
+            0.4390823011127957,
+            0.3304188000525141
+          ]
+        },
+        "sameSkuVertical": {
+          "n": 4,
+          "mean": 0.5610694856847283,
+          "sd": 0.14447636409725131,
+          "ci95": [
+            0.3311753501224908,
+            0.7909636212469657
+          ],
+          "min": 0.3508119741733516,
+          "max": 0.6747568483983225,
+          "observations": [
+            0.6747568483983225,
+            0.589052775172649,
+            0.6296563449945901,
+            0.3508119741733516
+          ]
+        },
+        "sameDepartmentContact": {
+          "n": 4,
+          "mean": 0.5428638791342224,
+          "sd": 0.07462924583776125,
+          "ci95": [
+            0.42411209529236804,
+            0.6616156629760768
+          ],
+          "min": 0.48449054794174806,
+          "max": 0.6523112880886427,
+          "observations": [
+            0.48449054794174806,
+            0.6523112880886427,
+            0.5143175901822239,
+            0.5203360903242746
+          ]
+        },
+        "componentShare": {
+          "n": 4,
+          "mean": 0.5651642496154692,
+          "sd": 0.046799942562172646,
+          "ci95": [
+            0.4906950974678499,
+            0.6396334017630885
+          ],
+          "min": 0.5,
+          "max": 0.6097560975609756,
+          "observations": [
+            0.5,
+            0.6097560975609756,
+            0.5675675675675675,
+            0.5833333333333334
+          ]
+        },
+        "columnVoidLiters": {
+          "n": 4,
+          "mean": 28.294249999999998,
+          "sd": 12.072902340227335,
+          "ci95": [
+            9.083568276547894,
+            47.5049317234521
+          ],
+          "min": 16.228,
+          "max": 44.051,
+          "observations": [
+            44.051,
+            22.172,
+            16.228,
+            30.726
+          ]
+        },
+        "cogOffsetMm": {
+          "n": 4,
+          "mean": 96.48840980224153,
+          "sd": 54.9159500002857,
+          "ci95": [
+            9.104878712017154,
+            183.87194089246591
+          ],
+          "min": 32.98130439975499,
+          "max": 164.5169081367429,
+          "observations": [
+            107.9396456221851,
+            80.5157810502831,
+            32.98130439975499,
+            164.5169081367429
+          ]
+        },
+        "cogHeightMm": {
+          "n": 4,
+          "mean": 501.24328654013345,
+          "sd": 33.477511682240596,
+          "ci95": [
+            447.9730948582414,
+            554.5134782220256
+          ],
+          "min": 451.04761904761904,
+          "max": 519.0816326530612,
+          "observations": [
+            519.0816326530612,
+            518.1007751937984,
+            451.04761904761904,
+            516.743119266055
+          ]
+        },
+        "count": {
+          "n": 4,
+          "mean": 38,
+          "sd": 2.160246899469287,
+          "ci95": [
+            34.56256511812409,
+            41.43743488187591
+          ],
+          "min": 36,
+          "max": 41,
+          "observations": [
+            38,
+            41,
+            37,
+            36
+          ]
+        },
+        "maxDecisionMs": {
+          "n": 4,
+          "mean": 10.717698250002229,
+          "sd": 2.6626851181145033,
+          "ci95": [
+            6.480772041841831,
+            14.954624458162627
+          ],
+          "min": 8.364541999995708,
+          "max": 14.371458999987226,
+          "observations": [
+            9.190875000000005,
+            10.943917000025976,
+            14.371458999987226,
+            8.364541999995708
+          ]
+        }
+      }
+    }
+  ],
+  "selectedAt": "2026-10-09T19:26:00.828Z"
+}
+
+
+### public/cluster/audit.json
+{
+  "complete": false,
+  "historicalTrialsRecalculated": 133,
+  "historicalDecisions": 9576,
+  "historicalRawHashesPreserved": true,
+  "historicalSourceArchiveVerified": true,
+  "newTrialsRecalculated": 45,
+  "newDecisions": 3240,
+  "newSourceFreezeVerified": true,
+  "pairedInputVerified": true,
+  "checks": [
+    "box IDs and counts",
+    "accepted deadlines",
+    "bounds and pairwise non-overlap",
+    "exact floor union",
+    "exact column void",
+    "mass weighted CoG",
+    "same SKU face and vertical contact",
+    "weighted decision score",
+    "selection independent of evaluation",
+    "seed-level paired Student-t intervals"
+  ],
+  "limitations": [
+    "Python geometry audit does not independently certify physical material limits, reach or complete arm kinematics. Shared constraint implementation and focused tests cover modeled feasibility only."
+  ],
+  "rawFiles": [
+    {
+      "path": "/cluster/trials/selection-21010-blb.json",
+      "sha256": "4fd78adef6bcf004a28bd942ada38be17a3ea3c41b26ffccbc7b7649680453f2"
+    },
+    {
+      "path": "/cluster/trials/selection-21010-capacity-compact.json",
+      "sha256": "ccffe665ed84f1950950c7b7e1051db61ea0bc8c8f7bc3977feb75d507871d65"
+    },
+    {
+      "path": "/cluster/trials/selection-21010-strategy-greedy.json",
+      "sha256": "f5bff2c33f21399b0f47d8de4aa20740f32834fb7405067253bacf51d7230712"
+    },
+    {
+      "path": "/cluster/trials/selection-21010-lookahead.json",
+      "sha256": "045d10a5afdd0683fd7d54354d7bdbe5b5901ebecfa5c5bbca0101734cba0fd9"
+    },
+    {
+      "path": "/cluster/trials/selection-21010-future-hybrid.json",
+      "sha256": "d66f52bbf38ef95cb91edb04fb334c6875e107f4191e5181e7f609d0de0ded3f"
+    },
+    {
+      "path": "/cluster/trials/selection-21010-mcts.json",
+      "sha256": "b6f46dbabc230d79b4a6363758491855ae71ae1ef35fb23b899e32b6cb82c98f"
+    },
+    {
+      "path": "/cluster/trials/selection-21010-floor-dense.json",
+      "sha256": "9b266324e56f6edb934afc4f5ad9552a68b5222e6228a5bcde9bb3713f06e1fa"
+    },
+    {
+      "path": "/cluster/trials/selection-21010-cluster-floor.json",
+      "sha256": "ff4b6a265fdc94f0027521c0b891ef3bf28b9aa86ddcd4b4446bfb2a52e978d1"
+    },
+    {
+      "path": "/cluster/trials/selection-21010-cluster-layer.json",
+      "sha256": "cd304d2061c2bc72051397501391190d92c6241d354b473635cf3d85a5a8c54c"
+    },
+    {
+      "path": "/cluster/trials/selection-21010-dispersed.json",
+      "sha256": "8d33fc4f342afc8d9912fa579dbb63b4ce739e4f4a4597288ed12835751d2a1d"
+    },
+    {
+      "path": "/cluster/trials/selection-21011-capacity-compact.json",
+      "sha256": "9effe37c216ac8ca6bfbc53d36f918316582d505f3e68cadd7737a306c1b444a"
+    },
+    {
+      "path": "/cluster/trials/selection-21011-strategy-greedy.json",
+      "sha256": "d9d759fec3bd932f499a4a1eab3788790e59dd737640f601c52e0d91fdfb278e"
+    },
+    {
+      "path": "/cluster/trials/selection-21011-lookahead.json",
+      "sha256": "d75956f6025b6287ac4893f9c8aed7bd57a34a0a6310d375169302584546b8ef"
+    },
+    {
+      "path": "/cluster/trials/selection-21011-future-hybrid.json",
+      "sha256": "6f108d2cfc778c5c8d8478338b88041ffa96b2762f4f7d57b74f4c2f154b32cc"
+    },
+    {
+      "path": "/cluster/trials/selection-21011-mcts.json",
+      "sha256": "3b546dfb621ec2b88b0bdc11a264b6960e22a0add7bdf8d637fc22b511d124ac"
+    },
+    {
+      "path": "/cluster/trials/selection-21011-floor-dense.json",
+      "sha256": "55bc2c31ca5e83129047f9277b4dbeae4feb2fb795fb9c409333a9db3b3fc8b8"
+    },
+    {
+      "path": "/cluster/trials/selection-21011-cluster-floor.json",
+      "sha256": "2a26e6558cd95cd54f837af2158a92ef9a12ccaf807f370dc5c71db317280265"
+    },
+    {
+      "path": "/cluster/trials/selection-21011-cluster-layer.json",
+      "sha256": "f0054307a79e28ba895301bf2272746ba2bc7b683749e9b222e173902e436a89"
+    },
+    {
+      "path": "/cluster/trials/selection-21011-dispersed.json",
+      "sha256": "7ef1adae1d93654ba503bca5287b34ca9b6021a016428212a04e9f86dd00b4be"
+    },
+    {
+      "path": "/cluster/trials/selection-21011-blb.json",
+      "sha256": "20360ca5a58e62c5d1a49c9ca77b40b22bdc894eda9118c99a55f15452e923b8"
+    },
+    {
+      "path": "/cluster/trials/selection-21012-strategy-greedy.json",
+      "sha256": "1ccc247d382d3340ce4ae4b3fa4f622c4956c565c387e3fabe9317da534c68a5"
+    },
+    {
+      "path": "/cluster/trials/selection-21012-lookahead.json",
+      "sha256": "44dd78ef87a8130c9a080f8ec6ca25f0ca42ab8836f56b5612bee7b449103363"
+    },
+    {
+      "path": "/cluster/trials/selection-21012-future-hybrid.json",
+      "sha256": "55b545096017bd0f55a656779810ff40e1254a54343aef1cfe9c458a14c1bfc4"
+    },
+    {
+      "path": "/cluster/trials/selection-21012-mcts.json",
+      "sha256": "33d908776bb5f3a38334a465435b8515418712f91f6563df82825e375de3d08d"
+    },
+    {
+      "path": "/cluster/trials/selection-21012-floor-dense.json",
+      "sha256": "b7b5ae268e70f515394e946de8f6d50a3a2fb3cc0519ade8110d82edab346fc7"
+    },
+    {
+      "path": "/cluster/trials/selection-21012-cluster-floor.json",
+      "sha256": "9591a238a23092844aac885fa81b8d26af3f4621fc14c708e2fd861aa8755d3d"
+    },
+    {
+      "path": "/cluster/trials/selection-21012-cluster-layer.json",
+      "sha256": "b88260dafba7f2121de7a3067c88fca19cdfb1476820d61eeddfd06ee5391843"
+    },
+    {
+      "path": "/cluster/trials/selection-21012-dispersed.json",
+      "sha256": "686bdb78626114714209c092bfa85cd534cc2a229de84c74f14fe593fbc7dac6"
+    },
+    {
+      "path": "/cluster/trials/selection-21012-blb.json",
+      "sha256": "9357f456fec2f0701cda8c65ee99d232cd24a1e979a1cb18f36f277df798e962"
+    },
+    {
+      "path": "/cluster/trials/selection-21012-capacity-compact.json",
+      "sha256": "45d0d60a2162f05ae05722a3f3542c5cdb039511219f6b48a57c5c5179540e69"
+    },
+    {
+      "path": "/cluster/trials/selection-21013-lookahead.json",
+      "sha256": "a29fb72297b0cfdfe995af558a4dc8caf38664521587362495f16796c66fdbad"
+    },
+    {
+      "path": "/cluster/trials/selection-21013-future-hybrid.json",
+      "sha256": "5e3a9dcb78c9eb52b4f53dd638ec98ddf1138291b0caea828b59ea67c5e5630f"
+    },
+    {
+      "path": "/cluster/trials/selection-21013-mcts.json",
+      "sha256": "45d41c834cbe76bfec842e45a9c7e0ff5b5a908b86fd647e588e8ced3da54687"
+    },
+    {
+      "path": "/cluster/trials/selection-21013-floor-dense.json",
+      "sha256": "845a8ace97d5e49f11f82b5c5488c9b2da84cc7548cd6bea252a73712fa54a9c"
+    },
+    {
+      "path": "/cluster/trials/selection-21013-cluster-floor.json",
+      "sha256": "919f6d21a3cb2c1db4e3dc44a4f31f94082db8e7b3b900ae7841a10836b736e7"
+    },
+    {
+      "path": "/cluster/trials/selection-21013-cluster-layer.json",
+      "sha256": "ea49f973c85b50e719de1e85d6cb513a125d3fbbb95b8347db7f77b0171860d5"
+    },
+    {
+      "path": "/cluster/trials/selection-21013-dispersed.json",
+      "sha256": "88df53e321975c99e4afbde1b27139741c2eae95a921151fbc6f8c6dd284b6fa"
+    },
+    {
+      "path": "/cluster/trials/selection-21013-blb.json",
+      "sha256": "98cbe828504efa0b8df8d3c9b6c0afe91ba3450f96580911709e2513075c6daa"
+    },
+    {
+      "path": "/cluster/trials/selection-21013-capacity-compact.json",
+      "sha256": "31fa95e1ee68e3a3f16c74af9235f1cd43842ca87ebde99cd064ae19f159ce11"
+    },
+    {
+      "path": "/cluster/trials/selection-21013-strategy-greedy.json",
+      "sha256": "0c4be3f78471904a066a46bc87ac2748139df561cfc551b3544a7b3b13d0bd38"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22010-blb.json",
+      "sha256": "6dfb944b59287cd4b8499219b9a0093a8dc0f6ff198525c2c72c023a0797859c"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22010-capacity-compact.json",
+      "sha256": "439f04156042fa9a72de4054685041fb17e6ec656595a4ec239fa7350c80d041"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22010-strategy-greedy.json",
+      "sha256": "e0a541a55d76a9f74cbb2ded9f32c8b84f1e483fc0f3121ca4645b349fb317dc"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22010-lookahead.json",
+      "sha256": "178bd346a9eb47ba72df30d58496661290485b0bbb3325b6e9c26293206a59cd"
+    },
+    {
+      "path": "/cluster/trials/evaluation-22010-future-hybrid.json",
+      "sha256": "e18828bb59503c90645fb5ad2776ccd8131c84d6642a008ae3d546b0db470682"
+    }
+  ]
+}
+
+
+### public/results/independent-improvement.json
+{
+  "schema": "alps-independent-density-contrast/1",
+  "sourceSummarySha256": "b52756fa705143f806561419f9f6d747dd480346727319ec6b05fc1c05a4b1fb",
+  "cycleSeconds": 10,
+  "evaluationStatus": "independent-evaluation",
+  "seeds": [
+    12042,
+    12043,
+    12044,
+    12045,
+    12046
+  ],
+  "contrasts": [
+    {
+      "metric": "fill",
+      "unit": "percentage-points",
+      "preferred": "higher",
+      "n": 5,
+      "seeds": [
+        12042,
+        12043,
+        12044,
+        12045,
+        12046
+      ],
+      "compactMean": 63.18583333333333,
+      "alpsTetrisMean": 69.18866666666666,
+      "differenceMean": 6.002833333333337,
+      "ci95": [
+        -1.0444077578560735,
+        13.050074424522748
+      ],
+      "direction": "ALPS Tetris minus Compact",
+      "multipleComparisonAdjusted": false,
+      "pairs": [
+        {
+          "seed": 12042,
+          "compact": 58.33555555555555,
+          "alpsTetris": 66.83555555555556,
+          "difference": 8.500000000000007
+        },
+        {
+          "seed": 12043,
+          "compact": 51.73805555555555,
+          "alpsTetris": 64.93083333333334,
+          "difference": 13.192777777777787
+        },
+        {
+          "seed": 12044,
+          "compact": 63.75555555555555,
+          "alpsTetris": 69.27638888888889,
+          "difference": 5.52083333333333
+        },
+        {
+          "seed": 12045,
+          "compact": 72.97111111111111,
+          "alpsTetris": 70.60833333333333,
+          "difference": -2.3627777777777803
+        },
+        {
+          "seed": 12046,
+          "compact": 69.12888888888888,
+          "alpsTetris": 74.29222222222222,
+          "difference": 5.163333333333342
+        }
+      ]
+    },
+    {
+      "metric": "floorContactCoverage",
+      "unit": "percentage-points",
+      "preferred": "higher",
+      "n": 5,
+      "seeds": [
+        12042,
+        12043,
+        12044,
+        12045,
+        12046
+      ],
+      "compactMean": 86.83,
+      "alpsTetrisMean": 90.05,
+      "differenceMean": 3.2200000000000006,
+      "ci95": [
+        -2.840622759344428,
+        9.280622759344428
+      ],
+      "direction": "ALPS Tetris minus Compact",
+      "multipleComparisonAdjusted": false,
+      "pairs": [
+        {
+          "seed": 12042,
+          "compact": 91.96666666666667,
+          "alpsTetris": 93.89999999999999,
+          "difference": 1.9333333333333313
+        },
+        {
+          "seed": 12043,
+          "compact": 79.88333333333333,
+          "alpsTetris": 89.88333333333334,
+          "difference": 10.000000000000009
+        },
+        {
+          "seed": 12044,
+          "compact": 80.03333333333333,
+          "alpsTetris": 86.28333333333333,
+          "difference": 6.25
+        },
+        {
+          "seed": 12045,
+          "compact": 91.96666666666667,
+          "alpsTetris": 91.96666666666667,
+          "difference": 0.0
+        },
+        {
+          "seed": 12046,
+          "compact": 90.3,
+          "alpsTetris": 88.21666666666667,
+          "difference": -2.083333333333337
+        }
+      ]
+    },
+    {
+      "metric": "columnVoidLiters",
+      "unit": "L",
+      "preferred": "lower",
+      "n": 5,
+      "seeds": [
+        12042,
+        12043,
+        12044,
+        12045,
+        12046
+      ],
+      "compactMean": 3.7256,
+      "alpsTetrisMean": 5.4308,
+      "differenceMean": 1.7052,
+      "ci95": [
+        -2.37070674950972,
+        5.7811067495097195
+      ],
+      "direction": "ALPS Tetris minus Compact",
+      "multipleComparisonAdjusted": false,
+      "pairs": [
+        {
+          "seed": 12042,
+          "compact": 4.032,
+          "alpsTetris": 3.84,
+          "difference": -0.19200000000000017
+        },
+        {
+          "seed": 12043,
+          "compact": 3.456,
+          "alpsTetris": 0.96,
+          "difference": -2.496
+        },
+        {
+          "seed": 12044,
+          "compact": 3.26,
+          "alpsTetris": 4.8,
+          "difference": 1.54
+        },
+        {
+          "seed": 12045,
+          "compact": 5.72,
+          "alpsTetris": 9.506,
+          "difference": 3.7860000000000005
+        },
+        {
+          "seed": 12046,
+          "compact": 2.16,
+          "alpsTetris": 8.048,
+          "difference": 5.888
+        }
+      ]
+    },
+    {
+      "metric": "voidLiters",
+      "unit": "L",
+      "preferred": "lower",
+      "n": 5,
+      "seeds": [
+        12042,
+        12043,
+        12044,
+        12045,
+        12046
+      ],
+      "compactMean": 482.12399999999997,
+      "alpsTetrisMean": 434.0832,
+      "differenceMean": -48.04079999999997,
+      "ci95": [
+        -121.33663370466834,
+        25.2550337046684
+      ],
+      "direction": "ALPS Tetris minus Compact",
+      "multipleComparisonAdjusted": false,
+      "pairs": [
+        {
+          "seed": 12042,
+          "compact": 551.968,
+          "alpsTetris": 429.568,
+          "difference": -122.39999999999998
+        },
+        {
+          "seed": 12043,
+          "compact": 526.972,
+          "alpsTetris": 504.996,
+          "difference": -21.976
+        },
+        {
+          "seed": 12044,
+          "compact": 521.92,
+          "alpsTetris": 442.41999999999996,
+          "difference": -79.5
+        },
+        {
+          "seed": 12045,
+          "compact": 389.2159999999999,
+          "alpsTetris": 423.24,
+          "difference": 34.024000000000115
+        },
+        {
+          "seed": 12046,
+          "compact": 420.544,
+          "alpsTetris": 370.192,
+          "difference": -50.351999999999975
+        }
+      ]
+    },
+    {
+      "metric": "count",
+      "unit": "boxes",
+      "preferred": "higher",
+      "n": 5,
+      "seeds": [
+        12042,
+        12043,
+        12044,
+        12045,
+        12046
+      ],
+      "compactMean": 40.8,
+      "alpsTetrisMean": 43.6,
+      "differenceMean": 2.8,
+      "ci95": [
+        -1.355402534737573,
+        6.955402534737573
+      ],
+      "direction": "ALPS Tetris minus Compact",
+      "multipleComparisonAdjusted": false,
+      "pairs": [
+        {
+          "seed": 12042,
+          "compact": 39,
+          "alpsTetris": 44,
+          "difference": 5
+        },
+        {
+          "seed": 12043,
+          "compact": 35,
+          "alpsTetris": 42,
+          "difference": 7
+        },
+        {
+          "seed": 12044,
+          "compact": 41,
+          "alpsTetris": 40,
+          "difference": -1
+        },
+        {
+          "seed": 12045,
+          "compact": 45,
+          "alpsTetris": 45,
+          "difference": 0
+        },
+        {
+          "seed": 12046,
+          "compact": 44,
+          "alpsTetris": 47,
+          "difference": 3
+        }
+      ]
+    },
+    {
+      "metric": "cogOffsetMm",
+      "unit": "mm",
+      "preferred": "lower",
+      "n": 5,
+      "seeds": [
+        12042,
+        12043,
+        12044,
+        12045,
+        12046
+      ],
+      "compactMean": 75.29532411167308,
+      "alpsTetrisMean": 48.790166607470766,
+      "differenceMean": -26.50515750420232,
+      "ci95": [
+        -106.57040586443613,
+        53.56009085603149
+      ],
+      "direction": "ALPS Tetris minus Compact",
+      "multipleComparisonAdjusted": false,
+      "pairs": [
+        {
+          "seed": 12042,
+          "compact": 64.297441611097,
+          "alpsTetris": 47.86645656505169,
+          "difference": -16.430985046045308
+        },
+        {
+          "seed": 12043,
+          "compact": 102.94188068124322,
+          "alpsTetris": 33.706253913232125,
+          "difference": -69.23562676801109
+        },
+        {
+          "seed": 12044,
+          "compact": 106.07651125506887,
+          "alpsTetris": 25.568692275737476,
+          "difference": -80.50781897933139
+        },
+        {
+          "seed": 12045,
+          "compact": 21.131943303392056,
+          "alpsTetris": 101.33318787365495,
+          "difference": 80.2012445702629
+        },
+        {
+          "seed": 12046,
+          "compact": 82.02884370756429,
+          "alpsTetris": 35.476242409677575,
+          "difference": -46.55260129788672
+        }
+      ]
+    },
+    {
+      "metric": "cogHeightMm",
+      "unit": "mm",
+      "preferred": "lower",
+      "n": 5,
+      "seeds": [
+        12042,
+        12043,
+        12044,
+        12045,
+        12046
+      ],
+      "compactMean": 484.72559690285243,
+      "alpsTetrisMean": 511.4393517969342,
+      "differenceMean": 26.713754894081763,
+      "ci95": [
+        -11.764746495793009,
+        65.19225628395654
+      ],
+      "direction": "ALPS Tetris minus Compact",
+      "multipleComparisonAdjusted": false,
+      "pairs": [
+        {
+          "seed": 12042,
+          "compact": 435.6190476190476,
+          "alpsTetris": 472.39669421487605,
+          "difference": 36.77764659582846
+        },
+        {
+          "seed": 12043,
+          "compact": 438.48017621145374,
+          "alpsTetris": 464.31558935361215,
+          "difference": 25.835413142158416
+        },
+        {
+          "seed": 12044,
+          "compact": 560.6837606837607,
+          "alpsTetris": 550.0222222222222,
+          "difference": -10.661538461538498
+        },
+        {
+          "seed": 12045,
+          "compact": 542.125,
+          "alpsTetris": 551.7479674796748,
+          "difference": 9.622967479674799
+        },
+        {
+          "seed": 12046,
+          "compact": 446.72,
+          "alpsTetris": 518.7142857142857,
+          "difference": 71.99428571428564
+        }
+      ]
+    }
+  ],
+  "timing": [
+    {
+      "algorithm": "blb",
+      "trials": 5,
+      "decisions": 360,
+      "maxDecisionReadyMs": 26.13229100004537,
+      "maxWorkerRoundTripMs": 26.005041000025813,
+      "cycleDeadlineMisses": 0,
+      "workerWatchdogs": 0,
+      "fallbacks": 0
+    },
+    {
+      "algorithm": "capacity-compact",
+      "trials": 5,
+      "decisions": 360,
+      "maxDecisionReadyMs": 67.23991600004956,
+      "maxWorkerRoundTripMs": 66.72908300004201,
+      "cycleDeadlineMisses": 0,
+      "workerWatchdogs": 0,
+      "fallbacks": 0
+    },
+    {
+      "algorithm": "strategy-greedy",
+      "trials": 5,
+      "decisions": 360,
+      "maxDecisionReadyMs": 41.30183300000499,
+      "maxWorkerRoundTripMs": 41.07120800000848,
+      "cycleDeadlineMisses": 0,
+      "workerWatchdogs": 0,
+      "fallbacks": 0
+    },
+    {
+      "algorithm": "lookahead",
+      "trials": 5,
+      "decisions": 360,
+      "maxDecisionReadyMs": 240.04900000002817,
+      "maxWorkerRoundTripMs": 239.940042000002,
+      "cycleDeadlineMisses": 0,
+      "workerWatchdogs": 0,
+      "fallbacks": 0
+    },
+    {
+      "algorithm": "future-hybrid",
+      "trials": 5,
+      "decisions": 360,
+      "maxDecisionReadyMs": 749.0467079999798,
+      "maxWorkerRoundTripMs": 748.9646669999929,
+      "cycleDeadlineMisses": 0,
+      "workerWatchdogs": 0,
+      "fallbacks": 0
+    },
+    {
+      "algorithm": "mcts",
+      "trials": 5,
+      "decisions": 360,
+      "maxDecisionReadyMs": 4585.458833000041,
+      "maxWorkerRoundTripMs": 4583.6000420000055,
+      "cycleDeadlineMisses": 0,
+      "workerWatchdogs": 0,
+      "fallbacks": 0
+    },
+    {
+      "algorithm": "floor-dense",
+      "trials": 5,
+      "decisions": 360,
+      "maxDecisionReadyMs": 464.9171250000363,
+      "maxWorkerRoundTripMs": 464.54562500002794,
+      "cycleDeadlineMisses": 0,
+      "workerWatchdogs": 0,
+      "fallbacks": 0
+    }
+  ],
+  "notes": [
+    "Paired Student t 95% intervals over five input seeds; exploratory, no multiple-comparison adjustment.",
+    "Decision-ready time = assumed recognition delay + measured worker round trip + measured commit validation; actual sensor/communications/full robot motion are unmeasured.",
+    "Static CoG and geometric void are not vibration or physical transport safety measurements."
+  ]
+}
+

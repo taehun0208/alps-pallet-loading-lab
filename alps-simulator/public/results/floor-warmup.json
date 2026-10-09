@@ -1,0 +1,308 @@
+{
+  "schema": "alps-sim-pilot/2",
+  "excludedFromBenchmark": true,
+  "sourceSha256": "f07026f3f226464802e10aaa892dd6cf647ab14ee3411659e50dcefcafcd3991",
+  "rows": [
+    {
+      "algorithm": "blb",
+      "elapsedMs": 55.98075,
+      "metrics": {
+        "floorContactAreaMm2": 611800,
+        "floorCoverage": 0.5098333333333334,
+        "projectedFootprintAreaMm2": 611800,
+        "projectedFootprintCoverage": 0.5098333333333334,
+        "count": 6,
+        "total": 6,
+        "fill": 0.10769166666666667,
+        "volumeMm3": 155076000,
+        "usedHeightMm": 320,
+        "envelopeFill": 0.40384375,
+        "allowedEmptyMm3": 1284924000,
+        "envelopeEmptyMm3": 228924000,
+        "columnVoidMm3": 0,
+        "massKg": 37,
+        "center": {
+          "x": 652.7027027027027,
+          "y": 293.5135135135135,
+          "z": 132.2972972972973
+        },
+        "cogHorizontalOffsetMm": 213.10618004577773,
+        "cogHeightMm": 132.2972972972973,
+        "minSupportRatio": 1,
+        "maxLoadRatio": 0,
+        "computeMs": 31.662499000000025,
+        "meanDecisionMs": 5.277083166666671,
+        "p95DecisionMs": 8.924916250000003,
+        "maxDecisionMs": 9.755583000000001,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 60,
+        "planningWaitSeconds": 0.006526791000004424,
+        "totalSeconds": 60.006526791000006,
+        "storeProxy": {
+          "crossZoneBlockers": 0,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      }
+    },
+    {
+      "algorithm": "capacity-compact",
+      "elapsedMs": 28.23358399999998,
+      "metrics": {
+        "floorContactAreaMm2": 611800,
+        "floorCoverage": 0.5098333333333334,
+        "projectedFootprintAreaMm2": 611800,
+        "projectedFootprintCoverage": 0.5098333333333334,
+        "count": 6,
+        "total": 6,
+        "fill": 0.10769166666666667,
+        "volumeMm3": 155076000,
+        "usedHeightMm": 320,
+        "envelopeFill": 0.40384375,
+        "allowedEmptyMm3": 1284924000,
+        "envelopeEmptyMm3": 228924000,
+        "columnVoidMm3": 0,
+        "massKg": 37,
+        "center": {
+          "x": 321.8918918918919,
+          "y": 520.5405405405405,
+          "z": 132.2972972972973
+        },
+        "cogHorizontalOffsetMm": 278.8656192526586,
+        "cogHeightMm": 132.2972972972973,
+        "minSupportRatio": 1,
+        "maxLoadRatio": 0,
+        "computeMs": 26.94220900000002,
+        "meanDecisionMs": 4.49036816666667,
+        "p95DecisionMs": 9.17215675,
+        "maxDecisionMs": 10.675208999999995,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 60,
+        "planningWaitSeconds": 0.0008850000000025911,
+        "totalSeconds": 60.000885000000004,
+        "storeProxy": {
+          "crossZoneBlockers": 0,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      }
+    },
+    {
+      "algorithm": "strategy-greedy",
+      "elapsedMs": 26.229332999999997,
+      "metrics": {
+        "floorContactAreaMm2": 611800,
+        "floorCoverage": 0.5098333333333334,
+        "projectedFootprintAreaMm2": 611800,
+        "projectedFootprintCoverage": 0.5098333333333334,
+        "count": 6,
+        "total": 6,
+        "fill": 0.10769166666666667,
+        "volumeMm3": 155076000,
+        "usedHeightMm": 320,
+        "envelopeFill": 0.40384375,
+        "allowedEmptyMm3": 1284924000,
+        "envelopeEmptyMm3": 228924000,
+        "columnVoidMm3": 0,
+        "massKg": 37,
+        "center": {
+          "x": 523.7837837837837,
+          "y": 521.8918918918919,
+          "z": 132.2972972972973
+        },
+        "cogHorizontalOffsetMm": 79.29796053445074,
+        "cogHeightMm": 132.2972972972973,
+        "minSupportRatio": 1,
+        "maxLoadRatio": 0,
+        "computeMs": 24.728125000000034,
+        "meanDecisionMs": 4.121354166666673,
+        "p95DecisionMs": 5.498125499999993,
+        "maxDecisionMs": 5.625958999999995,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 60,
+        "planningWaitSeconds": 0.0023680010000006603,
+        "totalSeconds": 60.002368001,
+        "storeProxy": {
+          "crossZoneBlockers": 0,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      }
+    },
+    {
+      "algorithm": "lookahead",
+      "elapsedMs": 67.80787499999997,
+      "metrics": {
+        "floorContactAreaMm2": 611800,
+        "floorCoverage": 0.5098333333333334,
+        "projectedFootprintAreaMm2": 611800,
+        "projectedFootprintCoverage": 0.5098333333333334,
+        "count": 6,
+        "total": 6,
+        "fill": 0.10769166666666667,
+        "volumeMm3": 155076000,
+        "usedHeightMm": 320,
+        "envelopeFill": 0.40384375,
+        "allowedEmptyMm3": 1284924000,
+        "envelopeEmptyMm3": 228924000,
+        "columnVoidMm3": 0,
+        "massKg": 37,
+        "center": {
+          "x": 523.7837837837837,
+          "y": 521.8918918918919,
+          "z": 132.2972972972973
+        },
+        "cogHorizontalOffsetMm": 79.29796053445074,
+        "cogHeightMm": 132.2972972972973,
+        "minSupportRatio": 1,
+        "maxLoadRatio": 0,
+        "computeMs": 66.69341800000001,
+        "meanDecisionMs": 11.115569666666667,
+        "p95DecisionMs": 14.368229749999983,
+        "maxDecisionMs": 14.951958999999988,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 60,
+        "planningWaitSeconds": 0.009438292000004792,
+        "totalSeconds": 60.009438292000006,
+        "storeProxy": {
+          "crossZoneBlockers": 0,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      }
+    },
+    {
+      "algorithm": "future-hybrid",
+      "elapsedMs": 172.31599999999997,
+      "metrics": {
+        "floorContactAreaMm2": 611800,
+        "floorCoverage": 0.5098333333333334,
+        "projectedFootprintAreaMm2": 611800,
+        "projectedFootprintCoverage": 0.5098333333333334,
+        "count": 6,
+        "total": 6,
+        "fill": 0.10769166666666667,
+        "volumeMm3": 155076000,
+        "usedHeightMm": 320,
+        "envelopeFill": 0.40384375,
+        "allowedEmptyMm3": 1284924000,
+        "envelopeEmptyMm3": 228924000,
+        "columnVoidMm3": 0,
+        "massKg": 37,
+        "center": {
+          "x": 523.7837837837837,
+          "y": 521.8918918918919,
+          "z": 132.2972972972973
+        },
+        "cogHorizontalOffsetMm": 79.29796053445074,
+        "cogHeightMm": 132.2972972972973,
+        "minSupportRatio": 1,
+        "maxLoadRatio": 0,
+        "computeMs": 170.888166,
+        "meanDecisionMs": 28.481361000000003,
+        "p95DecisionMs": 48.152728999999994,
+        "maxDecisionMs": 50.312707999999986,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 60,
+        "planningWaitSeconds": 0.005987791000002503,
+        "totalSeconds": 60.005987791,
+        "storeProxy": {
+          "crossZoneBlockers": 0,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      }
+    },
+    {
+      "algorithm": "mcts",
+      "elapsedMs": 1371.9212499999999,
+      "metrics": {
+        "floorContactAreaMm2": 611800,
+        "floorCoverage": 0.5098333333333334,
+        "projectedFootprintAreaMm2": 611800,
+        "projectedFootprintCoverage": 0.5098333333333334,
+        "count": 6,
+        "total": 6,
+        "fill": 0.10769166666666667,
+        "volumeMm3": 155076000,
+        "usedHeightMm": 320,
+        "envelopeFill": 0.40384375,
+        "allowedEmptyMm3": 1284924000,
+        "envelopeEmptyMm3": 228924000,
+        "columnVoidMm3": 0,
+        "massKg": 37,
+        "center": {
+          "x": 521.081081081081,
+          "y": 459.72972972972974,
+          "z": 132.2972972972973
+        },
+        "cogHorizontalOffsetMm": 88.59960739738928,
+        "cogHeightMm": 132.2972972972973,
+        "minSupportRatio": 1,
+        "maxLoadRatio": 0,
+        "computeMs": 1371.107916,
+        "meanDecisionMs": 228.51798599999998,
+        "p95DecisionMs": 436.3989472500001,
+        "maxDecisionMs": 446.7776660000002,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 60,
+        "planningWaitSeconds": 0.36695629200000157,
+        "totalSeconds": 60.366956292000005,
+        "storeProxy": {
+          "crossZoneBlockers": 0,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      }
+    },
+    {
+      "algorithm": "floor-dense",
+      "elapsedMs": 219.17716599999994,
+      "metrics": {
+        "floorContactAreaMm2": 611800,
+        "floorCoverage": 0.5098333333333334,
+        "projectedFootprintAreaMm2": 611800,
+        "projectedFootprintCoverage": 0.5098333333333334,
+        "count": 6,
+        "total": 6,
+        "fill": 0.10769166666666667,
+        "volumeMm3": 155076000,
+        "usedHeightMm": 320,
+        "envelopeFill": 0.40384375,
+        "allowedEmptyMm3": 1284924000,
+        "envelopeEmptyMm3": 228924000,
+        "columnVoidMm3": 0,
+        "massKg": 37,
+        "center": {
+          "x": 603.7837837837837,
+          "y": 534.8648648648649,
+          "z": 132.2972972972973
+        },
+        "cogHorizontalOffsetMm": 35.06958542337956,
+        "cogHeightMm": 132.2972972972973,
+        "minSupportRatio": 1,
+        "maxLoadRatio": 0,
+        "computeMs": 217.91845700000044,
+        "meanDecisionMs": 36.31974283333341,
+        "p95DecisionMs": 58.391676750000045,
+        "maxDecisionMs": 60.74070800000004,
+        "deadlineMisses": 0,
+        "fallbackCount": 0,
+        "robotSeconds": 60,
+        "planningWaitSeconds": 0.05137937500000465,
+        "totalSeconds": 60.051379375,
+        "storeProxy": {
+          "crossZoneBlockers": 0,
+          "label": "Different-department boxes vertically obstructing another department; geometric explanatory proxy, not measured store time or ranking objective.",
+          "measuredSeconds": null
+        }
+      }
+    }
+  ]
+}

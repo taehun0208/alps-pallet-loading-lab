@@ -10,6 +10,7 @@ import { withinReach,yawEnvelope } from './robotReach';
 import { isStanding,orientationYaw } from './orientations';
 import { tiltPath,tiltSweeps } from './tiltRobot';
 import { standingHeight } from './standingHeight';
+import { transportMargin } from './palletCom';
 export const incomingPosition=()=>({x:-900,y:200,z:0});
 const distance=(a:Vec3,b:Vec3)=>Math.hypot(a.x-b.x,a.y-b.y,a.z-b.z);
 // Display motion only: no gripper width, mass, payload, workspace or robot timing is evaluated.
@@ -43,8 +44,10 @@ export function gripperPath(box:Placement,current:Observation,placed:Placement[]
 function swept(a:Vec3,b:Vec3,w:number,d:number,zBelow:number,zAbove:number,margin:number){
   return {position:{x:Math.min(a.x,b.x)-w/2-margin,y:Math.min(a.y,b.y)-d/2-margin,z:Math.min(a.z,b.z)-zBelow},size:{w:Math.abs(a.x-b.x)+w+2*margin,d:Math.abs(a.y-b.y)+d+2*margin,h:Math.abs(a.z-b.z)+zBelow+zAbove}};
 }
+/** Call counter for effort accounting (read by benchmarks; never reset by planners). */
+export const constraintMeter={calls:0};
 export function inspectConstraints(box:Placement,current:Observation,placed:Placement[],pallet:Pallet,c:Constraints,robot?:RobotValidator):{placement:Placement;reasons:string[];path:GripPath;stack:Placement[]}{
-  box={...box,packaging:current.packaging};
+  constraintMeter.calls++;box={...box,packaging:current.packaging};
   const reasons:string[]=[],p=box.position,s=box.size;
   if(p.z<0)reasons.push('팔레트 바닥 아래');
   if(current.packaging&&!permittedOrientations(current.packaging).includes(box.orientation))reasons.push('Orientation prohibited · BoxSpec / keepUpright');
@@ -52,6 +55,7 @@ export function inspectConstraints(box:Placement,current:Observation,placed:Plac
   if(['w','d','h'].some(k=>Math.abs(s[k as keyof typeof s]-observed[k as keyof typeof s])>EPS))reasons.push('관측 치수와 배치 치수 불일치');
   if(Math.abs(box.weight-current.weight)>EPS)reasons.push('관측 무게와 배치 무게 불일치');
   if(p.x<-EPS||p.y<-EPS||p.x+s.w>pallet.width+EPS||p.y+s.d>pallet.depth+EPS)reasons.push('팔레트 경계 밖');
+  if(pallet.maxLoadKg!==undefined&&(!Number.isFinite(pallet.maxLoadKg)||pallet.maxLoadKg<=0||placed.reduce((n,b)=>n+b.weight,0)+box.weight>pallet.maxLoadKg+EPS))reasons.push('팔레트 허용 적재중량 초과');
   if(p.z+s.h>pallet.maxHeight+EPS)reasons.push('최대 적재 높이 초과');
   if(!current.orientationAllowed.includes(box.orientation))reasons.push('허용되지 않은 회전');
   if(current.handling==='upright'&&isStanding(box.orientation))reasons.push('취급 제한 · 위아래 방향 유지');
@@ -78,6 +82,7 @@ export function inspectConstraints(box:Placement,current:Observation,placed:Plac
   const overloaded=stack.find(b=>{const capacity=materialInfo(b,cfg).capacity;return capacity!==null&&loads[b.id]>capacity+EPS;});
   if(overloaded){const material=materialInfo(overloaded,cfg);reasons.push(`재질 허용 지지하중 초과 · ${overloaded.id} (${loads[overloaded.id].toFixed(2)} / ${material.capacity!.toFixed(2)} kg · ${material.name} ${material.source})`);}
   if(!reasons.length)reasons.push(...stability(stack,cfg,solved).violations);
+  if(!reasons.length&&cfg.transportAccelerationG!==undefined){const t=transportMargin(stack,pallet,cfg.transportAccelerationG,cfg);if(t.looseMarginMm< -EPS)reasons.push(`TRANSPORT: 운반 ${cfg.transportAccelerationG}g 국부 전도 여유 부족 (${t.looseMarginMm.toFixed(0)} mm · 묶지 않은 화물)`);}
   if(current.packaging){const r=packagingRobot(updated,current,placed,c);if(box.weight+c.gripper.mass>c.gripper.payload+EPS)reasons.push(`ROBOT: 가반 ${box.weight+c.gripper.mass} / 최대 ${c.gripper.payload} kg`);return {placement:updated,reasons:[...new Set([...reasons,...r.reasons])],path:r.path??idealPath(updated,current,placed),stack};}
   if(c.robotMode==='ideal')return {placement:{...updated,loadAbove:0},reasons:[...new Set(reasons)],path:idealPath(updated,current,placed),stack};
   if(box.weight+c.gripper.mass>c.gripper.payload+EPS)reasons.push('설정된 가반하중 초과');

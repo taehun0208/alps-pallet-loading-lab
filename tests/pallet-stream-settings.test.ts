@@ -28,6 +28,15 @@ it('restarts a finished run with fresh clocks, reservations, observations and wo
 });
 it('rejects invalid drafts without damaging the current simulation input',()=>{
  const source=streamInventory(42,8),copy=structuredClone(source);
- for(const height of [0,NaN,Infinity,599,3001,1200.5])expect(()=>applyStreamSettings(source,{seed:42,count:8,height})).toThrow();
+ for(const height of [0,NaN,Infinity,599,2001,1200.5])expect(()=>applyStreamSettings(source,{seed:42,count:8,height})).toThrow();
  expect(source).toEqual(copy);
+});
+
+it('preserves the order while editing actual pallet dimensions and cargo limits',()=>{
+ const source=streamInventory(42,24);
+ const next=applyStreamSettings(source,{...streamSettings(source),width:1200,depth:800,deckHeight:144,maxLoadKg:600});
+ expect(next.types).toEqual(source.types);expect(next.pallet).toEqual({width:1200,depth:800,maxHeight:1600,deckHeightMm:144,maxLoadKg:600});
+ const cleared=applyStreamSettings(next,{...streamSettings(next),maxLoadKg:null,deckHeight:null});
+ expect(cleared.pallet.maxLoadKg).toBeUndefined();expect(cleared.pallet.deckHeightMm).toBeUndefined();
+ for(const patch of [{maxLoadKg:0},{maxLoadKg:NaN},{deckHeight:-1},{width:0},{depth:Infinity}])expect(()=>applyStreamSettings(next,{...streamSettings(next),...patch})).toThrow();
 });

@@ -1,0 +1,57 @@
+{
+  "source": "docs/capacity/results.json",
+  "source_sha256": "547c7f9387b0567db0947552c77f5d50f2504ca98bfa31e4013f76c24652e7e3",
+  "source_createdAt": "2026-10-09T17:00:05.363Z",
+  "source_commit": "b582caa52e2245f40f2c9fba0f770887c3a9e8c2",
+  "experiment_sha256_recorded": "6914d592cba8b75b6e2174ff8e81013539c2b8413db826ce38f4f71f3e4c90fe",
+  "script": "scripts/presentation-charts.py",
+  "script_sha256": "dfc579b9ca78015078d5d3a0deae9b443c0362329e4322f610c81087bc804978",
+  "matplotlib_version": "3.11.2",
+  "environment": "darwin arm64 / Apple M5 / Node v24.14.1",
+  "holdout_seeds": [
+    1042,
+    1043
+  ],
+  "range_definition": "Figures 01-03: observed minimum and maximum across 2 trial metrics, not confidence interval. Figures 04-05: lines connect seed1042 and seed1043 single observations, not confidence interval.",
+  "checks": {
+    "trials": 180,
+    "status": {
+      "finished": 148,
+      "timeout": 32
+    },
+    "checks": [
+      "unique trial IDs",
+      "volume from placements",
+      "utilization denominator",
+      "item conservation",
+      "unique placement IDs",
+      "mean planner latency",
+      "complete means use all held-out seeds"
+    ]
+  },
+  "outputs": [
+    "01-packing-and-compute-preview.png",
+    "01-packing-and-compute.png",
+    "01-packing-and-compute.svg",
+    "02-height-sensitivity-preview.png",
+    "02-height-sensitivity.png",
+    "02-height-sensitivity.svg",
+    "03-robot-time-and-static-cog-preview.png",
+    "03-robot-time-and-static-cog.png",
+    "03-robot-time-and-static-cog.svg",
+    "04-seed1043-packing-and-compute-preview.png",
+    "04-seed1043-packing-and-compute.png",
+    "04-seed1043-packing-and-compute.svg",
+    "05-seed1043-robot-and-cog-preview.png",
+    "05-seed1043-robot-and-cog.png",
+    "05-seed1043-robot-and-cog.svg",
+    "CAPTIONS.md",
+    "SEED1043-CAPTIONS.md",
+    "SEED1043-provenance.json",
+    "benchmark-holdout-summary.csv",
+    "benchmark-trials-derived.csv",
+    "index.html",
+    "seed1043-all-heights-modes-raw.csv",
+    "seed1043-vs1042-1200mm-robot.csv"
+  ]
+}

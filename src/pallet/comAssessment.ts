@@ -1,4 +1,5 @@
 import {convexHull,EPS} from './geometry';
+import {massCenter} from './packaging/spec';
 import type {Pallet,Placement,Vec3} from './types';
 
 export interface ComAssessment {
@@ -13,7 +14,7 @@ export interface ComAssessment {
  offsetRatio:number|null;
 }
 /**
- * Display-only global geometric index for uniformly distributed box masses.
+ * Display-only global index using specified box CoG, or uniform mass when unspecified.
  * The floor-contact hull assumes a coherent stack; it does not establish local
  * contact stability, compression strength, friction, or dynamic robot safety.
  * Score = 100*d/(d+h), d = nonnegative minimum hull clearance, h = CoM height.
@@ -26,7 +27,7 @@ export function assessPalletCom(pallet:Pallet,placements:readonly Placement[]):C
  if(placements.some(p=>![p.weight,p.size.w,p.size.d,p.size.h].every(n=>Number.isFinite(n)&&n>0)||![p.position.x,p.position.y,p.position.z].every(Number.isFinite)||p.position.z<-EPS))
   return blank('invalid','질량·치수·좌표 확인 필요');
  const mass=placements.reduce((n,p)=>n+p.weight,0);
- const center=placements.reduce((c,p)=>({x:c.x+(p.position.x+p.size.w/2)*(p.weight/mass),y:c.y+(p.position.y+p.size.d/2)*(p.weight/mass),z:c.z+(p.position.z+p.size.h/2)*(p.weight/mass)}),{x:0,y:0,z:0});
+ const center=placements.reduce((c,p)=>{const m=massCenter(p);return {x:c.x+m.x*(p.weight/mass),y:c.y+m.y*(p.weight/mass),z:c.z+m.z*(p.weight/mass)};},{x:0,y:0,z:0});
  if(!Number.isFinite(mass)||!Object.values(center).every(Number.isFinite))return blank('invalid','계산 가능한 범위 초과');
  const hull=convexHull(placements.filter(p=>Math.abs(p.position.z)<=EPS).flatMap(p=>{
   const x=Math.max(0,p.position.x),y=Math.max(0,p.position.y),right=Math.min(pallet.width,p.position.x+p.size.w),back=Math.min(pallet.depth,p.position.y+p.size.d);

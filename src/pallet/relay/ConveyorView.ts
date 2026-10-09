@@ -1,14 +1,9 @@
-import {usesBranches} from './branchedConveyor';
-import {createBranchedConveyorView} from './BranchedConveyorView';
-import {usesRoller,ROLLER,rollerPoint} from './rollerQueue';
 import * as THREE from 'three';
 import type { Pallet } from '../types';
 import { CONVEYOR,beltBounds,beltStation } from './conveyor';
-import {TWIN_ROBOT_PALETTE} from './twinSceneTheme';
-import {robotCount} from './fleet';
+import { ROBOT_COUNT } from './layout';
 
 export function createConveyorView(p:Pallet) {
-  if(usesBranches(p))return createBranchedConveyorView(p);
   const group=new THREE.Group();group.name='single-shared-conveyor';
   const b=beltBounds(p),left=b.left/1000,right=b.right/1000,front=CONVEYOR.front/1000,back=CONVEYOR.back/1000;
   const width=CONVEYOR.width/1000,z=CONVEYOR.deck/1000,geometry=new THREE.BoxGeometry(1,1,1);
@@ -32,40 +27,17 @@ export function createConveyorView(p:Pallet) {
       block(.16,.04,.16,x+(vertical?side*.32:d),-.39,y+(vertical?d:side*.32));
     }
   }
-  run((left+right)/2,front,right-left);if(p.conveyorMode!=='straight'){run((left+right)/2,back,right-left,false,true);
-  run(left,(front+back)/2,front-back+width,true);run(right,(front+back)/2,front-back+width,true,true);}
-  const rollers:THREE.Mesh[]=[];
-  if(usesRoller(p)){
-    const lane=new THREE.Group();lane.name='gravity-roller-accumulation';group.add(lane);
-    const orange=new THREE.MeshStandardMaterial({color:'#be682c',metalness:.35,roughness:.6});
-    const start=rollerPoint(p,b.right-b.left),end=rollerPoint(p,b.right-b.left+ROLLER.length);
-    const length=Math.hypot(end.x-start.x,end.z-start.z)/1000,angle=Math.atan2(end.z-start.z,end.x-start.x);
-    for(const side of [-1,1]){const rail=new THREE.Mesh(new THREE.BoxGeometry(length,.12,.065),orange);rail.position.set((start.x+end.x)/2000,(start.z+end.z)/2000-.045,front+side*(width/2+.025));rail.rotation.z=angle;lane.add(rail);}
-    const rollerGeo=new THREE.CylinderGeometry(.035,.035,width,12),rollerMat=new THREE.MeshStandardMaterial({color:'#a6aaa7',metalness:.78,roughness:.25});
-    for(let arc=65;arc<ROLLER.length;arc+=95){const pt=rollerPoint(p,b.right-b.left+arc),mesh=new THREE.Mesh(rollerGeo,rollerMat);mesh.rotation.x=Math.PI/2;mesh.position.set(pt.x/1000,pt.z/1000-.035,pt.y/1000);mesh.castShadow=true;lane.add(mesh);rollers.push(mesh);}
-    for(const x of [start.x+200,end.x-150])for(const side of [-1,1]){const pt=rollerPoint(p,x-b.left),leg=new THREE.Mesh(new THREE.BoxGeometry(.065,pt.z/1000+.35,.065),steel);leg.position.set(x/1000,(pt.z/1000-.45)/2,front+side*.35);lane.add(leg);}
-    const stop=new THREE.Mesh(new THREE.BoxGeometry(.055,.15,width+.12),orange);stop.position.set(end.x/1000+.03,end.z/1000+.03,front);lane.add(stop);
-    const stopSensor=new THREE.Mesh(new THREE.BoxGeometry(.05,.04,.09),markings);stopSensor.position.set(end.x/1000-.06,end.z/1000+.1,front+.5);lane.add(stopSensor);
-  }
+  run((left+right)/2,front,right-left);run((left+right)/2,back,right-left,false,true);
+  run(left,(front+back)/2,front-back+width,true);run(right,(front+back)/2,front-back+width,true,true);
   const frame=new THREE.InstancedMesh(geometry,steel,parts.length),dummy=new THREE.Object3D();
   parts.forEach((v,i)=>{dummy.position.set(v.x,v.y,v.z);dummy.scale.set(v.w,v.h,v.d);dummy.updateMatrix();frame.setMatrixAt(i,dummy.matrix);});frame.castShadow=true;group.add(frame);
-  for(let i=0;i<robotCount(p);i++){
+  for(let i=0;i<ROBOT_COUNT;i++){
     const point=beltStation(i,p);
     for(const edge of [-1,1]){const marker=new THREE.Mesh(new THREE.BoxGeometry(.8,.012,.045),markings);marker.position.set(point.x/1000,z+.008,front+edge*(width/2-.055));group.add(marker);}
   }
-  // Three-sided profile scanner; no crossbar obstructs the belt surface.
-  const portal=new THREE.Group();portal.name='intake-u-scanner';group.add(portal);
-  for(const side of [-1,1]){const upright=new THREE.Mesh(new THREE.BoxGeometry(.24,1.12,.13),dark);upright.position.set(left+.65,z+.56,front+side*.57);portal.add(upright);}
-  const bridge=new THREE.Mesh(new THREE.BoxGeometry(.24,.16,1.27),steel);bridge.position.set(left+.65,z+1.12,front);portal.add(bridge);
-  const signal=new THREE.MeshStandardMaterial({color:'#548a87',emissive:'#548a87',emissiveIntensity:.25});
-  for(const side of [-1,1]){const head=new THREE.Mesh(new THREE.BoxGeometry(.12,.28,.055),signal);head.position.set(left+.65,z+.44,front+side*.49);portal.add(head);}
-  const topHead=new THREE.Mesh(new THREE.BoxGeometry(.13,.07,.48),signal);topHead.position.set(left+.65,z+1.01,front);portal.add(topHead);
-  const laser=new THREE.Mesh(new THREE.PlaneGeometry(1.05,1.02),new THREE.MeshBasicMaterial({color:'#548a87',transparent:true,opacity:.12,side:THREE.DoubleSide,depthWrite:false}));
-  laser.rotation.y=Math.PI/2;laser.position.set(left+.65,z+.51,front);portal.add(laser);
-  return {group,update:(time:number,active=false,rejected=false)=>{
-   rollers.forEach(mesh=>{mesh.rotation.y=-time*ROLLER.speed/35;});
-   animated.forEach((t,i)=>{t.offset.x=(i===1||i===3?1:-1)*time*CONVEYOR.speed/220;});
-   const color=rejected?TWIN_ROBOT_PALETTE.warning:'#548a87';signal.color.set(color);signal.emissive.set(color);signal.emissiveIntensity=active?.7:.2;
-   laser.material.color.set(color);laser.material.opacity=active?.2:.06;
-  },dispose:()=>texture.dispose()};
+  // A single measurement portal on the common infeed.
+  for(const side of [-1,1]){const upright=new THREE.Mesh(new THREE.BoxGeometry(.07,1.05,.07),steel);upright.position.set(left+.65,z+.525,front+side*.56);group.add(upright);}
+  const bridge=new THREE.Mesh(new THREE.BoxGeometry(.18,.1,1.19),steel);bridge.position.set(left+.65,z+1.02,front);group.add(bridge);
+  const scanner=new THREE.Mesh(new THREE.BoxGeometry(.1,.035,.3),new THREE.MeshStandardMaterial({color:'#b5e5bd',emissive:'#406347',emissiveIntensity:.4}));scanner.position.set(left+.65,z+.94,front);group.add(scanner);
+  return {group,update:(time:number)=>{animated.forEach((t,i)=>{t.offset.x=(i===1||i===3?1:-1)*time*CONVEYOR.speed/220;});},dispose:()=>texture.dispose()};
 }

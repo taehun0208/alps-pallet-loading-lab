@@ -4,11 +4,10 @@ import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
 import type {Box,Candidate,Config,Frame,Placed,Solid} from './types';
 import {bounds,transformPoint,wallSolids,worldParts} from './shape';
 import {assess} from './mechanics';
-import type {analyzeFrame} from './performance';
 import {suctionCandidates} from './grasp';
-export interface Layers {transparent:boolean;nominal:boolean;observed:boolean;contacts:boolean;risk?:boolean;suction:boolean;path:boolean;candidates:boolean}
+export interface Layers {transparent:boolean;nominal:boolean;observed:boolean;contacts:boolean;suction:boolean;path:boolean;candidates:boolean}
 const coord=(v:{x:number;y:number;z:number})=>new T.Vector3(v.x/1000,v.z/1000,-v.y/1000);
-export default function AdaptiveScene({config,frame,boxes,selected,candidate,layers,onSelect,analysis}:{config:Config;frame:Frame;boxes:Box[];selected:string;candidate:Candidate|null;layers:Layers;onSelect:(id:string)=>void;analysis?:ReturnType<typeof analyzeFrame>}){
+export default function AdaptiveScene({config,frame,boxes,selected,candidate,layers,onSelect}:{config:Config;frame:Frame;boxes:Box[];selected:string;candidate:Candidate|null;layers:Layers;onSelect:(id:string)=>void}){
  const host=useRef<HTMLDivElement>(null),api=useRef<{scene:T.Scene;root:T.Group;camera:T.PerspectiveCamera;renderer:T.WebGLRenderer;controls:OrbitControls}|null>(null),pick=useRef(onSelect);pick.current=onSelect;
  useEffect(()=>{const el=host.current!,scene=new T.Scene();scene.background=new T.Color('#d2d7da');const camera=new T.PerspectiveCamera(38,1,.02,50);camera.position.set(3.8,3.5,4.3);
   const renderer=new T.WebGLRenderer({antialias:true,alpha:false});renderer.setPixelRatio(Math.min(2,devicePixelRatio));el.appendChild(renderer.domElement);renderer.domElement.setAttribute('aria-label','변형 박스 3D 뷰포트');renderer.domElement.setAttribute('role','img');
@@ -29,12 +28,10 @@ export default function AdaptiveScene({config,frame,boxes,selected,candidate,lay
   cuboid({x:0,y:0,z:0,w:config.pallet.width,d:config.pallet.depth,h:config.pallet.maxHeight},'#86949e',.65,true);
   for(const wall of wallSolids(config))cuboid(wall,'#7c8c98',.22);
   for(const p of frame.placed){
-   const load=analysis?.boxes.find(b=>b.id===p.box.id),color=layers.risk?(load?.loadRatio===null?'#87929b':(load?.loadRatio||0)>1?'#b9574d':(load?.loadRatio||0)>.8?'#c39863':'#779b91'):p.box.color;
-   for(const s of worldParts(p))cuboid(s,p.box.id===selected?'#ead9a5':color,layers.transparent?.55:1,false,p.box.id);
+   for(const s of worldParts(p))cuboid(s,p.box.id===selected?'#ead9a5':p.box.color,layers.transparent?.55:1,false,p.box.id);
    if(layers.nominal){const nominal:Placed={...p,box:{...p.box,parts:[{x:0,y:0,z:0,...p.box.nominal}]}};cuboid(bounds(worldParts(nominal)),'#3b4a56',.65,true);}
    for(const mask of p.box.masks){const pos=transformPoint({x:mask.x+mask.w/2,y:mask.y+mask.d/2,z:p.box.nominal.h+1},p.box,p);cuboid({x:pos.x-(p.rotation?mask.d:mask.w)/2,y:pos.y-(p.rotation?mask.w:mask.d)/2,z:pos.z,w:p.rotation?mask.d:mask.w,d:p.rotation?mask.w:mask.d,h:1},'#884b47',.65);}
   }
-  if(analysis?.center){dot(analysis.center,'#23343c',.032);const v={...analysis.center,z:3};dot(v,'#d0a74b',.024);const line=new T.Line(new T.BufferGeometry().setFromPoints([coord(v),coord(analysis.center)]),new T.LineDashedMaterial({color:'#23343c',dashSize:.03,gapSize:.015}));line.computeLineDistances();root.add(line);}
   if(layers.observed)for(const p of frame.observed)for(const s of worldParts(p))cuboid(s,'#a24d49',.5,true);
   const current=frame.placed.find(p=>p.box.id===selected)||frame.placed.at(-1);
   if(current){const analysis=assess(frame.placed,config,current.box.id),g=suctionCandidates(current.box,config);
@@ -46,6 +43,6 @@ export default function AdaptiveScene({config,frame,boxes,selected,candidate,lay
   if(candidate){const b=boxes.find(b=>b.id===candidate.boxId);if(b){const p={box:b,...candidate};cuboid(bounds(worldParts(p)),candidate.reasons.length?'#b34740':'#00786f',1,true);if(candidate.grasp){const gp=transformPoint(candidate.grasp.point,b,p);dot(gp,'#ecaa2d',.026);cuboid({x:gp.x-config.gripper.width/2,y:gp.y-config.gripper.depth/2,z:gp.z+config.gripper.clearance,w:config.gripper.width,d:config.gripper.depth,h:config.gripper.height},'#536d7c',.35);}}
    if(layers.path&&candidate.path.length){const line=new T.Line(new T.BufferGeometry().setFromPoints(candidate.path.map(coord)),new T.LineDashedMaterial({color:'#167b81',dashSize:.04,gapSize:.02}));line.computeLineDistances();root.add(line);}
   }
- },[config,frame,boxes,selected,candidate,layers,analysis]);
+ },[config,frame,boxes,selected,candidate,layers]);
  return <div className="adaptive-viewport" ref={host}/>;
 }

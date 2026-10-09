@@ -1,0 +1,155 @@
+{
+  "responsive": [
+    {
+      "body": 305,
+      "buttons": [
+        {
+          "right": 71.875,
+          "t": "적재 실험"
+        },
+        {
+          "right": 179.96875,
+          "t": "4대 로봇 협업"
+        },
+        {
+          "right": 293,
+          "t": "포장 제약 실험"
+        },
+        {
+          "right": 93.875,
+          "t": "알고리즘 비교"
+        },
+        {
+          "right": 202.078125,
+          "t": "설정 · 데이터"
+        },
+        {
+          "right": 293,
+          "t": "작동 원리"
+        },
+        {
+          "right": 129.671875,
+          "t": "미래 공간 6전략 실험"
+        }
+      ],
+      "clipped": 0,
+      "document": 305,
+      "width": 320
+    },
+    {
+      "body": 360,
+      "buttons": [
+        {
+          "right": 71.875,
+          "t": "적재 실험"
+        },
+        {
+          "right": 161.90625,
+          "t": "4대 로봇 협업"
+        },
+        {
+          "right": 256.890625,
+          "t": "포장 제약 실험"
+        },
+        {
+          "right": 348,
+          "t": "알고리즘 비교"
+        },
+        {
+          "right": 89.140625,
+          "t": "설정 · 데이터"
+        },
+        {
+          "right": 189.671875,
+          "t": "작동 원리"
+        },
+        {
+          "right": 348,
+          "t": "미래 공간 6전략 실험"
+        }
+      ],
+      "clipped": 0,
+      "document": 360,
+      "width": 375
+    },
+    {
+      "body": 399,
+      "buttons": [
+        {
+          "right": 71.875,
+          "t": "적재 실험"
+        },
+        {
+          "right": 174.90625,
+          "t": "4대 로봇 협업"
+        },
+        {
+          "right": 282.890625,
+          "t": "포장 제약 실험"
+        },
+        {
+          "right": 387,
+          "t": "알고리즘 비교"
+        },
+        {
+          "right": 89.140625,
+          "t": "설정 · 데이터"
+        },
+        {
+          "right": 209.171875,
+          "t": "작동 원리"
+        },
+        {
+          "right": 387,
+          "t": "미래 공간 6전략 실험"
+        }
+      ],
+      "clipped": 0,
+      "document": 399,
+      "width": 414
+    },
+    {
+      "body": 753,
+      "buttons": [
+        {
+          "right": 96.21875,
+          "t": "적재 실험"
+        },
+        {
+          "right": 228.03125,
+          "t": "4대 로봇 협업"
+        },
+        {
+          "right": 365.21875,
+          "t": "포장 제약 실험"
+        },
+        {
+          "right": 498.203125,
+          "t": "알고리즘 비교"
+        },
+        {
+          "right": 626.015625,
+          "t": "설정 · 데이터"
+        },
+        {
+          "right": 735,
+          "t": "작동 원리"
+        },
+        {
+          "right": 159.265625,
+          "t": "미래 공간 6전략 실험"
+        }
+      ],
+      "clipped": 0,
+      "document": 753,
+      "width": 768
+    }
+  ],
+  "publicUrl": "https://pallet-loading-lab.eon3602.chatgpt.site/?palletView=packaging#pallet",
+  "publicResult": "입고 처리\n22 / 22\n적재 / 미적재\n19 / 3\n용적 이용률\n37.2%\n최대 하중 사용\n93.1%\n결정 계산 시간\n672.6 ms",
+  "selectedBox": "BOX CONSTRAINTS\nG-1\nMarine Valve Component\nSimulation Assumption\nPackage\nWOODEN_CASE\n치수 / 무게\n650 × 450 × 400 mm\n40 kg\n회전\nXYZ · YXZ\nUpright / 적층 가능\n유지 / 위 적재 금지\n상부 하중 / 허용\n0.0 / 0 kg\n최소 지지\n70.0%\n파손 / 충격 민감\nMEDIUM / 아니오\n파지 면\nTOP\n로컬 CoG\n325 / 225 / 200 mm\n\nSimulation Assumption · 치수·질량·포장 강도·로봇 취급 조건 모두 실험용 가정입니다.\n\nCoG는 원래 자세의 최소 모서리 기준 mm. 상부 하중 80%부터 경고, 100% 초과는 배치에서 제외합니다.",
+  "replanning": "One confirmed box preserved; weight 120 kg rejected at 123 / 100 kg payload; old/new plan shown",
+  "comparison": "Five policies completed in browser with the same corrected input",
+  "factory": "배치 재고 22개\n적재 이력 20개\n대기 2개\n전달 완료 0회\n전달대 보류 0개\n현재 동시 작업 0대\n전체 22 = 적재 20 + 자기 재고 2 + 전달대 0 · 재생 시계 86.2 s · 최대 동시 4대",
+  "factoryStatus": "배치 처리 완료\n동작 20"
+}

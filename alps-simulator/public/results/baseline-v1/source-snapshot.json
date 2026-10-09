@@ -1,0 +1,9 @@
+{
+  "schema": "alps-benchmark-source-snapshot/1",
+  "path": "source-snapshot.zip",
+  "sha256": "6b455bb026142d8614f37975806ba6dc6b80c0bf86308487ff7aaea421cb0701",
+  "sizeBytes": 167905,
+  "benchmarkSourceSha256": "7b5a5907787f926701d5260da573b0506f5bfb3942c64a2a3fc82a6739bfd498",
+  "runtimeFilesVerified": 77,
+  "files": 84
+}

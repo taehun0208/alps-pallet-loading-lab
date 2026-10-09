@@ -1,0 +1,712 @@
+한국어로 답해 주세요. 아래는 로봇 1대 혼합 팔레타이징 알고리즘 비교 하네스(TypeScript)와 결과 집계기(Python)입니다. 앞선 검토에서 지적된 결함을 고친 버전입니다. 대규모 실험을 돌리기 전에 **실제 코드 결함**만 찾아 주세요. 스타일 의견이나 일반론은 필요 없습니다.
+
+앞선 검토의 요구사항:
+- 개발·평가 데이터는 BED-BPP 원본 주문 ID 기준으로 분리하고 중복을 자동 검출할 것
+- 운반 전도: 화물 자체(접촉면 기준)와 팔레트 포함 전체를 구분할 것. 회귀 사례: 1000×800 팔레트 중앙에 200×200×1000 박스 하나, 0.3g → 박스 자체 기준 −50mm
+- 실행 키·설정 해시 검증. 중복·누락·설정 혼입 시 집계 중단
+- 실제 사용한 설정과 가중치를 결과에 저장
+- 계획기에 미입고 재고와 관측된 버퍼 재고를 구분해 전달하고, 현재 박스는 중복 계산하지 않을 것
+- 계획기에 순서와 무관한 상품 목록만 전달할 것
+- 탐색량 기록, 배치 경로시간과 미산정 공정시간 구분
+- 평가 6영역: 적합성, 성과, 안정성, 로봇 작업, 계산 성능, 강건성. 순서는 적합성 → 성과 → 상충관계. 종합 점수 없음
+- 사건(누락·파손·규격 정정·측정 오차·버퍼 사용 불가·적재 상태 교란)은 관측 시점에만 공개할 것. 복구 불가능하면 올바르게 격리·중단할 것
+- 시드 분리(dataset/arrival/event/planner), 재현성, 박스 유실·중복 적재·잘못된 완료 판정 없음
+- 판단시간 백분위는 전체 표본을 모아 계산하고, 병렬 경합 측정은 분리하며, 미측정 값은 0으로 대체하지 않을 것
+
+요청:
+1. 위 요구를 어기는 코드 결함을 심각도(P1/P2/P3)별로 최대 10개까지 적어 주세요. 각각 파일, 함수, 구체적으로 실패하는 입력이나 상황, 수정 방향을 포함해 주세요.
+2. 실험 결과를 왜곡할 수 있는 집계·통계 함정이 있으면 3개 이내로 적어 주세요.
+3. 확실하지 않은 지적은 "추정"이라고 표시해 주세요. 실행하지 않은 결과 수치를 만들어내지 마세요.
+
+
+===== pallet-loading-lab/src/pallet/singleRobot/config.ts =====
+// Single source of truth for single-robot experiment settings. Runners record the values they used.
+import { bedOrderIds } from '../relay/streamInventory';
+import { COMPACT_SEARCH,DEFAULT_SEARCH,ONLINE_SEARCH } from '../types';
+import { DEFAULT_STRATEGY,type StrategyId } from '../strategies/PackingStrategy';
+import type { SearchSettings,Algorithm } from '../types';
+
+export const HARNESS_VERSION='single-robot-harness/2';
+export type Phase='dev'|'eval';
+export interface CaseSeeds { dataset:number;arrival:number;event:number;planner:number }
+
+/** Dataset seeds per phase. Arrival/event seeds are derived but independent streams. */
+export const PHASE_SEEDS:Record<Phase,number[]>={dev:[1,2],eval:[11,12,13,14,15]};
+export const caseSeeds=(dataset:number):CaseSeeds=>({dataset,arrival:1000+dataset,event:2000+dataset,planner:2026});
+
+/**
+ * BED-BPP split by original order ID, not by seed: sorted IDs, index % 3 === 0 -> development.
+ * A mechanical rule fixed before any post-fix result was seen.
+ */
+const sortedOrders=bedOrderIds().sort();
+export const BED_SPLIT:Record<Phase,string[]>={dev:sortedOrders.filter((_,i)=>i%3===0),eval:sortedOrders.filter((_,i)=>i%3!==0)};
+export function assertDisjointSplit(){const dev=new Set(BED_SPLIT.dev),both=BED_SPLIT.eval.filter(id=>dev.has(id));if(both.length)throw Error(`개발·평가 주문 중복: ${both.join(', ')}`);}
+
+/** Common root candidate budget. Other search effort differs by policy and is recorded per run. */
+export const CANDIDATES=64;
+/**
+ * CoG weights per scoring family. Chosen on development data with the corrected harness
+ * (see docs/benchmarks/single-robot); changing them requires a new run ID.
+ */
+export const COG_WEIGHTS={legacy:60,strategy:1.5};
+/** Transport accelerations reported (assumptions, not measured vehicle values). */
+export const TRANSPORT_G=[.1,.2,.3];
+/** Post-hoc deadline used only to report the share of decisions under it (not enforced). */
+export const REPORT_DEADLINE_MS=250;
+
+export interface SingleRobotPolicy { id:string;label:string;algorithm:Algorithm|'compact';settings:SearchSettings;smallFloorPenalty?:boolean }
+export const STRATEGIES:StrategyId[]=['strategy-greedy','macs','tetris-reserved','dynamic-reservation','lookahead','future-hybrid'];
+export function strategyPolicy(id:StrategyId,com=0):SingleRobotPolicy{
+ return {id:com?`${id}+cog`:id,label:id,algorithm:id,settings:{...ONLINE_SEARCH,maxCandidates:CANDIDATES,
+  strategy:{...DEFAULT_STRATEGY,futureCandidates:8,lookaheadDepth:2,lookaheadSamples:3,lookaheadCandidates:4,weights:{...DEFAULT_STRATEGY.weights,com}}}};
+}
+export function legacyGreedyPolicy(com=0):SingleRobotPolicy{
+ return {id:com?'greedy-inventory+cog':'greedy-inventory',label:'greedy-inventory',algorithm:'greedy',settings:{...DEFAULT_SEARCH,maxCandidates:CANDIDATES,weights:{...DEFAULT_SEARCH.weights,com}}};
+}
+export function compactPolicy(com=0,smallFloorPenalty=true):SingleRobotPolicy{
+ const settings:SearchSettings={...COMPACT_SEARCH,policy:'legacy',inventoryMode:'none',temporaryBuffer:false,maxCandidates:CANDIDATES,portfolio:false,weights:{...COMPACT_SEARCH.weights,com}};
+ return {id:`compact${smallFloorPenalty?'':'-floor'}${com?'+cog':''}`,label:'compact',algorithm:'compact',settings,smallFloorPenalty};
+}
+/** Full evaluation set: every policy with and without the CoG term. */
+export function policies(w=COG_WEIGHTS):SingleRobotPolicy[]{
+ return [compactPolicy(),compactPolicy(0,false),compactPolicy(w.legacy),compactPolicy(w.legacy,false),legacyGreedyPolicy(),legacyGreedyPolicy(w.legacy),
+  ...STRATEGIES.flatMap(id=>[strategyPolicy(id),strategyPolicy(id,w.strategy)])];
+}
+/** Development sweep of the CoG weight on fast policies of each scoring family. */
+export function devSweepPolicies():SingleRobotPolicy[]{
+ return [...[0,20,60,150].flatMap(w=>[{...compactPolicy(w),id:`compact@${w}`},{...compactPolicy(w,false),id:`compact-floor@${w}`}]),
+  ...[0,.2,.5,1.5].flatMap(w=>[{...strategyPolicy('strategy-greedy',w),id:`strategy-greedy@${w}`},{...strategyPolicy('macs',w),id:`macs@${w}`}])];
+}
+
+===== pallet-loading-lab/src/pallet/singleRobot/situations.ts =====
+import { streamInventory,bedOrderItems } from '../relay/streamInventory';
+import { heterogeneousInventory } from '../inventoryGeneration';
+import { rng,shuffled } from '../rng';
+import { volume } from '../geometry';
+import { BED_SPLIT,PHASE_SEEDS,caseSeeds,type CaseSeeds,type Phase } from './config';
+import type { BoxType,Dimensions,Scenario } from '../types';
+
+/**
+ * Environment-side events. `at` is the 0-based arrival index at which the event becomes
+ * observable; nothing about an event is given to the planner before that arrival.
+ * - missing: the box at `at` never arrives; its type count is corrected at that moment.
+ * - damaged: the box arrives damaged and must be isolated, not placed.
+ * - resize: the box arrives with corrected size/weight (catalogue was wrong); observed correctly.
+ * - mismeasure: the first observation is wrong; the true size is measured at pick, before placing.
+ * - buffer-down: the staging buffer accepts no new box for `duration` arrivals.
+ * - disturb: the top box of the current pallet is found displaced by `shiftMm`; the stack must be
+ *   re-verified and, if invalid, quarantined instead of loaded further.
+ */
+export type EventKind='missing'|'damaged'|'resize'|'mismeasure'|'buffer-down'|'disturb';
+export interface HarnessEvent { kind:EventKind;at:number;size?:Dimensions;weight?:number;duration?:number;shiftMm?:number }
+export interface CaseSource { dataset:'synthetic'|'repeated-sku'|'bed-bpp';orderIds:string[];generator:string }
+/** Everything one comparison case needs. `sequence` and `events` stay inside the environment. */
+export interface CaseInput { situation:string;phase:Phase;seeds:CaseSeeds;scenario:Scenario;sequence:string[];events:HarnessEvent[];bufferSize:number;source:CaseSource }
+/** How events are generated: probabilities/ranges are experiment assumptions, not field data. */
+export interface EventProfile { kinds:EventKind[];count:number;sizeChange:[number,number];weightChange:[number,number] }
+export interface Situation { id:string;label:string;question:string;bufferSize:number;events?:EventProfile;build:(phase:Phase,seeds:CaseSeeds)=>CaseInput }
+
+function cell(s:Scenario):Scenario{
+ s.supplyMode='arrival';s.events=[];
+ s.constraints={...s.constraints,robotMode:'gripper',heavyRule:'each',reach:undefined,workspace:{...s.constraints.workspace,xMin:-5000,xMax:5000,yMin:-5000,yMax:5000},stability:{...s.constraints.stability!}};
+ return s;
+}
+type Order='shuffle'|'large-late'|'heavy-late'|'source';
+/** Arrival sequence from the catalogue; the planner never receives it. */
+function arrival(types:BoxType[],order:Order,seed:number):string[]{
+ const pool=types.flatMap(t=>Array.from({length:t.quantity},()=>t.id)),byId=new Map(types.map(t=>[t.id,t]));
+ const q=shuffled(pool,rng(seed));
+ if(order==='large-late')q.sort((a,b)=>volume(byId.get(a)!.size)-volume(byId.get(b)!.size));
+ if(order==='heavy-late')q.sort((a,b)=>byId.get(a)!.weight-byId.get(b)!.weight);
+ return q;
+}
+function events(profile:EventProfile|undefined,s:Scenario,sequence:string[],seed:number):HarnessEvent[]{
+ if(!profile)return [];
+ const random=rng(seed),n=sequence.length,used=new Set<number>(),list:HarnessEvent[]=[],between=([a,b]:[number,number])=>a+random()*(b-a);
+ for(let i=0;i<profile.count;i++){
+  let at=0;do{at=Math.floor(n*.2+random()*n*.6);}while(used.has(at));used.add(at);
+  const kind=profile.kinds[i%profile.kinds.length],t=s.types.find(t=>t.id===sequence[at])!;
+  const scale=(d:Dimensions)=>({w:Math.round(d.w*(1+between(profile.sizeChange))),d:Math.round(d.d*(1+between(profile.sizeChange))),h:Math.round(d.h*(1+between(profile.sizeChange)))});
+  if(kind==='resize')list.push({kind,at,size:scale(t.size),weight:Math.round(t.weight*(1+between(profile.weightChange))*100)/100});
+  else if(kind==='mismeasure')list.push({kind,at,size:scale(t.size)});
+  else if(kind==='buffer-down')list.push({kind,at,duration:5});
+  else if(kind==='disturb')list.push({kind,at,shiftMm:Math.round(between([40,120]))});
+  else list.push({kind,at});
+ }
+ return list.sort((a,b)=>a.at-b.at);
+}
+type Build=(phase:Phase,seeds:CaseSeeds)=>Omit<CaseInput,'situation'>;
+function synthetic(count:number,order:Order,bufferSize=2,profile?:EventProfile,support?:number):Build{
+ return (phase,seeds)=>{
+  const s=cell(streamInventory(seeds.dataset,count));if(support!==undefined)s.constraints.supportRatio=support;
+  const sequence=arrival(s.types,order,seeds.arrival);
+  return {phase,seeds,scenario:s,sequence,events:events(profile,s,sequence,seeds.event),bufferSize,source:{dataset:'synthetic',orderIds:[],generator:`streamInventory(${seeds.dataset},${count})`}};
+ };
+}
+function repeated(order:Order):Build{
+ return (phase,seeds)=>{
+  const s=cell(streamInventory(seeds.dataset,8)),input=heterogeneousInventory({seed:seeds.dataset,typeCount:5,totalCount:60,assortment:'repeated'});
+  s.id='repeated-sku';s.name='반복 규격 5종 60개 · KS T11';s.types=input.types;s.generation=input.generation;s.pallet={width:1100,depth:1100,maxHeight:1500};
+  const sequence=arrival(s.types,order,seeds.arrival);
+  return {phase,seeds,scenario:s,sequence,events:[],bufferSize:2,source:{dataset:'repeated-sku',orderIds:[],generator:`heterogeneousInventory(${seeds.dataset},5,60,repeated)`}};
+ };
+}
+/** BED-BPP from the phase's own order pool only. `count` undefined = one complete order. */
+function bed(order:Order,count?:number):Build{
+ return (phase,seeds)=>{
+  const pool=BED_SPLIT[phase],start=seeds.dataset%pool.length,orderIds:string[]=[],items:ReturnType<typeof bedOrderItems>=[];
+  for(let k=0;k<pool.length&&(count===undefined?orderIds.length<1:items.length<count);k++){const id=pool[(start+k)%pool.length];orderIds.push(id);items.push(...bedOrderItems(id));}
+  const chosen=count===undefined?items:items.slice(0,count),s=cell(streamInventory(seeds.dataset,8));
+  s.id='bed-bpp';s.name=`BED-BPP ${orderIds.join('+')}`;s.pallet={width:1200,depth:800,maxHeight:1600};
+  s.constraints.standingHeight={enabled:false,maxRiseMm:100};s.constraints.stability={...s.constraints.stability!,slendernessMode:'score'};
+  // One catalogue entry per distinct (size, weight); the source sequence stays environment-side.
+  const key=(i:typeof chosen[number])=>`${i.size.w}x${i.size.d}x${i.size.h}@${i.weight}`,types=new Map<string,BoxType>();
+  for(const item of chosen){const k=key(item),t=types.get(k);if(t)t.quantity++;else types.set(k,{id:k,name:k,size:{...item.size},weight:item.weight,quantity:1,orientations:[0,90],material:'unknown',color:'#a9c4b0'});}
+  s.types=[...types.values()];
+  const sequence=order==='source'?chosen.map(key):arrival(s.types,order,seeds.arrival);
+  return {phase,seeds,scenario:s,sequence,events:[],bufferSize:2,source:{dataset:'bed-bpp',orderIds,generator:`BED-BPP v1 subset · ${count??'complete order'} · ${order}`}};
+ };
+}
+const exceptions=(kinds:EventKind[],count:number):EventProfile=>({kinds,count,sizeChange:[-.12,.12],weightChange:[-.3,.3]});
+function def(id:string,label:string,question:string,build:Build,profile?:EventProfile):Situation{
+ const probe=build('dev',caseSeeds(PHASE_SEEDS.dev[0]));
+ return {id,label,question,bufferSize:probe.bufferSize,events:profile,build:(phase,seeds)=>({situation:id,...build(phase,seeds)})};
+}
+
+/** Normal comparison situations (no events) and exception situations (same events for every policy). */
+export const SITUATIONS:Situation[]=[
+ def('mixed-small','다품종 소량 20개','한 팔레트도 다 채우지 않는 주문에서 부분 팔레트의 균형',synthetic(20,'shuffle')),
+ def('mixed-48','다품종 48개 · 무작위','모두 다른 박스가 무작위로 올 때 기본 성능',synthetic(48,'shuffle')),
+ def('mixed-96','다품종 96개 · 무작위','여러 팔레트가 필요한 대량 주문',synthetic(96,'shuffle')),
+ def('mixed-large-late','다품종 48개 · 큰 박스 늦게','받침이 될 큰 박스가 나중에 올 때 공간 보존',synthetic(48,'large-late')),
+ def('mixed-heavy-late','다품종 48개 · 무거운 박스 늦게','무거운 박스가 나중에 올 때 하중 규칙과 무게중심',synthetic(48,'heavy-late')),
+ def('mixed-no-buffer','다품종 48개 · 대기 자리 없음','못 놓는 박스를 잠시 둘 곳이 없을 때',synthetic(48,'shuffle',0)),
+ def('mixed-support-80','다품종 48개 · 지지 기준 80%','지지면적 기준 92%→80% 완화 시 순위 변화',synthetic(48,'shuffle',2,undefined,.8)),
+ def('repeated-sku','소품종 반복 5종 60개','같은 규격이 반복될 때 미래 수량 정보의 가치',repeated('shuffle')),
+ def('bed-bpp-order','BED-BPP 주문 · 원래 순서','공개 데이터 주문을 원래 순서 그대로 처리',bed('source')),
+ def('bed-bpp-shuffle','BED-BPP 결합 80개 · 무작위','실제 치수·중량 분포를 무작위 순서로',bed('shuffle',80)),
+ def('event-missing','예외 · 누락 2건','확인된 누락 후 잔량 정정',synthetic(48,'shuffle',2,exceptions(['missing'],2)),exceptions(['missing'],2)),
+ def('event-damaged','예외 · 파손 2건','파손 박스 격리',synthetic(48,'shuffle',2,exceptions(['damaged'],2)),exceptions(['damaged'],2)),
+ def('event-resize','예외 · 규격/중량 정정 3건','카탈로그와 다른 실제 규격·중량',synthetic(48,'shuffle',2,exceptions(['resize'],3)),exceptions(['resize'],3)),
+ def('event-buffer-down','예외 · 버퍼 일시 사용 불가','대기 자리를 잠시 못 쓸 때',synthetic(48,'shuffle',2,exceptions(['buffer-down'],2)),exceptions(['buffer-down'],2)),
+ def('event-combined','복합 예외 · 사건 6건 + 측정 오차','여러 사건과 입력 오차가 겹칠 때',synthetic(48,'shuffle',2,exceptions(['missing','damaged','resize','mismeasure','buffer-down','disturb'],6)),exceptions(['missing','damaged','resize','mismeasure','buffer-down','disturb'],6)),
+];
+export const NORMAL_SITUATIONS=SITUATIONS.filter(s=>!s.events);
+export const EVENT_SITUATIONS=SITUATIONS.filter(s=>!!s.events);
+export function buildCase(situation:string,phase:Phase,dataset:number):CaseInput{
+ const s=SITUATIONS.find(x=>x.id===situation);if(!s)throw Error(`unknown situation ${situation}`);return s.build(phase,caseSeeds(dataset));
+}
+/** Source order IDs behind a case (BED-BPP only). */
+export const sourceOrders=(c:CaseInput)=>c.source.orderIds;
+export { PHASE_SEEDS };
+export { compactPolicy,legacyGreedyPolicy,strategyPolicy,policies } from './config';
+
+===== pallet-loading-lab/src/pallet/singleRobot/compare.ts =====
+import { plan } from '../planner';
+import { inspectConstraints,constraintMeter } from '../constraints';
+import { candidateMeter } from '../candidates';
+import { stability } from '../stability';
+import { volume,top,intersects,EPS } from '../geometry';
+import { loadSummary } from '../features';
+import { loadCom,comOffsetRatio,transportMargin,palletUnitMargin,slidingRisk,type PalletUnitModel } from '../palletCom';
+import { rankCompactSites } from '../relay/streamPlanner';
+import { isStrategy,type ReservationState } from '../strategies/PackingStrategy';
+import { HARNESS_VERSION,TRANSPORT_G,type SingleRobotPolicy } from './config';
+import type { CaseInput,HarnessEvent } from './situations';
+import type { Algorithm,Analysis,BoxType,Candidate,Observation,Placement,PlanningInput,Scenario } from '../types';
+
+export type { SingleRobotPolicy } from './config';
+/** Observation-only hook: sees every planner input with the harness inventory state. */
+export type PlannerAudit=(input:PlanningInput,state:{buffered:readonly Observation[];placedTotal:number;unplaceable:number;total:number})=>void;
+export interface RunOptions { audit?:PlannerAudit;palletUnit?:PalletUnitModel;transportG?:number[] }
+
+type Status='pass'|'fail'|'unverified';
+export interface HistoryEntry { seq:number;arrival:number;action:'missing'|'arrive'|'isolate-damaged'|'place'|'no-candidate'|'commit-reject'|'remeasure'|'buffer'|'unbuffer'|'unplaceable'|'close'|'event';box?:string;pallet:number;position?:{x:number;y:number;z:number};orientation?:string|number;reasons?:string[];ms?:number;note?:string }
+export interface EventRecord { event:HarnessEvent;box?:string;outcome:string;before:{pallet:number;boxesOnPallet:number;buffered:number};after?:{pallet:number;boxesOnPallet:number;buffered:number};replans:number;plannerMs:number }
+export interface PalletRecord {
+ index:number;closedBy:'candidate-exhaustion'|'buffer-flush'|'order-complete'|'quarantined';boxes:number;mass:number;volume:number;fill:number;heightMm:number;
+ comOffset:number|null;comHeightMm:number|null;minSupportRatio:number;minLocalReserveMm:number;loadUtilization:number;unknownCapacity:number;
+ transport:{loose:Record<string,number>;wrapped:Record<string,number>;palletUnit:Record<string,number>|null};slidingBoxes:Record<string,number>;
+ audit:{violations:Record<string,number>;checks:Record<string,Status>};
+}
+export interface SingleRobotRun {
+ schema:'single-robot-run/2';harness:string;situation:string;phase:string;policy:string;seeds:CaseInput['seeds'];source:CaseInput['source'];
+ config:{policy:SingleRobotPolicy;bufferSize:number;pallet:Scenario['pallet'];constraints:Scenario['constraints'];transportG:number[];palletUnit:PalletUnitModel|null};
+ events:HarnessEvent[];
+ fitness:{status:Status;violations:Record<string,number>;checks:Record<string,Status>;scope:string;quarantinedPallets:number};
+ performance:{total:number;arrived:number;missing:number;isolatedDamaged:number;unplaceable:number;quarantinedBoxes:number;completed:number;demand:number;completionRate:number|null;
+  pallets:number;utilization:number|null;closedFillMean:number|null;closeReasons:Record<string,number>};
+ stability:{minSupportRatio:number|null;minLocalReserveMm:number|null;meanComOffset:number|null;worstComOffset:number|null;maxComHeightMm:number|null;maxLoadUtilization:number|null;
+  transport:{loose:Record<string,number|null>;wrapped:Record<string,number|null>;palletUnit:Record<string,number|null>|null};slidingBoxes:Record<string,number>};
+ robot:{placementSeconds:number;bufferHandlingSeconds:null;palletExchangeSeconds:null;excluded:string[];rehandles:number;commitRejected:number;feasibilityRejections:Record<string,number>};
+ compute:{samplesMs:number[];plannerCalls:number};
+ effort:{plannerCalls:number;candidateSets:number;candidatesGenerated:number;candidatesChecked:number;constraintChecks:number;searchNodes:number;rolloutCalls:number};
+ robustness:{events:number;outcomes:Record<string,number>;records:EventRecord[];success:boolean};
+ history:HistoryEntry[];pallets:PalletRecord[];
+}
+
+/** Order-free planner catalogue: canonical sort by physical properties, opaque IDs and names. */
+export function catalogue(types:readonly BoxType[]){
+ const seen=new Set<string>();for(const t of types){if(seen.has(t.id))throw Error(`중복 상품 ID: ${t.id}`);seen.add(t.id);}
+ const key=(t:BoxType)=>JSON.stringify([t.size.w,t.size.d,t.size.h,t.weight,t.orientations,t.handling??'',t.material??'',t.maxLoadKg??null,t.maxLoadByAxis??null,t.strengthFactor??null,t.friction??null,t.packaging??null]);
+ const sorted=[...types].sort((a,b)=>key(a)<key(b)?-1:key(a)>key(b)?1:0),toOpaque=new Map<string,string>();
+ const list=sorted.map((t,i)=>{const id=`T${String(i+1).padStart(3,'0')}`;toOpaque.set(t.id,id);return {...structuredClone(t),id,name:id,color:'#9aa5a0'};});
+ return {types:list,toOpaque};
+}
+function observe(t:BoxType,id:string,over?:{size?:BoxType['size'];weight?:number}):Observation{
+ return {id,typeId:t.id,size:{...(over?.size??t.size)},weight:over?.weight??t.weight,status:'normal',orientationAllowed:[...t.orientations],packaging:t.packaging,maxLoadKg:t.maxLoadKg,
+  maxLoadSource:t.maxLoadSource,maxLoadByAxis:t.maxLoadByAxis,handling:t.handling,material:t.material,strengthFactor:t.strengthFactor,friction:t.friction};
+}
+function validateCase(c:CaseInput){
+ const counts=new Map<string,number>();for(const id of c.sequence)counts.set(id,(counts.get(id)??0)+1);
+ for(const t of c.scenario.types)if((counts.get(t.id)??0)!==t.quantity)throw Error(`입고 순서와 수량 불일치: ${t.id}`);
+ if(c.sequence.length!==c.scenario.types.reduce((n,t)=>n+t.quantity,0))throw Error('입고 순서에 카탈로그에 없는 상품이 있습니다.');
+ const at=new Set<number>();for(const e of c.events){if(!Number.isInteger(e.at)||e.at<0||e.at>=c.sequence.length||at.has(e.at))throw Error(`사건 위치 오류: ${e.kind}@${e.at}`);at.add(e.at);}
+}
+const category=(reason:string)=>/^SUPPORT|지지 조건/.test(reason)?'support':/무게 규칙/.test(reason)?'heavy-rule':/재질 허용|LOAD:|하중/.test(reason)?'load':/무게중심|평형|전도/.test(reason)?'local-stability':
+ /기둥|slender/i.test(reason)?'slenderness':/세로 박스|높이 부족|돌출 높이/.test(reason)?'standing-height':/겹침|경계 밖|최대 적재 높이|바닥 아래/.test(reason)?'geometry':/TRANSPORT/.test(reason)?'transport':/그리퍼|작업공간|도달|가반/.test(reason)?'robot':'other';
+
+/**
+ * Independent re-verification of a final stack: geometry without the planner checks, then a
+ * rebuild that re-inspects every box in commit order against the boxes before it.
+ */
+export function auditStack(stack:readonly Placement[],s:Scenario,observed:Map<string,Observation>){
+ const p=s.pallet,violations:Record<string,number>={},add=(k:string)=>violations[k]=(violations[k]??0)+1;
+ for(const b of stack){if(b.position.x< -EPS||b.position.y< -EPS||b.position.z< -EPS||b.position.x+b.size.w>p.width+EPS||b.position.y+b.size.d>p.depth+EPS||top(b)>p.maxHeight+EPS)add('geometry');}
+ for(let i=0;i<stack.length;i++)for(let j=i+1;j<stack.length;j++)if(intersects(stack[i],stack[j],s.constraints.horizontalGap))add('geometry');
+ let rebuilt:Placement[]=[];const c={...s.constraints,robotMode:'ideal' as const};
+ for(const b of stack){const o=observed.get(b.id);if(!o){add('other');continue;}
+  const r=inspectConstraints({...b,supports:[],supportRatio:0,loadAbove:0},o,rebuilt,p,c);for(const reason of new Set(r.reasons.map(category)))add(reason);rebuilt=r.stack;}
+ const loads=loadSummary([...stack],s.constraints.stability),cats=['geometry','support','heavy-rule','load','local-stability','slenderness','standing-height'];
+ const checks:Record<string,Status>=Object.fromEntries(cats.map(k=>[k,violations[k]?'fail':'pass']));
+ if(!violations.load&&loads.unknownCapacity>0)checks.load='unverified';
+ Object.assign(checks,{'robot-path-approximate':'pass','robot-joint-ik':'unverified','measured-compression-strength':'unverified','dynamic-transport':'unverified'});
+ return {violations,checks,rebuilt,loads};
+}
+
+function choose(policy:SingleRobotPolicy,input:PlanningInput){
+ const start=performance.now();
+ if(policy.algorithm==='compact'){const {candidates,inspected}=rankCompactSites(input,{smallFloorPenalty:policy.smallFloorPenalty});
+  const rejections:Record<string,number>={};if(!candidates.length)for(const c of inspected)for(const r of c.reasons)rejections[category(r)]=(rejections[category(r)]??0)+1;
+  return {candidate:candidates[0] as Candidate|undefined,analysis:null as Analysis|null,rejections,ms:performance.now()-start};}
+ const analysis=plan(input),candidate=analysis.candidates.find(c=>c.id===analysis.selectedId&&c.valid),rejections:Record<string,number>={};
+ if(!candidate)for(const [r,n] of Object.entries(analysis.rejections))rejections[category(r)]=(rejections[category(r)]??0)+n;
+ return {candidate,analysis,rejections,ms:performance.now()-start};
+}
+
+/**
+ * Runs one case on a single robot cell. The environment owns the arrival sequence and events and
+ * reveals each only at its arrival index. Planners see an order-free catalogue, the current box,
+ * the placed stack and remaining demand split into not-yet-arrived and buffered boxes.
+ * A box with no valid candidate waits in the buffer (capacity per case; 0 during buffer-down).
+ * When the buffer is full the pallet is closed and the box retried on an empty pallet; a box that
+ * fits no empty pallet is isolated as unplaceable. Every commit is rechecked; every closed pallet
+ * is independently re-audited; box conservation is asserted at the end.
+ */
+export function runSingleRobot(c:CaseInput,policy:SingleRobotPolicy,options:RunOptions={}):SingleRobotRun{
+ validateCase(c);
+ const s=c.scenario,cat=catalogue(s.types),byOpaque=new Map(cat.types.map(t=>[t.id,t])),gs=options.transportG??TRANSPORT_G;
+ const sequence=c.sequence.map(id=>cat.toOpaque.get(id)!),events=new Map(c.events.map(e=>[e.at,e])),total=sequence.length;
+ const unarrived:Record<string,number>=Object.fromEntries(cat.types.map(t=>[t.id,t.quantity])),arrivedOfType:Record<string,number>={};
+ const meter0={...candidateMeter},constraint0=constraintMeter.calls,history:HistoryEntry[]=[],records:EventRecord[]=[],pallets:PalletRecord[]=[],samples:number[]=[];
+ const observed=new Map<string,Observation>(),eventOf=new Map<string,EventRecord>(),feasibility:Record<string,number>={};
+ type Entry={obs:Observation;truth?:Observation};
+ let placed:Placement[]=[],buffer:Entry[]=[],held:Entry|undefined,state:ReservationState|undefined,step=0,seq=0,arrival=-1,downUntil=-1;
+ let placedTotal=0,unplaceable=0,missing=0,damaged=0,quarantinedBoxes=0,rehandles=0,commitRejected=0,placementSeconds=0,nodes=0,rollouts=0;
+ const log=(e:Omit<HistoryEntry,'seq'|'arrival'|'pallet'>)=>history.push({seq:seq++,arrival,pallet:pallets.length,...e});
+ const snapshot=()=>({pallet:pallets.length,boxesOnPallet:placed.length,buffered:buffer.length});
+ const waiting=()=>held&&!buffer.includes(held)?[...buffer,held]:buffer;
+ const demand=(except?:Entry)=>{const buffered:Record<string,number>={};for(const b of waiting())if(b!==except)buffered[b.obs.typeId]=(buffered[b.obs.typeId]??0)+1;
+  const remaining:Record<string,number>={};for(const t of cat.types){const n=(unarrived[t.id]??0)+(buffered[t.id]??0);if(n)remaining[t.id]=n;}return {remaining,pending:{unarrived:{...unarrived},buffered}};};
+ const input=(e:Entry):PlanningInput=>{const d=demand(e);return {runId:`${policy.id}`,stepId:step++,pallet:structuredClone(s.pallet),types:structuredClone(cat.types),constraints:structuredClone(s.constraints),
+  placements:placed,current:structuredClone(e.obs),remaining:d.remaining,pending:d.pending,algorithm:(policy.algorithm==='compact'?'greedy':policy.algorithm) as Algorithm,settings:{...structuredClone(policy.settings),plannerSeed:c.seeds.planner},
+  ...(isStrategy(policy.algorithm)&&state?{strategyState:structuredClone(state)}:{})};};
+ const attempt=(e:Entry):'placed'|'no-candidate'|'remeasure'|'rejected'=>{
+  const planned=input(e);options.audit?.(planned,{buffered:waiting().filter(b=>b!==e).map(b=>b.obs),placedTotal,unplaceable,total});
+  const r=choose(policy,planned);samples.push(r.ms);nodes+=r.analysis?.nodes??0;rollouts+=r.analysis?.rolloutCalls??0;
+  const er=eventOf.get(e.obs.id);if(er){er.replans++;er.plannerMs+=r.ms;}
+  if(!r.candidate){for(const [k,n] of Object.entries(r.rejections))feasibility[k]=(feasibility[k]??0)+n;log({action:'no-candidate',box:e.obs.id,ms:r.ms,reasons:Object.keys(r.rejections)});return 'no-candidate';}
+  const truth=e.truth??e.obs,checked=inspectConstraints(r.candidate.placement,truth,placed,s.pallet,s.constraints);
+  if(checked.reasons.length){
+   if(e.truth){log({action:'remeasure',box:e.obs.id,reasons:checked.reasons.slice(0,2)});e.obs=e.truth;delete e.truth;return 'remeasure';}
+   commitRejected++;log({action:'commit-reject',box:e.obs.id,reasons:checked.reasons.slice(0,3)});return 'rejected';
+  }
+  placed=checked.stack;placedTotal++;placementSeconds+=checked.path.seconds;observed.set(truth.id,truth);if(r.analysis?.strategyState)state=r.analysis.strategyState;
+  const at=checked.placement;log({action:'place',box:e.obs.id,ms:r.ms,position:{...at.position},orientation:at.orientation});
+  if(er){er.outcome=er.event.kind==='mismeasure'?'remeasured-placed':'placed';er.after=snapshot();}
+  return 'placed';
+ };
+ const place=(e:Entry)=>{let r=attempt(e);if(r==='remeasure')r=attempt(e);return r==='placed';};
+ const drain=()=>{let progress=true;while(progress){progress=false;for(const b of [...buffer])if(place(b)){buffer=buffer.filter(x=>x!==b);rehandles++;log({action:'unbuffer',box:b.obs.id});progress=true;}}};
+ const close=(by:PalletRecord['closedBy'])=>{
+  if(!placed.length)return;const rec=palletRecord(s,placed,pallets.length,by,observed,gs,options.palletUnit);pallets.push(rec);
+  if(by==='quarantined')quarantinedBoxes+=placed.length;log({action:'close',note:by});placed=[];state=undefined;
+ };
+ const capacity=()=>arrival<downUntil?0:c.bufferSize;
+ const isolate=(e:Entry,why:string)=>{unplaceable++;log({action:'unplaceable',box:e.obs.id,note:why});const er=eventOf.get(e.obs.id);if(er){er.outcome='isolated-unplaceable';er.after=snapshot();}};
+ for(arrival=0;arrival<total;arrival++){
+  const typeId=sequence[arrival],t=byOpaque.get(typeId)!,ev=events.get(arrival);
+  if(ev?.kind==='disturb'){const rec:EventRecord={event:ev,outcome:'not-applicable',before:snapshot(),replans:0,plannerMs:0};records.push(rec);
+   if(placed.length){const i=placed.reduce((k,b,j)=>top(b)>top(placed[k])?j:k,0),moved=placed.map((b,j)=>j===i?{...b,position:{...b.position,x:b.position.x+ev.shiftMm!}}:b);
+    const a=auditStack(moved,s,observed);log({action:'event',note:`disturb ${placed[i].id} +${ev.shiftMm}mm`});
+    if(Object.keys(a.violations).length){placed=moved;close('quarantined');rec.outcome='pallet-quarantined';}else{placed=a.rebuilt;rec.outcome='verified-continue';}}
+   rec.after=snapshot();}
+  if(ev?.kind==='buffer-down'){downUntil=arrival+(ev.duration??1);records.push({event:ev,outcome:'buffer-unavailable',before:snapshot(),after:snapshot(),replans:0,plannerMs:0});log({action:'event',note:`buffer-down ${ev.duration}`});}
+  unarrived[typeId]--;
+  if(ev?.kind==='missing'){missing++;records.push({event:ev,outcome:'count-corrected',before:snapshot(),after:snapshot(),replans:0,plannerMs:0});log({action:'missing',note:typeId});continue;}
+  const n=(arrivedOfType[typeId]=(arrivedOfType[typeId]??0)+1),id=`${typeId}#${n}`;
+  if(ev?.kind==='damaged'){damaged++;records.push({event:ev,box:id,outcome:'isolated-damaged',before:snapshot(),after:snapshot(),replans:0,plannerMs:0});log({action:'isolate-damaged',box:id});continue;}
+  const truth=ev?.kind==='resize'?observe(t,id,{size:ev.size,weight:ev.weight}):observe(t,id),e:Entry=ev?.kind==='mismeasure'?{obs:observe(t,id,{size:ev.size}),truth}:{obs:truth};
+  if(ev?.kind==='resize'||ev?.kind==='mismeasure'){const rec:EventRecord={event:ev,box:id,outcome:'pending',before:snapshot(),replans:0,plannerMs:0};records.push(rec);eventOf.set(id,rec);}
+  log({action:'arrive',box:id});held=e;
+  if(place(e)){held=undefined;drain();continue;}
+  if(buffer.length<capacity()){buffer.push(e);held=undefined;rehandles++;log({action:'buffer',box:id});continue;}
+  close('candidate-exhaustion');drain();
+  if(place(e)){held=undefined;drain();continue;}
+  if(buffer.length<capacity()){buffer.push(e);held=undefined;rehandles++;log({action:'buffer',box:id});continue;}
+  held=undefined;isolate(e,'빈 팔레트에도 유효 후보 없음');
+ }
+ arrival=total;drain();
+ while(buffer.length){close('buffer-flush');const before=buffer.length;drain();if(buffer.length===before){for(const b of buffer)isolate(b,'주문 종료 · 빈 팔레트에도 유효 후보 없음');buffer=[];}}
+ close('order-complete');
+ for(const r of records)if(r.outcome==='pending'){r.outcome='unresolved';r.after=snapshot();}
+
+ // Box conservation: every declared box ends in exactly one terminal state.
+ const shipped=pallets.filter(p=>p.closedBy!=='quarantined'),completed=shipped.reduce((n,p)=>n+p.boxes,0);
+ const placedIds=history.filter(h=>h.action==='place').map(h=>h.box!);
+ if(new Set(placedIds).size!==placedIds.length)throw Error('중복 적재 검출');
+ if(completed+quarantinedBoxes!==placedTotal||completed+quarantinedBoxes+unplaceable+damaged+missing!==total)throw Error(`박스 수량 보존 위반: ${completed}+${quarantinedBoxes}+${unplaceable}+${damaged}+${missing}≠${total}`);
+
+ const violations:Record<string,number>={},checks:Record<string,Status>={};
+ for(const p of shipped){for(const [k,n] of Object.entries(p.audit.violations))violations[k]=(violations[k]??0)+n;
+  for(const [k,v] of Object.entries(p.audit.checks))checks[k]=checks[k]==='fail'||v==='fail'?'fail':checks[k]==='unverified'||v==='unverified'?'unverified':'pass';}
+ const failed=Object.values(checks).includes('fail'),capacityMm3=s.pallet.width*s.pallet.depth*s.pallet.maxHeight,closed=shipped.filter(p=>p.closedBy!=='order-complete');
+ const minOf=(f:(p:PalletRecord)=>number)=>shipped.length?Math.min(...shipped.map(f)):null,maxOf=(f:(p:PalletRecord)=>number)=>shipped.length?Math.max(...shipped.map(f)):null;
+ const perG=(f:(p:PalletRecord)=>Record<string,number>|null)=>Object.fromEntries(gs.map(g=>[String(g),shipped.length&&shipped.every(p=>f(p))?Math.min(...shipped.map(p=>f(p)![String(g)])):null]));
+ const offsets=shipped.filter(p=>p.comOffset!==null).map(p=>p.comOffset!),closeReasons:Record<string,number>={};for(const p of pallets)closeReasons[p.closedBy]=(closeReasons[p.closedBy]??0)+1;
+ const demandTotal=total-missing-damaged,outcomes:Record<string,number>={};for(const r of records)outcomes[r.outcome]=(outcomes[r.outcome]??0)+1;
+ const completionRate=demandTotal?completed/demandTotal:null;
+ return {schema:'single-robot-run/2',harness:HARNESS_VERSION,situation:c.situation,phase:c.phase,policy:policy.id,seeds:c.seeds,source:c.source,
+  config:{policy:structuredClone(policy),bufferSize:c.bufferSize,pallet:structuredClone(s.pallet),constraints:structuredClone(s.constraints),transportG:gs,palletUnit:options.palletUnit??null},
+  events:structuredClone(c.events),
+  fitness:{status:failed?'fail':'pass',violations,checks,scope:'출고 팔레트 최종 상태의 독립 재검사(기하·지지·하중 규칙·재질 하중·국부 안정·높이 규칙) + 매 확정 시 공통 제약 재검사',quarantinedPallets:pallets.length-shipped.length},
+  performance:{total,arrived:total-missing,missing,isolatedDamaged:damaged,unplaceable,quarantinedBoxes,completed,demand:demandTotal,completionRate,
+   pallets:shipped.length,utilization:shipped.length?shipped.reduce((n,p)=>n+p.volume,0)/(shipped.length*capacityMm3):null,closedFillMean:closed.length?closed.reduce((n,p)=>n+p.fill,0)/closed.length:null,closeReasons},
+  stability:{minSupportRatio:minOf(p=>p.minSupportRatio),minLocalReserveMm:minOf(p=>p.minLocalReserveMm),meanComOffset:offsets.length?offsets.reduce((a,b)=>a+b,0)/offsets.length:null,worstComOffset:offsets.length?Math.max(...offsets):null,
+   maxComHeightMm:maxOf(p=>p.comHeightMm??0),maxLoadUtilization:maxOf(p=>p.loadUtilization),
+   transport:{loose:perG(p=>p.transport.loose),wrapped:perG(p=>p.transport.wrapped),palletUnit:options.palletUnit?perG(p=>p.transport.palletUnit):null},
+   slidingBoxes:Object.fromEntries(gs.map(g=>[String(g),shipped.reduce((n,p)=>n+p.slidingBoxes[String(g)],0)]))},
+  robot:{placementSeconds,bufferHandlingSeconds:null,palletExchangeSeconds:null,excluded:['buffer-handling','pallet-exchange'],rehandles,commitRejected,feasibilityRejections:feasibility},
+  compute:{samplesMs:samples,plannerCalls:samples.length},
+  effort:{plannerCalls:samples.length,candidateSets:candidateMeter.calls-meter0.calls,candidatesGenerated:candidateMeter.generated-meter0.generated,candidatesChecked:candidateMeter.checked-meter0.checked,
+   constraintChecks:constraintMeter.calls-constraint0,searchNodes:nodes,rolloutCalls:rollouts},
+  robustness:{events:records.length,outcomes,records,success:completionRate===1&&!failed},
+  history,pallets};
+}
+
+function palletRecord(s:Scenario,placed:Placement[],index:number,closedBy:PalletRecord['closedBy'],observed:Map<string,Observation>,gs:number[],unit?:PalletUnitModel):PalletRecord{
+ const p=s.pallet,{mass,center}=loadCom(placed),v=placed.reduce((n,b)=>n+volume(b.size),0),audit=auditStack(placed,s,observed);
+ const loose:Record<string,number>={},wrapped:Record<string,number>={},pu:Record<string,number>={},sliding:Record<string,number>={};
+ for(const g of gs){const t=transportMargin(placed,p,g,s.constraints.stability);loose[g]=t.looseMarginMm;wrapped[g]=t.wrappedMarginMm;const u=palletUnitMargin(placed,p,g,unit);if(u!==null)pu[g]=u;sliding[g]=slidingRisk(placed,g).length;}
+ const raised=placed.filter(b=>b.position.z>EPS);
+ return {index,closedBy,boxes:placed.length,mass,volume:v,fill:v/(p.width*p.depth*p.maxHeight),heightMm:Math.max(0,...placed.map(top)),
+  comOffset:center?comOffsetRatio(center,p):null,comHeightMm:center?center.z:null,minSupportRatio:raised.length?Math.min(...raised.map(b=>b.supportRatio)):1,
+  minLocalReserveMm:stability(placed,s.constraints.stability).minReserve,loadUtilization:audit.loads.loadUtilization,unknownCapacity:audit.loads.unknownCapacity,
+  transport:{loose,wrapped,palletUnit:unit?pu:null},slidingBoxes:sliding,audit:{violations:audit.violations,checks:audit.checks}};
+}
+
+===== pallet-loading-lab/src/pallet/palletCom.ts =====
+import { massCenter } from './packaging/spec';
+import { convexHull,EPS } from './geometry';
+import { stability } from './stability';
+import { DEFAULT_STABILITY } from './types';
+import type { Pallet,Placement,Vec3,BoxType,StabilitySettings } from './types';
+
+/** Whole-load centre of mass on the pallet. Box CoG offsets come from BoxSpec when present. */
+export function loadCom(placed:readonly Pick<Placement,'position'|'size'|'orientation'|'packaging'|'weight'>[]):{mass:number;center:Vec3|null}{
+ const mass=placed.reduce((n,b)=>n+b.weight,0);if(!(mass>0))return {mass:0,center:null};
+ const c={x:0,y:0,z:0};for(const b of placed){const m=massCenter(b);c.x+=m.x*b.weight;c.y+=m.y*b.weight;c.z+=m.z*b.weight;}
+ return {mass,center:{x:c.x/mass,y:c.y/mass,z:c.z/mass}};
+}
+/** Larger axis offset from the pallet centre, as a fraction of that half dimension (0 centre, 1 edge). */
+export function comOffsetRatio(center:Vec3,p:Pallet){return Math.max(Math.abs(center.x-p.width/2)/(p.width/2),Math.abs(center.y-p.depth/2)/(p.depth/2));}
+/** Mean known box mass. Uses declared types and quantities only, never the arrival order. */
+export function meanTypeMass(types:readonly BoxType[]){const n=types.reduce((s,t)=>s+t.quantity,0);return n?types.reduce((s,t)=>s+t.weight*t.quantity,0)/n:0;}
+/**
+ * Soft whole-load balance cost after a placement: offset ratio x mass ramp.
+ * The ramp M/(M+4m) keeps the first few light boxes from dominating the decision and
+ * approaches 1 as the load grows (m = mean known box mass, or the placed mean when unknown).
+ */
+export function comCost(placed:readonly Placement[],p:Pallet,meanMass?:number){
+ const {mass,center}=loadCom(placed);if(!center)return {offset:0,ramp:0,cost:0};
+ const m=meanMass&&meanMass>0?meanMass:mass/placed.length,offset=comOffsetRatio(center,p),ramp=mass/(mass+4*m);
+ return {offset,ramp,cost:offset*ramp};
+}
+/**
+ * Transport tipping margins under a horizontal acceleration a (in g), two cargo models:
+ * - loose: no wrapping. At every contact plane, the resultant of the box and all transmitted
+ *   upper loads must stay inside that plane's support hull by h·a (h = resultant height above
+ *   the plane). Uses the same equilibrium/stability model as placement checks.
+ * - wrapped: the load moves as one rigid block on the hull of its floor contacts.
+ * Neither model includes the pallet itself; see palletUnitMargin.
+ */
+export function transportMargin(placed:readonly Placement[],p:Pallet,accelerationG:number,base:StabilitySettings=DEFAULT_STABILITY){
+ if(!placed.length)return {looseMarginMm:Infinity,wrappedMarginMm:Infinity};
+ const loose=stability([...placed],{...base,minMarginRatio:0,lateralAccelerationG:accelerationG}).minReserve;
+ const {center}=loadCom(placed),hull=convexHull(placed.filter(b=>Math.abs(b.position.z)<=EPS).flatMap(b=>corners(b)));
+ const wrapped=center&&hull.length>=3?edgeMargin(hull,center)-center.z*accelerationG:-Infinity;
+ return {looseMarginMm:loose,wrappedMarginMm:wrapped};
+}
+/** Explicit coupling model for the loaded pallet as one unit on its own footprint. */
+export interface PalletUnitModel { palletMassKg:number;deckHeightMm:number;source:string }
+/**
+ * Loaded-pallet tipping on the pallet footprint. Valid only when the cargo is coupled to the
+ * pallet (e.g. wrapped to the deck): the caller must supply the pallet mass, deck height and the
+ * source of that assumption. Returns null without a model so it is reported as unverified.
+ */
+export function palletUnitMargin(placed:readonly Placement[],p:Pallet,accelerationG:number,model?:PalletUnitModel){
+ if(!model)return null;
+ const {mass,center}=loadCom(placed),m=mass+model.palletMassKg;
+ const cx=center?(center.x*mass+p.width/2*model.palletMassKg)/m:p.width/2,cy=center?(center.y*mass+p.depth/2*model.palletMassKg)/m:p.depth/2;
+ const cz=((center?center.z+model.deckHeightMm:0)*mass+model.deckHeightMm/2*model.palletMassKg)/m;
+ return Math.min(cx,p.width-cx,cy,p.depth-cy)-cz*accelerationG;
+}
+const corners=(b:Pick<Placement,'position'|'size'>)=>[{x:b.position.x,y:b.position.y},{x:b.position.x+b.size.w,y:b.position.y},{x:b.position.x+b.size.w,y:b.position.y+b.size.d},{x:b.position.x,y:b.position.y+b.size.d}];
+function edgeMargin(hull:{x:number;y:number}[],c:Vec3){return Math.min(...hull.map((a,i)=>{const b=hull[(i+1)%hull.length];return ((b.x-a.x)*(c.y-a.y)-(b.y-a.y)*(c.x-a.x))/Math.hypot(b.x-a.x,b.y-a.y);}));}
+/** Boxes whose friction coefficient is below a/g would slide if the load is not wrapped. */
+export function slidingRisk(placed:readonly Placement[],accelerationG:number,defaultFriction=.6){
+ return placed.filter(b=>(b.friction??defaultFriction)<accelerationG).map(b=>b.id);
+}
+
+===== pallet-loading-lab/scripts/single-robot-benchmark.ts =====
+// Single-robot comparison runner.
+//   npm run benchmark:single -- --phase eval --run-id <id> --shard 0/8 [--policy-set full|cog-sweep] [--situations a,b] [--policies a,b] [--datasets 11,12]
+// Each run ID gets its own directory with manifest.json (planned keys + config hashes) and one
+// runs-<shard>.jsonl per shard. Existing shard files are never appended to.
+import { appendFileSync,existsSync,mkdirSync,readFileSync,writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { execSync } from 'node:child_process';
+import os from 'node:os';
+import { fileURLToPath } from 'node:url';
+import { runSingleRobot } from '../src/pallet/singleRobot/compare';
+import { SITUATIONS,NORMAL_SITUATIONS } from '../src/pallet/singleRobot/situations';
+import { PHASE_SEEDS,caseSeeds,policies,devSweepPolicies,assertDisjointSplit,COG_WEIGHTS,HARNESS_VERSION,TRANSPORT_G,type Phase } from '../src/pallet/singleRobot/config';
+
+const arg=(name:string,fallback:string)=>{const i=process.argv.indexOf(`--${name}`);return i>=0?process.argv[i+1]:fallback;};
+const phase=arg('phase','eval') as Phase,runId=arg('run-id',''),[shard,shards]=arg('shard','0/1').split('/').map(Number),list=(v:string)=>v==='all'?null:v.split(',');
+if(!runId)throw Error('--run-id 가 필요합니다. 실행 ID마다 별도 폴더에 저장합니다.');
+if(!['dev','eval'].includes(phase))throw Error('--phase dev|eval');
+assertDisjointSplit();
+const stable=(v:unknown):string=>Array.isArray(v)?`[${v.map(stable).join(',')}]`:v&&typeof v==='object'?`{${Object.keys(v as object).sort().map(k=>`${JSON.stringify(k)}:${stable((v as Record<string,unknown>)[k])}`).join(',')}}`:JSON.stringify(v)??'null';
+const hash=(v:unknown)=>createHash('sha256').update(typeof v==='string'?v:stable(v)).digest('hex');
+const bundle=fileURLToPath(import.meta.url),git=(cmd:string)=>{try{return execSync(cmd,{encoding:'utf8',stdio:['ignore','pipe','ignore']}).trim();}catch{return null;}};
+const source={bundleSha256:hash(readFileSync(bundle,'utf8')),gitHead:git('git rev-parse HEAD'),gitDirty:git('git status --porcelain')?true:false,harness:HARNESS_VERSION};
+
+const situationIds=list(arg('situations','all')),policyIds=list(arg('policies','all'));
+const situations=(phase==='dev'&&arg('policy-set','cog-sweep')==='cog-sweep'?NORMAL_SITUATIONS:SITUATIONS).filter(s=>!situationIds||situationIds.includes(s.id));
+const policySet=arg('policy-set',phase==='dev'?'cog-sweep':'full');if(!['cog-sweep','full'].includes(policySet))throw Error('--policy-set cog-sweep|full');
+const policyList=(policySet==='cog-sweep'?devSweepPolicies():policies(COG_WEIGHTS)).filter(p=>!policyIds||policyIds.includes(p.id));
+const datasets=(list(arg('datasets','all'))?.map(Number))??PHASE_SEEDS[phase];
+const jobs=situations.flatMap(s=>datasets.flatMap(d=>policyList.map(p=>({s,seeds:caseSeeds(d),p}))));
+const keyOf=(j:typeof jobs[number])=>[j.s.id,phase,j.seeds.dataset,j.seeds.arrival,j.seeds.event,j.p.id].join('|');
+// Config hash covers everything that defines a run except the seeds (which are in the key).
+const configOf=(j:typeof jobs[number])=>{const c=j.s.build(phase,j.seeds);return {harness:HARNESS_VERSION,policy:j.p,bufferSize:c.bufferSize,pallet:c.scenario.pallet,constraints:c.scenario.constraints,transportG:TRANSPORT_G,palletUnit:null};};
+
+const dir=`work/single-robot-runs/${runId}`;mkdirSync(dir,{recursive:true});
+const environment={node:process.version,platform:process.platform,arch:process.arch,cpuModel:os.cpus()[0]?.model??null,cpus:os.cpus().length,concurrency:shards,shard};
+const manifest={runId,phase,policySet,shards,source,cogWeights:COG_WEIGHTS,datasets,situations:situations.map(s=>s.id),policies:policyList.map(p=>p.id),
+ expected:jobs.map(j=>({key:keyOf(j),configHash:hash(configOf(j))}))};
+const manifestFile=`${dir}/manifest.json`,manifestText=JSON.stringify(manifest,null,1);
+if(existsSync(manifestFile)&&readFileSync(manifestFile,'utf8')!==manifestText)throw Error(`${manifestFile} 가 다른 계획으로 이미 존재합니다. 새 실행 ID를 쓰세요.`);
+writeFileSync(manifestFile,manifestText);
+const file=`${dir}/runs-${shard}.jsonl`;if(existsSync(file))throw Error(`${file} 가 이미 있습니다. 결과에 덧붙이지 않습니다.`);
+writeFileSync(file,'');
+jobs.forEach((job,i)=>{
+ if(i%shards!==shard)return;
+ const c=job.s.build(phase,job.seeds),start=performance.now(),run=runSingleRobot(c,job.p);
+ const inputHash=hash({types:c.scenario.types,sequence:c.sequence,events:c.events,pallet:c.scenario.pallet,constraints:c.scenario.constraints,source:c.source});
+ const record={...run,runId,key:keyOf(job),configHash:hash(configOf(job)),inputHash,sourceVersion:source,environment,wallSeconds:(performance.now()-start)/1000};
+ appendFileSync(file,JSON.stringify(record)+'\n');
+ console.log(`${i+1}/${jobs.length} ${job.s.id} d${job.seeds.dataset} ${job.p.id} pallets=${run.performance.pallets} done=${run.performance.completed}/${run.performance.demand} ${record.wallSeconds.toFixed(1)}s`);
+});
+
+===== pallet-loading-lab/docs/benchmarks/single-robot/summarize.py =====
+"""Summarise one single-robot run ID (schema single-robot-run/2).
+
+Usage: python3 docs/benchmarks/single-robot/summarize.py <run-dir> <out-dir>
+<run-dir> holds manifest.json and runs-*.jsonl written by scripts/single-robot-benchmark.ts.
+
+Integrity (exit code 2, nothing written): duplicate run keys, a configuration hash that differs
+from the manifest, planned runs missing, or runs not in the manifest.
+Evaluation order: fitness gate -> performance -> stability/time trade-offs. No composite score.
+Percentiles pool every decision sample; samples from concurrent runs are reported separately.
+Unmeasured values stay null.
+"""
+import json, sys, glob, os, math, collections
+
+REPORT_DEADLINE_MS = 250
+RECOVERED = {'placed', 'remeasured-placed', 'count-corrected', 'verified-continue', 'buffer-unavailable'}
+ISOLATED = {'isolated-damaged', 'isolated-unplaceable', 'pallet-quarantined'}
+
+def fail(kind, detail):
+    sys.stderr.write(f'{kind}: {detail}\n'); sys.exit(2)
+
+run_dir, out_dir = sys.argv[1], sys.argv[2]
+manifest = json.load(open(os.path.join(run_dir, 'manifest.json')))
+runs = [json.loads(l) for f in sorted(glob.glob(os.path.join(run_dir, 'runs-*.jsonl'))) for l in open(f) if l.strip()]
+
+# ---- integrity -------------------------------------------------------------------------------
+expected = {e['key']: e['configHash'] for e in manifest['expected']}
+seen = collections.Counter(r['key'] for r in runs)
+dups = [k for k, n in seen.items() if n > 1]
+if dups: fail('DUPLICATE', f'{len(dups)} keys, e.g. {dups[0]}')
+bad = [r['key'] for r in runs if r.get('schema') != 'single-robot-run/2']
+if bad: fail('SCHEMA', bad[0])
+unexpected = [r['key'] for r in runs if r['key'] not in expected]
+if unexpected: fail('UNEXPECTED', f'{len(unexpected)} runs not in manifest, e.g. {unexpected[0]}')
+mismatch = [r['key'] for r in runs if r['configHash'] != expected[r['key']]]
+if mismatch: fail('CONFIG MISMATCH', f'{len(mismatch)} runs, e.g. {mismatch[0]}')
+missing = [k for k in expected if k not in seen]
+if missing: fail('MISSING', f'{len(missing)} planned runs, e.g. {missing[0]}')
+
+# ---- helpers ---------------------------------------------------------------------------------
+def vals(rs, f):
+    out = []
+    for r in rs:
+        v = f(r)
+        if v is not None and not (isinstance(v, float) and math.isnan(v)): out.append(v)
+    return out
+def mean(xs): return sum(xs) / len(xs) if xs else None
+def mn(xs): return min(xs) if xs else None
+def mx(xs): return max(xs) if xs else None
+def pct(xs, p):
+    if not xs: return None
+    s = sorted(xs); return s[min(len(s) - 1, max(0, math.ceil(len(s) * p) - 1))]
+def worst_status(statuses):
+    return 'fail' if 'fail' in statuses else 'unverified' if 'unverified' in statuses else 'pass'
+
+by = collections.defaultdict(list)
+for r in runs: by[(r['situation'], r['policy'])].append(r)
+situations = list(dict.fromkeys(r['situation'] for r in runs))
+policies = list(dict.fromkeys(r['policy'] for r in runs))
+
+def agg(rs):
+    gs = sorted({g for r in rs for g in r['stability']['transport']['loose']}, key=float)
+    checks = collections.defaultdict(list); violations = collections.Counter(); outcomes = collections.Counter(); feas = collections.Counter(); closes = collections.Counter()
+    for r in rs:
+        for k, v in r['fitness'].get('checks', {}).items(): checks[k].append(v)
+        violations.update(r['fitness']['violations']); outcomes.update(r['robustness']['outcomes'] if 'outcomes' in r['robustness'] else {})
+        feas.update(r['robot'].get('feasibilityRejections', {})); closes.update(r['performance'].get('closeReasons', {}))
+    quiet = [r for r in rs if r['compute'].get('concurrency', r.get('environment', {}).get('concurrency')) == 1]
+    busy = [r for r in rs if r not in quiet]
+    def compute(sel):
+        s = [x for r in sel for x in r['compute']['samplesMs']]
+        return {'runs': len(sel), 'samples': len(s), 'p50Ms': pct(s, .5), 'p95Ms': pct(s, .95), 'p99Ms': pct(s, .99), 'maxMs': mx(s),
+                'withinReportDeadlineShare': (sum(1 for x in s if x <= REPORT_DEADLINE_MS) / len(s)) if s else None, 'reportDeadlineMs': REPORT_DEADLINE_MS}
+    completions = vals(rs, lambda r: r['performance']['completionRate'])
+    completed = sum(r['performance']['completed'] for r in rs)
+    recovered = sum(n for k, n in outcomes.items() if k in RECOVERED); isolated = sum(n for k, n in outcomes.items() if k in ISOLATED)
+    return {
+        'runs': len(rs), 'datasets': sorted(r['seeds']['dataset'] for r in rs),
+        'fitness': {'pass': sum(r['fitness']['status'] == 'pass' for r in rs), 'fail': sum(r['fitness']['status'] == 'fail' for r in rs),
+                    'checks': {k: worst_status(v) for k, v in checks.items()}, 'violations': dict(violations),
+                    'unverified': sorted(k for k, v in checks.items() if worst_status(v) == 'unverified'),
+                    'quarantinedPallets': sum(r['fitness'].get('quarantinedPallets', 0) for r in rs)},
+        'performance': {'completionMean': mean(completions), 'completionMin': mn(completions), 'unplaceable': mean(vals(rs, lambda r: r['performance']['unplaceable'])),
+                        'pallets': mean(vals(rs, lambda r: r['performance']['pallets'])), 'utilization': mean(vals(rs, lambda r: r['performance']['utilization'])),
+                        'closedFillMean': mean(vals(rs, lambda r: r['performance']['closedFillMean'])), 'closeReasons': dict(closes)},
+        'stability': {'minSupportRatio': mn(vals(rs, lambda r: r['stability']['minSupportRatio'])), 'minLocalReserveMm': mn(vals(rs, lambda r: r['stability']['minLocalReserveMm'])),
+                      'meanComOffset': mean(vals(rs, lambda r: r['stability']['meanComOffset'])), 'worstComOffset': mx(vals(rs, lambda r: r['stability']['worstComOffset'])),
+                      'maxComHeightMm': mx(vals(rs, lambda r: r['stability']['maxComHeightMm'])), 'maxLoadUtilization': mx(vals(rs, lambda r: r['stability'].get('maxLoadUtilization'))),
+                      'transportLoose': {g: mn(vals(rs, lambda r, g=g: r['stability']['transport']['loose'].get(g))) for g in gs},
+                      'transportWrapped': {g: mn(vals(rs, lambda r, g=g: r['stability']['transport'].get('wrapped', {}).get(g))) for g in gs},
+                      'transportPalletUnit': None if any(r['stability']['transport'].get('palletUnit') is None for r in rs) else 'see runs'},
+        'robot': {'placementSecondsPerBox': (sum(r['robot']['placementSeconds'] for r in rs) / completed) if completed else None,
+                  'rehandles': mean(vals(rs, lambda r: r['robot']['rehandles'])), 'commitRejected': sum(r['robot'].get('commitRejected', 0) for r in rs),
+                  'excluded': sorted({x for r in rs for x in r['robot']['excluded']}), 'feasibilityRejections': dict(feas)},
+        'compute': compute(quiet), 'computeContended': compute(busy) if busy else None,
+        'effort': {k: mean(vals(rs, lambda r, k=k: r.get('effort', {}).get(k))) for k in ['plannerCalls', 'candidatesChecked', 'constraintChecks', 'searchNodes', 'rolloutCalls']},
+        'robustness': {'successRate': sum(bool(r['robustness'].get('success')) for r in rs) / len(rs), 'completionP5': pct(completions, .05),
+                       'events': sum(r['robustness']['events'] for r in rs), 'outcomes': dict(outcomes), 'recovered': recovered, 'isolatedCorrectly': isolated,
+                       'unresolved': outcomes.get('unresolved', 0),
+                       'recoveryReplans': sum(x['replans'] for r in rs for x in r['robustness'].get('records', [])),
+                       'recoveryPlannerMs': sum(x['plannerMs'] for r in rs for x in r['robustness'].get('records', []))},
+    }
+
+table = {s: {p: agg(by[(s, p)]) for p in policies if by[(s, p)]} for s in situations}
+
+# ---- evaluation order: fitness gate -> performance -> trade-offs --------------------------------
+INF = float('inf')
+def neg(x): return -x if x is not None else INF
+def pos(x): return x if x is not None else INF
+def g03(d): return d.get('0.3') if d else None
+VIEWS = {
+    'performance': ('성과(완료·팔레트)', lambda a: (a['fitness']['fail'], neg(a['performance']['completionMean']), pos(a['performance']['unplaceable']), pos(a['performance']['pallets']), neg(a['performance']['utilization']))),
+    'stability': ('안정성', lambda a: (a['fitness']['fail'], len(a['fitness']['unverified']), neg(a['stability']['minLocalReserveMm']), neg(g03(a['stability']['transportLoose'])), pos(a['stability']['worstComOffset']), pos(a['stability']['meanComOffset']))),
+    'time': ('작업·계산시간', lambda a: (a['fitness']['fail'], pos(a['robot']['placementSecondsPerBox']), pos(a['compute']['p95Ms'] if a['compute']['samples'] else a['computeContended']['p95Ms'] if a['computeContended'] else None))),
+}
+rankings = {s: {v: [p for p, _ in sorted(table[s].items(), key=lambda kv: f(kv[1]))] for v, (_, f) in VIEWS.items()} for s in situations}
+def pareto(rows):
+    ok = {p: a for p, a in rows.items() if a['fitness']['fail'] == 0}
+    keys = [lambda a: neg(a['performance']['completionMean']), lambda a: pos(a['performance']['pallets']), lambda a: pos(a['stability']['worstComOffset']),
+            lambda a: neg(a['stability']['minLocalReserveMm']), lambda a: pos(a['robot']['placementSecondsPerBox'])]
+    front = []
+    for p, a in ok.items():
+        if not any(all(k(b) <= k(a) for k in keys) and any(k(b) < k(a) for k in keys) for q, b in ok.items() if q != p): front.append(p)
+    return front
+fronts = {s: pareto(table[s]) for s in situations}
+
+pair = {(r['situation'], r['seeds']['dataset'], r['policy']): r for r in runs}
+def paired(a, b):
+    out = {'fewerPallets': 0, 'same': 0, 'morePallets': 0, 'dPallets': [], 'dWorstCom': [], 'dCompletion': []}
+    for s in situations:
+        for d in sorted({r['seeds']['dataset'] for r in runs if r['situation'] == s}):
+            x, y = pair.get((s, d, a)), pair.get((s, d, b))
+            if not x or not y: continue
+            kx = (-(x['performance']['completionRate'] or 0), x['performance']['pallets']); ky = (-(y['performance']['completionRate'] or 0), y['performance']['pallets'])
+            out['fewerPallets' if kx < ky else 'morePallets' if kx > ky else 'same'] += 1
+            out['dPallets'].append(x['performance']['pallets'] - y['performance']['pallets'])
+            if x['stability']['worstComOffset'] is not None and y['stability']['worstComOffset'] is not None: out['dWorstCom'].append(x['stability']['worstComOffset'] - y['stability']['worstComOffset'])
+            if x['performance']['completionRate'] is not None and y['performance']['completionRate'] is not None: out['dCompletion'].append(x['performance']['completionRate'] - y['performance']['completionRate'])
+    return {'pairs': len(out['dPallets']), 'betterOrEqualCompletionAndFewerPallets': out['fewerPallets'], 'same': out['same'], 'worse': out['morePallets'],
+            'meanDeltaPallets': mean(out['dPallets']), 'meanDeltaWorstCom': mean(out['dWorstCom']), 'meanDeltaCompletion': mean(out['dCompletion'])}
+cog = {p: paired(p + '+cog', p) for p in policies if not p.endswith('+cog') and p + '+cog' in policies}
+vs_greedy = {p: paired(p, 'strategy-greedy') for p in policies if p != 'strategy-greedy'} if 'strategy-greedy' in policies else {}
+
+os.makedirs(out_dir, exist_ok=True)
+summary = {'runId': manifest['runId'], 'phase': manifest.get('phase'), 'source': manifest.get('source'), 'cogWeights': manifest.get('cogWeights'), 'runs': len(runs),
+           'situations': situations, 'policies': policies, 'table': table, 'rankings': rankings, 'pareto': fronts, 'cogPaired': cog, 'vsStrategyGreedy': vs_greedy,
+           'views': {k: v[0] for k, v in VIEWS.items()}}
+json.dump(summary, open(os.path.join(out_dir, 'summary.json'), 'w'), ensure_ascii=False, indent=1)
+
+def f(x, n=2):
+    return '—' if x is None else (f'{x:.{n}f}' if isinstance(x, (int, float)) else str(x))
+L = [f"# 단일 로봇 비교 표 · {manifest['runId']} (자동 생성)", '',
+     '평가 순서: 적합성(실패 정책은 순위에서 뒤로) → 성과 → 안정성·시간 상충. 종합 점수 없음. "—"는 미측정/해당 없음.',
+     '무게중심 = 중심 대비 치우침(반폭 대비). 국부 여유 = 정적 기준 최소 국부 무게중심 여유(mm). 묶지 않은 운반 여유 = 0.3g 접촉면별 최소 전도 여유(mm). 경로 = 박스당 배치 경로 시간(모델값).', '']
+for s in situations:
+    L += [f'## {s}', '', '| 정책 | 적합성 통과/실패 | 완료율 평균(최저) | 못 놓음 | 팔레트 | 적재율 | 최소 지지율 | 국부 여유 | 운반 0.3g 묶지 않음 | 무게중심 최악 | 경로 s/박스 | 재취급 | p95 ms(단독) | 사건 복구/격리/미해결 |', '|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|']
+    for p in rankings[s]['performance']:
+        a = table[s][p]; pf = a['performance']; st = a['stability']; rb = a['robustness']
+        L.append(f"| {p} | {a['fitness']['pass']}/{a['fitness']['fail']} | {f(pf['completionMean'],3)} ({f(pf['completionMin'],3)}) | {f(pf['unplaceable'],1)} | {f(pf['pallets'],1)} | {f(pf['utilization'],3)} | {f(st['minSupportRatio'],2)} | {f(st['minLocalReserveMm'],0)} | {f(g03(st['transportLoose']),0)} | {f(st['worstComOffset'],3)} | {f(a['robot']['placementSecondsPerBox'],2)} | {f(a['robot']['rehandles'],1)} | {f(a['compute']['p95Ms'],1)} | {rb['recovered']}/{rb['isolatedCorrectly']}/{rb['unresolved']} |")
+    L += ['', ' / '.join(f"{VIEWS[v][0]} 1~3위: {', '.join(rankings[s][v][:3])}" for v in VIEWS), '', f"파레토(적합성 통과 정책 중 어느 지표에서도 다른 정책에 지지 않음): {', '.join(fronts[s]) or '없음'}", '']
+if cog:
+    L += ['## 무게중심 보완 전후 (같은 상황·데이터 짝)', '', '| 정책 | 짝 | 나음 | 같음 | 나쁨 | 팔레트 변화 | 최악 무게중심 변화 | 완료율 변화 |', '|---|---:|---:|---:|---:|---:|---:|---:|']
+    for p, d in cog.items(): L.append(f"| {p} | {d['pairs']} | {d['betterOrEqualCompletionAndFewerPallets']} | {d['same']} | {d['worse']} | {f(d['meanDeltaPallets'])} | {f(d['meanDeltaWorstCom'],3)} | {f(d['meanDeltaCompletion'],3)} |")
+open(os.path.join(out_dir, 'tables.md'), 'w').write('\n'.join(L) + '\n')
+print(f"OK {len(runs)} runs · {len(situations)} situations · {len(policies)} policies -> {out_dir}")
+
+===== 참고: 계획기 공통 진입점 =====
+31:export function plan(input:PlanningInput):Analysis{return isStrategy(input.algorithm)?planStrategy(input):input.available?planStock(input):input.settings.policy==='online'?planOnline(input):planArrival(input);}
+32-export function planArrival(input:PlanningInput):Analysis{
+34:export function rankCompactSites(ctx:PlanningInput,options:{smallFloorPenalty?:boolean}={}){
+35- const inspected=candidateSet(ctx,true).candidates,candidates=inspected.filter(c=>c.valid);
+36- for(const c of candidates){compactScore(c,ctx);
+37-  // Small parcels use existing broad supports first, preserving floor for unknown large arrivals.
+38-  if((options.smallFloorPenalty??true)&&ctx.placements.length&&c.placement.position.z===0&&volume(c.placement.size)<35e6)c.score-=100;
+39- }
+40- candidates.sort((a,b)=>(a.placement.position.z-b.placement.position.z)*.04+b.score-a.score);
+41- return {inspected,candidates};
+42-}
+43-function sites(ctx:PlanningInput,key?:string){
+85:  if(!reasons.length&&cfg.transportAccelerationG!==undefined){const t=transportMargin(stack,pallet,cfg.transportAccelerationG,cfg);if(t.looseMarginMm< -EPS)reasons.push(`TRANSPORT: 운반 ${cfg.transportAccelerationG}g 국부 전도 여유 부족 (${t.looseMarginMm.toFixed(0)} mm · 묶지 않은 화물)`);}

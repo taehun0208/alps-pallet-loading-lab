@@ -1,0 +1,17 @@
+# BED-BPP input profiles
+
+The input comes from the public BED-BPP v1 dataset, not from measurements at this factory. Citation: Kagerer F, Beinhofer M, Stricker S, Nüchter A. *BED-BPP: Benchmarking dataset for robotic bin packing problems.* IJRR 2023;42(11):1007–1014. DOI: [10.1177/02783649231193048](https://doi.org/10.1177/02783649231193048). The [official description](https://floriankagerer.github.io/dataset/) documents dimensions in mm, weights in kg, and per-order item sequence.
+
+The bundled subset contains the first 12 euro-pallet-target orders in source order, retaining every original field and item. This is a deterministic convenience sample, not a statistically representative sample of all 10,003 orders. The complete 78,279,099-byte source was downloaded and hashed; its Git blob hash exactly matched the dataset file in the [MIT-licensed source repository at commit 1b54c344](https://github.com/floriankagerer/bed-bpp-env/tree/1b54c34428ba0f5b43a967162a57e5174d08bb7f). Full hashes, selection, original order IDs and citation are in `src/pallet/relay/data/bed-bpp-provenance.json`; the copyright/license notice is retained beside the subset.
+
+- `synthetic`: unchanged legacy generated inputs, 8–120 items, 1800×1500 mm pallet.
+- `bed-bpp`: select one complete original euro-pallet order by seed modulo 12. Requested count does not truncate it. Dimensions, weights and sequence remain unchanged.
+- `bed-bpp-stress`: concatenate these original orders from the selected starting order and truncate at the requested 8–240 items. This is a derived capacity test, not an official original order or leaderboard benchmark.
+
+The published environment defines euro-pallet footprint 1200×800 mm, target height 2000 mm and two horizontal orientations. This adapter preserves the footprint and yaw orientations. User-selected height, four robot cells, conveyor timing, gripper, support threshold of 92%, margin checks and robot workspace are this simulator's test conditions. Results therefore cannot be compared directly to the official leaderboard.
+
+Compression capacity, package material, friction and internal mass distribution are absent from this input. Material remains `unknown` and no compression capacity is invented. The dashboard must retain its unverified strength status. Uniform-density rigid boxes and friction coefficient 0.6 are explicit existing simulator assumptions. The synthetic heavier-on-lighter prohibition and 100-mm standing-height rule are disabled for these profiles; slenderness is a score rather than a hard cutoff. Support/contact checks remain enforced. Workspace height is enlarged for the modeled approach clearance; this is not a physical robot reach specification.
+
+`inventoryProfileInfo` reports total input volume divided by four initial pallets' rated volume. This is an input-demand ratio, not actual utilization, and it may exceed 1. For four fixed pallets, min(1, ratio) is only a volume-based utilization ceiling; fragmentation, support, reach and scheduling can reduce the attained value, and extra pallet exchanges change the denominator. Increasing item count does not guarantee approaching the height limit. Verify actual pallet heights, fill, center of mass, support margins and dispatch reasons in the run results.
+
+The source dataset is never fetched during application use; the compact 109-KB subset is bundled locally. Regression tests verify the subset hash, complete original sequence/dimensions/weights, unknown strength, unique instance IDs, and bounded derived count.

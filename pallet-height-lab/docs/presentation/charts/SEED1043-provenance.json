@@ -1,0 +1,313 @@
+{
+  "source": "docs/capacity/results.json",
+  "source_sha256": "547c7f9387b0567db0947552c77f5d50f2504ca98bfa31e4013f76c24652e7e3",
+  "source_createdAt": "2026-10-09T17:00:05.363Z",
+  "focus_seed": 1043,
+  "comparison_seed": 1042,
+  "observations_per_seed_algorithm_height_mode": 1,
+  "plotted_height_mm": 1200,
+  "plotted_mode": "robot",
+  "raw_csv_rows": 45,
+  "raw_csv_status_counts": {
+    "finished": 37,
+    "timeout": 8
+  },
+  "config": {
+    "scenario": {
+      "version": 1,
+      "units": {
+        "length": "mm",
+        "weight": "kg",
+        "time": "s"
+      },
+      "id": "team-retail-capacity",
+      "name": "팀 논의 · 대형마트 6품목",
+      "pallet": {
+        "width": 1200,
+        "depth": 1000,
+        "maxHeight": 1200,
+        "robotLayout": {
+          "count": 1,
+          "architecture": "floor",
+          "floorCount": 1
+        }
+      },
+      "types": [
+        {
+          "id": "S1",
+          "name": "생수",
+          "size": {
+            "w": 400,
+            "d": 300,
+            "h": 280
+          },
+          "weight": 12,
+          "maxLoadKg": 85,
+          "maxLoadSource": "synthetic",
+          "quantity": 12,
+          "color": "#bf8c43",
+          "orientations": [
+            0,
+            90
+          ],
+          "handling": "upright",
+          "material": "paper",
+          "friction": 0.45
+        },
+        {
+          "id": "S2",
+          "name": "과자",
+          "size": {
+            "w": 500,
+            "d": 340,
+            "h": 250
+          },
+          "weight": 3,
+          "maxLoadKg": 24,
+          "maxLoadSource": "synthetic",
+          "quantity": 12,
+          "color": "#bf8c43",
+          "orientations": [
+            0,
+            90
+          ],
+          "handling": "upright",
+          "material": "paper",
+          "friction": 0.45
+        },
+        {
+          "id": "S3",
+          "name": "세제",
+          "size": {
+            "w": 320,
+            "d": 240,
+            "h": 320
+          },
+          "weight": 8,
+          "maxLoadKg": 55,
+          "maxLoadSource": "synthetic",
+          "quantity": 12,
+          "color": "#479b92",
+          "orientations": [
+            0,
+            90
+          ],
+          "handling": "upright",
+          "material": "paper",
+          "friction": 0.45
+        },
+        {
+          "id": "S4",
+          "name": "생활용품",
+          "size": {
+            "w": 400,
+            "d": 300,
+            "h": 220
+          },
+          "weight": 4,
+          "maxLoadKg": 40,
+          "maxLoadSource": "synthetic",
+          "quantity": 12,
+          "color": "#479b92",
+          "orientations": [
+            0,
+            90
+          ],
+          "handling": "upright",
+          "material": "paper",
+          "friction": 0.45
+        },
+        {
+          "id": "S5",
+          "name": "헤어케어",
+          "size": {
+            "w": 300,
+            "d": 250,
+            "h": 240
+          },
+          "weight": 6,
+          "maxLoadKg": 45,
+          "maxLoadSource": "synthetic",
+          "quantity": 12,
+          "color": "#7f8ab9",
+          "orientations": [
+            0,
+            90
+          ],
+          "handling": "upright",
+          "material": "paper",
+          "friction": 0.45
+        },
+        {
+          "id": "S6",
+          "name": "스킨케어",
+          "size": {
+            "w": 250,
+            "d": 200,
+            "h": 200
+          },
+          "weight": 4,
+          "maxLoadKg": 30,
+          "maxLoadSource": "synthetic",
+          "quantity": 12,
+          "color": "#7f8ab9",
+          "orientations": [
+            0,
+            90
+          ],
+          "handling": "upright",
+          "material": "paper",
+          "friction": 0.45
+        }
+      ],
+      "constraints": {
+        "robotMode": "gripper",
+        "supportRatio": 0.85,
+        "contactTolerance": 0.5,
+        "horizontalGap": 0,
+        "heavyRule": "off",
+        "stability": {
+          "maxSlenderness": 2,
+          "minMarginRatio": 0.05,
+          "lateralAccelerationG": 0,
+          "loadSafetyFactor": 1.2,
+          "slendernessMode": "score"
+        },
+        "gripper": {
+          "width": 180,
+          "depth": 160,
+          "height": 160,
+          "mass": 8,
+          "payload": 38,
+          "margin": 5,
+          "lift": 180,
+          "speed": 650,
+          "pickSeconds": 0.7,
+          "placeSeconds": 0.45,
+          "rotationSpeed": 90
+        },
+        "workspace": {
+          "xMin": -1400,
+          "xMax": 1800,
+          "yMin": -600,
+          "yMax": 1600,
+          "zMax": 2600
+        },
+        "reach": {
+          "baseX": -700,
+          "baseY": 500,
+          "minRadius": 0,
+          "maxRadius": 2700
+        },
+        "standingHeight": {
+          "enabled": false,
+          "maxRiseMm": 100
+        }
+      },
+      "arrival": {
+        "seed": 42,
+        "pattern": "random-draw"
+      },
+      "events": [],
+      "supplyMode": "arrival"
+    },
+    "groups": {
+      "S1": 0,
+      "S2": 0,
+      "S3": 1,
+      "S4": 1,
+      "S5": 2,
+      "S6": 2
+    },
+    "settings": {
+      "plannerSeed": 2026,
+      "topK": 4,
+      "samples": 2,
+      "depth": 2,
+      "maxCandidates": 48,
+      "virtualCandidates": 8,
+      "candidateMode": "frontier",
+      "inventoryMode": "geometry",
+      "portfolio": false,
+      "weights": {
+        "maximum": 30,
+        "mean": 16,
+        "roughness": 20,
+        "void": 25,
+        "flat": 8,
+        "balance": 12,
+        "time": 4,
+        "future": 45,
+        "stability": 24,
+        "inventory": 32,
+        "foundation": 24,
+        "load": 12,
+        "contact": 12,
+        "futureSurface": 24
+      },
+      "policy": "online",
+      "reserveProbes": 4,
+      "strategy": {
+        "criticalK": 3,
+        "futureCandidates": 4,
+        "lossMode": "normalized",
+        "lookaheadDepth": 2,
+        "lookaheadSamples": 2,
+        "lookaheadCandidates": 3,
+        "lookaheadMode": "expected",
+        "approach": false,
+        "approachHeight": 250,
+        "approachMargin": 20,
+        "weights": {
+          "compactness": 0.2,
+          "support": 0.15,
+          "stability": 0.15,
+          "centerOfMass": 0.1,
+          "flatness": 0.1,
+          "height": 0.15,
+          "fragmentation": 0.15,
+          "macs": 1,
+          "fpl": 1.5,
+          "deadEnd": 25,
+          "reservation": 20,
+          "lowerSpace": 2,
+          "lookahead": 1
+        },
+        "criticalWeights": {
+          "volume": 1,
+          "aspect": 1,
+          "weight": 1,
+          "orientation": 1,
+          "scarcity": 3
+        }
+      }
+    },
+    "algorithms": [
+      "blb",
+      "capacity-compact",
+      "strategy-greedy",
+      "lookahead",
+      "future-hybrid"
+    ],
+    "heights": [
+      800,
+      1200,
+      1600
+    ],
+    "discoverySeeds": [
+      42,
+      43
+    ],
+    "holdoutSeeds": [
+      1042,
+      1043
+    ],
+    "bufferCapacity": 2,
+    "decisionMs": 250,
+    "trialMs": 60000,
+    "groupStrength": 1,
+    "groupHeightSlack": 100
+  },
+  "note": "Saved default-condition result. Not a capture of a newly modified browser run. Incomplete pairs excluded from comparative plot and comparison CSV.",
+  "script_sha256": "dfc579b9ca78015078d5d3a0deae9b443c0362329e4322f610c81087bc804978"
+}

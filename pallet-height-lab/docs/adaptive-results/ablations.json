@@ -1,0 +1,4896 @@
+[
+  {
+    "label": "ablation-full",
+    "inputHash": "1597a7dd45c8d807711ccd937266187abd622a52f9d0b04e5ed18ad87118c5e1",
+    "config": {
+      "mode": "C",
+      "seed": 42,
+      "count": 12,
+      "pallet": {
+        "width": 1000,
+        "depth": 1000,
+        "maxHeight": 1400
+      },
+      "environment": "pallet",
+      "walls": {
+        "left": true,
+        "right": true,
+        "back": true
+      },
+      "frontFill": false,
+      "deformation": 24,
+      "damageKinds": [
+        "normal",
+        "corner",
+        "dent",
+        "bulge",
+        "bottom",
+        "tear"
+      ],
+      "materialResidual": 0.8,
+      "noise": {
+        "dimensionMm": 0,
+        "positionMm": 0,
+        "surfaceMm": 0,
+        "yawDeg": 0
+      },
+      "bufferSize": 6,
+      "maxRetries": 2,
+      "maxWait": 8,
+      "maxCandidates": 24,
+      "maxEms": 80,
+      "timeBudgetMs": 30000,
+      "contactMm": 0.5,
+      "penetrationMm": 0.05,
+      "supportRatio": 0.8,
+      "maxBridgeMm": 180,
+      "edgeMarginMm": 2,
+      "cup": {
+        "diameterMm": 50,
+        "marginMm": 8,
+        "flatnessMm": 1.5,
+        "angleDeg": 10
+      },
+      "gripper": {
+        "width": 100,
+        "depth": 100,
+        "height": 100,
+        "clearance": 2,
+        "payloadKg": 35,
+        "maxMomentNm": 12,
+        "speedMmS": 850
+      },
+      "workspaceHeight": 2600,
+      "alignmentMm": 8,
+      "alignmentTrials": 9,
+      "features": {
+        "load": true,
+        "suction": true,
+        "path": true,
+        "buffer": true,
+        "replan": true,
+        "alignment": false
+      },
+      "weights": {
+        "height": 3,
+        "space": 2,
+        "support": 2,
+        "load": 1,
+        "path": 1,
+        "suction": 1,
+        "waiting": 1,
+        "retry": 0.5,
+        "foundation": 2
+      }
+    },
+    "metrics": {
+      "mode": "C",
+      "seed": 42,
+      "input": 12,
+      "placed": 8,
+      "completion": 0.6666666666666666,
+      "unplaced": 4,
+      "reasonCounts": {
+        "waiting": 1,
+        "support": 3,
+        "bridge": 3,
+        "tipping": 2
+      },
+      "occupiedVolumeMm3": 346306746.5,
+      "utilization": 0.2473619617857143,
+      "nominalFulfilled": 0.7084814737116638,
+      "heightMm": 841,
+      "rejectedExecutionEvents": {},
+      "finalViolations": [],
+      "forceResidualKg": 0,
+      "momentResidualKgMm": 3.637978807091713e-12,
+      "pickGeometricPass": 8,
+      "pickGeometricFail": 0,
+      "placementPass": 8,
+      "placementFail": 0,
+      "retries": 3,
+      "waitTicks": 47,
+      "planningMs": 2202.4875999999995,
+      "modelExecutionSeconds": 91.40352941176471,
+      "unknownStrengthBoxes": 0,
+      "physicalPickSuccessRate": null,
+      "physicalSeal": "미검증",
+      "information": "도착한 버퍼만 공개; A/B는 선두만 선택; C는 제한 버퍼 선택",
+      "volumeDefinition": "복합 충돌체 외형 합집합 / 팔레트 허용 체적; 재료 부피 아님"
+    },
+    "events": [
+      {
+        "tick": 1,
+        "id": "B001",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B002",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B003",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B004",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B005",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B006",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B003",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 2,
+        "id": "B007",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 2,
+        "id": "B006",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 3,
+        "id": "B008",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 3,
+        "id": "B001",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 4,
+        "id": "B009",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 4,
+        "id": "B009",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 5,
+        "id": "B010",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 5,
+        "id": "B004",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 6,
+        "id": "B011",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 6,
+        "id": "B007",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 7,
+        "id": "B012",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 7,
+        "id": "B002",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 8,
+        "id": "B012",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      }
+    ],
+    "placements": [
+      {
+        "id": "B003",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B006",
+        "position": {
+          "x": 0,
+          "y": 312,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B001",
+        "position": {
+          "x": 309,
+          "y": 312,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B009",
+        "position": {
+          "x": 538,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B004",
+        "position": {
+          "x": 309,
+          "y": 666,
+          "z": 0
+        },
+        "rotation": 90
+      },
+      {
+        "id": "B007",
+        "position": {
+          "x": 670,
+          "y": 666,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B002",
+        "position": {
+          "x": 309,
+          "y": 312,
+          "z": 419
+        },
+        "rotation": 90
+      },
+      {
+        "id": "B012",
+        "position": {
+          "x": 0,
+          "y": 312,
+          "z": 317
+        },
+        "rotation": 0
+      }
+    ],
+    "rejected": [
+      {
+        "id": "B005",
+        "reasons": [
+          "waiting"
+        ]
+      },
+      {
+        "id": "B008",
+        "reasons": [
+          "support",
+          "bridge",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B010",
+        "reasons": [
+          "support",
+          "bridge",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B011",
+        "reasons": [
+          "support",
+          "bridge"
+        ]
+      }
+    ]
+  },
+  {
+    "label": "ablation-load",
+    "inputHash": "1597a7dd45c8d807711ccd937266187abd622a52f9d0b04e5ed18ad87118c5e1",
+    "config": {
+      "mode": "C",
+      "seed": 42,
+      "count": 12,
+      "pallet": {
+        "width": 1000,
+        "depth": 1000,
+        "maxHeight": 1400
+      },
+      "environment": "pallet",
+      "walls": {
+        "left": true,
+        "right": true,
+        "back": true
+      },
+      "frontFill": false,
+      "deformation": 24,
+      "damageKinds": [
+        "normal",
+        "corner",
+        "dent",
+        "bulge",
+        "bottom",
+        "tear"
+      ],
+      "materialResidual": 0.8,
+      "noise": {
+        "dimensionMm": 0,
+        "positionMm": 0,
+        "surfaceMm": 0,
+        "yawDeg": 0
+      },
+      "bufferSize": 6,
+      "maxRetries": 2,
+      "maxWait": 8,
+      "maxCandidates": 24,
+      "maxEms": 80,
+      "timeBudgetMs": 30000,
+      "contactMm": 0.5,
+      "penetrationMm": 0.05,
+      "supportRatio": 0.8,
+      "maxBridgeMm": 180,
+      "edgeMarginMm": 2,
+      "cup": {
+        "diameterMm": 50,
+        "marginMm": 8,
+        "flatnessMm": 1.5,
+        "angleDeg": 10
+      },
+      "gripper": {
+        "width": 100,
+        "depth": 100,
+        "height": 100,
+        "clearance": 2,
+        "payloadKg": 35,
+        "maxMomentNm": 12,
+        "speedMmS": 850
+      },
+      "workspaceHeight": 2600,
+      "alignmentMm": 8,
+      "alignmentTrials": 9,
+      "features": {
+        "load": false,
+        "suction": true,
+        "path": true,
+        "buffer": true,
+        "replan": true,
+        "alignment": false
+      },
+      "weights": {
+        "height": 3,
+        "space": 2,
+        "support": 2,
+        "load": 1,
+        "path": 1,
+        "suction": 1,
+        "waiting": 1,
+        "retry": 0.5,
+        "foundation": 2
+      }
+    },
+    "metrics": {
+      "mode": "C",
+      "seed": 42,
+      "input": 12,
+      "placed": 8,
+      "completion": 0.6666666666666666,
+      "unplaced": 4,
+      "reasonCounts": {
+        "waiting": 1,
+        "support": 3,
+        "bridge": 3,
+        "tipping": 2
+      },
+      "occupiedVolumeMm3": 346306746.5,
+      "utilization": 0.2473619617857143,
+      "nominalFulfilled": 0.7084814737116638,
+      "heightMm": 841,
+      "rejectedExecutionEvents": {},
+      "finalViolations": [],
+      "forceResidualKg": 0,
+      "momentResidualKgMm": 3.637978807091713e-12,
+      "pickGeometricPass": 8,
+      "pickGeometricFail": 0,
+      "placementPass": 8,
+      "placementFail": 0,
+      "retries": 3,
+      "waitTicks": 47,
+      "planningMs": 1407.5189999999993,
+      "modelExecutionSeconds": 91.40352941176471,
+      "unknownStrengthBoxes": 0,
+      "physicalPickSuccessRate": null,
+      "physicalSeal": "미검증",
+      "information": "도착한 버퍼만 공개; A/B는 선두만 선택; C는 제한 버퍼 선택",
+      "volumeDefinition": "복합 충돌체 외형 합집합 / 팔레트 허용 체적; 재료 부피 아님"
+    },
+    "events": [
+      {
+        "tick": 1,
+        "id": "B001",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B002",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B003",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B004",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B005",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B006",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B003",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 2,
+        "id": "B007",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 2,
+        "id": "B006",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 3,
+        "id": "B008",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 3,
+        "id": "B001",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 4,
+        "id": "B009",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 4,
+        "id": "B009",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 5,
+        "id": "B010",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 5,
+        "id": "B004",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 6,
+        "id": "B011",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 6,
+        "id": "B007",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 7,
+        "id": "B012",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 7,
+        "id": "B002",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 8,
+        "id": "B012",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      }
+    ],
+    "placements": [
+      {
+        "id": "B003",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B006",
+        "position": {
+          "x": 0,
+          "y": 312,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B001",
+        "position": {
+          "x": 309,
+          "y": 312,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B009",
+        "position": {
+          "x": 538,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B004",
+        "position": {
+          "x": 309,
+          "y": 666,
+          "z": 0
+        },
+        "rotation": 90
+      },
+      {
+        "id": "B007",
+        "position": {
+          "x": 670,
+          "y": 666,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B002",
+        "position": {
+          "x": 309,
+          "y": 312,
+          "z": 419
+        },
+        "rotation": 90
+      },
+      {
+        "id": "B012",
+        "position": {
+          "x": 0,
+          "y": 312,
+          "z": 317
+        },
+        "rotation": 0
+      }
+    ],
+    "rejected": [
+      {
+        "id": "B005",
+        "reasons": [
+          "waiting"
+        ]
+      },
+      {
+        "id": "B008",
+        "reasons": [
+          "support",
+          "bridge",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B010",
+        "reasons": [
+          "support",
+          "bridge",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B011",
+        "reasons": [
+          "support",
+          "bridge"
+        ]
+      }
+    ]
+  },
+  {
+    "label": "ablation-suction",
+    "inputHash": "1597a7dd45c8d807711ccd937266187abd622a52f9d0b04e5ed18ad87118c5e1",
+    "config": {
+      "mode": "C",
+      "seed": 42,
+      "count": 12,
+      "pallet": {
+        "width": 1000,
+        "depth": 1000,
+        "maxHeight": 1400
+      },
+      "environment": "pallet",
+      "walls": {
+        "left": true,
+        "right": true,
+        "back": true
+      },
+      "frontFill": false,
+      "deformation": 24,
+      "damageKinds": [
+        "normal",
+        "corner",
+        "dent",
+        "bulge",
+        "bottom",
+        "tear"
+      ],
+      "materialResidual": 0.8,
+      "noise": {
+        "dimensionMm": 0,
+        "positionMm": 0,
+        "surfaceMm": 0,
+        "yawDeg": 0
+      },
+      "bufferSize": 6,
+      "maxRetries": 2,
+      "maxWait": 8,
+      "maxCandidates": 24,
+      "maxEms": 80,
+      "timeBudgetMs": 30000,
+      "contactMm": 0.5,
+      "penetrationMm": 0.05,
+      "supportRatio": 0.8,
+      "maxBridgeMm": 180,
+      "edgeMarginMm": 2,
+      "cup": {
+        "diameterMm": 50,
+        "marginMm": 8,
+        "flatnessMm": 1.5,
+        "angleDeg": 10
+      },
+      "gripper": {
+        "width": 100,
+        "depth": 100,
+        "height": 100,
+        "clearance": 2,
+        "payloadKg": 35,
+        "maxMomentNm": 12,
+        "speedMmS": 850
+      },
+      "workspaceHeight": 2600,
+      "alignmentMm": 8,
+      "alignmentTrials": 9,
+      "features": {
+        "load": true,
+        "suction": false,
+        "path": true,
+        "buffer": true,
+        "replan": true,
+        "alignment": false
+      },
+      "weights": {
+        "height": 3,
+        "space": 2,
+        "support": 2,
+        "load": 1,
+        "path": 1,
+        "suction": 1,
+        "waiting": 1,
+        "retry": 0.5,
+        "foundation": 2
+      }
+    },
+    "metrics": {
+      "mode": "C",
+      "seed": 42,
+      "input": 12,
+      "placed": 8,
+      "completion": 0.6666666666666666,
+      "unplaced": 4,
+      "reasonCounts": {
+        "waiting": 1,
+        "support": 3,
+        "bridge": 3,
+        "tipping": 2
+      },
+      "occupiedVolumeMm3": 346306746.5,
+      "utilization": 0.2473619617857143,
+      "nominalFulfilled": 0.7084814737116638,
+      "heightMm": 841,
+      "rejectedExecutionEvents": {},
+      "finalViolations": [],
+      "forceResidualKg": 0,
+      "momentResidualKgMm": 3.637978807091713e-12,
+      "pickGeometricPass": 8,
+      "pickGeometricFail": 0,
+      "placementPass": 8,
+      "placementFail": 0,
+      "retries": 3,
+      "waitTicks": 47,
+      "planningMs": 1227.7623999999996,
+      "modelExecutionSeconds": 91.40352941176471,
+      "unknownStrengthBoxes": 0,
+      "physicalPickSuccessRate": null,
+      "physicalSeal": "미검증",
+      "information": "도착한 버퍼만 공개; A/B는 선두만 선택; C는 제한 버퍼 선택",
+      "volumeDefinition": "복합 충돌체 외형 합집합 / 팔레트 허용 체적; 재료 부피 아님"
+    },
+    "events": [
+      {
+        "tick": 1,
+        "id": "B001",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B002",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B003",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B004",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B005",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B006",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B003",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 2,
+        "id": "B007",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 2,
+        "id": "B006",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 3,
+        "id": "B008",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 3,
+        "id": "B001",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 4,
+        "id": "B009",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 4,
+        "id": "B009",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 5,
+        "id": "B010",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 5,
+        "id": "B004",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 6,
+        "id": "B011",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 6,
+        "id": "B007",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 7,
+        "id": "B012",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 7,
+        "id": "B002",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 8,
+        "id": "B012",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      }
+    ],
+    "placements": [
+      {
+        "id": "B003",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B006",
+        "position": {
+          "x": 0,
+          "y": 312,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B001",
+        "position": {
+          "x": 309,
+          "y": 312,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B009",
+        "position": {
+          "x": 538,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B004",
+        "position": {
+          "x": 309,
+          "y": 666,
+          "z": 0
+        },
+        "rotation": 90
+      },
+      {
+        "id": "B007",
+        "position": {
+          "x": 670,
+          "y": 666,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B002",
+        "position": {
+          "x": 309,
+          "y": 312,
+          "z": 419
+        },
+        "rotation": 90
+      },
+      {
+        "id": "B012",
+        "position": {
+          "x": 0,
+          "y": 312,
+          "z": 317
+        },
+        "rotation": 0
+      }
+    ],
+    "rejected": [
+      {
+        "id": "B005",
+        "reasons": [
+          "waiting"
+        ]
+      },
+      {
+        "id": "B008",
+        "reasons": [
+          "support",
+          "bridge",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B010",
+        "reasons": [
+          "support",
+          "bridge",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B011",
+        "reasons": [
+          "support",
+          "bridge"
+        ]
+      }
+    ]
+  },
+  {
+    "label": "ablation-path",
+    "inputHash": "1597a7dd45c8d807711ccd937266187abd622a52f9d0b04e5ed18ad87118c5e1",
+    "config": {
+      "mode": "C",
+      "seed": 42,
+      "count": 12,
+      "pallet": {
+        "width": 1000,
+        "depth": 1000,
+        "maxHeight": 1400
+      },
+      "environment": "pallet",
+      "walls": {
+        "left": true,
+        "right": true,
+        "back": true
+      },
+      "frontFill": false,
+      "deformation": 24,
+      "damageKinds": [
+        "normal",
+        "corner",
+        "dent",
+        "bulge",
+        "bottom",
+        "tear"
+      ],
+      "materialResidual": 0.8,
+      "noise": {
+        "dimensionMm": 0,
+        "positionMm": 0,
+        "surfaceMm": 0,
+        "yawDeg": 0
+      },
+      "bufferSize": 6,
+      "maxRetries": 2,
+      "maxWait": 8,
+      "maxCandidates": 24,
+      "maxEms": 80,
+      "timeBudgetMs": 30000,
+      "contactMm": 0.5,
+      "penetrationMm": 0.05,
+      "supportRatio": 0.8,
+      "maxBridgeMm": 180,
+      "edgeMarginMm": 2,
+      "cup": {
+        "diameterMm": 50,
+        "marginMm": 8,
+        "flatnessMm": 1.5,
+        "angleDeg": 10
+      },
+      "gripper": {
+        "width": 100,
+        "depth": 100,
+        "height": 100,
+        "clearance": 2,
+        "payloadKg": 35,
+        "maxMomentNm": 12,
+        "speedMmS": 850
+      },
+      "workspaceHeight": 2600,
+      "alignmentMm": 8,
+      "alignmentTrials": 9,
+      "features": {
+        "load": true,
+        "suction": true,
+        "path": false,
+        "buffer": true,
+        "replan": true,
+        "alignment": false
+      },
+      "weights": {
+        "height": 3,
+        "space": 2,
+        "support": 2,
+        "load": 1,
+        "path": 1,
+        "suction": 1,
+        "waiting": 1,
+        "retry": 0.5,
+        "foundation": 2
+      }
+    },
+    "metrics": {
+      "mode": "C",
+      "seed": 42,
+      "input": 12,
+      "placed": 8,
+      "completion": 0.6666666666666666,
+      "unplaced": 4,
+      "reasonCounts": {
+        "waiting": 1,
+        "support": 3,
+        "bridge": 3,
+        "tipping": 2
+      },
+      "occupiedVolumeMm3": 346306746.5,
+      "utilization": 0.2473619617857143,
+      "nominalFulfilled": 0.7084814737116638,
+      "heightMm": 841,
+      "rejectedExecutionEvents": {},
+      "finalViolations": [],
+      "forceResidualKg": 0,
+      "momentResidualKgMm": 3.637978807091713e-12,
+      "pickGeometricPass": 8,
+      "pickGeometricFail": 0,
+      "placementPass": 8,
+      "placementFail": 0,
+      "retries": 3,
+      "waitTicks": 47,
+      "planningMs": 1257.8012999999983,
+      "modelExecutionSeconds": 91.40352941176471,
+      "unknownStrengthBoxes": 0,
+      "physicalPickSuccessRate": null,
+      "physicalSeal": "미검증",
+      "information": "도착한 버퍼만 공개; A/B는 선두만 선택; C는 제한 버퍼 선택",
+      "volumeDefinition": "복합 충돌체 외형 합집합 / 팔레트 허용 체적; 재료 부피 아님"
+    },
+    "events": [
+      {
+        "tick": 1,
+        "id": "B001",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B002",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B003",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B004",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B005",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B006",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B003",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 2,
+        "id": "B007",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 2,
+        "id": "B006",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 3,
+        "id": "B008",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 3,
+        "id": "B001",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 4,
+        "id": "B009",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 4,
+        "id": "B009",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 5,
+        "id": "B010",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 5,
+        "id": "B004",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 6,
+        "id": "B011",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 6,
+        "id": "B007",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 7,
+        "id": "B012",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 7,
+        "id": "B002",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 8,
+        "id": "B012",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      }
+    ],
+    "placements": [
+      {
+        "id": "B003",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B006",
+        "position": {
+          "x": 0,
+          "y": 312,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B001",
+        "position": {
+          "x": 309,
+          "y": 312,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B009",
+        "position": {
+          "x": 538,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B004",
+        "position": {
+          "x": 309,
+          "y": 666,
+          "z": 0
+        },
+        "rotation": 90
+      },
+      {
+        "id": "B007",
+        "position": {
+          "x": 670,
+          "y": 666,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B002",
+        "position": {
+          "x": 309,
+          "y": 312,
+          "z": 419
+        },
+        "rotation": 90
+      },
+      {
+        "id": "B012",
+        "position": {
+          "x": 0,
+          "y": 312,
+          "z": 317
+        },
+        "rotation": 0
+      }
+    ],
+    "rejected": [
+      {
+        "id": "B005",
+        "reasons": [
+          "waiting"
+        ]
+      },
+      {
+        "id": "B008",
+        "reasons": [
+          "support",
+          "bridge",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B010",
+        "reasons": [
+          "support",
+          "bridge",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B011",
+        "reasons": [
+          "support",
+          "bridge"
+        ]
+      }
+    ]
+  },
+  {
+    "label": "ablation-buffer",
+    "inputHash": "1597a7dd45c8d807711ccd937266187abd622a52f9d0b04e5ed18ad87118c5e1",
+    "config": {
+      "mode": "C",
+      "seed": 42,
+      "count": 12,
+      "pallet": {
+        "width": 1000,
+        "depth": 1000,
+        "maxHeight": 1400
+      },
+      "environment": "pallet",
+      "walls": {
+        "left": true,
+        "right": true,
+        "back": true
+      },
+      "frontFill": false,
+      "deformation": 24,
+      "damageKinds": [
+        "normal",
+        "corner",
+        "dent",
+        "bulge",
+        "bottom",
+        "tear"
+      ],
+      "materialResidual": 0.8,
+      "noise": {
+        "dimensionMm": 0,
+        "positionMm": 0,
+        "surfaceMm": 0,
+        "yawDeg": 0
+      },
+      "bufferSize": 6,
+      "maxRetries": 2,
+      "maxWait": 8,
+      "maxCandidates": 24,
+      "maxEms": 80,
+      "timeBudgetMs": 30000,
+      "contactMm": 0.5,
+      "penetrationMm": 0.05,
+      "supportRatio": 0.8,
+      "maxBridgeMm": 180,
+      "edgeMarginMm": 2,
+      "cup": {
+        "diameterMm": 50,
+        "marginMm": 8,
+        "flatnessMm": 1.5,
+        "angleDeg": 10
+      },
+      "gripper": {
+        "width": 100,
+        "depth": 100,
+        "height": 100,
+        "clearance": 2,
+        "payloadKg": 35,
+        "maxMomentNm": 12,
+        "speedMmS": 850
+      },
+      "workspaceHeight": 2600,
+      "alignmentMm": 8,
+      "alignmentTrials": 9,
+      "features": {
+        "load": true,
+        "suction": true,
+        "path": true,
+        "buffer": false,
+        "replan": true,
+        "alignment": false
+      },
+      "weights": {
+        "height": 3,
+        "space": 2,
+        "support": 2,
+        "load": 1,
+        "path": 1,
+        "suction": 1,
+        "waiting": 1,
+        "retry": 0.5,
+        "foundation": 2
+      }
+    },
+    "metrics": {
+      "mode": "C",
+      "seed": 42,
+      "input": 12,
+      "placed": 6,
+      "completion": 0.5,
+      "unplaced": 6,
+      "reasonCounts": {
+        "support": 6,
+        "bridge": 6,
+        "tipping": 5
+      },
+      "occupiedVolumeMm3": 272820554.5,
+      "utilization": 0.19487182464285716,
+      "nominalFulfilled": 0.557263291000314,
+      "heightMm": 422,
+      "rejectedExecutionEvents": {},
+      "finalViolations": [],
+      "forceResidualKg": 0,
+      "momentResidualKgMm": 3.637978807091713e-12,
+      "pickGeometricPass": 6,
+      "pickGeometricFail": 0,
+      "placementPass": 6,
+      "placementFail": 0,
+      "retries": 18,
+      "waitTicks": 18,
+      "planningMs": 622.3905000000013,
+      "modelExecutionSeconds": 69.83882352941177,
+      "unknownStrengthBoxes": 0,
+      "physicalPickSuccessRate": null,
+      "physicalSeal": "미검증",
+      "information": "도착한 버퍼만 공개; A/B는 선두만 선택; C는 제한 버퍼 선택",
+      "volumeDefinition": "복합 충돌체 외형 합집합 / 팔레트 허용 체적; 재료 부피 아님"
+    },
+    "events": [
+      {
+        "tick": 1,
+        "id": "B001",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B001",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 2,
+        "id": "B002",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 2,
+        "id": "B002",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 3,
+        "id": "B003",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 3,
+        "id": "B003",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 4,
+        "id": "B004",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 4,
+        "id": "B004",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 5,
+        "id": "B005",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 8,
+        "id": "B006",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 8,
+        "id": "B006",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 9,
+        "id": "B007",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 9,
+        "id": "B007",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 10,
+        "id": "B008",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 13,
+        "id": "B009",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 16,
+        "id": "B010",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 19,
+        "id": "B011",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 22,
+        "id": "B012",
+        "kind": "도착·관측",
+        "reasons": []
+      }
+    ],
+    "placements": [
+      {
+        "id": "B001",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B002",
+        "position": {
+          "x": 0,
+          "y": 354,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B003",
+        "position": {
+          "x": 349,
+          "y": 354,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B004",
+        "position": {
+          "x": 480,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": 90
+      },
+      {
+        "id": "B006",
+        "position": {
+          "x": 349,
+          "y": 666,
+          "z": 0
+        },
+        "rotation": 90
+      },
+      {
+        "id": "B007",
+        "position": {
+          "x": 0,
+          "y": 761,
+          "z": 0
+        },
+        "rotation": 0
+      }
+    ],
+    "rejected": [
+      {
+        "id": "B005",
+        "reasons": [
+          "support",
+          "bridge"
+        ]
+      },
+      {
+        "id": "B008",
+        "reasons": [
+          "support",
+          "bridge",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B009",
+        "reasons": [
+          "support",
+          "bridge",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B010",
+        "reasons": [
+          "support",
+          "bridge",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B011",
+        "reasons": [
+          "support",
+          "bridge",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B012",
+        "reasons": [
+          "support",
+          "bridge",
+          "tipping"
+        ]
+      }
+    ]
+  },
+  {
+    "label": "ablation-replan",
+    "inputHash": "1597a7dd45c8d807711ccd937266187abd622a52f9d0b04e5ed18ad87118c5e1",
+    "config": {
+      "mode": "C",
+      "seed": 42,
+      "count": 12,
+      "pallet": {
+        "width": 1000,
+        "depth": 1000,
+        "maxHeight": 1400
+      },
+      "environment": "pallet",
+      "walls": {
+        "left": true,
+        "right": true,
+        "back": true
+      },
+      "frontFill": false,
+      "deformation": 24,
+      "damageKinds": [
+        "normal",
+        "corner",
+        "dent",
+        "bulge",
+        "bottom",
+        "tear"
+      ],
+      "materialResidual": 0.8,
+      "noise": {
+        "dimensionMm": 0,
+        "positionMm": 0,
+        "surfaceMm": 0,
+        "yawDeg": 0
+      },
+      "bufferSize": 6,
+      "maxRetries": 2,
+      "maxWait": 8,
+      "maxCandidates": 24,
+      "maxEms": 80,
+      "timeBudgetMs": 30000,
+      "contactMm": 0.5,
+      "penetrationMm": 0.05,
+      "supportRatio": 0.8,
+      "maxBridgeMm": 180,
+      "edgeMarginMm": 2,
+      "cup": {
+        "diameterMm": 50,
+        "marginMm": 8,
+        "flatnessMm": 1.5,
+        "angleDeg": 10
+      },
+      "gripper": {
+        "width": 100,
+        "depth": 100,
+        "height": 100,
+        "clearance": 2,
+        "payloadKg": 35,
+        "maxMomentNm": 12,
+        "speedMmS": 850
+      },
+      "workspaceHeight": 2600,
+      "alignmentMm": 8,
+      "alignmentTrials": 9,
+      "features": {
+        "load": true,
+        "suction": true,
+        "path": true,
+        "buffer": true,
+        "replan": false,
+        "alignment": false
+      },
+      "weights": {
+        "height": 3,
+        "space": 2,
+        "support": 2,
+        "load": 1,
+        "path": 1,
+        "suction": 1,
+        "waiting": 1,
+        "retry": 0.5,
+        "foundation": 2
+      }
+    },
+    "metrics": {
+      "mode": "C",
+      "seed": 42,
+      "input": 12,
+      "placed": 8,
+      "completion": 0.6666666666666666,
+      "unplaced": 4,
+      "reasonCounts": {
+        "waiting": 1,
+        "support": 3,
+        "bridge": 3,
+        "tipping": 2
+      },
+      "occupiedVolumeMm3": 346306746.5,
+      "utilization": 0.2473619617857143,
+      "nominalFulfilled": 0.7084814737116638,
+      "heightMm": 841,
+      "rejectedExecutionEvents": {},
+      "finalViolations": [],
+      "forceResidualKg": 0,
+      "momentResidualKgMm": 3.637978807091713e-12,
+      "pickGeometricPass": 8,
+      "pickGeometricFail": 0,
+      "placementPass": 8,
+      "placementFail": 0,
+      "retries": 0,
+      "waitTicks": 47,
+      "planningMs": 1182.6558999999997,
+      "modelExecutionSeconds": 91.40352941176471,
+      "unknownStrengthBoxes": 0,
+      "physicalPickSuccessRate": null,
+      "physicalSeal": "미검증",
+      "information": "도착한 버퍼만 공개; A/B는 선두만 선택; C는 제한 버퍼 선택",
+      "volumeDefinition": "복합 충돌체 외형 합집합 / 팔레트 허용 체적; 재료 부피 아님"
+    },
+    "events": [
+      {
+        "tick": 1,
+        "id": "B001",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B002",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B003",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B004",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B005",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B006",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B003",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 2,
+        "id": "B007",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 2,
+        "id": "B006",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 3,
+        "id": "B008",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 3,
+        "id": "B001",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 4,
+        "id": "B009",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 4,
+        "id": "B009",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 5,
+        "id": "B010",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 5,
+        "id": "B004",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 6,
+        "id": "B011",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 6,
+        "id": "B007",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 7,
+        "id": "B012",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 7,
+        "id": "B002",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 8,
+        "id": "B012",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      }
+    ],
+    "placements": [
+      {
+        "id": "B003",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B006",
+        "position": {
+          "x": 0,
+          "y": 312,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B001",
+        "position": {
+          "x": 309,
+          "y": 312,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B009",
+        "position": {
+          "x": 538,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B004",
+        "position": {
+          "x": 309,
+          "y": 666,
+          "z": 0
+        },
+        "rotation": 90
+      },
+      {
+        "id": "B007",
+        "position": {
+          "x": 670,
+          "y": 666,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B002",
+        "position": {
+          "x": 309,
+          "y": 312,
+          "z": 419
+        },
+        "rotation": 90
+      },
+      {
+        "id": "B012",
+        "position": {
+          "x": 0,
+          "y": 312,
+          "z": 317
+        },
+        "rotation": 0
+      }
+    ],
+    "rejected": [
+      {
+        "id": "B005",
+        "reasons": [
+          "waiting"
+        ]
+      },
+      {
+        "id": "B008",
+        "reasons": [
+          "support",
+          "bridge",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B010",
+        "reasons": [
+          "support",
+          "bridge",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B011",
+        "reasons": [
+          "support",
+          "bridge"
+        ]
+      }
+    ]
+  },
+  {
+    "label": "ablation-alignment",
+    "inputHash": "1597a7dd45c8d807711ccd937266187abd622a52f9d0b04e5ed18ad87118c5e1",
+    "config": {
+      "mode": "C",
+      "seed": 42,
+      "count": 12,
+      "pallet": {
+        "width": 1000,
+        "depth": 1000,
+        "maxHeight": 1400
+      },
+      "environment": "pallet",
+      "walls": {
+        "left": true,
+        "right": true,
+        "back": true
+      },
+      "frontFill": false,
+      "deformation": 24,
+      "damageKinds": [
+        "normal",
+        "corner",
+        "dent",
+        "bulge",
+        "bottom",
+        "tear"
+      ],
+      "materialResidual": 0.8,
+      "noise": {
+        "dimensionMm": 0,
+        "positionMm": 0,
+        "surfaceMm": 0,
+        "yawDeg": 0
+      },
+      "bufferSize": 6,
+      "maxRetries": 2,
+      "maxWait": 8,
+      "maxCandidates": 24,
+      "maxEms": 80,
+      "timeBudgetMs": 30000,
+      "contactMm": 0.5,
+      "penetrationMm": 0.05,
+      "supportRatio": 0.8,
+      "maxBridgeMm": 180,
+      "edgeMarginMm": 2,
+      "cup": {
+        "diameterMm": 50,
+        "marginMm": 8,
+        "flatnessMm": 1.5,
+        "angleDeg": 10
+      },
+      "gripper": {
+        "width": 100,
+        "depth": 100,
+        "height": 100,
+        "clearance": 2,
+        "payloadKg": 35,
+        "maxMomentNm": 12,
+        "speedMmS": 850
+      },
+      "workspaceHeight": 2600,
+      "alignmentMm": 8,
+      "alignmentTrials": 9,
+      "features": {
+        "load": true,
+        "suction": true,
+        "path": true,
+        "buffer": true,
+        "replan": true,
+        "alignment": true
+      },
+      "weights": {
+        "height": 3,
+        "space": 2,
+        "support": 2,
+        "load": 1,
+        "path": 1,
+        "suction": 1,
+        "waiting": 1,
+        "retry": 0.5,
+        "foundation": 2
+      }
+    },
+    "metrics": {
+      "mode": "C",
+      "seed": 42,
+      "input": 12,
+      "placed": 8,
+      "completion": 0.6666666666666666,
+      "unplaced": 4,
+      "reasonCounts": {
+        "waiting": 1,
+        "support": 3,
+        "bridge": 3,
+        "tipping": 2
+      },
+      "occupiedVolumeMm3": 346306746.5,
+      "utilization": 0.2473619617857143,
+      "nominalFulfilled": 0.7084814737116638,
+      "heightMm": 841,
+      "rejectedExecutionEvents": {},
+      "finalViolations": [],
+      "forceResidualKg": 0,
+      "momentResidualKgMm": 3.637978807091713e-12,
+      "pickGeometricPass": 8,
+      "pickGeometricFail": 0,
+      "placementPass": 8,
+      "placementFail": 0,
+      "retries": 3,
+      "waitTicks": 47,
+      "planningMs": 1153.8660999999993,
+      "modelExecutionSeconds": 91.40352941176471,
+      "unknownStrengthBoxes": 0,
+      "physicalPickSuccessRate": null,
+      "physicalSeal": "미검증",
+      "information": "도착한 버퍼만 공개; A/B는 선두만 선택; C는 제한 버퍼 선택",
+      "volumeDefinition": "복합 충돌체 외형 합집합 / 팔레트 허용 체적; 재료 부피 아님"
+    },
+    "events": [
+      {
+        "tick": 1,
+        "id": "B001",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B002",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B003",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B004",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B005",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B006",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B003",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 2,
+        "id": "B007",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 2,
+        "id": "B006",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 3,
+        "id": "B008",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 3,
+        "id": "B001",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 4,
+        "id": "B009",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 4,
+        "id": "B009",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 5,
+        "id": "B010",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 5,
+        "id": "B004",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 6,
+        "id": "B011",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 6,
+        "id": "B007",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 7,
+        "id": "B012",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 7,
+        "id": "B002",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 8,
+        "id": "B012",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      }
+    ],
+    "placements": [
+      {
+        "id": "B003",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B006",
+        "position": {
+          "x": 0,
+          "y": 312,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B001",
+        "position": {
+          "x": 309,
+          "y": 312,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B009",
+        "position": {
+          "x": 538,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B004",
+        "position": {
+          "x": 309,
+          "y": 666,
+          "z": 0
+        },
+        "rotation": 90
+      },
+      {
+        "id": "B007",
+        "position": {
+          "x": 670,
+          "y": 666,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B002",
+        "position": {
+          "x": 309,
+          "y": 312,
+          "z": 419
+        },
+        "rotation": 90
+      },
+      {
+        "id": "B012",
+        "position": {
+          "x": 0,
+          "y": 312,
+          "z": 317
+        },
+        "rotation": 0
+      }
+    ],
+    "rejected": [
+      {
+        "id": "B005",
+        "reasons": [
+          "waiting"
+        ]
+      },
+      {
+        "id": "B008",
+        "reasons": [
+          "support",
+          "bridge",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B010",
+        "reasons": [
+          "support",
+          "bridge",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B011",
+        "reasons": [
+          "support",
+          "bridge"
+        ]
+      }
+    ]
+  },
+  {
+    "label": "observation-noise",
+    "inputHash": "41caec65af12cf89f0f06650202a056c552bf67543be067f6b26dc3c0dcded00",
+    "config": {
+      "mode": "A",
+      "seed": 41,
+      "count": 8,
+      "pallet": {
+        "width": 1000,
+        "depth": 1000,
+        "maxHeight": 1400
+      },
+      "environment": "pallet",
+      "walls": {
+        "left": true,
+        "right": true,
+        "back": true
+      },
+      "frontFill": false,
+      "deformation": 24,
+      "damageKinds": [
+        "normal",
+        "corner",
+        "dent",
+        "bulge",
+        "bottom",
+        "tear"
+      ],
+      "materialResidual": 0.8,
+      "noise": {
+        "dimensionMm": 0.5,
+        "positionMm": 0.25,
+        "surfaceMm": 0.5,
+        "yawDeg": 0.05
+      },
+      "bufferSize": 6,
+      "maxRetries": 2,
+      "maxWait": 8,
+      "maxCandidates": 24,
+      "maxEms": 80,
+      "timeBudgetMs": 30000,
+      "contactMm": 0.5,
+      "penetrationMm": 0.05,
+      "supportRatio": 0.8,
+      "maxBridgeMm": 180,
+      "edgeMarginMm": 2,
+      "cup": {
+        "diameterMm": 50,
+        "marginMm": 8,
+        "flatnessMm": 1.5,
+        "angleDeg": 10
+      },
+      "gripper": {
+        "width": 100,
+        "depth": 100,
+        "height": 100,
+        "clearance": 2,
+        "payloadKg": 35,
+        "maxMomentNm": 12,
+        "speedMmS": 850
+      },
+      "workspaceHeight": 2600,
+      "alignmentMm": 8,
+      "alignmentTrials": 9,
+      "features": {
+        "load": true,
+        "suction": true,
+        "path": true,
+        "buffer": true,
+        "replan": true,
+        "alignment": false
+      },
+      "weights": {
+        "height": 3,
+        "space": 2,
+        "support": 2,
+        "load": 1,
+        "path": 1,
+        "suction": 1,
+        "waiting": 1,
+        "retry": 0.5,
+        "foundation": 2
+      }
+    },
+    "metrics": {
+      "mode": "A",
+      "seed": 41,
+      "input": 8,
+      "placed": 1,
+      "completion": 0.125,
+      "unplaced": 7,
+      "reasonCounts": {
+        "collision": 7,
+        "path": 7,
+        "support": 1,
+        "bridge": 1,
+        "grasp": 3
+      },
+      "occupiedVolumeMm3": 77449720,
+      "utilization": 0.05532122857142857,
+      "nominalFulfilled": 0.19186810390376405,
+      "heightMm": 358,
+      "rejectedExecutionEvents": {
+        "collision": 7,
+        "path": 7,
+        "support": 1,
+        "bridge": 1,
+        "grasp": 3
+      },
+      "finalViolations": [],
+      "forceResidualKg": 0,
+      "momentResidualKgMm": 0,
+      "pickGeometricPass": 5,
+      "pickGeometricFail": 3,
+      "placementPass": 1,
+      "placementFail": 7,
+      "retries": 0,
+      "waitTicks": 25,
+      "planningMs": 135.70580000000336,
+      "modelExecutionSeconds": 11.323529411764707,
+      "unknownStrengthBoxes": 0,
+      "physicalPickSuccessRate": null,
+      "physicalSeal": "미검증",
+      "information": "도착한 버퍼만 공개; A/B는 선두만 선택; C는 제한 버퍼 선택",
+      "volumeDefinition": "복합 충돌체 외형 합집합 / 팔레트 허용 체적; 재료 부피 아님"
+    },
+    "events": [
+      {
+        "tick": 1,
+        "id": "B001",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B002",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B003",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B004",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B005",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B006",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B001",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 2,
+        "id": "B007",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 2,
+        "id": "B002",
+        "kind": "실행 중단·재관측",
+        "reasons": [
+          "collision",
+          "path"
+        ]
+      },
+      {
+        "tick": 3,
+        "id": "B008",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 3,
+        "id": "B003",
+        "kind": "실행 중단·재관측",
+        "reasons": [
+          "collision",
+          "path"
+        ]
+      },
+      {
+        "tick": 4,
+        "id": "B004",
+        "kind": "실행 중단·재관측",
+        "reasons": [
+          "collision",
+          "path"
+        ]
+      },
+      {
+        "tick": 5,
+        "id": "B005",
+        "kind": "실행 중단·재관측",
+        "reasons": [
+          "collision",
+          "support",
+          "bridge",
+          "grasp",
+          "path"
+        ]
+      },
+      {
+        "tick": 6,
+        "id": "B006",
+        "kind": "실행 중단·재관측",
+        "reasons": [
+          "collision",
+          "grasp",
+          "path"
+        ]
+      },
+      {
+        "tick": 7,
+        "id": "B007",
+        "kind": "실행 중단·재관측",
+        "reasons": [
+          "collision",
+          "path"
+        ]
+      },
+      {
+        "tick": 8,
+        "id": "B008",
+        "kind": "실행 중단·재관측",
+        "reasons": [
+          "collision",
+          "grasp",
+          "path"
+        ]
+      }
+    ],
+    "placements": [
+      {
+        "id": "B001",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": 90
+      }
+    ],
+    "rejected": [
+      {
+        "id": "B002",
+        "reasons": [
+          "collision",
+          "path"
+        ]
+      },
+      {
+        "id": "B003",
+        "reasons": [
+          "collision",
+          "path"
+        ]
+      },
+      {
+        "id": "B004",
+        "reasons": [
+          "collision",
+          "path"
+        ]
+      },
+      {
+        "id": "B005",
+        "reasons": [
+          "collision",
+          "support",
+          "bridge",
+          "grasp",
+          "path"
+        ]
+      },
+      {
+        "id": "B006",
+        "reasons": [
+          "collision",
+          "grasp",
+          "path"
+        ]
+      },
+      {
+        "id": "B007",
+        "reasons": [
+          "collision",
+          "path"
+        ]
+      },
+      {
+        "id": "B008",
+        "reasons": [
+          "collision",
+          "grasp",
+          "path"
+        ]
+      }
+    ]
+  },
+  {
+    "label": "observation-noise",
+    "inputHash": "41caec65af12cf89f0f06650202a056c552bf67543be067f6b26dc3c0dcded00",
+    "config": {
+      "mode": "B",
+      "seed": 41,
+      "count": 8,
+      "pallet": {
+        "width": 1000,
+        "depth": 1000,
+        "maxHeight": 1400
+      },
+      "environment": "pallet",
+      "walls": {
+        "left": true,
+        "right": true,
+        "back": true
+      },
+      "frontFill": false,
+      "deformation": 24,
+      "damageKinds": [
+        "normal",
+        "corner",
+        "dent",
+        "bulge",
+        "bottom",
+        "tear"
+      ],
+      "materialResidual": 0.8,
+      "noise": {
+        "dimensionMm": 0.5,
+        "positionMm": 0.25,
+        "surfaceMm": 0.5,
+        "yawDeg": 0.05
+      },
+      "bufferSize": 6,
+      "maxRetries": 2,
+      "maxWait": 8,
+      "maxCandidates": 24,
+      "maxEms": 80,
+      "timeBudgetMs": 30000,
+      "contactMm": 0.5,
+      "penetrationMm": 0.05,
+      "supportRatio": 0.8,
+      "maxBridgeMm": 180,
+      "edgeMarginMm": 2,
+      "cup": {
+        "diameterMm": 50,
+        "marginMm": 8,
+        "flatnessMm": 1.5,
+        "angleDeg": 10
+      },
+      "gripper": {
+        "width": 100,
+        "depth": 100,
+        "height": 100,
+        "clearance": 2,
+        "payloadKg": 35,
+        "maxMomentNm": 12,
+        "speedMmS": 850
+      },
+      "workspaceHeight": 2600,
+      "alignmentMm": 8,
+      "alignmentTrials": 9,
+      "features": {
+        "load": true,
+        "suction": true,
+        "path": true,
+        "buffer": true,
+        "replan": true,
+        "alignment": false
+      },
+      "weights": {
+        "height": 3,
+        "space": 2,
+        "support": 2,
+        "load": 1,
+        "path": 1,
+        "suction": 1,
+        "waiting": 1,
+        "retry": 0.5,
+        "foundation": 2
+      }
+    },
+    "metrics": {
+      "mode": "B",
+      "seed": 41,
+      "input": 8,
+      "placed": 1,
+      "completion": 0.125,
+      "unplaced": 7,
+      "reasonCounts": {
+        "boundary": 7,
+        "bridge": 7,
+        "support": 7,
+        "tipping": 7
+      },
+      "occupiedVolumeMm3": 77449720,
+      "utilization": 0.05532122857142857,
+      "nominalFulfilled": 0.19186810390376405,
+      "heightMm": 358,
+      "rejectedExecutionEvents": {},
+      "finalViolations": [],
+      "forceResidualKg": 0,
+      "momentResidualKgMm": 4.547473508864641e-13,
+      "pickGeometricPass": 1,
+      "pickGeometricFail": 0,
+      "placementPass": 1,
+      "placementFail": 0,
+      "retries": 0,
+      "waitTicks": 56,
+      "planningMs": 181.051300000001,
+      "modelExecutionSeconds": 10.823988094120129,
+      "unknownStrengthBoxes": 0,
+      "physicalPickSuccessRate": null,
+      "physicalSeal": "미검증",
+      "information": "도착한 버퍼만 공개; A/B는 선두만 선택; C는 제한 버퍼 선택",
+      "volumeDefinition": "복합 충돌체 외형 합집합 / 팔레트 허용 체적; 재료 부피 아님"
+    },
+    "events": [
+      {
+        "tick": 1,
+        "id": "B001",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B002",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B003",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B004",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B005",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B006",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B001",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 2,
+        "id": "B007",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 5,
+        "id": "B008",
+        "kind": "도착·관측",
+        "reasons": []
+      }
+    ],
+    "placements": [
+      {
+        "id": "B001",
+        "position": {
+          "x": 0.15244374971448044,
+          "y": 0.2374362523947866,
+          "z": 0
+        },
+        "rotation": 0
+      }
+    ],
+    "rejected": [
+      {
+        "id": "B002",
+        "reasons": [
+          "boundary",
+          "bridge",
+          "support",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B003",
+        "reasons": [
+          "boundary",
+          "bridge",
+          "support",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B004",
+        "reasons": [
+          "boundary",
+          "bridge",
+          "support",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B005",
+        "reasons": [
+          "boundary",
+          "support",
+          "bridge",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B006",
+        "reasons": [
+          "boundary",
+          "bridge",
+          "support",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B007",
+        "reasons": [
+          "boundary",
+          "support",
+          "bridge",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B008",
+        "reasons": [
+          "boundary",
+          "bridge",
+          "support",
+          "tipping"
+        ]
+      }
+    ]
+  },
+  {
+    "label": "observation-noise",
+    "inputHash": "41caec65af12cf89f0f06650202a056c552bf67543be067f6b26dc3c0dcded00",
+    "config": {
+      "mode": "C",
+      "seed": 41,
+      "count": 8,
+      "pallet": {
+        "width": 1000,
+        "depth": 1000,
+        "maxHeight": 1400
+      },
+      "environment": "pallet",
+      "walls": {
+        "left": true,
+        "right": true,
+        "back": true
+      },
+      "frontFill": false,
+      "deformation": 24,
+      "damageKinds": [
+        "normal",
+        "corner",
+        "dent",
+        "bulge",
+        "bottom",
+        "tear"
+      ],
+      "materialResidual": 0.8,
+      "noise": {
+        "dimensionMm": 0.5,
+        "positionMm": 0.25,
+        "surfaceMm": 0.5,
+        "yawDeg": 0.05
+      },
+      "bufferSize": 6,
+      "maxRetries": 2,
+      "maxWait": 8,
+      "maxCandidates": 24,
+      "maxEms": 80,
+      "timeBudgetMs": 30000,
+      "contactMm": 0.5,
+      "penetrationMm": 0.05,
+      "supportRatio": 0.8,
+      "maxBridgeMm": 180,
+      "edgeMarginMm": 2,
+      "cup": {
+        "diameterMm": 50,
+        "marginMm": 8,
+        "flatnessMm": 1.5,
+        "angleDeg": 10
+      },
+      "gripper": {
+        "width": 100,
+        "depth": 100,
+        "height": 100,
+        "clearance": 2,
+        "payloadKg": 35,
+        "maxMomentNm": 12,
+        "speedMmS": 850
+      },
+      "workspaceHeight": 2600,
+      "alignmentMm": 8,
+      "alignmentTrials": 9,
+      "features": {
+        "load": true,
+        "suction": true,
+        "path": true,
+        "buffer": true,
+        "replan": true,
+        "alignment": false
+      },
+      "weights": {
+        "height": 3,
+        "space": 2,
+        "support": 2,
+        "load": 1,
+        "path": 1,
+        "suction": 1,
+        "waiting": 1,
+        "retry": 0.5,
+        "foundation": 2
+      }
+    },
+    "metrics": {
+      "mode": "C",
+      "seed": 41,
+      "input": 8,
+      "placed": 2,
+      "completion": 0.25,
+      "unplaced": 6,
+      "reasonCounts": {
+        "boundary": 6,
+        "collision": 5,
+        "bridge": 6,
+        "support": 6,
+        "tipping": 6,
+        "path": 1
+      },
+      "occupiedVolumeMm3": 140476285,
+      "utilization": 0.10034020357142857,
+      "nominalFulfilled": 0.34800536975982316,
+      "heightMm": 358,
+      "rejectedExecutionEvents": {},
+      "finalViolations": [],
+      "forceResidualKg": 0,
+      "momentResidualKgMm": 4.547473508864641e-13,
+      "pickGeometricPass": 2,
+      "pickGeometricFail": 0,
+      "placementPass": 2,
+      "placementFail": 0,
+      "retries": 4,
+      "waitTicks": 29,
+      "planningMs": 511.5301999999974,
+      "modelExecutionSeconds": 22.08695209949204,
+      "unknownStrengthBoxes": 0,
+      "physicalPickSuccessRate": null,
+      "physicalSeal": "미검증",
+      "information": "도착한 버퍼만 공개; A/B는 선두만 선택; C는 제한 버퍼 선택",
+      "volumeDefinition": "복합 충돌체 외형 합집합 / 팔레트 허용 체적; 재료 부피 아님"
+    },
+    "events": [
+      {
+        "tick": 1,
+        "id": "B001",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B002",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B003",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B004",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B005",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B006",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B001",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 2,
+        "id": "B007",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 3,
+        "id": "B007",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 4,
+        "id": "B008",
+        "kind": "도착·관측",
+        "reasons": []
+      }
+    ],
+    "placements": [
+      {
+        "id": "B001",
+        "position": {
+          "x": 0.15244374971448044,
+          "y": 0.2374362523947866,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B007",
+        "position": {
+          "x": 0.05177816924106023,
+          "y": 373.46762639688484,
+          "z": 0
+        },
+        "rotation": 0
+      }
+    ],
+    "rejected": [
+      {
+        "id": "B002",
+        "reasons": [
+          "boundary",
+          "collision",
+          "bridge",
+          "support",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B003",
+        "reasons": [
+          "boundary",
+          "collision",
+          "bridge",
+          "path",
+          "support",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B004",
+        "reasons": [
+          "boundary",
+          "collision",
+          "bridge",
+          "support",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B005",
+        "reasons": [
+          "boundary",
+          "collision",
+          "support",
+          "bridge",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B006",
+        "reasons": [
+          "boundary",
+          "collision",
+          "bridge",
+          "support",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B008",
+        "reasons": [
+          "boundary",
+          "bridge",
+          "support",
+          "tipping"
+        ]
+      }
+    ]
+  },
+  {
+    "label": "observation-noise",
+    "inputHash": "0e29e120bdff440835007e75212501ea08ea22de92a95649f2e96d5de2b31d7a",
+    "config": {
+      "mode": "A",
+      "seed": 42,
+      "count": 8,
+      "pallet": {
+        "width": 1000,
+        "depth": 1000,
+        "maxHeight": 1400
+      },
+      "environment": "pallet",
+      "walls": {
+        "left": true,
+        "right": true,
+        "back": true
+      },
+      "frontFill": false,
+      "deformation": 24,
+      "damageKinds": [
+        "normal",
+        "corner",
+        "dent",
+        "bulge",
+        "bottom",
+        "tear"
+      ],
+      "materialResidual": 0.8,
+      "noise": {
+        "dimensionMm": 0.5,
+        "positionMm": 0.25,
+        "surfaceMm": 0.5,
+        "yawDeg": 0.05
+      },
+      "bufferSize": 6,
+      "maxRetries": 2,
+      "maxWait": 8,
+      "maxCandidates": 24,
+      "maxEms": 80,
+      "timeBudgetMs": 30000,
+      "contactMm": 0.5,
+      "penetrationMm": 0.05,
+      "supportRatio": 0.8,
+      "maxBridgeMm": 180,
+      "edgeMarginMm": 2,
+      "cup": {
+        "diameterMm": 50,
+        "marginMm": 8,
+        "flatnessMm": 1.5,
+        "angleDeg": 10
+      },
+      "gripper": {
+        "width": 100,
+        "depth": 100,
+        "height": 100,
+        "clearance": 2,
+        "payloadKg": 35,
+        "maxMomentNm": 12,
+        "speedMmS": 850
+      },
+      "workspaceHeight": 2600,
+      "alignmentMm": 8,
+      "alignmentTrials": 9,
+      "features": {
+        "load": true,
+        "suction": true,
+        "path": true,
+        "buffer": true,
+        "replan": true,
+        "alignment": false
+      },
+      "weights": {
+        "height": 3,
+        "space": 2,
+        "support": 2,
+        "load": 1,
+        "path": 1,
+        "suction": 1,
+        "waiting": 1,
+        "retry": 0.5,
+        "foundation": 2
+      }
+    },
+    "metrics": {
+      "mode": "A",
+      "seed": 42,
+      "input": 8,
+      "placed": 1,
+      "completion": 0.125,
+      "unplaced": 7,
+      "reasonCounts": {
+        "collision": 7,
+        "path": 7,
+        "support": 1,
+        "grasp": 1
+      },
+      "occupiedVolumeMm3": 71196480,
+      "utilization": 0.05085462857142857,
+      "nominalFulfilled": 0.21479961220839802,
+      "heightMm": 419,
+      "rejectedExecutionEvents": {
+        "collision": 7,
+        "path": 7,
+        "support": 1,
+        "grasp": 1
+      },
+      "finalViolations": [],
+      "forceResidualKg": 0,
+      "momentResidualKgMm": 0,
+      "pickGeometricPass": 7,
+      "pickGeometricFail": 1,
+      "placementPass": 1,
+      "placementFail": 7,
+      "retries": 0,
+      "waitTicks": 25,
+      "planningMs": 85.89210000000094,
+      "modelExecutionSeconds": 11.323529411764707,
+      "unknownStrengthBoxes": 0,
+      "physicalPickSuccessRate": null,
+      "physicalSeal": "미검증",
+      "information": "도착한 버퍼만 공개; A/B는 선두만 선택; C는 제한 버퍼 선택",
+      "volumeDefinition": "복합 충돌체 외형 합집합 / 팔레트 허용 체적; 재료 부피 아님"
+    },
+    "events": [
+      {
+        "tick": 1,
+        "id": "B001",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B002",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B003",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B004",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B005",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B006",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B001",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 2,
+        "id": "B007",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 2,
+        "id": "B002",
+        "kind": "실행 중단·재관측",
+        "reasons": [
+          "collision",
+          "path"
+        ]
+      },
+      {
+        "tick": 3,
+        "id": "B008",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 3,
+        "id": "B003",
+        "kind": "실행 중단·재관측",
+        "reasons": [
+          "collision",
+          "path"
+        ]
+      },
+      {
+        "tick": 4,
+        "id": "B004",
+        "kind": "실행 중단·재관측",
+        "reasons": [
+          "collision",
+          "path"
+        ]
+      },
+      {
+        "tick": 5,
+        "id": "B005",
+        "kind": "실행 중단·재관측",
+        "reasons": [
+          "collision",
+          "support",
+          "path"
+        ]
+      },
+      {
+        "tick": 6,
+        "id": "B006",
+        "kind": "실행 중단·재관측",
+        "reasons": [
+          "collision",
+          "grasp",
+          "path"
+        ]
+      },
+      {
+        "tick": 7,
+        "id": "B007",
+        "kind": "실행 중단·재관측",
+        "reasons": [
+          "collision",
+          "path"
+        ]
+      },
+      {
+        "tick": 8,
+        "id": "B008",
+        "kind": "실행 중단·재관측",
+        "reasons": [
+          "collision",
+          "path"
+        ]
+      }
+    ],
+    "placements": [
+      {
+        "id": "B001",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": 90
+      }
+    ],
+    "rejected": [
+      {
+        "id": "B002",
+        "reasons": [
+          "collision",
+          "path"
+        ]
+      },
+      {
+        "id": "B003",
+        "reasons": [
+          "collision",
+          "path"
+        ]
+      },
+      {
+        "id": "B004",
+        "reasons": [
+          "collision",
+          "path"
+        ]
+      },
+      {
+        "id": "B005",
+        "reasons": [
+          "collision",
+          "support",
+          "path"
+        ]
+      },
+      {
+        "id": "B006",
+        "reasons": [
+          "collision",
+          "grasp",
+          "path"
+        ]
+      },
+      {
+        "id": "B007",
+        "reasons": [
+          "collision",
+          "path"
+        ]
+      },
+      {
+        "id": "B008",
+        "reasons": [
+          "collision",
+          "path"
+        ]
+      }
+    ]
+  },
+  {
+    "label": "observation-noise",
+    "inputHash": "0e29e120bdff440835007e75212501ea08ea22de92a95649f2e96d5de2b31d7a",
+    "config": {
+      "mode": "B",
+      "seed": 42,
+      "count": 8,
+      "pallet": {
+        "width": 1000,
+        "depth": 1000,
+        "maxHeight": 1400
+      },
+      "environment": "pallet",
+      "walls": {
+        "left": true,
+        "right": true,
+        "back": true
+      },
+      "frontFill": false,
+      "deformation": 24,
+      "damageKinds": [
+        "normal",
+        "corner",
+        "dent",
+        "bulge",
+        "bottom",
+        "tear"
+      ],
+      "materialResidual": 0.8,
+      "noise": {
+        "dimensionMm": 0.5,
+        "positionMm": 0.25,
+        "surfaceMm": 0.5,
+        "yawDeg": 0.05
+      },
+      "bufferSize": 6,
+      "maxRetries": 2,
+      "maxWait": 8,
+      "maxCandidates": 24,
+      "maxEms": 80,
+      "timeBudgetMs": 30000,
+      "contactMm": 0.5,
+      "penetrationMm": 0.05,
+      "supportRatio": 0.8,
+      "maxBridgeMm": 180,
+      "edgeMarginMm": 2,
+      "cup": {
+        "diameterMm": 50,
+        "marginMm": 8,
+        "flatnessMm": 1.5,
+        "angleDeg": 10
+      },
+      "gripper": {
+        "width": 100,
+        "depth": 100,
+        "height": 100,
+        "clearance": 2,
+        "payloadKg": 35,
+        "maxMomentNm": 12,
+        "speedMmS": 850
+      },
+      "workspaceHeight": 2600,
+      "alignmentMm": 8,
+      "alignmentTrials": 9,
+      "features": {
+        "load": true,
+        "suction": true,
+        "path": true,
+        "buffer": true,
+        "replan": true,
+        "alignment": false
+      },
+      "weights": {
+        "height": 3,
+        "space": 2,
+        "support": 2,
+        "load": 1,
+        "path": 1,
+        "suction": 1,
+        "waiting": 1,
+        "retry": 0.5,
+        "foundation": 2
+      }
+    },
+    "metrics": {
+      "mode": "B",
+      "seed": 42,
+      "input": 8,
+      "placed": 1,
+      "completion": 0.125,
+      "unplaced": 7,
+      "reasonCounts": {
+        "boundary": 7,
+        "bridge": 7,
+        "support": 7,
+        "tipping": 7
+      },
+      "occupiedVolumeMm3": 71196480,
+      "utilization": 0.05085462857142857,
+      "nominalFulfilled": 0.21479961220839802,
+      "heightMm": 419,
+      "rejectedExecutionEvents": {},
+      "finalViolations": [],
+      "forceResidualKg": 0,
+      "momentResidualKgMm": 0,
+      "pickGeometricPass": 1,
+      "pickGeometricFail": 0,
+      "placementPass": 1,
+      "placementFail": 0,
+      "retries": 0,
+      "waitTicks": 56,
+      "planningMs": 233.41279999999642,
+      "modelExecutionSeconds": 10.823905232032926,
+      "unknownStrengthBoxes": 0,
+      "physicalPickSuccessRate": null,
+      "physicalSeal": "미검증",
+      "information": "도착한 버퍼만 공개; A/B는 선두만 선택; C는 제한 버퍼 선택",
+      "volumeDefinition": "복합 충돌체 외형 합집합 / 팔레트 허용 체적; 재료 부피 아님"
+    },
+    "events": [
+      {
+        "tick": 1,
+        "id": "B001",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B002",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B003",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B004",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B005",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B006",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B001",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 2,
+        "id": "B007",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 5,
+        "id": "B008",
+        "kind": "도착·관측",
+        "reasons": []
+      }
+    ],
+    "placements": [
+      {
+        "id": "B001",
+        "position": {
+          "x": 0.13539542158487936,
+          "y": 0.18405180640255026,
+          "z": 0
+        },
+        "rotation": 0
+      }
+    ],
+    "rejected": [
+      {
+        "id": "B002",
+        "reasons": [
+          "boundary",
+          "bridge",
+          "support",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B003",
+        "reasons": [
+          "boundary",
+          "bridge",
+          "support",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B004",
+        "reasons": [
+          "boundary",
+          "bridge",
+          "support",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B005",
+        "reasons": [
+          "boundary",
+          "support",
+          "bridge",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B006",
+        "reasons": [
+          "boundary",
+          "support",
+          "bridge",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B007",
+        "reasons": [
+          "boundary",
+          "bridge",
+          "support",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B008",
+        "reasons": [
+          "boundary",
+          "bridge",
+          "support",
+          "tipping"
+        ]
+      }
+    ]
+  },
+  {
+    "label": "observation-noise",
+    "inputHash": "0e29e120bdff440835007e75212501ea08ea22de92a95649f2e96d5de2b31d7a",
+    "config": {
+      "mode": "C",
+      "seed": 42,
+      "count": 8,
+      "pallet": {
+        "width": 1000,
+        "depth": 1000,
+        "maxHeight": 1400
+      },
+      "environment": "pallet",
+      "walls": {
+        "left": true,
+        "right": true,
+        "back": true
+      },
+      "frontFill": false,
+      "deformation": 24,
+      "damageKinds": [
+        "normal",
+        "corner",
+        "dent",
+        "bulge",
+        "bottom",
+        "tear"
+      ],
+      "materialResidual": 0.8,
+      "noise": {
+        "dimensionMm": 0.5,
+        "positionMm": 0.25,
+        "surfaceMm": 0.5,
+        "yawDeg": 0.05
+      },
+      "bufferSize": 6,
+      "maxRetries": 2,
+      "maxWait": 8,
+      "maxCandidates": 24,
+      "maxEms": 80,
+      "timeBudgetMs": 30000,
+      "contactMm": 0.5,
+      "penetrationMm": 0.05,
+      "supportRatio": 0.8,
+      "maxBridgeMm": 180,
+      "edgeMarginMm": 2,
+      "cup": {
+        "diameterMm": 50,
+        "marginMm": 8,
+        "flatnessMm": 1.5,
+        "angleDeg": 10
+      },
+      "gripper": {
+        "width": 100,
+        "depth": 100,
+        "height": 100,
+        "clearance": 2,
+        "payloadKg": 35,
+        "maxMomentNm": 12,
+        "speedMmS": 850
+      },
+      "workspaceHeight": 2600,
+      "alignmentMm": 8,
+      "alignmentTrials": 9,
+      "features": {
+        "load": true,
+        "suction": true,
+        "path": true,
+        "buffer": true,
+        "replan": true,
+        "alignment": false
+      },
+      "weights": {
+        "height": 3,
+        "space": 2,
+        "support": 2,
+        "load": 1,
+        "path": 1,
+        "suction": 1,
+        "waiting": 1,
+        "retry": 0.5,
+        "foundation": 2
+      }
+    },
+    "metrics": {
+      "mode": "C",
+      "seed": 42,
+      "input": 8,
+      "placed": 1,
+      "completion": 0.125,
+      "unplaced": 7,
+      "reasonCounts": {
+        "boundary": 7,
+        "support": 7,
+        "bridge": 7,
+        "tipping": 7,
+        "path": 1
+      },
+      "occupiedVolumeMm3": 71196480,
+      "utilization": 0.05085462857142857,
+      "nominalFulfilled": 0.21479961220839802,
+      "heightMm": 419,
+      "rejectedExecutionEvents": {
+        "grasp": 1,
+        "collision": 1,
+        "path": 1
+      },
+      "finalViolations": [],
+      "forceResidualKg": 0,
+      "momentResidualKgMm": 0,
+      "pickGeometricPass": 2,
+      "pickGeometricFail": 1,
+      "placementPass": 1,
+      "placementFail": 2,
+      "retries": 6,
+      "waitTicks": 36,
+      "planningMs": 507.34430000000066,
+      "modelExecutionSeconds": 10.823905232032926,
+      "unknownStrengthBoxes": 0,
+      "physicalPickSuccessRate": null,
+      "physicalSeal": "미검증",
+      "information": "도착한 버퍼만 공개; A/B는 선두만 선택; C는 제한 버퍼 선택",
+      "volumeDefinition": "복합 충돌체 외형 합집합 / 팔레트 허용 체적; 재료 부피 아님"
+    },
+    "events": [
+      {
+        "tick": 1,
+        "id": "B001",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B002",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B003",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B004",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B005",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B006",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B006",
+        "kind": "실행 중단·재관측",
+        "reasons": [
+          "grasp"
+        ]
+      },
+      {
+        "tick": 2,
+        "id": "B001",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 3,
+        "id": "B007",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 3,
+        "id": "B006",
+        "kind": "실행 중단·재관측",
+        "reasons": [
+          "collision",
+          "path"
+        ]
+      },
+      {
+        "tick": 5,
+        "id": "B008",
+        "kind": "도착·관측",
+        "reasons": []
+      }
+    ],
+    "placements": [
+      {
+        "id": "B001",
+        "position": {
+          "x": 0.13539542158487936,
+          "y": 0.18405180640255026,
+          "z": 0
+        },
+        "rotation": 0
+      }
+    ],
+    "rejected": [
+      {
+        "id": "B006",
+        "reasons": [
+          "boundary",
+          "support",
+          "bridge",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B002",
+        "reasons": [
+          "boundary",
+          "bridge",
+          "support",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B003",
+        "reasons": [
+          "boundary",
+          "bridge",
+          "path",
+          "support",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B004",
+        "reasons": [
+          "boundary",
+          "bridge",
+          "support",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B005",
+        "reasons": [
+          "boundary",
+          "support",
+          "bridge",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B007",
+        "reasons": [
+          "boundary",
+          "support",
+          "bridge",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B008",
+        "reasons": [
+          "boundary",
+          "bridge",
+          "support",
+          "tipping"
+        ]
+      }
+    ]
+  },
+  {
+    "label": "observation-noise",
+    "inputHash": "d80911a341453e8b39143c7696c8ac26d5b747734d2fb3f0166a0d439a64e30a",
+    "config": {
+      "mode": "A",
+      "seed": 43,
+      "count": 8,
+      "pallet": {
+        "width": 1000,
+        "depth": 1000,
+        "maxHeight": 1400
+      },
+      "environment": "pallet",
+      "walls": {
+        "left": true,
+        "right": true,
+        "back": true
+      },
+      "frontFill": false,
+      "deformation": 24,
+      "damageKinds": [
+        "normal",
+        "corner",
+        "dent",
+        "bulge",
+        "bottom",
+        "tear"
+      ],
+      "materialResidual": 0.8,
+      "noise": {
+        "dimensionMm": 0.5,
+        "positionMm": 0.25,
+        "surfaceMm": 0.5,
+        "yawDeg": 0.05
+      },
+      "bufferSize": 6,
+      "maxRetries": 2,
+      "maxWait": 8,
+      "maxCandidates": 24,
+      "maxEms": 80,
+      "timeBudgetMs": 30000,
+      "contactMm": 0.5,
+      "penetrationMm": 0.05,
+      "supportRatio": 0.8,
+      "maxBridgeMm": 180,
+      "edgeMarginMm": 2,
+      "cup": {
+        "diameterMm": 50,
+        "marginMm": 8,
+        "flatnessMm": 1.5,
+        "angleDeg": 10
+      },
+      "gripper": {
+        "width": 100,
+        "depth": 100,
+        "height": 100,
+        "clearance": 2,
+        "payloadKg": 35,
+        "maxMomentNm": 12,
+        "speedMmS": 850
+      },
+      "workspaceHeight": 2600,
+      "alignmentMm": 8,
+      "alignmentTrials": 9,
+      "features": {
+        "load": true,
+        "suction": true,
+        "path": true,
+        "buffer": true,
+        "replan": true,
+        "alignment": false
+      },
+      "weights": {
+        "height": 3,
+        "space": 2,
+        "support": 2,
+        "load": 1,
+        "path": 1,
+        "suction": 1,
+        "waiting": 1,
+        "retry": 0.5,
+        "foundation": 2
+      }
+    },
+    "metrics": {
+      "mode": "A",
+      "seed": 43,
+      "input": 8,
+      "placed": 2,
+      "completion": 0.25,
+      "unplaced": 6,
+      "reasonCounts": {
+        "collision": 3,
+        "path": 3,
+        "unavailable": 2,
+        "support": 1,
+        "bridge": 1
+      },
+      "occupiedVolumeMm3": 89103355.5,
+      "utilization": 0.06364525392857143,
+      "nominalFulfilled": 0.20917973140006918,
+      "heightMm": 426,
+      "rejectedExecutionEvents": {
+        "collision": 3,
+        "path": 3,
+        "support": 1,
+        "bridge": 1
+      },
+      "finalViolations": [],
+      "forceResidualKg": 1.7763568394002505e-15,
+      "momentResidualKgMm": 9.094947017729282e-13,
+      "pickGeometricPass": 6,
+      "pickGeometricFail": 0,
+      "placementPass": 2,
+      "placementFail": 4,
+      "retries": 0,
+      "waitTicks": 37,
+      "planningMs": 450.8651000000009,
+      "modelExecutionSeconds": 22.975432071705377,
+      "unknownStrengthBoxes": 0,
+      "physicalPickSuccessRate": null,
+      "physicalSeal": "미검증",
+      "information": "도착한 버퍼만 공개; A/B는 선두만 선택; C는 제한 버퍼 선택",
+      "volumeDefinition": "복합 충돌체 외형 합집합 / 팔레트 허용 체적; 재료 부피 아님"
+    },
+    "events": [
+      {
+        "tick": 1,
+        "id": "B001",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B002",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B003",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B004",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B005",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B006",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B001",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 2,
+        "id": "B007",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 2,
+        "id": "B002",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 3,
+        "id": "B008",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 3,
+        "id": "B003",
+        "kind": "실행 중단·재관측",
+        "reasons": [
+          "collision",
+          "path"
+        ]
+      },
+      {
+        "tick": 7,
+        "id": "B005",
+        "kind": "실행 중단·재관측",
+        "reasons": [
+          "support",
+          "bridge"
+        ]
+      },
+      {
+        "tick": 8,
+        "id": "B006",
+        "kind": "실행 중단·재관측",
+        "reasons": [
+          "collision",
+          "path"
+        ]
+      },
+      {
+        "tick": 10,
+        "id": "B008",
+        "kind": "실행 중단·재관측",
+        "reasons": [
+          "collision",
+          "path"
+        ]
+      }
+    ],
+    "placements": [
+      {
+        "id": "B001",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": 90
+      },
+      {
+        "id": "B002",
+        "position": {
+          "x": 303.17629681830294,
+          "y": 400.9409641312668,
+          "z": 0
+        },
+        "rotation": 0
+      }
+    ],
+    "rejected": [
+      {
+        "id": "B003",
+        "reasons": [
+          "collision",
+          "path"
+        ]
+      },
+      {
+        "id": "B004",
+        "reasons": [
+          "unavailable"
+        ]
+      },
+      {
+        "id": "B005",
+        "reasons": [
+          "support",
+          "bridge"
+        ]
+      },
+      {
+        "id": "B006",
+        "reasons": [
+          "collision",
+          "path"
+        ]
+      },
+      {
+        "id": "B007",
+        "reasons": [
+          "unavailable"
+        ]
+      },
+      {
+        "id": "B008",
+        "reasons": [
+          "collision",
+          "path"
+        ]
+      }
+    ]
+  },
+  {
+    "label": "observation-noise",
+    "inputHash": "d80911a341453e8b39143c7696c8ac26d5b747734d2fb3f0166a0d439a64e30a",
+    "config": {
+      "mode": "B",
+      "seed": 43,
+      "count": 8,
+      "pallet": {
+        "width": 1000,
+        "depth": 1000,
+        "maxHeight": 1400
+      },
+      "environment": "pallet",
+      "walls": {
+        "left": true,
+        "right": true,
+        "back": true
+      },
+      "frontFill": false,
+      "deformation": 24,
+      "damageKinds": [
+        "normal",
+        "corner",
+        "dent",
+        "bulge",
+        "bottom",
+        "tear"
+      ],
+      "materialResidual": 0.8,
+      "noise": {
+        "dimensionMm": 0.5,
+        "positionMm": 0.25,
+        "surfaceMm": 0.5,
+        "yawDeg": 0.05
+      },
+      "bufferSize": 6,
+      "maxRetries": 2,
+      "maxWait": 8,
+      "maxCandidates": 24,
+      "maxEms": 80,
+      "timeBudgetMs": 30000,
+      "contactMm": 0.5,
+      "penetrationMm": 0.05,
+      "supportRatio": 0.8,
+      "maxBridgeMm": 180,
+      "edgeMarginMm": 2,
+      "cup": {
+        "diameterMm": 50,
+        "marginMm": 8,
+        "flatnessMm": 1.5,
+        "angleDeg": 10
+      },
+      "gripper": {
+        "width": 100,
+        "depth": 100,
+        "height": 100,
+        "clearance": 2,
+        "payloadKg": 35,
+        "maxMomentNm": 12,
+        "speedMmS": 850
+      },
+      "workspaceHeight": 2600,
+      "alignmentMm": 8,
+      "alignmentTrials": 9,
+      "features": {
+        "load": true,
+        "suction": true,
+        "path": true,
+        "buffer": true,
+        "replan": true,
+        "alignment": false
+      },
+      "weights": {
+        "height": 3,
+        "space": 2,
+        "support": 2,
+        "load": 1,
+        "path": 1,
+        "suction": 1,
+        "waiting": 1,
+        "retry": 0.5,
+        "foundation": 2
+      }
+    },
+    "metrics": {
+      "mode": "B",
+      "seed": 43,
+      "input": 8,
+      "placed": 2,
+      "completion": 0.25,
+      "unplaced": 6,
+      "reasonCounts": {
+        "bridge": 6,
+        "support": 6,
+        "tipping": 6,
+        "boundary": 2
+      },
+      "occupiedVolumeMm3": 96540880,
+      "utilization": 0.06895777142857143,
+      "nominalFulfilled": 0.2249521542966269,
+      "heightMm": 328,
+      "rejectedExecutionEvents": {},
+      "finalViolations": [],
+      "forceResidualKg": 0,
+      "momentResidualKgMm": 2.2737367544323206e-13,
+      "pickGeometricPass": 2,
+      "pickGeometricFail": 0,
+      "placementPass": 2,
+      "placementFail": 0,
+      "retries": 0,
+      "waitTicks": 55,
+      "planningMs": 222.34979999999996,
+      "modelExecutionSeconds": 22.004496319853832,
+      "unknownStrengthBoxes": 0,
+      "physicalPickSuccessRate": null,
+      "physicalSeal": "미검증",
+      "information": "도착한 버퍼만 공개; A/B는 선두만 선택; C는 제한 버퍼 선택",
+      "volumeDefinition": "복합 충돌체 외형 합집합 / 팔레트 허용 체적; 재료 부피 아님"
+    },
+    "events": [
+      {
+        "tick": 1,
+        "id": "B001",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B002",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B003",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B004",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B005",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B006",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B001",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 2,
+        "id": "B007",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 5,
+        "id": "B008",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 10,
+        "id": "B006",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      }
+    ],
+    "placements": [
+      {
+        "id": "B001",
+        "position": {
+          "x": 0.09183106951670927,
+          "y": 0.19451844816259722,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B006",
+        "position": {
+          "x": 0.01675248716140449,
+          "y": 303.51876987091646,
+          "z": 0
+        },
+        "rotation": 0
+      }
+    ],
+    "rejected": [
+      {
+        "id": "B002",
+        "reasons": [
+          "bridge",
+          "support",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B003",
+        "reasons": [
+          "bridge",
+          "support",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B004",
+        "reasons": [
+          "bridge",
+          "support",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B005",
+        "reasons": [
+          "support",
+          "bridge",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B007",
+        "reasons": [
+          "boundary",
+          "support",
+          "bridge",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B008",
+        "reasons": [
+          "boundary",
+          "bridge",
+          "support",
+          "tipping"
+        ]
+      }
+    ]
+  },
+  {
+    "label": "observation-noise",
+    "inputHash": "d80911a341453e8b39143c7696c8ac26d5b747734d2fb3f0166a0d439a64e30a",
+    "config": {
+      "mode": "C",
+      "seed": 43,
+      "count": 8,
+      "pallet": {
+        "width": 1000,
+        "depth": 1000,
+        "maxHeight": 1400
+      },
+      "environment": "pallet",
+      "walls": {
+        "left": true,
+        "right": true,
+        "back": true
+      },
+      "frontFill": false,
+      "deformation": 24,
+      "damageKinds": [
+        "normal",
+        "corner",
+        "dent",
+        "bulge",
+        "bottom",
+        "tear"
+      ],
+      "materialResidual": 0.8,
+      "noise": {
+        "dimensionMm": 0.5,
+        "positionMm": 0.25,
+        "surfaceMm": 0.5,
+        "yawDeg": 0.05
+      },
+      "bufferSize": 6,
+      "maxRetries": 2,
+      "maxWait": 8,
+      "maxCandidates": 24,
+      "maxEms": 80,
+      "timeBudgetMs": 30000,
+      "contactMm": 0.5,
+      "penetrationMm": 0.05,
+      "supportRatio": 0.8,
+      "maxBridgeMm": 180,
+      "edgeMarginMm": 2,
+      "cup": {
+        "diameterMm": 50,
+        "marginMm": 8,
+        "flatnessMm": 1.5,
+        "angleDeg": 10
+      },
+      "gripper": {
+        "width": 100,
+        "depth": 100,
+        "height": 100,
+        "clearance": 2,
+        "payloadKg": 35,
+        "maxMomentNm": 12,
+        "speedMmS": 850
+      },
+      "workspaceHeight": 2600,
+      "alignmentMm": 8,
+      "alignmentTrials": 9,
+      "features": {
+        "load": true,
+        "suction": true,
+        "path": true,
+        "buffer": true,
+        "replan": true,
+        "alignment": false
+      },
+      "weights": {
+        "height": 3,
+        "space": 2,
+        "support": 2,
+        "load": 1,
+        "path": 1,
+        "suction": 1,
+        "waiting": 1,
+        "retry": 0.5,
+        "foundation": 2
+      }
+    },
+    "metrics": {
+      "mode": "C",
+      "seed": 43,
+      "input": 8,
+      "placed": 2,
+      "completion": 0.25,
+      "unplaced": 6,
+      "reasonCounts": {
+        "boundary": 6,
+        "collision": 6,
+        "bridge": 6,
+        "support": 6,
+        "tipping": 6
+      },
+      "occupiedVolumeMm3": 149649180,
+      "utilization": 0.10689227142857143,
+      "nominalFulfilled": 0.34870104177343,
+      "heightMm": 393,
+      "rejectedExecutionEvents": {},
+      "finalViolations": [],
+      "forceResidualKg": 0,
+      "momentResidualKgMm": 4.547473508864641e-13,
+      "pickGeometricPass": 2,
+      "pickGeometricFail": 0,
+      "placementPass": 2,
+      "placementFail": 0,
+      "retries": 3,
+      "waitTicks": 28,
+      "planningMs": 569.9141999999993,
+      "modelExecutionSeconds": 22.004605256722698,
+      "unknownStrengthBoxes": 0,
+      "physicalPickSuccessRate": null,
+      "physicalSeal": "미검증",
+      "information": "도착한 버퍼만 공개; A/B는 선두만 선택; C는 제한 버퍼 선택",
+      "volumeDefinition": "복합 충돌체 외형 합집합 / 팔레트 허용 체적; 재료 부피 아님"
+    },
+    "events": [
+      {
+        "tick": 1,
+        "id": "B001",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B002",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B003",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B004",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B005",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B006",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 1,
+        "id": "B001",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 2,
+        "id": "B007",
+        "kind": "도착·관측",
+        "reasons": []
+      },
+      {
+        "tick": 2,
+        "id": "B007",
+        "kind": "기하 배치 완료·전체 재관측",
+        "reasons": []
+      },
+      {
+        "tick": 3,
+        "id": "B008",
+        "kind": "도착·관측",
+        "reasons": []
+      }
+    ],
+    "placements": [
+      {
+        "id": "B001",
+        "position": {
+          "x": 0.09183106951670927,
+          "y": 0.19451844816259722,
+          "z": 0
+        },
+        "rotation": 0
+      },
+      {
+        "id": "B007",
+        "position": {
+          "x": 0.06491534356458502,
+          "y": 303.56320335304895,
+          "z": 0
+        },
+        "rotation": 0
+      }
+    ],
+    "rejected": [
+      {
+        "id": "B002",
+        "reasons": [
+          "boundary",
+          "collision",
+          "bridge",
+          "support",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B003",
+        "reasons": [
+          "boundary",
+          "collision",
+          "bridge",
+          "support",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B004",
+        "reasons": [
+          "boundary",
+          "collision",
+          "bridge",
+          "support",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B005",
+        "reasons": [
+          "boundary",
+          "collision",
+          "support",
+          "bridge",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B006",
+        "reasons": [
+          "boundary",
+          "collision",
+          "support",
+          "bridge",
+          "tipping"
+        ]
+      },
+      {
+        "id": "B008",
+        "reasons": [
+          "boundary",
+          "collision",
+          "bridge",
+          "support",
+          "tipping"
+        ]
+      }
+    ]
+  }
+]

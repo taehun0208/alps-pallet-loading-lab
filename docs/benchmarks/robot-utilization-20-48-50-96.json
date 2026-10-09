@@ -1,0 +1,270 @@
+{
+  "description": "Seed42 central mode, one repetition each, 1-second simulation steps, 1600-second cutoff. Busy seconds are modeled completed action durations; concurrency histogram is one-second sampled, not physical utilization. Counts do not require equal robot workload.",
+  "sourceHashes": {
+    "orchestrator.ts": "3bb94bf4dc4b379113ca8b30c073381b90e1e66db15fc86be281f331c11ba82e",
+    "streamPlanner.ts": "d454371abbe1dc8e436db197493c3408199ba63224dec3802c20a40361b68cce",
+    "streamEngine.ts": "08af93edd57b77f72957159cc27669d2fa94ebb9f65753df2d16fe0c8fb68894"
+  },
+  "rows": [
+    {
+      "seed": 42,
+      "count": 20,
+      "placed": 20,
+      "complete": true,
+      "modeledSeconds": 149.1,
+      "peakConcurrent": 3,
+      "concurrentSeconds": [
+        26,
+        45,
+        61,
+        18,
+        0
+      ],
+      "planningMs": 1653.5006270000001,
+      "robots": [
+        {
+          "robot": 1,
+          "placed": 10,
+          "launches": 10,
+          "busySeconds": 106.74646583745195,
+          "busyFraction": 0.7159387380110795,
+          "firstStart": 4.1,
+          "lastFinish": 116.37820472519006,
+          "offerAppearances": 11,
+          "assignmentWins": 10
+        },
+        {
+          "robot": 2,
+          "placed": 8,
+          "launches": 8,
+          "busySeconds": 84.8084157771531,
+          "busyFraction": 0.5688022520265131,
+          "firstStart": 32.1,
+          "lastFinish": 128.09188703355275,
+          "offerAppearances": 15,
+          "assignmentWins": 9
+        },
+        {
+          "robot": 3,
+          "placed": 2,
+          "launches": 2,
+          "busySeconds": 19.614973331350228,
+          "busyFraction": 0.13155582381857966,
+          "firstStart": 54.1,
+          "lastFinish": 79.83583847489882,
+          "offerAppearances": 8,
+          "assignmentWins": 2
+        },
+        {
+          "robot": 4,
+          "placed": 0,
+          "launches": 0,
+          "busySeconds": 0,
+          "busyFraction": 0,
+          "firstStart": null,
+          "lastFinish": null,
+          "offerAppearances": 2,
+          "assignmentWins": 0
+        }
+      ],
+      "meanInfeedInterval": 5.105263157894737,
+      "activeInfeedSeconds": 97.1,
+      "remainingReasons": {}
+    },
+    {
+      "seed": 42,
+      "count": 48,
+      "placed": 48,
+      "complete": true,
+      "modeledSeconds": 339.1,
+      "peakConcurrent": 3,
+      "concurrentSeconds": [
+        43,
+        80,
+        140,
+        77,
+        0
+      ],
+      "planningMs": 6797.838052999997,
+      "robots": [
+        {
+          "robot": 1,
+          "placed": 19,
+          "launches": 19,
+          "busySeconds": 216.23461351473375,
+          "busyFraction": 0.6376721129894831,
+          "firstStart": 8.1,
+          "lastFinish": 249.116100724101,
+          "offerAppearances": 20,
+          "assignmentWins": 20
+        },
+        {
+          "robot": 2,
+          "placed": 17,
+          "launches": 17,
+          "busySeconds": 205.44392785470032,
+          "busyFraction": 0.6058505687251557,
+          "firstStart": 31.1,
+          "lastFinish": 259.70818904938324,
+          "offerAppearances": 26,
+          "assignmentWins": 18
+        },
+        {
+          "robot": 3,
+          "placed": 11,
+          "launches": 11,
+          "busySeconds": 132.6689708751826,
+          "busyFraction": 0.3912384868038413,
+          "firstStart": 80.1,
+          "lastFinish": 296.0213517695379,
+          "offerAppearances": 23,
+          "assignmentWins": 14
+        },
+        {
+          "robot": 4,
+          "placed": 1,
+          "launches": 1,
+          "busySeconds": 10.35076558279502,
+          "busyFraction": 0.030524227610719608,
+          "firstStart": 307.1,
+          "lastFinish": 317.45076558279504,
+          "offerAppearances": 12,
+          "assignmentWins": 1
+        }
+      ],
+      "meanInfeedInterval": 5.25531914893617,
+      "activeInfeedSeconds": 247.1,
+      "remainingReasons": {}
+    },
+    {
+      "seed": 42,
+      "count": 50,
+      "placed": 50,
+      "complete": true,
+      "modeledSeconds": 317.1,
+      "peakConcurrent": 4,
+      "concurrentSeconds": [
+        33,
+        54,
+        125,
+        100,
+        6
+      ],
+      "planningMs": 7738.332789999999,
+      "robots": [
+        {
+          "robot": 1,
+          "placed": 21,
+          "launches": 21,
+          "busySeconds": 245.52123901294442,
+          "busyFraction": 0.7742707001354285,
+          "firstStart": 4.1,
+          "lastFinish": 271.88798690703703,
+          "offerAppearances": 21,
+          "assignmentWins": 21
+        },
+        {
+          "robot": 2,
+          "placed": 18,
+          "launches": 18,
+          "busySeconds": 218.93411813166898,
+          "busyFraction": 0.6904261057447776,
+          "firstStart": 27.1,
+          "lastFinish": 281.04109622834795,
+          "offerAppearances": 22,
+          "assignmentWins": 18
+        },
+        {
+          "robot": 3,
+          "placed": 9,
+          "launches": 9,
+          "busySeconds": 116.79303876179267,
+          "busyFraction": 0.3683161108855019,
+          "firstStart": 81.1,
+          "lastFinish": 272.50491650153464,
+          "offerAppearances": 20,
+          "assignmentWins": 10
+        },
+        {
+          "robot": 4,
+          "placed": 2,
+          "launches": 2,
+          "busySeconds": 19.53289410553998,
+          "busyFraction": 0.06159853076486906,
+          "firstStart": 242.1,
+          "lastFinish": 295.56703508232926,
+          "offerAppearances": 11,
+          "assignmentWins": 2
+        }
+      ],
+      "meanInfeedInterval": 5.163265306122449,
+      "activeInfeedSeconds": 253.1,
+      "remainingReasons": {}
+    },
+    {
+      "seed": 42,
+      "count": 96,
+      "placed": 96,
+      "complete": true,
+      "modeledSeconds": 856.1,
+      "peakConcurrent": 4,
+      "concurrentSeconds": [
+        280,
+        165,
+        228,
+        148,
+        36
+      ],
+      "planningMs": 17690.84253299999,
+      "robots": [
+        {
+          "robot": 1,
+          "placed": 37,
+          "launches": 37,
+          "busySeconds": 443.93406538510123,
+          "busyFraction": 0.5185539836293671,
+          "firstStart": 4.1,
+          "lastFinish": 834.9667526378655,
+          "offerAppearances": 37,
+          "assignmentWins": 37
+        },
+        {
+          "robot": 2,
+          "placed": 25,
+          "launches": 25,
+          "busySeconds": 297.1346341490572,
+          "busyFraction": 0.34707935305344845,
+          "firstStart": 27.1,
+          "lastFinish": 513.2161791703973,
+          "offerAppearances": 53,
+          "assignmentWins": 29
+        },
+        {
+          "robot": 3,
+          "placed": 20,
+          "launches": 20,
+          "busySeconds": 252.87104896888218,
+          "busyFraction": 0.2953755974405819,
+          "firstStart": 60.1,
+          "lastFinish": 536.6358352019965,
+          "offerAppearances": 54,
+          "assignmentWins": 36
+        },
+        {
+          "robot": 4,
+          "placed": 14,
+          "launches": 14,
+          "busySeconds": 164.76850027478042,
+          "busyFraction": 0.19246408161988135,
+          "firstStart": 259.1,
+          "lastFinish": 560.208864538716,
+          "offerAppearances": 41,
+          "assignmentWins": 28
+        }
+      ],
+      "meanInfeedInterval": 5.231578947368421,
+      "activeInfeedSeconds": 497.1,
+      "remainingReasons": {}
+    }
+  ]
+}

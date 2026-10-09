@@ -1,0 +1,111 @@
+{
+  "schema": "alps-baseline-archive/1",
+  "note": "Original six-algorithm 84 executions and published summaries, preserved before floor-dense development. Full 84 raw traces remain at original /results/trials URLs and their hashes are in audit.json.",
+  "files": [
+    {
+      "path": "audit.json",
+      "sha256": "03cc2d7ba9bcc1a233114d0fb5d4c6e38970a191879d681cb4b2dd12a23a2e7d",
+      "sizeBytes": 13036
+    },
+    {
+      "path": "benchmark-10s-quality-preview.png",
+      "sha256": "c3576e453f6c9e69834495c55ade1fd3f3d95cba28a81b47a0bd93d5a595cc2a",
+      "sizeBytes": 134225
+    },
+    {
+      "path": "benchmark-10s-quality.png",
+      "sha256": "58f573ec5a8a0c8df4930e34edfa57cbdc0219989a02cf1bf9686510ec876590",
+      "sizeBytes": 361454
+    },
+    {
+      "path": "benchmark-10s-quality.svg",
+      "sha256": "b17e54a1f8160ae1e84dc77ee4cfe68a9cb09eb5aebdc984b00fd87fbd20fc8c",
+      "sizeBytes": 267804
+    },
+    {
+      "path": "benchmark-12s-quality-preview.png",
+      "sha256": "0b2f7276c7482f7dcc1e1e8e6b6a8a1ecb348f7dbf34302102c5cd5a8e165b51",
+      "sizeBytes": 133981
+    },
+    {
+      "path": "benchmark-12s-quality.png",
+      "sha256": "0c4923df719b879dadd01b73900b3173b0bb0af0842e9277be7b11eac290dc56",
+      "sizeBytes": 359635
+    },
+    {
+      "path": "benchmark-12s-quality.svg",
+      "sha256": "0f0c799d84bf8fb8435d767bf5355ba732c5d0ac0b548b6cd99ab2b79646f634",
+      "sizeBytes": 267840
+    },
+    {
+      "path": "benchmark-pareto-preview.png",
+      "sha256": "903ededc543d56d5d6e18e193be3ca6775923820ba0c2e31774b27768f4a04fa",
+      "sizeBytes": 132742
+    },
+    {
+      "path": "benchmark-pareto.png",
+      "sha256": "26696504ea342b68e9b0c707b5303897482f56925312ff8c3503a48bbf70c9b9",
+      "sizeBytes": 357027
+    },
+    {
+      "path": "benchmark-pareto.svg",
+      "sha256": "a8954158e8178b65e480cc8b314e4eb10f9a0601e53bd57323fa5f239107b770",
+      "sizeBytes": 194320
+    },
+    {
+      "path": "decisions.csv",
+      "sha256": "da12b87efa604f6cb8eb21d5ccc3fcf867948343e222fbf392f69a55672543ea",
+      "sizeBytes": 1042431
+    },
+    {
+      "path": "factor-geometry.csv",
+      "sha256": "4987b448d8f80bd094a0288a74542ddcf9c1bc13b27fcb02bb1b31d18e6f6cb5",
+      "sizeBytes": 14105
+    },
+    {
+      "path": "factor-geometry.json",
+      "sha256": "2e5d77553cd49268ce8e5313ee521a0b5d61c38a413eefdcd2ca3c0ec5be42da",
+      "sizeBytes": 77536
+    },
+    {
+      "path": "figures.json",
+      "sha256": "bb0f134aae51874057ed30e33fda7b858d85510f4a731e91cb2dd5505bc2c3ba",
+      "sizeBytes": 1539
+    },
+    {
+      "path": "index.json",
+      "sha256": "a96e52641c658678ebc2d628f2e51078f0c76f3d94cd699e695aede271a99417",
+      "sizeBytes": 181048
+    },
+    {
+      "path": "pilot.json",
+      "sha256": "37c659c019820deade2513982cc8073ccc750cf7dbaf23c8aa8ea3c1bd10f7af",
+      "sizeBytes": 14970
+    },
+    {
+      "path": "source-snapshot.json",
+      "sha256": "aaad0d79aabfb0252ace8ba4579431f249e47b4938fbfca07c7c80904bbfff22",
+      "sizeBytes": 327
+    },
+    {
+      "path": "source-snapshot.zip",
+      "sha256": "6b455bb026142d8614f37975806ba6dc6b80c0bf86308487ff7aaea421cb0701",
+      "sizeBytes": 167905
+    },
+    {
+      "path": "summary.json",
+      "sha256": "04dfcb81e12b0d857158cfab8f6f1906ca0cded85315e8621b923da44195c087",
+      "sizeBytes": 3184631
+    },
+    {
+      "path": "trials.csv",
+      "sha256": "f8f408ba3f504bbd8d6d45607b850b1b350dfa07b6648a3a31997693173fb786",
+      "sizeBytes": 25638
+    },
+    {
+      "path": "warmup.json",
+      "sha256": "72773a81e5d8f213bc02191761ef04ece7c3a55dfd98ace64dfb01fdbda08054",
+      "sizeBytes": 14968
+    }
+  ]
+}

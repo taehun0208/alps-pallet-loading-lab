@@ -1,0 +1,41 @@
+import { describe,it,expect } from 'vitest';
+import { scenario } from '../src/pallet/scenarios';
+import { DEFAULT_SEARCH } from '../src/pallet/types';
+import { runTrial,failedTrial } from '../src/pallet/benchmark/runner';
+import { hardResults,aggregateHard } from '../src/pallet/benchmark/hardConstraints';
+import { aggregate,validWeights } from '../src/pallet/benchmark/scoring';
+import { DEFAULT_WEIGHTS,HARD_KEYS,DEFAULT_THRESHOLDS } from '../src/pallet/benchmark/model';
+import type { BenchmarkConfig,TrialRow,TrialSpec } from '../src/pallet/benchmark/model';
+import { BenchmarkController } from '../src/pallet/benchmark/controller';
+import { buildCase,validateBenchmark } from '../src/pallet/benchmark/scenarios';
+import { estimatedPathSeconds,segmentTravelSeconds } from '../src/pallet/benchmark/motionMetrics';
+import { report,csv } from '../src/pallet/benchmark/export';
+const config=():BenchmarkConfig=>{const s=scenario('identical');s.types[0].quantity=3;s.types[0].maxLoadKg=100;return {scenario:s,settings:{...DEFAULT_SEARCH,maxCandidates:24},algorithms:['random'],cases:['mixed'],repeats:2,seed:42,decisionMs:60000,trialMs:300000,probeLimit:0,includeOffline:false,warmupRuns:1};};
+const spec:TrialSpec={algorithm:'random',caseId:'mixed',seed:42,episode:0};
+const validRow=()=>runTrial(config(),spec);
+describe('ten hard constraints and ranking classes',()=>{
+ it('passes checked static geometry but never fabricates full robot execution',async()=>{const r=await validRow();for(const k of ['bounds','height','collision','orientation','support','load'] as const)expect(r.hardConstraints![k].status,k).toBe('PASS');for(const k of ['payload','robotCollision','approach','sequence'] as const)expect(r.hardConstraints![k].status,k).toBe('NOT VERIFIED');expect(aggregate([r])[0].rankGroup).toBe('provisional');});
+ it('does not interpret an empty/failed trial as validation evidence',()=>{const m=hardResults(failedTrial(config(),spec,'watchdog'));expect(HARD_KEYS.every(k=>m[k].status==='NOT VERIFIED')).toBe(true);});
+ it.each(['collision','bounds','height','orientation','load','support','payload'] as const)('keeps %s failure outside scoring',async k=>{const r=await validRow();r.proposalViolations[k]=1;r.hardConstraints=hardResults(r);expect(r.hardConstraints[k].status).toBe('FAIL');expect(aggregate([r])[0].score).toBeNull();});
+ it('audits changed environment separately from a previously legal proposal',async()=>{const r=await validRow();r.outcome='environment-blocked';r.finalReasons=['팔레트 경계 밖'];r.hardConstraints=hardResults(r);expect(r.hardConstraints.bounds.status).toBe('FAIL');expect(r.proposalViolations).toEqual({});expect(aggregate([r])[0].rankGroup).toBe('excluded');});
+ it('distinguishes a reach failure from a collision',async()=>{const r=await validRow();r.proposalViolations['robot-path']=1;r.proposalReasons=['로봇 TCP 도달 반경 밖 · 경로 포함'];expect(hardResults(r).approach.status).toBe('FAIL');expect(hardResults(r).robotCollision.status).toBe('NOT VERIFIED');r.proposalReasons=['그리퍼 / 운반 접근 경로 간섭 · B1'];expect(hardResults(r).robotCollision.status).toBe('FAIL');});
+ it.each(['unknown','synthetic','directional'] as const)('marks %s strength evidence honestly',async kind=>{const c=config(),box=c.scenario.types[0];if(kind==='synthetic')box.maxLoadSource='synthetic';else{delete box.maxLoadKg;box.material='unknown';if(kind==='directional')box.maxLoadByAxis={w:100};}const r=await runTrial(c,spec);expect(r.hardConstraints!.load.status).toBe('NOT VERIFIED');});
+ it('separates official, provisional and reference rather than mixing ranks',async()=>{const r=await validRow(),verified=structuredClone(r),offline=structuredClone(r);verified.algorithm='greedy';for(const v of Object.values(verified.hardConstraints!))v.status='PASS';offline.algorithm='offline-stock';offline.scope='offline';const a=aggregate([r,verified,offline]);expect(a.map(a=>a.rankGroup)).toEqual(['provisional','verified','reference']);expect(a.map(a=>a.rank)).toEqual([1,1,null]);expect(aggregateHard([r,verified]).sequence.status).toBe('NOT VERIFIED');});
+ it('keeps exactly 100 weights and absolute normalization',()=>{expect(validWeights(DEFAULT_WEIGHTS)).toBe(true);expect(validWeights({...DEFAULT_WEIGHTS,time:16})).toBe(false);expect(()=>aggregate([],{...DEFAULT_WEIGHTS,time:16})).toThrow('100%');expect(validWeights({...DEFAULT_WEIGHTS,time:-1})).toBe(false);});
+ it('exports algorithm version, validation evidence and explicit volume units',async()=>{const r=await validRow();const data=report(config(),[r],DEFAULT_WEIGHTS,DEFAULT_THRESHOLDS,{test:true});expect(data.schema).toBe('PAC-Benchmark/2');expect(r.algorithmVersion).toContain('planners-');expect(csv([r])).toContain('NOT VERIFIED');expect(r.values.residualVolume).toBeGreaterThan(0);});
+ it('excludes deterministic order scenarios from random-order statistics and records per-event outcomes',async()=>{const r=await runTrial(config(),{...spec,caseId:'lightFirst'});expect(r.values.orderUtilization).toBeNull();expect(buildCase(config().scenario,'lightFirst',42).arrival.pattern).toBe('heavy-late');const e=await runTrial(config(),{...spec,caseId:'missing'});expect(e.values.missingRecovery).toBe(100);expect(e.values.damagedRecovery).toBeNull();});
+});
+// A controllable Worker protocol fixture checks lifecycle, not the planner implementation.
+class FakeWorker {
+ onmessage:((e:MessageEvent)=>void)|null=null;onerror:((e:Event)=>void)|null=null;terminated=false;calls:any[]=[];
+ constructor(private failFirst=false,private hanging=false){}
+ postMessage(m:any){this.calls.push(m);if(this.hanging)return;queueMicrotask(()=>{if(this.terminated)return;if(this.failFirst&&this.calls.length===1){this.onerror?.(new Event('error'));return;}const row=failedTrial(m.config,m.spec,'','partial');row.values.count=1;this.onmessage?.({data:{id:m.id,type:'result',row}} as MessageEvent);});}
+ terminate(){this.terminated=true;}
+}
+describe('warmup lifecycle and motion estimates',()=>{
+ it('runs warmup once per algorithm on the same Worker, excludes warmup from rows and counters',async()=>{const worker=new FakeWorker(),rows:TrialRow[]=[],progress:any[]=[];await new BenchmarkController(()=>worker as unknown as Worker).run(config(),r=>rows.push(r),p=>progress.push(p));expect(worker.calls).toHaveLength(3);expect(rows).toHaveLength(2);expect(rows.every(r=>r.warmup?.completed===1&&r.warmup.sameWorker)).toBe(true);expect(progress.some(p=>p.phase==='warmup')).toBe(true);expect(progress.at(-1).done).toBe(2);});
+ it('records failed warmup without retrying it or marking the replacement Worker warm',async()=>{const workers:FakeWorker[]=[],rows:TrialRow[]=[];const c={...config(),repeats:1};await new BenchmarkController(()=>{const w=new FakeWorker(workers.length===0);workers.push(w);return w as unknown as Worker;}).run(c,r=>rows.push(r),()=>{});expect(workers).toHaveLength(2);expect(rows[0].warmup).toEqual({requested:1,completed:0,outcomes:['error'],sameWorker:false});});
+ it('cancels during warmup without creating a measured failure',async()=>{const w=new FakeWorker(false,true),ctrl=new BenchmarkController(()=>w as unknown as Worker),rows:TrialRow[]=[];const p=ctrl.run(config(),r=>rows.push(r),()=>{});await Promise.resolve();ctrl.cancel();await p;expect(rows).toEqual([]);expect(w.terminated).toBe(true);});
+ it('allows explicit no-warmup and validates bounded settings',async()=>{const w=new FakeWorker(),rows:TrialRow[]=[];await new BenchmarkController(()=>w as unknown as Worker).run({...config(),warmupRuns:0},r=>rows.push(r),()=>{});expect(w.calls).toHaveLength(2);expect(rows[0].warmup?.completed).toBe(0);expect(()=>validateBenchmark({...config(),warmupRuns:6})).toThrow();expect(()=>validateBenchmark({...config(),robotAccelerationMmS2:0})).toThrow();});
+ it('integrates triangular and trapezoidal TCP travel with preserved holds',()=>{expect(segmentTravelSeconds(100,100,100)).toBe(2);expect(segmentTravelSeconds(400,100,100)).toBe(5);const path={model:'gripper' as const,points:[{label:'a',tcp:{x:0,y:0,z:0},carrying:true,hold:0},{label:'b',tcp:{x:400,y:0,z:0},carrying:true,hold:2}],seconds:6,segmentSeconds:[6],lengthMm:400};expect(estimatedPathSeconds(path,100,100)).toBe(7);expect(estimatedPathSeconds(path,100,null)).toBe(6);expect(estimatedPathSeconds({...path,model:'ideal'},100,100)).toBeNull();});
+});

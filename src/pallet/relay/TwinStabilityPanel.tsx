@@ -14,7 +14,7 @@ export function TwinStabilityPanel({assessments,pallet,focus,onFocus,archived=fa
  const x=(n:number)=>100+(n-pallet.width/2)*scale,y=(n:number)=>84-(n-pallet.depth/2)*scale;
  const title=archived?'출고 팔레트':a.status==='empty'?'적재 후 평가':focus===null?(invalid>=0?'현재 팔레트 · 데이터 확인':'현재 팔레트 중 최저'):'선택 팔레트';
  return <section className="twin-stability" aria-label="무게중심 안정성 평가">
-  <div className="studio-section-label"><h3>실시간 무게중심 추적</h3><span>CENTER OF MASS</span></div>
+  <div className="studio-section-label"><h3>안정성 평가</h3><span>CENTER OF MASS</span></div>
   <div className="twin-score-head"><div><span>{title}</span><b>P0{selected+1} · {a.reason}</b></div><strong data-testid="stability-score">{number(a.score)}<small>/100</small></strong></div>
   <div className="twin-cell-scores" aria-label="팔레트별 안정성 점수">{assessments.map((item,i)=><button key={i} aria-label={`P0${i+1} 안정성 상세`} aria-pressed={focus===i} data-state={item.status} onClick={()=>onFocus(i)}><span>P0{i+1}</span><b>{number(item.score)}</b></button>)}</div>
   <div className="twin-com-detail">
@@ -29,6 +29,6 @@ export function TwinStabilityPanel({assessments,pallet,focus,onFocus,archived=fa
    <dl><div><dt>경계 여유</dt><dd>{number(a.marginMm)}<small> mm</small></dd></div><div><dt>무게중심 높이</dt><dd>{number(a.center?.z??null)}<small> mm</small></dd></div><div><dt>전도 임계각*</dt><dd>{number(a.tippingDeg,1)}<small> °</small></dd></div><div><dt>총 질량</dt><dd>{a.center?number(a.mass,1):'—'}<small> kg</small></dd></div></dl>
   </div>
   <p className="com-legend"><i/> 무게중심 <span>＋ 팔레트 중심 · 면: 바닥 접촉 외곽</span></p>
-  <details className="com-method"><summary>점수 산식과 가정</summary><p>균등 질량 박스의 질량 가중 평균 좌표를 사용합니다. 점수 = 100 × d / (d + h). d는 바닥 접촉 볼록 외곽까지의 최소 수평 여유, h는 무게중심 높이입니다. 경계·외부는 0점, 빈 팔레트·잘못된 데이터는 — 입니다.</p><p>*전도 임계각 = atan(d/h). 전체 적재를 하나의 강체로 보는 기하 지표입니다. 박스별 전도·하중·마찰과 동적 안정성은 별도 검사하며, 이 점수는 안전 인증이나 붕괴 확률이 아닙니다.</p><p>배치가 확정될 때마다 갱신합니다. 높은 무게중심과 작은 지지 여유는 이동 중 전도 위험을 높일 수 있지만, 강한 충돌 외력·랩핑 불량·포장 파손의 원인을 이 지표만으로 판정하지 않습니다.</p></details>
+  <details className="com-method"><summary>점수 산식과 가정</summary><p>균등 질량 박스의 질량 가중 평균 좌표를 사용합니다. 점수 = 100 × d / (d + h). d는 바닥 접촉 볼록 외곽까지의 최소 수평 여유, h는 무게중심 높이입니다. 경계·외부는 0점, 빈 팔레트·잘못된 데이터는 — 입니다.</p><p>*전도 임계각 = atan(d/h). 전체 적재를 하나의 강체로 보는 기하 지표입니다. 박스별 전도·하중·마찰과 동적 안정성은 별도 검사하며, 이 점수는 안전 인증이나 붕괴 확률이 아닙니다.</p></details>
  </section>;
 }

@@ -1,41 +1,34 @@
-# 중앙 오케스트레이션 · 기존 연속 컨베이어 확장
+# Central stream orchestration
 
-## 역할과 실행
+`world.stream.orchestrationMode` selects `central` (default) or the legacy `independent` policy. Switching modes should start a new run so that matched comparisons have the same inventory and conditions.
 
-`/?palletDemo=compact&palletView=relay#pallet` → 작업 배정 방식 **중앙 배차 · 전체 팔레트 상태** → 연속 실행. **기존 셀 순차 선별 · 비교용**으로 전환하면 실행을 초기화하며 이전 선택 구조로 비교한다. 박스·높이·시드는 동일하게 유지한다.
+The coordinator sees measured conveyor stock only. It considers at most two boxes in each active pick window, compares their current and downstream loading cells within a 20-second arrival horizon, and excludes robots already executing a motion. Busy robot completion estimates are not available in the worker input, so this version conservatively excludes them rather than predicting when they will be free.
 
-중앙이 각 팔레트의 적재 위치/버전, 로봇의 예약 상태, 계측을 마친 벨트 박스의 규격·현재 위치를 함께 받아 명령을 발행한다. 실제 서버 대신 브라우저의 **단일 Worker**가 중앙 계산 역할을 모사한다. 현재 물리 배치상 R1~R4는 각각 P1~P4에 접근한다. 아무 로봇이나 임의의 팔레트에 닿는다고 가정하지 않는다.
+Per box/cell, geometric, support, load and simplified gripper-path checks filter candidates first. Up to two valid placements are scored using up to three other measured boxes as individual future-fit probes. A 0–100 heuristic combines retained observed fit (45), placement-height economy (25), estimated arrival plus nominal path time (20), and existing pallet utilization (10). Empty sample sets are shown as zero samples; their default retention of 1 is a neutral ranking convention, not evidence of future capacity. Remaining volume is informational; empty volume alone never proves a box fits. Fit probes concern each box independently, not their simultaneous joint placement.
 
-`전체 관측 상태 → 중앙 후보 수집 → 중앙 배정 → 집기 직전 재검사·예약 → 로봇 실행 → 실제 배치/팔레트 버전 갱신`
+With `F` the retained-fit fraction, `H` the placement top divided by allowed height, `A` the arrival time, `T` nominal path seconds and `U` current occupied-volume fraction, the ranking is `45F + 25(1-H) + 20/(1+(A+T)/10) + 10U`. These are provisional policy weights, not physical safety scores.
 
-## 변경한 결정 방식
+A dynamic program over the 16 robot occupancy masks matches immediate offers jointly. It prioritizes service of recirculated boxes, then number of immediate jobs, then aggregate score. For `B` offers and `R=4` robots the matcher costs O(B · R · 2^R), at most 8 · 4 · 16 transitions up to constant factors. Candidate generation and constraint checking dominate; each shortlisted box/cell placement can require up to three additional geometry searches, whose cost depends on candidate count, stored boxes and support/load validation. This is not an O(1) geometry calculation. Before its first full loop, a box may deliberately pass a current robot when a downstream offer scores higher. Once it has completed a loop, voluntary downstream deferral is disabled. This does not guarantee service if there is no valid reachable candidate. A future intention never reserves a robot or a physical path; it is recomputed as the scene changes. Other immediately available jobs can use that robot in the meantime.
 
-- 기존 `planStream`은 한 Worker에서도 로봇 번호 순으로 첫 유효 물품을 선택했다. 후보 기하·지지·하중·후속 공간 함수는 그대로 재사용한다.
-- 중앙 모드에서는 로봇별 접근 가능한 최대 2개 물품의 유효 배치 후보를 모은다. 상자의 실제 순환 위치, 파지/회전/포장 제약, 높이 제한을 유지한다.
-- `centralDispatch.ts`가 로봇/박스 중복이 없는 조합을 깊이 우선 탐색한다. 우선 기준은 동시 배정 수, 동률이면 벨트 이탈이 가까운 후보 순위와 0~1로 압축한 기존 배치 점수다. 전체 공정의 전역 최적해나 장기 완료율 최대화 보장은 아니다.
-- 조합 검사 상한 512노드. 4대×각 2개 후보에서 전체 분기가 작으며 시간 예산을 넘겨 무한 탐색하지 않는다. 예산 도달은 진단으로 표시한다.
-- 출력은 로봇 ID·박스 ID·목표 팔레트 버전·위치/자세/경로 후보를 포함한다. 화면에서 `R1 ← B...` 명령을 확인하고 JSON으로 내보낼 수 있다.
-- 중앙의 팔레트 버전 스냅샷이 달라졌으면 그 결정은 폐기한다. 신규 계측이 들어오는 것만으로 진행 중 모든 명령을 취소하지는 않는다. 집기 직전에 최신 벨트 위치를 계산하고 지지/하중/경로/다른 로봇의 예약 경로를 다시 검사한다.
-- 선별에 탈락한 물품은 벨트에 그대로 남는다. 중앙의 일정상 보류는 물리적 배치 불가로 기록하지 않으며 팔레트 반출 조건의 실패 건수에 넣지 않는다.
-- 후보별 접근 검사와 배치 기하 계산은 중앙 오케스트레이터가 호출하는 하위 서비스다. 로봇별로 별도 정책을 자율 실행하지 않는다. 각 로봇의 시각적 동작은 예약된 명령을 수행한다.
+Both scored shortlist placements are retained in ranking order, so a first-choice interception failure can fall back to the second checked placement. The executed record uses that candidate’s own rationale. Pair-specific no-candidate diagnostics are processed before any box reservation and remain available even if another robot receives a soft or immediate assignment.
 
-## 검증
+The selected bid is revalidated at launch against the latest moving pickup location, modeled constraints, robot availability, and existing path reservations. Decisions from another run, mode, pallet version, phase, or exchange cycle are rejected. Reservation and completion preserve unique box and robot ownership. `defer` is distinct from `no-candidate`, so a policy wait does not count as evidence to exchange an exhausted pallet. A failed bounded search is not proof of geometric impossibility. Launch failures carry typed transient/candidate-invalid reasons and never count toward pallet exhaustion; only the planning-stage no-candidate result does. A launch failure permits a retry after 0.65 simulated seconds, whereas static no-candidate checks retain the 25-second backoff. Global snapshot invalidation is deliberately conservative: changes to any pallet phase/version reject the complete allocation; high-rate changes may waste planning work, but launch validity takes precedence.
 
-`npx vitest run tests/pallet-central-dispatch.test.ts tests/pallet-stream.test.ts tests/pallet-stream-settings.test.ts tests/pallet-stream-return.test.ts`
+The independent baseline retains its original local foundation/cap policies and lookahead. The central policy replaces those soft policies as well as coordinating assignment; comparisons therefore evaluate the complete policies, not an isolated effect of matching.
 
-4파일 18개 통과. 새 중앙 테스트 6개:
+## Reproduction and interpretation
 
-1. R0가 A/B, R1이 A만 가능한 경우 R0→B/R1→A로 두 명령 선택. 로봇별 첫 선택보다 중앙 조합이 필요한 사례.
-2. 반복 결정 재현, 바쁜 로봇 제외, 박스/로봇 단일 예약, 노드 상한 반환.
-3. 4개 동시 명령, 중복 응답 무해성, 어느 팔레트라도 버전이 바뀐 전역 스냅샷 거절, 미계측 상자 명령 거절.
-4. 일정 보류를 물리적 배치 불가와 구별.
-5. 미래 박스 정보 비공개 및 기존 선택 방식 보존.
-6. 같은 입력·순서·시간 간격에서 중앙/기존 모드 전체 공정 대조, 수량 보존과 적재 제약 검사.
+Run `npx vitest run tests/pallet-orchestrator.test.ts tests/pallet-orchestrator-benchmark.test.ts tests/pallet-stream.test.ts tests/pallet-stream-long.test.ts`.
 
-실측은 `ordering-results/central-conveyor.json`에 보존한다. 시드 41/42 각각 12개 물품에서 두 모드 모두 12개 적재와 반출 완료. 최대 동시 작업은 각각 3대/2대, 시뮬레이션 완료 시간은 136.25/216.25초로 두 모드가 같았다. 이 입력에서는 후보 경쟁이 적어 검사 횟수도 각각 126/97로 동일했다. 측정 wall time 차이를 중앙 배차의 속도 개선으로 주장하지 않는다.
+`benchmarks/orchestration-comparison.json` contains two matched 24-box synthetic scenarios with one-second simulated ticks and one repetition per mode. Both completed every box. In the recorded run central control shortened the simulated completion horizon, but used four rather than three pallets for seed 821. This is a throughput/packing tradeoff, not evidence of universal improvement. Completion horizon includes final pallet exchange; it is not physical measured robot cycle time. `p95Ms`/`p99Ms` include every planner invocation, including ticks with no eligible work. `activeP95Ms` includes only invocations reporting at least one candidate/site check. The report includes both sample counts; only 22–31 active calls occurred per run, so upper quantiles are highly sensitive to individual samples. Timing values are host JavaScript measurements and have few active decisions; they do not establish an industrial deadline or MCU performance. Repeated seeds, uncertainty sweeps and physical robot validation remain necessary.
 
-## 논문 개선과 연결 범위
+Worst-case search remains bounded but has no interruptible real-time deadline in this implementation. Geometry caching and shortlist limits reduce repeated work; there is no claim of an Arduino-class memory or timing guarantee.
 
-Wang/Hauser 의존성·이전 위치·동일 물품·버퍼 비교는 기존 `adaptive` C 계획기에 적용했고, 이 중앙 배차는 기존 연속 컨베이어의 `streamPlanner`를 사용한다. 서로 다른 기하/운반 인터페이스를 억지로 합치거나, 논문의 전체 QOP 정책을 4대 로봇에서 재현했다고 표시하지 않는다. 두 화면 모두 중앙 상태가 계획 입력이며 로봇마다 별도 학습 모델이나 정책 서버를 두지 않는다.
 
-실제 중앙 서버 연결은 현재의 `observedProblem → FlowDecision` 메시지 경계를 API/큐로 옮기는 후속 작업이다. 통신 지연·명령 ACK/재전송·PLC·실제 로봇 관절/충돌·진공 성공·AMR 경로는 이번 구현의 검증 범위 밖이다. 현재 예약 검사는 상자/그리퍼와 추상 운반 경로 모델에 한정한다.
+## Optional workload balancing
+
+`world.stream.orchestrationObjective` defaults to `throughput`, preserving the original score. A separate `balanced` objective replaces only the 10-point consolidation term with `10 · (1 - Wrobot / max(10, max(Wcells)))`, where W is accumulated completed modeled action seconds. Arrival cost, geometric constraints, horizon and matching remain unchanged. This limited preference can send a valid box downstream to a less-used cell; it is not round-robin and cannot make a busy or invalid cell eligible. Decisions are invalidated if the objective changes.
+
+A four-cell line does not imply four arms should move continuously. In these synthetic workloads the infeed is roughly one box every five seconds and handling takes roughly ten to twelve seconds, so mean demand is only about two to three arms. The throughput objective naturally favors earlier conveyor cells, and a short batch may finish without R4 receiving any work. This is different from a disabled robot.
+
+`benchmarks/orchestration-objectives.json` records the controlled seed-42 comparison with 0.5-second simulation steps. On 20 boxes the original policy allocated 9/8/3/0 jobs and finished in 164.1 simulated seconds; balancing allocated 8/8/3/1 and finished in 183.1 seconds. On 24 boxes allocations changed from 10/10/4/0 to 9/8/5/2 and time from 168.6 to 175.6 seconds. Balancing can increase both final completion time and the number of partial pallets. It is optional; these two synthetic cases do not establish universal performance improvements or guarantee equal workloads.

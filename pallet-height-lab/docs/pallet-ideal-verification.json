@@ -1,0 +1,56 @@
+{
+  "verifiedAt": "2026-10-03T14:20:37.425232+00:00",
+  "build": "TypeScript and Vite passed",
+  "unitRegression": {
+    "command": "npm.cmd test -- --exclude tests/pallet-ideal-benchmark.test.ts",
+    "files": 10,
+    "passed": 108
+  },
+  "algorithmExperiments": {
+    "developmentRuns": 27,
+    "freshHoldoutRuns": 18,
+    "testPassed": 1,
+    "settingsFile": "pallet-ideal-final.json",
+    "holdoutFile": "pallet-ideal-holdout.json",
+    "defaultPhysicsFile": "pallet-ideal-default-measurements.json"
+  },
+  "browser": {
+    "initialCommand": "npm.cmd run test:browser -- --retries=1 --reporter=line,json",
+    "initialStats": {
+      "startTime": "2026-10-03T14:09:02.314Z",
+      "duration": 272195.267,
+      "expected": 31,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    "initialFailure": "The new inspection test did not open the collapsed records panel before selecting a box ID. Corrected the test interaction; production behavior did not need a fix.",
+    "recheckCommand": "npm.cmd run test:browser -- tests/pallet-browser.spec.ts --retries=1 --reporter=line,json",
+    "recheckStats": {
+      "startTime": "2026-10-03T14:15:48.554Z",
+      "duration": 69139.693,
+      "expected": 10,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "confirmedUniqueTests": 32,
+    "viewports": [
+      320,
+      375,
+      414,
+      768,
+      1366
+    ]
+  },
+  "localServer": {
+    "url": "http://127.0.0.1:5173/#pallet",
+    "httpStatus": 200,
+    "pid": 28188
+  },
+  "limits": [
+    "Ideal mode excludes all gripper/robot geometry and work time.",
+    "Vertical reaction and loading model is an approximation; no packaging compression or industrial robot torque is validated.",
+    "Rollout can lose to baseline on some inputs."
+  ]
+}

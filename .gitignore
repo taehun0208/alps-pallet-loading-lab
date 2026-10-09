@@ -3,3 +3,15 @@ dist/
 test-results/
 playwright-report/
 *.tsbuildinfo
+
+# Local credentials and generated long-run test output
+.env
+.env.*
+!.env.example
+work/
+
+.DS_Store
+.cache/
+__pycache__/
+*.pyc
+.openai/

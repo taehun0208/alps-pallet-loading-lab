@@ -1,0 +1,47 @@
+{
+  "context": "amr",
+  "peak": 4,
+  "placed": 8,
+  "total": 8,
+  "unplaced": 0,
+  "robotSeconds": 47.96252700436991,
+  "processSeconds": 23.8,
+  "manifest": [
+    {
+      "robot": 1,
+      "boxIds": [
+        "F1-01"
+      ],
+      "massKg": 10,
+      "heightMm": 200
+    },
+    {
+      "robot": 2,
+      "boxIds": [
+        "B2-01",
+        "A1-01",
+        "C2-01"
+      ],
+      "massKg": 3,
+      "heightMm": 110
+    },
+    {
+      "robot": 3,
+      "boxIds": [
+        "F3-01"
+      ],
+      "massKg": 10,
+      "heightMm": 200
+    },
+    {
+      "robot": 4,
+      "boxIds": [
+        "B4-01",
+        "A3-01",
+        "C4-01"
+      ],
+      "massKg": 3,
+      "heightMm": 110
+    }
+  ]
+}

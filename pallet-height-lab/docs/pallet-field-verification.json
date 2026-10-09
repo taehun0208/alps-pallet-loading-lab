@@ -1,0 +1,138 @@
+{
+  "date": "2026-10-04",
+  "model": "heterogeneous individual cuboids; per-item synthetic ratings; actual-coordinate inventory probes",
+  "build": "Final TypeScript / Vite production build success",
+  "tests": {
+    "regression": {
+      "files": 11,
+      "passed": 123,
+      "command": "npm.cmd test -- --exclude '**/*benchmark*'"
+    },
+    "fieldSimulation": {
+      "cases": 9,
+      "passed": 1,
+      "command": "npm.cmd test -- tests/pallet-field-benchmark.test.ts"
+    },
+    "uniquePassed": 124,
+    "notRepeated": [
+      "pallet-benchmark.test.ts",
+      "pallet-ideal-benchmark.test.ts",
+      "pallet-random-benchmark.test.ts"
+    ]
+  },
+  "browser": {
+    "uniqueValidated": 14,
+    "initial": {
+      "stats": {
+        "startTime": "2026-10-04T11:16:11.730Z",
+        "duration": 130722.07600000002,
+        "expected": 13,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      },
+      "tests": [
+        {
+          "title": "pallet scene, full run, inspection, replay, physics and exports",
+          "status": "expected",
+          "duration": 11162
+        },
+        {
+          "title": "comparison runs on common inputs and exports CSV",
+          "status": "expected",
+          "duration": 19532
+        },
+        {
+          "title": "invalid imports, blocked state and stale worker reset",
+          "status": "unexpected",
+          "duration": 6817,
+          "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: '한 단계', exact: true })\nExpected: enabled\nReceived: disabled\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" with timeout 5000ms\u001b[22m"
+        },
+        {
+          "title": "responsive layout preserves accessible controls",
+          "status": "expected",
+          "duration": 2778
+        },
+        {
+          "title": "pause freezes motion, cancel preserves confirmed state and rapid clicks cannot double commit",
+          "status": "expected",
+          "duration": 3629
+        },
+        {
+          "title": "comparison cancellation keeps completed results and mobile comparison stays contained",
+          "status": "expected",
+          "duration": 4955
+        },
+        {
+          "title": "materials, cumulative load and always-on inventory are applied to real placements and exports",
+          "status": "expected",
+          "duration": 12029
+        },
+        {
+          "title": "ideal 30-box reference exposes saved frames, reactions and display-only layer separation",
+          "status": "expected",
+          "duration": 18878
+        },
+        {
+          "title": "random box-set seed and arrival seed are independent, reproducible and validated",
+          "status": "expected",
+          "duration": 4540
+        },
+        {
+          "title": "expanded random controls and frames stay usable at supported viewport widths",
+          "status": "expected",
+          "duration": 3945
+        },
+        {
+          "title": "finite random inventory draws the next box per step, displays probabilities and replays exactly",
+          "status": "expected",
+          "duration": 17610
+        },
+        {
+          "title": "one click randomizes inventory and arrivals, resets active state and remains contained on mobile",
+          "status": "expected",
+          "duration": 4345
+        },
+        {
+          "title": "default stock has unrelated per-item dimensions and ratings, and records honest blocked results",
+          "status": "expected",
+          "duration": 9796
+        },
+        {
+          "title": "custom irregular ranges preserve applied pallet limits and manual strength overrides",
+          "status": "expected",
+          "duration": 5323
+        }
+      ]
+    },
+    "recheck": {
+      "stats": {
+        "startTime": "2026-10-04T11:20:00.489Z",
+        "duration": 17022.586,
+        "expected": 1,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "title": "invalid imports, blocked state and stale worker reset"
+    },
+    "repair": "Extend test assertion waiting for real Rollout calculation from 5 to 45 seconds; no product change between browser runs",
+    "automaticRetries": 0
+  },
+  "measurements": [
+    "pallet-field-first-pass.json",
+    "pallet-field-measurements.json"
+  ],
+  "screenshots": [
+    "pallet-field-320.png",
+    "pallet-field-1366.png"
+  ],
+  "limitations": [
+    "Generated dimension/mass/load/friction distributions are synthetic, not measured field data",
+    "Rectangular rigid boxes; uniform mass inside each box; only floor rotations 0/90",
+    "Inventory probes use geometry and approximate immediate load; full reaction/stability constraints apply to actual candidate placements",
+    "Sparse candidate failure does not prove no continuous placement exists",
+    "No gripper width or actual robot calculation in ideal mode",
+    "No packaging deformation / transport certification"
+  ]
+}

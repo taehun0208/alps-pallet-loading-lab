@@ -1,0 +1,16 @@
+import { boardFromRows, emptyBoard } from './board';
+import { DEFAULT_WEIGHTS, type Scenario } from './types';
+const hole = ['.#........','.#........','.##.##.###','.##.##.###','.#####.###','.#########'];
+const future = ['#.#.......','#.#......#','#.#.#.#..#','#.#.###..#','########.#','########.#'];
+export const SCENARIOS: Scenario[] = [
+  { id:'placements',title:'가능한 위치 찾기',subtitle:'회전과 수직 낙하',lesson:'가능한 위치는 어떻게 찾을까',board:emptyBoard(),current:'T',next:['I','J','O','S','L'],weights:{...DEFAULT_WEIGHTS},config:{algorithm:'greedy',depth:3,width:10},condition:'T의 4회전, 빈 보드에서 합법적인 34후보' },
+  { id:'holes',title:'구멍 하나의 대가',subtitle:'막힌 빈칸과 열린 홈',lesson:'구멍 하나가 선택을 바꾸는 이유',board:boardFromRows(hole),current:'T',next:['J','I','O','S','L'],weights:{...DEFAULT_WEIGHTS},config:{algorithm:'greedy',depth:3,width:10},condition:'기본 선택은 0구멍; 구멍 가중치 0에서 선택이 바뀌며 1구멍' },
+  { id:'surface',title:'울퉁불퉁함 재기',subtitle:'이웃한 높이의 차이',lesson:'울퉁불퉁함은 어떻게 재나',board:boardFromRows(['..#.......','..#....#..','..#.#..#..','#.#.#..#..','#.###.##.#']),current:'O',next:['S','T','I','J','L'],weights:{...DEFAULT_WEIGHTS},config:{algorithm:'greedy',depth:3,width:10},condition:'열 높이 [2,0,5,1,3,0,1,4,0,1], B=25' },
+  { id:'clear',title:'줄 삭제와 평가',subtitle:'삭제 전후를 살펴보기',lesson:'줄이 지워지면 평가가 바뀐다',board:boardFromRows(['#########.','#########.','#########.','#########.']),current:'I',next:['O','T','J','Z','L'],weights:{...DEFAULT_WEIGHTS},config:{algorithm:'greedy',depth:3,width:10},condition:'수직 I x=9로 4줄 삭제, 삭제 후 H=O=B=0' },
+  { id:'future',title:'다음 블록의 가능성',subtitle:'지금과 미래의 다른 선택',lesson:'지금 좋은 수와 다음에 좋은 수',board:boardFromRows(future),current:'T',next:['S','I','O','J','L'],weights:{...DEFAULT_WEIGHTS},config:{algorithm:'two',depth:3,width:10},condition:'Greedy 3:7 / 2수 2:4; 2수 선택의 즉시평가는 더 낮음' },
+  { id:'beam',title:'남길 가지, 버릴 가지',subtitle:'빔 너비가 바꾸는 탐색',lesson:'모든 후보를 보지 않고 남기기',board:boardFromRows(hole),current:'T',next:['J','I','O','S','L'],weights:{...DEFAULT_WEIGHTS},config:{algorithm:'beam',depth:3,width:10},condition:'모든 깊이의 유지 수는 K 이하이며 생성 = 유지 + 제외' },
+  { id:'well-build',title:'I를 위한 한 열 남기기',subtitle:'9–0 쌓기와 통로 보존',lesson:'높이 차이가 모두 나쁜 것은 아닙니다',board:boardFromRows(['.#.....#..','.#...###..','##..####..','##..####..','##..#####.']),current:'S',next:['I','T','O','J','L'],weights:{...DEFAULT_WEIGHTS},config:{algorithm:'greedy',depth:3,width:10,strategy:'well-right'},condition:'균형은 r1/x8로 예약 열을 채우고, 웰 전략은 r0/x5로 x9를 열어 둠; 둘 다 구멍 0' },
+  { id:'well-cashout',title:'쌓고, I로 네 줄 회수',subtitle:'한 수 준비 → 다음 수 테트리스',lesson:'지금 채우는 칸이 다음 네 줄을 만듭니다',board:boardFromRows(['..#######.','..#######.','#########.','#########.']),current:'O',next:['I','T','S','J','L'],weights:{...DEFAULT_WEIGHTS},config:{algorithm:'two',depth:3,width:10,strategy:'well-right'},condition:'O x0으로 연속 준비 4줄; 공개 NEXT I x9로 4줄 삭제, 추가 보상 40' },
+  { id:'well-danger',title:'기다리기보다 먼저 낮추기',subtitle:'위험 높이에서 3줄 삭제',lesson:'테트리스를 기다리다 넘치면 안 됩니다',board:boardFromRows(['.....#....','.#..##....','##..##.#..','###.##.#..','########..',...Array(11).fill('#########.')]),current:'L',next:['O','S','J','T','I'],weights:{...DEFAULT_WEIGHTS},config:{algorithm:'greedy',depth:3,width:10,strategy:'well-right'},condition:'최대 높이 16에서 L r3/x8로 3줄 삭제, 최대 높이 13으로 감소' },
+];
+

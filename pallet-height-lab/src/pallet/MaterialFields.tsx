@@ -1,0 +1,11 @@
+import { MATERIALS,materialInfo } from './materials';
+import type { BoxType,Material,StabilitySettings } from './types';
+export function MaterialFields({box,settings,onChange}:{box:BoxType;settings?:StabilitySettings;onChange:(patch:Partial<BoxType>)=>void}){
+ const info=materialInfo(box,settings);
+ return <div className="pallet-material-fields"><label className="pallet-field"><span>재질</span><select aria-label={`${box.id} 재질`} value={box.material||'unknown'} onChange={e=>onChange({material:e.target.value as Material})}>{Object.entries(MATERIALS).map(([id,m])=><option key={id} value={id}>{m.name}</option>)}</select></label>
+ <label className="pallet-field"><span>상부 하중 기준 kg</span><input aria-label={`${box.id} 허용 지지하중 kg`} type="number" min={0} step={1} value={box.maxLoadKg??''} placeholder={info.reference===null?'미제공':`예제 ${info.reference}`} onChange={e=>onChange({maxLoadKg:e.target.value===''?undefined:Number(e.target.value),maxLoadSource:undefined})}/></label>
+ <label className="pallet-field"><span>강도 보정 비율</span><input aria-label={`${box.id} 강도 보정 비율`} type="number" min={.05} max={1} step={.05} value={box.strengthFactor??1} onChange={e=>onChange({strengthFactor:Number(e.target.value)})}/></label>
+ <details><summary>방향별 상부 하중 기준</summary>{(['w','d','h'] as const).map((axis,i)=><label className="pallet-field" key={axis}><span>{['가로축','깊이축','높이축'][i]}을 세울 때 kg</span><input aria-label={`${box.id} ${axis}축 허용 하중 kg`} type="number" min={0} value={box.maxLoadByAxis?.[axis]??''} placeholder="공통 기준 적용" onChange={e=>{const values={...box.maxLoadByAxis};if(e.target.value==='')delete values[axis];else values[axis]=Number(e.target.value);onChange({maxLoadByAxis:Object.keys(values).length?values:undefined});}}/></label>)}<p className="pallet-note">미입력 축은 공통 하중 기준이 같은 강도라는 가정입니다. 실제 방향별 압축 강도를 알고 있으면 입력하세요.</p></details>
+ <label className="pallet-field"><span>박스 마찰 계수</span><input aria-label={`${box.id} 마찰 계수`} type="number" min={0} max={2} step={.05} value={box.friction??''} placeholder={`예제 ${MATERIALS[box.material||'unknown'].friction}`} onChange={e=>onChange({friction:e.target.value===''?undefined:Number(e.target.value)})}/></label>
+ <p className="pallet-note">{info.name} · {info.source} · 여유 계수와 보정 후 상부 허용 {info.capacity===null?'미검증':`${info.capacity.toFixed(1)} kg`}. 재질 기본값은 학습용 예제이며 실제 시험/제조사 값을 입력할 수 있습니다.</p></div>;
+}

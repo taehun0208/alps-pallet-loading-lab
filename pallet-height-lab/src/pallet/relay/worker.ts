@@ -1,0 +1,2 @@
+import { planRelay } from './engine';
+self.onmessage=e=>{const {requestId,scenario,world,algorithm,transfers,running}=e.data;try{self.postMessage({requestId,runId:world.runId,revision:world.revision,decision:planRelay(scenario,world,algorithm,undefined,transfers,running)});}catch(error){self.postMessage({requestId,runId:world.runId,revision:world.revision,error:error instanceof Error?error.message:String(error)});}};

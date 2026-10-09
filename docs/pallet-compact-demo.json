@@ -222,6 +222,10 @@
         "baseY": 500,
         "minRadius": 0,
         "maxRadius": 2400
+      },
+      "standingHeight": {
+        "enabled": true,
+        "maxRiseMm": 100
       }
     },
     "arrival": {
@@ -253,383 +257,361 @@
     }
   },
   "metrics": {
-    "loadUtilization": 0.9846846572449645,
+    "loadUtilization": 0.9952853661911101,
     "unknownCapacity": 0,
-    "slenderness": 5.843023255813954,
+    "slenderness": 2.721212121212121,
     "supportBalances": [
       {
         "id": "B1-01",
         "isBase": true,
         "planeZ": 0,
-        "mass": 29.138750000000005,
-        "loadAbove": 20.798750000000005,
+        "mass": 46.05064591951751,
+        "loadAbove": 37.7106459195175,
         "center": {
-          "x": 263.8795632962979,
-          "y": 316.6436875294925,
-          "z": 298.68478400755004
+          "x": 259.7760685478222,
+          "y": 392.47409278741355,
+          "z": 465.01780282222626
         },
         "supportCenter": {
           "x": 269,
           "y": 335,
           "z": 0
         },
-        "offsetMm": 19.05710050221513,
-        "offsetRatio": 0.05479496259852978,
-        "margin": 263.8795632962979,
-        "required": 53.800000000000004,
-        "reserve": 210.07956329629786
+        "offsetMm": 58.2095546553201,
+        "offsetRatio": 0.1715644560818315,
+        "margin": 259.7760685478222,
+        "required": 69.75267042333394,
+        "reserve": 190.02339812448827
       },
       {
         "id": "B1-02",
         "isBase": true,
         "planeZ": 0,
-        "mass": 38.61125,
-        "loadAbove": 30.27125,
+        "mass": 44.49935408048249,
+        "loadAbove": 36.15935408048249,
         "center": {
-          "x": 838.8600310790249,
-          "y": 372.3554339732591,
-          "z": 465.6017028715725
+          "x": 791.585855049292,
+          "y": 353.0837659361504,
+          "z": 440.2451500875637
         },
         "supportCenter": {
           "x": 807,
           "y": 335,
           "z": 0
         },
-        "offsetMm": 49.096741518016785,
-        "offsetRatio": 0.11843877724544576,
-        "margin": 237.1399689209751,
-        "required": 69.84025543073588,
-        "reserve": 167.2997134902392
+        "offsetMm": 23.761701433081562,
+        "offsetRatio": 0.057301654091851166,
+        "margin": 253.58585504929204,
+        "required": 66.03677251313455,
+        "reserve": 187.54908253615747
+      },
+      {
+        "id": "B4-01",
+        "isBase": true,
+        "planeZ": 0,
+        "mass": 4.8,
+        "loadAbove": 3.84,
+        "center": {
+          "x": 281.99999999999994,
+          "y": 816.5,
+          "z": 225
+        },
+        "supportCenter": {
+          "x": 282,
+          "y": 816.5,
+          "z": 0
+        },
+        "offsetMm": 5.684341886080802e-14,
+        "offsetRatio": 2.220446049250313e-16,
+        "margin": 146.5,
+        "required": 33.75,
+        "reserve": 112.75
       },
       {
         "id": "B3-01",
         "isBase": true,
         "planeZ": 0,
-        "mass": 21.7725,
-        "loadAbove": 11.7225,
+        "mass": 29.400000000000002,
+        "loadAbove": 19.35,
         "center": {
-          "x": 223,
-          "y": 833.5788839131932,
-          "z": 273.96417499138823
+          "x": 746.2802721088436,
+          "y": 824.6455782312923,
+          "z": 384.9272108843537
         },
         "supportCenter": {
-          "x": 223,
+          "x": 761,
           "y": 835,
           "z": 0
         },
-        "offsetMm": 1.4211160868068191,
-        "offsetRatio": 0.008612824768526177,
-        "margin": 163.57888391319315,
-        "required": 41.09462624870823,
-        "reserve": 122.48425766448491
+        "offsetMm": 17.996789695775565,
+        "offsetRatio": 0.06600774839083573,
+        "margin": 154.64557823129235,
+        "required": 57.739081632653054,
+        "reserve": 96.9064965986393
       },
       {
-        "id": "B3-02",
+        "id": "B2-01",
         "isBase": true,
         "planeZ": 0,
-        "mass": 29.4475,
-        "loadAbove": 19.3975,
+        "mass": 3.29,
+        "loadAbove": 0,
         "center": {
-          "x": 671.5749214704134,
-          "y": 815.2214534340775,
-          "z": 421.11333729518634
+          "x": 1073.5,
+          "y": 766,
+          "z": 154.5
         },
         "supportCenter": {
-          "x": 669,
-          "y": 835,
+          "x": 1073.5,
+          "y": 766,
           "z": 0
         },
-        "offsetMm": 19.945453738613246,
-        "offsetRatio": 0.11986997918740916,
-        "margin": 145.2214534340775,
-        "required": 63.16700059427795,
-        "reserve": 82.05445283979954
+        "offsetMm": 0,
+        "offsetRatio": 0,
+        "margin": 89.5,
+        "required": 23.175,
+        "reserve": 66.325
       },
       {
-        "id": "B6-01",
-        "isBase": true,
-        "planeZ": 0,
-        "mass": 17.05,
-        "loadAbove": 13.64,
+        "id": "B4-02",
+        "isBase": false,
+        "planeZ": 90,
+        "mass": 3.84,
+        "loadAbove": 2.88,
         "center": {
-          "x": 1114,
-          "y": 845.0000000000001,
-          "z": 502.5
+          "x": 281.99999999999994,
+          "y": 816.5,
+          "z": 270
         },
         "supportCenter": {
-          "x": 1114,
-          "y": 845,
-          "z": 0
+          "x": 282,
+          "y": 816.5,
+          "z": 90
         },
-        "offsetMm": 1.1368683772161603e-13,
-        "offsetRatio": 7.334634691717163e-16,
-        "margin": 86,
-        "required": 75.375,
-        "reserve": 10.625
+        "offsetMm": 5.684341886080802e-14,
+        "offsetRatio": 2.220446049250313e-16,
+        "margin": 146.5,
+        "required": 29.3,
+        "reserve": 117.2
       },
       {
         "id": "B1-03",
         "isBase": false,
         "planeZ": 166,
-        "mass": 20.798750000000005,
-        "loadAbove": 12.458750000000006,
+        "mass": 36.159354080482494,
+        "loadAbove": 27.819354080482494,
         "center": {
-          "x": 261.8263417272672,
-          "y": 309.28306989602737,
-          "z": 385.171284331991
+          "x": 788.0306485983479,
+          "y": 357.2547090224624,
+          "z": 522.6422124106007
         },
         "supportCenter": {
-          "x": 269,
+          "x": 807,
           "y": 335,
           "z": 166
         },
-        "offsetMm": 26.698724070385104,
-        "offsetRatio": 0.07676695553424666,
-        "margin": 261.8263417272672,
+        "offsetMm": 29.242235999899734,
+        "offsetRatio": 0.07051803495037973,
+        "margin": 250.03064859834782,
         "required": 53.800000000000004,
-        "reserve": 208.0263417272672
+        "reserve": 196.2306485983478
       },
       {
         "id": "B1-04",
         "isBase": false,
         "planeZ": 166,
-        "mass": 30.27125,
-        "loadAbove": 21.93125,
+        "mass": 37.7106459195175,
+        "loadAbove": 29.370645919517504,
         "center": {
-          "x": 847.6377544700003,
-          "y": 382.64718999050257,
-          "z": 571.0118924722303
+          "x": 257.7361250136981,
+          "y": 405.18493138906547,
+          "z": 549.503984319542
         },
         "supportCenter": {
-          "x": 807,
+          "x": 269,
           "y": 335,
           "z": 166
         },
-        "offsetMm": 62.62333273114009,
-        "offsetRatio": 0.15106971921933213,
-        "margin": 228.36224552999965,
-        "required": 60.751783870834544,
-        "reserve": 167.6104616591651
+        "offsetMm": 71.08304631763374,
+        "offsetRatio": 0.20950725787780736,
+        "margin": 257.7361250136981,
+        "required": 57.525597647931306,
+        "reserve": 200.21052736576678
       },
       {
-        "id": "B6-02",
+        "id": "B4-03",
         "isBase": false,
-        "planeZ": 201,
-        "mass": 13.64,
-        "loadAbove": 10.23,
+        "planeZ": 180,
+        "mass": 2.88,
+        "loadAbove": 1.92,
         "center": {
-          "x": 1114,
-          "y": 845,
-          "z": 603
+          "x": 281.99999999999994,
+          "y": 816.4999999999999,
+          "z": 315
         },
         "supportCenter": {
-          "x": 1114,
-          "y": 845,
-          "z": 201
+          "x": 282,
+          "y": 816.5,
+          "z": 180
+        },
+        "offsetMm": 1.2710574864626038e-13,
+        "offsetRatio": 7.7601937011342e-16,
+        "margin": 146.4999999999999,
+        "required": 29.3,
+        "reserve": 117.19999999999989
+      },
+      {
+        "id": "B3-02",
+        "isBase": false,
+        "planeZ": 248,
+        "mass": 19.35,
+        "loadAbove": 9.3,
+        "center": {
+          "x": 738.6351421188631,
+          "y": 819.2677002583979,
+          "z": 520.4475452196382
+        },
+        "supportCenter": {
+          "x": 761,
+          "y": 835,
+          "z": 248
+        },
+        "offsetMm": 27.34395953776749,
+        "offsetRatio": 0.10029084251630903,
+        "margin": 149.2677002583979,
+        "required": 40.86713178294573,
+        "reserve": 108.40056847545216
+      },
+      {
+        "id": "B4-04",
+        "isBase": false,
+        "planeZ": 270,
+        "mass": 1.92,
+        "loadAbove": 0.96,
+        "center": {
+          "x": 282,
+          "y": 816.5,
+          "z": 360.00000000000006
+        },
+        "supportCenter": {
+          "x": 282,
+          "y": 816.5,
+          "z": 270
         },
         "offsetMm": 0,
         "offsetRatio": 0,
-        "margin": 86,
-        "required": 60.3,
-        "reserve": 25.700000000000003
-      },
-      {
-        "id": "B3-03",
-        "isBase": false,
-        "planeZ": 248,
-        "mass": 11.7225,
-        "loadAbove": 1.6724999999999994,
-        "center": {
-          "x": 223.00000000000003,
-          "y": 832.3605246321177,
-          "z": 402.53230966090854
-        },
-        "supportCenter": {
-          "x": 223,
-          "y": 835,
-          "z": 248
-        },
-        "offsetMm": 2.6394753678822553,
-        "offsetRatio": 0.015996820411407608,
-        "margin": 162.36052463211774,
-        "required": 33,
-        "reserve": 129.36052463211774
-      },
-      {
-        "id": "B3-04",
-        "isBase": false,
-        "planeZ": 248,
-        "mass": 19.3975,
-        "loadAbove": 9.3475,
-        "center": {
-          "x": 672.9090088928986,
-          "y": 804.9740301585255,
-          "z": 575.0501353267173
-        },
-        "supportCenter": {
-          "x": 669,
-          "y": 835,
-          "z": 248
-        },
-        "offsetMm": 30.27935295619605,
-        "offsetRatio": 0.18197557479681536,
-        "margin": 134.97403015852547,
-        "required": 49.05752029900759,
-        "reserve": 85.91650985951787
+        "margin": 146.5,
+        "required": 29.3,
+        "reserve": 117.2
       },
       {
         "id": "B1-05",
         "isBase": false,
         "planeZ": 332,
-        "mass": 12.45875,
-        "loadAbove": 4.11875,
+        "mass": 27.819354080482494,
+        "loadAbove": 19.479354080482494,
         "center": {
-          "x": 257.0242299588642,
-          "y": 292.06792414969397,
-          "z": 476.3255743955051
+          "x": 782.343802303064,
+          "y": 363.9264769114787,
+          "z": 604.6777638077317
+        },
+        "supportCenter": {
+          "x": 807,
+          "y": 335,
+          "z": 332
+        },
+        "offsetMm": 38.00880360364824,
+        "offsetRatio": 0.09165872749790346,
+        "margin": 244.34380230306397,
+        "required": 53.800000000000004,
+        "reserve": 190.54380230306396
+      },
+      {
+        "id": "B1-06",
+        "isBase": false,
+        "planeZ": 332,
+        "mass": 29.370645919517504,
+        "loadAbove": 21.030645919517504,
+        "center": {
+          "x": 254.53766905725848,
+          "y": 425.1144327486468,
+          "z": 634.8341890447826
         },
         "supportCenter": {
           "x": 269,
           "y": 335,
           "z": 332
         },
-        "offsetMm": 44.57109158293743,
-        "offsetRatio": 0.128155450299421,
-        "margin": 257.0242299588642,
+        "offsetMm": 91.2675736825942,
+        "offsetRatio": 0.26899830671237845,
+        "margin": 244.88556725135322,
         "required": 53.800000000000004,
-        "reserve": 203.2242299588642
+        "reserve": 191.0855672513532
       },
       {
-        "id": "B1-06",
+        "id": "B4-05",
         "isBase": false,
-        "planeZ": 332,
-        "mass": 21.93125,
-        "loadAbove": 13.591249999999999,
+        "planeZ": 360,
+        "mass": 0.96,
+        "loadAbove": 0,
         "center": {
-          "x": 863.0914505557139,
-          "y": 400.7664291821032,
-          "z": 693.4663436876604
+          "x": 282,
+          "y": 816.5,
+          "z": 405
         },
         "supportCenter": {
-          "x": 807,
-          "y": 335,
-          "z": 332
+          "x": 282,
+          "y": 816.5,
+          "z": 360
         },
-        "offsetMm": 86.4376887289838,
-        "offsetRatio": 0.20851840355283974,
-        "margin": 212.9085494442861,
-        "required": 54.21995155314905,
-        "reserve": 158.68859789113705
+        "offsetMm": 0,
+        "offsetRatio": 0,
+        "margin": 146.5,
+        "required": 29.3,
+        "reserve": 117.2
       },
       {
-        "id": "B6-03",
+        "id": "B6-01",
         "isBase": false,
-        "planeZ": 402,
-        "mass": 10.23,
-        "loadAbove": 6.82,
+        "planeZ": 496,
+        "mass": 6.82,
+        "loadAbove": 3.41,
         "center": {
-          "x": 1114,
-          "y": 845,
-          "z": 703.5
+          "x": 693,
+          "y": 756,
+          "z": 697
         },
         "supportCenter": {
-          "x": 1114,
-          "y": 845,
-          "z": 402
+          "x": 693,
+          "y": 756,
+          "z": 496
         },
         "offsetMm": 0,
         "offsetRatio": 0,
         "margin": 86,
-        "required": 45.225,
-        "reserve": 40.775
+        "required": 30.15,
+        "reserve": 55.85
       },
       {
-        "id": "B4-01",
-        "isBase": false,
-        "planeZ": 496,
-        "mass": 1.92,
-        "loadAbove": 0.96,
-        "center": {
-          "x": 256,
-          "y": 816.5,
-          "z": 586
-        },
-        "supportCenter": {
-          "x": 256,
-          "y": 816.5,
-          "z": 496
-        },
-        "offsetMm": 0,
-        "offsetRatio": 0,
-        "margin": 146.5,
-        "required": 29.3,
-        "reserve": 117.2
-      },
-      {
-        "id": "B8-01",
-        "isBase": false,
-        "planeZ": 496,
-        "mass": 9.1,
-        "loadAbove": 4.55,
-        "center": {
-          "x": 682.5,
-          "y": 771.5,
-          "z": 799
-        },
-        "supportCenter": {
-          "x": 682.5,
-          "y": 771.5,
-          "z": 496
-        },
-        "offsetMm": 0,
-        "offsetRatio": 0,
-        "margin": 101.5,
-        "required": 45.449999999999996,
-        "reserve": 56.050000000000004
-      },
-      {
-        "id": "B4-02",
+        "id": "B5-01",
         "isBase": false,
         "planeZ": 498,
-        "mass": 0.96,
+        "mass": 6.63,
         "loadAbove": 0,
         "center": {
-          "x": 146.5,
-          "y": 414,
-          "z": 543
+          "x": 673.5,
+          "y": 479.5,
+          "z": 638
         },
         "supportCenter": {
-          "x": 146.5,
-          "y": 414,
+          "x": 673.5,
+          "y": 479.5,
           "z": 498
         },
         "offsetMm": 0,
         "offsetRatio": 0,
-        "margin": 146.5,
-        "required": 29.3,
-        "reserve": 117.2
-      },
-      {
-        "id": "B4-03",
-        "isBase": false,
-        "planeZ": 498,
-        "mass": 0.96,
-        "loadAbove": 0,
-        "center": {
-          "x": 549,
-          "y": 523.5,
-          "z": 543
-        },
-        "supportCenter": {
-          "x": 549,
-          "y": 523.5,
-          "z": 498
-        },
-        "offsetMm": 0,
-        "offsetRatio": 0,
-        "margin": 146.5,
-        "required": 29.3,
-        "reserve": 117.2
+        "margin": 174.5,
+        "required": 34.9,
+        "reserve": 139.6
       },
       {
         "id": "B7-01",
@@ -638,168 +620,146 @@
         "mass": 2.48,
         "loadAbove": 0,
         "center": {
-          "x": 210.5,
-          "y": 70.5,
+          "x": 428.50000000000006,
+          "y": 459.5,
           "z": 638.5
         },
         "supportCenter": {
-          "x": 210.5,
-          "y": 70.5,
+          "x": 428.5,
+          "y": 459.5,
           "z": 498
         },
-        "offsetMm": 0,
-        "offsetRatio": 0,
-        "margin": 70.5,
+        "offsetMm": 5.684341886080802e-14,
+        "offsetRatio": 8.062896292313193e-16,
+        "margin": 70.49999999999994,
         "required": 21.075,
-        "reserve": 49.425
+        "reserve": 49.42499999999994
       },
       {
-        "id": "B4-04",
+        "id": "B8-01",
         "isBase": false,
         "planeZ": 498,
-        "mass": 0.96,
-        "loadAbove": 0,
-        "center": {
-          "x": 677,
-          "y": 146.5,
-          "z": 543
-        },
-        "supportCenter": {
-          "x": 677,
-          "y": 146.5,
-          "z": 498
-        },
-        "offsetMm": 0,
-        "offsetRatio": 0,
-        "margin": 146.5,
-        "required": 29.3,
-        "reserve": 117.2
-      },
-      {
-        "id": "B7-02",
-        "isBase": false,
-        "planeZ": 498,
-        "mass": 2.48,
-        "loadAbove": 0,
-        "center": {
-          "x": 1003.4999999999999,
-          "y": 210.5,
-          "z": 638.5
-        },
-        "supportCenter": {
-          "x": 1003.5,
-          "y": 210.5,
-          "z": 498
-        },
-        "offsetMm": 1.1368683772161603e-13,
-        "offsetRatio": 1.6125792584626387e-15,
-        "margin": 70.49999999999989,
-        "required": 21.075,
-        "reserve": 49.42499999999988
-      },
-      {
-        "id": "B2-01",
-        "isBase": false,
-        "planeZ": 498,
-        "mass": 9.870000000000001,
-        "loadAbove": 6.580000000000001,
-        "center": {
-          "x": 894.4999999999999,
-          "y": 517,
-          "z": 961.4999999999998
-        },
-        "supportCenter": {
-          "x": 894.5,
-          "y": 517,
-          "z": 498
-        },
-        "offsetMm": 1.1368683772161603e-13,
-        "offsetRatio": 1.2702439968895646e-15,
-        "margin": 89.49999999999989,
-        "required": 69.52499999999996,
-        "reserve": 19.974999999999923
-      },
-      {
-        "id": "B4-05",
-        "isBase": false,
-        "planeZ": 586,
-        "mass": 0.96,
-        "loadAbove": 0,
-        "center": {
-          "x": 256,
-          "y": 816.5,
-          "z": 631
-        },
-        "supportCenter": {
-          "x": 256,
-          "y": 816.5,
-          "z": 586
-        },
-        "offsetMm": 0,
-        "offsetRatio": 0,
-        "margin": 146.5,
-        "required": 29.3,
-        "reserve": 117.2
-      },
-      {
-        "id": "B6-04",
-        "isBase": false,
-        "planeZ": 603,
-        "mass": 6.82,
+        "mass": 7.96,
         "loadAbove": 3.41,
         "center": {
-          "x": 1114,
-          "y": 845,
-          "z": 804.0000000000001
+          "x": 662.8599246231156,
+          "y": 194.14007537688443,
+          "z": 757.4547738693468
         },
         "supportCenter": {
-          "x": 1114,
-          "y": 845,
-          "z": 603
+          "x": 669.5,
+          "y": 187.5,
+          "z": 498
+        },
+        "offsetMm": 9.390484653169574,
+        "offsetRatio": 0.06541946184122586,
+        "margin": 94.85992462311557,
+        "required": 38.91821608040202,
+        "reserve": 55.941708542713556
+      },
+      {
+        "id": "B6-02",
+        "isBase": false,
+        "planeZ": 498,
+        "mass": 10.23,
+        "loadAbove": 6.82,
+        "center": {
+          "x": 203,
+          "y": 584,
+          "z": 799.5
+        },
+        "supportCenter": {
+          "x": 203,
+          "y": 584,
+          "z": 498
         },
         "offsetMm": 0,
         "offsetRatio": 0,
         "margin": 86,
-        "required": 30.150000000000016,
-        "reserve": 55.84999999999998
+        "required": 45.225,
+        "reserve": 40.775
       },
       {
-        "id": "B8-02",
+        "id": "B2-02",
         "isBase": false,
-        "planeZ": 799,
-        "mass": 4.55,
+        "planeZ": 498,
+        "mass": 3.29,
         "loadAbove": 0,
         "center": {
-          "x": 682.5,
-          "y": 771.5,
-          "z": 950.5
+          "x": 937.5,
+          "y": 574,
+          "z": 652.5
         },
         "supportCenter": {
-          "x": 682.5,
-          "y": 771.5,
-          "z": 799
+          "x": 937.5,
+          "y": 574,
+          "z": 498
         },
         "offsetMm": 0,
         "offsetRatio": 0,
-        "margin": 101.5,
-        "required": 22.724999999999998,
-        "reserve": 78.775
+        "margin": 89.5,
+        "required": 23.175,
+        "reserve": 66.325
       },
       {
-        "id": "B6-05",
+        "id": "B5-02",
         "isBase": false,
-        "planeZ": 804,
+        "planeZ": 498,
+        "mass": 6.63,
+        "loadAbove": 0,
+        "center": {
+          "x": 183.5,
+          "y": 307.5,
+          "z": 638
+        },
+        "supportCenter": {
+          "x": 183.5,
+          "y": 307.5,
+          "z": 498
+        },
+        "offsetMm": 0,
+        "offsetRatio": 0,
+        "margin": 174.5,
+        "required": 34.9,
+        "reserve": 139.6
+      },
+      {
+        "id": "B2-03",
+        "isBase": false,
+        "planeZ": 498,
+        "mass": 3.29,
+        "loadAbove": 0,
+        "center": {
+          "x": 937.5,
+          "y": 382,
+          "z": 652.5
+        },
+        "supportCenter": {
+          "x": 937.5,
+          "y": 382,
+          "z": 498
+        },
+        "offsetMm": 0,
+        "offsetRatio": 0,
+        "margin": 89.5,
+        "required": 23.175,
+        "reserve": 66.325
+      },
+      {
+        "id": "B6-03",
+        "isBase": false,
+        "planeZ": 697,
         "mass": 3.41,
         "loadAbove": 0,
         "center": {
-          "x": 1114,
-          "y": 845,
-          "z": 904.5
+          "x": 693,
+          "y": 756,
+          "z": 797.4999999999999
         },
         "supportCenter": {
-          "x": 1114,
-          "y": 845,
-          "z": 804
+          "x": 693,
+          "y": 756,
+          "z": 697
         },
         "offsetMm": 0,
         "offsetRatio": 0,
@@ -808,78 +768,142 @@
         "reserve": 68.8
       },
       {
-        "id": "B2-02",
+        "id": "B7-02",
         "isBase": false,
-        "planeZ": 807,
-        "mass": 6.58,
-        "loadAbove": 3.29,
-        "center": {
-          "x": 894.5,
-          "y": 517,
-          "z": 1116
-        },
-        "supportCenter": {
-          "x": 894.5,
-          "y": 517,
-          "z": 807
-        },
-        "offsetMm": 0,
-        "offsetRatio": 0,
-        "margin": 89.5,
-        "required": 46.35,
-        "reserve": 43.15
-      },
-      {
-        "id": "B2-03",
-        "isBase": false,
-        "planeZ": 1116,
-        "mass": 3.29,
+        "planeZ": 496,
+        "mass": 2.48,
         "loadAbove": 0,
         "center": {
-          "x": 894.5,
-          "y": 517,
-          "z": 1270.5
+          "x": 773.5,
+          "y": 929.5,
+          "z": 636.5
         },
         "supportCenter": {
-          "x": 894.5,
-          "y": 517,
-          "z": 1116
+          "x": 773.5,
+          "y": 929.5,
+          "z": 496
         },
         "offsetMm": 0,
         "offsetRatio": 0,
-        "margin": 89.5,
-        "required": 23.175,
-        "reserve": 66.325
+        "margin": 70.5,
+        "required": 21.075,
+        "reserve": 49.425
+      },
+      {
+        "id": "B6-04",
+        "isBase": false,
+        "planeZ": 699,
+        "mass": 6.82,
+        "loadAbove": 3.41,
+        "center": {
+          "x": 203,
+          "y": 584,
+          "z": 900
+        },
+        "supportCenter": {
+          "x": 203,
+          "y": 584,
+          "z": 699
+        },
+        "offsetMm": 0,
+        "offsetRatio": 0,
+        "margin": 86,
+        "required": 30.15,
+        "reserve": 55.85
+      },
+      {
+        "id": "B6-05",
+        "isBase": false,
+        "planeZ": 801,
+        "mass": 3.41,
+        "loadAbove": 0,
+        "center": {
+          "x": 653.9999999999999,
+          "y": 203,
+          "z": 901.5
+        },
+        "supportCenter": {
+          "x": 654,
+          "y": 203,
+          "z": 801
+        },
+        "offsetMm": 1.1368683772161603e-13,
+        "offsetRatio": 7.334634691717163e-16,
+        "margin": 86,
+        "required": 17.2,
+        "reserve": 68.8
+      },
+      {
+        "id": "B6-06",
+        "isBase": false,
+        "planeZ": 900,
+        "mass": 3.41,
+        "loadAbove": 0,
+        "center": {
+          "x": 203,
+          "y": 584,
+          "z": 1000.4999999999999
+        },
+        "supportCenter": {
+          "x": 203,
+          "y": 584,
+          "z": 900
+        },
+        "offsetMm": 0,
+        "offsetRatio": 0,
+        "margin": 86,
+        "required": 17.2,
+        "reserve": 68.8
       }
     ],
     "count": 27,
-    "volume": 733283676,
-    "weight": 136.01999999999995,
-    "height": 1425,
-    "utilization": 0.38191858125,
-    "efficiency": 0.42882086315789475,
+    "volume": 724487787,
+    "weight": 128.04,
+    "height": 1101,
+    "utilization": 0.3773373890625,
+    "efficiency": 0.548355878746594,
     "center": {
-      "x": 615.3780694015588,
-      "y": 589.3713424496397,
-      "z": 394.16269666225566
+      "x": 578.0534989065917,
+      "y": 503.51144173695724,
+      "z": 421.04154951577624
     },
     "quadrants": [
-      25.06595045219997,
-      25.49375104033734,
-      40.462894005765925,
-      44.997404501696764
+      38.19315244089543,
+      29.381474424776215,
+      21.872667345599517,
+      38.59270578872884
     ],
-    "imbalance": 0.14653326017862667,
-    "distanceM": 144.6930201893353,
-    "workSeconds": 288.6046464451312,
-    "medianMs": 296.05539999999996,
-    "p95Ms": 656.5509000000002,
-    "totalMs": 9781.859700000005,
+    "imbalance": 0.13058449268298444,
+    "distanceM": 135.06186078702044,
+    "workSeconds": 276.78747813387764,
+    "medianMs": 210.9127500000002,
+    "p95Ms": 507.6823749999994,
+    "totalMs": 6610.864206999999,
     "complete": false,
     "failedStep": 28,
-    "reason": "무게 규칙 위반 / 그리퍼 / 운반 접근 경로 간섭 / 재질 허용 지지하중 초과 / 누적 무게중심 여유 부족 / 지지 조건 미달 / 누적 무게중심 정적 평형 불가",
+    "reason": "무게 규칙 위반 / 그리퍼 / 운반 접근 경로 간섭 / 취급 제한 / 재질 허용 지지하중 초과 / SUPPORT: 지지 조건 미달 83.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 85.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 88.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 71.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 73.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 78.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 80.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 83.1% / 필요 95.0% / 누적 무게중심 정적 평형 불가 / SUPPORT: 지지 조건 미달 15.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 4.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 5.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 6.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 2.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 7.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 7.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 18.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 3.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 21.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 3.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 23.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 10.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 11.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 67.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 69.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 89.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 91.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 92.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 94.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 1.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 2.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 3.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 3.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 10.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 14.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 3.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 4.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 2.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 6.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 6.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 9.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 19.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 23.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 2.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 6.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 24.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 3.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 5.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 8.0% / 필요 95.0% / 세로 박스 주변 높이 부족 / SUPPORT: 지지 조건 미달 92.4% / 필요 95.0% / 세로 박스 돌출 높이 초과 / SUPPORT: 지지 조건 미달 93.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 80.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 79.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 47.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 37.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 40.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 35.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 28.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 22.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 21.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 18.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 85.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 86.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 90.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 91.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 69.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 73.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 68.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 72.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 70.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 52.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 6.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 54.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 51.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 47.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 35.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 30.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 12.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 15.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 16.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 11.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 13.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 15.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 18.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 19.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 13.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 15.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 17.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 21.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 14.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 16.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 19.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 23.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 31.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 30.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 23.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 21.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 19.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 17.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 23.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 20.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 25.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 22.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 29.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 26.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 33.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 29.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 46.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 41.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 36.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 40.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 46.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 33.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 29.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 31.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 27.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 30.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 27.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 20.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 18.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 16.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 14.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 12.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 36.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 0.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 0.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 0.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 1.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 0.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 7.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 11.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 26.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 4.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 5.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 8.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 12.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 4.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 6.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 9.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 13.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 40.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 37.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 10.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 11.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 2.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 12.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 8.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 12.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 24.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 20.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 24.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 25.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 28.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 24.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 42.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 45.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 51.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 47.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 50.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 25.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 35.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 39.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 61.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 49.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 48.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 55.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 43.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 43.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 80.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 91.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 85.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 94.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 74.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 79.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 88.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 75.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 77.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 79.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 81.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 69.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 66.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 63.6% / 필요 95.0% / SUPPORT: 지지 조건 미달 2.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 20.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 18.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 27.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 25.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 41.2% / 필요 95.0% / SUPPORT: 지지 조건 미달 62.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 42.4% / 필요 95.0% / SUPPORT: 지지 조건 미달 65.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 38.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 24.8% / 필요 95.0% / SUPPORT: 지지 조건 미달 63.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 65.0% / 필요 95.0% / SUPPORT: 지지 조건 미달 59.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 38.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 81.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 83.3% / 필요 95.0% / SUPPORT: 지지 조건 미달 82.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 86.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 84.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 90.9% / 필요 95.0% / SUPPORT: 지지 조건 미달 22.1% / 필요 95.0% / SUPPORT: 지지 조건 미달 18.7% / 필요 95.0% / SUPPORT: 지지 조건 미달 0.5% / 필요 95.0% / SUPPORT: 지지 조건 미달 1.8% / 필요 95.0%",
     "excluded": 0,
-    "missing": 0
+    "missing": 0,
+    "strategyDetails": {
+      "algorithm": "greedy",
+      "seed": 42,
+      "totalBoxes": 48,
+      "placedBoxes": 27,
+      "failedBoxes": 1,
+      "unprocessedBoxes": 20,
+      "unplacedBoxes": 21,
+      "averageSupport": 1,
+      "stabilityViolations": 0,
+      "averageDecisionMs": 236.1022931071428,
+      "maxDecisionMs": 513.1112910000002,
+      "replans": 0,
+      "averageFutureFeasible": null,
+      "minFutureFeasible": null,
+      "futureDeadEnds": 0,
+      "futurePlacementLoss": 0,
+      "reservedSlotCount": 0,
+      "reservationChanges": 0
+    }
   },
   "placements": [
     {
@@ -899,7 +923,7 @@
       "weight": 8.34,
       "supports": [],
       "supportRatio": 1,
-      "loadAbove": 20.798750000000005,
+      "loadAbove": 37.7106459195175,
       "maxLoadKg": 65.78,
       "maxLoadSource": "synthetic",
       "material": "plastic",
@@ -923,18 +947,42 @@
       "weight": 8.34,
       "supports": [],
       "supportRatio": 1,
-      "loadAbove": 30.27125,
+      "loadAbove": 36.159354080482494,
       "maxLoadKg": 65.78,
       "maxLoadSource": "synthetic",
       "material": "plastic",
       "strengthFactor": 0.72,
       "friction": 0.33
+    },
+    {
+      "id": "B4-01",
+      "typeId": "B4",
+      "position": {
+        "x": 26,
+        "y": 670,
+        "z": 0
+      },
+      "size": {
+        "w": 512,
+        "d": 293,
+        "h": 90
+      },
+      "orientation": 0,
+      "weight": 0.96,
+      "supports": [],
+      "supportRatio": 1,
+      "loadAbove": 3.84,
+      "maxLoadKg": 21.92,
+      "maxLoadSource": "synthetic",
+      "material": "paper",
+      "strengthFactor": 0.91,
+      "friction": 0.53
     },
     {
       "id": "B3-01",
       "typeId": "B3",
       "position": {
-        "x": 0,
+        "x": 538,
         "y": 670,
         "z": 0
       },
@@ -947,7 +995,7 @@
       "weight": 10.05,
       "supports": [],
       "supportRatio": 1,
-      "loadAbove": 11.7225,
+      "loadAbove": 19.35,
       "maxLoadKg": 41.04,
       "maxLoadSource": "synthetic",
       "material": "paper",
@@ -955,95 +1003,71 @@
       "friction": 0.46
     },
     {
-      "id": "B3-02",
-      "typeId": "B3",
+      "id": "B2-01",
+      "typeId": "B2",
       "position": {
-        "x": 446,
+        "x": 984,
         "y": 670,
         "z": 0
       },
       "size": {
-        "w": 446,
-        "d": 330,
-        "h": 248
-      },
-      "orientation": 90,
-      "weight": 10.05,
-      "supports": [],
-      "supportRatio": 1,
-      "loadAbove": 19.3975,
-      "maxLoadKg": 41.04,
-      "maxLoadSource": "synthetic",
-      "material": "paper",
-      "strengthFactor": 0.6,
-      "friction": 0.46
-    },
-    {
-      "id": "B6-01",
-      "typeId": "B6",
-      "position": {
-        "x": 1028,
-        "y": 690,
-        "z": 0
-      },
-      "size": {
-        "w": 172,
-        "d": 310,
-        "h": 201
+        "w": 179,
+        "d": 192,
+        "h": 309
       },
       "orientation": 0,
-      "weight": 3.41,
+      "weight": 3.29,
       "supports": [],
       "supportRatio": 1,
-      "loadAbove": 13.64,
-      "maxLoadKg": 37.06,
+      "loadAbove": 0,
+      "maxLoadKg": 44.66,
       "maxLoadSource": "synthetic",
-      "material": "paper",
-      "strengthFactor": 0.67,
-      "friction": 0.5
+      "material": "plastic",
+      "strengthFactor": 0.82,
+      "friction": 0.28
     },
     {
-      "id": "B1-03",
-      "typeId": "B1",
+      "id": "B4-02",
+      "typeId": "B4",
       "position": {
-        "x": 0,
-        "y": 0,
-        "z": 166
+        "x": 26,
+        "y": 670,
+        "z": 90
       },
       "size": {
-        "w": 538,
-        "d": 670,
-        "h": 166
+        "w": 512,
+        "d": 293,
+        "h": 90
       },
-      "orientation": 90,
-      "weight": 8.34,
+      "orientation": 0,
+      "weight": 0.96,
       "supports": [
         {
-          "id": "B1-01",
+          "id": "B4-01",
           "rect": {
-            "x": 0,
-            "y": 0,
-            "w": 538,
-            "d": 670
+            "x": 26,
+            "y": 670,
+            "w": 512,
+            "d": 293
           },
-          "area": 360460,
+          "area": 150016,
           "share": 1,
           "forcePoint": {
-            "x": 261.8263417272672,
-            "y": 309.2830698960274
+            "x": 281.99999999999994,
+            "y": 816.5
           }
         }
       ],
       "supportRatio": 1,
-      "loadAbove": 12.458750000000006,
-      "maxLoadKg": 65.78,
+      "loadAbove": 2.88,
+      "maxLoadKg": 21.92,
       "maxLoadSource": "synthetic",
-      "material": "plastic",
-      "strengthFactor": 0.72,
-      "friction": 0.33
+      "material": "paper",
+      "strengthFactor": 0.91,
+      "friction": 0.53
     },
     {
-      "id": "B1-04",
+      "id": "B1-03",
       "typeId": "B1",
       "position": {
         "x": 538,
@@ -1069,13 +1093,13 @@
           "area": 360460,
           "share": 1,
           "forcePoint": {
-            "x": 847.6377544700003,
-            "y": 382.64718999050257
+            "x": 788.0306485983479,
+            "y": 357.2547090224624
           }
         }
       ],
       "supportRatio": 1,
-      "loadAbove": 21.93125,
+      "loadAbove": 27.819354080482494,
       "maxLoadKg": 65.78,
       "maxLoadSource": "synthetic",
       "material": "plastic",
@@ -1083,50 +1107,90 @@
       "friction": 0.33
     },
     {
-      "id": "B6-02",
-      "typeId": "B6",
+      "id": "B1-04",
+      "typeId": "B1",
       "position": {
-        "x": 1028,
-        "y": 690,
-        "z": 201
+        "x": 0,
+        "y": 0,
+        "z": 166
       },
       "size": {
-        "w": 172,
-        "d": 310,
-        "h": 201
+        "w": 538,
+        "d": 670,
+        "h": 166
       },
-      "orientation": 0,
-      "weight": 3.41,
+      "orientation": 90,
+      "weight": 8.34,
       "supports": [
         {
-          "id": "B6-01",
+          "id": "B1-01",
           "rect": {
-            "x": 1028,
-            "y": 690,
-            "w": 172,
-            "d": 310
+            "x": 0,
+            "y": 0,
+            "w": 538,
+            "d": 670
           },
-          "area": 53320,
+          "area": 360460,
           "share": 1,
           "forcePoint": {
-            "x": 1114,
-            "y": 845
+            "x": 257.73612501369814,
+            "y": 405.18493138906547
           }
         }
       ],
       "supportRatio": 1,
-      "loadAbove": 10.23,
-      "maxLoadKg": 37.06,
+      "loadAbove": 29.370645919517507,
+      "maxLoadKg": 65.78,
       "maxLoadSource": "synthetic",
-      "material": "paper",
-      "strengthFactor": 0.67,
-      "friction": 0.5
+      "material": "plastic",
+      "strengthFactor": 0.72,
+      "friction": 0.33
     },
     {
-      "id": "B3-03",
+      "id": "B4-03",
+      "typeId": "B4",
+      "position": {
+        "x": 26,
+        "y": 670,
+        "z": 180
+      },
+      "size": {
+        "w": 512,
+        "d": 293,
+        "h": 90
+      },
+      "orientation": 0,
+      "weight": 0.96,
+      "supports": [
+        {
+          "id": "B4-02",
+          "rect": {
+            "x": 26,
+            "y": 670,
+            "w": 512,
+            "d": 293
+          },
+          "area": 150016,
+          "share": 1,
+          "forcePoint": {
+            "x": 281.9999999999999,
+            "y": 816.4999999999999
+          }
+        }
+      ],
+      "supportRatio": 1,
+      "loadAbove": 1.92,
+      "maxLoadKg": 21.92,
+      "maxLoadSource": "synthetic",
+      "material": "paper",
+      "strengthFactor": 0.91,
+      "friction": 0.53
+    },
+    {
+      "id": "B3-02",
       "typeId": "B3",
       "position": {
-        "x": 0,
+        "x": 538,
         "y": 670,
         "z": 248
       },
@@ -1141,7 +1205,7 @@
         {
           "id": "B3-01",
           "rect": {
-            "x": 0,
+            "x": 538,
             "y": 670,
             "w": 446,
             "d": 330
@@ -1149,13 +1213,13 @@
           "area": 147180,
           "share": 1,
           "forcePoint": {
-            "x": 223,
-            "y": 832.3605246321176
+            "x": 738.6351421188631,
+            "y": 819.2677002583978
           }
         }
       ],
       "supportRatio": 1,
-      "loadAbove": 1.6724999999999994,
+      "loadAbove": 9.3,
       "maxLoadKg": 41.04,
       "maxLoadSource": "synthetic",
       "material": "paper",
@@ -1163,87 +1227,47 @@
       "friction": 0.46
     },
     {
-      "id": "B3-04",
-      "typeId": "B3",
+      "id": "B4-04",
+      "typeId": "B4",
       "position": {
-        "x": 446,
+        "x": 26,
         "y": 670,
-        "z": 248
+        "z": 270
       },
       "size": {
-        "w": 446,
-        "d": 330,
-        "h": 248
+        "w": 512,
+        "d": 293,
+        "h": 90
       },
-      "orientation": 90,
-      "weight": 10.05,
+      "orientation": 0,
+      "weight": 0.96,
       "supports": [
         {
-          "id": "B3-02",
+          "id": "B4-03",
           "rect": {
-            "x": 446,
+            "x": 26,
             "y": 670,
-            "w": 446,
-            "d": 330
+            "w": 512,
+            "d": 293
           },
-          "area": 147180,
+          "area": 150016,
           "share": 1,
           "forcePoint": {
-            "x": 672.9090088928986,
-            "y": 804.9740301585255
+            "x": 282,
+            "y": 816.5
           }
         }
       ],
       "supportRatio": 1,
-      "loadAbove": 9.3475,
-      "maxLoadKg": 41.04,
+      "loadAbove": 0.96,
+      "maxLoadKg": 21.92,
       "maxLoadSource": "synthetic",
       "material": "paper",
-      "strengthFactor": 0.6,
-      "friction": 0.46
+      "strengthFactor": 0.91,
+      "friction": 0.53
     },
     {
       "id": "B1-05",
-      "typeId": "B1",
-      "position": {
-        "x": 0,
-        "y": 0,
-        "z": 332
-      },
-      "size": {
-        "w": 538,
-        "d": 670,
-        "h": 166
-      },
-      "orientation": 90,
-      "weight": 8.34,
-      "supports": [
-        {
-          "id": "B1-03",
-          "rect": {
-            "x": 0,
-            "y": 0,
-            "w": 538,
-            "d": 670
-          },
-          "area": 360460,
-          "share": 1.0000000000000002,
-          "forcePoint": {
-            "x": 257.0242299588642,
-            "y": 292.06792414969397
-          }
-        }
-      ],
-      "supportRatio": 1,
-      "loadAbove": 4.11875,
-      "maxLoadKg": 65.78,
-      "maxLoadSource": "synthetic",
-      "material": "plastic",
-      "strengthFactor": 0.72,
-      "friction": 0.33
-    },
-    {
-      "id": "B1-06",
       "typeId": "B1",
       "position": {
         "x": 538,
@@ -1259,7 +1283,7 @@
       "weight": 8.34,
       "supports": [
         {
-          "id": "B1-04",
+          "id": "B1-03",
           "rect": {
             "x": 538,
             "y": 0,
@@ -1269,13 +1293,13 @@
           "area": 360460,
           "share": 1,
           "forcePoint": {
-            "x": 863.0914505557138,
-            "y": 400.7664291821032
+            "x": 782.343802303064,
+            "y": 363.9264769114787
           }
         }
       ],
       "supportRatio": 1,
-      "loadAbove": 13.591249999999999,
+      "loadAbove": 19.479354080482494,
       "maxLoadKg": 65.78,
       "maxLoadSource": "synthetic",
       "material": "plastic",
@@ -1283,39 +1307,119 @@
       "friction": 0.33
     },
     {
-      "id": "B6-03",
-      "typeId": "B6",
+      "id": "B1-06",
+      "typeId": "B1",
       "position": {
-        "x": 1028,
-        "y": 690,
-        "z": 402
+        "x": 0,
+        "y": 0,
+        "z": 332
       },
       "size": {
-        "w": 172,
-        "d": 310,
-        "h": 201
+        "w": 538,
+        "d": 670,
+        "h": 166
       },
-      "orientation": 0,
-      "weight": 3.41,
+      "orientation": 90,
+      "weight": 8.34,
       "supports": [
         {
-          "id": "B6-02",
+          "id": "B1-04",
           "rect": {
-            "x": 1028,
-            "y": 690,
-            "w": 172,
-            "d": 310
+            "x": 0,
+            "y": 0,
+            "w": 538,
+            "d": 670
           },
-          "area": 53320,
+          "area": 360460,
           "share": 1,
           "forcePoint": {
-            "x": 1114,
-            "y": 845
+            "x": 254.5376690572585,
+            "y": 425.1144327486468
           }
         }
       ],
       "supportRatio": 1,
-      "loadAbove": 6.82,
+      "loadAbove": 21.030645919517507,
+      "maxLoadKg": 65.78,
+      "maxLoadSource": "synthetic",
+      "material": "plastic",
+      "strengthFactor": 0.72,
+      "friction": 0.33
+    },
+    {
+      "id": "B4-05",
+      "typeId": "B4",
+      "position": {
+        "x": 26,
+        "y": 670,
+        "z": 360
+      },
+      "size": {
+        "w": 512,
+        "d": 293,
+        "h": 90
+      },
+      "orientation": 0,
+      "weight": 0.96,
+      "supports": [
+        {
+          "id": "B4-04",
+          "rect": {
+            "x": 26,
+            "y": 670,
+            "w": 512,
+            "d": 293
+          },
+          "area": 150016,
+          "share": 1,
+          "forcePoint": {
+            "x": 282,
+            "y": 816.5
+          }
+        }
+      ],
+      "supportRatio": 1,
+      "loadAbove": 0,
+      "maxLoadKg": 21.92,
+      "maxLoadSource": "synthetic",
+      "material": "paper",
+      "strengthFactor": 0.91,
+      "friction": 0.53
+    },
+    {
+      "id": "B6-01",
+      "typeId": "B6",
+      "position": {
+        "x": 538,
+        "y": 670,
+        "z": 496
+      },
+      "size": {
+        "w": 310,
+        "d": 172,
+        "h": 201
+      },
+      "orientation": 90,
+      "weight": 3.41,
+      "supports": [
+        {
+          "id": "B3-02",
+          "rect": {
+            "x": 538,
+            "y": 670,
+            "w": 310,
+            "d": 172
+          },
+          "area": 53320,
+          "share": 1,
+          "forcePoint": {
+            "x": 693,
+            "y": 756
+          }
+        }
+      ],
+      "supportRatio": 1,
+      "loadAbove": 3.41,
       "maxLoadKg": 37.06,
       "maxLoadSource": "synthetic",
       "material": "paper",
@@ -1323,296 +1427,67 @@
       "friction": 0.5
     },
     {
-      "id": "B4-01",
-      "typeId": "B4",
+      "id": "B5-01",
+      "typeId": "B5",
       "position": {
-        "x": 0,
-        "y": 670,
-        "z": 496
-      },
-      "size": {
-        "w": 512,
-        "d": 293,
-        "h": 90
-      },
-      "orientation": 0,
-      "weight": 0.96,
-      "supports": [
-        {
-          "id": "B3-03",
-          "rect": {
-            "x": 0,
-            "y": 670,
-            "w": 446,
-            "d": 293
-          },
-          "area": 130678,
-          "share": 0.87109375,
-          "forcePoint": {
-            "x": 223,
-            "y": 816.5
-          }
-        },
-        {
-          "id": "B3-04",
-          "rect": {
-            "x": 446,
-            "y": 670,
-            "w": 66,
-            "d": 293
-          },
-          "area": 19338,
-          "share": 0.12890625,
-          "forcePoint": {
-            "x": 479,
-            "y": 816.5
-          }
-        }
-      ],
-      "supportRatio": 1,
-      "loadAbove": 0.96,
-      "maxLoadKg": 21.92,
-      "maxLoadSource": "synthetic",
-      "material": "paper",
-      "strengthFactor": 0.91,
-      "friction": 0.53
-    },
-    {
-      "id": "B8-01",
-      "typeId": "B8",
-      "position": {
-        "x": 512,
-        "y": 670,
-        "z": 496
-      },
-      "size": {
-        "w": 341,
-        "d": 203,
-        "h": 303
-      },
-      "orientation": 0,
-      "weight": 4.55,
-      "supports": [
-        {
-          "id": "B3-04",
-          "rect": {
-            "x": 512,
-            "y": 670,
-            "w": 341,
-            "d": 203
-          },
-          "area": 69223,
-          "share": 1,
-          "forcePoint": {
-            "x": 682.5,
-            "y": 771.5
-          }
-        }
-      ],
-      "supportRatio": 1,
-      "loadAbove": 4.55,
-      "maxLoadKg": 13.05,
-      "maxLoadSource": "synthetic",
-      "material": "plastic",
-      "strengthFactor": 0.98,
-      "friction": 0.27
-    },
-    {
-      "id": "B4-02",
-      "typeId": "B4",
-      "position": {
-        "x": 0,
-        "y": 158,
+        "x": 499,
+        "y": 289,
         "z": 498
       },
       "size": {
-        "w": 293,
-        "d": 512,
-        "h": 90
+        "w": 349,
+        "d": 381,
+        "h": 280
       },
-      "orientation": 90,
-      "weight": 0.96,
+      "orientation": 0,
+      "weight": 6.63,
       "supports": [
         {
           "id": "B1-05",
           "rect": {
-            "x": 0,
-            "y": 158,
-            "w": 293,
-            "d": 512
+            "x": 538,
+            "y": 289,
+            "w": 310,
+            "d": 381
           },
-          "area": 150016,
-          "share": 1,
+          "area": 118110,
+          "share": 0.8882521489971347,
           "forcePoint": {
-            "x": 146.5,
-            "y": 414
-          }
-        }
-      ],
-      "supportRatio": 1,
-      "loadAbove": 0,
-      "maxLoadKg": 21.92,
-      "maxLoadSource": "synthetic",
-      "material": "paper",
-      "strengthFactor": 0.91,
-      "friction": 0.53
-    },
-    {
-      "id": "B4-03",
-      "typeId": "B4",
-      "position": {
-        "x": 293,
-        "y": 377,
-        "z": 498
-      },
-      "size": {
-        "w": 512,
-        "d": 293,
-        "h": 90
-      },
-      "orientation": 0,
-      "weight": 0.96,
-      "supports": [
-        {
-          "id": "B1-05",
-          "rect": {
-            "x": 293,
-            "y": 377,
-            "w": 245,
-            "d": 293
-          },
-          "area": 71785,
-          "share": 0.478515625,
-          "forcePoint": {
-            "x": 415.5,
-            "y": 523.5
+            "x": 693,
+            "y": 479.5
           }
         },
         {
           "id": "B1-06",
           "rect": {
-            "x": 538,
-            "y": 377,
-            "w": 267,
-            "d": 293
+            "x": 499,
+            "y": 289,
+            "w": 39,
+            "d": 381
           },
-          "area": 78231,
-          "share": 0.521484375,
+          "area": 14859,
+          "share": 0.11174785100286531,
           "forcePoint": {
-            "x": 671.5,
-            "y": 523.5
+            "x": 518.5,
+            "y": 479.5
           }
         }
       ],
       "supportRatio": 1,
       "loadAbove": 0,
-      "maxLoadKg": 21.92,
+      "maxLoadKg": 0,
       "maxLoadSource": "synthetic",
+      "handling": "no-top-load",
       "material": "paper",
-      "strengthFactor": 0.91,
-      "friction": 0.53
+      "strengthFactor": 0.76,
+      "friction": 0.58
     },
     {
       "id": "B7-01",
       "typeId": "B7",
       "position": {
-        "x": 0,
-        "y": 0,
-        "z": 498
-      },
-      "size": {
-        "w": 421,
-        "d": 141,
-        "h": 281
-      },
-      "orientation": 0,
-      "weight": 2.48,
-      "supports": [
-        {
-          "id": "B1-05",
-          "rect": {
-            "x": 0,
-            "y": 0,
-            "w": 421,
-            "d": 141
-          },
-          "area": 59361,
-          "share": 1,
-          "forcePoint": {
-            "x": 210.5,
-            "y": 70.5
-          }
-        }
-      ],
-      "supportRatio": 1,
-      "loadAbove": 0,
-      "maxLoadKg": 34.21,
-      "maxLoadSource": "synthetic",
-      "material": "paper",
-      "strengthFactor": 0.72,
-      "friction": 0.31
-    },
-    {
-      "id": "B4-04",
-      "typeId": "B4",
-      "position": {
-        "x": 421,
-        "y": 0,
-        "z": 498
-      },
-      "size": {
-        "w": 512,
-        "d": 293,
-        "h": 90
-      },
-      "orientation": 0,
-      "weight": 0.96,
-      "supports": [
-        {
-          "id": "B1-05",
-          "rect": {
-            "x": 421,
-            "y": 0,
-            "w": 117,
-            "d": 293
-          },
-          "area": 34281,
-          "share": 0.228515625,
-          "forcePoint": {
-            "x": 479.5,
-            "y": 146.5
-          }
-        },
-        {
-          "id": "B1-06",
-          "rect": {
-            "x": 538,
-            "y": 0,
-            "w": 395,
-            "d": 293
-          },
-          "area": 115735,
-          "share": 0.771484375,
-          "forcePoint": {
-            "x": 735.5,
-            "y": 146.5
-          }
-        }
-      ],
-      "supportRatio": 1,
-      "loadAbove": 0,
-      "maxLoadKg": 21.92,
-      "maxLoadSource": "synthetic",
-      "material": "paper",
-      "strengthFactor": 0.91,
-      "friction": 0.53
-    },
-    {
-      "id": "B7-02",
-      "typeId": "B7",
-      "position": {
-        "x": 933,
-        "y": 0,
+        "x": 358,
+        "y": 249,
         "z": 498
       },
       "size": {
@@ -1626,16 +1501,16 @@
         {
           "id": "B1-06",
           "rect": {
-            "x": 933,
-            "y": 0,
+            "x": 358,
+            "y": 249,
             "w": 141,
             "d": 421
           },
           "area": 59361,
           "share": 1,
           "forcePoint": {
-            "x": 1003.4999999999998,
-            "y": 210.5
+            "x": 428.5000000000001,
+            "y": 459.5
           }
         }
       ],
@@ -1648,11 +1523,106 @@
       "friction": 0.31
     },
     {
-      "id": "B2-01",
+      "id": "B8-01",
+      "typeId": "B8",
+      "position": {
+        "x": 499,
+        "y": 86,
+        "z": 498
+      },
+      "size": {
+        "w": 341,
+        "d": 203,
+        "h": 303
+      },
+      "orientation": 0,
+      "weight": 4.55,
+      "supports": [
+        {
+          "id": "B1-05",
+          "rect": {
+            "x": 538,
+            "y": 86,
+            "w": 302,
+            "d": 203
+          },
+          "area": 61306,
+          "share": 0.8806837101295846,
+          "forcePoint": {
+            "x": 682.4321586445606,
+            "y": 194.17737258983297
+          }
+        },
+        {
+          "id": "B1-06",
+          "rect": {
+            "x": 499,
+            "y": 86,
+            "w": 39,
+            "d": 203
+          },
+          "area": 7917,
+          "share": 0.11931628987041551,
+          "forcePoint": {
+            "x": 518.3955963050714,
+            "y": 193.8647814676231
+          }
+        }
+      ],
+      "supportRatio": 1,
+      "loadAbove": 3.41,
+      "maxLoadKg": 13.05,
+      "maxLoadSource": "synthetic",
+      "material": "plastic",
+      "strengthFactor": 0.98,
+      "friction": 0.27
+    },
+    {
+      "id": "B6-02",
+      "typeId": "B6",
+      "position": {
+        "x": 48,
+        "y": 498,
+        "z": 498
+      },
+      "size": {
+        "w": 310,
+        "d": 172,
+        "h": 201
+      },
+      "orientation": 90,
+      "weight": 3.41,
+      "supports": [
+        {
+          "id": "B1-06",
+          "rect": {
+            "x": 48,
+            "y": 498,
+            "w": 310,
+            "d": 172
+          },
+          "area": 53320,
+          "share": 1,
+          "forcePoint": {
+            "x": 203,
+            "y": 584
+          }
+        }
+      ],
+      "supportRatio": 1,
+      "loadAbove": 6.82,
+      "maxLoadKg": 37.06,
+      "maxLoadSource": "synthetic",
+      "material": "paper",
+      "strengthFactor": 0.67,
+      "friction": 0.5
+    },
+    {
+      "id": "B2-02",
       "typeId": "B2",
       "position": {
-        "x": 805,
-        "y": 421,
+        "x": 848,
+        "y": 478,
         "z": 498
       },
       "size": {
@@ -1664,23 +1634,23 @@
       "weight": 3.29,
       "supports": [
         {
-          "id": "B1-06",
+          "id": "B1-05",
           "rect": {
-            "x": 805,
-            "y": 421,
+            "x": 848,
+            "y": 478,
             "w": 179,
             "d": 192
           },
           "area": 34368,
           "share": 1,
           "forcePoint": {
-            "x": 894.4999999999999,
-            "y": 517
+            "x": 937.5,
+            "y": 574
           }
         }
       ],
       "supportRatio": 1,
-      "loadAbove": 6.580000000000001,
+      "loadAbove": 0,
       "maxLoadKg": 44.66,
       "maxLoadSource": "synthetic",
       "material": "plastic",
@@ -1688,74 +1658,195 @@
       "friction": 0.28
     },
     {
-      "id": "B4-05",
-      "typeId": "B4",
+      "id": "B5-02",
+      "typeId": "B5",
       "position": {
-        "x": 0,
-        "y": 670,
-        "z": 586
+        "x": 9,
+        "y": 117,
+        "z": 498
       },
       "size": {
-        "w": 512,
-        "d": 293,
-        "h": 90
+        "w": 349,
+        "d": 381,
+        "h": 280
       },
       "orientation": 0,
-      "weight": 0.96,
+      "weight": 6.63,
       "supports": [
         {
-          "id": "B4-01",
+          "id": "B1-06",
           "rect": {
-            "x": 0,
-            "y": 670,
-            "w": 512,
-            "d": 293
+            "x": 9,
+            "y": 117,
+            "w": 349,
+            "d": 381
           },
-          "area": 150016,
+          "area": 132969,
           "share": 1,
           "forcePoint": {
-            "x": 256,
-            "y": 816.5
+            "x": 183.5,
+            "y": 307.5
           }
         }
       ],
       "supportRatio": 1,
       "loadAbove": 0,
-      "maxLoadKg": 21.92,
+      "maxLoadKg": 0,
+      "maxLoadSource": "synthetic",
+      "handling": "no-top-load",
+      "material": "paper",
+      "strengthFactor": 0.76,
+      "friction": 0.58
+    },
+    {
+      "id": "B2-03",
+      "typeId": "B2",
+      "position": {
+        "x": 848,
+        "y": 286,
+        "z": 498
+      },
+      "size": {
+        "w": 179,
+        "d": 192,
+        "h": 309
+      },
+      "orientation": 0,
+      "weight": 3.29,
+      "supports": [
+        {
+          "id": "B1-05",
+          "rect": {
+            "x": 848,
+            "y": 286,
+            "w": 179,
+            "d": 192
+          },
+          "area": 34368,
+          "share": 1,
+          "forcePoint": {
+            "x": 937.5,
+            "y": 382
+          }
+        }
+      ],
+      "supportRatio": 1,
+      "loadAbove": 0,
+      "maxLoadKg": 44.66,
+      "maxLoadSource": "synthetic",
+      "material": "plastic",
+      "strengthFactor": 0.82,
+      "friction": 0.28
+    },
+    {
+      "id": "B6-03",
+      "typeId": "B6",
+      "position": {
+        "x": 538,
+        "y": 670,
+        "z": 697
+      },
+      "size": {
+        "w": 310,
+        "d": 172,
+        "h": 201
+      },
+      "orientation": 90,
+      "weight": 3.41,
+      "supports": [
+        {
+          "id": "B6-01",
+          "rect": {
+            "x": 538,
+            "y": 670,
+            "w": 310,
+            "d": 172
+          },
+          "area": 53320,
+          "share": 1,
+          "forcePoint": {
+            "x": 693,
+            "y": 756
+          }
+        }
+      ],
+      "supportRatio": 1,
+      "loadAbove": 0,
+      "maxLoadKg": 37.06,
       "maxLoadSource": "synthetic",
       "material": "paper",
-      "strengthFactor": 0.91,
-      "friction": 0.53
+      "strengthFactor": 0.67,
+      "friction": 0.5
+    },
+    {
+      "id": "B7-02",
+      "typeId": "B7",
+      "position": {
+        "x": 563,
+        "y": 859,
+        "z": 496
+      },
+      "size": {
+        "w": 421,
+        "d": 141,
+        "h": 281
+      },
+      "orientation": 0,
+      "weight": 2.48,
+      "supports": [
+        {
+          "id": "B3-02",
+          "rect": {
+            "x": 563,
+            "y": 859,
+            "w": 421,
+            "d": 141
+          },
+          "area": 59361,
+          "share": 1,
+          "forcePoint": {
+            "x": 773.5,
+            "y": 929.5
+          }
+        }
+      ],
+      "supportRatio": 1,
+      "loadAbove": 0,
+      "maxLoadKg": 34.21,
+      "maxLoadSource": "synthetic",
+      "material": "paper",
+      "strengthFactor": 0.72,
+      "friction": 0.31
     },
     {
       "id": "B6-04",
       "typeId": "B6",
       "position": {
-        "x": 1028,
-        "y": 690,
-        "z": 603
+        "x": 48,
+        "y": 498,
+        "z": 699
       },
       "size": {
-        "w": 172,
-        "d": 310,
+        "w": 310,
+        "d": 172,
         "h": 201
       },
-      "orientation": 0,
+      "orientation": 90,
       "weight": 3.41,
       "supports": [
         {
-          "id": "B6-03",
+          "id": "B6-02",
           "rect": {
-            "x": 1028,
-            "y": 690,
-            "w": 172,
-            "d": 310
+            "x": 48,
+            "y": 498,
+            "w": 310,
+            "d": 172
           },
           "area": 53320,
           "share": 1,
           "forcePoint": {
-            "x": 1114,
-            "y": 845
+            "x": 203,
+            "y": 584
           }
         }
       ],
@@ -1768,74 +1859,34 @@
       "friction": 0.5
     },
     {
-      "id": "B8-02",
-      "typeId": "B8",
+      "id": "B6-05",
+      "typeId": "B6",
       "position": {
-        "x": 512,
-        "y": 670,
-        "z": 799
+        "x": 499,
+        "y": 117,
+        "z": 801
       },
       "size": {
-        "w": 341,
-        "d": 203,
-        "h": 303
+        "w": 310,
+        "d": 172,
+        "h": 201
       },
-      "orientation": 0,
-      "weight": 4.55,
+      "orientation": 90,
+      "weight": 3.41,
       "supports": [
         {
           "id": "B8-01",
           "rect": {
-            "x": 512,
-            "y": 670,
-            "w": 341,
-            "d": 203
-          },
-          "area": 69223,
-          "share": 1,
-          "forcePoint": {
-            "x": 682.5,
-            "y": 771.5
-          }
-        }
-      ],
-      "supportRatio": 1,
-      "loadAbove": 0,
-      "maxLoadKg": 13.05,
-      "maxLoadSource": "synthetic",
-      "material": "plastic",
-      "strengthFactor": 0.98,
-      "friction": 0.27
-    },
-    {
-      "id": "B6-05",
-      "typeId": "B6",
-      "position": {
-        "x": 1028,
-        "y": 690,
-        "z": 804
-      },
-      "size": {
-        "w": 172,
-        "d": 310,
-        "h": 201
-      },
-      "orientation": 0,
-      "weight": 3.41,
-      "supports": [
-        {
-          "id": "B6-04",
-          "rect": {
-            "x": 1028,
-            "y": 690,
-            "w": 172,
-            "d": 310
+            "x": 499,
+            "y": 117,
+            "w": 310,
+            "d": 172
           },
           "area": 53320,
           "share": 1,
           "forcePoint": {
-            "x": 1114,
-            "y": 845
+            "x": 653.9999999999999,
+            "y": 203
           }
         }
       ],
@@ -1848,84 +1899,44 @@
       "friction": 0.5
     },
     {
-      "id": "B2-02",
-      "typeId": "B2",
+      "id": "B6-06",
+      "typeId": "B6",
       "position": {
-        "x": 805,
-        "y": 421,
-        "z": 807
+        "x": 48,
+        "y": 498,
+        "z": 900
       },
       "size": {
-        "w": 179,
-        "d": 192,
-        "h": 309
+        "w": 310,
+        "d": 172,
+        "h": 201
       },
-      "orientation": 0,
-      "weight": 3.29,
+      "orientation": 90,
+      "weight": 3.41,
       "supports": [
         {
-          "id": "B2-01",
+          "id": "B6-04",
           "rect": {
-            "x": 805,
-            "y": 421,
-            "w": 179,
-            "d": 192
+            "x": 48,
+            "y": 498,
+            "w": 310,
+            "d": 172
           },
-          "area": 34368,
+          "area": 53320,
           "share": 1,
           "forcePoint": {
-            "x": 894.5,
-            "y": 517
-          }
-        }
-      ],
-      "supportRatio": 1,
-      "loadAbove": 3.29,
-      "maxLoadKg": 44.66,
-      "maxLoadSource": "synthetic",
-      "material": "plastic",
-      "strengthFactor": 0.82,
-      "friction": 0.28
-    },
-    {
-      "id": "B2-03",
-      "typeId": "B2",
-      "position": {
-        "x": 805,
-        "y": 421,
-        "z": 1116
-      },
-      "size": {
-        "w": 179,
-        "d": 192,
-        "h": 309
-      },
-      "orientation": 0,
-      "weight": 3.29,
-      "supports": [
-        {
-          "id": "B2-02",
-          "rect": {
-            "x": 805,
-            "y": 421,
-            "w": 179,
-            "d": 192
-          },
-          "area": 34368,
-          "share": 1,
-          "forcePoint": {
-            "x": 894.5,
-            "y": 517
+            "x": 203,
+            "y": 584
           }
         }
       ],
       "supportRatio": 1,
       "loadAbove": 0,
-      "maxLoadKg": 44.66,
+      "maxLoadKg": 37.06,
       "maxLoadSource": "synthetic",
-      "material": "plastic",
-      "strengthFactor": 0.82,
-      "friction": 0.28
+      "material": "paper",
+      "strengthFactor": 0.67,
+      "friction": 0.5
     }
   ],
   "physics": {
@@ -1941,17 +1952,17 @@
           "z": 0
         },
         "actual": {
-          "x": -0.04056119918823242,
-          "y": -0.008902549743652344,
-          "z": -0.3820018768310547
+          "x": -0.06404542922973633,
+          "y": -0.011793375015258789,
+          "z": -0.6164343953132629
         },
         "rotation": [
-          -0.00006473984103649855,
-          -1.8332856654978968e-7,
-          -0.000025017567168106325,
+          0.0000050900848691526335,
+          -0.0000021046043912065215,
+          0.00007420968904625624,
           1
         ],
-        "displacementMm": 0.38425239124041105,
+        "displacementMm": 0.6198647146149714,
         "angleDeg": 0,
         "fell": false
       },
@@ -1964,270 +1975,17 @@
           "z": 0
         },
         "actual": {
-          "x": 537.9345116615295,
-          "y": -0.010094642639160156,
-          "z": -0.4615815281867981
+          "x": 537.9342583417892,
+          "y": -0.01605510711669922,
+          "z": -0.5397753715515137
         },
         "rotation": [
-          -0.00006209911225596443,
-          0.000004946673016092973,
-          -0.0001554465852677822,
+          -0.000012227958904986735,
+          6.232204441403155e-7,
+          0.000034905493521364406,
           1
         ],
-        "displacementMm": 0.46631334041489064,
-        "angleDeg": 0,
-        "fell": false
-      },
-      {
-        "id": "B3-01",
-        "friction": 0.46,
-        "planned": {
-          "x": 0,
-          "y": 670,
-          "z": 0
-        },
-        "actual": {
-          "x": -0.02852487564086914,
-          "y": 669.9804580211639,
-          "z": -0.22929364442825317
-        },
-        "rotation": [
-          -0.000029637412808369845,
-          3.3541036259521206e-7,
-          -0.000023846332624088973,
-          1
-        ],
-        "displacementMm": 0.23188603416839543,
-        "angleDeg": 0,
-        "fell": false
-      },
-      {
-        "id": "B3-02",
-        "friction": 0.46,
-        "planned": {
-          "x": 446,
-          "y": 670,
-          "z": 0
-        },
-        "actual": {
-          "x": 445.94390285015106,
-          "y": 669.9734842777252,
-          "z": -0.2767314910888672
-        },
-        "rotation": [
-          -0.00002535420935600996,
-          0.000014097829080128577,
-          -0.00009189559204969555,
-          1
-        ],
-        "displacementMm": 0.2836023482081826,
-        "angleDeg": 0,
-        "fell": false
-      },
-      {
-        "id": "B6-01",
-        "friction": 0.5,
-        "planned": {
-          "x": 1028,
-          "y": 690,
-          "z": 0
-        },
-        "actual": {
-          "x": 1027.9655470848083,
-          "y": 689.995379447937,
-          "z": -0.37750351428985596
-        },
-        "rotation": [
-          6.959151477303749e-8,
-          7.053843065207843e-10,
-          -2.445086124680529e-7,
-          1
-        ],
-        "displacementMm": 0.37910058845610006,
-        "angleDeg": 0,
-        "fell": false
-      },
-      {
-        "id": "B1-03",
-        "friction": 0.33,
-        "planned": {
-          "x": 0,
-          "y": 0,
-          "z": 166
-        },
-        "actual": {
-          "x": -0.0426175594329834,
-          "y": -0.03538191318511963,
-          "z": 165.52582812309265
-        },
-        "rotation": [
-          -0.00006235229375306517,
-          -0.000005712234269594774,
-          0.00006884639151394367,
-          1
-        ],
-        "displacementMm": 0.4773961719604599,
-        "angleDeg": 0,
-        "fell": false
-      },
-      {
-        "id": "B1-04",
-        "friction": 0.33,
-        "planned": {
-          "x": 538,
-          "y": 0,
-          "z": 166
-        },
-        "actual": {
-          "x": 538.0091515779495,
-          "y": -0.03913700580596924,
-          "z": 165.38966131210327
-        },
-        "rotation": [
-          -0.0000538956155651249,
-          0.000013622421647596639,
-          -0.00032201060093939304,
-          1
-        ],
-        "displacementMm": 0.6116606661752274,
-        "angleDeg": 0,
-        "fell": false
-      },
-      {
-        "id": "B6-02",
-        "friction": 0.5,
-        "planned": {
-          "x": 1028,
-          "y": 690,
-          "z": 201
-        },
-        "actual": {
-          "x": 1027.9638185501099,
-          "y": 689.9966609477997,
-          "z": 200.47249150276184
-        },
-        "rotation": [
-          6.291494969445921e-8,
-          5.229338073675649e-10,
-          -7.345633434852061e-8,
-          1
-        ],
-        "displacementMm": 0.5287584148211827,
-        "angleDeg": 0,
-        "fell": false
-      },
-      {
-        "id": "B3-03",
-        "friction": 0.46,
-        "planned": {
-          "x": 0,
-          "y": 670,
-          "z": 248
-        },
-        "actual": {
-          "x": -0.021580934524536133,
-          "y": 669.9570333957672,
-          "z": 247.7365860939026
-        },
-        "rotation": [
-          -0.00003715897400979884,
-          0.000005235106073087081,
-          0.000014783348888158798,
-          1
-        ],
-        "displacementMm": 0.26776622591310056,
-        "angleDeg": 0,
-        "fell": false
-      },
-      {
-        "id": "B3-04",
-        "friction": 0.46,
-        "planned": {
-          "x": 446,
-          "y": 670,
-          "z": 248
-        },
-        "actual": {
-          "x": 446.00232285261154,
-          "y": 669.9567949771881,
-          "z": 247.66669964790344
-        },
-        "rotation": [
-          -0.00004209551480016671,
-          -0.0000034160959785367595,
-          -0.00015527922369074076,
-          1
-        ],
-        "displacementMm": 0.33609700139709686,
-        "angleDeg": 0,
-        "fell": false
-      },
-      {
-        "id": "B1-05",
-        "friction": 0.33,
-        "planned": {
-          "x": 0,
-          "y": 0,
-          "z": 332
-        },
-        "actual": {
-          "x": -0.059038639068603516,
-          "y": -0.058732032775878906,
-          "z": 331.4393801689148
-        },
-        "rotation": [
-          -0.00007469039701391011,
-          0.000007266692136909114,
-          0.00006801533163525164,
-          1
-        ],
-        "displacementMm": 0.5667712127332012,
-        "angleDeg": 0,
-        "fell": false
-      },
-      {
-        "id": "B1-06",
-        "friction": 0.33,
-        "planned": {
-          "x": 538,
-          "y": 0,
-          "z": 332
-        },
-        "actual": {
-          "x": 538.0975303649902,
-          "y": -0.05381464958190918,
-          "z": 331.25544023513794
-        },
-        "rotation": [
-          -0.000025701454433146864,
-          0.000006721071258652955,
-          -0.0004015994491055608,
-          1
-        ],
-        "displacementMm": 0.7528462207225316,
-        "angleDeg": 0,
-        "fell": false
-      },
-      {
-        "id": "B6-03",
-        "friction": 0.5,
-        "planned": {
-          "x": 1028,
-          "y": 690,
-          "z": 402
-        },
-        "actual": {
-          "x": 1027.9629244804382,
-          "y": 689.9968099594116,
-          "z": 401.35978412628174
-        },
-        "rotation": [
-          1.0516547632732909e-7,
-          2.4478238880298875e-10,
-          -3.134105952540267e-7,
-          1
-        ],
-        "displacementMm": 0.6412964489770451,
+        "displacementMm": 0.5440010880709734,
         "angleDeg": 0,
         "fell": false
       },
@@ -2235,160 +1993,45 @@
         "id": "B4-01",
         "friction": 0.53,
         "planned": {
-          "x": 0,
+          "x": 26,
           "y": 670,
-          "z": 496
+          "z": 0
         },
         "actual": {
-          "x": -0.008654356002807617,
-          "y": 669.9516091346741,
-          "z": 495.6661033630371
+          "x": 25.956440210342407,
+          "y": 669.9751827716827,
+          "z": -0.520138144493103
         },
         "rotation": [
-          0.000027972417228738777,
-          0.000005815150416310644,
-          0.00012018458073725924,
+          0.00010463663784321398,
+          -0.000011675095265673008,
+          0.00010751274385256693,
           1
         ],
-        "displacementMm": 0.33749598205007386,
+        "displacementMm": 0.5225486000872004,
         "angleDeg": 0,
         "fell": false
       },
       {
-        "id": "B8-01",
-        "friction": 0.27,
+        "id": "B3-01",
+        "friction": 0.46,
         "planned": {
-          "x": 512,
+          "x": 538,
           "y": 670,
-          "z": 496
+          "z": 0
         },
         "actual": {
-          "x": 512.0480967760086,
-          "y": 669.9347541332245,
-          "z": 495.613561630249
+          "x": 537.9433591365814,
+          "y": 669.967851638794,
+          "z": -0.3120099902153015
         },
         "rotation": [
-          -0.00005907831291551702,
-          0.0000019344208794791484,
-          -0.0001580409734742716,
+          0.00010927898983936757,
+          -0.000007422630460496293,
+          0.000039588667277712375,
           1
         ],
-        "displacementMm": 0.3948479917759522,
-        "angleDeg": 0,
-        "fell": false
-      },
-      {
-        "id": "B4-02",
-        "friction": 0.53,
-        "planned": {
-          "x": 0,
-          "y": 158,
-          "z": 498
-        },
-        "actual": {
-          "x": -0.07948541641235352,
-          "y": 157.92409056425095,
-          "z": 497.4043536186218
-        },
-        "rotation": [
-          -0.00007378420559689403,
-          0.00000648611376163899,
-          0.00007012275455053896,
-          1
-        ],
-        "displacementMm": 0.6057018949177045,
-        "angleDeg": 0,
-        "fell": false
-      },
-      {
-        "id": "B4-03",
-        "friction": 0.53,
-        "planned": {
-          "x": 293,
-          "y": 377,
-          "z": 498
-        },
-        "actual": {
-          "x": 292.97304475307465,
-          "y": 376.9211180359125,
-          "z": 497.4667000770569
-        },
-        "rotation": [
-          -0.00004530143633019179,
-          0.000009170892553811427,
-          -0.0003884829638991505,
-          1
-        ],
-        "displacementMm": 0.5397756546994676,
-        "angleDeg": 0,
-        "fell": false
-      },
-      {
-        "id": "B7-01",
-        "friction": 0.31,
-        "planned": {
-          "x": 0,
-          "y": 0,
-          "z": 498
-        },
-        "actual": {
-          "x": -0.09741592407226562,
-          "y": -0.09836125373840332,
-          "z": 497.37055015563965
-        },
-        "rotation": [
-          -0.00008337961480719969,
-          0.000006001203928462928,
-          0.00007077966438373551,
-          1
-        ],
-        "displacementMm": 0.6444935260071389,
-        "angleDeg": 0,
-        "fell": false
-      },
-      {
-        "id": "B4-04",
-        "friction": 0.53,
-        "planned": {
-          "x": 421,
-          "y": 0,
-          "z": 498
-        },
-        "actual": {
-          "x": 421.1680325269699,
-          "y": -0.06315970420837402,
-          "z": 497.32966899871826
-        },
-        "rotation": [
-          -0.000042953641241183504,
-          0.000006035182195773814,
-          -0.00040283214184455574,
-          1
-        ],
-        "displacementMm": 0.6939508121149226,
-        "angleDeg": 0,
-        "fell": false
-      },
-      {
-        "id": "B7-02",
-        "friction": 0.31,
-        "planned": {
-          "x": 933,
-          "y": 0,
-          "z": 498
-        },
-        "actual": {
-          "x": 933.2695229053497,
-          "y": -0.09897160530090332,
-          "z": 497.070321559906
-        },
-        "rotation": [
-          -0.00002913839307439048,
-          0.000004656935743696522,
-          -0.00041107702418230474,
-          1
-        ],
-        "displacementMm": 0.9730056408570305,
+        "displacementMm": 0.3187349032208265,
         "angleDeg": 0,
         "fell": false
       },
@@ -2396,22 +2039,206 @@
         "id": "B2-01",
         "friction": 0.28,
         "planned": {
-          "x": 805,
-          "y": 421,
-          "z": 498
+          "x": 984,
+          "y": 670,
+          "z": 0
         },
         "actual": {
-          "x": 805.2899103164673,
-          "y": 420.9150363653898,
-          "z": 497.14780616760254
+          "x": 984.0020697116852,
+          "y": 669.9943401813507,
+          "z": -0.04426372051239014
         },
         "rotation": [
-          -0.000001927697894643643,
-          0.000004750128937303089,
-          -0.00041813423740677536,
+          3.1156872637438937e-7,
+          0.000004381751750770491,
+          1.5774256212353066e-7,
           1
         ],
-        "displacementMm": 0.9041576957459383,
+        "displacementMm": 0.044672074131403776,
+        "angleDeg": 0,
+        "fell": false
+      },
+      {
+        "id": "B4-02",
+        "friction": 0.53,
+        "planned": {
+          "x": 26,
+          "y": 670,
+          "z": 90
+        },
+        "actual": {
+          "x": 25.93712830543518,
+          "y": 669.9997398853302,
+          "z": 89.25445556640625
+        },
+        "rotation": [
+          0.00009261156083084643,
+          -0.0000013455061207423569,
+          0.00011458375956863165,
+          1
+        ],
+        "displacementMm": 0.7481907645111098,
+        "angleDeg": 0,
+        "fell": false
+      },
+      {
+        "id": "B1-03",
+        "friction": 0.33,
+        "planned": {
+          "x": 538,
+          "y": 0,
+          "z": 166
+        },
+        "actual": {
+          "x": 537.9359421730042,
+          "y": -0.01890122890472412,
+          "z": 165.30928444862366
+        },
+        "rotation": [
+          0.000002801327809720533,
+          0.000015214513950922992,
+          -0.00006908781506353989,
+          1
+        ],
+        "displacementMm": 0.6939370537495921,
+        "angleDeg": 0,
+        "fell": false
+      },
+      {
+        "id": "B1-04",
+        "friction": 0.33,
+        "planned": {
+          "x": 0,
+          "y": 0,
+          "z": 166
+        },
+        "actual": {
+          "x": -0.13321661949157715,
+          "y": -0.03010690212249756,
+          "z": 165.21306765079498
+        },
+        "rotation": [
+          0.00002003591180255171,
+          -0.000006306418072199449,
+          0.0002682805061340332,
+          1
+        ],
+        "displacementMm": 0.798696197242421,
+        "angleDeg": 0,
+        "fell": false
+      },
+      {
+        "id": "B4-03",
+        "friction": 0.53,
+        "planned": {
+          "x": 26,
+          "y": 670,
+          "z": 180
+        },
+        "actual": {
+          "x": 25.918442249298096,
+          "y": 670.0186047554016,
+          "z": 179.0827977657318
+        },
+        "rotation": [
+          0.0000915029741008766,
+          -0.000003655501586763421,
+          0.00011674251436488703,
+          1
+        ],
+        "displacementMm": 0.9210090890809192,
+        "angleDeg": 0,
+        "fell": false
+      },
+      {
+        "id": "B3-02",
+        "friction": 0.46,
+        "planned": {
+          "x": 538,
+          "y": 670,
+          "z": 248
+        },
+        "actual": {
+          "x": 537.9215587377548,
+          "y": 670.0046873092651,
+          "z": 247.59520387649536
+        },
+        "rotation": [
+          0.0000912700270419009,
+          0.00001149545732914703,
+          0.00003924943302990869,
+          1
+        ],
+        "displacementMm": 0.41235288782200447,
+        "angleDeg": 0,
+        "fell": false
+      },
+      {
+        "id": "B4-04",
+        "friction": 0.53,
+        "planned": {
+          "x": 26,
+          "y": 670,
+          "z": 270
+        },
+        "actual": {
+          "x": 25.89188838005066,
+          "y": 670.0310323238373,
+          "z": 268.9679431915283
+        },
+        "rotation": [
+          0.00009158410830423236,
+          -0.0000028734461920976173,
+          0.0001168395538115874,
+          1
+        ],
+        "displacementMm": 1.0381678011783846,
+        "angleDeg": 0,
+        "fell": false
+      },
+      {
+        "id": "B1-05",
+        "friction": 0.33,
+        "planned": {
+          "x": 538,
+          "y": 0,
+          "z": 332
+        },
+        "actual": {
+          "x": 537.9513946771622,
+          "y": 0.018932819366455078,
+          "z": 331.17235136032104
+        },
+        "rotation": [
+          0.000019945731764892116,
+          -0.000002069165702778264,
+          -0.00008508845348842442,
+          1
+        ],
+        "displacementMm": 0.8292907812219772,
+        "angleDeg": 0,
+        "fell": false
+      },
+      {
+        "id": "B1-06",
+        "friction": 0.33,
+        "planned": {
+          "x": 0,
+          "y": 0,
+          "z": 332
+        },
+        "actual": {
+          "x": -0.2021791934967041,
+          "y": -0.003120899200439453,
+          "z": 331.03940320014954
+        },
+        "rotation": [
+          0.00006629076233366504,
+          -0.000010242558346362785,
+          0.0003234568575862795,
+          1
+        ],
+        "displacementMm": 0.9816477872321362,
         "angleDeg": 0,
         "fell": false
       },
@@ -2419,91 +2246,137 @@
         "id": "B4-05",
         "friction": 0.53,
         "planned": {
-          "x": 0,
+          "x": 26,
           "y": 670,
-          "z": 586
+          "z": 360
         },
         "actual": {
-          "x": -0.03076767921447754,
-          "y": 669.9592981338501,
-          "z": 585.6090354919434
+          "x": 25.861668825149536,
+          "y": 670.0404200553894,
+          "z": 358.9105772972107
         },
         "rotation": [
-          0.000027580172172747552,
-          0.000003816402568190824,
-          0.00012090303789591417,
+          0.00009161037451121956,
+          0.0000016051960756158223,
+          0.0001167811278719455,
           1
         ],
-        "displacementMm": 0.39427977192889385,
+        "displacementMm": 1.0989136090548475,
         "angleDeg": 0,
         "fell": false
       },
       {
-        "id": "B6-04",
+        "id": "B6-01",
         "friction": 0.5,
         "planned": {
-          "x": 1028,
-          "y": 690,
-          "z": 603
+          "x": 538,
+          "y": 670,
+          "z": 496
         },
         "actual": {
-          "x": 1027.9645338058472,
-          "y": 689.9970185756683,
-          "z": 602.2845978736877
+          "x": 537.8995087742805,
+          "y": 670.0535967350006,
+          "z": 495.55759382247925
         },
         "rotation": [
-          1.0602919076063699e-7,
-          9.121978866710734e-11,
-          2.2977886260378e-10,
+          0.00007573860057163984,
+          0.000005399577275966294,
+          0.000047819834435358644,
           1
         ],
-        "displacementMm": 0.7162869132902183,
+        "displacementMm": 0.4568307370983772,
         "angleDeg": 0,
         "fell": false
       },
       {
-        "id": "B8-02",
+        "id": "B5-01",
+        "friction": 0.58,
+        "planned": {
+          "x": 499,
+          "y": 289,
+          "z": 498
+        },
+        "actual": {
+          "x": 498.97239553928375,
+          "y": 289.02611930668354,
+          "z": 497.16185092926025
+        },
+        "rotation": [
+          0.00004282060035620816,
+          0.0000022173912839207333,
+          -0.00008120390702970326,
+          1
+        ],
+        "displacementMm": 0.8390101842140915,
+        "angleDeg": 0,
+        "fell": false
+      },
+      {
+        "id": "B7-01",
+        "friction": 0.31,
+        "planned": {
+          "x": 358,
+          "y": 249,
+          "z": 498
+        },
+        "actual": {
+          "x": 357.6669020652771,
+          "y": 249.03046903014183,
+          "z": 497.1054286956787
+        },
+        "rotation": [
+          0.00007027869287412614,
+          -0.00000495926542498637,
+          0.00031603535171598196,
+          1
+        ],
+        "displacementMm": 0.9550604244913187,
+        "angleDeg": 0,
+        "fell": false
+      },
+      {
+        "id": "B8-01",
         "friction": 0.27,
         "planned": {
-          "x": 512,
-          "y": 670,
-          "z": 799
+          "x": 499,
+          "y": 86,
+          "z": 498
         },
         "actual": {
-          "x": 512.144023001194,
-          "y": 669.8994979858398,
-          "z": 798.5828981399536
+          "x": 498.9729685783386,
+          "y": 86.01862645149231,
+          "z": 497.17842197418213
         },
         "rotation": [
-          -0.00005993706145090982,
-          0.0000048477431846549734,
-          -0.0001577918737893924,
+          0.00003365680095157586,
+          0.0000020746831523865694,
+          -0.00010031761485151947,
           1
         ],
-        "displacementMm": 0.45256738876915426,
+        "displacementMm": 0.8222336012101554,
         "angleDeg": 0,
         "fell": false
       },
       {
-        "id": "B6-05",
+        "id": "B6-02",
         "friction": 0.5,
         "planned": {
-          "x": 1028,
-          "y": 690,
-          "z": 804
+          "x": 48,
+          "y": 498,
+          "z": 498
         },
         "actual": {
-          "x": 1027.9583349227905,
-          "y": 689.9970781803131,
-          "z": 803.2468433380127
+          "x": 47.67394781112671,
+          "y": 498.0228945016861,
+          "z": 496.8886251449585
         },
         "rotation": [
-          8.80078587783828e-8,
-          -8.06758652938111e-12,
-          -2.3940638360642197e-9,
+          0.00012003631854895502,
+          -0.000027152687835041434,
+          0.0003368159232195467,
           1
         ],
-        "displacementMm": 0.7543139089165818,
+        "displacementMm": 1.1584421679544659,
         "angleDeg": 0,
         "fell": false
       },
@@ -2511,22 +2384,45 @@
         "id": "B2-02",
         "friction": 0.28,
         "planned": {
-          "x": 805,
-          "y": 421,
-          "z": 807
+          "x": 848,
+          "y": 478,
+          "z": 498
         },
         "actual": {
-          "x": 805.5477004051208,
-          "y": 420.9166047126055,
-          "z": 806.1035351753235
+          "x": 847.9838829040527,
+          "y": 478.0421190857887,
+          "z": 497.1231894493103
         },
         "rotation": [
-          -0.0000021571920569840586,
-          0.0000047906032705213875,
-          -0.0004189690516795963,
+          0.000030168357625370845,
+          -2.1635256075569487e-7,
+          -0.00009305432467954233,
           1
         ],
-        "displacementMm": 1.0538404478911645,
+        "displacementMm": 0.8779695438739442,
+        "angleDeg": 0,
+        "fell": false
+      },
+      {
+        "id": "B5-02",
+        "friction": 0.58,
+        "planned": {
+          "x": 9,
+          "y": 117,
+          "z": 498
+        },
+        "actual": {
+          "x": 8.655840635299683,
+          "y": 117.02941966056824,
+          "z": 496.9534730911255
+        },
+        "rotation": [
+          0.00006713947368552908,
+          0.000011292213457636535,
+          0.0003343783610034734,
+          1
+        ],
+        "displacementMm": 1.1020570564799794,
         "angleDeg": 0,
         "fell": false
       },
@@ -2534,22 +2430,137 @@
         "id": "B2-03",
         "friction": 0.28,
         "planned": {
-          "x": 805,
-          "y": 421,
-          "z": 1116
+          "x": 848,
+          "y": 286,
+          "z": 498
         },
         "actual": {
-          "x": 805.8071296215057,
-          "y": 420.9153045862913,
-          "z": 1115.0823907852173
+          "x": 847.9901115894318,
+          "y": 286.0395842194557,
+          "z": 497.1329050064087
         },
         "rotation": [
-          -0.000001927383436850505,
-          0.000004797926976607414,
-          -0.0004186486476100981,
+          0.000022342024749377742,
+          0.0000032542957342229784,
+          -0.00009315826173406094,
           1
         ],
-        "displacementMm": 1.2250053918532078,
+        "displacementMm": 0.8680543871236386,
+        "angleDeg": 0,
+        "fell": false
+      },
+      {
+        "id": "B6-03",
+        "friction": 0.5,
+        "planned": {
+          "x": 538,
+          "y": 670,
+          "z": 697
+        },
+        "actual": {
+          "x": 537.8798541426659,
+          "y": 670.0827136039734,
+          "z": 696.5201969146729
+        },
+        "rotation": [
+          0.00007450311386492103,
+          0.000006046279395377496,
+          0.00004884351073997095,
+          1
+        ],
+        "displacementMm": 0.501485361706872,
+        "angleDeg": 0,
+        "fell": false
+      },
+      {
+        "id": "B7-02",
+        "friction": 0.31,
+        "planned": {
+          "x": 563,
+          "y": 859,
+          "z": 496
+        },
+        "actual": {
+          "x": 562.9085083007812,
+          "y": 859.081344127655,
+          "z": 495.55940341949463
+        },
+        "rotation": [
+          0.00009886170300887898,
+          0.0000032139121231011814,
+          0.00003827124965027906,
+          1
+        ],
+        "displacementMm": 0.45728868877648593,
+        "angleDeg": 0,
+        "fell": false
+      },
+      {
+        "id": "B6-04",
+        "friction": 0.5,
+        "planned": {
+          "x": 48,
+          "y": 498,
+          "z": 699
+        },
+        "actual": {
+          "x": 47.54204273223877,
+          "y": 498.0737372636795,
+          "z": 697.812783241272
+        },
+        "rotation": [
+          0.00012043199239997193,
+          0.0000010140468020836124,
+          0.00033694127341732383,
+          1
+        ],
+        "displacementMm": 1.2746158932615563,
+        "angleDeg": 0,
+        "fell": false
+      },
+      {
+        "id": "B6-05",
+        "friction": 0.5,
+        "planned": {
+          "x": 499,
+          "y": 117,
+          "z": 801
+        },
+        "actual": {
+          "x": 499.02060598134995,
+          "y": 117.0375599861145,
+          "z": 800.1515145301819
+        },
+        "rotation": [
+          0.0000381644131266512,
+          0.000004575483671942493,
+          -0.0000973796340986155,
+          1
+        ],
+        "displacementMm": 0.849566331440214,
+        "angleDeg": 0,
+        "fell": false
+      },
+      {
+        "id": "B6-06",
+        "friction": 0.5,
+        "planned": {
+          "x": 48,
+          "y": 498,
+          "z": 900
+        },
+        "actual": {
+          "x": 47.40727663040161,
+          "y": 498.12235975265503,
+          "z": 898.7749094963074
+        },
+        "rotation": [
+          0.00012068332580383867,
+          0.0000010129635938938009,
+          0.0003368897596374154,
+          1
+        ],
+        "displacementMm": 1.3664331832093812,
         "angleDeg": 0,
         "fell": false
       }
@@ -2565,6 +2576,6 @@
       "contactNaturalFrequencyHz": 120
     },
     "steps": 360,
-    "milliseconds": 190.33410000000003
+    "milliseconds": 190.13379200000054
   }
 }

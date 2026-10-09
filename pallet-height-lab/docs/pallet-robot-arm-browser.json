@@ -1,0 +1,465 @@
+{
+  "verifiedAt": "2026-10-05T15:56:01.136Z",
+  "metrics": {
+    "loadUtilization": 0.979286604546264,
+    "unknownCapacity": 0,
+    "slenderness": 3.1948051948051948,
+    "supportBalances": [
+      {
+        "id": "B15-01",
+        "isBase": true,
+        "planeZ": 0,
+        "mass": 38.2,
+        "loadAbove": 9.900000000000002,
+        "center": {
+          "x": 288.75994764397905,
+          "y": 636.4721204188481,
+          "z": 270.48586387434557
+        },
+        "supportCenter": {
+          "x": 273.5,
+          "y": 653,
+          "z": 0
+        },
+        "offsetMm": 22.495261846576458,
+        "offsetRatio": 0.055795055371038564,
+        "margin": 258.24005235602095,
+        "required": 54.7,
+        "reserve": 203.54005235602096
+      },
+      {
+        "id": "B9-01",
+        "isBase": true,
+        "planeZ": 0,
+        "mass": 31.840000000000003,
+        "loadAbove": 10.560000000000002,
+        "center": {
+          "x": 738.5983040201005,
+          "y": 661.9623115577889,
+          "z": 249.28062185929645
+        },
+        "supportCenter": {
+          "x": 745,
+          "y": 649,
+          "z": 0
+        },
+        "offsetMm": 14.456944087193841,
+        "offsetRatio": 0.0377909957953029,
+        "margin": 191.59830402010053,
+        "required": 39.6,
+        "reserve": 151.99830402010053
+      },
+      {
+        "id": "B25-01",
+        "isBase": true,
+        "planeZ": 0,
+        "mass": 26.66,
+        "loadAbove": 14.71,
+        "center": {
+          "x": 1053.3638409602402,
+          "y": 611.0935858964741,
+          "z": 306.61890472618154
+        },
+        "supportCenter": {
+          "x": 1058.5,
+          "y": 636,
+          "z": 0
+        },
+        "offsetMm": 25.430485508106603,
+        "offsetRatio": 0.07547398213189664,
+        "margin": 110.36384096024018,
+        "required": 45.99283570892723,
+        "reserve": 64.37100525131295
+      },
+      {
+        "id": "B29-01",
+        "isBase": true,
+        "planeZ": 0,
+        "mass": 36.96,
+        "loadAbove": 20.05,
+        "center": {
+          "x": 353.25419372294374,
+          "y": 166.39339826839824,
+          "z": 342.4848484848485
+        },
+        "supportCenter": {
+          "x": 328.5,
+          "y": 160,
+          "z": 0
+        },
+        "offsetMm": 25.5664946422341,
+        "offsetRatio": 0.07535523203331428,
+        "margin": 139.60660173160176,
+        "required": 51.372727272727275,
+        "reserve": 88.23387445887448
+      },
+      {
+        "id": "B17-01",
+        "isBase": true,
+        "planeZ": 0,
+        "mass": 6.06,
+        "loadAbove": 0.96,
+        "center": {
+          "x": 918.049504950495,
+          "y": 159.5,
+          "z": 163.5148514851485
+        },
+        "supportCenter": {
+          "x": 919,
+          "y": 159.5,
+          "z": 0
+        },
+        "offsetMm": 0.9504950495049798,
+        "offsetRatio": 0.003627843700400686,
+        "margin": 146.5,
+        "required": 29.3,
+        "reserve": 117.2
+      },
+      {
+        "id": "B13-01",
+        "isBase": false,
+        "planeZ": 235,
+        "mass": 10.56,
+        "loadAbove": 5.83,
+        "center": {
+          "x": 725.6979166666667,
+          "y": 688.0833333333333,
+          "z": 514.8385416666666
+        },
+        "supportCenter": {
+          "x": 750,
+          "y": 634,
+          "z": 235
+        },
+        "offsetMm": 59.292480120034696,
+        "offsetRatio": 0.1648882113821136,
+        "margin": 168.69791666666674,
+        "required": 41.97578124999999,
+        "reserve": 126.72213541666676
+      },
+      {
+        "id": "B19-01",
+        "isBase": false,
+        "planeZ": 252,
+        "mass": 14.71,
+        "loadAbove": 3.290000000000001,
+        "center": {
+          "x": 1049.191366417403,
+          "y": 590.8602991162475,
+          "z": 453.3487423521414
+        },
+        "supportCenter": {
+          "x": 1054,
+          "y": 578,
+          "z": 252
+        },
+        "offsetMm": 13.72990350625358,
+        "offsetRatio": 0.047280511456792136,
+        "margin": 106.19136641740306,
+        "required": 30.202311352821212,
+        "reserve": 75.98905506458185
+      },
+      {
+        "id": "B4-01",
+        "isBase": false,
+        "planeZ": 270,
+        "mass": 0.96,
+        "loadAbove": 0,
+        "center": {
+          "x": 913,
+          "y": 159.5,
+          "z": 315
+        },
+        "supportCenter": {
+          "x": 913,
+          "y": 159.5,
+          "z": 270
+        },
+        "offsetMm": 0,
+        "offsetRatio": 0,
+        "margin": 146.5,
+        "required": 29.3,
+        "reserve": 117.2
+      },
+      {
+        "id": "B27-01",
+        "isBase": false,
+        "planeZ": 280,
+        "mass": 9.9,
+        "loadAbove": 4.53,
+        "center": {
+          "x": 332.3818181818182,
+          "y": 589.2257575757576,
+          "z": 643.4909090909091
+        },
+        "supportCenter": {
+          "x": 331.5,
+          "y": 637.5,
+          "z": 280
+        },
+        "offsetMm": 48.28229577122767,
+        "offsetRatio": 0.1456236573883632,
+        "margin": 214.61818181818182,
+        "required": 54.52363636363636,
+        "reserve": 160.09454545454545
+      },
+      {
+        "id": "B11-01",
+        "isBase": false,
+        "planeZ": 285,
+        "mass": 20.05,
+        "loadAbove": 11.5,
+        "center": {
+          "x": 374.1316708229426,
+          "y": 171.785536159601,
+          "z": 511.15037406483793
+        },
+        "supportCenter": {
+          "x": 372,
+          "y": 164,
+          "z": 285
+        },
+        "offsetMm": 8.07208732545924,
+        "offsetRatio": 0.054827719433809916,
+        "margin": 134.214463840399,
+        "required": 33.92255610972569,
+        "reserve": 100.2919077306733
+      },
+      {
+        "id": "B26-01",
+        "isBase": false,
+        "planeZ": 431,
+        "mass": 11.5,
+        "loadAbove": 4.11,
+        "center": {
+          "x": 375.7165217391304,
+          "y": 177.57391304347826,
+          "z": 625.0143478260869
+        },
+        "supportCenter": {
+          "x": 372.5,
+          "y": 174,
+          "z": 431
+        },
+        "offsetMm": 4.808208246388944,
+        "offsetRatio": 0.027075098814229218,
+        "margin": 128.42608695652174,
+        "required": 29.102152173913037,
+        "reserve": 99.3239347826087
+      },
+      {
+        "id": "B16-01",
+        "isBase": false,
+        "planeZ": 521,
+        "mass": 2.42,
+        "loadAbove": 0,
+        "center": {
+          "x": 697.5,
+          "y": 529,
+          "z": 632
+        },
+        "supportCenter": {
+          "x": 697.5,
+          "y": 529,
+          "z": 521
+        },
+        "offsetMm": 0,
+        "offsetRatio": 0,
+        "margin": 140.5,
+        "required": 28.1,
+        "reserve": 112.4
+      },
+      {
+        "id": "B6-01",
+        "isBase": false,
+        "planeZ": 521,
+        "mass": 3.41,
+        "loadAbove": 0,
+        "center": {
+          "x": 712,
+          "y": 876,
+          "z": 621.5
+        },
+        "supportCenter": {
+          "x": 712,
+          "y": 876,
+          "z": 521
+        },
+        "offsetMm": 0,
+        "offsetRatio": 0,
+        "margin": 86,
+        "required": 17.2,
+        "reserve": 68.8
+      },
+      {
+        "id": "B2-01",
+        "isBase": false,
+        "planeZ": 546,
+        "mass": 3.29,
+        "loadAbove": 0,
+        "center": {
+          "x": 1032.5,
+          "y": 635.5,
+          "z": 642
+        },
+        "supportCenter": {
+          "x": 1032.5,
+          "y": 635.5,
+          "z": 546
+        },
+        "offsetMm": 0,
+        "offsetRatio": 0,
+        "margin": 89.5,
+        "required": 17.900000000000002,
+        "reserve": 71.6
+      },
+      {
+        "id": "B22-01",
+        "isBase": false,
+        "planeZ": 675,
+        "mass": 4.11,
+        "loadAbove": 0,
+        "center": {
+          "x": 381.5,
+          "y": 184,
+          "z": 754.5
+        },
+        "supportCenter": {
+          "x": 381.5,
+          "y": 184,
+          "z": 675
+        },
+        "offsetMm": 0,
+        "offsetRatio": 0,
+        "margin": 122,
+        "required": 24.400000000000002,
+        "reserve": 97.6
+      },
+      {
+        "id": "B30-01",
+        "isBase": false,
+        "planeZ": 694,
+        "mass": 4.53,
+        "loadAbove": 0,
+        "center": {
+          "x": 327.5,
+          "y": 532,
+          "z": 829
+        },
+        "supportCenter": {
+          "x": 336.5,
+          "y": 532,
+          "z": 694
+        },
+        "offsetMm": 9,
+        "offsetRatio": 0.04081632653061224,
+        "margin": 211.5,
+        "required": 44.1,
+        "reserve": 167.4
+      }
+    ],
+    "count": 16,
+    "volume": 728214542,
+    "weight": 139.72,
+    "height": 964,
+    "utilization": 0.3792784072916667,
+    "efficiency": 0.629507729944675,
+    "center": {
+      "x": 581.5197180074433,
+      "y": 492.4015173203551,
+      "z": 286.954301460063
+    },
+    "quadrants": [
+      45.636933774293965,
+      24.902191504081912,
+      30.57790502465442,
+      38.602969696969694
+    ],
+    "imbalance": 0.14840210614237084,
+    "distanceM": 84.42614859603043,
+    "workSeconds": 176.88638245543143,
+    "medianMs": 3219.399999976158,
+    "p95Ms": 7764.699999988079,
+    "totalMs": 58239.40000003576,
+    "complete": false,
+    "failedStep": 17,
+    "reason": "세로 박스 돌출 높이 초과 / 지지 조건 미달 / 무게 규칙 위반 / 재질 허용 지지하중 초과 / 그리퍼 / 운반 접근 경로 간섭 / 누적 무게중심 정적 평형 불가 / 세로 박스 주변 높이 부족 / 설정된 작업공간 밖",
+    "excluded": 0,
+    "missing": 0
+  },
+  "pose": {
+    "base": {
+      "x": -900,
+      "y": -450,
+      "z": 0
+    },
+    "shoulder": {
+      "x": -900,
+      "y": -450,
+      "z": 650
+    },
+    "elbow": {
+      "x": -1116.2580879810894,
+      "y": -1201.161942766174,
+      "z": 2046.061665945495
+    },
+    "wrist": {
+      "x": -674,
+      "y": 335,
+      "z": 1978.1332535382746
+    },
+    "flange": {
+      "x": -674,
+      "y": 335,
+      "z": 1858.1332535382746
+    },
+    "tcp": {
+      "x": -674,
+      "y": 335,
+      "z": 1698.1332535382746
+    },
+    "target": {
+      "x": -674,
+      "y": 335,
+      "z": 1698.1332535382744
+    },
+    "errorMm": 2.2737367544323206e-13,
+    "reachable": true,
+    "yaw": 1.290478846415381,
+    "shoulderAngle": 2.081218076924219,
+    "elbowAngle": -2.12368609894008,
+    "hits": [],
+    "state": "following",
+    "model": {
+      "baseX": -900,
+      "baseY": -450,
+      "shoulderHeight": 650,
+      "upperArm": 1600,
+      "forearm": 1600,
+      "wristLength": 120
+    },
+    "normal": [
+      0,
+      1,
+      0
+    ]
+  },
+  "patternEvaluation": {
+    "score": 20.627103785174562,
+    "coverage": 0.5333333333333333,
+    "dimensions": {
+      "packing": 50.43930686181708,
+      "balance": 85.15978938576292,
+      "stability": 2.071339545373596,
+      "robotTime": 47.49375704468176,
+      "generationTime": 23.700052140248626
+    },
+    "valid": true,
+    "capacityVerified": true,
+    "complete": false,
+    "reasons": [],
+    "scope": "그리퍼 자세·스윕·도달 반경 근사",
+    "physics": "별도 강체 검증",
+    "ik": "관절·IK 미검증"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "dataset": "BED-BPP v1",
+  "citation": "Kagerer F, Beinhofer M, Stricker S, Nüchter A. BED-BPP: Benchmarking dataset for robotic bin packing problems. IJRR 2023;42(11):1007–1014. doi:10.1177/02783649231193048",
+  "datasetUrl": "https://floriankagerer.github.io/assets/bed-bpp/bed-bpp_v1.json",
+  "sourceRepository": "https://github.com/floriankagerer/bed-bpp-env",
+  "repositoryCommit": "1b54c34428ba0f5b43a967162a57e5174d08bb7f",
+  "repositoryPath": "example_data/benchmark_data/bed-bpp_v1.json",
+  "sourceBytes": 78279099,
+  "sourceSha256": "6ecc91d92b9ce88de113ac66c45a450ac3eec303018f14cd73e4bd0eaf8eb3cc",
+  "sourceGitBlobSha1": "219ef287964f4fb09b84f4cac64979f2004725c7",
+  "subsetSha256": "4baf4806a425ab39e1c65b36710f365dad50bdd01e03d5e555f39c9acf779d51",
+  "selection": "First 12 orders in original JSON insertion order whose properties.target is euro-pallet. All fields and all item_sequence entries retained. Not a random or statistically representative sample.",
+  "orderIds": [
+    "00100004",
+    "00100005",
+    "00100006",
+    "00100010",
+    "00100011",
+    "00100012",
+    "00100016",
+    "00100022",
+    "00100025",
+    "00100026",
+    "00100029",
+    "00100030"
+  ],
+  "license": "MIT; exact downloaded source Git blob matches the file in the licensed repository at the pinned commit. Copyright notice retained in BED-BPP-LICENSE.txt.",
+  "retrievedAt": "2026-10-09",
+  "transformation": "UTF-8 JSON compact serialization plus LF. Original order item dimensions, weights and sequence values unchanged."
+}

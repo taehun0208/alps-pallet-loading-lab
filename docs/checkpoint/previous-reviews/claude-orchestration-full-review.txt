@@ -1,0 +1,90 @@
+# Remaining correctness defects
+
+## 1. Confirmed bug: a cell's no-candidate result is dropped when another cell gets the box
+
+**Location:** `streamPlanner.ts`, `planStream`, in the final `for(const proposal of local.proposals)` loop.
+
+```ts
+if(selected.has(proposal.boxId))continue;
+const assignment=assignments.find(a=>a.boxId===proposal.boxId);
+if(!assignment&&!proposal.candidates.length)proposals.push(proposal);
+```
+
+- Both filters match on the box ID only, not on the robot.
+- Suppose robot A has no candidate for box X, and box X is assigned to robot B (launch or soft intent). A's real infeasibility proposal is then thrown away.
+- Consequences for robot A:
+  - Its `checks` entry is never written, so it re-probes X every planning cycle.
+  - X never enters `cell.rejected`.
+  - `exhausted` is computed per cell and requires every remaining box to be in that cell's `rejected` list. So A can stay in `loading` indefinitely while boxes it cannot take are pushed toward other cells. This is exactly the case the comment says must not happen: infeasibility being hidden by an intentional pass.
+
+**Minimal fix:** skip a no-candidate proposal only when its own robot is the launching robot. In practice that never happens, because a robot with no candidate has no bid.
+
+```ts
+for(const proposal of local.proposals)
+  if(!proposal.candidates.length)proposals.push(proposal);
+```
+
+## 2. Confirmed bug: a central launch carries only one candidate, so one failed site rejects the box
+
+**Location:** `planStream`, in `byPair.set(..., candidates:[best.candidate], ...)`. The effect shows up in `applyDecision`'s rejection branch.
+
+- `interceptAction` can only try `best.candidate`.
+- If that site fails a non-reservation check (`inspectConstraints` at launch pickup, `inspectMotion`, or the approach-height mismatch), `applyDecision` adds the box to `rejected`. This happens even though `options` held other valid sites.
+- Independent mode passes multiple candidates. Central mode falsely reports "box infeasible for this cell," which feeds `rejected.length>=6` and `exhausted`, causing premature pallet closure.
+
+**Minimal fix:** pass the ranked shortlist with the best site first:
+
+```ts
+candidates:[best.candidate,...options.filter(c=>c!==best.candidate)]
+```
+
+At minimum, include `options.slice(0,2)` in score order.
+
+## 3. Confirmed bug: transient or internal intercept failures are counted as infeasibility
+
+**Location:** `streamEngine.ts`, `applyDecision`.
+
+```ts
+failures.some(r=>!r.includes('예약')&&!r.includes('구간'))
+```
+
+Some of `interceptAction`'s own failure strings contain neither keyword, so they count as real rejections:
+
+- `'추적 집기 시간 수렴 실패'` (intercept-time convergence failure) depends on timing and the box's position on the belt.
+- `'검증 경로의 접근 높이 변경 · 재계획 필요'` (approach height changed during verification) is a mismatch between `c.path` and `directReturn`, i.e., a planner-internal inconsistency.
+- Any time-dependent conflict reasons returned by `inspectMotion`, depending on its strings.
+
+Marking these as `rejected` makes cells close early through the `rejected>=6` or `exhausted` paths.
+
+**Minimal fix:** classify failures with a type instead of substring matching. For example, return `{kind:'transient'|'infeasible', text}` from `interceptAction`, and add to `rejected` only on `infeasible`. These are the `checked.reasons` from `inspectConstraints`, plus no-candidate results. A smaller patch is to also exclude `'수렴'` and `'재계획'`.
+
+## 4. Limitation (liveness): the whole-decision stale guard discards decisions on unrelated cell changes
+
+**Location:** `applyDecision`, at the `cellVersions?.some(...)` and `cellStates?.some(...)` checks.
+
+- The decision is rejected if any cell's version or phase changed between snapshot and apply. That includes a busy robot finishing a placement (`version++`) in a cell the decision never touches.
+- Under concurrent placements, at 4× speed or higher with worker latency, most central decisions can be discarded. Launches then starve while independent mode keeps working.
+- This is safe, not incorrect, but it can severely reduce throughput.
+
+**Minimal fix:** check versions and states only for robots named in `decision.proposals`. `interceptAction` already re-verifies each robot's version, phase, and running-motion conflicts. The one thing lost is joint-optimality of the matching, which is acceptable for soft ranking.
+
+## 5. Limitation: one transient launch failure removes the box from that cell's window for 25 s
+
+**Location:** the `eligible` filter in `planStream`'s local loop (`checks[robot].version!==...||w.time-at>25`), combined with `applyDecision` writing `checks` on every failed launch.
+
+- A launch can fail on the reservation-wait path (`'운반 경로 예약 대기'`).
+- After that, the box is excluded from that robot's local list for 25 s. Pick-window transit is usually shorter than that, so the box is effectively skipped for the rest of the pass.
+- If no other non-busy cell has the box in its window, it gets no offer at all: neither a retry nor a soft intent.
+- Bounded by recirculation and the one-lap bypass, so it is not a correctness bug, but it costs launch opportunities.
+
+**Minimal fix:** for transient failures, either skip writing `checks[robot]`, or write it with `at: w.time-25+retryDelay`.
+
+## Checked and found correct
+
+- Mask DP: lexicographic, additive, exact over 16 states; no double-picking of a box.
+- Soft-intent winner selection.
+- Inventory invariants.
+- Intercept segment and point alignment.
+- Phase transitions blocked while a cell is busy.
+- runId isolation across reset and mode switch.
+- History reference sharing.

@@ -1,0 +1,15 @@
+/* Established Tetris AI Lab tokens, shared by the spatial simulator. */
+:root {
+  --color-paper: oklch(17% .018 258); --color-panel: oklch(20% .019 255); --color-raised: oklch(24% .019 253);
+  --color-board: oklch(15% .018 251); --color-ink: oklch(94% .007 250); --color-muted: oklch(72% .021 250); --color-subtle: oklch(63% .022 251);
+  --color-rule: oklch(30% .023 252); --color-grid: oklch(23% .019 251); --color-accent: oklch(80% .106 177); --color-accent-ink: oklch(15% .018 251); --color-accent-dark: oklch(28% .042 178);
+  --color-gold: oklch(83% .117 83); --color-gold-dark: oklch(29% .034 84); --color-warning: oklch(76% .11 46); --color-danger: oklch(72% .15 25);
+  --color-I: oklch(76% .112 216); --color-J: oklch(66% .139 261); --color-L: oklch(76% .138 57); --color-O: oklch(83% .139 92);
+  --color-S: oklch(77% .12 154); --color-T: oklch(72% .136 300); --color-Z: oklch(71% .132 20); --color-existing: oklch(46% .039 250);
+  --color-hole-fill: oklch(27% .051 47); --color-shadow: oklch(10% .014 252 / .3); --color-scrim: oklch(10% .014 252 / .85);
+  --font-body: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; --font-display: 'Bahnschrift', 'Malgun Gothic', sans-serif;
+  --font-mono: 'Cascadia Code', 'SFMono-Regular', 'Consolas', monospace;
+  --space-xs:4px;--space-sm:8px;--space-md:16px;--space-lg:24px;--space-xl:32px;--radius:10px;
+  --ease-out:cubic-bezier(.2,.8,.2,1);--ease-in:cubic-bezier(.4,0,1,1);--ease-in-out:cubic-bezier(.4,0,.2,1);
+}
+:root{--space-sm:8px;--space-md:16px;--space-lg:24px;--space-xl:32px;--radius-panel:8px;--radius-control:5px;--dur-fast:150ms}

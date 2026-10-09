@@ -9,7 +9,8 @@
     "preview": "vite preview --host 127.0.0.1",
     "test": "vitest run",
     "test:browser": "playwright test",
-    "benchmark:strategies": "vitest run tests/pallet-strategy-benchmark.test.ts --reporter=dot"
+    "benchmark:strategies": "vitest run tests/pallet-strategy-benchmark.test.ts --reporter=dot",
+    "benchmark:single": "esbuild scripts/single-robot-benchmark.ts --bundle --platform=node --format=esm --loader:.json=json --outfile=work/single-robot-benchmark.mjs --log-level=warning && node work/single-robot-benchmark.mjs"
   },
   "dependencies": {
     "@dimforge/rapier3d-compat": "0.21.0",

@@ -418,7 +418,7 @@
         "contactNaturalFrequencyHz": 120
       },
       "steps": 360,
-      "milliseconds": 203.9366
+      "milliseconds": 232.77195799999998
     }
   },
   {
@@ -840,7 +840,7 @@
         "contactNaturalFrequencyHz": 120
       },
       "steps": 720,
-      "milliseconds": 155.94740000000002
+      "milliseconds": 153.03466600000002
     }
   },
   {
@@ -1262,7 +1262,7 @@
         "contactNaturalFrequencyHz": 120
       },
       "steps": 360,
-      "milliseconds": 103.65139999999997
+      "milliseconds": 125.95158299999991
     }
   },
   {
@@ -1684,7 +1684,7 @@
         "contactNaturalFrequencyHz": 120
       },
       "steps": 720,
-      "milliseconds": 152.61659999999995
+      "milliseconds": 130.68954100000008
     }
   }
 ]

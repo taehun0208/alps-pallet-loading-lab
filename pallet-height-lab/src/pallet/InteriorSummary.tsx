@@ -1,0 +1,9 @@
+import { interiorSpace } from './interior';
+import { isStanding,orientationLabel } from './orientations';
+import type { Placement,Constraints } from './types';
+import { standingHeight,isTallBox,DEFAULT_STANDING_HEIGHT } from './standingHeight';
+export function InteriorSummary({placements,constraints}:{placements:Placement[];constraints:Constraints}){
+ const space=interiorSpace(placements),standing=placements.filter(b=>isStanding(b.orientation));
+ const cfg={...DEFAULT_STANDING_HEIGHT,...constraints.standingHeight},tall=placements.filter(isTallBox).map(b=>({box:b,result:standingHeight(b,placements.filter(o=>o.id!==b.id),constraints)}));
+ return <section className="pallet-height-summary" aria-label="내부 공간과 박스 자세"><div className="pallet-height-heading"><b>내부 공간 채움 <small>높이대별 외곽 기준</small></b><span>{(space.fill*100).toFixed(1)}%</span></div><p>내부 빈 공간 {(space.voidVolume/1e9).toFixed(3)} m³ · 세워 놓은 박스 {standing.length}개 / {placements.length}개</p><small>박스 높이대마다 차지하는 외곽 사각형 안의 빈 부피입니다. 열린 홈도 포함하며, 빈 공간 수치만으로 안정성을 판정하지 않습니다.</small><div aria-label="세로 박스 높이 맞춤 결과"><p><b>주변 높이 맞춤 {cfg.enabled?'켜짐':'꺼짐'}</b> · 최대 돌출 {cfg.maxRiseMm} mm / 박스 높이 25% 이내</p><small>실제 치수로 판단한 긴 세로 박스 {tall.length}개 · {cfg.enabled?`높이 조건 위반 ${tall.filter(v=>!v.result.valid).length}개`:'이전 배치 연구용 · 높이 제한 제외'}. 떨어진 기둥이나 다른 세로 박스는 높이 기준으로 쓰지 않습니다.</small>{tall.length>0&&<details><summary>세로 박스 · 주변 층 높이 비교</summary>{tall.map(({box:b,result:r})=><p key={b.id}>{b.id} · 상단 {(b.position.z+b.size.h).toFixed(0)} mm · {r.referenceHeight===null?'가까운 눕힌 적재 없음':`이웃 ${r.referenceId} 상단 ${r.referenceHeight.toFixed(0)} mm · 돌출 ${r.riseMm!.toFixed(0)} / ${r.limitMm.toFixed(0)} mm`}</p>)}</details>}</div>{standing.length>0&&<details><summary>세운 박스와 실제 배치 치수</summary>{standing.map(b=><p key={b.id}>{b.id} · {orientationLabel(b.orientation)} · {b.size.w} × {b.size.d} × {b.size.h} mm</p>)}</details>}</section>;
+}
