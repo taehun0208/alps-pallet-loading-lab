@@ -1,0 +1,1016 @@
+{
+  "schema": "alps-paired-1000/2",
+  "signature": "34d32c134b636cee907d3ddef1585e1e5142481b4badd161af2e785eda250968",
+  "source": [
+    {
+      "path": "src/engine/README.md",
+      "sha256": "371fe37dba7ff0d6f109a917e893d021c499bcd21c441de1331e17934dc667a2"
+    },
+    {
+      "path": "src/engine/client.ts",
+      "sha256": "b9b5b3615c7708e8499bcb97b0fd28d34a9d5e4758b81ce981b9fd86bed6ac95"
+    },
+    {
+      "path": "src/engine/clusterPacking.ts",
+      "sha256": "462cb04eedb6e7e86ca5eefc2b062b7d02e066a6634ee29446b81396efa539cf"
+    },
+    {
+      "path": "src/engine/config.ts",
+      "sha256": "53284b6a37ceb7b95112d1790b721164578db364f442f8724805c60a759c788a"
+    },
+    {
+      "path": "src/engine/coordinator.worker.ts",
+      "sha256": "bbd0e085e2fd83888bde436c1ba2eac5959ed8ce688de7f8181a36bc477e2c59"
+    },
+    {
+      "path": "src/engine/core.ts",
+      "sha256": "77b68275cbb5e10a77f1b97d20829c1e4cc5ff0520d927e0c3e3c38c31957c17"
+    },
+    {
+      "path": "src/engine/floorDense.ts",
+      "sha256": "7e9cf99d5892043a22d1b3fd7a1ee69335855bc393d2967d505fffb630b72934"
+    },
+    {
+      "path": "src/engine/history/floorDense-v1.ts.txt",
+      "sha256": "04d918d01ce587718c1c56e1e88bcd371e1b4110b479188859fc168ae0fa481b"
+    },
+    {
+      "path": "src/engine/mcts.ts",
+      "sha256": "82afc4dd9a6073b8a55a59be4fa3409cf14874b02c515828d57abf8bb1e9c160"
+    },
+    {
+      "path": "src/engine/planner.ts",
+      "sha256": "79ef2127aad70615d627e6c5c2034c0b9f44818e73d1b64071dd9eb323f00fc1"
+    },
+    {
+      "path": "src/engine/planner.worker.ts",
+      "sha256": "8cf1ba240cbc4fd14d6ab5e7eca9e75f72922ef362b2ad5c2bc90c42de296b3d"
+    },
+    {
+      "path": "src/engine/supervisor.ts",
+      "sha256": "a66f30a00b03eea72888c02a177affe185bd26c5cce7d77a563639548da4b6ca"
+    },
+    {
+      "path": "src/engine/types.ts",
+      "sha256": "2ad559b6f1cb11630f10125c4875d769df97b39b4273c8c524272c309c0628e8"
+    },
+    {
+      "path": "src/engine/validation.ts",
+      "sha256": "025cf0c615d889839c4243bcf7bfa4224bd242698eb7ef9236e8d3b222c410b7"
+    },
+    {
+      "path": "src/engine/vendor/pallet/benchmark/hardConstraints.ts",
+      "sha256": "813aed969b85bcd8007be9e8110a2f9f98a52d1dea989c342ddadd1322e96402"
+    },
+    {
+      "path": "src/engine/vendor/pallet/benchmark/model.ts",
+      "sha256": "17a757fe7e5fcf1470f27a0ffd80f03b6630193dc81479ce509ba00ba87f45af"
+    },
+    {
+      "path": "src/engine/vendor/pallet/benchmark/motionMetrics.ts",
+      "sha256": "55912f67f6c10c1aceb59b815cd30767ce1a3f5447191f15b1e15f4f250e686c"
+    },
+    {
+      "path": "src/engine/vendor/pallet/benchmark/registry.ts",
+      "sha256": "0bdd50be740949d01788f6fada5164827b4f92af3c9bb233ef717311ab09d000"
+    },
+    {
+      "path": "src/engine/vendor/pallet/benchmark/runner.ts",
+      "sha256": "13229d2e9a6f76b8e5df4dae7d4c384bb2cdd3770f610e1ea901c2654b111842"
+    },
+    {
+      "path": "src/engine/vendor/pallet/benchmark/scenarios.ts",
+      "sha256": "4b6b4cddd5a344342cabae7f2c5f596939a01c9c9ff457bec2c98a292ad0a29c"
+    },
+    {
+      "path": "src/engine/vendor/pallet/benchmark/statistics.ts",
+      "sha256": "80a98f83a2ab1666478bd607cc4d0b4443c73bfd4f1bd30c029e36074a636e2d"
+    },
+    {
+      "path": "src/engine/vendor/pallet/benchmark/version.ts",
+      "sha256": "adcc0b4b5cfc1e917765f76c201d5b5ef030e414969694ce7c1ee47a1a546216"
+    },
+    {
+      "path": "src/engine/vendor/pallet/candidates.ts",
+      "sha256": "dbb869df7ef478cfbd504b4dbdd5a2ac91e6b93d310651a32849063e52ee9732"
+    },
+    {
+      "path": "src/engine/vendor/pallet/capacity/experiment.ts",
+      "sha256": "f5f9c0e150771d3295064bcf68fb8065556340918a923ae894c7d4dd26b857db"
+    },
+    {
+      "path": "src/engine/vendor/pallet/compactPacking.ts",
+      "sha256": "527dea85f7713724eb4a8ac6f0816cf56b0dc76df7ee992fe3edb61e0e775dcb"
+    },
+    {
+      "path": "src/engine/vendor/pallet/compactPlanner.ts",
+      "sha256": "77f5b5002f02718df66511d0ed4ac87da85aea8abb5414a02a3e06589d6040fc"
+    },
+    {
+      "path": "src/engine/vendor/pallet/constraints.ts",
+      "sha256": "a25e55b51303af489b8d53f82bfda5b434351c71052eaccfd953319a01c26b48"
+    },
+    {
+      "path": "src/engine/vendor/pallet/environment.ts",
+      "sha256": "0a4d2e01337248b8fb93cb2955febfc4c6c334cf1d37555eb6e29dddd76cf0e7"
+    },
+    {
+      "path": "src/engine/vendor/pallet/equilibrium.ts",
+      "sha256": "730d13528ddd3ae5631bcd0462edd75180b2d518400d4cd0f11c4519eca00b57"
+    },
+    {
+      "path": "src/engine/vendor/pallet/features.ts",
+      "sha256": "3adfe9b5d4a1f2433a0ad3b27d057658deadded5a59491c02375124f7d563a47"
+    },
+    {
+      "path": "src/engine/vendor/pallet/frontier.ts",
+      "sha256": "25e0086cc7d1a4cba6fe9215d9d7c709e60746699e37a8c24769890b7258fee8"
+    },
+    {
+      "path": "src/engine/vendor/pallet/geometry.ts",
+      "sha256": "dca25f1e1f6c9fc22ca9bf52fa227a285d0ccdab6caa69f51a966082b7c80226"
+    },
+    {
+      "path": "src/engine/vendor/pallet/highStack.ts",
+      "sha256": "9b3abae2b1a4e7de5f1562a272b9706819b9b92e78112fbaccef0df1d14a8baa"
+    },
+    {
+      "path": "src/engine/vendor/pallet/interior.ts",
+      "sha256": "eb992239da1cf9b066f1fbc3983bd26b2e9be32a7422d9c8141b0c75f3876fb9"
+    },
+    {
+      "path": "src/engine/vendor/pallet/inventory.ts",
+      "sha256": "08d603440448f7da5982e96cac50e82b1c635da3347b84c55188906413860913"
+    },
+    {
+      "path": "src/engine/vendor/pallet/inventoryGeneration.ts",
+      "sha256": "970c882d5335d067aae4b63d4173b02c396f618c7b2dc8b8a19c4d587fbc0e41"
+    },
+    {
+      "path": "src/engine/vendor/pallet/materials.ts",
+      "sha256": "419e8b279994c07bb00bba1c1cfb1fa9513c124f9fd2bc2ecfd119528592f1a0"
+    },
+    {
+      "path": "src/engine/vendor/pallet/onlinePlanner.ts",
+      "sha256": "0956e231343b9c5b1f34a49049be0208dc83b078168a089e82f862dc621e43ff"
+    },
+    {
+      "path": "src/engine/vendor/pallet/orientations.ts",
+      "sha256": "96b2407ff48c7b84347b5c744ed612156767cb9f06eaa19e4b583d1854f07378"
+    },
+    {
+      "path": "src/engine/vendor/pallet/packaging/planner.ts",
+      "sha256": "c47edac43463fdfa5bc8129016aef4cd815367a56434aaa4ad7d8e4041d9c07b"
+    },
+    {
+      "path": "src/engine/vendor/pallet/packaging/robot.ts",
+      "sha256": "6fd97359a7ae20045c31df87a8b46b799317a0ce35736b941aac29b9282a4b0a"
+    },
+    {
+      "path": "src/engine/vendor/pallet/packaging/spec.ts",
+      "sha256": "69fec58109c9123ef6bf10c3708a3c73c6f5f1e37c3b2fdd27d935987f700049"
+    },
+    {
+      "path": "src/engine/vendor/pallet/packing.ts",
+      "sha256": "d5e7df98d87b91bce909efd39d222551fc9136842617b853df926996bab318da"
+    },
+    {
+      "path": "src/engine/vendor/pallet/patternEvaluation.ts",
+      "sha256": "4f0d983e58b257fcb66dbc96b1518afdde1122bf26493bc198f4f6ff04a24053"
+    },
+    {
+      "path": "src/engine/vendor/pallet/planner.ts",
+      "sha256": "b2ab9e5e8c6a3f29475dac2245bd16f5918e83ed08f07dfe2bba40074a25e773"
+    },
+    {
+      "path": "src/engine/vendor/pallet/randomPlanner.ts",
+      "sha256": "d22d29df33654f45a4ab8e572468a38221d753e0debde3f1aa45f0157e1a1003"
+    },
+    {
+      "path": "src/engine/vendor/pallet/relay/practical.ts",
+      "sha256": "b68b25e4844ba727e88b0a867c01af90c7bfae30cd72a8abb030e24a7ef60b78"
+    },
+    {
+      "path": "src/engine/vendor/pallet/remainingSites.ts",
+      "sha256": "afd1b1ba420cf8f0b77fab0b0327c65eb8a4c942490506573cdb172f65a3fac0"
+    },
+    {
+      "path": "src/engine/vendor/pallet/rng.ts",
+      "sha256": "d9aece855fa8d41e454e8caaffb36114a9fd6abf4aced327832a2efc7ce551cc"
+    },
+    {
+      "path": "src/engine/vendor/pallet/robotReach.ts",
+      "sha256": "a25c8f7c6a370536887deba817517b9bbdf6efcd10df8ce82a025e97e3d270dd"
+    },
+    {
+      "path": "src/engine/vendor/pallet/scenarios.ts",
+      "sha256": "f0ceffd078219c6dcb39474514c118b402dd1e6d7c191a4d5559ae1ae8a2e588"
+    },
+    {
+      "path": "src/engine/vendor/pallet/stability.ts",
+      "sha256": "4302e1a0d02ff747008607cf22528d99706ae31461016572a67fec300be86752"
+    },
+    {
+      "path": "src/engine/vendor/pallet/standingHeight.ts",
+      "sha256": "c7027709a5fea97d534c0040b2f9e16dddffb28ae5640a98ceb72d70b9fb7d73"
+    },
+    {
+      "path": "src/engine/vendor/pallet/stockPlanner.ts",
+      "sha256": "9aff69789ec3dd3b6108a2d150580a47b1c4c2ea1c400c7acf8e16c460e62060"
+    },
+    {
+      "path": "src/engine/vendor/pallet/strategies/DynamicReservationStrategy.ts",
+      "sha256": "9434c83e4293b397489904d9f2fd8e3ce0fcd3fdee152cfe425f871f259b5864"
+    },
+    {
+      "path": "src/engine/vendor/pallet/strategies/GreedyStrategy.ts",
+      "sha256": "6e4186a16d6516385fe30419bda165c273094ecf893c5c6d7baca93e0c6c45f5"
+    },
+    {
+      "path": "src/engine/vendor/pallet/strategies/HybridStrategy.ts",
+      "sha256": "d31696f1b9f72eb6b0be69184f92e10223a32eb8d2d00106c024d35092cb9649"
+    },
+    {
+      "path": "src/engine/vendor/pallet/strategies/LookaheadStrategy.ts",
+      "sha256": "1bfb774f9ee0c67f60da427a40007722f9bcca156f12829b52eb874aad738340"
+    },
+    {
+      "path": "src/engine/vendor/pallet/strategies/MacsStrategy.ts",
+      "sha256": "4518e6ead05dc3a402d89dcf00e77f8d0713c30abe8294400079c342a749b41d"
+    },
+    {
+      "path": "src/engine/vendor/pallet/strategies/PackingStrategy.ts",
+      "sha256": "f7c6125ef8335b3a84d6c015ddc285ed517c7ff0d60b1ee6dc9e0e1f4ef211e0"
+    },
+    {
+      "path": "src/engine/vendor/pallet/strategies/TetrisReservationStrategy.ts",
+      "sha256": "d1f6f5bcf44dc21ac5e9d14691a0c3f46f4f2e9292b9d161f38f6d4ff93d63c7"
+    },
+    {
+      "path": "src/engine/vendor/pallet/strategies/currentScore.ts",
+      "sha256": "c328a3a5b61b9c5e314447a244be52f0a63f3767bd52c9674c5cb12f17b605a4"
+    },
+    {
+      "path": "src/engine/vendor/pallet/strategies/demo.ts",
+      "sha256": "3e6a4add342b94e40cf20724b046730e24ad26a29642f0a42ab7b24d89cf3b78"
+    },
+    {
+      "path": "src/engine/vendor/pallet/strategies/evaluator.ts",
+      "sha256": "4012b5053dde03a8d7960517f7200d6a72ee1d7c168ff9fbdb1aea0c847b91fd"
+    },
+    {
+      "path": "src/engine/vendor/pallet/strategies/feasibility.ts",
+      "sha256": "f7721d81f37b6c44aa135fabb030ae264d6e8071e0c4f3e917188bc398c4ea1f"
+    },
+    {
+      "path": "src/engine/vendor/pallet/strategies/freeSpace.ts",
+      "sha256": "8b281778a868d6568e3902898e20854000059d6797557bf99b233d96177c9969"
+    },
+    {
+      "path": "src/engine/vendor/pallet/strategies/index.ts",
+      "sha256": "596f223fe8bf5e4e6561b76e5ae164fbb6ff7fb539bd8e43848249f3a0d1ff30"
+    },
+    {
+      "path": "src/engine/vendor/pallet/strategies/lookaheadSimulation.ts",
+      "sha256": "af79c22852f3e6c803a5076bc1e124bb18d49e0eb008a2f3973b1f91f18eef8b"
+    },
+    {
+      "path": "src/engine/vendor/pallet/strategies/metrics.ts",
+      "sha256": "81dbba69a426e05dc6543add4bd0ca25acc8109402496a1f5c9a88b3938466cd"
+    },
+    {
+      "path": "src/engine/vendor/pallet/surface.ts",
+      "sha256": "e1cdadb7d4faec51537b6a71c9209c62fe98db114437b67f29383cb83211ac41"
+    },
+    {
+      "path": "src/engine/vendor/pallet/temporaryBuffer.ts",
+      "sha256": "d726f343a6d0149e3441e494905a5612b770948ee2591cbcf8c27cea4f04d1c0"
+    },
+    {
+      "path": "src/engine/vendor/pallet/tiltRobot.ts",
+      "sha256": "4e410a3f906d6924db6566ceef6754da2b045d5ba3b11577234e90b12ea5c17f"
+    },
+    {
+      "path": "src/engine/vendor/pallet/types.ts",
+      "sha256": "7608a5f37423408f41f78f8e0a46ba4ca1afb07f61ad99cdabdab9046f7bb242"
+    },
+    {
+      "path": "src/engine/vendor/provenance.json",
+      "sha256": "5207c0af2cc45247eaba496aac38caac41ea6990ddda8de560bee7db85f57b0f"
+    },
+    {
+      "path": "src/metrics/benchmark.ts",
+      "sha256": "2f2388b8d16ac72e8e8206375713ab4938d02dda7f1409cbac5976eb9b309fa5"
+    },
+    {
+      "path": "src/metrics/clustering.ts",
+      "sha256": "b2adb9358fffd4bd0b564127d8642b2853737d498394a64c0a3bbb5f8d5436ae"
+    },
+    {
+      "path": "src/metrics/footprint.ts",
+      "sha256": "89c3c32e18b85996fdf2bd5fad6763cd8560dc7ba2d6e2f5b9531f3dd5d91aad"
+    },
+    {
+      "path": "src/metrics/from-trial.ts",
+      "sha256": "ef0c391a817bdc0f605205a01e8423db04acc1be684504a76d26e8cc4a06dcdf"
+    },
+    {
+      "path": "src/metrics/quality.ts",
+      "sha256": "79046a1f09c3e60034b9f4fd9b48a5063987a4536811cf69b4bdeaf48ad3a87c"
+    },
+    {
+      "path": "src/metrics/statistics.ts",
+      "sha256": "e35f498159139288f39e825eca9e1f5e9f59db4e9663fcc3897e80f6b05c5a30"
+    },
+    {
+      "path": "src/benchmark1000/workloads.ts",
+      "sha256": "407b9d1adccad55a42e31803763d196214f93f1ba1c130dd4367af997d94dee9"
+    },
+    {
+      "path": "src/cluster/evaluation.ts",
+      "sha256": "051e78d4a4106555f03185646da4be0ece7b9f7a37b76c336879d32c670c8ea8"
+    },
+    {
+      "path": "scripts/benchmark-1000.ts",
+      "sha256": "000977bd7f2eafc68fc64b13f0b77b6ef28b67eb0a686c7907685fe5030229a5"
+    },
+    {
+      "path": "scripts/benchmark-1000.mjs",
+      "sha256": "1b7696d2d30dd20ed0ddfe46f16f0cff071729c7c16d302087c14aada79863b3"
+    },
+    {
+      "path": "scripts/benchmark-worker.ts",
+      "sha256": "f35172b9df07f7b49ca1d75b8aa570b410c8f75be54d431893cdae000aedf41b"
+    },
+    {
+      "path": "scripts/benchmark-worker.mjs",
+      "sha256": "0f75e909feea03410257473c78bdb31276339fd29e94a444dc3d71822f3e3b96"
+    },
+    {
+      "path": "scripts/benchmark-1000-pool.py",
+      "sha256": "a6c0b7b9283cff4514255f59bfaa88189b1eb89aec7f6a569ce3af2df5bac012"
+    }
+  ],
+  "manifests": [
+    {
+      "condition": {
+        "id": "h1200-n30-s6",
+        "height": 1200,
+        "boxes": 30,
+        "skus": 6
+      },
+      "scenario": {
+        "version": 1,
+        "units": {
+          "length": "mm",
+          "weight": "kg",
+          "time": "s"
+        },
+        "id": "h1200-n30-s6",
+        "name": "합성 입력 30개 / 6 SKU",
+        "pallet": {
+          "width": 1200,
+          "depth": 1000,
+          "maxHeight": 1200,
+          "robotLayout": {
+            "count": 1,
+            "architecture": "floor",
+            "floorCount": 1
+          }
+        },
+        "types": [
+          {
+            "id": "S1",
+            "name": "생수",
+            "size": {
+              "w": 400,
+              "d": 300,
+              "h": 280
+            },
+            "weight": 12,
+            "maxLoadKg": 85,
+            "maxLoadSource": "synthetic",
+            "quantity": 5,
+            "color": "#bf8c43",
+            "orientations": [
+              0,
+              90
+            ],
+            "handling": "upright",
+            "material": "paper",
+            "friction": 0.45
+          },
+          {
+            "id": "S2",
+            "name": "과자",
+            "size": {
+              "w": 500,
+              "d": 340,
+              "h": 250
+            },
+            "weight": 3,
+            "maxLoadKg": 24,
+            "maxLoadSource": "synthetic",
+            "quantity": 5,
+            "color": "#bf8c43",
+            "orientations": [
+              0,
+              90
+            ],
+            "handling": "upright",
+            "material": "paper",
+            "friction": 0.45
+          },
+          {
+            "id": "S3",
+            "name": "세제",
+            "size": {
+              "w": 320,
+              "d": 240,
+              "h": 320
+            },
+            "weight": 8,
+            "maxLoadKg": 55,
+            "maxLoadSource": "synthetic",
+            "quantity": 5,
+            "color": "#479b92",
+            "orientations": [
+              0,
+              90
+            ],
+            "handling": "upright",
+            "material": "paper",
+            "friction": 0.45
+          },
+          {
+            "id": "S4",
+            "name": "생활용품",
+            "size": {
+              "w": 400,
+              "d": 300,
+              "h": 220
+            },
+            "weight": 4,
+            "maxLoadKg": 40,
+            "maxLoadSource": "synthetic",
+            "quantity": 5,
+            "color": "#479b92",
+            "orientations": [
+              0,
+              90
+            ],
+            "handling": "upright",
+            "material": "paper",
+            "friction": 0.45
+          },
+          {
+            "id": "S5",
+            "name": "헤어케어",
+            "size": {
+              "w": 300,
+              "d": 250,
+              "h": 240
+            },
+            "weight": 6,
+            "maxLoadKg": 45,
+            "maxLoadSource": "synthetic",
+            "quantity": 5,
+            "color": "#7f8ab9",
+            "orientations": [
+              0,
+              90
+            ],
+            "handling": "upright",
+            "material": "paper",
+            "friction": 0.45
+          },
+          {
+            "id": "S6",
+            "name": "스킨케어",
+            "size": {
+              "w": 250,
+              "d": 200,
+              "h": 200
+            },
+            "weight": 4,
+            "maxLoadKg": 30,
+            "maxLoadSource": "synthetic",
+            "quantity": 5,
+            "color": "#7f8ab9",
+            "orientations": [
+              0,
+              90
+            ],
+            "handling": "upright",
+            "material": "paper",
+            "friction": 0.45
+          }
+        ],
+        "constraints": {
+          "robotMode": "gripper",
+          "supportRatio": 0.85,
+          "contactTolerance": 0.5,
+          "horizontalGap": 0,
+          "heavyRule": "off",
+          "stability": {
+            "maxSlenderness": 2,
+            "minMarginRatio": 0.05,
+            "lateralAccelerationG": 0,
+            "loadSafetyFactor": 1.2,
+            "slendernessMode": "score"
+          },
+          "gripper": {
+            "width": 180,
+            "depth": 160,
+            "height": 160,
+            "mass": 8,
+            "payload": 38,
+            "margin": 5,
+            "lift": 180,
+            "speed": 650,
+            "pickSeconds": 0.7,
+            "placeSeconds": 0.45,
+            "rotationSpeed": 90
+          },
+          "workspace": {
+            "xMin": -1400,
+            "xMax": 1800,
+            "yMin": -600,
+            "yMax": 1600,
+            "zMax": 2600
+          },
+          "reach": {
+            "baseX": -700,
+            "baseY": 500,
+            "minRadius": 0,
+            "maxRadius": 2700
+          },
+          "standingHeight": {
+            "enabled": false,
+            "maxRiseMm": 100
+          }
+        },
+        "arrival": {
+          "seed": 0,
+          "pattern": "random-draw"
+        },
+        "events": [],
+        "supplyMode": "arrival"
+      },
+      "orders": [
+        {
+          "seed": 910000000,
+          "sequence": [
+            "S3",
+            "S3",
+            "S6",
+            "S3",
+            "S2",
+            "S5",
+            "S2",
+            "S1",
+            "S5",
+            "S4",
+            "S4",
+            "S5",
+            "S1",
+            "S6",
+            "S2",
+            "S3",
+            "S6",
+            "S1",
+            "S3",
+            "S2",
+            "S4",
+            "S4",
+            "S2",
+            "S6",
+            "S5",
+            "S1",
+            "S5",
+            "S6",
+            "S1",
+            "S4"
+          ]
+        },
+        {
+          "seed": 910000001,
+          "sequence": [
+            "S3",
+            "S6",
+            "S5",
+            "S6",
+            "S1",
+            "S5",
+            "S2",
+            "S3",
+            "S3",
+            "S2",
+            "S3",
+            "S6",
+            "S6",
+            "S4",
+            "S1",
+            "S2",
+            "S4",
+            "S5",
+            "S1",
+            "S6",
+            "S4",
+            "S2",
+            "S4",
+            "S5",
+            "S1",
+            "S3",
+            "S4",
+            "S2",
+            "S1",
+            "S5"
+          ]
+        }
+      ],
+      "rejectedDuplicates": 0
+    },
+    {
+      "condition": {
+        "id": "h1200-n30-s8",
+        "height": 1200,
+        "boxes": 30,
+        "skus": 8
+      },
+      "scenario": {
+        "version": 1,
+        "units": {
+          "length": "mm",
+          "weight": "kg",
+          "time": "s"
+        },
+        "id": "h1200-n30-s8",
+        "name": "합성 입력 30개 / 8 SKU",
+        "pallet": {
+          "width": 1200,
+          "depth": 1000,
+          "maxHeight": 1200,
+          "robotLayout": {
+            "count": 1,
+            "architecture": "floor",
+            "floorCount": 1
+          }
+        },
+        "types": [
+          {
+            "id": "S1",
+            "name": "생수",
+            "size": {
+              "w": 400,
+              "d": 300,
+              "h": 280
+            },
+            "weight": 12,
+            "maxLoadKg": 85,
+            "maxLoadSource": "synthetic",
+            "quantity": 4,
+            "color": "#bf8c43",
+            "orientations": [
+              0,
+              90
+            ],
+            "handling": "upright",
+            "material": "paper",
+            "friction": 0.45
+          },
+          {
+            "id": "S2",
+            "name": "과자",
+            "size": {
+              "w": 500,
+              "d": 340,
+              "h": 250
+            },
+            "weight": 3,
+            "maxLoadKg": 24,
+            "maxLoadSource": "synthetic",
+            "quantity": 4,
+            "color": "#bf8c43",
+            "orientations": [
+              0,
+              90
+            ],
+            "handling": "upright",
+            "material": "paper",
+            "friction": 0.45
+          },
+          {
+            "id": "S3",
+            "name": "세제",
+            "size": {
+              "w": 320,
+              "d": 240,
+              "h": 320
+            },
+            "weight": 8,
+            "maxLoadKg": 55,
+            "maxLoadSource": "synthetic",
+            "quantity": 4,
+            "color": "#479b92",
+            "orientations": [
+              0,
+              90
+            ],
+            "handling": "upright",
+            "material": "paper",
+            "friction": 0.45
+          },
+          {
+            "id": "S4",
+            "name": "생활용품",
+            "size": {
+              "w": 400,
+              "d": 300,
+              "h": 220
+            },
+            "weight": 4,
+            "maxLoadKg": 40,
+            "maxLoadSource": "synthetic",
+            "quantity": 4,
+            "color": "#479b92",
+            "orientations": [
+              0,
+              90
+            ],
+            "handling": "upright",
+            "material": "paper",
+            "friction": 0.45
+          },
+          {
+            "id": "S5",
+            "name": "헤어케어",
+            "size": {
+              "w": 300,
+              "d": 250,
+              "h": 240
+            },
+            "weight": 6,
+            "maxLoadKg": 45,
+            "maxLoadSource": "synthetic",
+            "quantity": 4,
+            "color": "#7f8ab9",
+            "orientations": [
+              0,
+              90
+            ],
+            "handling": "upright",
+            "material": "paper",
+            "friction": 0.45
+          },
+          {
+            "id": "S6",
+            "name": "스킨케어",
+            "size": {
+              "w": 250,
+              "d": 200,
+              "h": 200
+            },
+            "weight": 4,
+            "maxLoadKg": 30,
+            "maxLoadSource": "synthetic",
+            "quantity": 4,
+            "color": "#7f8ab9",
+            "orientations": [
+              0,
+              90
+            ],
+            "handling": "upright",
+            "material": "paper",
+            "friction": 0.45
+          },
+          {
+            "id": "S7",
+            "name": "음료",
+            "size": {
+              "w": 380,
+              "d": 260,
+              "h": 230
+            },
+            "weight": 7,
+            "maxLoadKg": 50,
+            "maxLoadSource": "synthetic",
+            "quantity": 3,
+            "color": "#798ba0",
+            "orientations": [
+              0,
+              90
+            ],
+            "handling": "upright",
+            "material": "paper",
+            "friction": 0.45
+          },
+          {
+            "id": "S8",
+            "name": "주방용품",
+            "size": {
+              "w": 450,
+              "d": 300,
+              "h": 210
+            },
+            "weight": 5,
+            "maxLoadKg": 40,
+            "maxLoadSource": "synthetic",
+            "quantity": 3,
+            "color": "#798ba0",
+            "orientations": [
+              0,
+              90
+            ],
+            "handling": "upright",
+            "material": "paper",
+            "friction": 0.45
+          }
+        ],
+        "constraints": {
+          "robotMode": "gripper",
+          "supportRatio": 0.85,
+          "contactTolerance": 0.5,
+          "horizontalGap": 0,
+          "heavyRule": "off",
+          "stability": {
+            "maxSlenderness": 2,
+            "minMarginRatio": 0.05,
+            "lateralAccelerationG": 0,
+            "loadSafetyFactor": 1.2,
+            "slendernessMode": "score"
+          },
+          "gripper": {
+            "width": 180,
+            "depth": 160,
+            "height": 160,
+            "mass": 8,
+            "payload": 38,
+            "margin": 5,
+            "lift": 180,
+            "speed": 650,
+            "pickSeconds": 0.7,
+            "placeSeconds": 0.45,
+            "rotationSpeed": 90
+          },
+          "workspace": {
+            "xMin": -1400,
+            "xMax": 1800,
+            "yMin": -600,
+            "yMax": 1600,
+            "zMax": 2600
+          },
+          "reach": {
+            "baseX": -700,
+            "baseY": 500,
+            "minRadius": 0,
+            "maxRadius": 2700
+          },
+          "standingHeight": {
+            "enabled": false,
+            "maxRiseMm": 100
+          }
+        },
+        "arrival": {
+          "seed": 0,
+          "pattern": "random-draw"
+        },
+        "events": [],
+        "supplyMode": "arrival"
+      },
+      "orders": [
+        {
+          "seed": 910100000,
+          "sequence": [
+            "S4",
+            "S4",
+            "S8",
+            "S1",
+            "S1",
+            "S5",
+            "S5",
+            "S6",
+            "S1",
+            "S7",
+            "S3",
+            "S3",
+            "S8",
+            "S8",
+            "S2",
+            "S3",
+            "S5",
+            "S6",
+            "S1",
+            "S6",
+            "S4",
+            "S7",
+            "S2",
+            "S2",
+            "S3",
+            "S5",
+            "S7",
+            "S6",
+            "S2",
+            "S4"
+          ]
+        },
+        {
+          "seed": 910100001,
+          "sequence": [
+            "S3",
+            "S7",
+            "S1",
+            "S2",
+            "S6",
+            "S5",
+            "S4",
+            "S6",
+            "S8",
+            "S5",
+            "S1",
+            "S3",
+            "S1",
+            "S7",
+            "S4",
+            "S3",
+            "S4",
+            "S7",
+            "S6",
+            "S5",
+            "S4",
+            "S2",
+            "S1",
+            "S2",
+            "S8",
+            "S8",
+            "S3",
+            "S5",
+            "S6",
+            "S2"
+          ]
+        }
+      ],
+      "rejectedDuplicates": 0
+    }
+  ],
+  "config": {
+    "cycleSeconds": 10,
+    "recognitionDelaySeconds": 0,
+    "reserveSeconds": 1,
+    "maxHeightMm": 1200,
+    "quantityPerSku": 5,
+    "searchBudgetMs": null,
+    "maxCandidates": 48,
+    "mcts": {
+      "depth": 3,
+      "scenarios": 3,
+      "maxIterations": 384
+    }
+  },
+  "algorithms": [
+    "blb",
+    "capacity-compact",
+    "strategy-greedy",
+    "lookahead",
+    "future-hybrid",
+    "floor-dense",
+    "cluster-layer"
+  ],
+  "n": 2,
+  "pilot": true,
+  "execution": {
+    "mode": "parallel-shared-machine",
+    "concurrency": 4,
+    "batchSize": 1
+  },
+  "createdAt": "2026-10-09T20:07:18.750Z",
+  "sourceGitCommit": "ad5c3451b4350f2b9e5dc093bf64a3b37cb1cebe",
+  "environment": {
+    "node": "v24.14.1",
+    "cpu": "Apple M5",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "protocol": {
+    "primary": "placed volume / supplied volume",
+    "primaryPolicy": "floor-dense",
+    "baselineFamily": [
+      "blb",
+      "capacity-compact",
+      "strategy-greedy",
+      "lookahead",
+      "future-hybrid",
+      "cluster-layer"
+    ],
+    "familySize": 12,
+    "practicalThreshold": 0.02,
+    "ranking": "No winner is fitted or tuned on evaluation. Report paired effects per condition and Pareto tradeoffs; describe as best among tested conditions only.",
+    "failures": "Retain status=error, deadline misses and rejected cargo. Cancelled/incomplete attempts are preserved separately and may be resumed; no success-only primary filtering.",
+    "time": "Canonical worker-thread supervisor per Node process; identical 9000ms search window and 10000ms full cycle. Native candidate/iteration caps differ and are disclosed.",
+    "timing": "Parallel shared-machine throughput and observed wall-deadline behavior under contention. Not isolated latency. Compare latency with separately saved serial pilot.",
+    "scheduling": "Condition by seed-index batch. Algorithms interleaved and rotated within each seed; no adaptive allocation from observed quality. Concurrency and batch size frozen.",
+    "sampling": "Fixed synthetic inventory; unique arrival seeds AND unique SKU sequences within condition. Differences concern arrival orders, not 1000 different geometries.",
+    "conditions": "Two fixed 30-box SKU mixes (6 and 8 SKU), both at 1200mm. SKU mix changes supplied volume; compare supply acceptance within condition.",
+    "statistics": "Paired seed differences, ordinary 95% t intervals plus Bonferroni simultaneous intervals for the 12 primary comparisons; no universal optimum claim."
+  }
+}

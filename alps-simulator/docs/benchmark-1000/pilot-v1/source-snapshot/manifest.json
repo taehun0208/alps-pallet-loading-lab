@@ -1,0 +1,17 @@
+[
+  {
+    "originalPath": "src/benchmark1000/workloads.ts",
+    "archivedPath": "docs/benchmark-1000/pilot-v1/source-snapshot/workloads.ts",
+    "sha256": "1a14f31f13d77b669badfbfe10d37eda8ea4875ab47eb8e6ea25825dd83af3c7"
+  },
+  {
+    "originalPath": "scripts/benchmark-1000.ts",
+    "archivedPath": "docs/benchmark-1000/pilot-v1/source-snapshot/benchmark-1000.ts",
+    "sha256": "9c64b6a2c1f2589886ceb34b47485be1c19f0c41f7f76358e33878596edf17ec"
+  },
+  {
+    "originalPath": "scripts/benchmark-1000.mjs",
+    "archivedPath": "docs/benchmark-1000/pilot-v1/source-snapshot/benchmark-1000.mjs",
+    "sha256": "ba83925aaaa2261fcf5b3eb4bcd4deb6a860ef4ea98afd24be480b6f0c90372e"
+  }
+]

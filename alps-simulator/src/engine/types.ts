@@ -60,7 +60,7 @@ export interface Progress {
   processed: number; totalBoxes: number; placements: Placement[]; decision: DecisionTrace | null;
 }
 export interface ExperimentResult { config: SimulationConfig; algorithms: AlgorithmId[]; seeds: number[]; rows: TrialResult[]; cancelled: boolean; assumptions: string[] }
-export interface RunOptions { planDecision: PlanDecision; signal?: AbortSignal; onProgress?: (p: Progress) => void }
+export interface RunOptions { planDecision: PlanDecision; signal?: AbortSignal; onProgress?: (p: Progress) => void; /** Benchmark-only workload; cloned before use, hidden arrival order never enters planning. */ scenario?: Scenario }
 export type EngineCommand = { type: 'start'; runId: string; request: ExperimentRequest } | { type: 'cancel'; runId: string };
 export type EngineEvent =
   | { type: 'progress'; runId: string; progress: Progress }

@@ -1,3 +1,15 @@
+# ALPS 적재 알고리즘 검증 작업
+
+최신 작업(2026-10-10): [`alps-simulator/`](alps-simulator/)에 ALPS Tetris·군집 정책과 공통 엔진을 보존했다. 기존 프로젝트 이력과 중간 시뮬레이터·개발 문서·과거 실험 원자료도 함께 있다.
+
+- [최종 벤치마크 조건](alps-simulator/docs/benchmark-1000/PROTOCOL.md):1,200mm·30개·6/8SKU·7정책·각100개 입고 순서,총1,400회. MCTS 제외.
+- [알고리즘 내용 비교](alps-simulator/docs/benchmark-1000/ALGORITHMS.md) · [통계 기준](alps-simulator/docs/benchmark-1000/STATISTICS.md) · [Claude Opus5.5 실제 API 검토](alps-simulator/docs/benchmark-1000/CLAUDE-REVIEW.md)
+- [현재 앱 설명](alps-simulator/README.md) · [이전 대화·결정·자료 목록](docs/checkpoint/README.md)
+
+API 키·환경변수·설치 의존성·캐시는 저장하지 않는다. 모든 수치는 정해진 합성 입력의 실험이며 전역 최적해나 현장 실측으로 확대하지 않는다. 아래는 기존 프로젝트 설명이다.
+
+---
+
 # 중앙 배정 · 혼합 적재 워크스페이스
 
 GitHub v19를 기반으로 중앙 오케스트레이터와 성능 평가 작업공간을 추가한 개발 버전입니다.

@@ -1,0 +1,35 @@
+{
+  "signature": "34d32c134b636cee907d3ddef1585e1e5142481b4badd161af2e785eda250968",
+  "execution": {
+    "mode": "parallel-shared-machine",
+    "concurrency": 4,
+    "batchSize": 1
+  },
+  "n": 2,
+  "jobs": [
+    {
+      "id": "h1200-n30-s6-0000-0001",
+      "condition": "h1200-n30-s6",
+      "start": 0,
+      "end": 1
+    },
+    {
+      "id": "h1200-n30-s8-0000-0001",
+      "condition": "h1200-n30-s8",
+      "start": 0,
+      "end": 1
+    },
+    {
+      "id": "h1200-n30-s6-0001-0002",
+      "condition": "h1200-n30-s6",
+      "start": 1,
+      "end": 2
+    },
+    {
+      "id": "h1200-n30-s8-0001-0002",
+      "condition": "h1200-n30-s8",
+      "start": 1,
+      "end": 2
+    }
+  ]
+}

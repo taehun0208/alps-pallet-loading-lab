@@ -1,0 +1,4 @@
+{"completed":8,"total":96,"condition":"h1200-n30-s6","elapsedSeconds":49}
+{"completed":16,"total":96,"condition":"h1200-n30-s8","elapsedSeconds":87}
+{"completed":24,"total":96,"condition":"h1200-n30-s10","elapsedSeconds":130}
+{"pilot":true,"completed":26,"total":96,"sessionSeconds":170.86,"interrupted":true}

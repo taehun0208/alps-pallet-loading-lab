@@ -1,0 +1,10 @@
+{
+  "version": "alps-operational-score/1",
+  "declaredBeforeEvaluation": true,
+  "range": [0, 100],
+  "weights": {"supplyAcceptance": 60, "floor": 15, "sameSkuContact": 15, "deadlineCompliance": 10},
+  "deadlineCompliance": "1 - deadlineMisses / decisions.length; 0 if no observed decisions",
+  "undefinedContactContribution": 0,
+  "aggregation": "Calculate each trial score then average within condition and algorithm; do not pool SKU conditions",
+  "interpretation": "User-priority descriptive decision score, not industry standard or inferential superiority criterion"
+}
