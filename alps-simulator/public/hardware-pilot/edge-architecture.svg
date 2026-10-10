@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="390" viewBox="0 0 1200 390" role="img" aria-labelledby="title desc">
+<title id="title">ALPS 엣지 컴퓨팅 적용 제안</title><desc id="desc">입고 데이터가 현장의 라즈베리 파이 ALPS 엔진으로 전달되고, 배치 계획은 로봇 제어기를 거쳐 로봇팔이 실행한다. 실행 결과는 ALPS에 돌아온다. 실물 연동은 아직 검증하지 않았다.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#617c8f"/></marker></defs>
+<rect width="1200" height="390" rx="14" fill="#f2f6fa"/>
+<g font-family="Apple SD Gothic Neo, Noto Sans KR, sans-serif" fill="#233e50">
+<text x="40" y="48" font-size="26" font-weight="700">현장에서 적재를 계산하고 로봇이 실행합니다</text>
+<text x="40" y="80" font-size="16" fill="#617c8f">적용 제안 · 실제 Raspberry Pi / 로봇 통신 연동은 미검증</text>
+<rect x="40" y="130" width="240" height="120" rx="10" fill="white" stroke="#d0dce5"/>
+<rect x="330" y="130" width="250" height="120" rx="10" fill="#e1f0ed" stroke="#218577" stroke-width="2"/>
+<rect x="630" y="130" width="250" height="120" rx="10" fill="white" stroke="#d0dce5"/>
+<rect x="930" y="130" width="230" height="120" rx="10" fill="white" stroke="#d0dce5"/>
+<g font-size="22" font-weight="700"><text x="62" y="170">입고 데이터</text><text x="352" y="170">Pi · ALPS 엔진</text><text x="652" y="170">로봇 제어기</text><text x="952" y="170">로봇팔</text></g>
+<g font-size="16"><text x="62" y="202">박스 규격 · SKU · 수량</text><text x="62" y="226">카메라/스캐너/상위 시스템</text><text x="352" y="202">적재 위치 · 방향 · 순서</text><text x="352" y="226">상태 관리 · 배치 검증</text><text x="652" y="202">좌표 확인 · 이동 궤적</text><text x="652" y="226">모터 제어 · 안전 정지</text><text x="952" y="202">파지 · 이동 · 적재</text><text x="952" y="226">성공/실패 · 실제 위치</text></g>
+<g stroke="#617c8f" stroke-width="2" fill="none" marker-end="url(#arrow)"><path d="M285 190H321"/><path d="M585 190H621"/><path d="M885 190H921"/><path d="M1045 255V294H455V255"/></g>
+<text x="660" y="320" font-size="16" fill="#617c8f">완료 응답 후 상태 확정 · 실패 시 재계획</text>
+<text x="40" y="365" font-size="16">ALPS의 배치 좌표는 팔레트 기준입니다. 로봇 기준 좌표·그리퍼 TCP로 변환하는 연동 계층이 필요합니다.</text>
+</g></svg>

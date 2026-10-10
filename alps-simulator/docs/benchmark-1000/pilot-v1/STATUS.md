@@ -1,0 +1,1 @@
+Historical serial pilot stopped after26/96 trials at user request to exclude MCTS and reduce scope. Not part of evaluation; not used to select algorithms based on quality. Changed harness/workload source preserved under source-snapshot. Original design was4conditions×8policies. Current evaluation uses2conditions×7policies×150 independent orders.

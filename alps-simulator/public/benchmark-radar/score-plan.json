@@ -1,0 +1,50 @@
+{
+  "postEvaluation": true,
+  "range": [
+    0,
+    100
+  ],
+  "axes": [
+    {
+      "id": "acceptance",
+      "label": "적재량",
+      "weight": 40,
+      "formula": "적재한 박스 부피 / 공급된 전체 박스 부피 × 100"
+    },
+    {
+      "id": "density",
+      "label": "밀도",
+      "weight": 25,
+      "formula": "적재 부피 / (팔레트 면적 × 실제 사용 높이) × 100"
+    },
+    {
+      "id": "void",
+      "label": "내부 공극 효율",
+      "weight": 10,
+      "formula": "적재 부피 / (적재 부피 + 기둥별 최상단 아래 공극) × 100"
+    },
+    {
+      "id": "floor",
+      "label": "바닥 활용",
+      "weight": 10,
+      "formula": "바닥에 직접 닿는 박스 면적의 합집합 / 팔레트 면적 × 100"
+    },
+    {
+      "id": "sku",
+      "label": "SKU 접촉",
+      "weight": 10,
+      "formula": "같은 SKU끼리 맞닿은 면적 / 모든 박스 간 접촉 면적 × 100. 접촉이 없으면 0점"
+    },
+    {
+      "id": "speed",
+      "label": "계산 속도",
+      "weight": 5,
+      "formula": "max(0, 1 − 실행별 판단시간 P95 / 판단 예산 9,000ms) × 100"
+    }
+  ],
+  "aggregation": "Score each trial, then average 100 independent arrival orders within each condition and policy.",
+  "uncertainty": "Unadjusted descriptive Student t 95% intervals across 100 arrival orders. Not primary superiority inference.",
+  "timing": "Per-trial P95 uses linear interpolation over 30 observed decisionMs values; score uses fixed 9000ms budget. Shared CPU measurement.",
+  "frozenScore": "Original score remains acceptance 60 + floor 15 + SKU 15 + deadline compliance 10.",
+  "interpretation": "Post-evaluation presentation index with packing-first weights, not an industry standard or evidence of universal optimality."
+}

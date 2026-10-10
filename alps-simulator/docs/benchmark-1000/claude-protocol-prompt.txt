@@ -1,0 +1,141 @@
+You are an independent experimental-protocol reviewer. Give a concrete final answer immediately, maximum 1500 words, in Korean, without chain of thought. Do not spend the output budget on internal reasoning. Treat absent data honestly: no completed evaluation results are supplied. Audit the following predeclared paired benchmark, flag fatal implementation/protocol bugs if supported, and separate must-fix issues from reporting limitations. Return (1) verdict whether meaningful synthetic comparison is possible, (2) exact testable conclusions and what is NOT established, (3) priority fixes, (4) parallel execution advice and timing estimation method. Never claim these local heuristic implementations reproduce published papers or prove a global optimum.
+
+Protocol: 4 conditions × 1000 UNIQUE arrival orders × 8 local heuristic implementations = 32000 trials. All have maxHeight1200mm; 30 boxes with6,8,10 SKU, plus predeclared pressure60 boxes6SKU. Fixed inventory within each condition; PRNG seeds distinct AND duplicated SKU-order sequences removed. All algorithms receive exactly same order per seed and only current box+remaining type counts, not realized future order or arrival seed. Fixed config: full robot goal10s, recognition0,reserve1, search9000ms, candidate48; MCTSdepth3,scenarios3,maxIterations384. Other policies have native caps; floor-dense expanded candidate128, 4forecast depth/3scenarios/at most6roots; these differences disclosed. Pallet1000×1000mm from retailScenario. Primary supplied-volume acceptance=placed volume / supplied volume. Predesignated focal policy floor-dense vs7 other tested algorithms in EACH condition =28 family comparisons; ordinary95% paired t CIs and Bonferroni familywise intervals, practical threshold absolute0.02. All failed/deadline-missed/rejected boxes retained; no eligible-only primary filter. Floor footprint, sameSKU contact, fill, CoG, rejected count, safety, P50/P95/max decision time and deadline misses are secondary/Pareto outcomes. No evaluation tuning/winner fitting. Geometry/SKU changes also change supplied volume, so do not isolate SKU count causally. Report acceptance ceiling ties. Algorithms: BLB, capacity-compact, weighted strategy-greedy, finite lookahead, future-hybrid, UCT MCTS, ALPSfloor-dense, ALPScluster-layer. Shared constraints and finite-candidate geometry pipeline; baselines are local families, not exact paper reproduction.
+
+Code below is authoritative current protocol. Note: node runner is sequential with one reusable planner worker; independent builds are bundled .mjs matching TS sources; first startup decision included but worker loading excluded by supervisor timing. Warmup one trial/algorithm precedes measurement; algorithm order rotated per seed/condition. Parallel throughput experiments must label contention separately or allocate isolated cores/machines; timing benchmark cannot silently mix parallel and sequential data. Runtime ETA should use pilot per algorithm×condition measured wall seconds sum×1000 and uncertainty, not assume each trial always spends9000ms per box.
+
+FILE src/benchmark1000/workloads.ts
+import {retailScenario} from '../engine/vendor/pallet/capacity/experiment';
+import {ArrivalEnvironment} from '../engine/vendor/pallet/environment';
+import type {AlgorithmId,Scenario} from '../engine/types';
+
+export const BENCHMARK_ALGORITHMS:AlgorithmId[]=['blb','capacity-compact','strategy-greedy','lookahead','future-hybrid','mcts','floor-dense','cluster-layer'];
+export const CONDITIONS=[
+ {id:'h1200-n30-s6',height:1200,boxes:30,skus:6},
+ {id:'h1200-n30-s8',height:1200,boxes:30,skus:8},
+ {id:'h1200-n30-s10',height:1200,boxes:30,skus:10},
+ // Predeclared pressure condition, chosen before any evaluation outcomes.
+ {id:'h1200-n60-s6',height:1200,boxes:60,skus:6},
+] as const;
+export type Condition=typeof CONDITIONS[number];
+export function workload(c:Condition):Scenario{
+ const s=retailScenario(1);
+ const added=[
+  ['음료',380,260,230,7,50],['주방용품',450,300,210,5,40],
+  ['위생용품',280,220,260,3,30],['소형식품',350,280,180,4,35],
+ ] as const;
+ for(const [i,[name,w,d,h,weight,maxLoadKg]] of added.entries())s.types.push({...structuredClone(s.types[0]),id:`S${7+i}`,name,size:{w,d,h},weight,maxLoadKg,color:'#798ba0'});
+ s.types=s.types.slice(0,c.skus).map((t,i)=>({...t,quantity:Math.floor(c.boxes/c.skus)+(i<c.boxes%c.skus?1:0)}));
+ s.id=c.id;s.name=`합성 입력 ${c.boxes}개 / ${c.skus} SKU`;s.pallet.maxHeight=c.height;
+ s.supplyMode='arrival';s.arrival={seed:0,pattern:'random-draw'};s.events=[];
+ return s;
+}
+export function arrivalSequence(scenario:Scenario,seed:number):string[]{
+ const s=structuredClone(scenario);s.arrival={seed,pattern:'random-draw'};s.supplyMode='arrival';
+ const env=new ArrivalEnvironment(s);return Array.from({length:env.total},(_,i)=>env.current(i)!.typeId);
+}
+export function uniqueOrders(scenario:Scenario,n:number,firstSeed:number){
+ if(!Number.isInteger(n)||n<1||n>1000)throw Error('Order count must be 1..1000');
+ const seen=new Set<string>(),orders:{seed:number;sequence:string[]}[]=[];let rejectedDuplicates=0;
+ for(let seed=firstSeed;orders.length<n;seed++){
+  if(seed>=firstSeed+100000)throw Error('Insufficient unique orders');
+  const sequence=arrivalSequence(scenario,seed),key=sequence.join(',');
+  if(seen.has(key)){rejectedDuplicates++;continue;}seen.add(key);orders.push({seed,sequence});
+ }
+ return {orders,rejectedDuplicates};
+}
+
+
+FILE scripts/benchmark-1000.ts
+import {mkdirSync,readFileSync,writeFileSync,readdirSync,existsSync,renameSync} from 'node:fs';
+import {resolve,join,relative} from 'node:path';
+import {createHash} from 'node:crypto';
+import {gzipSync,gunzipSync} from 'node:zlib';
+import {cpus,platform,arch} from 'node:os';
+import {Worker} from 'node:worker_threads';
+import {BENCHMARK_ALGORITHMS,CONDITIONS,workload,uniqueOrders} from '../src/benchmark1000/workloads';
+import {DEFAULT_CONFIG} from '../src/engine/config';
+import {runTrial} from '../src/engine/core';
+import {createPlannerSupervisor,type WorkerPort} from '../src/engine/supervisor';
+import {evaluateTrial} from '../src/cluster/evaluation';
+import {volume} from '../src/engine/vendor/pallet/geometry';
+import type {PlannerEvent,TrialResult} from '../src/engine/types';
+
+const root=process.cwd(),pilot=process.argv.includes('--pilot'),n=pilot?3:1000;
+const out=resolve(root,'docs/benchmark-1000',pilot?'pilot-v1':'evaluation-v1');
+mkdirSync(join(out,'trials'),{recursive:true});
+const sha=(v:string|Buffer)=>createHash('sha256').update(v).digest('hex');
+const atomic=(path:string,v:unknown)=>{writeFileSync(path+'.tmp',JSON.stringify(v,null,2)+'\n');renameSync(path+'.tmp',path);};
+const walk=(dir:string):string[]=>readdirSync(dir,{withFileTypes:true}).flatMap(f=>f.isDirectory()?walk(join(dir,f.name)):[join(dir,f.name)]).sort();
+const paths=[...walk(join(root,'src/engine')),...walk(join(root,'src/metrics')),...walk(join(root,'src/benchmark1000')),join(root,'src/cluster/evaluation.ts'),join(root,'scripts/benchmark-1000.ts'),join(root,'scripts/benchmark-1000.mjs'),join(root,'scripts/benchmark-worker.mjs')];
+const source=paths.map(p=>({path:relative(root,p),sha256:sha(readFileSync(p))}));
+const manifests=CONDITIONS.map((c,i)=>({condition:c,scenario:workload(c),...uniqueOrders(workload(c),n,(pilot?910000000:460000000)+i*100000)}));
+const config={...DEFAULT_CONFIG,quantityPerSku:5};
+const signature=sha(JSON.stringify({source,manifests,config,algorithms:BENCHMARK_ALGORITHMS}));
+const freezePath=join(out,'freeze.json');
+if(existsSync(freezePath)){
+ const f=JSON.parse(readFileSync(freezePath,'utf8'));if(f.signature!==signature)throw Error('Source/protocol changed: use a new versioned output directory.');
+}else atomic(freezePath,{schema:'alps-paired-1000/1',signature,source,manifests,config,algorithms:BENCHMARK_ALGORITHMS,n,pilot,
+ createdAt:new Date().toISOString(),environment:{node:process.version,cpu:cpus()[0]?.model,platform:platform(),arch:arch()},
+ protocol:{primary:'placed volume / supplied volume',primaryPolicy:'floor-dense',baselineFamily:BENCHMARK_ALGORITHMS.filter(a=>a!=='floor-dense'),
+  familySize:CONDITIONS.length*(BENCHMARK_ALGORITHMS.length-1),practicalThreshold:0.02,
+  ranking:'No winner is fitted or tuned on evaluation. Report paired effects per condition and Pareto tradeoffs; describe as best among tested conditions only.',
+  failures:'Retain every attempted trial, deadline miss and rejected cargo; no success-only filtering for primary outcome.',
+  time:'Sequential worker-thread trials, identical 9000ms search window and 10000ms full cycle. Native candidate/iteration caps differ and are disclosed.',
+  timing:'Pooled raw decision times; first startup decision included, worker loading excluded by canonical supervisor. Shared machine, not isolated CPU or real robot latency.',
+  sampling:'Fixed synthetic inventory; unique arrival seeds AND unique SKU sequences within condition. Differences concern arrival orders, not 1000 different geometries.',
+  conditions:'Three 30-box SKU mixes and one predeclared 60-box pressure condition, all at 1200mm. SKU mix also changes supplied volume; compare supply acceptance within condition.',
+  statistics:'Paired seed differences, ordinary 95% t intervals plus Bonferroni simultaneous intervals for the 28 primary comparisons; no universal optimum claim.'}});
+
+function factory():WorkerPort{
+ const w=new Worker(new URL('./benchmark-worker.mjs',import.meta.url));
+ const p:WorkerPort={onmessage:null,onerror:null,postMessage:m=>w.postMessage(m),terminate:()=>{void w.terminate();}};
+ w.on('message',(data:PlannerEvent)=>p.onmessage?.({data}));w.on('error',e=>p.onerror?.({message:e.message}));return p;
+}
+const supervisor=createPlannerSupervisor(factory),rows:Record<string,any>[]=[];
+const started=Date.now();let interrupted=false;
+const controller=new AbortController();
+process.on('SIGTERM',()=>{interrupted=true;controller.abort();});process.on('SIGINT',()=>{interrupted=true;controller.abort();});
+const total=manifests.length*n*BENCHMARK_ALGORITHMS.length;
+function persist(complete=false){
+ atomic(join(out,'progress.json'),{signature,complete,pilot,n,total,completed:rows.length,startedAt:new Date(started).toISOString(),updatedAt:new Date().toISOString(),sessionSeconds:(Date.now()-started)/1000,rows});
+}
+async function main(){
+ for(const algorithm of BENCHMARK_ALGORITHMS){
+  const warm=await runTrial({...config,quantityPerSku:1},algorithm,990000000,{planDecision:supervisor.planDecision,signal:controller.signal});
+  if(warm.status!=='finished'||warm.violations.length)throw Error(`Warmup failed: ${algorithm}`);
+ }
+ // Interleave workload and rotate algorithm order to limit fixed-order thermal/cache bias.
+ outer:for(let i=0;i<n;i++)for(const [ci,m] of manifests.entries()){
+  const order=m.orders[i],offset=(i+ci)%BENCHMARK_ALGORITHMS.length;
+  const algorithms=[...BENCHMARK_ALGORITHMS.slice(offset),...BENCHMARK_ALGORITHMS.slice(0,offset)];
+  let fingerprint:string|undefined;
+  for(const algorithm of algorithms){
+   if(interrupted)break outer;
+   const name=`${m.condition.id}-${order.seed}-${algorithm}.json.gz`,path=join(out,'trials',name);let trial:TrialResult,wallMs:number;
+   if(existsSync(path)){
+    const saved=JSON.parse(gunzipSync(readFileSync(path)).toString());if(saved.signature!==signature)throw Error('Trace signature mismatch');trial=saved.trial;wallMs=saved.wallMs;
+   }else{
+    const t=performance.now();trial=await runTrial(config,algorithm,order.seed,{scenario:m.scenario,planDecision:supervisor.planDecision,signal:controller.signal});wallMs=performance.now()-t;
+    if(trial.status==='cancelled')break outer;
+    const bytes=gzipSync(JSON.stringify({signature,condition:m.condition.id,wallMs,trial}));writeFileSync(path+'.tmp',bytes);renameSync(path+'.tmp',path);
+   }
+   if(fingerprint&&fingerprint!==trial.inputFingerprint)throw Error('Paired input fingerprint mismatch');fingerprint=trial.inputFingerprint;
+   if(JSON.stringify(trial.arrivals.map(o=>o.typeId))!==JSON.stringify(order.sequence))throw Error('Frozen arrival sequence mismatch');
+   if(trial.algorithm!==algorithm||trial.seed!==order.seed)throw Error('Trace identity mismatch');
+   const supplied=trial.arrivals.reduce((v,b)=>v+volume(b.size),0),e=evaluateTrial(trial);
+   rows.push({...e,condition:m.condition.id,status:trial.status,violations:trial.violations.length,unprocessed:trial.unprocessed.length,
+    supplyAcceptance:supplied?trial.metrics.volumeMm3/supplied:0,supplyBound:Math.min(1,supplied/(m.scenario.pallet.width*m.scenario.pallet.depth*config.maxHeightMm)),
+    suppliedVolumeMm3:supplied,placedVolumeMm3:trial.metrics.volumeMm3,inputFingerprint:trial.inputFingerprint,
+    computeMs:trial.metrics.computeMs,fallbackCount:trial.metrics.fallbackCount,wallMs,trace:`trials/${name}`,traceSha256:sha(readFileSync(path))});
+   persist();if(rows.length%8===0)process.stdout.write(JSON.stringify({completed:rows.length,total,condition:m.condition.id,elapsedSeconds:Math.round((Date.now()-started)/1000)})+'\n');
+  }
+ }
+ for(const f of source)if(sha(readFileSync(join(root,f.path)))!==f.sha256)throw Error(`Source changed while running: ${f.path}`);
+ persist(rows.length===total&&!interrupted);
+ process.stdout.write(JSON.stringify({pilot,completed:rows.length,total,sessionSeconds:(Date.now()-started)/1000,interrupted})+'\n');
+}
+main().catch(e=>{process.stderr.write(String(e.stack??e)+'\n');process.exitCode=1;}).finally(()=>supervisor.dispose());
+
+
+Please give final review now, concisely; identify supported issues and avoid hypothetical invented bugs.

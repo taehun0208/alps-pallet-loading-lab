@@ -1,0 +1,10 @@
+{"profile":"duty10","algorithm":"capacity-compact","completed":1,"total":10,"condition":"h1200-n30-s6","seed":460000000,"count":22,"maxDecisionMs":224.36979100000008,"sameGeometryAsAudited":true,"deadlineMisses":0}
+{"profile":"duty10","algorithm":"capacity-compact","completed":2,"total":10,"condition":"h1200-n30-s8","seed":460100000,"count":27,"maxDecisionMs":280.9490829999995,"sameGeometryAsAudited":true,"deadlineMisses":0}
+{"profile":"duty10","algorithm":"capacity-compact","completed":3,"total":10,"condition":"h1200-n30-s6","seed":460000024,"count":27,"maxDecisionMs":214.54699999999866,"sameGeometryAsAudited":true,"deadlineMisses":0}
+{"profile":"duty10","algorithm":"capacity-compact","completed":4,"total":10,"condition":"h1200-n30-s8","seed":460100024,"count":27,"maxDecisionMs":214.99020799999926,"sameGeometryAsAudited":true,"deadlineMisses":0}
+{"profile":"duty10","algorithm":"capacity-compact","completed":5,"total":10,"condition":"h1200-n30-s6","seed":460000049,"count":30,"maxDecisionMs":271.3344159999997,"sameGeometryAsAudited":true,"deadlineMisses":0}
+{"profile":"duty10","algorithm":"capacity-compact","completed":6,"total":10,"condition":"h1200-n30-s8","seed":460100049,"count":28,"maxDecisionMs":494.37037500000224,"sameGeometryAsAudited":true,"deadlineMisses":0}
+{"profile":"duty10","algorithm":"capacity-compact","completed":7,"total":10,"condition":"h1200-n30-s6","seed":460000074,"count":29,"maxDecisionMs":502.9025419999998,"sameGeometryAsAudited":true,"deadlineMisses":0}
+{"profile":"duty10","algorithm":"capacity-compact","completed":8,"total":10,"condition":"h1200-n30-s8","seed":460100074,"count":26,"maxDecisionMs":370.30745899999965,"sameGeometryAsAudited":true,"deadlineMisses":0}
+{"profile":"duty10","algorithm":"capacity-compact","completed":9,"total":10,"condition":"h1200-n30-s6","seed":460000099,"count":29,"maxDecisionMs":446.9004999999961,"sameGeometryAsAudited":true,"deadlineMisses":0}
+{"profile":"duty10","algorithm":"capacity-compact","completed":10,"total":10,"condition":"h1200-n30-s8","seed":460100099,"count":24,"maxDecisionMs":327.4513750000042,"sameGeometryAsAudited":true,"deadlineMisses":0}

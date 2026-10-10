@@ -24,7 +24,7 @@ function trialMetrics(scenario:Scenario,stack:Placement[],decisions:DecisionTrac
  let column=0,projectedArea=0;for(let x=1;x<xs.length;x++)for(let y=1;y<ys.length;y++){const mx=(xs[x]+xs[x-1])/2,my=(ys[y]+ys[y-1])/2;const area=(xs[x]-xs[x-1])*(ys[y]-ys[y-1]),localTop=Math.max(0,...stack.filter(p=>mx>=p.position.x&&mx<p.position.x+p.size.w&&my>=p.position.y&&my<p.position.y+p.size.d).map(top));column+=area*localTop;if(localTop>0)projectedArea+=area;}
  const loads=stack.map(p=>{const capacity=materialInfo(p,scenario.constraints.stability).capacity;return capacity===null?null:capacity>0?p.loadAbove/capacity:p.loadAbove?Infinity:0;});
  const times=decisions.map(d=>d.decisionMs),compute=decisions.reduce((s,d)=>s+d.decisionMs,0),robot=decisions.filter(d=>d.accepted).reduce((s,d)=>s+(d.timing.robotEnd!-d.timing.robotStart!),0),wait=decisions.reduce((s,d)=>s+d.timing.exposedWaitSeconds,0);
- const groups={S1:0,S2:0,S3:1,S4:1,S5:2,S6:2};
+ const groups=Object.fromEntries(scenario.types.map((t,i)=>[t.id,Math.floor(i/2)]));
  const floorArea=stack.filter(p=>Math.abs(p.position.z)<1e-6).reduce((s,p)=>s+p.size.w*p.size.d,0);
  return {floorContactAreaMm2:floorArea,floorCoverage:floorArea/(pallet.width*pallet.depth),projectedFootprintAreaMm2:projectedArea,projectedFootprintCoverage:projectedArea/(pallet.width*pallet.depth),count:stack.length,total,fill:v/(pallet.width*pallet.depth*pallet.maxHeight),volumeMm3:v,usedHeightMm:height,envelopeFill:height?v/(pallet.width*pallet.depth*height):0,
  allowedEmptyMm3:pallet.width*pallet.depth*pallet.maxHeight-v,envelopeEmptyMm3:pallet.width*pallet.depth*height-v,columnVoidMm3:Math.max(0,column-v),massKg:mass,center,cogHorizontalOffsetMm:Math.hypot(center.x-pallet.width/2,center.y-pallet.depth/2),cogHeightMm:center.z,
@@ -35,7 +35,10 @@ function trialMetrics(scenario:Scenario,stack:Placement[],decisions:DecisionTrac
 }
 export async function runTrial(config:SimulationConfig,algorithm:AlgorithmId,seed:number,options:RunOptions):Promise<TrialResult>{
  validateConfig(config);if(!ALGORITHMS.some(a=>a.id===algorithm))throw Error('Unknown algorithm');if(!Number.isInteger(seed))throw Error('Seed must be an integer');
- const scenario=retailScenario(config.quantityPerSku);scenario.pallet.maxHeight=config.maxHeightMm;scenario.supplyMode='arrival';scenario.arrival={seed,pattern:'random-draw'};
+ const scenario=options.scenario?structuredClone(options.scenario):retailScenario(config.quantityPerSku);
+ if(!scenario.types.length||new Set(scenario.types.map(t=>t.id)).size!==scenario.types.length||scenario.types.some(t=>!t.id||!Number.isInteger(t.quantity)||t.quantity<1||!Object.values(t.size).every(n=>Number.isFinite(n)&&n>0)||!Number.isFinite(t.weight)||t.weight<=0)||scenario.types.reduce((n,t)=>n+t.quantity,0)>240)throw Error('Invalid benchmark SKU inventory');
+ if(![scenario.pallet.width,scenario.pallet.depth].every(n=>Number.isFinite(n)&&n>0)||scenario.events.length)throw Error('Benchmark scenario must have positive pallet dimensions and no events');
+ scenario.pallet.maxHeight=config.maxHeightMm;scenario.supplyMode='arrival';scenario.arrival={seed,pattern:'random-draw'};
  const env=new ArrivalEnvironment(scenario),arrivals=Array.from({length:env.total},(_,i)=>env.current(i)!),pending=Object.fromEntries(scenario.types.map(t=>[t.id,t.quantity]));
  const settings=defaultCapacityConfig().settings;settings.maxCandidates=config.maxCandidates;settings.temporaryBuffer=false;
  // Planner RNG is fixed independently of the hidden arrival RNG, identical across algorithms.

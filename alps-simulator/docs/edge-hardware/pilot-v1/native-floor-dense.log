@@ -1,0 +1,10 @@
+{"profile":"native","algorithm":"floor-dense","completed":1,"total":10,"condition":"h1200-n30-s6","seed":460000000,"count":29,"maxDecisionMs":230.14620800000012,"sameGeometryAsAudited":true,"deadlineMisses":0}
+{"profile":"native","algorithm":"floor-dense","completed":2,"total":10,"condition":"h1200-n30-s8","seed":460100000,"count":30,"maxDecisionMs":233.2993749999996,"sameGeometryAsAudited":true,"deadlineMisses":0}
+{"profile":"native","algorithm":"floor-dense","completed":3,"total":10,"condition":"h1200-n30-s6","seed":460000024,"count":29,"maxDecisionMs":192.63750000000073,"sameGeometryAsAudited":true,"deadlineMisses":0}
+{"profile":"native","algorithm":"floor-dense","completed":4,"total":10,"condition":"h1200-n30-s8","seed":460100024,"count":29,"maxDecisionMs":256.0337500000005,"sameGeometryAsAudited":true,"deadlineMisses":0}
+{"profile":"native","algorithm":"floor-dense","completed":5,"total":10,"condition":"h1200-n30-s6","seed":460000049,"count":28,"maxDecisionMs":200.60012500000084,"sameGeometryAsAudited":true,"deadlineMisses":0}
+{"profile":"native","algorithm":"floor-dense","completed":6,"total":10,"condition":"h1200-n30-s8","seed":460100049,"count":28,"maxDecisionMs":191.91362499999923,"sameGeometryAsAudited":true,"deadlineMisses":0}
+{"profile":"native","algorithm":"floor-dense","completed":7,"total":10,"condition":"h1200-n30-s6","seed":460000074,"count":29,"maxDecisionMs":152.0144999999975,"sameGeometryAsAudited":true,"deadlineMisses":0}
+{"profile":"native","algorithm":"floor-dense","completed":8,"total":10,"condition":"h1200-n30-s8","seed":460100074,"count":28,"maxDecisionMs":288.3820830000004,"sameGeometryAsAudited":true,"deadlineMisses":0}
+{"profile":"native","algorithm":"floor-dense","completed":9,"total":10,"condition":"h1200-n30-s6","seed":460000099,"count":27,"maxDecisionMs":195.8729170000006,"sameGeometryAsAudited":true,"deadlineMisses":0}
+{"profile":"native","algorithm":"floor-dense","completed":10,"total":10,"condition":"h1200-n30-s8","seed":460100099,"count":26,"maxDecisionMs":170.61612500000047,"sameGeometryAsAudited":true,"deadlineMisses":0}

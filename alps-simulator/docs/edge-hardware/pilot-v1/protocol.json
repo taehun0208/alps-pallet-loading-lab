@@ -1,0 +1,28 @@
+{
+  "schema": "alps-duty-stress/1",
+  "indices": "0,24,49,74,99",
+  "algorithms": [
+    "capacity-compact",
+    "floor-dense",
+    "cluster-layer"
+  ],
+  "profiles": [
+    {
+      "id": "native",
+      "nominalRunFraction": 1.0
+    },
+    {
+      "id": "duty25",
+      "nominalRunFraction": 0.25
+    },
+    {
+      "id": "duty10",
+      "nominalRunFraction": 0.1
+    }
+  ],
+  "periodMs": 50.0,
+  "heapCapMiBPerIsolate": 64,
+  "classification": "Host-process CPU starvation pilot, not target-board performance.",
+  "limits": "No hard RSS/RAM cap, no Pi CPU/cache/thermal/power emulation. Entire Node process pauses; watchdog delivery can be delayed by an off window.",
+  "source": "evaluation-v2 frozen engine, unchanged 9000ms search and 10000ms cycle."
+}

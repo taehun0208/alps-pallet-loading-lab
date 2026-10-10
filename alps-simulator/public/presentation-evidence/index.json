@@ -1,0 +1,1544 @@
+{
+  "schema": "alps-presentation-evidence/1",
+  "auditedRuns": 1400,
+  "sourceGitCommit": "589775bf01a940d0c369e468f484416ff45b1e34",
+  "freezeSignature": "8bab669522ba33fdce1f082fe36fc5b8ff2f7f4b4e4dc100bba05912e2928feb",
+  "auditSha256": "0e715345de0ed01af43121dbc13bde08575aa6079d8f6f8a80af224df2d6bc33",
+  "replaySelection": "동결 입력 목록의 1·25·50·75·100번째 실행. 결과의 좋고 나쁨을 기준으로 선정하지 않음.",
+  "scoreWeights": [
+    [
+      "공급 부피 수용률",
+      60
+    ],
+    [
+      "바닥 접촉",
+      15
+    ],
+    [
+      "동일 SKU 접촉",
+      15
+    ],
+    [
+      "기한 준수",
+      10
+    ]
+  ],
+  "studies": [
+    {
+      "id": "h1200-n30-s6",
+      "kind": "measured",
+      "label": "우리 검사 · 6 SKU",
+      "skus": 6,
+      "boxes": 30,
+      "height": 1200,
+      "width": 1200,
+      "depth": 1000,
+      "n": 100,
+      "runs": 700,
+      "variation": "SKU 규격·재고 고정, 서로 다른 입고 순서 100개",
+      "summary": [
+        {
+          "condition": "h1200-n30-s6",
+          "algorithm": "blb",
+          "label": "BLB",
+          "n": 100,
+          "expectedN": 100,
+          "missingN": 0,
+          "errorN": 0,
+          "cancelledN": 0,
+          "deadlineMisses": 0,
+          "violationN": 0,
+          "contactUndefinedN": 0,
+          "score": {
+            "n": 100,
+            "mean": 78.32134856284357,
+            "ci95Low": 77.1387146168072,
+            "ci95High": 79.50398250887993
+          },
+          "supplyAcceptance": {
+            "n": 100,
+            "mean": 0.8526392736464701,
+            "ci95Low": 0.8351113647327645,
+            "ci95High": 0.8701671825601757
+          },
+          "floor": {
+            "n": 100,
+            "mean": 0.8372916666666667,
+            "ci95Low": 0.8293740835362913,
+            "ci95High": 0.845209249797042
+          },
+          "sameSkuContact": {
+            "n": 100,
+            "mean": 0.30690780960369074,
+            "ci95Low": 0.29163851958299447,
+            "ci95High": 0.322177099624387
+          },
+          "deadlineCompliance": {
+            "n": 100,
+            "mean": 1.0,
+            "ci95Low": 1.0,
+            "ci95High": 1.0
+          },
+          "fill": {
+            "n": 100,
+            "mean": 0.4591107222222222,
+            "ci95Low": 0.4496726736017298,
+            "ci95High": 0.4685487708427146
+          },
+          "count": {
+            "n": 100,
+            "mean": 27.01,
+            "ci95Low": 26.646095727958226,
+            "ci95High": 27.373904272041777
+          },
+          "acceptedBoxFraction": {
+            "n": 100,
+            "mean": 0.9003333333333333,
+            "ci95Low": 0.8882031909319408,
+            "ci95High": 0.9124634757347259
+          },
+          "volumeL": {
+            "n": 100,
+            "mean": 661.1194399999999,
+            "ci95Low": 647.5286499864909,
+            "ci95High": 674.710230013509
+          },
+          "usedHeightMm": {
+            "n": 100,
+            "mean": 1028.2,
+            "ci95Low": 1013.0115307251356,
+            "ci95High": 1043.3884692748645
+          },
+          "envelopeFill": {
+            "n": 100,
+            "mean": 0.5379822838436574,
+            "ci95Low": 0.5257242798908539,
+            "ci95High": 0.550240287796461
+          },
+          "columnVoidLiters": {
+            "n": 100,
+            "mean": 15.50296,
+            "ci95Low": 13.907936480073957,
+            "ci95High": 17.097983519926043
+          },
+          "rawDecisionTiming": {
+            "n": 3000,
+            "p50Ms": 6.23589599998013,
+            "p95Ms": 15.327629499985767,
+            "p99Ms": 23.54851500004789,
+            "maxMs": 76.61495899999863
+          }
+        },
+        {
+          "condition": "h1200-n30-s6",
+          "algorithm": "capacity-compact",
+          "label": "Capacity compact",
+          "n": 100,
+          "expectedN": 100,
+          "missingN": 0,
+          "errorN": 0,
+          "cancelledN": 0,
+          "deadlineMisses": 0,
+          "violationN": 0,
+          "contactUndefinedN": 0,
+          "score": {
+            "n": 100,
+            "mean": 80.41476538169499,
+            "ci95Low": 79.31291973232928,
+            "ci95High": 81.5166110310607
+          },
+          "supplyAcceptance": {
+            "n": 100,
+            "mean": 0.8776535376202637,
+            "ci95Low": 0.8612372677285279,
+            "ci95High": 0.8940698075119994
+          },
+          "floor": {
+            "n": 100,
+            "mean": 0.8809266666666666,
+            "ci95Low": 0.8737220303751918,
+            "ci95High": 0.8881313029581415
+          },
+          "sameSkuContact": {
+            "n": 100,
+            "mean": 0.3027768749652778,
+            "ci95Low": 0.28890333041798105,
+            "ci95High": 0.3166504195125745
+          },
+          "deadlineCompliance": {
+            "n": 100,
+            "mean": 1.0,
+            "ci95Low": 1.0,
+            "ci95High": 1.0
+          },
+          "fill": {
+            "n": 100,
+            "mean": 0.4725798611111111,
+            "ci95Low": 0.4637403837856569,
+            "ci95High": 0.4814193384365653
+          },
+          "count": {
+            "n": 100,
+            "mean": 27.59,
+            "ci95Low": 27.26341754574165,
+            "ci95High": 27.91658245425835
+          },
+          "acceptedBoxFraction": {
+            "n": 100,
+            "mean": 0.9196666666666666,
+            "ci95Low": 0.908780584858055,
+            "ci95High": 0.9305527484752782
+          },
+          "volumeL": {
+            "n": 100,
+            "mean": 680.515,
+            "ci95Low": 667.7861526513459,
+            "ci95High": 693.2438473486541
+          },
+          "usedHeightMm": {
+            "n": 100,
+            "mean": 1008.6,
+            "ci95Low": 992.1166014891215,
+            "ci95High": 1025.0833985108784
+          },
+          "envelopeFill": {
+            "n": 100,
+            "mean": 0.565426729745391,
+            "ci95Low": 0.5527418493127826,
+            "ci95High": 0.5781116101779994
+          },
+          "columnVoidLiters": {
+            "n": 100,
+            "mean": 3.65362,
+            "ci95Low": 3.067004155252299,
+            "ci95High": 4.240235844747701
+          },
+          "rawDecisionTiming": {
+            "n": 3000,
+            "p50Ms": 12.463708500010398,
+            "p95Ms": 31.491840200011197,
+            "p99Ms": 44.3673075000001,
+            "maxMs": 79.67079099999683
+          }
+        },
+        {
+          "condition": "h1200-n30-s6",
+          "algorithm": "strategy-greedy",
+          "label": "Strategy greedy",
+          "n": 100,
+          "expectedN": 100,
+          "missingN": 0,
+          "errorN": 0,
+          "cancelledN": 0,
+          "deadlineMisses": 0,
+          "violationN": 0,
+          "contactUndefinedN": 0,
+          "score": {
+            "n": 100,
+            "mean": 76.99188149305027,
+            "ci95Low": 75.75079379071953,
+            "ci95High": 78.23296919538102
+          },
+          "supplyAcceptance": {
+            "n": 100,
+            "mean": 0.8208587789213031,
+            "ci95Low": 0.8022657252417709,
+            "ci95High": 0.8394518326008353
+          },
+          "floor": {
+            "n": 100,
+            "mean": 0.7547133333333333,
+            "ci95Low": 0.745385140028863,
+            "ci95High": 0.7640415266378037
+          },
+          "sameSkuContact": {
+            "n": 100,
+            "mean": 0.42797698385147265,
+            "ci95Low": 0.41034054203560844,
+            "ci95High": 0.44561342566733686
+          },
+          "deadlineCompliance": {
+            "n": 100,
+            "mean": 1.0,
+            "ci95Low": 1.0,
+            "ci95High": 1.0
+          },
+          "fill": {
+            "n": 100,
+            "mean": 0.44199825,
+            "ci95Low": 0.4319866653041418,
+            "ci95High": 0.45200983469585815
+          },
+          "count": {
+            "n": 100,
+            "mean": 26.41,
+            "ci95Low": 26.03047552693573,
+            "ci95High": 26.78952447306427
+          },
+          "acceptedBoxFraction": {
+            "n": 100,
+            "mean": 0.8803333333333334,
+            "ci95Low": 0.8676825175645245,
+            "ci95High": 0.8929841491021423
+          },
+          "volumeL": {
+            "n": 100,
+            "mean": 636.47748,
+            "ci95Low": 622.0607980379643,
+            "ci95High": 650.8941619620357
+          },
+          "usedHeightMm": {
+            "n": 100,
+            "mean": 1050.5,
+            "ci95Low": 1032.4584324974373,
+            "ci95High": 1068.5415675025627
+          },
+          "envelopeFill": {
+            "n": 100,
+            "mean": 0.5067046870947659,
+            "ci95Low": 0.4953987935712446,
+            "ci95High": 0.5180105806182872
+          },
+          "columnVoidLiters": {
+            "n": 100,
+            "mean": 3.023479999999999,
+            "ci95Low": 2.3240107339538567,
+            "ci95High": 3.722949266046141
+          },
+          "rawDecisionTiming": {
+            "n": 3000,
+            "p50Ms": 12.375312499993015,
+            "p95Ms": 31.99160864999139,
+            "p99Ms": 51.56827416000157,
+            "maxMs": 213.53970899999695
+          }
+        },
+        {
+          "condition": "h1200-n30-s6",
+          "algorithm": "lookahead",
+          "label": "Lookahead",
+          "n": 100,
+          "expectedN": 100,
+          "missingN": 0,
+          "errorN": 0,
+          "cancelledN": 0,
+          "deadlineMisses": 0,
+          "violationN": 0,
+          "contactUndefinedN": 0,
+          "score": {
+            "n": 100,
+            "mean": 78.11119740912152,
+            "ci95Low": 76.89409765671542,
+            "ci95High": 79.32829716152762
+          },
+          "supplyAcceptance": {
+            "n": 100,
+            "mean": 0.8398514276870696,
+            "ci95Low": 0.8214975353366464,
+            "ci95High": 0.8582053200374927
+          },
+          "floor": {
+            "n": 100,
+            "mean": 0.7577133333333333,
+            "ci95Low": 0.7487514771137148,
+            "ci95High": 0.7666751895529519
+          },
+          "sameSkuContact": {
+            "n": 100,
+            "mean": 0.423627449859823,
+            "ci95Low": 0.4037726832531966,
+            "ci95High": 0.44348221646644936
+          },
+          "deadlineCompliance": {
+            "n": 100,
+            "mean": 1.0,
+            "ci95Low": 1.0,
+            "ci95High": 1.0
+          },
+          "fill": {
+            "n": 100,
+            "mean": 0.452225,
+            "ci95Low": 0.4423421937148117,
+            "ci95High": 0.46210780628518827
+          },
+          "count": {
+            "n": 100,
+            "mean": 26.78,
+            "ci95Low": 26.40312010916861,
+            "ci95High": 27.15687989083139
+          },
+          "acceptedBoxFraction": {
+            "n": 100,
+            "mean": 0.8926666666666667,
+            "ci95Low": 0.8801040036389538,
+            "ci95High": 0.9052293296943796
+          },
+          "volumeL": {
+            "n": 100,
+            "mean": 651.204,
+            "ci95Low": 636.9727589493289,
+            "ci95High": 665.435241050671
+          },
+          "usedHeightMm": {
+            "n": 100,
+            "mean": 1062.1,
+            "ci95Low": 1044.4666114141653,
+            "ci95High": 1079.7333885858345
+          },
+          "envelopeFill": {
+            "n": 100,
+            "mean": 0.5125606295231928,
+            "ci95Low": 0.5015697089498085,
+            "ci95High": 0.5235515500965772
+          },
+          "columnVoidLiters": {
+            "n": 100,
+            "mean": 3.68689,
+            "ci95Low": 2.878639284088623,
+            "ci95High": 4.495140715911377
+          },
+          "rawDecisionTiming": {
+            "n": 3000,
+            "p50Ms": 58.714666499994564,
+            "p95Ms": 151.75330479997345,
+            "p99Ms": 198.45125925998295,
+            "maxMs": 334.62054099998204
+          }
+        },
+        {
+          "condition": "h1200-n30-s6",
+          "algorithm": "future-hybrid",
+          "label": "Future hybrid",
+          "n": 100,
+          "expectedN": 100,
+          "missingN": 0,
+          "errorN": 0,
+          "cancelledN": 0,
+          "deadlineMisses": 0,
+          "violationN": 0,
+          "contactUndefinedN": 0,
+          "score": {
+            "n": 100,
+            "mean": 82.72484665691445,
+            "ci95Low": 81.84009753776039,
+            "ci95High": 83.60959577606852
+          },
+          "supplyAcceptance": {
+            "n": 100,
+            "mean": 0.9103826252934045,
+            "ci95Low": 0.8975820547122169,
+            "ci95High": 0.9231831958745922
+          },
+          "floor": {
+            "n": 100,
+            "mean": 0.77956,
+            "ci95Low": 0.7693096892960999,
+            "ci95High": 0.7898103107039002
+          },
+          "sameSkuContact": {
+            "n": 100,
+            "mean": 0.4272326092873454,
+            "ci95Low": 0.4104520396313922,
+            "ci95High": 0.4440131789432986
+          },
+          "deadlineCompliance": {
+            "n": 100,
+            "mean": 1.0,
+            "ci95Low": 1.0,
+            "ci95High": 1.0
+          },
+          "fill": {
+            "n": 100,
+            "mean": 0.4902031111111111,
+            "ci95Low": 0.4833105372102491,
+            "ci95High": 0.4970956850119731
+          },
+          "count": {
+            "n": 100,
+            "mean": 28.15,
+            "ci95Low": 27.867447382235387,
+            "ci95High": 28.43255261776461
+          },
+          "acceptedBoxFraction": {
+            "n": 100,
+            "mean": 0.9383333333333334,
+            "ci95Low": 0.9289149127411797,
+            "ci95High": 0.947751753925487
+          },
+          "volumeL": {
+            "n": 100,
+            "mean": 705.89248,
+            "ci95Low": 695.9671735827587,
+            "ci95High": 715.8177864172412
+          },
+          "usedHeightMm": {
+            "n": 100,
+            "mean": 1113,
+            "ci95Low": 1098.765452943185,
+            "ci95High": 1127.234547056815
+          },
+          "envelopeFill": {
+            "n": 100,
+            "mean": 0.5308283452884491,
+            "ci95Low": 0.5204954490523873,
+            "ci95High": 0.541161241524511
+          },
+          "columnVoidLiters": {
+            "n": 100,
+            "mean": 6.0093425000000025,
+            "ci95Low": 4.926754438485435,
+            "ci95High": 7.09193056151457
+          },
+          "rawDecisionTiming": {
+            "n": 3000,
+            "p50Ms": 172.9538335000252,
+            "p95Ms": 645.0795548000021,
+            "p99Ms": 821.6349119099868,
+            "maxMs": 1199.489499999996
+          }
+        },
+        {
+          "condition": "h1200-n30-s6",
+          "algorithm": "floor-dense",
+          "label": "ALPS Tetris",
+          "n": 100,
+          "expectedN": 100,
+          "missingN": 0,
+          "errorN": 0,
+          "cancelledN": 0,
+          "deadlineMisses": 0,
+          "violationN": 0,
+          "contactUndefinedN": 0,
+          "score": {
+            "n": 100,
+            "mean": 83.63107807364845,
+            "ci95Low": 82.60952727152248,
+            "ci95High": 84.65262887577443
+          },
+          "supplyAcceptance": {
+            "n": 100,
+            "mean": 0.9136436327994016,
+            "ci95Low": 0.8989348337710142,
+            "ci95High": 0.928352431827789
+          },
+          "floor": {
+            "n": 100,
+            "mean": 0.8995299999999999,
+            "ci95Low": 0.8928704174572772,
+            "ci95High": 0.9061895825427226
+          },
+          "sameSkuContact": {
+            "n": 100,
+            "mean": 0.35463400704562426,
+            "ci95Low": 0.34043883601119446,
+            "ci95High": 0.36882917808005405
+          },
+          "deadlineCompliance": {
+            "n": 100,
+            "mean": 1.0,
+            "ci95Low": 1.0,
+            "ci95High": 1.0
+          },
+          "fill": {
+            "n": 100,
+            "mean": 0.4919590277777778,
+            "ci95Low": 0.48403895236761735,
+            "ci95High": 0.4998791031879382
+          },
+          "count": {
+            "n": 100,
+            "mean": 28.32,
+            "ci95Low": 28.03117625464102,
+            "ci95High": 28.60882374535898
+          },
+          "acceptedBoxFraction": {
+            "n": 100,
+            "mean": 0.9440000000000001,
+            "ci95Low": 0.9343725418213674,
+            "ci95High": 0.9536274581786327
+          },
+          "volumeL": {
+            "n": 100,
+            "mean": 708.4209999999999,
+            "ci95Low": 697.0160914093689,
+            "ci95High": 719.825908590631
+          },
+          "usedHeightMm": {
+            "n": 100,
+            "mean": 1001.8,
+            "ci95Low": 986.1092558044165,
+            "ci95High": 1017.4907441955834
+          },
+          "envelopeFill": {
+            "n": 100,
+            "mean": 0.5914456212861626,
+            "ci95Low": 0.5813015416186127,
+            "ci95High": 0.6015897009537126
+          },
+          "columnVoidLiters": {
+            "n": 100,
+            "mean": 3.58293,
+            "ci95Low": 2.91406443092154,
+            "ci95High": 4.25179556907846
+          },
+          "rawDecisionTiming": {
+            "n": 3000,
+            "p50Ms": 99.05947899999592,
+            "p95Ms": 248.98375144999875,
+            "p99Ms": 359.7583285000396,
+            "maxMs": 536.6837499999965
+          }
+        },
+        {
+          "condition": "h1200-n30-s6",
+          "algorithm": "cluster-layer",
+          "label": "ALPS cluster",
+          "n": 100,
+          "expectedN": 100,
+          "missingN": 0,
+          "errorN": 0,
+          "cancelledN": 0,
+          "deadlineMisses": 0,
+          "violationN": 0,
+          "contactUndefinedN": 0,
+          "score": {
+            "n": 100,
+            "mean": 87.40633642535073,
+            "ci95Low": 86.38904415367455,
+            "ci95High": 88.42362869702691
+          },
+          "supplyAcceptance": {
+            "n": 100,
+            "mean": 0.9355206479403647,
+            "ci95Low": 0.9210633975917606,
+            "ci95High": 0.9499778982889688
+          },
+          "floor": {
+            "n": 100,
+            "mean": 0.8697916666666666,
+            "ci95Low": 0.8608696456780702,
+            "ci95High": 0.878713687655263
+          },
+          "sameSkuContact": {
+            "n": 100,
+            "mean": 0.5485481699285899,
+            "ci95Low": 0.5346755155262879,
+            "ci95High": 0.5624208243308919
+          },
+          "deadlineCompliance": {
+            "n": 100,
+            "mean": 1.0,
+            "ci95Low": 1.0,
+            "ci95High": 1.0
+          },
+          "fill": {
+            "n": 100,
+            "mean": 0.5037388888888888,
+            "ci95Low": 0.4959542619615967,
+            "ci95High": 0.5115235158161809
+          },
+          "count": {
+            "n": 100,
+            "mean": 28.73,
+            "ci95Low": 28.445371926906084,
+            "ci95High": 29.014628073093917
+          },
+          "acceptedBoxFraction": {
+            "n": 100,
+            "mean": 0.9576666666666667,
+            "ci95Low": 0.9481790642302028,
+            "ci95High": 0.9671542691031305
+          },
+          "volumeL": {
+            "n": 100,
+            "mean": 725.384,
+            "ci95Low": 714.1741372246994,
+            "ci95High": 736.5938627753006
+          },
+          "usedHeightMm": {
+            "n": 100,
+            "mean": 1148.2,
+            "ci95Low": 1136.7393284484442,
+            "ci95High": 1159.6606715515559
+          },
+          "envelopeFill": {
+            "n": 100,
+            "mean": 0.5272537002623623,
+            "ci95Low": 0.5187969970311326,
+            "ci95High": 0.535710403493592
+          },
+          "columnVoidLiters": {
+            "n": 100,
+            "mean": 0.59372,
+            "ci95Low": 0.3087732535634502,
+            "ci95High": 0.8786667464365499
+          },
+          "rawDecisionTiming": {
+            "n": 3000,
+            "p50Ms": 19.850312499998836,
+            "p95Ms": 80.2273433999755,
+            "p99Ms": 118.78035749997912,
+            "maxMs": 218.76379199998337
+          }
+        }
+      ],
+      "seeds": [
+        460000000,
+        460000024,
+        460000049,
+        460000074,
+        460000099
+      ],
+      "replays": [
+        {
+          "seed": 460000000,
+          "algorithm": "capacity-compact",
+          "inputFingerprint": "7686731f",
+          "url": "/presentation-evidence/h1200-n30-s6-460000000-capacity-compact.json"
+        },
+        {
+          "seed": 460000000,
+          "algorithm": "floor-dense",
+          "inputFingerprint": "7686731f",
+          "url": "/presentation-evidence/h1200-n30-s6-460000000-floor-dense.json"
+        },
+        {
+          "seed": 460000000,
+          "algorithm": "cluster-layer",
+          "inputFingerprint": "7686731f",
+          "url": "/presentation-evidence/h1200-n30-s6-460000000-cluster-layer.json"
+        },
+        {
+          "seed": 460000024,
+          "algorithm": "capacity-compact",
+          "inputFingerprint": "cb436e9f",
+          "url": "/presentation-evidence/h1200-n30-s6-460000024-capacity-compact.json"
+        },
+        {
+          "seed": 460000024,
+          "algorithm": "floor-dense",
+          "inputFingerprint": "cb436e9f",
+          "url": "/presentation-evidence/h1200-n30-s6-460000024-floor-dense.json"
+        },
+        {
+          "seed": 460000024,
+          "algorithm": "cluster-layer",
+          "inputFingerprint": "cb436e9f",
+          "url": "/presentation-evidence/h1200-n30-s6-460000024-cluster-layer.json"
+        },
+        {
+          "seed": 460000049,
+          "algorithm": "capacity-compact",
+          "inputFingerprint": "ef1b8f6a",
+          "url": "/presentation-evidence/h1200-n30-s6-460000049-capacity-compact.json"
+        },
+        {
+          "seed": 460000049,
+          "algorithm": "floor-dense",
+          "inputFingerprint": "ef1b8f6a",
+          "url": "/presentation-evidence/h1200-n30-s6-460000049-floor-dense.json"
+        },
+        {
+          "seed": 460000049,
+          "algorithm": "cluster-layer",
+          "inputFingerprint": "ef1b8f6a",
+          "url": "/presentation-evidence/h1200-n30-s6-460000049-cluster-layer.json"
+        },
+        {
+          "seed": 460000074,
+          "algorithm": "capacity-compact",
+          "inputFingerprint": "6f38d604",
+          "url": "/presentation-evidence/h1200-n30-s6-460000074-capacity-compact.json"
+        },
+        {
+          "seed": 460000074,
+          "algorithm": "floor-dense",
+          "inputFingerprint": "6f38d604",
+          "url": "/presentation-evidence/h1200-n30-s6-460000074-floor-dense.json"
+        },
+        {
+          "seed": 460000074,
+          "algorithm": "cluster-layer",
+          "inputFingerprint": "6f38d604",
+          "url": "/presentation-evidence/h1200-n30-s6-460000074-cluster-layer.json"
+        },
+        {
+          "seed": 460000099,
+          "algorithm": "capacity-compact",
+          "inputFingerprint": "d6c2a01d",
+          "url": "/presentation-evidence/h1200-n30-s6-460000099-capacity-compact.json"
+        },
+        {
+          "seed": 460000099,
+          "algorithm": "floor-dense",
+          "inputFingerprint": "d6c2a01d",
+          "url": "/presentation-evidence/h1200-n30-s6-460000099-floor-dense.json"
+        },
+        {
+          "seed": 460000099,
+          "algorithm": "cluster-layer",
+          "inputFingerprint": "d6c2a01d",
+          "url": "/presentation-evidence/h1200-n30-s6-460000099-cluster-layer.json"
+        }
+      ]
+    },
+    {
+      "id": "h1200-n30-s8",
+      "kind": "measured",
+      "label": "우리 검사 · 8 SKU",
+      "skus": 8,
+      "boxes": 30,
+      "height": 1200,
+      "width": 1200,
+      "depth": 1000,
+      "n": 100,
+      "runs": 700,
+      "variation": "SKU 규격·재고 고정, 서로 다른 입고 순서 100개",
+      "summary": [
+        {
+          "condition": "h1200-n30-s8",
+          "algorithm": "blb",
+          "label": "BLB",
+          "n": 100,
+          "expectedN": 100,
+          "missingN": 0,
+          "errorN": 0,
+          "cancelledN": 0,
+          "deadlineMisses": 0,
+          "violationN": 0,
+          "contactUndefinedN": 0,
+          "score": {
+            "n": 100,
+            "mean": 76.02120750256141,
+            "ci95Low": 75.01375915043887,
+            "ci95High": 77.02865585468395
+          },
+          "supplyAcceptance": {
+            "n": 100,
+            "mean": 0.8338389918373784,
+            "ci95Low": 0.8188111334924338,
+            "ci95High": 0.848866850182323
+          },
+          "floor": {
+            "n": 100,
+            "mean": 0.8281716666666666,
+            "ci95Low": 0.819444146257469,
+            "ci95High": 0.8368991870758643
+          },
+          "sameSkuContact": {
+            "n": 100,
+            "mean": 0.23788619948791379,
+            "ci95Low": 0.22543874635623587,
+            "ci95High": 0.2503336526195917
+          },
+          "deadlineCompliance": {
+            "n": 100,
+            "mean": 1.0,
+            "ci95Low": 1.0,
+            "ci95High": 1.0
+          },
+          "fill": {
+            "n": 100,
+            "mean": 0.4479139861111111,
+            "ci95Low": 0.43984145892074195,
+            "ci95High": 0.45598651330148027
+          },
+          "count": {
+            "n": 100,
+            "mean": 26.43,
+            "ci95Low": 26.083150217835716,
+            "ci95High": 26.776849782164284
+          },
+          "acceptedBoxFraction": {
+            "n": 100,
+            "mean": 0.881,
+            "ci95Low": 0.8694383405945239,
+            "ci95High": 0.8925616594054762
+          },
+          "volumeL": {
+            "n": 100,
+            "mean": 644.99614,
+            "ci95Low": 633.3717008458684,
+            "ci95High": 656.6205791541315
+          },
+          "usedHeightMm": {
+            "n": 100,
+            "mean": 1087.9,
+            "ci95Low": 1070.9355985120164,
+            "ci95High": 1104.8644014879837
+          },
+          "envelopeFill": {
+            "n": 100,
+            "mean": 0.49690648689067185,
+            "ci95Low": 0.4855659070340327,
+            "ci95High": 0.508247066747311
+          },
+          "columnVoidLiters": {
+            "n": 100,
+            "mean": 22.12299,
+            "ci95Low": 20.101767629103097,
+            "ci95High": 24.144212370896906
+          },
+          "rawDecisionTiming": {
+            "n": 3000,
+            "p50Ms": 6.4486665000003995,
+            "p95Ms": 15.919200300003284,
+            "p99Ms": 23.526112740001924,
+            "maxMs": 65.1059169999935
+          }
+        },
+        {
+          "condition": "h1200-n30-s8",
+          "algorithm": "capacity-compact",
+          "label": "Capacity compact",
+          "n": 100,
+          "expectedN": 100,
+          "missingN": 0,
+          "errorN": 0,
+          "cancelledN": 0,
+          "deadlineMisses": 0,
+          "violationN": 0,
+          "contactUndefinedN": 0,
+          "score": {
+            "n": 100,
+            "mean": 78.34451268731671,
+            "ci95Low": 77.26823087064665,
+            "ci95High": 79.42079450398677
+          },
+          "supplyAcceptance": {
+            "n": 100,
+            "mean": 0.8608505725728677,
+            "ci95Low": 0.8447656161087187,
+            "ci95High": 0.8769355290370167
+          },
+          "floor": {
+            "n": 100,
+            "mean": 0.8743983333333333,
+            "ci95Low": 0.8662798517637946,
+            "ci95High": 0.8825168149028719
+          },
+          "sameSkuContact": {
+            "n": 100,
+            "mean": 0.2385002221963098,
+            "ci95Low": 0.2259834555735179,
+            "ci95High": 0.2510169888191017
+          },
+          "deadlineCompliance": {
+            "n": 100,
+            "mean": 1.0,
+            "ci95Low": 1.0,
+            "ci95High": 1.0
+          },
+          "fill": {
+            "n": 100,
+            "mean": 0.46242381944444444,
+            "ci95Low": 0.45378344997646713,
+            "ci95High": 0.47106418891242174
+          },
+          "count": {
+            "n": 100,
+            "mean": 27.16,
+            "ci95Low": 26.825447353809796,
+            "ci95High": 27.494552646190204
+          },
+          "acceptedBoxFraction": {
+            "n": 100,
+            "mean": 0.9053333333333333,
+            "ci95Low": 0.8941815784603265,
+            "ci95High": 0.9164850882063401
+          },
+          "volumeL": {
+            "n": 100,
+            "mean": 665.8903,
+            "ci95Low": 653.4481679661127,
+            "ci95High": 678.3324320338874
+          },
+          "usedHeightMm": {
+            "n": 100,
+            "mean": 1048.2,
+            "ci95Low": 1027.0023874345754,
+            "ci95High": 1069.3976125654247
+          },
+          "envelopeFill": {
+            "n": 100,
+            "mean": 0.534269401607682,
+            "ci95Low": 0.5205821468635667,
+            "ci95High": 0.5479566563517972
+          },
+          "columnVoidLiters": {
+            "n": 100,
+            "mean": 6.32494,
+            "ci95Low": 5.4543857911427605,
+            "ci95High": 7.195494208857239
+          },
+          "rawDecisionTiming": {
+            "n": 3000,
+            "p50Ms": 12.449521000002278,
+            "p95Ms": 31.643235099987937,
+            "p99Ms": 43.54556509001057,
+            "maxMs": 91.30033300002106
+          }
+        },
+        {
+          "condition": "h1200-n30-s8",
+          "algorithm": "strategy-greedy",
+          "label": "Strategy greedy",
+          "n": 100,
+          "expectedN": 100,
+          "missingN": 0,
+          "errorN": 0,
+          "cancelledN": 0,
+          "deadlineMisses": 0,
+          "violationN": 0,
+          "contactUndefinedN": 0,
+          "score": {
+            "n": 100,
+            "mean": 73.40334928445087,
+            "ci95Low": 72.13761451415075,
+            "ci95High": 74.66908405475098
+          },
+          "supplyAcceptance": {
+            "n": 100,
+            "mean": 0.7835508825818396,
+            "ci95Low": 0.7652759072981443,
+            "ci95High": 0.8018258578655348
+          },
+          "floor": {
+            "n": 100,
+            "mean": 0.7424283333333334,
+            "ci95Low": 0.7308268501309064,
+            "ci95High": 0.7540298165357603
+          },
+          "sameSkuContact": {
+            "n": 100,
+            "mean": 0.35025808863603297,
+            "ci95Low": 0.3314115605246253,
+            "ci95High": 0.36910461674744066
+          },
+          "deadlineCompliance": {
+            "n": 100,
+            "mean": 1.0,
+            "ci95Low": 1.0,
+            "ci95High": 1.0
+          },
+          "fill": {
+            "n": 100,
+            "mean": 0.4209006805555556,
+            "ci95Low": 0.4110838968532669,
+            "ci95High": 0.43071746425784424
+          },
+          "count": {
+            "n": 100,
+            "mean": 25.4,
+            "ci95Low": 24.972288946416075,
+            "ci95High": 25.827711053583922
+          },
+          "acceptedBoxFraction": {
+            "n": 100,
+            "mean": 0.8466666666666667,
+            "ci95Low": 0.8324096315472026,
+            "ci95High": 0.8609237017861308
+          },
+          "volumeL": {
+            "n": 100,
+            "mean": 606.09698,
+            "ci95Low": 591.9608114687044,
+            "ci95High": 620.2331485312957
+          },
+          "usedHeightMm": {
+            "n": 100,
+            "mean": 1096.6,
+            "ci95Low": 1078.6804225703245,
+            "ci95High": 1114.5195774296753
+          },
+          "envelopeFill": {
+            "n": 100,
+            "mean": 0.4635400846414329,
+            "ci95Low": 0.45051571297725673,
+            "ci95High": 0.4765644563056091
+          },
+          "columnVoidLiters": {
+            "n": 100,
+            "mean": 7.0023255000000075,
+            "ci95Low": 5.861548422886315,
+            "ci95High": 8.1431025771137
+          },
+          "rawDecisionTiming": {
+            "n": 3000,
+            "p50Ms": 12.248917000000802,
+            "p95Ms": 32.95346424996896,
+            "p99Ms": 49.64202342002001,
+            "maxMs": 87.78495800000383
+          }
+        },
+        {
+          "condition": "h1200-n30-s8",
+          "algorithm": "lookahead",
+          "label": "Lookahead",
+          "n": 100,
+          "expectedN": 100,
+          "missingN": 0,
+          "errorN": 0,
+          "cancelledN": 0,
+          "deadlineMisses": 0,
+          "violationN": 0,
+          "contactUndefinedN": 0,
+          "score": {
+            "n": 100,
+            "mean": 75.23535585759979,
+            "ci95Low": 73.97213351649427,
+            "ci95High": 76.4985781987053
+          },
+          "supplyAcceptance": {
+            "n": 100,
+            "mean": 0.8147752499592774,
+            "ci95Low": 0.7965881687489412,
+            "ci95High": 0.8329623311696136
+          },
+          "floor": {
+            "n": 100,
+            "mean": 0.746645,
+            "ci95Low": 0.7355936048011361,
+            "ci95High": 0.7576963951988639
+          },
+          "sameSkuContact": {
+            "n": 100,
+            "mean": 0.34327772400287615,
+            "ci95Low": 0.3244253867872356,
+            "ci95High": 0.3621300612185167
+          },
+          "deadlineCompliance": {
+            "n": 100,
+            "mean": 1.0,
+            "ci95Low": 1.0,
+            "ci95High": 1.0
+          },
+          "fill": {
+            "n": 100,
+            "mean": 0.4376735,
+            "ci95Low": 0.4279039304303427,
+            "ci95High": 0.4474430695696573
+          },
+          "count": {
+            "n": 100,
+            "mean": 26.16,
+            "ci95Low": 25.753532606015234,
+            "ci95High": 26.566467393984766
+          },
+          "acceptedBoxFraction": {
+            "n": 100,
+            "mean": 0.872,
+            "ci95Low": 0.8584510868671744,
+            "ci95High": 0.8855489131328256
+          },
+          "volumeL": {
+            "n": 100,
+            "mean": 630.24984,
+            "ci95Low": 616.1816598196934,
+            "ci95High": 644.3180201803065
+          },
+          "usedHeightMm": {
+            "n": 100,
+            "mean": 1097.4,
+            "ci95Low": 1079.8517861423916,
+            "ci95High": 1114.9482138576086
+          },
+          "envelopeFill": {
+            "n": 100,
+            "mean": 0.4810073862847455,
+            "ci95Low": 0.4687103533614475,
+            "ci95High": 0.49330441920804347
+          },
+          "columnVoidLiters": {
+            "n": 100,
+            "mean": 8.1372055,
+            "ci95Low": 6.9371780741591085,
+            "ci95High": 9.337232925840892
+          },
+          "rawDecisionTiming": {
+            "n": 3000,
+            "p50Ms": 60.21733349998249,
+            "p95Ms": 170.8027014499913,
+            "p99Ms": 213.50865825003095,
+            "maxMs": 474.74462499999936
+          }
+        },
+        {
+          "condition": "h1200-n30-s8",
+          "algorithm": "future-hybrid",
+          "label": "Future hybrid",
+          "n": 100,
+          "expectedN": 100,
+          "missingN": 0,
+          "errorN": 0,
+          "cancelledN": 0,
+          "deadlineMisses": 0,
+          "violationN": 0,
+          "contactUndefinedN": 0,
+          "score": {
+            "n": 100,
+            "mean": 81.26052477369807,
+            "ci95Low": 80.11720476735329,
+            "ci95High": 82.40384478004285
+          },
+          "supplyAcceptance": {
+            "n": 100,
+            "mean": 0.9066558590144352,
+            "ci95Low": 0.8902382836349914,
+            "ci95High": 0.9230734343938791
+          },
+          "floor": {
+            "n": 100,
+            "mean": 0.7750466666666667,
+            "ci95Low": 0.7647351022062197,
+            "ci95High": 0.7853582311271137
+          },
+          "sameSkuContact": {
+            "n": 100,
+            "mean": 0.3490315488554633,
+            "ci95Low": 0.33127971582691346,
+            "ci95High": 0.3667833818840131
+          },
+          "deadlineCompliance": {
+            "n": 100,
+            "mean": 1.0,
+            "ci95Low": 1.0,
+            "ci95High": 1.0
+          },
+          "fill": {
+            "n": 100,
+            "mean": 0.48702908333333333,
+            "ci95Low": 0.47821004068544465,
+            "ci95High": 0.495848125981222
+          },
+          "count": {
+            "n": 100,
+            "mean": 27.94,
+            "ci95Low": 27.570322163831985,
+            "ci95High": 28.309677836168017
+          },
+          "acceptedBoxFraction": {
+            "n": 100,
+            "mean": 0.9313333333333333,
+            "ci95Low": 0.9190107387943995,
+            "ci95High": 0.9436559278722672
+          },
+          "volumeL": {
+            "n": 100,
+            "mean": 701.32188,
+            "ci95Low": 688.6224585870402,
+            "ci95High": 714.0213014129597
+          },
+          "usedHeightMm": {
+            "n": 100,
+            "mean": 1146.5,
+            "ci95Low": 1134.2867677100771,
+            "ci95High": 1158.7132322899229
+          },
+          "envelopeFill": {
+            "n": 100,
+            "mean": 0.5113071928306318,
+            "ci95Low": 0.5003304265453686,
+            "ci95High": 0.5222839591158949
+          },
+          "columnVoidLiters": {
+            "n": 100,
+            "mean": 12.38965358106034,
+            "ci95Low": 10.931498062185915,
+            "ci95High": 13.847809099934766
+          },
+          "rawDecisionTiming": {
+            "n": 3000,
+            "p50Ms": 182.65752050001174,
+            "p95Ms": 812.2298163500103,
+            "p99Ms": 1015.4456594100034,
+            "maxMs": 1347.5998330000002
+          }
+        },
+        {
+          "condition": "h1200-n30-s8",
+          "algorithm": "floor-dense",
+          "label": "ALPS Tetris",
+          "n": 100,
+          "expectedN": 100,
+          "missingN": 0,
+          "errorN": 0,
+          "cancelledN": 0,
+          "deadlineMisses": 0,
+          "violationN": 0,
+          "contactUndefinedN": 0,
+          "score": {
+            "n": 100,
+            "mean": 80.66377916355341,
+            "ci95Low": 79.57512044124704,
+            "ci95High": 81.75243788585979
+          },
+          "supplyAcceptance": {
+            "n": 100,
+            "mean": 0.8819200388868635,
+            "ci95Low": 0.8657600642403905,
+            "ci95High": 0.8980800135333366
+          },
+          "floor": {
+            "n": 100,
+            "mean": 0.8962533333333333,
+            "ci95Low": 0.8894531423358394,
+            "ci95High": 0.9030535243308273
+          },
+          "sameSkuContact": {
+            "n": 100,
+            "mean": 0.2869851220227738,
+            "ci95Low": 0.2705659448763469,
+            "ci95High": 0.30340429916920075
+          },
+          "deadlineCompliance": {
+            "n": 100,
+            "mean": 1.0,
+            "ci95Low": 1.0,
+            "ci95High": 1.0
+          },
+          "fill": {
+            "n": 100,
+            "mean": 0.4737417222222222,
+            "ci95Low": 0.4650610551747308,
+            "ci95High": 0.48242238926971365
+          },
+          "count": {
+            "n": 100,
+            "mean": 27.55,
+            "ci95Low": 27.190626426490642,
+            "ci95High": 27.90937357350936
+          },
+          "acceptedBoxFraction": {
+            "n": 100,
+            "mean": 0.9183333333333333,
+            "ci95Low": 0.9063542142163546,
+            "ci95High": 0.930312452450312
+          },
+          "volumeL": {
+            "n": 100,
+            "mean": 682.18808,
+            "ci95Low": 669.6879194516124,
+            "ci95High": 694.6882405483876
+          },
+          "usedHeightMm": {
+            "n": 100,
+            "mean": 1052.3,
+            "ci95Low": 1030.9091387837689,
+            "ci95High": 1073.690861216231
+          },
+          "envelopeFill": {
+            "n": 100,
+            "mean": 0.5452123482924334,
+            "ci95Low": 0.5314952112043235,
+            "ci95High": 0.5589294853805432
+          },
+          "columnVoidLiters": {
+            "n": 100,
+            "mean": 5.95264,
+            "ci95Low": 5.133020933111384,
+            "ci95High": 6.772259066888616
+          },
+          "rawDecisionTiming": {
+            "n": 3000,
+            "p50Ms": 99.28454200000851,
+            "p95Ms": 248.00404134999386,
+            "p99Ms": 343.05788767000223,
+            "maxMs": 752.4382500000065
+          }
+        },
+        {
+          "condition": "h1200-n30-s8",
+          "algorithm": "cluster-layer",
+          "label": "ALPS cluster",
+          "n": 100,
+          "expectedN": 100,
+          "missingN": 0,
+          "errorN": 0,
+          "cancelledN": 0,
+          "deadlineMisses": 0,
+          "violationN": 0,
+          "contactUndefinedN": 0,
+          "score": {
+            "n": 100,
+            "mean": 84.07590448615085,
+            "ci95Low": 82.84548436000316,
+            "ci95High": 85.30632461229854
+          },
+          "supplyAcceptance": {
+            "n": 100,
+            "mean": 0.8997166740355205,
+            "ci95Low": 0.8822322492991295,
+            "ci95High": 0.9172010987719115
+          },
+          "floor": {
+            "n": 100,
+            "mean": 0.86131,
+            "ci95Low": 0.8526491425857688,
+            "ci95High": 0.8699708574142312
+          },
+          "sameSkuContact": {
+            "n": 100,
+            "mean": 0.4782169362679747,
+            "ci95Low": 0.462100693840488,
+            "ci95High": 0.49433317869546134
+          },
+          "deadlineCompliance": {
+            "n": 100,
+            "mean": 1.0,
+            "ci95Low": 1.0,
+            "ci95High": 1.0
+          },
+          "fill": {
+            "n": 100,
+            "mean": 0.48330155555555554,
+            "ci95Low": 0.4739094325495545,
+            "ci95High": 0.4926936785615566
+          },
+          "count": {
+            "n": 100,
+            "mean": 28,
+            "ci95Low": 27.635544262395435,
+            "ci95High": 28.364455737604565
+          },
+          "acceptedBoxFraction": {
+            "n": 100,
+            "mean": 0.9333333333333333,
+            "ci95Low": 0.9211848087465145,
+            "ci95High": 0.9454818579201522
+          },
+          "volumeL": {
+            "n": 100,
+            "mean": 695.95424,
+            "ci95Low": 682.4295828713584,
+            "ci95High": 709.4788971286416
+          },
+          "usedHeightMm": {
+            "n": 100,
+            "mean": 1132.9,
+            "ci95Low": 1118.0212592767716,
+            "ci95High": 1147.7787407232286
+          },
+          "envelopeFill": {
+            "n": 100,
+            "mean": 0.5133133475193186,
+            "ci95Low": 0.5030065767302605,
+            "ci95High": 0.5236201183083766
+          },
+          "columnVoidLiters": {
+            "n": 100,
+            "mean": 1.2668,
+            "ci95Low": 0.765951695780038,
+            "ci95High": 1.767648304219962
+          },
+          "rawDecisionTiming": {
+            "n": 3000,
+            "p50Ms": 20.57125050000468,
+            "p95Ms": 86.44643784999788,
+            "p99Ms": 132.90317716999533,
+            "maxMs": 242.51799999998184
+          }
+        }
+      ],
+      "seeds": [
+        460100000,
+        460100024,
+        460100049,
+        460100074,
+        460100099
+      ],
+      "replays": [
+        {
+          "seed": 460100000,
+          "algorithm": "capacity-compact",
+          "inputFingerprint": "1cd98674",
+          "url": "/presentation-evidence/h1200-n30-s8-460100000-capacity-compact.json"
+        },
+        {
+          "seed": 460100000,
+          "algorithm": "floor-dense",
+          "inputFingerprint": "1cd98674",
+          "url": "/presentation-evidence/h1200-n30-s8-460100000-floor-dense.json"
+        },
+        {
+          "seed": 460100000,
+          "algorithm": "cluster-layer",
+          "inputFingerprint": "1cd98674",
+          "url": "/presentation-evidence/h1200-n30-s8-460100000-cluster-layer.json"
+        },
+        {
+          "seed": 460100024,
+          "algorithm": "capacity-compact",
+          "inputFingerprint": "0870fc5a",
+          "url": "/presentation-evidence/h1200-n30-s8-460100024-capacity-compact.json"
+        },
+        {
+          "seed": 460100024,
+          "algorithm": "floor-dense",
+          "inputFingerprint": "0870fc5a",
+          "url": "/presentation-evidence/h1200-n30-s8-460100024-floor-dense.json"
+        },
+        {
+          "seed": 460100024,
+          "algorithm": "cluster-layer",
+          "inputFingerprint": "0870fc5a",
+          "url": "/presentation-evidence/h1200-n30-s8-460100024-cluster-layer.json"
+        },
+        {
+          "seed": 460100049,
+          "algorithm": "capacity-compact",
+          "inputFingerprint": "2a121057",
+          "url": "/presentation-evidence/h1200-n30-s8-460100049-capacity-compact.json"
+        },
+        {
+          "seed": 460100049,
+          "algorithm": "floor-dense",
+          "inputFingerprint": "2a121057",
+          "url": "/presentation-evidence/h1200-n30-s8-460100049-floor-dense.json"
+        },
+        {
+          "seed": 460100049,
+          "algorithm": "cluster-layer",
+          "inputFingerprint": "2a121057",
+          "url": "/presentation-evidence/h1200-n30-s8-460100049-cluster-layer.json"
+        },
+        {
+          "seed": 460100074,
+          "algorithm": "capacity-compact",
+          "inputFingerprint": "f40df219",
+          "url": "/presentation-evidence/h1200-n30-s8-460100074-capacity-compact.json"
+        },
+        {
+          "seed": 460100074,
+          "algorithm": "floor-dense",
+          "inputFingerprint": "f40df219",
+          "url": "/presentation-evidence/h1200-n30-s8-460100074-floor-dense.json"
+        },
+        {
+          "seed": 460100074,
+          "algorithm": "cluster-layer",
+          "inputFingerprint": "f40df219",
+          "url": "/presentation-evidence/h1200-n30-s8-460100074-cluster-layer.json"
+        },
+        {
+          "seed": 460100099,
+          "algorithm": "capacity-compact",
+          "inputFingerprint": "32d96f12",
+          "url": "/presentation-evidence/h1200-n30-s8-460100099-capacity-compact.json"
+        },
+        {
+          "seed": 460100099,
+          "algorithm": "floor-dense",
+          "inputFingerprint": "32d96f12",
+          "url": "/presentation-evidence/h1200-n30-s8-460100099-floor-dense.json"
+        },
+        {
+          "seed": 460100099,
+          "algorithm": "cluster-layer",
+          "inputFingerprint": "32d96f12",
+          "url": "/presentation-evidence/h1200-n30-s8-460100099-cluster-layer.json"
+        }
+      ]
+    }
+  ]
+}

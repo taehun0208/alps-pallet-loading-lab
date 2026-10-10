@@ -1,0 +1,24 @@
+
+Pool launch at 2026-10-09T20:10:43Z
+{"shard":"h1200-n30-s8-0025-0050","completed":8,"total":175,"condition":"h1200-n30-s8","elapsedSeconds":12}
+{"shard":"h1200-n30-s8-0025-0050","completed":16,"total":175,"condition":"h1200-n30-s8","elapsedSeconds":20}
+{"shard":"h1200-n30-s8-0025-0050","completed":24,"total":175,"condition":"h1200-n30-s8","elapsedSeconds":34}
+{"shard":"h1200-n30-s8-0025-0050","completed":32,"total":175,"condition":"h1200-n30-s8","elapsedSeconds":56}
+{"shard":"h1200-n30-s8-0025-0050","completed":40,"total":175,"condition":"h1200-n30-s8","elapsedSeconds":73}
+{"shard":"h1200-n30-s8-0025-0050","completed":48,"total":175,"condition":"h1200-n30-s8","elapsedSeconds":83}
+{"shard":"h1200-n30-s8-0025-0050","completed":56,"total":175,"condition":"h1200-n30-s8","elapsedSeconds":101}
+{"shard":"h1200-n30-s8-0025-0050","completed":64,"total":175,"condition":"h1200-n30-s8","elapsedSeconds":112}
+{"shard":"h1200-n30-s8-0025-0050","completed":72,"total":175,"condition":"h1200-n30-s8","elapsedSeconds":125}
+{"shard":"h1200-n30-s8-0025-0050","completed":80,"total":175,"condition":"h1200-n30-s8","elapsedSeconds":149}
+{"shard":"h1200-n30-s8-0025-0050","completed":88,"total":175,"condition":"h1200-n30-s8","elapsedSeconds":170}
+{"shard":"h1200-n30-s8-0025-0050","completed":96,"total":175,"condition":"h1200-n30-s8","elapsedSeconds":181}
+{"shard":"h1200-n30-s8-0025-0050","completed":104,"total":175,"condition":"h1200-n30-s8","elapsedSeconds":192}
+{"shard":"h1200-n30-s8-0025-0050","completed":112,"total":175,"condition":"h1200-n30-s8","elapsedSeconds":218}
+{"shard":"h1200-n30-s8-0025-0050","completed":120,"total":175,"condition":"h1200-n30-s8","elapsedSeconds":231}
+{"shard":"h1200-n30-s8-0025-0050","completed":128,"total":175,"condition":"h1200-n30-s8","elapsedSeconds":248}
+{"shard":"h1200-n30-s8-0025-0050","completed":136,"total":175,"condition":"h1200-n30-s8","elapsedSeconds":277}
+{"shard":"h1200-n30-s8-0025-0050","completed":144,"total":175,"condition":"h1200-n30-s8","elapsedSeconds":288}
+{"shard":"h1200-n30-s8-0025-0050","completed":152,"total":175,"condition":"h1200-n30-s8","elapsedSeconds":296}
+{"shard":"h1200-n30-s8-0025-0050","completed":160,"total":175,"condition":"h1200-n30-s8","elapsedSeconds":326}
+{"shard":"h1200-n30-s8-0025-0050","completed":168,"total":175,"condition":"h1200-n30-s8","elapsedSeconds":343}
+{"pilot":false,"shard":"h1200-n30-s8-0025-0050","completed":175,"total":175,"sessionSeconds":362.642,"interrupted":false}

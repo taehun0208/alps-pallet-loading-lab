@@ -1,0 +1,110 @@
+# ALPS 군집: 심사위원 설명용 PPT 원고
+
+본문 2장과 부록 1장에 바로 옮겨 넣을 수 있는 원고다. **숫자 예시는 계산 설명용이며 실험 결과가 아니다.** 상세 근거는 [계산식 쉬운 설명](https://github.com/taehun0208/alps-pallet-loading-lab/blob/alps/testris-benchmark-20261010/alps-simulator/docs/ALPS-%EA%B5%B0%EC%A7%91-%EA%B3%84%EC%82%B0%EC%8B%9D-%EC%89%AC%EC%9A%B4%EC%84%A4%EB%AA%85.md), 전체 구현과 설정은 [재현 가이드](https://github.com/taehun0208/alps-pallet-loading-lab/blob/alps/testris-benchmark-20261010/alps-simulator/docs/ALPS-%EA%B5%B0%EC%A7%91-%EC%9E%AC%ED%98%84-%EA%B0%80%EC%9D%B4%EB%93%9C.md)를 참고한다.
+
+## 본문 1장 — 먼저, 놓을 수 있는 자리만 남깁니다
+
+**슬라이드 문구**
+
+- 팔레트 안에 들어가고, 다른 박스·운반 경로와 부딪히지 않아야 합니다.
+- 상자 밑면의 **85% 이상**을 받치고, 무게중심을 지지할 수 있어야 합니다.
+- 바로 위 박스뿐 아니라 **그 위에서 내려오는 무게까지** 허용 범위 안이어야 합니다.
+- 이 검사를 통과한 자리만 다음 단계에서 비교합니다.
+
+**핵심 계산식 — 화면 가운데 크게**
+
+```text
+지지율 = 받쳐 주는 면적 ÷ 상자 밑면적 ≥ 85%
+
+누적 상부 하중 ≤ 입력 허용하중 ÷ 1.2
+```
+
+**화면의 작은 설명 예시**
+
+> 밑면 120,000mm² 중 102,000mm²를 받치면 85%입니다.
+> 입력 허용하중이 24kg이면, 안전계수 적용 후 상부 하중 한도는 20kg입니다.
+> *설명용 예시. 면적·하중 조건 외에 무게중심과 접근 검사도 통과해야 합니다.*
+
+**발표 멘트**
+
+“군집 효과가 좋아도 아무 데나 올려놓지는 않습니다. 먼저 받침 면적과 위에서 내려오는 전체 무게, 무게중심을 확인합니다. 이 조건을 통과한 자리만 놓는 순서를 비교합니다.”
+
+**하단 한 줄**
+
+> 합성 강도와 정적·경로 근사 모델 기준이며, 실물 운송 안전·마찰·충격 검증을 뜻하지 않습니다.
+
+## 본문 2장 — 통과한 자리 중, 바닥과 빈틈을 먼저 봅니다
+
+**슬라이드 문구**
+
+- **바닥에 놓을 수 있는 자리**를 먼저 고릅니다.
+- 다음으로, 이번 배치가 **새로 덮어 만드는 빈 공간**을 줄입니다.
+- 두 조건이 같으면 **같은 SKU와 실제로 맞닿는 면**을 늘립니다.
+- 옆면과 위아래 면을 모두 보므로, **위로만 쌓는 방식이 아닙니다.**
+
+**핵심 규칙과 계산식 — 화면 가운데 크게**
+
+```text
+바닥 우선 → 새 공극 최소 → 같은 SKU 접촉 최대
+
+후보 접촉비율 p_same
+= 같은 SKU와 맞닿는 면적 합 ÷ 현재 상자의 전체 표면적
+```
+
+표면적은 `2×(가로×깊이 + 가로×높이 + 깊이×높이)`입니다. 가까이 있기만 하고 맞닿지 않으면 접촉 면적은 0입니다.
+
+**화면의 작은 설명 예시**
+
+> 같은 SKU 접촉이 많아도, 앞선 바닥·공극 조건을 뒤집지는 않습니다.
+> *앞 항목이 같을 때만 다음 항목을 비교합니다. 점수를 더한 가중합이 아닙니다.*
+
+**발표 멘트**
+
+“우선 바닥을 쓰고, 상자 아래 새 빈틈을 덜 만드는 자리를 찾습니다. 그다음 같은 SKU끼리 실제로 닿게 합니다. 옆으로 붙이는 것도 포함하며, 상부 자리끼리는 접촉을 먼저 보므로 더 높은 연결 배치를 선택할 수도 있습니다.”
+
+**하단 한 줄**
+
+> 핵심 순서를 요약한 설명이며, 이후 동률은 부서 접촉·높이 등으로 해소합니다. 최적해·실물 안전 인증을 뜻하지 않습니다.
+
+## 부록 1장 — 질문이 들어왔을 때 보여 줄 계산 근거
+
+**슬라이드 문구**
+
+- **무게중심:** 무거운 상자의 위치가 전체 중심에 더 크게 반영됩니다.
+- **정적 평형:** 받침이 아래에서 밀어 주는 비율로 전체 무게와 중심을 지지할 수 있어야 합니다.
+- **새 공극:** 현재 상자 밑면과 기존 상단 사이에 새로 덮이는 공간만 셉니다.
+- `heavyRule=off`를 유지합니다. 위 상자가 더 무겁다는 이유만으로 금지하지 않으며, 누적 허용하중 검사는 적용합니다.
+
+**계산식 — 세 개의 작은 블록**
+
+```text
+① 무게중심 = Σ(상자 질량 × 상자 중심 좌표) ÷ Σ(상자 질량)
+   단위: mm / 상자 내부 질량은 균일하다고 가정
+
+② 받침 비율 a_k ≥ 0,  Σa_k = 1
+   Σ(a_k × 받침점 x) = 합성 무게중심 x
+   Σ(a_k × 받침점 y) = 합성 무게중심 y
+   단위: 비율과 mm / 각 접촉 사각형의 꼭짓점을 사용
+
+③ 새 공극 = Σ[작은 바닥 구역의 면적 × max(0, 상자 바닥 높이−기존 상단 높이)]
+   단위: mm³ / 1L = 1,000,000mm³
+```
+
+**발표 멘트**
+
+“하중은 위에서 아래로 누적해서 전달합니다. 받침이 무게와 중심을 지지할 수 있는지 계산하며, 같은 SKU의 옆면 접촉을 접착이나 추가 지지력으로 보지는 않습니다. 새 공극은 이번 상자가 새로 덮는 부분만 셉니다.”
+
+**하단 한 줄**
+
+> kg는 코드의 질량 상당 하중이며 N과 다릅니다. 실제 관절 IK·미끄럼·진동·동적 붕괴는 별도 검증 대상입니다.
+
+## 발표자 주의사항 — 슬라이드에는 넣지 않아도 되는 메모
+
+1. 본문 2장의 `p_same`는 **현재 후보 상자의 표면적**으로 나눈 값이다. 결과 리포트의 `sameSkuContact`는 **전체 박스 간 접촉 면적**으로 나누므로 다른 지표다. 본문 식은 후보 `p_same`로 통일했다.
+2. 지지율은 이 평가의 **85%**다. 다른 실험의 지지율을 섞지 않는다. 85%만 충족하면 끝나는 것이 아니라 무게중심·평형·하중·접근 검사도 필요하다.
+3. `허용하중/1.2`는 이번 일반 상자 입력의 식이다. 상자 자체 질량은 자신의 **상부 하중**에 넣지 않고, 더 아래로 전달할 때 함께 더한다. 강도는 실험용 합성값이다.
+4. 현재 군집 선택 경로에서 마찰계수로 미끄럼을 계산하지 않는다. “물리 시뮬레이션으로 운송 안전성을 입증했다” 대신 “모델의 정적·기하 조건을 통과한 후보를 비교했다”라고 말한다.
+5. 본문 핵심 순서 뒤에도 세부 동률 해소 항목이 있다. `cluster-layer`는 같은 SKU 접촉이 **현재 상자의 높이보다 앞서므로**, 상부 후보끼리는 높은 연결 배치를 선택할 수 있다. 이것은 상향 적재 강제 규칙이 아니다.
+6. 보조 벤치마크 점수와 후보 선택 규칙을 섞지 않는다. 군집 후보는 사전식으로 비교한다. 채택 판단은 배치 개수·부피와 3차원 밀도·공극을 우선하고, SKU 군집은 추가 가치로 설명한다.
+
+**코드 근거:** [공통 제약 검사](https://github.com/taehun0208/alps-pallet-loading-lab/blob/alps/testris-benchmark-20261010/alps-simulator/src/engine/vendor/pallet/constraints.ts), [누적 하중·지지 면적](https://github.com/taehun0208/alps-pallet-loading-lab/blob/alps/testris-benchmark-20261010/alps-simulator/src/engine/vendor/pallet/geometry.ts), [안전계수](https://github.com/taehun0208/alps-pallet-loading-lab/blob/alps/testris-benchmark-20261010/alps-simulator/src/engine/vendor/pallet/materials.ts), [정적 평형](https://github.com/taehun0208/alps-pallet-loading-lab/blob/alps/testris-benchmark-20261010/alps-simulator/src/engine/vendor/pallet/equilibrium.ts), [중심 여유](https://github.com/taehun0208/alps-pallet-loading-lab/blob/alps/testris-benchmark-20261010/alps-simulator/src/engine/vendor/pallet/stability.ts), [군집 후보 비교](https://github.com/taehun0208/alps-pallet-loading-lab/blob/alps/testris-benchmark-20261010/alps-simulator/src/engine/clusterPacking.ts), [새 공극](https://github.com/taehun0208/alps-pallet-loading-lab/blob/alps/testris-benchmark-20261010/alps-simulator/src/engine/floorDense.ts), [접촉 면적](https://github.com/taehun0208/alps-pallet-loading-lab/blob/alps/testris-benchmark-20261010/alps-simulator/src/metrics/clustering.ts).
