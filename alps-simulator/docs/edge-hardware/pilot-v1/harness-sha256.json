@@ -1,0 +1,6 @@
+{
+  "scripts/edge-hardware-benchmark.ts": "2d0cc2c9205b08f04ae15f1d96134c160e7d913bc0777cec164141c422102feb",
+  "scripts/edge-hardware-benchmark.mjs": "e8b7636f93dcbdd9a278dfbcc0cb7f96e192975cea11a44bcbc3a6808aa7e362",
+  "scripts/edge-hardware-run.py": "58925097063c0d949b948c272e4048fe7b6530a896242eb6049db0cc9556f749",
+  "scripts/benchmark-worker.mjs": "0f75e909feea03410257473c78bdb31276339fd29e94a444dc3d71822f3e3b96"
+}

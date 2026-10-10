@@ -1,0 +1,45 @@
+{
+  "checkedOn": "2026-10-10",
+  "currency": "KRW",
+  "tax": "소비자 표시금액, Pi 키트 VAT 포함",
+  "baseline": {
+    "name": "신규 Mac mini 시작 가격 (가격 비교용)",
+    "priceKRW": 1499000,
+    "url": "https://www.apple.com/kr/shop/buy-mac/mac-mini",
+    "newsSource": "https://www.apple.com/kr/newsroom/2026/09/the-new-mac-mini-and-mac-studio-are-available-today/",
+    "isMeasuredHostPurchasePrice": false
+  },
+  "kits": [
+    {
+      "vendor": "엘레파츠",
+      "priceKRW": 263780,
+      "url": "https://www.eleparts.co.kr/goods/view?no=14217537",
+      "components": "Pi 5 4GB, 액티브 쿨러, 케이스, PD 27W 전원, microSD, 케이블 등",
+      "componentSource": "https://img2.eleparts.co.kr/editor/goods/1/2024/05/14217537_d6a226a63113039fe5ab829b75b1d75a0827554.jpg",
+      "savingKRW": 1235220,
+      "savingPct": 82.40293529019347,
+      "conditionalThroughputPerPurchaseCostRatio": 5.682765941314732
+    },
+    {
+      "vendor": "ICbanQ",
+      "priceKRW": 330000,
+      "url": "https://www.icbanq.com/P016019444",
+      "components": "Pi 5 4GB 베이직 키트. 세부 구성은 엘레파츠 키트와 동일하다고 가정하지 않음.",
+      "savingKRW": 1169000,
+      "savingPct": 77.98532354903269,
+      "conditionalThroughputPerPurchaseCostRatio": 4.542424242424242
+    }
+  ],
+  "targetBoardTested": false,
+  "robotIntegrationTested": false,
+  "exclusions": [
+    "로봇팔·기존 로봇 제어기·카메라·그리퍼",
+    "산업용 I/O·전원 보호·함체·설치",
+    "포팅·통신 연동·보정·유지보수·장애 비용",
+    "전력·API 비용: 실측/실제 대체 비용 없음"
+  ],
+  "conditionalEfficiency": "실제 기한 내 적재 처리량이 동일할 때만 구입비당 처리량의 산술 비율로 해석. Pi 처리량을 측정한 결과가 아님.",
+  "netSavingFormula": "N × (기준 컴퓨터 구입비 − Pi 키트비 − 대당 추가 설치비) − 일회성 개발비 − 추가 운영비",
+  "edgeDefinitionSource": "https://aws.amazon.com/what-is/edge-computing/",
+  "robotInterfaceExample": "https://docs.universal-robots.com/tutorials/communication-protocol-tutorials/rtde-guide.html"
+}

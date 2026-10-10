@@ -1,0 +1,482 @@
+{
+  "schema": "alps-hardware-report/1",
+  "complete": true,
+  "targetBoardTested": false,
+  "sourceSignature": "8bab669522ba33fdce1f082fe36fc5b8ff2f7f4b4e4dc100bba05912e2928feb",
+  "evaluatedTrials": 90,
+  "decisionCount": 2700,
+  "environment": {
+    "node": "v24.14.1",
+    "cpu": "Apple M5",
+    "platform": "darwin",
+    "arch": "arm64",
+    "hostMemoryMiB": 24576,
+    "heapCapMiBPerIsolate": 64,
+    "execArgv": [
+      "--max-old-space-size=64"
+    ]
+  },
+  "protocol": {
+    "schema": "alps-duty-stress/1",
+    "indices": "0,24,49,74,99",
+    "algorithms": [
+      "capacity-compact",
+      "floor-dense",
+      "cluster-layer"
+    ],
+    "profiles": [
+      {
+        "id": "native",
+        "nominalRunFraction": 1.0
+      },
+      {
+        "id": "duty25",
+        "nominalRunFraction": 0.25
+      },
+      {
+        "id": "duty10",
+        "nominalRunFraction": 0.1
+      }
+    ],
+    "periodMs": 50.0,
+    "heapCapMiBPerIsolate": 64,
+    "classification": "Host-process CPU starvation pilot, not target-board performance.",
+    "limits": "No hard RSS/RAM cap, no Pi CPU/cache/thermal/power emulation. Entire Node process pauses; watchdog delivery can be delayed by an off window.",
+    "source": "evaluation-v2 frozen engine, unchanged 9000ms search and 10000ms cycle."
+  },
+  "sameGeometryAsNative": 90,
+  "sameGeometryAsAudited": 90,
+  "totalDeadlineMisses": 0,
+  "totalErrors": 0,
+  "totalWatchdogs": 0,
+  "groups": [
+    {
+      "profile": "native",
+      "algorithm": "capacity-compact",
+      "trials": 10,
+      "decisions": 300,
+      "p50Ms": 8.631687500000112,
+      "p95Ms": 22.531502049999826,
+      "p99Ms": 28.153430240000073,
+      "maxMs": 38.4157909999999,
+      "maxPreparationMs": 38.5262909999999,
+      "p95ValidationMs": 0.1120104500000764,
+      "peakRssMiB": 250.140625,
+      "startupMaxMs": 14.585959000000003,
+      "deadlineMisses": 0,
+      "fallbacks": 0,
+      "watchdogs": 0,
+      "errors": 0,
+      "geometryMatchesAudited": 10,
+      "runnableFraction": 1,
+      "conditions": [
+        {
+          "skus": 6,
+          "n": 5,
+          "count": 27.4,
+          "acceptancePct": 87.03861332507931,
+          "densityPct": 53.080349056216534
+        },
+        {
+          "skus": 8,
+          "n": 5,
+          "count": 26.4,
+          "acceptancePct": 82.28889526661031,
+          "densityPct": 48.17589617511137
+        }
+      ]
+    },
+    {
+      "profile": "native",
+      "algorithm": "floor-dense",
+      "trials": 10,
+      "decisions": 300,
+      "p50Ms": 89.50993749999998,
+      "p95Ms": 179.5055607500013,
+      "p99Ms": 230.17773967000008,
+      "maxMs": 288.3820830000004,
+      "maxPreparationMs": 288.4404160000013,
+      "p95ValidationMs": 0.10179315000091264,
+      "peakRssMiB": 258.953125,
+      "startupMaxMs": 14.288666999999997,
+      "deadlineMisses": 0,
+      "fallbacks": 0,
+      "watchdogs": 0,
+      "errors": 0,
+      "geometryMatchesAudited": 10,
+      "runnableFraction": 1,
+      "conditions": [
+        {
+          "skus": 6,
+          "n": 5,
+          "count": 28.4,
+          "acceptancePct": 91.68923624545384,
+          "densityPct": 57.55507905529878
+        },
+        {
+          "skus": 8,
+          "n": 5,
+          "count": 28.2,
+          "acceptancePct": 90.47607966635898,
+          "densityPct": 55.508295416958276
+        }
+      ]
+    },
+    {
+      "profile": "native",
+      "algorithm": "cluster-layer",
+      "trials": 10,
+      "decisions": 300,
+      "p50Ms": 18.90966649999973,
+      "p95Ms": 68.78319410000014,
+      "p99Ms": 93.23736808999989,
+      "maxMs": 101.76524999999947,
+      "maxPreparationMs": 101.85370799999964,
+      "p95ValidationMs": 0.09955834999998674,
+      "peakRssMiB": 256.859375,
+      "startupMaxMs": 14.582791999999998,
+      "deadlineMisses": 0,
+      "fallbacks": 0,
+      "watchdogs": 0,
+      "errors": 0,
+      "geometryMatchesAudited": 10,
+      "runnableFraction": 1,
+      "conditions": [
+        {
+          "skus": 6,
+          "n": 5,
+          "count": 28.2,
+          "acceptancePct": 90.13386984446335,
+          "densityPct": 50.04350047080979
+        },
+        {
+          "skus": 8,
+          "n": 5,
+          "count": 28.2,
+          "acceptancePct": 90.3403376227819,
+          "densityPct": 52.842086994967964
+        }
+      ]
+    },
+    {
+      "profile": "duty25",
+      "algorithm": "capacity-compact",
+      "trials": 10,
+      "decisions": 300,
+      "p50Ms": 49.762062500000866,
+      "p95Ms": 112.84537500000052,
+      "p99Ms": 163.33144016999876,
+      "maxMs": 169.9580420000002,
+      "maxPreparationMs": 170.10283400000117,
+      "p95ValidationMs": 0.14372325000031197,
+      "peakRssMiB": 243.078125,
+      "startupMaxMs": 101.716834,
+      "deadlineMisses": 0,
+      "fallbacks": 0,
+      "watchdogs": 0,
+      "errors": 0,
+      "geometryMatchesAudited": 10,
+      "runnableFraction": 0.2676182862923482,
+      "conditions": [
+        {
+          "skus": 6,
+          "n": 5,
+          "count": 27.4,
+          "acceptancePct": 87.03861332507931,
+          "densityPct": 53.080349056216534
+        },
+        {
+          "skus": 8,
+          "n": 5,
+          "count": 26.4,
+          "acceptancePct": 82.28889526661031,
+          "densityPct": 48.17589617511137
+        }
+      ]
+    },
+    {
+      "profile": "duty25",
+      "algorithm": "floor-dense",
+      "trials": 10,
+      "decisions": 300,
+      "p50Ms": 399.03793750000114,
+      "p95Ms": 850.5138139499927,
+      "p99Ms": 1189.0781100899999,
+      "maxMs": 1538.2123749999882,
+      "maxPreparationMs": 1538.3698339999828,
+      "p95ValidationMs": 0.14611520000107706,
+      "peakRssMiB": 248.109375,
+      "startupMaxMs": 102.714417,
+      "deadlineMisses": 0,
+      "fallbacks": 0,
+      "watchdogs": 0,
+      "errors": 0,
+      "geometryMatchesAudited": 10,
+      "runnableFraction": 0.269128033904735,
+      "conditions": [
+        {
+          "skus": 6,
+          "n": 5,
+          "count": 28.4,
+          "acceptancePct": 91.68923624545384,
+          "densityPct": 57.55507905529878
+        },
+        {
+          "skus": 8,
+          "n": 5,
+          "count": 28.2,
+          "acceptancePct": 90.47607966635898,
+          "densityPct": 55.508295416958276
+        }
+      ]
+    },
+    {
+      "profile": "duty25",
+      "algorithm": "cluster-layer",
+      "trials": 10,
+      "decisions": 300,
+      "p50Ms": 102.08168750000004,
+      "p95Ms": 336.9875997000002,
+      "p99Ms": 444.46809550000023,
+      "maxMs": 520.3287499999997,
+      "maxPreparationMs": 520.4250419999989,
+      "p95ValidationMs": 0.13880060000028613,
+      "peakRssMiB": 248.203125,
+      "startupMaxMs": 59.362875,
+      "deadlineMisses": 0,
+      "fallbacks": 0,
+      "watchdogs": 0,
+      "errors": 0,
+      "geometryMatchesAudited": 10,
+      "runnableFraction": 0.26922602337606255,
+      "conditions": [
+        {
+          "skus": 6,
+          "n": 5,
+          "count": 28.2,
+          "acceptancePct": 90.13386984446335,
+          "densityPct": 50.04350047080979
+        },
+        {
+          "skus": 8,
+          "n": 5,
+          "count": 28.2,
+          "acceptancePct": 90.3403376227819,
+          "densityPct": 52.842086994967964
+        }
+      ]
+    },
+    {
+      "profile": "duty10",
+      "algorithm": "capacity-compact",
+      "trials": 10,
+      "decisions": 300,
+      "p50Ms": 110.36974999999984,
+      "p95Ms": 279.9713163499999,
+      "p99Ms": 391.35498283000214,
+      "maxMs": 502.9025419999998,
+      "maxPreparationMs": 503.0072919999984,
+      "p95ValidationMs": 0.19665209999957375,
+      "peakRssMiB": 246.515625,
+      "startupMaxMs": 218.67974999999996,
+      "deadlineMisses": 0,
+      "fallbacks": 0,
+      "watchdogs": 0,
+      "errors": 0,
+      "geometryMatchesAudited": 10,
+      "runnableFraction": 0.11395786359206085,
+      "conditions": [
+        {
+          "skus": 6,
+          "n": 5,
+          "count": 27.4,
+          "acceptancePct": 87.03861332507931,
+          "densityPct": 53.080349056216534
+        },
+        {
+          "skus": 8,
+          "n": 5,
+          "count": 26.4,
+          "acceptancePct": 82.28889526661031,
+          "densityPct": 48.17589617511137
+        }
+      ]
+    },
+    {
+      "profile": "duty10",
+      "algorithm": "floor-dense",
+      "trials": 10,
+      "decisions": 300,
+      "p50Ms": 1154.7549579999977,
+      "p95Ms": 2631.5160312500116,
+      "p99Ms": 3250.1413949999987,
+      "maxMs": 4192.6131659999955,
+      "maxPreparationMs": 4192.685250000039,
+      "p95ValidationMs": 0.2946062499948313,
+      "peakRssMiB": 226.734375,
+      "startupMaxMs": 219.41416700000002,
+      "deadlineMisses": 0,
+      "fallbacks": 0,
+      "watchdogs": 0,
+      "errors": 0,
+      "geometryMatchesAudited": 10,
+      "runnableFraction": 0.11402561649469786,
+      "conditions": [
+        {
+          "skus": 6,
+          "n": 5,
+          "count": 28.4,
+          "acceptancePct": 91.68923624545384,
+          "densityPct": 57.55507905529878
+        },
+        {
+          "skus": 8,
+          "n": 5,
+          "count": 28.2,
+          "acceptancePct": 90.47607966635898,
+          "densityPct": 55.508295416958276
+        }
+      ]
+    },
+    {
+      "profile": "duty10",
+      "algorithm": "cluster-layer",
+      "trials": 10,
+      "decisions": 300,
+      "p50Ms": 271.83468749999884,
+      "p95Ms": 989.3854878000053,
+      "p99Ms": 1217.3188965800023,
+      "maxMs": 1278.0562500000015,
+      "maxPreparationMs": 1278.2490829999988,
+      "p95ValidationMs": 0.19830625000104193,
+      "peakRssMiB": 245.890625,
+      "startupMaxMs": 222.129417,
+      "deadlineMisses": 0,
+      "fallbacks": 0,
+      "watchdogs": 0,
+      "errors": 0,
+      "geometryMatchesAudited": 10,
+      "runnableFraction": 0.11376437179742595,
+      "conditions": [
+        {
+          "skus": 6,
+          "n": 5,
+          "count": 28.2,
+          "acceptancePct": 90.13386984446335,
+          "densityPct": 50.04350047080979
+        },
+        {
+          "skus": 8,
+          "n": 5,
+          "count": 28.2,
+          "acceptancePct": 90.3403376227819,
+          "densityPct": 52.842086994967964
+        }
+      ]
+    }
+  ],
+  "original1400Latency": [
+    {
+      "algorithm": "blb",
+      "decisions": 6000,
+      "p95Ms": 15.61918335001028,
+      "p99Ms": 23.548515000048017,
+      "maxMs": 76.61495899999863,
+      "linearSlowdownTo9000msAtObservedMax": 117.47053209282747
+    },
+    {
+      "algorithm": "future-hybrid",
+      "decisions": 6000,
+      "p95Ms": 720.7910747000207,
+      "p99Ms": 949.1380549100007,
+      "maxMs": 1347.5998330000002,
+      "linearSlowdownTo9000msAtObservedMax": 6.678540453633314
+    },
+    {
+      "algorithm": "lookahead",
+      "decisions": 6000,
+      "p95Ms": 161.94706874996774,
+      "p99Ms": 208.9213532500166,
+      "maxMs": 474.74462499999936,
+      "linearSlowdownTo9000msAtObservedMax": 18.957560604293334
+    },
+    {
+      "algorithm": "floor-dense",
+      "decisions": 6000,
+      "p95Ms": 248.79593334998646,
+      "p99Ms": 349.2143192499994,
+      "maxMs": 752.4382500000065,
+      "linearSlowdownTo9000msAtObservedMax": 11.961114417030132
+    },
+    {
+      "algorithm": "capacity-compact",
+      "decisions": 6000,
+      "p95Ms": 31.582364600000083,
+      "p99Ms": 43.85662241000275,
+      "maxMs": 91.30033300002106,
+      "linearSlowdownTo9000msAtObservedMax": 98.57576313547426
+    },
+    {
+      "algorithm": "cluster-layer",
+      "decisions": 6000,
+      "p95Ms": 82.9119461499897,
+      "p99Ms": 128.4988985099983,
+      "maxMs": 242.51799999998184,
+      "linearSlowdownTo9000msAtObservedMax": 37.11064745709875
+    },
+    {
+      "algorithm": "strategy-greedy",
+      "decisions": 6000,
+      "p95Ms": 32.48922709999898,
+      "p99Ms": 50.734851669979705,
+      "maxMs": 213.53970899999695,
+      "linearSlowdownTo9000msAtObservedMax": 42.146727848168645
+    }
+  ],
+  "limitation": "Not Pi emulation. Shared Apple CPU; 50ms SIGSTOP/SIGCONT duty window stops both planner and supervisor. Old-generation heap cap is not an RSS/device RAM cap. No camera inference, UI/GPU, actual robot, target temperature/power, or sustained factory workload measured.",
+  "deploymentContext": {
+    "checkedOn": "2026-10-10",
+    "currency": "KRW",
+    "tax": "소비자 표시금액, Pi 키트 VAT 포함",
+    "baseline": {
+      "name": "신규 Mac mini 시작 가격 (가격 비교용)",
+      "priceKRW": 1499000,
+      "url": "https://www.apple.com/kr/shop/buy-mac/mac-mini",
+      "newsSource": "https://www.apple.com/kr/newsroom/2026/09/the-new-mac-mini-and-mac-studio-are-available-today/",
+      "isMeasuredHostPurchasePrice": false
+    },
+    "kits": [
+      {
+        "vendor": "엘레파츠",
+        "priceKRW": 263780,
+        "url": "https://www.eleparts.co.kr/goods/view?no=14217537",
+        "components": "Pi 5 4GB, 액티브 쿨러, 케이스, PD 27W 전원, microSD, 케이블 등",
+        "componentSource": "https://img2.eleparts.co.kr/editor/goods/1/2024/05/14217537_d6a226a63113039fe5ab829b75b1d75a0827554.jpg",
+        "savingKRW": 1235220,
+        "savingPct": 82.40293529019347,
+        "conditionalThroughputPerPurchaseCostRatio": 5.682765941314732
+      },
+      {
+        "vendor": "ICbanQ",
+        "priceKRW": 330000,
+        "url": "https://www.icbanq.com/P016019444",
+        "components": "Pi 5 4GB 베이직 키트. 세부 구성은 엘레파츠 키트와 동일하다고 가정하지 않음.",
+        "savingKRW": 1169000,
+        "savingPct": 77.98532354903269,
+        "conditionalThroughputPerPurchaseCostRatio": 4.542424242424242
+      }
+    ],
+    "targetBoardTested": false,
+    "robotIntegrationTested": false,
+    "exclusions": [
+      "로봇팔·기존 로봇 제어기·카메라·그리퍼",
+      "산업용 I/O·전원 보호·함체·설치",
+      "포팅·통신 연동·보정·유지보수·장애 비용",
+      "전력·API 비용: 실측/실제 대체 비용 없음"
+    ],
+    "conditionalEfficiency": "실제 기한 내 적재 처리량이 동일할 때만 구입비당 처리량의 산술 비율로 해석. Pi 처리량을 측정한 결과가 아님.",
+    "netSavingFormula": "N × (기준 컴퓨터 구입비 − Pi 키트비 − 대당 추가 설치비) − 일회성 개발비 − 추가 운영비",
+    "edgeDefinitionSource": "https://aws.amazon.com/what-is/edge-computing/",
+    "robotInterfaceExample": "https://docs.universal-robots.com/tutorials/communication-protocol-tutorials/rtde-guide.html"
+  }
+}

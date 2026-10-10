@@ -1,0 +1,10 @@
+{"profile":"duty10","algorithm":"floor-dense","completed":1,"total":10,"condition":"h1200-n30-s6","seed":460000000,"count":29,"maxDecisionMs":3248.4915,"sameGeometryAsAudited":true,"deadlineMisses":0}
+{"profile":"duty10","algorithm":"floor-dense","completed":2,"total":10,"condition":"h1200-n30-s8","seed":460100000,"count":30,"maxDecisionMs":3191.028250000003,"sameGeometryAsAudited":true,"deadlineMisses":0}
+{"profile":"duty10","algorithm":"floor-dense","completed":3,"total":10,"condition":"h1200-n30-s6","seed":460000024,"count":29,"maxDecisionMs":2630.954625000013,"sameGeometryAsAudited":true,"deadlineMisses":0}
+{"profile":"duty10","algorithm":"floor-dense","completed":4,"total":10,"condition":"h1200-n30-s8","seed":460100024,"count":29,"maxDecisionMs":3847.3878750000003,"sameGeometryAsAudited":true,"deadlineMisses":0}
+{"profile":"duty10","algorithm":"floor-dense","completed":5,"total":10,"condition":"h1200-n30-s6","seed":460000049,"count":28,"maxDecisionMs":2858.019459000003,"sameGeometryAsAudited":true,"deadlineMisses":0}
+{"profile":"duty10","algorithm":"floor-dense","completed":6,"total":10,"condition":"h1200-n30-s8","seed":460100049,"count":28,"maxDecisionMs":2701.2808749999967,"sameGeometryAsAudited":true,"deadlineMisses":0}
+{"profile":"duty10","algorithm":"floor-dense","completed":7,"total":10,"condition":"h1200-n30-s6","seed":460000074,"count":29,"maxDecisionMs":1935.541499999992,"sameGeometryAsAudited":true,"deadlineMisses":0}
+{"profile":"duty10","algorithm":"floor-dense","completed":8,"total":10,"condition":"h1200-n30-s8","seed":460100074,"count":28,"maxDecisionMs":4192.6131659999955,"sameGeometryAsAudited":true,"deadlineMisses":0}
+{"profile":"duty10","algorithm":"floor-dense","completed":9,"total":10,"condition":"h1200-n30-s6","seed":460000099,"count":27,"maxDecisionMs":2994.2283330000355,"sameGeometryAsAudited":true,"deadlineMisses":0}
+{"profile":"duty10","algorithm":"floor-dense","completed":10,"total":10,"condition":"h1200-n30-s8","seed":460100099,"count":26,"maxDecisionMs":2325.838457999984,"sameGeometryAsAudited":true,"deadlineMisses":0}
